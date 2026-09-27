@@ -3566,12 +3566,74 @@ function enhanceLossLedgerVisual(article, context) {
 
 function enhanceEconomyVisual(article, context) {
   if (article.querySelector('[data-economic-viz]')) return;
-  const payload = modelData(context.model, 'ledger.economics') || {}; const outlook = payload.forecast_context || payload.economicOutlook || payload.economic_outlook || {}; const rows = asArray(outlook.rows); if (!rows.length) { const notice = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Comparable economic snapshots unavailable', message: 'Atlas cannot render the economic comparison because the current public model does not contain comparable recorded snapshots.', accounting: 'No values are interpolated or invented to fill the missing series.' }); visualSweepInsertAfterStatus(article, notice); return; }
-  const section = element(context.documentObject, 'section', 'economic-snapshot-dashboard analytical-hero'); section.dataset.economicViz = 'paired-snapshot-small-multiples'; section.dataset.interpolation = 'none'; append(section, 'h2', '', 'Economic pressure: comparable snapshots'); append(section, 'p', 'section-note', `${publicNarrative(outlook.metric, 'Comparable economic measure')}. Each country shows the recorded prewar and current forecast snapshots. Atlas does not fill in values between the recorded dates.`);
-  const maxDelta = Math.max(1, ...rows.map(row => Math.abs(Number(row.delta))).filter(Number.isFinite)); const grid = append(section, 'div', 'economic-small-multiples');
-  rows.forEach(row => { const card = append(grid, 'article', 'economic-snapshot-card'); card.dataset.economicCountry = row.country || ''; append(card, 'h3', '', publicNarrative(row.country, 'Economy')); const values = append(card, 'div', 'economic-paired-values'); const before = append(values, 'div'); append(before, 'span', '', 'Prewar'); append(before, 'strong', '', `${Number(row.prewar).toFixed(1)}%`); const current = append(values, 'div'); append(current, 'span', '', 'Current'); append(current, 'strong', '', `${Number(row.current).toFixed(1)}%`); const delta = append(card, 'div', `economic-delta ${Number(row.delta) < 0 ? 'negative' : 'positive'}`); delta.style.setProperty('--delta-size', String(Math.min(1, Math.abs(Number(row.delta)) / maxDelta))); append(delta, 'span', 'economic-delta-bar', ''); append(delta, 'strong', '', `${Number(row.delta) > 0 ? '+' : ''}${Number(row.delta).toFixed(1)} pp`); });
-  const tableDetails = append(section, 'details', 'economic-numeric-equivalent'); append(tableDetails, 'summary', '', 'Numeric values and methodology'); append(tableDetails, 'p', '', publicNarrative(outlook.note, 'These are reported comparison snapshots; no values are inferred between them.')); const table = append(tableDetails, 'table'); const thead = append(table, 'thead'); const hr = append(thead, 'tr'); ['Economy', 'Prewar', 'Current', 'Change'].forEach(label => { const th = append(hr, 'th', '', label); th.scope = 'col'; }); const tbody = append(table, 'tbody'); rows.forEach(row => { const tr = append(tbody, 'tr'); const th = append(tr, 'th', '', row.country); th.scope = 'row'; append(tr, 'td', '', `${Number(row.prewar).toFixed(1)}%`); append(tr, 'td', '', `${Number(row.current).toFixed(1)}%`); append(tr, 'td', '', `${Number(row.delta) > 0 ? '+' : ''}${Number(row.delta).toFixed(1)} pp`); });
-  const currentRecords = recordArray(modelData(context.model, 'gate3.economics')); if (currentRecords.length) { const snapshots = append(section, 'div', 'economic-event-snapshots'); append(snapshots, 'h3', '', 'Dated pressure snapshots'); currentRecords.slice().sort((a, b) => String(a.date || a.event_date || '').localeCompare(String(b.date || b.event_date || ''))).slice(-6).forEach(record => { const card = addProvenanceCard(snapshots, context, { kicker: readableDate(record.date || record.event_date), title: itemTitle(record, 'Economic pressure record'), text: itemSummary(record), item: record, relatedRecords: relatedRecordsFrom(record) }); card.dataset.economicSnapshot = record.economic_id || record.event_id || record.id || ''; }); }
+  const payload = modelData(context.model, 'ledger.economics') || {};
+  const outlook = payload.forecast_context || payload.economicOutlook || payload.economic_outlook || {};
+  const rows = asArray(outlook.rows);
+  if (!rows.length) {
+    const notice = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Comparable economic snapshots unavailable', message: 'Atlas cannot render the economic comparison because the current public model does not contain comparable recorded snapshots.', accounting: 'No values are interpolated or invented to fill the missing series.' });
+    visualSweepInsertAfterStatus(article, notice); return;
+  }
+  const sourceRecords = new Map(asArray(context.model.sources && context.model.sources.records).map(record => [record.source_id, record]));
+  const sourceDate = id => { const record = sourceRecords.get(id) || {}; return String(record.publication_date || record.date || '').slice(0, 10); };
+  const sanctionRecords = recordArray(modelData(context.model, 'gate3.economics')).filter(record => /sanction|ofac|secondary[- ]sanction/i.test(JSON.stringify(record))).filter(record => /^2026-/.test(String(record.date || record.event_date || ''))).sort((a, b) => String(a.date || a.event_date).localeCompare(String(b.date || b.event_date)));
+  const section = element(context.documentObject, 'section', 'economic-snapshot-dashboard analytical-hero');
+  section.dataset.economicViz = 'year-timeline-snapshots'; section.dataset.futureScenario = 'no-new-change-flat'; section.dataset.interpolation = 'none';
+  append(section, 'h2', '', '2026 economic snapshot and pressure timeline');
+  append(section, 'p', 'section-note', 'The lines connect only recorded forecast snapshots. After the current evidence date, the dashed segment holds the latest published forecast flat through December as a simple “what if nothing else changed” reference—not a forecast. Sanction markers show timing; timing alone does not prove that a sanction caused a forecast change.');
+  const chart = append(section, 'div', 'economic-year-chart'); chart.dataset.economicYear = '2026';
+  const monthRow = append(chart, 'div', 'economic-year-months'); ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].forEach(month => append(monthRow, 'span', '', month));
+  const svg = context.documentObject.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 1200 620'); svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', '2026 economic forecast snapshots for Iran and Gulf economies, with sanctions dates and a November 3 U.S. midterm election reference line. Dashed future segments hold the latest published forecast flat through December if nothing else changes.');
+  svg.classList.add('economic-year-svg'); chart.append(svg);
+  const ns = 'http://www.w3.org/2000/svg';
+  const make = (name, attrs = {}) => { const node = context.documentObject.createElementNS(ns, name); Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value))); svg.append(node); return node; };
+  const yearStart = Date.parse('2026-01-01T00:00:00Z'); const yearEnd = Date.parse('2026-12-31T00:00:00Z');
+  const evidenceDate = String(context.model.release && context.model.release.current_osint_cutoff || '2026-09-27').slice(0, 10);
+  const left = 150, right = 1160, top = 64, bottom = 570, width = right - left, height = bottom - top;
+  const xFor = date => Math.max(0, Math.min(1, (Date.parse(String(date).slice(0, 10) + 'T00:00:00Z') - yearStart) / (yearEnd - yearStart)));
+  const values = rows.flatMap(row => [Number(row.prewar), Number(row.current)]).filter(Number.isFinite);
+  const yMin = Math.floor(Math.min(-10, ...values) - 1); const yMax = Math.ceil(Math.max(6, ...values) + 1);
+  const yFor = value => 1 - (Number(value) - yMin) / (yMax - yMin);
+  [0, .25, .5, .75, 1].forEach(frac => make('line', { x1: left + width * frac, y1: top, x2: left + width * frac, y2: bottom, class: 'economic-grid-line' }));
+  const electionDate = '2026-11-03'; const electionX = left + width * xFor(electionDate);
+  make('line', { x1: electionX, y1: top, x2: electionX, y2: bottom, class: 'economic-election-line' });
+  const electionLabel = make('text', { x: electionX + 6, y: top + 16, class: 'economic-election-label' }); electionLabel.textContent = 'Nov. 3 · U.S. midterm election';
+  const evidenceX = left + width * xFor(evidenceDate);
+  make('line', { x1: evidenceX, y1: top, x2: evidenceX, y2: bottom, class: 'economic-current-line' });
+  const evidenceLabel = make('text', { x: evidenceX - 6, y: bottom - 8, class: 'economic-current-label', 'text-anchor': 'end' }); evidenceLabel.textContent = 'Evidence through ' + readableDate(evidenceDate);
+  sanctionRecords.forEach((record, index) => {
+    const date = String(record.date || record.event_date).slice(0, 10); const x = left + width * xFor(date);
+    make('line', { x1: x, y1: top + 28, x2: x, y2: bottom, class: 'economic-sanction-line' });
+    const label = make('text', { x: x + 4, y: top + 38 + (index % 4) * 15, class: 'economic-sanction-label' });
+    label.textContent = readableDate(date) + ' · ' + publicNarrative(record.metric || record.topic || record.title, 'Sanctions action');
+  });
+  rows.forEach(row => {
+    const dates = asArray(row.source_ids).map(sourceDate).filter(date => /^2026-/.test(date)).sort();
+    const observedStart = dates[0] || '2026-01-01'; const observedEnd = dates[dates.length - 1] || evidenceDate;
+    const xBase = left + width * xFor(observedStart); const xObserved = left + width * xFor(observedEnd);
+    const yBase = top + height * yFor(row.prewar); const yCurrent = top + height * yFor(row.current);
+    const lineClass = row.country === 'Iran' ? 'economic-line iran' : 'economic-line';
+    make('path', { d: 'M ' + xBase + ' ' + yBase + ' L ' + xObserved + ' ' + yCurrent, class: lineClass });
+    make('line', { x1: Math.max(xObserved, evidenceX), y1: yCurrent, x2: right, y2: yCurrent, class: lineClass + ' scenario' });
+    make('circle', { cx: xBase, cy: yBase, r: 4, class: 'economic-point' });
+    make('circle', { cx: xObserved, cy: yCurrent, r: row.country === 'Iran' ? 6 : 5, class: row.country === 'Iran' ? 'economic-point iran' : 'economic-point' });
+    const name = make('text', { x: 8, y: yCurrent + 4, class: row.country === 'Iran' ? 'economic-row-label iran' : 'economic-row-label' }); name.textContent = row.country;
+    const value = make('text', { x: right - 2, y: yCurrent - 7, class: 'economic-row-value', 'text-anchor': 'end' }); value.textContent = Number(row.current).toFixed(1) + '%';
+  });
+  const legend = append(section, 'div', 'economic-chart-legend');
+  append(legend, 'span', 'economic-legend observed', 'Recorded forecast change'); append(legend, 'span', 'economic-legend scenario', 'If nothing else changed'); append(legend, 'span', 'economic-legend sanctions', 'Sanctions action / implementation'); append(legend, 'span', 'economic-legend election', 'Nov. 3 election reference');
+  const electionNote = append(section, 'p', 'economic-election-note', 'The Nov. 3 line is a calendar reference only. It does not imply that the election causes, ends, or changes the economic trend.'); electionNote.dataset.electionDate = electionDate;
+  if (sanctionRecords.length) {
+    const markers = append(section, 'details', 'economic-sanction-markers'); append(markers, 'summary', '', 'Sanctions markers (' + sanctionRecords.length + ')');
+    const list = append(markers, 'div', 'record-list two-column-list');
+    sanctionRecords.forEach(record => addProvenanceCard(list, context, { kicker: readableDate(record.date || record.event_date), title: publicNarrative(record.metric || record.topic, 'Sanctions action'), text: publicNarrative(record.observed_state || record.finding || record.summary), meta: publicNarrative(record.causation_note || record.methodology_note, 'Timing is shown; causal effect is not assumed.'), item: record }));
+  }
+  const numeric = append(section, 'details', 'economic-numeric-equivalent'); append(numeric, 'summary', '', 'Recorded values and sources');
+  append(numeric, 'p', '', publicNarrative(outlook.note, 'These are reported comparison snapshots; no values are inferred between them.'));
+  const table = append(numeric, 'table'); const thead = append(table, 'thead'); const hr = append(thead, 'tr');
+  ['Economy', 'Earlier snapshot', 'Latest snapshot', 'Change'].forEach(label => { const th = append(hr, 'th', '', label); th.scope = 'col'; });
+  const tbody = append(table, 'tbody'); rows.forEach(row => { const tr = append(tbody, 'tr'); const th = append(tr, 'th', '', row.country); th.scope = 'row'; append(tr, 'td', '', Number(row.prewar).toFixed(1) + '%'); append(tr, 'td', '', Number(row.current).toFixed(1) + '%'); append(tr, 'td', '', (Number(row.delta) > 0 ? '+' : '') + Number(row.delta).toFixed(1) + ' pp'); });
   visualSweepInsertAfterStatus(article, section);
 }
 
