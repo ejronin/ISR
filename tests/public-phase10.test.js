@@ -79,7 +79,7 @@ assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'lo
 assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
 assert(source.includes("section.dataset.interpolation = 'none'"), 'economy view does not explicitly prohibit interpolation');
 assert(source.includes("section.dataset.agreementBalance = 'existing-position-derived'"), 'MOU balance does not declare its existing analytical source');
-assert(source.includes('Balance not adjudicated'), 'MOU non-scorable fallback is absent');
+assert(source.includes('No supported balance finding'), 'MOU non-scorable fallback is absent');
 
 const oilRoutePayload = model.datasets['analysis.oil_routes'].payload;
 assert(Array.isArray(oilRoutePayload.routes) && oilRoutePayload.routes.length >= 4, 'supported oil/shipping route geometry is unavailable');
