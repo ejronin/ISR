@@ -132,10 +132,7 @@
     };
     const g=add(s,'div','record-list');
     const earlier=card(g,'What Iran said it would achieve','Iran talked about controlling Hormuz, deciding who could pass and charging ships for passage. It demanded that others accept its conditions before shipping and negotiations returned to normal.','ORIGINAL OBJECTIVE');
-    const domains=records(context.model,'ledger.domain_assessments');
-    const maritime=domains.find(item => /Maritime control/i.test(item.domain || ''));
-    evidence(earlier, context, maritime);
-    eventEvidence(earlier, ['EV-20260822-001','G3-IRAN-HORMUZ-SEQUENCING-20260920']);
+    eventEvidence(earlier, ['EV-20260805-001','EV-20260822-001','G3-IRAN-HORMUZ-RESTRICTED-ZONE-20260907','G3-IRAN-HORMUZ-SEQUENCING-20260920']);
     const offer=card(g,'What Iran is asking for now','Iran has offered to reopen Hormuz in return for relief from the U.S. blockade and military pressure. Its foreign minister publicly presented a seven-day plan. Trump rejected that proposal on September 26. Iran continued talks with Oman about navigation and practical solutions; no agreement has been reached.','CURRENT RESULT');
     eventEvidence(offer, ['G3-IRAN-HORMUZ-REOPENING-OFFER-20260922','G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926','G3-OMAN-IRAN-HORMUZ-MEETING-20260926']);
     const result=card(g,'Iran has not made others accept its terms','Iran has not established the permanent control over Hormuz it sought or forced the United States to accept its terms. Gulf states have not accepted Iranian control of regional shipping. Saudi Arabia is publicly calling for the prewar system to return, without Iranian fees or tolls. Iran is asking for the pressure against it to end.','WHY THIS FALLS SHORT');
