@@ -126,7 +126,7 @@
     const value=txt(status).toUpperCase();
     if (/UNRESOLVED|UNSCORED|NOT YET|OPEN/.test(value)) return ['not-yet','Not yet'];
     if (/PART|SUBSTANTIAL|INCOMPLETE|SOFTEN/.test(value)) return ['partial','Partial'];
-    if (/NOT ACHIEVED|FAILED|REVERSED|MOSTLY UNMET|MOVING OPPOSITE|OBJECTIVE RETREATED/.test(value)) return ['failure','Not achieved'];
+    if (/NOT ACHIEVED|FAILED|REVERSED|MOSTLY UNMET|MOVING OPPOSITE|OBJECTIVE RETREATED/.test(value)) return ['failure','Failure'];
     if (/ACHIEVED|CONTROLLING|SUCCESS/.test(value)) return ['success','Success'];
     return ['not-yet','Open'];
   }
@@ -314,7 +314,7 @@
     const acceptedFor=(actor,goal)=>accepted.find(record=>record.actor===actor&&(objectiveKey(record.objective)===objectiveKey(goal)||objectiveKey(record.objective).includes(objectiveKey(goal))||objectiveKey(goal).includes(objectiveKey(record.objective))));
     const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Goals and current results');
     add(s,'p','section-note','Status color summarizes the accepted current result only: gray is still open, amber is partial, green is achieved, and red is not achieved. The exact finding remains on every card.');
-    const legend=add(s,'div','objective-status-legend');[['not-yet','Not yet'],['partial','Partial'],['success','Success'],['failure','Not achieved']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
+    const legend=add(s,'div','objective-status-legend');[['not-yet','Not yet'],['partial','Partial'],['success','Success'],['failure','Failure']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
     const split=add(s,'div','objective-split-grid');
     ['United States','Iran'].forEach(actor=>{
       const g=add(split,'section','objective-actor-group');g.dataset.objectiveActor=actor==='United States'?'united-states':'iran';
