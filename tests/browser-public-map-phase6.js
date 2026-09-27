@@ -73,6 +73,7 @@ const PRESERVED_FACILITY_IDS = [
       layers: [...new Set(window.ATLAS_REFERENCE_GEOGRAPHY?.features.map(item => item.properties.layer))],
       map: Boolean(document.querySelector('.atlas-leaflet-map.leaflet-container')),
       coastPaths: document.querySelectorAll('.leaflet-atlas-reference-pane path').length,
+      filledLand: [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => path.classList.contains('atlas-reference-land') && path.getAttribute('fill') && path.getAttribute('fill') !== 'none' && Number(path.getAttribute('fill-opacity') || 0) > 0),
       labels: [...document.querySelectorAll('.reference-map-label')].map(node => node.textContent.trim()),
       external: performance.getEntriesByType('resource').map(item => item.name).filter(url => new URL(url).origin !== location.origin)
     }))()`);
@@ -82,6 +83,7 @@ const PRESERVED_FACILITY_IDS = [
     assert.deepEqual(new Set(local.layers), new Set(['regional_50m', 'hormuz_10m']));
     assert.equal(local.map, true);
     assert(local.coastPaths >= 4, 'Hormuz map lacks detailed local coast/country geometry');
+    assert.equal(local.filledLand, true, 'reference geography renders only outlines instead of visible land masses');
     assert(local.labels.some(label => /Strait of Hormuz/.test(label)), 'Hormuz reference label is missing');
     assert.deepEqual(local.external, [], `current map made an external runtime request: ${JSON.stringify(local.external)}`);
 
