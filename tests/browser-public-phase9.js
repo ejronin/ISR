@@ -371,7 +371,7 @@ async function route(cdp, hash, key) {
     }))()`);
     assert.equal(phase10Effects.cards, 7);
     assert.match(phase10Effects.text, /How damage and operating results are kept separate/);
-    assert.match(phase10Effects.text, /Attack occurrence, physical effect and operational consequence are separate/i);
+    assert.match(phase10Effects.text, /The attack, the physical damage and what it changed are separate findings/i);
     assert.match(phase10Effects.text, /does not automatically prove a mission kill, destroyed platform or whole-site shutdown/i);
     assertCampaignEventCountSemanticBoundary(phase10Effects.drilldown);
 
