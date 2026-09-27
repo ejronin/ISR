@@ -34,6 +34,7 @@ def main() -> int:
     ]
 
     events = {row["event_id"]: row for row in state["chronology"]}
+    packet_events = {row["event_id"]: row for row in packet["events"]}
     for event_id in (
         "G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926",
         "G3-OMAN-IRAN-HORMUZ-MEETING-20260926",
@@ -41,7 +42,8 @@ def main() -> int:
         "G3-RUSSIA-LAVROV-GULF-SECURITY-20260926",
     ):
         assert event_id in events
-        assert events[event_id]["strike_countable"] is False
+        assert packet_events[event_id]["strike_countable"] is False
+        assert packet_events[event_id]["event_class"] == "DIPLOMATIC_OR_POLICY_EVENT"
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
     assert "DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26" in diplomacy["status"]
