@@ -467,7 +467,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(positions, /What Iran said/);
     assert.match(positions, /What happened/);
     assert.match(positions, /What Iran said or did later/);
-    assert.match(positions, /Assessment/i);
+    assert.match(positions, /Finding/i);
 
     await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
     const evidence = await cdp.eval(`(() => ({
