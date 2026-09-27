@@ -319,7 +319,8 @@
     ['United States','Iran'].forEach(actor=>{
       const g=add(split,'section','objective-actor-group');g.dataset.objectiveActor=actor==='United States'?'united-states':'iran';
       const heading=add(g,'h3','objective-actor-heading');heading.append(context.services.actorIdentity.create(context.documentObject,actor));
-      const actorRows=OBJECTIVES.filter(o=>o[0]===actor);
+      const acceptedRows=accepted.filter(record=>record.actor===actor);
+      const actorRows=acceptedRows.length?acceptedRows.map(record=>[actor,record.objective,record.status,record.assessment,record]):OBJECTIVES.filter(o=>o[0]===actor).map(row=>[...row,null]);
       const families=actorRows.map(row=>objectiveStatusFamily(row[2])[0]);
       const counts=Object.fromEntries(['not-yet','partial','success','failure'].map(key=>[key,families.filter(value=>value===key).length]));
       const summary=add(g,'p','objective-actor-summary');summary.textContent=[counts.success&&`${counts.success} achieved`,counts.partial&&`${counts.partial} partial`,counts['not-yet']&&`${counts['not-yet']} open`,counts.failure&&`${counts.failure} not achieved`].filter(Boolean).join(' · ');
@@ -355,7 +356,7 @@
       }
       const l=add(g,'div','objective-card-list');
       actorRows.forEach(row=>{
-        const [side,goal,status,why]=row, [family,label]=objectiveStatusFamily(status), acceptedRecord=acceptedFor(side,goal);
+        const [side,goal,status,why,rowRecord]=row, [family,label]=objectiveStatusFamily(status), acceptedRecord=rowRecord||acceptedFor(side,goal);
         const c=add(l,'article','provenance-card objective-result');c.dataset.objectiveStatus=family;c.dataset.objectiveGoal=objectiveKey(goal);
         const top=add(c,'div','objective-card-head');add(top,'span',`objective-status objective-status-${family}`,label);add(top,'span','objective-finding-detail',txt(status).replaceAll('_',' '));
         add(c,'h4','',goal);
