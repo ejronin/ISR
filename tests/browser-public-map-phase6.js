@@ -73,7 +73,7 @@ const PRESERVED_FACILITY_IDS = [
       layers: [...new Set(window.ATLAS_REFERENCE_GEOGRAPHY?.features.map(item => item.properties.layer))],
       map: Boolean(document.querySelector('.atlas-leaflet-map.leaflet-container')),
       coastPaths: document.querySelectorAll('.leaflet-atlas-reference-pane path').length,
-      filledLand: [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => path.classList.contains('atlas-reference-land') && path.getAttribute('fill') && path.getAttribute('fill') !== 'none' && Number(path.getAttribute('fill-opacity') || 0) > 0),
+      filledLand: [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => { const style = getComputedStyle(path); return path.classList.contains('atlas-reference-land') && style.fill !== 'none' && Number.parseFloat(style.fillOpacity || '0') > .5; }),
       labels: [...document.querySelectorAll('.reference-map-label')].map(node => node.textContent.trim()),
       external: performance.getEntriesByType('resource').map(item => item.name).filter(url => new URL(url).origin !== location.origin)
     }))()`);
