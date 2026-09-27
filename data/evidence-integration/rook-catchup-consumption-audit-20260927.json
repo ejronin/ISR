@@ -1,0 +1,45 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_ROOK_CONSUMPTION_AUDIT",
+  "authority": "EVIDENCE_INTEGRATION_FACTUAL_ADJUDICATION",
+  "as_of": "2026-09-27T00:19:48-04:00",
+  "canonical_target_packet": "UPD-20260927-ROOK-EVIDENCE-CATCHUP",
+  "locker_artifacts": [
+    "data/evidence-integration/rook-evidence-locker-sweep-20260927T0000ET.json"
+  ],
+  "current_state_promotions": [
+    {
+      "topic": "Saudi UNGA freedom-of-navigation / no-fee Hormuz position",
+      "disposition": "PROMOTE_POLICY_EVENT",
+      "target": "G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926"
+    },
+    {
+      "topic": "Oman-Iran navigation and freedom-of-passage meeting",
+      "disposition": "PROMOTE_PRIMARY_DIPLOMATIC_EVENT",
+      "target": "G3-OMAN-IRAN-HORMUZ-MEETING-20260926"
+    },
+    {
+      "topic": "Oman-U.S. de-escalation and navigation meeting",
+      "disposition": "PROMOTE_PRIMARY_DIPLOMATIC_EVENT",
+      "target": "G3-OMAN-US-DEESCALATION-NAVIGATION-20260926"
+    },
+    {
+      "topic": "Lavrov Gulf-security / Hormuz stabilization offer",
+      "disposition": "PROMOTE_POLICY_EVENT_WITH_IMPLEMENTATION_BOUNDARY",
+      "target": "G3-RUSSIA-LAVROV-GULF-SECURITY-20260926"
+    },
+    {
+      "topic": "Post-rejection multi-actor Hormuz positioning",
+      "disposition": "UPDATE_EXISTING_DIPLOMACY_ENTITY",
+      "target": "DIP-US-IRAN-UNGA-CONTACTS-20260922"
+    }
+  ],
+  "deliberately_withheld": [
+    "No inference that Saudi Arabia, Oman and Russia share a single negotiated Hormuz framework.",
+    "No inference that Lavrov's offer constitutes a Russian deployment, guarantee or material security commitment.",
+    "No inference that Oman's separate meetings produced a signed replacement corridor or renewed U.S.-Iran agreement.",
+    "No substitution of Saudi political navigation demands for independently observed commercial traffic metrics.",
+    "No duplicate promotion of China's Gulf-sovereignty speech, Trump's rejection/29-ship claims, the morning Saudi-Houthi salvo or the Sejoud strike; those were already captured before the prior noon cutoff."
+  ],
+  "claims_forensics": "NO_NEW_REFERRALS; PRIOR_TRUMP_HORMUZ_REFERRAL_RETAINS_AUTHORITY",
+  "web_of_lies": "OUT_OF_SCOPE_NO_FILES_OR_SEMANTICS_TO_CHANGE"
+}

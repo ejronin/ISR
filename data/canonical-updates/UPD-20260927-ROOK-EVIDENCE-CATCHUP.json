@@ -1,0 +1,142 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260927-ROOK-EVIDENCE-CATCHUP",
+  "known_at": "2026-09-27T00:19:48-04:00",
+  "evidence_cutoff": "2026-09-27T00:00:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20260927T0000ET.json"
+    ],
+    "consumption_audit": "data/evidence-integration/rook-catchup-consumption-audit-20260927.json",
+    "claim_domain_handoff": "data/evidence-integration/rook-catchup-claims-routing-20260927.json",
+    "web_of_lies": "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
+  },
+  "summary": "Consumes the Sep.26 noon-to-midnight ROOK sweep into canonical current state. It records Saudi Arabia's explicit UNGA freedom-of-navigation and no-fee Hormuz position, Oman's separate Iran and U.S. navigation/de-escalation contacts, and Russia's offer to contribute to a Gulf security architecture. These positions are preserved separately: no common framework, new U.S.-Iran agreement, Russian material commitment or commercial traffic normalization is inferred.",
+  "sources": [
+    {
+      "source_id": "SRC-5EB57BE7099F",
+      "url": "https://gulfnews.com/world/gulf/saudi/at-un-saudi-fm-warns-world-failing-to-protect-gulf-shipping-1.500689091",
+      "source_role": "AFP_REPORT_OF_PUBLIC_UNGA_STATEMENT"
+    },
+    {
+      "source_id": "SRC-49ED905D994D",
+      "url": "https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=577586",
+      "source_role": "AFP_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-18A822A93DFC",
+      "url": "https://www.fm.gov.om/en/57813/",
+      "source_role": "PRIMARY_OFFICIAL_OMAN_FOREIGN_MINISTRY"
+    },
+    {
+      "source_id": "SRC-C7A82D89ACEA",
+      "url": "https://www.fm.gov.om/en/57718/",
+      "source_role": "PRIMARY_OFFICIAL_OMAN_FOREIGN_MINISTRY"
+    },
+    {
+      "source_id": "SRC-F917DE0C3BC3",
+      "url": "https://sharjah24.ae/en/Articles/2026/09/26/Lavrov-at-UN-Russia-ready-to-help-on-Strait-of-Hormuz",
+      "source_role": "AFP_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-A5BA6AAB7890",
+      "url": "https://www.moneycontrol.com/world/russia-offers-to-help-stabilise-strait-of-hormuz-lavrov-accuses-europe-of-blocking-ukraine-talks-article-14039011.html",
+      "source_role": "NEWS_REPORT_OF_PUBLIC_UNGA_STATEMENT"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "SAUDI_UNGA_FREEDOM_OF_NAVIGATION_AND_NO_FEE_POSITION",
+      "game_knowledge_time": "2026-09-27T00:19:48-04:00",
+      "public_available_time": "2026-09-26T22:52:00-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "evidence_horizon_time": "2026-09-27T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "At the U.N. General Assembly, Saudi Foreign Minister Faisal bin Farhan called for protection of freedom of navigation through Hormuz, Bab al-Mandab, the Red Sea and Gulf of Aden, called for Hormuz conditions to return to their pre-Feb.28 state without fees or taxes, and rejected use of vital waterways as coercive leverage.",
+      "source_ids": [
+        "SRC-5EB57BE7099F",
+        "SRC-49ED905D994D"
+      ]
+    },
+    {
+      "event_id": "G3-OMAN-IRAN-HORMUZ-MEETING-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "OMAN_IRAN_HORMUZ_NAVIGATION_AND_CONFIDENCE_BUILDING_MEETING",
+      "game_knowledge_time": "2026-09-27T00:19:48-04:00",
+      "public_available_time": "2026-09-26T23:59:59-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "evidence_horizon_time": "2026-09-27T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Oman's Foreign Ministry said Foreign Minister Badr Albusaidi and Iranian Foreign Minister Abbas Araghchi met in New York and discussed regional divisions, confidence-building, practical solutions to outstanding issues, safety of navigation in the Strait of Hormuz and ensuring freedom of passage for international trade and energy supplies.",
+      "source_ids": [
+        "SRC-18A822A93DFC"
+      ]
+    },
+    {
+      "event_id": "G3-OMAN-US-DEESCALATION-NAVIGATION-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "OMAN_US_DEESCALATION_COMMUNICATION_AND_NAVIGATION_MEETING",
+      "game_knowledge_time": "2026-09-27T00:19:48-04:00",
+      "public_available_time": "2026-09-26T23:59:59-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "evidence_horizon_time": "2026-09-27T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Oman's Foreign Ministry said Albusaidi and U.S. Assistant Secretary of State Donald Blome discussed containing escalation, maintaining channels of communication, conditions for continued diplomacy, regional security and maritime navigation. The Omani readout said the U.S. delegation commended Oman's mediation role; that praise remains attributed to the Omani account.",
+      "source_ids": [
+        "SRC-C7A82D89ACEA"
+      ]
+    },
+    {
+      "event_id": "G3-RUSSIA-LAVROV-GULF-SECURITY-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "RUSSIAN_UNGA_GULF_SECURITY_ARCHITECTURE_AND_HORMUZ_OFFER",
+      "game_knowledge_time": "2026-09-27T00:19:48-04:00",
+      "public_available_time": "2026-09-26T12:59:00-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "evidence_horizon_time": "2026-09-27T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "At the U.N. General Assembly, Russian Foreign Minister Sergei Lavrov said Russia was ready to help stabilize Hormuz and the wider Gulf and argued for trust between Gulf Arab states and Iran within a stable regional security architecture. The statement is a diplomatic offer and policy position, not evidence of a defined mechanism, deployment or material security commitment.",
+      "source_ids": [
+        "SRC-F917DE0C3BC3",
+        "SRC-A5BA6AAB7890"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "MEDIATED_ENGAGEMENT_CONFIRMED; INDIRECT_FORMAT_SUPPORTED_BY_LATEST_REUTERS_RECONSTRUCTION; COMPETING_PUBLIC_CHARACTERIZATION_PRESERVED; PARTIES_REPORTED_FAR_APART_AS_OF_SEP24; DIPLOMACY_CONTINUED; PHASED_HORMUZ_BLOCKADE_FRAMEWORK_REPORTED; IRAN_SEVEN_DAY_PROPOSAL_PUBLICLY_STATED; WSJ_REPORTED_US_REJECTION_PRESERVED; DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26; POST_REJECTION_REGIONAL_POSITIONING_ACTIVE; SAUDI_PREWAR_NO_FEE_BASELINE_STATED; OMAN_MEDIATION_CONTINUES; RUSSIA_OFFERS_GULF_SECURITY_ARCHITECTURE_SUPPORT; NO_AGREEMENT; NO_ACCEPTED_SETTLEMENT; NO_COMMON_REGIONAL_FRAMEWORK_ESTABLISHED",
+        "observed_state": "After Trump's direct rejection of Iran's seven-day proposal, regional and external actors continued to position around Hormuz. Rejection of that proposal does not establish that all diplomatic channels ended. Saudi Arabia publicly called for a return to pre-Feb.28 navigation conditions without fees or taxes. Oman separately engaged Iran and the United States on navigation, de-escalation, communication and practical solutions. Russia offered to contribute to a stable Gulf security architecture. These are distinct actor positions; they do not establish a replacement U.S.-Iran agreement or a common Saudi-Omani-Russian framework.",
+        "knowledge_time": "2026-09-27T00:19:48-04:00",
+        "source_ids": [
+          "SRC-F998CB101972",
+          "SRC-147F3EB0E6BC",
+          "SRC-25BB1B596B72",
+          "SRC-6D4B41984CFD",
+          "SRC-3C3CB8B494AA",
+          "SRC-B63B1CFF1B21",
+          "SRC-F98CA0A64F09",
+          "SRC-BE3466904600",
+          "SRC-E48C2BF4BA86",
+          "SRC-5EB57BE7099F",
+          "SRC-49ED905D994D",
+          "SRC-18A822A93DFC",
+          "SRC-C7A82D89ACEA",
+          "SRC-F917DE0C3BC3",
+          "SRC-A5BA6AAB7890"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
