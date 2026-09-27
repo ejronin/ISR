@@ -46,7 +46,7 @@ assert.match(registrySource,/baseRuntime\.PAGE_OWNERS\[route\.owner\]/,'registry
 assert.match(registrySource,/readerSupportRuntime\.projectShell/,'reader support must execute before validation/promotion');
 assert.match(registrySource,/PROTECTED_LAYOUT_ROUTES = new Set\(\['start\.overview','evidence\.information','evidence\.web_of_lies'\]\)/,'protected page layouts must remain explicitly isolated from the adaptive redesign');
 assert.match(registrySource,/dataset\.layoutScope=PROTECTED_LAYOUT_ROUTES\.has\(route\.key\)\?'protected':'adaptive-wide'/,'adaptive desktop layout must be route-scoped rather than global');
-assert.match(registrySource,/currentPositionData=modelData\(context\.model,'analysis\.endgame_current_aug25'\)/,'Goals & Results does not consume the accepted current-position record');
+assert.match(registrySource,/currentPositionData=modelData\(context\.model,'analysis\.iran_messaging'\)/,'Goals & Results does not consume the accepted current-position record');
 assert.match(registrySource,/const acceptedRows=accepted\.filter\(record=>record\.actor===actor\)/,'Goals & Results is not driven by accepted objective records');
 assert.match(registrySource,/dataset\.positionHistory='iran'/,'Iran position history is missing');
 assert.match(registrySource,/Current position/,'Iran position history does not lead with the current position');
