@@ -396,7 +396,7 @@ async function route(cdp, hash, key) {
     assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
     assert.equal(economyVisual.tableRows, economyVisual.cards);
     assert.equal(economyVisual.hasConnectingPolyline, false, 'economy snapshots are visually connected as an invented continuous series');
-    assert.match(economyVisual.text, /does not interpolate values between observations/i);
+    assert.match(economyVisual.text, /does not fill in values between the recorded dates/i);
     assert.equal(economyVisual.duplicatedCorridorInventory, false, 'Economy duplicates the Shipping & Trade corridor inventory');
 
     await route(cdp, '#/talks/june-mou', 'talks.mou');
