@@ -414,18 +414,49 @@ async function route(cdp, hash, key) {
     await route(cdp, '#/hormuz/economy', 'hormuz.economy');
     const economyVisual = await cdp.eval(`(() => ({
       interpolation: document.querySelector('[data-economic-viz]')?.dataset.interpolation || '',
-      cards: document.querySelectorAll('[data-economic-country]').length,
+      futureScenario: document.querySelector('[data-economic-viz]')?.dataset.futureScenario || '',
+      economies: document.querySelectorAll('.economic-row-label').length,
       tableRows: document.querySelectorAll('.economic-numeric-equivalent tbody tr').length,
-      hasConnectingPolyline: Boolean(document.querySelector('[data-economic-viz] svg polyline, [data-economic-viz] svg path[data-series]')),
+      scenarioLines: document.querySelectorAll('.economic-line.scenario').length,
+      sanctions: document.querySelectorAll('.economic-sanction-line').length,
+      election: Boolean(document.querySelector('.economic-election-line')),
+      electionDate: document.querySelector('.economic-election-note')?.dataset.electionDate || '',
       text: document.querySelector('[data-economic-viz]')?.innerText || '',
       duplicatedCorridorInventory: Boolean([...document.querySelectorAll('h2')].find(node => node.textContent.trim() === 'Strategic transport corridors'))
     }))()`);
     assert.equal(economyVisual.interpolation, 'none');
-    assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
-    assert.equal(economyVisual.tableRows, economyVisual.cards);
-    assert.equal(economyVisual.hasConnectingPolyline, false, 'economy snapshots are visually connected as an invented continuous series');
-    assert.match(economyVisual.text, /does not interpolate values between observations/i);
+    assert.equal(economyVisual.futureScenario, 'no-new-change-flat');
+    assert.equal(economyVisual.economies, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
+    assert.equal(economyVisual.tableRows, economyVisual.economies);
+    assert.equal(economyVisual.scenarioLines, economyVisual.economies, 'economy no-change scenario is missing a future segment for one or more economies');
+    assert(economyVisual.sanctions >= 1, 'economy timeline has no accepted sanctions markers');
+    assert.equal(economyVisual.election, true, 'economy timeline is missing the Nov. 3 election reference line');
+    assert.equal(economyVisual.electionDate, '2026-11-03');
+    assert.match(economyVisual.text, /what if nothing else changed/i);
+    assert.match(economyVisual.text, /calendar reference only/i);
+    assert.match(economyVisual.text, /timing alone does not prove/i);
     assert.equal(economyVisual.duplicatedCorridorInventory, false, 'Economy duplicates the Shipping & Trade corridor inventory');
+
+    await route(cdp, '#/objectives/outcomes', 'objectives.outcomes');
+    const objectivesView = await cdp.eval(`(() => ({
+      panels: document.querySelectorAll('[data-objective-actor]').length,
+      us: Boolean(document.querySelector('[data-objective-actor="united-states"]')),
+      iran: Boolean(document.querySelector('[data-objective-actor="iran"]')),
+      statuses: [...document.querySelectorAll('.objective-status-legend .objective-status')].map(node => node.textContent.trim()),
+      chain: [...document.querySelectorAll('[data-position-history="iran"] [data-position-step]')].map(node => ({ step: node.dataset.positionStep, text: node.innerText })),
+      sourceLinks: document.querySelectorAll('[data-position-history="iran"] .objective-position-source a[href^="http"]').length,
+      text: document.querySelector('[data-public-objective-results="true"]')?.innerText || ''
+    }))()`);
+    assert.equal(objectivesView.panels, 2, 'Goals & Results is not a two-sided comparison');
+    assert.equal(objectivesView.us, true);
+    assert.equal(objectivesView.iran, true);
+    for (const label of ['Not yet','Partial','Success','Failure']) assert(objectivesView.statuses.includes(label), 'Goals & Results is missing status label ' + label);
+    assert(objectivesView.chain.length >= 3, 'Iran position history does not run from current position back to the original objective');
+    assert.equal(objectivesView.chain[0].step, 'current', 'Iran position history must lead with the current position');
+    assert.equal(objectivesView.chain[objectivesView.chain.length - 1].step, 'original', 'Iran position history must end at the original claim / objective');
+    assert(objectivesView.sourceLinks >= 2, 'Iran position history lacks direct source links');
+    assert.match(objectivesView.text, /current position/i);
+    assert.match(objectivesView.text, /original claim \/ objective/i);
 
     await route(cdp, '#/talks/june-mou', 'talks.mou');
     const mouVisual = await cdp.eval(`(() => ({
@@ -442,9 +473,21 @@ async function route(cdp, hash, key) {
 
     await route(cdp, '#/timeline/war', 'timeline.war');
     const densityInteraction = await cdp.eval(`(() => {
-      const bin = document.querySelector('.timeline-density-bin'); const inputs = document.querySelectorAll('.timeline-controls input[type="date"]'); if (!bin || inputs.length < 2) return null; bin.click(); return { start: inputs[0].value, end: inputs[1].value, expectedStart: bin.dataset.start, expectedEnd: bin.dataset.end };
+      const bin = document.querySelector('.timeline-density-bin'); const inputs = document.querySelectorAll('.timeline-controls input[type="date"]'); if (!bin || inputs.length < 2) return null; bin.click(); return {
+        start: inputs[0].value,
+        end: inputs[1].value,
+        expectedStart: bin.dataset.start,
+        expectedEnd: bin.dataset.end,
+        expectedCount: Number(bin.dataset.count),
+        selected: bin.getAttribute('aria-pressed'),
+        selectionText: document.querySelector('.timeline-density-selection')?.textContent || '',
+        resultText: document.querySelector('.timeline-navigation .filter-result-count')?.textContent || ''
+      };
     })()`);
     assert(densityInteraction && densityInteraction.start === densityInteraction.expectedStart && densityInteraction.end === densityInteraction.expectedEnd, 'timeline density cluster does not drive the chronology window');
+    assert.equal(densityInteraction.selected, 'true', 'selected timeline density bar is not exposed as selected');
+    assert.match(densityInteraction.selectionText, new RegExp(String(densityInteraction.expectedCount) + ' recorded event'), 'selected timeline density bar does not explain what is shown below');
+    assert.match(densityInteraction.resultText, new RegExp('^' + densityInteraction.expectedCount + ' wartime record'), 'selected graph span did not update the lower timeline records');
 
     console.log(`browser public reader/Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive timeline, chronology, losses, imagery, ${ledger.cards} reader claims, public/internal boundary, maps, economics and score-free MOU presentation verified`);
   } finally {
