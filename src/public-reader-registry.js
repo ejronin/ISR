@@ -413,7 +413,7 @@
       } catch(error) {
         stage.remove();doc.title=previousTitle;
         const failure=error instanceof ReaderRegistryError?error:new ReaderRegistryError(error?.code||'READER_FINALIZATION_FAILED','Reader rendering or finalization failed.',error);
-        if(hasQualified){emitRouteFailure(win,state,failure);if(propagateFailure)throw failure;return null;} throw failure;
+        if(hasQualified){emitRouteFailure(win,state,failure);if(propagateFailure)throw failure;return null;} root.console?.error?.('Atlas initial reader finalization failed', failure, failure.cause || error); throw failure;
       }
     };
     const onHashChange=()=>stageRoute(true,false);win?.addEventListener?.('hashchange',onHashChange);let initialRoute;
