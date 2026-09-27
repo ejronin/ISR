@@ -3334,12 +3334,12 @@
   }
 
   function SourcesDirectoryPage(context) {
-    const frame = pageFrame(context, 'Browse the sources behind the current record by source type, origin and outlet. Search remains available, but you do not need to know a source ID to find the evidence.');
+    const frame = pageFrame(context, 'Browse the sources behind the current record by source type, origin and outlet. Search by outlet, title, topic or keyword.');
     const guide = addSection(frame.article, 'How source context works');
-    append(guide, 'p', '', 'Publisher type, ownership or affiliation, external publisher ratings and Atlas’s claim-level evidence findings answer different questions. State media is a publisher type, not a truth verdict.');
-    append(guide, 'p', 'source-rating-note', 'Publisher-level ratings describe the outlet, not whether a particular article or claim is true. Atlas assesses individual claims against their evidence.');
+    append(guide, 'p', '', 'Publisher type, ownership or affiliation, outlet ratings and Atlas’s findings about individual claims answer different questions. State media is a publisher type, not a truth verdict.');
+    append(guide, 'p', 'source-rating-note', 'Ratings describe the outlet, not whether a particular article or claim is true. Atlas checks individual claims against the evidence.');
     const controls = append(frame.article, 'form', 'source-controls'); controls.addEventListener('submit', event => event.preventDefault());
-    const label = append(controls, 'label', '', 'Search all sources'); const search = append(label, 'input'); search.type = 'search'; search.placeholder = 'Outlet, title, topic, or source ID';
+    const label = append(controls, 'label', '', 'Search all sources'); const search = append(label, 'input'); search.type = 'search'; search.placeholder = 'Outlet, title, topic, or keyword';
     const count = append(controls, 'p', 'filter-result-count'); count.setAttribute('aria-live', 'polite');
     const directory = append(frame.article, 'div', 'source-directory');
     const rawSources = asArray(context.model.sources && context.model.sources.records);
@@ -3388,8 +3388,8 @@
               const metaLine = append(card, 'div', 'record-meta'); if (record.publicationDate) append(metaLine, 'span', '', `Published ${record.publicationDate}`);
               const registry = row.raw.registry || {}; const retrieved = firstText(registry.retrieved_at, registry.retrieval_date, registry.retrieved_on); if (retrieved) append(metaLine, 'span', '', `Retrieved ${retrieved}`);
               if (record.role) append(metaLine, 'span', '', publicNarrative(record.role));
-              const technical = append(card, 'details', 'source-variants'); append(technical, 'summary', '', 'Source record details'); append(technical, 'p', 'source-id', `Source ID: ${source.sourceId}`);
-              const contextRow = append(card, 'div', 'source-context-row'); append(contextRow, 'span', '', source.conflict ? 'Metadata differs across preserved evidence packages' : 'Source record resolved'); if (source.conflict) append(contextRow, 'span', '', `${source.variants.length} preserved versions`);
+              const technical = append(card, 'details', 'source-variants'); append(technical, 'summary', '', 'More source details');
+              const contextRow = append(card, 'div', 'source-context-row'); append(contextRow, 'span', '', source.conflict ? 'Source details differ across saved versions' : 'Source matched'); if (source.conflict) append(contextRow, 'span', '', `${source.variants.length} saved versions`);
               appendSourceResolution(context.documentObject, card, source);
             });
           });
