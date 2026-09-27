@@ -216,7 +216,7 @@
   function losses(article) {
     intro(article,'Casualties and equipment losses are separate. Some numbers are exact or minimum counts, but the evidence does not support one reliable equipment-loss total for the whole war.');
     const s=section(article,'No single reliable total','There is no reliable single number covering every side and every kind of equipment loss. Only matching, non-duplicate physical counts are added. Claims, estimates, mixed categories and unknown quantities stay separate.');
-    const g=add(s,'div','orientation-grid'); card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');card(g,'Unknown numbers','A loss event may be established even when the number of physical assets is unknown.','KEEP UNKNOWN');card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
+    const g=add(s,'div','orientation-grid'); card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
     const c=article.querySelector('[data-loss-comparison]'); if(c){const h=c.querySelector('h2');if(h)h.textContent='Loss records by side and type';const n=c.querySelector('.section-note');if(n)n.textContent='These totals count loss records, not individual destroyed or damaged items when the quantity is unknown. Open a category to see the records behind the total.';c.classList.add('secondary-context');}
   }
 
@@ -401,7 +401,7 @@
         shell.aside.replaceChildren(baseRuntime.PublicNavigation.renderSecondary(doc,route));
         const owner=baseRuntime.PAGE_OWNERS[route.owner];invariant(typeof owner==='function','READER_PAGE_OWNER_MISSING',`Reader page owner is unavailable: ${route.owner}`);
         const page=owner(context);shell.main.replaceChildren(page);
-        shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the current review cutoff'}. `);
+        shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the latest evidence date'}. `);
         const archive=add(shell.footer,'a','','Archive');archive.href=baseRuntime.routeHref('evidence.archive');
         stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · Iran War Evidence Atlas`;
         readerSupportRuntime.projectShell(shell.app,context);
