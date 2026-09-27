@@ -10,10 +10,10 @@ const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current
 const expectedPrimary = [
   'Start Here',
   'Timeline',
-  'Military Record',
+  'War & Losses',
   'Hormuz & Economy',
-  'Talks & Agreements',
-  'Objectives & Outcomes',
+  'Talks & Deals',
+  'Goals & Results',
   'Claims & Evidence'
 ];
 assert.deepEqual(ia.PRIMARY_SECTIONS.map(section => section.label), expectedPrimary);
@@ -23,8 +23,8 @@ const expectedSecondary = {
   timeline: ['War Timeline', 'Detailed Chronology'],
   military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Imagery'],
   hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
-  talks: ['Talks & Agreements', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
-  objectives: ['Objectives & Outcomes', 'Position Changes', "How Iran's Position Changed"],
+  talks: ['Talks & Deals', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
+  objectives: ['Goals & Results', 'Position Changes', "How Iran's Position Changed"],
   evidence: ['Claim Checks', 'Lie Ledger', 'Web of Lies', 'Sources', 'How We Check the Evidence', 'Archive']
 };
 for (const [primary, labels] of Object.entries(expectedSecondary)) {
