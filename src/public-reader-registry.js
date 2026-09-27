@@ -341,7 +341,7 @@
         }
         walkbacks.filter(item=>!/ORIGINAL BENCHMARK/i.test(txt(item.type))).slice().reverse().forEach(step=>{
           const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(step.type);
-          add(item,'span','objective-position-marker',plain(step.type).replace(/verified /i,''));
+          add(item,'span','objective-position-marker',txt(step.type).replaceAll('_',' ').replace(/verified /i,''));
           const move=add(item,'p','objective-position-copy'); add(move,'strong','','Moved from: '); move.append(context.documentObject.createTextNode(txt(step.from)));
           const now=add(item,'p','objective-position-copy'); add(now,'strong','','To: '); now.append(context.documentObject.createTextNode(txt(step.to)));
           if(step.assessment)add(item,'p','objective-position-why',txt(step.assessment));
