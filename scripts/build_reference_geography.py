@@ -43,6 +43,7 @@ REGIONAL_COUNTRIES = {
 HORMUZ_COUNTRIES = {"Bahrain", "Iran", "Oman", "Qatar", "Saudi Arabia", "United Arab Emirates"}
 REGIONAL_BBOX = [2.0, -2.0, 110.0, 57.0]
 WESTERN_CONTEXT_BBOX = [-90.0, -5.0, 15.0, 65.0]
+REFERENCE_BBOX = [-90.0, -5.0, 110.0, 65.0]
 HORMUZ_BBOX = [50.8, 22.4, 60.8, 28.9]
 REFERENCE_LABELS = [
     {"label": "Iran", "lat": 32.4, "lon": 53.7, "kind": "country"},
@@ -231,8 +232,8 @@ def build(source_50m: Path, source_10m: Path, source_110m_land: Path) -> dict[st
         "type": "FeatureCollection",
         "artifact_role": "PRESENTATION_REFERENCE_GEOGRAPHY",
         "schema_version": "1.0",
-        "name": "Atlas regional reference geography",
-        "bbox": REGIONAL_BBOX,
+        "name": "Atlas reference geography",
+        "bbox": REFERENCE_BBOX,
         "metadata": {
             "source": "Natural Earth Admin-0 Countries + Land",
             "version": NATURAL_EARTH_VERSION,
