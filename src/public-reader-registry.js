@@ -121,15 +121,37 @@
     ['Iran','No concessions on nuclear, missiles, defense or regional architecture','PARTLY ACHIEVED','Important capabilities and red lines remain, but mediated/shared maritime arrangements are inconsistent with the earlier categorical posture.']
   ];
 
-  function overview(article) {
-    intro(article, 'The war remains militarily active, economically costly and diplomatically unsettled. U.S. and coalition forces retain the strike advantage; Iran still has disruptive missile, drone and maritime capability, but it has not secured exclusive control of Hormuz.');
-    const s=section(article,'What changed in the latest accepted evidence','The latest evidence changes several current-status judgments without creating duplicate attack or capture events.'), g=add(s,'div','orientation-grid');
-    card(g,'Hormuz talks','Oman confirmed the planned Gulf-Iran meeting existed and then postponed it. No signed reopening arrangement or agreed sovereignty, route or fee terms are established.','SEP. 13–14');
-    card(g,'Saudi East-West pipeline','The Sep. 11 attack remains the occurrence. Later reporting says the pipeline is expected to remain mostly out of service for roughly three to five weeks.','CURRENT STATUS');
-    card(g,'Yemen / Bab el-Mandeb','Greater and Lesser Hanish are confirmed under Houthi control, but general Bab el-Mandeb traffic continued near its recent observable average.','CURRENT STATUS');
-    card(g,'Hormuz traffic','Observable commodity-vessel traffic remained severely depressed. That is not the same as physical closure of the Strait.','CURRENT STATUS');
-    card(g,'Yemen displacement','IOM reporting put displacement since Sep. 1 at 82,164 people, with more than 2,000 reportedly fleeing to Djibouti.','UPDATED');
-    card(g,'Unresolved attribution','The Sep. 13 Iranian commercial-vessel strike and Sep. 14 Sulaimani missile strikes are established; the attacker remains unresolved in both cases.','UNCERTAINTY');
+  function overview(article, context) {
+    intro(article, 'Iran is in a very weak position compared with the position it said it would achieve. It is offering to reopen Hormuz and asking for the U.S. blockade and military pressure to end.');
+    const s=section(article,'Where does it stand now?', 'Iran started by talking about what everyone else would have to accept. Now Iran is negotiating over what it can get in return for reopening Hormuz and ending the pressure on itself.');
+    s.dataset.overviewCurrentPosition = 'accepted-evidence';
+    add(s,'p','', "Iran hasn't capitulated. But its negotiating position increasingly looks like a country trying to get the best deal it can from a bad position, rather than a country deciding what the final deal will be. That's a long way from where Iran said this war was going.");
+    const eventEvidence = (host, ids) => {
+      const selected = context.model.chronology.filter(item => ids.includes(item.event_id));
+      evidence(host, context, { source_ids: selected.flatMap(item => item.source_ids || item.event?.source_ids || []) }, 'Sources behind this account');
+    };
+    const g=add(s,'div','record-list');
+    const earlier=card(g,'What Iran said it would achieve','Iran talked about controlling Hormuz, deciding who could pass and charging ships for passage. It demanded that others accept its conditions before shipping and negotiations returned to normal.','ORIGINAL OBJECTIVE');
+    eventEvidence(earlier, ['EV-20260805-001','EV-20260822-001','G3-IRAN-HORMUZ-RESTRICTED-ZONE-20260907','G3-IRAN-HORMUZ-SEQUENCING-20260920']);
+    const offer=card(g,'What Iran is asking for now','Iran has offered to reopen Hormuz in return for relief from the U.S. blockade and military pressure. Its foreign minister publicly presented a seven-day plan. Trump rejected that proposal on September 26. Iran continued talks with Oman about navigation and practical solutions; no agreement has been reached.','CURRENT RESULT');
+    eventEvidence(offer, ['G3-IRAN-HORMUZ-REOPENING-OFFER-20260922','G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926','G3-OMAN-IRAN-HORMUZ-MEETING-20260926']);
+    const result=card(g,'Iran has not made others accept its terms','Iran has not established the permanent control over Hormuz it sought or forced the United States to accept its terms. Gulf states have not accepted Iranian control of regional shipping. Saudi Arabia is publicly calling for the prewar system to return, without Iranian fees or tolls. Iran is asking for the pressure against it to end.','WHY THIS FALLS SHORT');
+    eventEvidence(result, ['G3-ARAB-LEAGUE-HORMUZ-POSITION-20260908','G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926']);
+    routeLink(s,'hormuz.talks','Follow the Hormuz talks');
+
+    // Keep the existing domain evidence and navigation, with present-condition copy.
+    const summaries = {
+      military: 'U.S. and coalition forces retained the strike advantage. Iran has not forced the broad U.S. withdrawal from the region it demanded.',
+      hormuz: 'Iran has not established permanent control of Hormuz. Its reopening offer has not become an agreement, and Saudi Arabia rejects fees or tolls.',
+      economy: 'Iran faces a sharp fall in crude exports and growing pressure on foreign currency and imports. It is seeking an end to the blockade.',
+      diplomacy: 'The June MOU is no longer in force. Trump rejected Iran’s latest reopening proposal on September 26, while Iranian and Omani ministers continued talks.'
+    };
+    article.querySelectorAll('[data-orientation-domain]').forEach(c => {
+      const p=c.querySelector(':scope > p:not(.card-kicker):not(.record-status)');
+      if(p && summaries[c.dataset.orientationDomain]) p.textContent=summaries[c.dataset.orientationDomain];
+      c.querySelector('.record-status')?.remove();
+      if (c.dataset.orientationDomain === 'hormuz' || c.dataset.orientationDomain === 'diplomacy') eventEvidence(c, ['G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926','G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926','G3-OMAN-IRAN-HORMUZ-MEETING-20260926']);
+    });
   }
 
   function actors(article) {
@@ -300,7 +322,7 @@
   function finalizePublicProduct(stage, route, routeRuntime, doc) {
     const article=stage.querySelector('.public-page');if(!article||!route)return;article.dataset.publicProduct=PRODUCT_VERSION;const context=accessContext(routeRuntime,route,doc);
     const k=route.key;
-    if(k==='start.overview')overview(article); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
+    if(k==='start.overview')overview(article,context); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
     if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
     if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
     if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
