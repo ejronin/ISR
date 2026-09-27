@@ -243,8 +243,8 @@ async function setRoute(cdp, routeKey) {
     assert(!method.includes('browser receives the already assembled current state'));
     assert(!method.includes('replaying dated updates'));
     assert.match(method, /Historical views show what the evidence supported at that time/i);
-    assert.match(method, /Attribution strengthened by later evidence\. Existing event retained\./i);
-    assert.match(method, /A launch does not prove penetration, impact or damage/i);
+    assert.match(method, /A later source may make an existing event clearer or stronger\. It remains the same event rather than appearing as a second event\./i);
+    assert.match(method, /A launch establishes a launch\. Penetration, impact and damage require their own evidence\./i);
     assert.match(method, /Unknown does not mean zero/i);
 
     for (const width of [320, 390]) {
