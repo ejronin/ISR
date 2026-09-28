@@ -257,12 +257,12 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "evidence_cutoff": "2026-09-28T13:15:00-04:00",
       "known_at": "2026-09-28T13:17:00-04:00",
-      "lineage_sha256": "a8fee405ad86e34fe57b5969d891934310e89f2a4e998a82d1a288d120732318",
+      "lineage_sha256": "f27298a6fa71225a8b36acd2d8f48887614d395a891f6fbea38d8aaef8fca243",
       "packet_id": "UPD-20260928-ATLAS-CURRENT-CATCHUP",
       "path": "data/canonical-updates/UPD-20260928-ATLAS-CURRENT-CATCHUP.json",
       "previous_lineage_sha256": "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962",
       "sequence": 24,
-      "sha256": "e7acc3a128ffca8d88399687916f60722896aa4d8b68efb1007088878843036b"
+      "sha256": "01e3d2b97b181285826bf33d868afb299fa434e464656e647c255f484e9b397e"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
