@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any, Callable
 from urllib.request import Request, urlopen
@@ -156,6 +157,51 @@ def rounded_ring(ring: list[list[float]], digits: int = 4) -> list[list[float]]:
     return output if len(output) >= 4 else []
 
 
+def ecmascript_round(value: float, digits: int = 5) -> float:
+    """Match Math.round(value * 10**digits) / 10**digits for generated context land."""
+    factor = 10 ** digits
+    return math.floor(value * factor + 0.5) / factor
+
+
+def clip_ring_ecmascript(ring: list[list[float]], bbox: list[float]) -> list[list[float]]:
+    min_lon, min_lat, max_lon, max_lat = bbox
+    points = [list(point[:2]) for point in ring]
+    if points and points[0] == points[-1]:
+        points.pop()
+    for inside, axis, bound in (
+        (lambda point: point[0] >= min_lon, 0, min_lon),
+        (lambda point: point[0] <= max_lon, 0, max_lon),
+        (lambda point: point[1] >= min_lat, 1, min_lat),
+        (lambda point: point[1] <= max_lat, 1, max_lat),
+    ):
+        points = clip_edge(points, inside, axis, bound)
+    if len(points) < 3:
+        return []
+    points.append(points[0])
+    return [[ecmascript_round(point[0]), ecmascript_round(point[1])] for point in points]
+
+
+def transform_land_geometry(geometry: dict[str, Any], clip_bbox: list[float]) -> dict[str, Any] | None:
+    geometry_type = geometry.get("type")
+    raw_polygons = [geometry.get("coordinates") or []] if geometry_type == "Polygon" else geometry.get("coordinates") or []
+    if geometry_type not in {"Polygon", "MultiPolygon"}:
+        return None
+    polygons: list[list[list[list[float]]]] = []
+    for polygon in raw_polygons:
+        rings: list[list[list[float]]] = []
+        for ring in polygon:
+            result = clip_ring_ecmascript(ring, clip_bbox)
+            if result:
+                rings.append(result)
+        if rings:
+            polygons.append(rings)
+    if not polygons:
+        return None
+    if len(polygons) == 1:
+        return {"type": "Polygon", "coordinates": polygons[0]}
+    return {"type": "MultiPolygon", "coordinates": polygons}
+
+
 def transform_geometry(geometry: dict[str, Any], clip_bbox: list[float] | None) -> dict[str, Any] | None:
     geometry_type = geometry.get("type")
     raw_polygons = [geometry.get("coordinates") or []] if geometry_type == "Polygon" else geometry.get("coordinates") or []
@@ -184,7 +230,7 @@ def subset(payload: dict[str, Any], names: set[str], layer: str, scale: str, cli
         name = properties.get("ADMIN") or properties.get("NAME")
         if name not in names:
             continue
-        geometry = transform_geometry(feature.get("geometry") or {}, clip_bbox)
+        geometry = transform_land_geometry(feature.get("geometry") or {}, clip_bbox)
         if not geometry:
             continue
         output.append({
