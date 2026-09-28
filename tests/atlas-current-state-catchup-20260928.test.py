@@ -22,8 +22,8 @@ def main() -> int:
 
     entry = next(item for item in manifest["accepted_updates"] if item["packet_id"] == packet["packet_id"])
     assert entry["sequence"] == 24
-    assert entry["sha256"] == "e7acc3a128ffca8d88399687916f60722896aa4d8b68efb1007088878843036b"
-    assert entry["lineage_sha256"] == "a8fee405ad86e34fe57b5969d891934310e89f2a4e998a82d1a288d120732318"
+    assert entry["sha256"] == "01e3d2b97b181285826bf33d868afb299fa434e464656e647c255f484e9b397e"
+    assert entry["lineage_sha256"] == "f27298a6fa71225a8b36acd2d8f48887614d395a891f6fbea38d8aaef8fca243"
     assert entry["previous_lineage_sha256"] == "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962"
     assert manifest["current_evidence_cutoff"] == entry["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
