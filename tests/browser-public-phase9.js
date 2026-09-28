@@ -416,6 +416,7 @@ async function route(cdp, hash, key) {
       interpolation: document.querySelector('[data-economic-viz]')?.dataset.interpolation || '',
       futureScenario: document.querySelector('[data-economic-viz]')?.dataset.futureScenario || '',
       economies: document.querySelectorAll('.economic-row-label').length,
+      seriesKeyItems: document.querySelectorAll('.economic-series-key-item').length,
       tableRows: document.querySelectorAll('.economic-numeric-equivalent tbody tr').length,
       scenarioLines: document.querySelectorAll('.economic-line.scenario').length,
       sanctions: document.querySelectorAll('.economic-sanction-line').length,
@@ -427,6 +428,7 @@ async function route(cdp, hash, key) {
     assert.equal(economyVisual.interpolation, 'none');
     assert.equal(economyVisual.futureScenario, 'no-new-change-flat');
     assert.equal(economyVisual.economies, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
+    assert.equal(economyVisual.seriesKeyItems, economyVisual.economies, 'economy series key does not identify every plotted economy');
     assert.equal(economyVisual.tableRows, economyVisual.economies);
     assert.equal(economyVisual.scenarioLines, economyVisual.economies, 'economy no-change scenario is missing a future segment for one or more economies');
     assert(economyVisual.sanctions >= 1, 'economy timeline has no accepted sanctions markers');
@@ -436,6 +438,37 @@ async function route(cdp, hash, key) {
     assert.match(economyVisual.text, /calendar reference only/i);
     assert.match(economyVisual.text, /timing alone does not prove/i);
     assert.equal(economyVisual.duplicatedCorridorInventory, false, 'Economy duplicates the Shipping & Trade corridor inventory');
+
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+    await sleep(100);
+    const economyMobile = await cdp.eval(`(() => {
+      const scroller = document.querySelector('.economic-year-chart');
+      const key = document.querySelector('.economic-series-key');
+      const cue = document.querySelector('.economic-scroll-cue');
+      if (!scroller || !key || !cue) return null;
+      const before = scroller.scrollLeft;
+      scroller.scrollLeft = scroller.scrollWidth;
+      return {
+        viewport: window.innerWidth,
+        pageWidth: document.documentElement.scrollWidth,
+        chartScrollable: scroller.scrollWidth > scroller.clientWidth,
+        chartMoved: scroller.scrollLeft > before,
+        keyItems: key.querySelectorAll('.economic-series-key-item').length,
+        keyWidth: key.getBoundingClientRect().width,
+        cueVisible: getComputedStyle(cue).display !== 'none',
+        cueText: cue.textContent || ''
+      };
+    })()`);
+    assert(economyMobile, 'economy mobile layout did not render');
+    assert.equal(economyMobile.keyItems, economyVisual.economies, 'mobile economy key lost one or more plotted economies');
+    assert.equal(economyMobile.chartScrollable, true, 'mobile economy timeline is not horizontally scrollable');
+    assert.equal(economyMobile.chartMoved, true, 'mobile economy timeline cannot be horizontally scrolled');
+    assert(economyMobile.keyWidth <= economyMobile.viewport, 'economy series key overflows the mobile viewport');
+    assert(economyMobile.pageWidth <= economyMobile.viewport + 1, 'economy chart creates page-level horizontal overflow on mobile');
+    assert.equal(economyMobile.cueVisible, true, 'mobile economy chart does not expose its horizontal-scroll cue');
+    assert.match(economyMobile.cueText, /scroll horizontally/i);
+    await cdp.call('Emulation.clearDeviceMetricsOverride');
+    await sleep(100);
 
     await route(cdp, '#/objectives/outcomes', 'objectives.outcomes');
     const objectivesView = await cdp.eval(`(() => ({

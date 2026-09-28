@@ -2468,7 +2468,13 @@ tbody tr:last-child td { border-bottom: 0; }
 .atlas-reference-land { fill: #263f4d !important; fill-opacity: 1 !important; stroke: #78909d !important; stroke-opacity: .95 !important; vector-effect: non-scaling-stroke; }
 
 .economic-snapshot-dashboard { min-width: 0; max-width: 100%; overflow: hidden; }
-.economic-year-chart { width: 100%; max-width: 100%; min-width: 0; margin-top: .75rem; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--line-soft); border-radius: .7rem; background: #0a141b; }
+.economic-series-key { display: flex; flex-wrap: wrap; gap: .4rem .55rem; margin: .65rem 0 .2rem; }
+.economic-series-key-item { display: inline-flex; min-height: 1.85rem; align-items: center; gap: .35rem; padding: .22rem .5rem; border: 1px solid var(--line-soft); border-radius: 999px; background: #101a22; color: var(--text); font-size: .72rem; }
+.economic-series-key-item strong { font-size: .74rem; }
+.economic-series-key-value { color: var(--muted); font-variant-numeric: tabular-nums; }
+.economic-series-swatch { width: .7rem; height: .7rem; flex: 0 0 .7rem; border: 1px solid rgb(255 255 255 / 20%); border-radius: 50%; background: var(--economic-series-color, #7893a2); box-shadow: 0 0 0 1px rgb(0 0 0 / 35%); }
+.economic-scroll-cue { display: none; margin: .45rem 0 .2rem; color: var(--muted); font-size: .72rem; line-height: 1.4; }
+.economic-year-chart { width: 100%; max-width: 100%; min-width: 0; margin-top: .75rem; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--line-soft); border-radius: .7rem; background: #0a141b; scrollbar-gutter: stable; }
 .economic-year-months { display: grid; grid-template-columns: repeat(12, 1fr); min-width: 62rem; padding: .55rem 1.25rem .1rem 8rem; color: var(--muted); font-size: .7rem; text-align: center; }
 .economic-year-svg { display: block; width: 100%; min-width: 62rem; height: auto; }
 .economic-grid-line { stroke: #243844; stroke-width: 1; }
@@ -2496,6 +2502,7 @@ tbody tr:last-child td { border-bottom: 0; }
 
 @media (max-width: 64rem) {
   .objective-split-grid { grid-template-columns: 1fr; }
+  .economic-scroll-cue { display: block; }
 }
 @media (max-width: 37.5rem) {
   .objective-actor-group { padding: .8rem; }
