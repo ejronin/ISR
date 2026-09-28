@@ -2463,7 +2463,6 @@ tbody tr:last-child td { border-bottom: 0; }
 .objective-position-why { color: var(--muted); font-size: .78rem; }
 .objective-position-source { color: var(--muted); font-size: .72rem; }
 .objective-position-source a { color: var(--accent-strong); }
-.objective-accepted-note { margin: .55rem 0 0; padding-top: .5rem; border-top: 1px solid var(--line-soft); color: var(--muted); font-size: .72rem; line-height: 1.45; }
 
 .timeline-density-selection { margin: .55rem .25rem 0; color: var(--text); font-size: .78rem; font-weight: 700; }
 .timeline-density-bin[aria-pressed="true"] .timeline-density-bar, .timeline-density-bin.selected .timeline-density-bar { background: linear-gradient(180deg, #d9f2ff, var(--atlas-accent)); box-shadow: 0 0 0 1px rgb(185 222 245 / 45%); }
