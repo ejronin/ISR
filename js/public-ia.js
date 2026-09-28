@@ -3581,9 +3581,9 @@ function enhanceEconomyVisual(article, context) {
   const sourceDate = id => { const record = sourceRecords.get(id) || {}; return String(record.publication_date || record.date || '').slice(0, 10); };
   const sanctionRecords = recordArray(modelData(context.model, 'gate3.economics')).filter(record => /sanction|ofac|secondary[- ]sanction/i.test(JSON.stringify(record))).filter(record => /^2026-/.test(String(record.date || record.event_date || ''))).sort((a, b) => String(a.date || a.event_date).localeCompare(String(b.date || b.event_date)));
   const section = element(context.documentObject, 'section', 'economic-snapshot-dashboard analytical-hero');
-  section.dataset.economicViz = 'year-timeline-snapshots'; section.dataset.futureScenario = 'no-new-change-flat'; section.dataset.interpolation = 'none';
+  section.dataset.economicViz = 'year-timeline-snapshots'; section.dataset.futureScenario = 'no-new-change-flat'; section.dataset.interpolation = 'recorded-snapshots-only'; section.dataset.sanctionEffect = 'timing-only-no-inferred-values';
   append(section, 'h2', '', '2026 economic snapshot and pressure timeline');
-  append(section, 'p', 'section-note', 'The lines connect only recorded forecast snapshots. After the current evidence date, the dashed segment holds the latest published forecast flat through December as a simple “what if nothing else changed” reference—not a forecast. Sanction markers show timing; timing alone does not prove that a sanction caused a forecast change.');
+  append(section, 'p', 'section-note', 'Each line connects recorded forecast snapshots point-to-point. The label at the left shows the starting forecast; the label at the right shows the latest forecast and its change. After the latest forecast snapshot, the dashed segment holds that value flat through December as a simple “what if nothing else changed” reference—not a forecast. Sanction markers show timing only: a sanction date is not treated as a GDP data point unless a published forecast exists for that date.');
   const palette = ['#f0d072', '#79b7df', '#8fd0b3', '#c8a7df', '#e2a27f', '#9eb4dc', '#d6c97e'];
   const seriesColors = rows.map((row, index) => row.country === 'Iran' ? palette[0] : palette[1 + (index % (palette.length - 1))]);
   const seriesKey = append(section, 'div', 'economic-series-key'); seriesKey.setAttribute('aria-label', 'Economy series key');
@@ -3591,7 +3591,8 @@ function enhanceEconomyVisual(article, context) {
     const item = append(seriesKey, 'span', 'economic-series-key-item');
     const swatch = append(item, 'span', 'economic-series-swatch', ''); swatch.style.setProperty('--economic-series-color', seriesColors[index]); swatch.setAttribute('aria-hidden', 'true');
     append(item, 'strong', '', row.country);
-    append(item, 'span', 'economic-series-key-value', Number(row.current).toFixed(1) + '%');
+    const delta=Number(row.delta); const deltaText=(delta > 0 ? '+' : '') + delta.toFixed(1) + ' pp';
+    append(item, 'span', 'economic-series-key-value', Number(row.prewar).toFixed(1) + '% → ' + Number(row.current).toFixed(1) + '% · ' + deltaText);
   });
   append(section, 'p', 'economic-scroll-cue', 'On smaller screens, scroll horizontally to follow all 12 months. The economy key stays visible above the chart.');
   const chart = append(section, 'div', 'economic-year-chart'); chart.dataset.economicYear = '2026';
@@ -3604,7 +3605,7 @@ function enhanceEconomyVisual(article, context) {
   const make = (name, attrs = {}) => { const node = context.documentObject.createElementNS(ns, name); Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value))); svg.append(node); return node; };
   const yearStart = Date.parse('2026-01-01T00:00:00Z'); const yearEnd = Date.parse('2026-12-31T00:00:00Z');
   const evidenceDate = String(context.model.release && context.model.release.current_osint_cutoff || '2026-09-27').slice(0, 10);
-  const left = 150, right = 1160, top = 64, bottom = 570, width = right - left, height = bottom - top;
+  const left = 220, right = 910, top = 64, bottom = 570, width = right - left, height = bottom - top;
   const xFor = date => Math.max(0, Math.min(1, (Date.parse(String(date).slice(0, 10) + 'T00:00:00Z') - yearStart) / (yearEnd - yearStart)));
   const values = rows.flatMap(row => [Number(row.prewar), Number(row.current)]).filter(Number.isFinite);
   const yMin = Math.floor(Math.min(-10, ...values) - 1); const yMax = Math.ceil(Math.max(6, ...values) + 1);
@@ -3622,22 +3623,43 @@ function enhanceEconomyVisual(article, context) {
     const label = make('text', { x: x + 4, y: top + 38 + (index % 4) * 15, class: 'economic-sanction-label' });
     label.textContent = readableDate(date) + ' · ' + publicNarrative(record.metric || record.topic || record.title, 'Sanctions action');
   });
-  rows.forEach((row, index) => {
+  const plottedSeries = rows.map((row, index) => {
     const dates = asArray(row.source_ids).map(sourceDate).filter(date => /^2026-/.test(date)).sort();
-    const observedStart = dates[0] || '2026-01-01'; const observedEnd = dates[dates.length - 1] || evidenceDate;
-    const xBase = left + width * xFor(observedStart); const xObserved = left + width * xFor(observedEnd);
-    const yBase = top + height * yFor(row.prewar); const yCurrent = top + height * yFor(row.current);
+    const explicit = asArray(row.snapshots).map(point => ({ date: String(point.date || '').slice(0, 10), value: Number(point.value) })).filter(point => /^2026-/.test(point.date) && Number.isFinite(point.value)).sort((a, b) => a.date.localeCompare(b.date));
+    const snapshots = explicit.length >= 2 ? explicit : [
+      { date: dates[0] || '2026-01-01', value: Number(row.prewar) },
+      { date: dates[dates.length - 1] || evidenceDate, value: Number(row.current) }
+    ];
+    const points=snapshots.map(point=>({ ...point, x:left + width*xFor(point.date), y:top + height*yFor(point.value) }));
+    return { row, index, snapshots, points, start: points[0], end: points[points.length - 1] };
+  });
+  const distributeLabels = (items, selector, gap = 34) => {
+    const sorted=items.map(item=>({ index:item.index, y:selector(item) })).sort((a,b)=>a.y-b.y);
+    const minY=top+18, maxY=bottom-12;
+    sorted.forEach((item,i)=>{ item.labelY=Math.max(item.y,minY,i?sorted[i-1].labelY+gap:minY); });
+    for(let i=sorted.length-1;i>=0;i--){ const ceiling=maxY-(sorted.length-1-i)*gap; sorted[i].labelY=Math.min(sorted[i].labelY,ceiling); }
+    return new Map(sorted.map(item=>[item.index,item.labelY]));
+  };
+  const startLabelY=distributeLabels(plottedSeries,item=>item.start.y);
+  const endLabelY=distributeLabels(plottedSeries,item=>item.end.y);
+  plottedSeries.forEach(({ row, index, snapshots, points, start, end }) => {
     const lineClass = row.country === 'Iran' ? 'economic-line iran' : 'economic-line';
     const seriesStyle = 'stroke:' + seriesColors[index];
-    make('path', { d: 'M ' + xBase + ' ' + yBase + ' L ' + xObserved + ' ' + yCurrent, class: lineClass, style: seriesStyle });
-    make('line', { x1: Math.max(xObserved, evidenceX), y1: yCurrent, x2: right, y2: yCurrent, class: lineClass + ' scenario', style: seriesStyle });
-    make('circle', { cx: xBase, cy: yBase, r: 4, class: 'economic-point', style: 'fill:' + seriesColors[index] });
-    make('circle', { cx: xObserved, cy: yCurrent, r: row.country === 'Iran' ? 6 : 5, class: row.country === 'Iran' ? 'economic-point iran' : 'economic-point', style: 'fill:' + seriesColors[index] });
-    const name = make('text', { x: 8, y: yCurrent + 4, class: row.country === 'Iran' ? 'economic-row-label iran' : 'economic-row-label', style: 'fill:' + seriesColors[index] }); name.textContent = row.country;
-    const value = make('text', { x: right - 2, y: yCurrent - 7, class: 'economic-row-value', 'text-anchor': 'end', style: 'fill:' + seriesColors[index] }); value.textContent = Number(row.current).toFixed(1) + '%';
+    const path=make('path', { d: points.map((point,pointIndex)=>(pointIndex?'L ':'M ')+point.x+' '+point.y).join(' '), class: lineClass, style: seriesStyle, 'data-economic-series': row.country, 'data-snapshot-count': snapshots.length });
+    path.setAttribute('aria-label', row.country + ': ' + snapshots.length + ' recorded forecast snapshots');
+    make('line', { x1: end.x, y1: end.y, x2: right, y2: end.y, class: lineClass + ' scenario', style: seriesStyle });
+    points.forEach((point,pointIndex)=>make('circle', { cx: point.x, cy: point.y, r: pointIndex===points.length-1 && row.country === 'Iran' ? 6 : 4.5, class: pointIndex===points.length-1 && row.country === 'Iran' ? 'economic-point iran' : 'economic-point', style: 'fill:' + seriesColors[index], 'data-economic-snapshot': row.country }));
+    const startY=startLabelY.get(index), endY=endLabelY.get(index);
+    make('line', { x1: 190, y1: startY, x2: start.x - 7, y2: start.y, class: 'economic-label-leader', style: seriesStyle });
+    const startLabel=make('text', { x: 10, y: startY + 5, class: row.country === 'Iran' ? 'economic-start-label iran' : 'economic-start-label', style: 'fill:' + seriesColors[index] });
+    startLabel.textContent = row.country + ' · ' + Number(row.prewar).toFixed(1) + '%';
+    make('line', { x1: end.x + 7, y1: end.y, x2: 930, y2: endY, class: 'economic-label-leader', style: seriesStyle });
+    const delta=Number(row.delta); const deltaText=(delta > 0 ? '+' : '') + delta.toFixed(1) + ' pp';
+    const endLabel=make('text', { x: 940, y: endY + 5, class: row.country === 'Iran' ? 'economic-end-label iran' : 'economic-end-label', style: 'fill:' + seriesColors[index] });
+    endLabel.textContent = row.country + ' · ' + Number(row.current).toFixed(1) + '% · ' + deltaText;
   });
   const legend = append(section, 'div', 'economic-chart-legend');
-  append(legend, 'span', 'economic-legend observed', 'Recorded forecast change'); append(legend, 'span', 'economic-legend scenario', 'If nothing else changed'); append(legend, 'span', 'economic-legend sanctions', 'Sanctions action / implementation'); append(legend, 'span', 'economic-legend election', 'Nov. 3 election reference');
+  append(legend, 'span', 'economic-legend observed', 'Recorded forecast snapshots'); append(legend, 'span', 'economic-legend scenario', 'If nothing else changed'); append(legend, 'span', 'economic-legend sanctions', 'Sanctions timing — not an inferred GDP point'); append(legend, 'span', 'economic-legend election', 'Nov. 3 election reference');
   const electionNote = append(section, 'p', 'economic-election-note', 'The Nov. 3 line is a calendar reference only. It does not imply that the election causes, ends, or changes the economic trend.'); electionNote.dataset.electionDate = electionDate;
   if (sanctionRecords.length) {
     const markers = append(section, 'details', 'economic-sanction-markers'); append(markers, 'summary', '', 'Sanctions markers (' + sanctionRecords.length + ')');
