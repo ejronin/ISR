@@ -414,9 +414,14 @@ async function route(cdp, hash, key) {
     await route(cdp, '#/hormuz/economy', 'hormuz.economy');
     const economyVisual = await cdp.eval(`(() => ({
       interpolation: document.querySelector('[data-economic-viz]')?.dataset.interpolation || '',
+      sanctionEffect: document.querySelector('[data-economic-viz]')?.dataset.sanctionEffect || '',
       futureScenario: document.querySelector('[data-economic-viz]')?.dataset.futureScenario || '',
-      economies: document.querySelectorAll('.economic-row-label').length,
+      economies: document.querySelectorAll('.economic-start-label').length,
+      endLabels: document.querySelectorAll('.economic-end-label').length,
+      seriesPaths: document.querySelectorAll('[data-economic-series]').length,
+      snapshotPoints: document.querySelectorAll('[data-economic-snapshot]').length,
       seriesKeyItems: document.querySelectorAll('.economic-series-key-item').length,
+      seriesKeyText: document.querySelector('.economic-series-key')?.innerText || '',
       tableRows: document.querySelectorAll('.economic-numeric-equivalent tbody tr').length,
       scenarioLines: document.querySelectorAll('.economic-line.scenario').length,
       sanctions: document.querySelectorAll('.economic-sanction-line').length,
@@ -425,10 +430,16 @@ async function route(cdp, hash, key) {
       text: document.querySelector('[data-economic-viz]')?.innerText || '',
       duplicatedCorridorInventory: Boolean([...document.querySelectorAll('h2')].find(node => node.textContent.trim() === 'Strategic transport corridors'))
     }))()`);
-    assert.equal(economyVisual.interpolation, 'none');
+    assert.equal(economyVisual.interpolation, 'recorded-snapshots-only');
+    assert.equal(economyVisual.sanctionEffect, 'timing-only-no-inferred-values');
     assert.equal(economyVisual.futureScenario, 'no-new-change-flat');
     assert.equal(economyVisual.economies, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
+    assert.equal(economyVisual.endLabels, economyVisual.economies, 'economy chart does not label every current/end value');
+    assert.equal(economyVisual.seriesPaths, economyVisual.economies, 'economy chart does not expose one recorded-snapshot path per economy');
+    assert(economyVisual.snapshotPoints >= economyVisual.economies * 2, 'economy chart lost recorded start/end snapshot points');
     assert.equal(economyVisual.seriesKeyItems, economyVisual.economies, 'economy series key does not identify every plotted economy');
+    assert.match(economyVisual.seriesKeyText, /→/, 'economy key does not show start-to-current direction');
+    assert.match(economyVisual.seriesKeyText, /pp/, 'economy key does not show the forecast change');
     assert.equal(economyVisual.tableRows, economyVisual.economies);
     assert.equal(economyVisual.scenarioLines, economyVisual.economies, 'economy no-change scenario is missing a future segment for one or more economies');
     assert(economyVisual.sanctions >= 1, 'economy timeline has no accepted sanctions markers');
@@ -436,7 +447,7 @@ async function route(cdp, hash, key) {
     assert.equal(economyVisual.electionDate, '2026-11-03');
     assert.match(economyVisual.text, /what if nothing else changed/i);
     assert.match(economyVisual.text, /calendar reference only/i);
-    assert.match(economyVisual.text, /timing alone does not prove/i);
+    assert.match(economyVisual.text, /sanction date is not treated as a GDP data point/i);
     assert.equal(economyVisual.duplicatedCorridorInventory, false, 'Economy duplicates the Shipping & Trade corridor inventory');
 
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -476,6 +487,7 @@ async function route(cdp, hash, key) {
       us: Boolean(document.querySelector('[data-objective-actor="united-states"]')),
       iran: Boolean(document.querySelector('[data-objective-actor="iran"]')),
       statuses: [...document.querySelectorAll('.objective-status-legend .objective-status')].map(node => node.textContent.trim()),
+      iranStates: [...document.querySelectorAll('[data-objective-actor="iran"] [data-objective-public-state]')].map(node => node.dataset.objectivePublicState),
       chain: [...document.querySelectorAll('[data-position-history="iran"] [data-position-step]')].map(node => ({ step: node.dataset.positionStep, text: node.innerText })),
       sourceLinks: document.querySelectorAll('[data-position-history="iran"] .objective-position-source a[href^="http"]').length,
       text: document.querySelector('[data-public-objective-results="true"]')?.innerText || ''
@@ -483,11 +495,16 @@ async function route(cdp, hash, key) {
     assert.equal(objectivesView.panels, 2, 'Goals & Results is not a two-sided comparison');
     assert.equal(objectivesView.us, true);
     assert.equal(objectivesView.iran, true);
-    for (const label of ['Not yet','Partial','Success','Failure']) assert(objectivesView.statuses.includes(label), 'Goals & Results is missing status label ' + label);
-    assert(objectivesView.chain.length >= 3, 'Iran position history does not run from current position back to the original objective');
+    for (const label of ['Open','Failing / Partial','Achieved','Failed / Abandoned']) assert(objectivesView.statuses.includes(label), 'Goals & Results is missing status label ' + label);
+    for (const state of ['failed','failing','abandoned']) assert(objectivesView.iranStates.includes(state), 'Iran objective cards are missing public state ' + state);
+    assert(objectivesView.chain.length >= 4, 'Iran position history does not include the accepted position-reversal context');
     assert.equal(objectivesView.chain[0].step, 'current', 'Iran position history must lead with the current position');
     assert.equal(objectivesView.chain[objectivesView.chain.length - 1].step, 'original', 'Iran position history must end at the original claim / objective');
-    assert(objectivesView.sourceLinks >= 2, 'Iran position history lacks direct source links');
+    assert(objectivesView.chain.some(item => item.step === 'june-mou-reversal' && /worthless/i.test(item.text)), 'Iran position history does not show the June MOU “worthless” reversal');
+    assert(objectivesView.sourceLinks >= 3, 'Iran position history lacks direct source links');
+    assert.match(objectivesView.text, /Force a U\.S\. regional withdrawal/i);
+    assert.match(objectivesView.text, /Compel removal of the U\.S\. naval blockade/i);
+    assert.match(objectivesView.text, /War reparations/i);
     assert.match(objectivesView.text, /current position/i);
     assert.match(objectivesView.text, /original claim \/ objective/i);
 

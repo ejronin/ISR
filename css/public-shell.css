@@ -2455,8 +2455,10 @@ tbody tr:last-child td { border-bottom: 0; }
 .objective-position-step::before { position: absolute; top: .2rem; left: -.4rem; width: .7rem; height: .7rem; border: 2px solid #8097a4; border-radius: 50%; background: #101c25; content: ''; }
 .objective-position-step.current::before { border-color: var(--accent); background: #28516a; }
 .objective-position-step.original::before { border-color: var(--warn); background: #57451e; }
+.objective-position-step.objective-position-reversal::before { border-color: #d58a57; background: #53321f; }
 .objective-position-marker { display: inline-flex; margin-bottom: .28rem; padding: .14rem .45rem; border-radius: 999px; background: #1a2b36; color: var(--accent-strong); font-size: .68rem; font-weight: 850; text-transform: uppercase; letter-spacing: .04em; }
 .objective-position-step.original .objective-position-marker { background: #352d1b; color: var(--warn); }
+.objective-position-step.objective-position-reversal .objective-position-marker { background: #41291d; color: #f0c29f; }
 .objective-position-copy, .objective-position-why, .objective-position-source { margin: .24rem 0; line-height: 1.48; }
 .objective-position-why { color: var(--muted); font-size: .78rem; }
 .objective-position-source { color: var(--muted); font-size: .72rem; }
@@ -2475,14 +2477,17 @@ tbody tr:last-child td { border-bottom: 0; }
 .economic-series-swatch { width: .7rem; height: .7rem; flex: 0 0 .7rem; border: 1px solid rgb(255 255 255 / 20%); border-radius: 50%; background: var(--economic-series-color, #7893a2); box-shadow: 0 0 0 1px rgb(0 0 0 / 35%); }
 .economic-scroll-cue { display: none; margin: .45rem 0 .2rem; color: var(--muted); font-size: .72rem; line-height: 1.4; }
 .economic-year-chart { width: 100%; max-width: 100%; min-width: 0; margin-top: .75rem; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--line-soft); border-radius: .7rem; background: #0a141b; scrollbar-gutter: stable; }
-.economic-year-months { display: grid; grid-template-columns: repeat(12, 1fr); min-width: 62rem; padding: .55rem 1.25rem .1rem 8rem; color: var(--muted); font-size: .7rem; text-align: center; }
-.economic-year-svg { display: block; width: 100%; min-width: 62rem; height: auto; }
+.economic-year-months { display: grid; grid-template-columns: repeat(12, 1fr); min-width: 70rem; padding: .55rem 15rem .1rem 11.5rem; color: var(--muted); font-size: .7rem; text-align: center; }
+.economic-year-svg { display: block; width: 100%; min-width: 70rem; height: auto; }
 .economic-grid-line { stroke: #243844; stroke-width: 1; }
-.economic-line { fill: none; stroke: #7893a2; stroke-width: 2.2; opacity: .72; }
+.economic-line { fill: none; stroke: #7893a2; stroke-width: 2.2; opacity: .8; }
 .economic-line.iran { stroke: #f0d072; stroke-width: 4; opacity: 1; }
-.economic-line.scenario { stroke-dasharray: 10 8; opacity: .7; }
+.economic-line.scenario { stroke-dasharray: 10 8; opacity: .58; }
 .economic-point { fill: #b8c8d0; stroke: #091118; stroke-width: 2; }
 .economic-point.iran { fill: #f0d072; }
+.economic-start-label, .economic-end-label { fill: #c1d0d7; font-size: 14px; font-weight: 720; }
+.economic-start-label.iran, .economic-end-label.iran { fill: #f4dc91; font-weight: 900; }
+.economic-label-leader { fill: none; stroke-width: 1.2; opacity: .72; }
 .economic-row-label, .economic-row-value { fill: #c1d0d7; font-size: 16px; font-weight: 650; }
 .economic-row-label.iran { fill: #f4dc91; font-weight: 850; }
 .economic-sanction-line { stroke: #d58a57; stroke-width: 1.4; stroke-dasharray: 4 5; opacity: .88; }
@@ -2507,7 +2512,7 @@ tbody tr:last-child td { border-bottom: 0; }
 @media (max-width: 37.5rem) {
   .objective-actor-group { padding: .8rem; }
   .objective-position-history { padding: .7rem; }
-  .economic-year-months, .economic-year-svg { min-width: 54rem; }
+  .economic-year-months, .economic-year-svg { min-width: 70rem; }
 }
 @media (min-width: 80rem) {
   .atlas-app[data-layout-scope="adaptive-wide"] :is(.header-inner, .primary-nav, .mobile-navigation, .app-grid, .page-footer) {
