@@ -256,8 +256,19 @@ def build(source_50m: Path, source_10m: Path, source_110m_land: Path) -> dict[st
     }
 
 
+def normalize_json_numbers(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: normalize_json_numbers(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [normalize_json_numbers(item) for item in value]
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    return value
+
+
 def stable_bytes(payload: dict[str, Any]) -> bytes:
-    return (json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+    normalized = normalize_json_numbers(payload)
+    return (json.dumps(normalized, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
 
 
 def main() -> int:
@@ -267,7 +278,7 @@ def main() -> int:
     parser.add_argument("--source-110m-land")
     parser.add_argument(
         "--fetch-source-dir",
-        help="Fetch exact versioned Natural Earth inputs into this build-only directory and verify both pinned SHA-256 values",
+        help="Fetch exact versioned Natural Earth inputs into this build-only directory and verify all pinned SHA-256 values",
     )
     parser.add_argument("--output", default=OUTPUT)
     parser.add_argument("--check", action="store_true")
