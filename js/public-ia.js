@@ -1222,6 +1222,7 @@
           }
         }).addTo(map);
         section.dataset.mapReferenceSurface = 'filled-land';
+        section.dataset.mapReferenceLayers = Array.from(visibleReferenceLayers).join(',');
         if (selectedCountryFeatures.length) {
           L.geoJSON({ type: 'FeatureCollection', features: selectedCountryFeatures }, {
             pane: 'atlas-evidence', interactive: false,
