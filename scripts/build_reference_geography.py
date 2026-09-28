@@ -230,7 +230,7 @@ def subset(payload: dict[str, Any], names: set[str], layer: str, scale: str, cli
         name = properties.get("ADMIN") or properties.get("NAME")
         if name not in names:
             continue
-        geometry = transform_land_geometry(feature.get("geometry") or {}, clip_bbox)
+        geometry = transform_geometry(feature.get("geometry") or {}, clip_bbox)
         if not geometry:
             continue
         output.append({
@@ -249,7 +249,7 @@ def subset(payload: dict[str, Any], names: set[str], layer: str, scale: str, cli
 def land_subset(payload: dict[str, Any], layer: str, scale: str, clip_bbox: list[float]) -> list[dict[str, Any]]:
     output: list[dict[str, Any]] = []
     for index, feature in enumerate(payload.get("features") or []):
-        geometry = transform_geometry(feature.get("geometry") or {}, clip_bbox)
+        geometry = transform_land_geometry(feature.get("geometry") or {}, clip_bbox)
         if not geometry:
             continue
         output.append({
