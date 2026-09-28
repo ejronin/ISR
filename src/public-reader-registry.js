@@ -419,8 +419,7 @@
           const quote=add(item,'p','objective-position-copy'); add(quote,'strong','','July 18: '); quote.append(context.documentObject.createTextNode('Supreme Leader Mojtaba Khamenei said repeated U.S. breaches showed Trump’s signature on the June MOU was “worthless.”'));
           const source=add(item,'p','objective-position-source'); add(source,'strong','','Reuters · 2026-07-18 · '); const link=add(source,'a','','Iran’s supreme leader says U.S. breaches show Trump’s signature is worthless'); link.href='https://www.reuters.com/world/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-is-worthless-2026-07-18/'; link.target='_blank'; link.rel='noopener noreferrer';
           add(item,'p','objective-position-copy','After economic pressure intensified, Iranian officials repeatedly pressed to restore or reuse the June terms. By September, Foreign Minister Abbas Araqchi was again proposing Hormuz reopening if the United States took steps already contemplated in the June MOU.');
-          const selected=context.model.chronology.filter(event=>['G3-IRAN-HORMUZ-REOPENING-OFFER-20260922','G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925'].includes(event.event_id));
-          evidence(item,context,{source_ids:selected.flatMap(event=>event.source_ids||event.event?.source_ids||[])},'Later return-to-June-framework sources');
+          const laterSource=add(item,'p','objective-position-source'); add(laterSource,'strong','','Reuters reporting · 2026-09-25 · '); const laterLink=add(laterSource,'a','','Araqchi says it is up to the U.S. to accept Iran’s seven-day plan'); laterLink.href='https://www.investing.com/news/commodities-news/irans-araqchi-says-now-up-to-us-to-accept-7day-plan-4918113'; laterLink.target='_blank'; laterLink.rel='noopener noreferrer';
         }
         if(downgrade){
           const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(downgrade.type);
