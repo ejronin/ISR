@@ -79,6 +79,8 @@ assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'lo
 assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
 assert(source.includes("section.dataset.interpolation = 'none'"), 'economy view does not explicitly prohibit interpolation');
 assert(source.includes("section.dataset.futureScenario = 'no-new-change-flat'"), 'economy view lacks an explicit no-change future scenario boundary');
+assert(source.includes("economic-series-key"), 'economy view lacks a persistent series key for horizontally scrolled layouts');
+assert(source.includes("economic-scroll-cue"), 'economy view lacks the mobile horizontal-scroll cue');
 assert(source.includes("const electionDate = '2026-11-03'"), 'economy view lacks the Nov. 3 midterm reference date');
 assert(source.includes('timing alone does not prove that a sanction caused a forecast change'), 'economy view lacks the sanctions/causation boundary');
 assert(source.includes("new EventCtor('input'"), 'timeline density selection does not drive the same input contract as the date controls');
