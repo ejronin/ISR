@@ -64,7 +64,7 @@
     'talks.mou': freezeContract('diplomacy_mou', ['analysis.hormuz', 'analysis.endgame_public_view']),
     'talks.nuclear': freezeContract('diplomacy_mou', ['analysis.iran_messaging', 'analysis.endgame_public_view']),
     'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements', 'gate3.agreements']),
-    'objectives.outcomes': freezeContract('objectives_position_changes', ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections']),
+    'objectives.outcomes': freezeContract('objectives_position_changes', ['analysis.iran_outcomes', 'analysis.iran_messaging', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections']),
     'objectives.positions': freezeContract('objectives_position_changes', ['analysis.endgame_us_objectives', 'analysis.iran_messaging']),
     'objectives.iran': freezeContract('objectives_position_changes', ['analysis.iran_messaging']),
     'evidence.claims': freezeContract('claims_sources', ['current.claims']),

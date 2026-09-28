@@ -68,11 +68,11 @@
     if (v && typeof v === 'object') for (const k of ['records','items','facilities','shipping','economics','diplomacy','gaps','claims']) if (Array.isArray(v[k])) return v[k];
     return [];
   }
-  function evidence(host, context, record, label='Evidence') {
+  function evidence(host, context, record, label='Evidence', localSources={}) {
     if (!record || !base.EvidenceDrawer?.create) return;
     const ids = [...new Set([...(record.source_ids || []), ...((record.sources || []).filter(x => typeof x === 'string'))])];
     if (!ids.length) return;
-    const d = base.EvidenceDrawer.create(context, { source_ids: ids }); const s = d.querySelector('summary'); if (s) s.textContent = label; host.append(d);
+    const d = base.EvidenceDrawer.create(context, { source_ids: ids }, { localSources }); const summary = d.querySelector('summary'); if (summary) summary.textContent = label; host.append(d);
   }
 
   const FACILITY = Object.freeze({
@@ -121,6 +121,15 @@
     ['Iran','Permanent Iranian Hormuz sovereignty / management / fees','NOT ACHIEVED','Iran continues to disrupt Hormuz traffic, but recognized exclusive sovereignty, management and compulsory fee rights are not established.'],
     ['Iran','No concessions on nuclear, missiles, defense or regional architecture','PARTLY ACHIEVED','Iran has not accepted every U.S. demand, but mediated and shared maritime arrangements are inconsistent with its earlier categorical position.']
   ];
+  const objectiveKey = value => txt(value).toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9]+/g, ' ').trim();
+  function objectiveStatusFamily(status) {
+    const value=txt(status).toUpperCase();
+    if (/UNRESOLVED|UNSCORED|NOT YET|OPEN/.test(value)) return ['not-yet','Not yet'];
+    if (/PART|SUBSTANTIAL|INCOMPLETE|SOFTEN/.test(value)) return ['partial','Partial'];
+    if (/NOT ACHIEVED|FAILED|REVERSED|MOSTLY UNMET|MOVING OPPOSITE|OBJECTIVE RETREATED/.test(value)) return ['failure','Failure'];
+    if (/ACHIEVED|CONTROLLING|SUCCESS/.test(value)) return ['success','Success'];
+    return ['not-yet','Open'];
+  }
 
   function overview(article, context) {
     intro(article, 'Iran is in a very weak position compared with the position it said it would achieve. It is offering to reopen Hormuz and asking for the U.S. blockade and military pressure to end.');
@@ -292,11 +301,84 @@
   }
 
   function objectives(article, context) {
-    intro(article,'Each stated goal is shown on its own: original goal, current result, why, and the supporting evidence. There is no combined victory score.');
+    intro(article,'These are the goals each side publicly set, whether the current record shows they got them, and why. The two sides are shown together so the present result is easy to compare. A later, narrower goal does not erase an earlier unmet goal.');
+    const sourceData=modelData(context.model,'analysis.endgame_us_objectives')||{}, corrections=modelData(context.model,'analysis.endgame_objective_corrections')||{}, currentPositionData=modelData(context.model,'analysis.iran_messaging')||{};
+    const localPositionSources={...(sourceData.sources||{}),...(currentPositionData.sources||{})}; const publicSources=Array.isArray(context.model.sources&&context.model.sources.records)?context.model.sources.records:[];
+    const resolvePositionSource=id=>{const local=localPositionSources[id]||{};const registered=publicSources.find(source=>local.url&&source.url===local.url)||{};return {...local,title:registered.title||local.title||local.publisher||id};};
+    const sourceAttribution=id=>{const source=resolvePositionSource(id), haystack=txt(source.title)+' '+txt(source.supports)+' '+txt(source.quality); if(/Pezeshkian/i.test(haystack))return 'Masoud Pezeshkian — President of Iran'; if(/Aref/i.test(haystack))return 'Aref — Iranian vice president'; if(/STATE-MEDIA/i.test(haystack))return 'Iranian state media — stated strategic position'; return /FOREIGN MINISTRY|Foreign Ministry/i.test(haystack)?'Iranian Foreign Ministry':'Iranian public / official position';};
+    const applyOverrides=(records,overrides)=>records.map(record=>{const correction=(overrides||[]).find(item=>objectiveKey(record.objective).includes(objectiveKey(item.match)));return correction?{...record,...correction,objective:record.objective}:record;});
+    const accepted=[
+      ...applyOverrides(sourceData.us_objectives||[],corrections.us_overrides||[]).map(record=>({...record,actor:'United States'})),
+      ...applyOverrides(sourceData.iran_objectives||[],corrections.iran_overrides||[]).map(record=>({...record,actor:'Iran'}))
+    ];
+    const acceptedFor=(actor,goal)=>accepted.find(record=>record.actor===actor&&(objectiveKey(record.objective)===objectiveKey(goal)||objectiveKey(record.objective).includes(objectiveKey(goal))||objectiveKey(goal).includes(objectiveKey(record.objective))));
     const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Goals and current results');
-    ['United States','Iran'].forEach(actor=>{const g=add(s,'section','objective-actor-group');const heading=add(g,'h3','objective-actor-heading');heading.append(context.services.actorIdentity.create(context.documentObject,actor));const l=add(g,'div','record-list');OBJECTIVES.filter(o=>o[0]===actor).forEach(o=>{const c=add(l,'article','provenance-card objective-result');add(c,'p','card-kicker',o[2]);add(c,'h4','',o[1]);add(c,'strong','','Why');add(c,'p','',o[3]);});});
+    add(s,'p','section-note','Status color summarizes the accepted current result only: gray is still open, amber is partial, green is achieved, and red is not achieved. The exact finding remains on every card.');
+    const legend=add(s,'div','objective-status-legend');[['not-yet','Not yet'],['partial','Partial'],['success','Success'],['failure','Failure']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
+    const split=add(s,'div','objective-split-grid');
+    ['United States','Iran'].forEach(actor=>{
+      const g=add(split,'section','objective-actor-group');g.dataset.objectiveActor=actor==='United States'?'united-states':'iran';
+      const heading=add(g,'h3','objective-actor-heading');heading.append(context.services.actorIdentity.create(context.documentObject,actor));
+      const acceptedRows=accepted.filter(record=>record.actor===actor);
+      const actorRows=acceptedRows.length?acceptedRows.map(record=>[actor,record.objective,record.status,record.assessment,record]):OBJECTIVES.filter(o=>o[0]===actor).map(row=>[...row,null]);
+      const families=actorRows.map(row=>objectiveStatusFamily(row[2])[0]);
+      const counts=Object.fromEntries(['not-yet','partial','success','failure'].map(key=>[key,families.filter(value=>value===key).length]));
+      const summary=add(g,'p','objective-actor-summary');summary.textContent=[counts.success&&`${counts.success} achieved`,counts.partial&&`${counts.partial} partial`,counts['not-yet']&&`${counts['not-yet']} open`,counts.failure&&`${counts.failure} not achieved`].filter(Boolean).join(' · ');
+      if(actor==='Iran'){
+        const walkbacks=(sourceData.iran_walkbacks||[]).slice();
+        const original=walkbacks.find(item=>/ORIGINAL BENCHMARK/i.test(txt(item.type)));
+        const downgrade=walkbacks.find(item=>/OBJECTIVE DOWNGRADE/i.test(txt(item.type)));
+        const currentSeries=(currentPositionData.series||[]).find(item=>/return to talks|who must move first/i.test(txt(item.issue)))||(currentPositionData.series||[])[0]||null;
+        const currentPosition=currentSeries&&currentSeries.shifted_to||null;
+        const chain=add(g,'aside','objective-position-history'); chain.dataset.positionHistory='iran';
+        add(chain,'h4','','Iran’s stated position — current to original');
+        add(chain,'p','section-note','This runs backward from the current public position to the earlier position it replaced, then to the original war-end benchmark. The step label comes from the accepted record; a later position does not erase the earlier objective.');
+        const list=add(chain,'ol','objective-position-chain');
+        const addPositionSource=(host,id,fallbackDate,attribution)=>{const source=resolvePositionSource(id);if(!source.url)return;const meta=add(host,'p','objective-position-source');add(meta,'strong','',attribution||sourceAttribution(id));meta.append(context.documentObject.createTextNode(' · '+(source.date||fallbackDate||'')+' · '));const link=add(meta,'a','',source.title||source.publisher||id);link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';};
+        if(currentPosition){
+          const item=add(list,'li','objective-position-step current'); item.dataset.positionStep='current';
+          add(item,'span','objective-position-marker','Current position');
+          add(item,'p','objective-position-copy',txt(currentPosition.text));
+          (currentPosition.source_ids||[]).forEach(id=>addPositionSource(item,id,currentPosition.date,'Speaker not named in accepted record — Iranian public negotiating position'));
+        }
+        if(currentSeries&&currentSeries.said&&currentPosition){
+          const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(currentSeries.assessment&&currentSeries.assessment.classification||currentSeries.status||'walkback');
+          const acceptedLabel=txt(currentSeries.assessment&&currentSeries.assessment.classification||currentSeries.status||'Walkback').split('/')[0].trim();
+          add(item,'span','objective-position-marker',acceptedLabel);
+          const move=add(item,'p','objective-position-copy'); add(move,'strong','','Moved from: '); move.append(context.documentObject.createTextNode(txt(currentSeries.said.text)));
+          const now=add(item,'p','objective-position-copy'); add(now,'strong','','To: '); now.append(context.documentObject.createTextNode(txt(currentPosition.text)));
+          if(currentSeries.assessment&&currentSeries.assessment.text)add(item,'p','objective-position-why',txt(currentSeries.assessment.text));
+          (currentSeries.said.source_ids||[]).forEach(id=>addPositionSource(item,id,currentSeries.said.date,txt(currentSeries.said.speaker)||'Iranian official position'));
+          (currentPosition.source_ids||[]).forEach(id=>addPositionSource(item,id,currentPosition.date,'Speaker not named in accepted record — later Iranian public negotiating position'));
+        }
+        if(downgrade){
+          const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(downgrade.type);
+          add(item,'span','objective-position-marker',txt(downgrade.type).replaceAll('_',' ').replace(/verified /i,''));
+          const move=add(item,'p','objective-position-copy'); add(move,'strong','','Moved from: '); move.append(context.documentObject.createTextNode(txt(downgrade.from)));
+          const now=add(item,'p','objective-position-copy'); add(now,'strong','','To: '); now.append(context.documentObject.createTextNode(txt(downgrade.to)));
+          if(downgrade.assessment)add(item,'p','objective-position-why',txt(downgrade.assessment));
+          (downgrade.source_ids||[]).forEach(id=>addPositionSource(item,id,downgrade.date));
+        }
+        if(original){
+          const item=add(list,'li','objective-position-step original'); item.dataset.positionStep='original';
+          add(item,'span','objective-position-marker','Original claim / objective');
+          add(item,'p','objective-position-copy',txt(original.from));
+          (original.source_ids||[]).forEach(id=>addPositionSource(item,id,original.date));
+        }
+      }
+      const l=add(g,'div','objective-card-list');
+      actorRows.forEach(row=>{
+        const [side,goal,status,why,rowRecord]=row, [family,label]=objectiveStatusFamily(status), acceptedRecord=rowRecord||acceptedFor(side,goal);
+        const c=add(l,'article','provenance-card objective-result');c.dataset.objectiveStatus=family;c.dataset.objectiveGoal=objectiveKey(goal);
+        const top=add(c,'div','objective-card-head');add(top,'span',`objective-status objective-status-${family}`,label);add(top,'span','objective-finding-detail',txt(status).replaceAll('_',' '));
+        add(c,'h4','',goal);
+        if(acceptedRecord&&acceptedRecord.origin){const origin=add(c,'p','objective-origin');add(origin,'strong','','Originally stated as: ');origin.append(context.documentObject.createTextNode?context.documentObject.createTextNode(txt(acceptedRecord.origin)):node(context.documentObject,'span','',txt(acceptedRecord.origin)));}
+        add(c,'strong','','Why / what changed');add(c,'p','',why);
+        if(acceptedRecord) evidence(c,context,acceptedRecord,'Objective record & sources',sourceData.sources||{});
+      });
+    });
     article.querySelector('.page-intro')?.after(s);
-    for(const t of [/^Original and wartime objectives$/i,/^Negotiating demands and later changes$/i,/^Outcomes by level$/i]){const x=findSection(article,t);if(x)collapse(x,'Supporting objective and position evidence');}
+    for(const [pattern,label] of [[/^Original and wartime objectives$/i,'Supporting goal evidence'],[/^Negotiating demands and later changes$/i,'Full position-change record'],[/^Outcomes by level$/i,'Wider outcome evidence']]){const x=findSection(article,pattern);if(x)collapse(x,label);}
   }
 
   function positions(article) {

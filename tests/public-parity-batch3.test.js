@@ -66,7 +66,8 @@ for (const name of ['Bangladesh', 'Bahrain', 'Djibouti', 'Egypt', 'Jordan', 'Kuw
 assert.equal(geography.metadata.runtime_network_required, false);
 assert.deepEqual(geography.metadata.source_files.map(item => item.sha256), [
   '3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb',
-  '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255'
+  '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255',
+  '9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9'
 ]);
 
 const strikes = ia.recordArray(payload('reconciliation.strikes'));

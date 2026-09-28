@@ -13,8 +13,9 @@ const publicState = JSON.parse(fs.readFileSync(path.join(root, 'data/public-curr
 assert.equal(geography.artifact_role, 'PRESENTATION_REFERENCE_GEOGRAPHY');
 assert.equal(geography.metadata.version, '5.1.1');
 assert.equal(geography.metadata.runtime_network_required, false);
-assert.deepEqual(new Set(geography.features.map(feature => feature.properties.layer)), new Set(['regional_50m', 'hormuz_10m']));
+assert.deepEqual(new Set(geography.features.map(feature => feature.properties.layer)), new Set(['western_context_110m', 'regional_50m', 'hormuz_10m']));
 assert(fs.statSync(path.join(root, 'assets/geography/atlas-reference-geography.geojson')).size < 300_000);
+assert(geography.features.some(feature => feature.properties.layer === 'western_context_110m'), 'reference geography lacks western context land');
 
 for (const route of routes.routes) {
   assert(['DOCUMENTED_TRACK', 'DOCUMENTED_CORRIDOR', 'SCHEMATIC_REFERENCE_ROUTE'].includes(route.authority_class), `route class missing: ${route.id}`);
@@ -83,6 +84,8 @@ assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSou
 assert(mapSource.includes('_atlasHasRecord'), 'MapView does not expose generic record-to-map matching');
 assert(mapSource.includes('_atlasFocusRecord'), 'MapView does not expose generic selected-record focus');
 assert(mapSource.includes('Where recorded losses occurred'), 'loss reader has no evidence-linked map view');
+assert(mapSource.includes("section.dataset.mapReferenceSurface = 'filled-land'"), 'MapView does not explicitly render filled reference land');
+assert(mapSource.includes("fillOpacity: 1"), 'reference land is not rendered as an opaque surface');
 for (const forbiddenPath of ['data/bda-map-data.json', 'data/map-source-index.json']) assert(!fs.existsSync(path.join(root, forbiddenPath)), `separate map pipeline artifact exists: ${forbiddenPath}`);
 
 console.log('public map Phase 6: PASS - local geography, explicit route authority, polyline flow, generic imagery tiers, canonical precedence, and explicit signed reader assets verified');

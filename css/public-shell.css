@@ -2430,6 +2430,78 @@ tbody tr:last-child td { border-bottom: 0; }
 }
 .objective-actor-group > h3 { margin-top: 0; }
 
+.objective-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.objective-status-legend { display: flex; flex-wrap: wrap; gap: .4rem; margin: .55rem 0 .9rem; }
+.objective-status { display: inline-flex; align-items: center; width: fit-content; min-height: 1.7rem; padding: .18rem .55rem; border: 1px solid var(--line); border-radius: 999px; font-size: .72rem; font-weight: 800; letter-spacing: .02em; }
+.objective-status-not-yet { background: #202832; color: #d2d9df; border-color: #4b5965; }
+.objective-status-partial { background: #3a2d13; color: #f2d795; border-color: #8a6a28; }
+.objective-status-success { background: #163427; color: #b8ebd1; border-color: #397c5d; }
+.objective-status-failure { background: #3a1d20; color: #f3b7ba; border-color: #8b4148; }
+.objective-actor-summary { margin: -.15rem 0 .75rem; color: var(--muted); font-size: .78rem; }
+.objective-card-list { display: grid; gap: .7rem; }
+.objective-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-bottom: .45rem; }
+.objective-finding-detail { color: var(--muted); font-size: .72rem; font-weight: 700; }
+.objective-origin { margin: .2rem 0 .55rem; color: var(--muted); font-size: .78rem; line-height: 1.45; }
+.objective-position-history { margin: .85rem 0 1rem; padding: .85rem; border: 1px solid #466071; border-radius: .65rem; background: #101c25; }
+.objective-position-history h4 { margin: 0 0 .35rem; font-size: 1rem; }
+.objective-position-chain { display: grid; gap: 0; margin: .8rem 0 0; padding: 0; list-style: none; }
+.objective-position-step { position: relative; margin: 0; padding: 0 0 .95rem 1.45rem; border-left: 2px solid #425968; }
+.objective-position-step:last-child { padding-bottom: 0; border-left-color: transparent; }
+.objective-position-step::before { position: absolute; top: .2rem; left: -.4rem; width: .7rem; height: .7rem; border: 2px solid #8097a4; border-radius: 50%; background: #101c25; content: ''; }
+.objective-position-step.current::before { border-color: var(--accent); background: #28516a; }
+.objective-position-step.original::before { border-color: var(--warn); background: #57451e; }
+.objective-position-marker { display: inline-flex; margin-bottom: .28rem; padding: .14rem .45rem; border-radius: 999px; background: #1a2b36; color: var(--accent-strong); font-size: .68rem; font-weight: 850; text-transform: uppercase; letter-spacing: .04em; }
+.objective-position-step.original .objective-position-marker { background: #352d1b; color: var(--warn); }
+.objective-position-copy, .objective-position-why, .objective-position-source { margin: .24rem 0; line-height: 1.48; }
+.objective-position-why { color: var(--muted); font-size: .78rem; }
+.objective-position-source { color: var(--muted); font-size: .72rem; }
+.objective-position-source a { color: var(--accent-strong); }
+
+.timeline-density-selection { margin: .55rem .25rem 0; color: var(--text); font-size: .78rem; font-weight: 700; }
+.timeline-density-bin[aria-pressed="true"] .timeline-density-bar, .timeline-density-bin.selected .timeline-density-bar { background: linear-gradient(180deg, #d9f2ff, var(--atlas-accent)); box-shadow: 0 0 0 1px rgb(185 222 245 / 45%); }
+
+.atlas-reference-land { fill: #263f4d !important; fill-opacity: 1 !important; stroke: #78909d !important; stroke-opacity: .95 !important; vector-effect: non-scaling-stroke; }
+
+.economic-snapshot-dashboard { min-width: 0; max-width: 100%; overflow: hidden; }
+.economic-year-chart { width: 100%; max-width: 100%; min-width: 0; margin-top: .75rem; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--line-soft); border-radius: .7rem; background: #0a141b; }
+.economic-year-months { display: grid; grid-template-columns: repeat(12, 1fr); min-width: 62rem; padding: .55rem 1.25rem .1rem 8rem; color: var(--muted); font-size: .7rem; text-align: center; }
+.economic-year-svg { display: block; width: 100%; min-width: 62rem; height: auto; }
+.economic-grid-line { stroke: #243844; stroke-width: 1; }
+.economic-line { fill: none; stroke: #7893a2; stroke-width: 2.2; opacity: .72; }
+.economic-line.iran { stroke: #f0d072; stroke-width: 4; opacity: 1; }
+.economic-line.scenario { stroke-dasharray: 10 8; opacity: .7; }
+.economic-point { fill: #b8c8d0; stroke: #091118; stroke-width: 2; }
+.economic-point.iran { fill: #f0d072; }
+.economic-row-label, .economic-row-value { fill: #c1d0d7; font-size: 16px; font-weight: 650; }
+.economic-row-label.iran { fill: #f4dc91; font-weight: 850; }
+.economic-sanction-line { stroke: #d58a57; stroke-width: 1.4; stroke-dasharray: 4 5; opacity: .88; }
+.economic-sanction-label { fill: #e8b38d; font-size: 12px; }
+.economic-election-line { stroke: #ffd84a; stroke-width: 4; }
+.economic-election-label { fill: #ffe47f; font-size: 15px; font-weight: 900; }
+.economic-current-line { stroke: #6ea1bd; stroke-width: 1.4; stroke-dasharray: 3 5; }
+.economic-current-label { fill: #91b4c6; font-size: 12px; }
+.economic-chart-legend { display: flex; flex-wrap: wrap; gap: .45rem .8rem; margin: .7rem 0 .35rem; }
+.economic-legend { position: relative; padding-left: 1.35rem; color: var(--muted); font-size: .74rem; }
+.economic-legend::before { position: absolute; top: .48em; left: 0; width: .95rem; height: 2px; background: #7893a2; content: ''; }
+.economic-legend.scenario::before { background: repeating-linear-gradient(90deg, #7893a2 0 5px, transparent 5px 8px); }
+.economic-legend.sanctions::before { background: #d58a57; }
+.economic-legend.election::before { height: 3px; background: #ffd84a; }
+.economic-election-note, .economic-scenario-note { color: var(--muted); font-size: .78rem; line-height: 1.5; }
+.economic-sanction-markers { margin-top: .7rem; }
+
+@media (max-width: 64rem) {
+  .objective-split-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 37.5rem) {
+  .objective-actor-group { padding: .8rem; }
+  .objective-position-history { padding: .7rem; }
+  .economic-year-months, .economic-year-svg { min-width: 54rem; }
+}
 @media (min-width: 80rem) {
   .atlas-app[data-layout-scope="adaptive-wide"] :is(.header-inner, .primary-nav, .mobile-navigation, .app-grid, .page-footer) {
     width: calc(100% - clamp(1.5rem, 2.5vw, 3.5rem));

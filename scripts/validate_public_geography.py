@@ -105,7 +105,7 @@ def main() -> int:
     require((geography.get("metadata") or {}).get("runtime_network_required") is False, "reference geography requires runtime network access")
     require(GEOGRAPHY_PATH.stat().st_size < 300_000, "regional geography exceeds the lightweight public budget")
     layers = {feature.get("properties", {}).get("layer") for feature in geography.get("features") or []}
-    require(layers == {"regional_50m", "hormuz_10m"}, f"unexpected reference geography layers: {sorted(layers)}")
+    require(layers == {"western_context_110m", "regional_50m", "hormuz_10m"}, f"unexpected reference geography layers: {sorted(layers)}")
     regional_names = {
         feature.get("properties", {}).get("name")
         for feature in geography.get("features") or []

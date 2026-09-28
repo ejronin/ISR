@@ -46,6 +46,11 @@ assert.match(registrySource,/baseRuntime\.PAGE_OWNERS\[route\.owner\]/,'registry
 assert.match(registrySource,/readerSupportRuntime\.projectShell/,'reader support must execute before validation/promotion');
 assert.match(registrySource,/PROTECTED_LAYOUT_ROUTES = new Set\(\['start\.overview','evidence\.information','evidence\.web_of_lies'\]\)/,'protected page layouts must remain explicitly isolated from the adaptive redesign');
 assert.match(registrySource,/dataset\.layoutScope=PROTECTED_LAYOUT_ROUTES\.has\(route\.key\)\?'protected':'adaptive-wide'/,'adaptive desktop layout must be route-scoped rather than global');
+assert.match(registrySource,/currentPositionData=modelData\(context\.model,'analysis\.iran_messaging'\)/,'Goals & Results does not consume the accepted current-position record');
+assert.match(registrySource,/const acceptedRows=accepted\.filter\(record=>record\.actor===actor\)/,'Goals & Results is not driven by accepted objective records');
+assert.match(registrySource,/dataset\.positionHistory='iran'/,'Iran position history is missing');
+assert.match(registrySource,/Current position/,'Iran position history does not lead with the current position');
+assert.match(registrySource,/Original claim \/ objective/,'Iran position history does not terminate at the original objective');
 assert.doesNotMatch(supportSource,/function\s+mount\s*\(|base\.mount\s*\(/,'reader support must have no mount authority');
 for(const file of ['scripts/build_public_release_core.py','js/public-bootstrap.js','js/public-app.js','scripts/validate_public_deployment.py','config/public-runtime-inventory.json']){const body=fs.readFileSync(path.join(__dirname,'..',file),'utf8');assert(!body.includes('reader_runtime'));assert(!body.includes('reader_projection'),`${file} still publishes reader_projection as a corrective role`);}
 console.log('authoritative reader registry: PASS - direct route authority, support-only projection, fail-closed staging, validation-before-promotion, and connected map retirement verified');

@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any, Callable
 from urllib.request import Request, urlopen
@@ -25,9 +26,14 @@ SOURCE_10M = {
     "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_10m_admin_0_countries.geojson",
     "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
 }
+SOURCE_110M_LAND = {
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_110m_land.geojson",
+    "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+}
 SOURCE_FILENAMES = {
     "1:50m": "ne_50m_admin_0_countries.v5.1.1.geojson",
     "1:10m": "ne_10m_admin_0_countries.v5.1.1.geojson",
+    "1:110m land": "ne_110m_land.v5.1.1.geojson",
 }
 REGIONAL_COUNTRIES = {
     "Afghanistan", "Bahrain", "Bangladesh", "China", "Djibouti", "Egypt", "Eritrea",
@@ -37,6 +43,8 @@ REGIONAL_COUNTRIES = {
 }
 HORMUZ_COUNTRIES = {"Bahrain", "Iran", "Oman", "Qatar", "Saudi Arabia", "United Arab Emirates"}
 REGIONAL_BBOX = [2.0, -2.0, 110.0, 57.0]
+WESTERN_CONTEXT_BBOX = [-90.0, -5.0, 15.0, 65.0]
+REFERENCE_BBOX = [-90.0, -5.0, 110.0, 65.0]
 HORMUZ_BBOX = [50.8, 22.4, 60.8, 28.9]
 REFERENCE_LABELS = [
     {"label": "Iran", "lat": 32.4, "lon": 53.7, "kind": "country"},
@@ -149,6 +157,51 @@ def rounded_ring(ring: list[list[float]], digits: int = 4) -> list[list[float]]:
     return output if len(output) >= 4 else []
 
 
+def ecmascript_round(value: float, digits: int = 5) -> float:
+    """Match Math.round(value * 10**digits) / 10**digits for generated context land."""
+    factor = 10 ** digits
+    return math.floor(value * factor + 0.5) / factor
+
+
+def clip_ring_ecmascript(ring: list[list[float]], bbox: list[float]) -> list[list[float]]:
+    min_lon, min_lat, max_lon, max_lat = bbox
+    points = [list(point[:2]) for point in ring]
+    if points and points[0] == points[-1]:
+        points.pop()
+    for inside, axis, bound in (
+        (lambda point: point[0] >= min_lon, 0, min_lon),
+        (lambda point: point[0] <= max_lon, 0, max_lon),
+        (lambda point: point[1] >= min_lat, 1, min_lat),
+        (lambda point: point[1] <= max_lat, 1, max_lat),
+    ):
+        points = clip_edge(points, inside, axis, bound)
+    if len(points) < 3:
+        return []
+    points.append(points[0])
+    return [[ecmascript_round(point[0]), ecmascript_round(point[1])] for point in points]
+
+
+def transform_land_geometry(geometry: dict[str, Any], clip_bbox: list[float]) -> dict[str, Any] | None:
+    geometry_type = geometry.get("type")
+    raw_polygons = [geometry.get("coordinates") or []] if geometry_type == "Polygon" else geometry.get("coordinates") or []
+    if geometry_type not in {"Polygon", "MultiPolygon"}:
+        return None
+    polygons: list[list[list[list[float]]]] = []
+    for polygon in raw_polygons:
+        rings: list[list[list[float]]] = []
+        for ring in polygon:
+            result = clip_ring_ecmascript(ring, clip_bbox)
+            if result:
+                rings.append(result)
+        if rings:
+            polygons.append(rings)
+    if not polygons:
+        return None
+    if len(polygons) == 1:
+        return {"type": "Polygon", "coordinates": polygons[0]}
+    return {"type": "MultiPolygon", "coordinates": polygons}
+
+
 def transform_geometry(geometry: dict[str, Any], clip_bbox: list[float] | None) -> dict[str, Any] | None:
     geometry_type = geometry.get("type")
     raw_polygons = [geometry.get("coordinates") or []] if geometry_type == "Polygon" else geometry.get("coordinates") or []
@@ -193,10 +246,31 @@ def subset(payload: dict[str, Any], names: set[str], layer: str, scale: str, cli
     return sorted(output, key=lambda item: (item["properties"]["layer"], item["properties"]["name"]))
 
 
-def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
+def land_subset(payload: dict[str, Any], layer: str, scale: str, clip_bbox: list[float]) -> list[dict[str, Any]]:
+    output: list[dict[str, Any]] = []
+    for index, feature in enumerate(payload.get("features") or []):
+        geometry = transform_land_geometry(feature.get("geometry") or {}, clip_bbox)
+        if not geometry:
+            continue
+        output.append({
+            "type": "Feature",
+            "properties": {
+                "name": f"Western context {index + 1}",
+                "iso_a3": None,
+                "layer": layer,
+                "scale": scale,
+            },
+            "geometry": geometry,
+        })
+    return output
+
+
+def build(source_50m: Path, source_10m: Path, source_110m_land: Path) -> dict[str, Any]:
     regional = read_source(source_50m, SOURCE_50M)
     detailed = read_source(source_10m, SOURCE_10M)
+    western_land = read_source(source_110m_land, SOURCE_110M_LAND)
     features = [
+        *land_subset(western_land, "western_context_110m", "1:110m", WESTERN_CONTEXT_BBOX),
         *subset(regional, REGIONAL_COUNTRIES, "regional_50m", "1:50m", REGIONAL_BBOX),
         *subset(detailed, HORMUZ_COUNTRIES, "hormuz_10m", "1:10m", HORMUZ_BBOX),
     ]
@@ -204,10 +278,10 @@ def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
         "type": "FeatureCollection",
         "artifact_role": "PRESENTATION_REFERENCE_GEOGRAPHY",
         "schema_version": "1.0",
-        "name": "Atlas regional reference geography",
-        "bbox": REGIONAL_BBOX,
+        "name": "Atlas reference geography",
+        "bbox": REFERENCE_BBOX,
         "metadata": {
-            "source": "Natural Earth Admin-0 Countries",
+            "source": "Natural Earth Admin-0 Countries + Land",
             "version": NATURAL_EARTH_VERSION,
             "license": "Natural Earth public domain",
             "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
@@ -215,8 +289,10 @@ def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
             "source_files": [
                 {"scale": "1:50m", **SOURCE_50M},
                 {"scale": "1:10m", **SOURCE_10M},
+                {"scale": "1:110m land", **SOURCE_110M_LAND},
             ],
             "layers": {
+                "western_context_110m": {"scale": "1:110m", "bbox": WESTERN_CONTEXT_BBOX},
                 "regional_50m": {"scale": "1:50m", "bbox": REGIONAL_BBOX},
                 "hormuz_10m": {"scale": "1:10m", "bbox": HORMUZ_BBOX},
             },
@@ -226,46 +302,69 @@ def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
     }
 
 
+def normalize_json_numbers(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: normalize_json_numbers(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [normalize_json_numbers(item) for item in value]
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    return value
+
+
 def stable_bytes(payload: dict[str, Any]) -> bytes:
-    return (json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+    normalized = normalize_json_numbers(payload)
+    return (json.dumps(normalized, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-50m")
     parser.add_argument("--source-10m")
+    parser.add_argument("--source-110m-land")
     parser.add_argument(
         "--fetch-source-dir",
-        help="Fetch exact versioned Natural Earth inputs into this build-only directory and verify both pinned SHA-256 values",
+        help="Fetch exact versioned Natural Earth inputs into this build-only directory and verify all pinned SHA-256 values",
     )
     parser.add_argument("--output", default=OUTPUT)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    explicit_sources = bool(args.source_50m or args.source_10m)
+    explicit_sources = bool(args.source_50m or args.source_10m or args.source_110m_land)
     if args.fetch_source_dir and explicit_sources:
-        parser.error("use either --fetch-source-dir or both explicit source paths, not both")
-    if explicit_sources and not (args.source_50m and args.source_10m):
-        parser.error("--source-50m and --source-10m must be supplied together")
+        parser.error("use either --fetch-source-dir or all explicit source paths, not both")
+    if explicit_sources and not (args.source_50m and args.source_10m and args.source_110m_land):
+        parser.error("--source-50m, --source-10m and --source-110m-land must be supplied together")
     if args.fetch_source_dir:
         source_directory = Path(args.fetch_source_dir).resolve()
         source_50m = obtain_pinned_source(source_directory, "1:50m", SOURCE_50M)
         source_10m = obtain_pinned_source(source_directory, "1:10m", SOURCE_10M)
-    elif args.source_50m and args.source_10m:
+        source_110m_land = obtain_pinned_source(source_directory, "1:110m land", SOURCE_110M_LAND)
+    elif args.source_50m and args.source_10m and args.source_110m_land:
         source_50m = Path(args.source_50m)
         source_10m = Path(args.source_10m)
+        source_110m_land = Path(args.source_110m_land)
     else:
-        parser.error("provide --fetch-source-dir or both --source-50m and --source-10m")
+        parser.error("provide --fetch-source-dir or all explicit source paths")
 
     # These reads are intentional even though build() reads again: the command
     # reports each independently verified pin before deterministic generation.
     read_source(source_50m, SOURCE_50M)
     read_source(source_10m, SOURCE_10M)
+    read_source(source_110m_land, SOURCE_110M_LAND)
     print(f"reference-geography: verified 1:50m source SHA-256 {SOURCE_50M['sha256']}")
     print(f"reference-geography: verified 1:10m source SHA-256 {SOURCE_10M['sha256']}")
+    print(f"reference-geography: verified 1:110m land source SHA-256 {SOURCE_110M_LAND['sha256']}")
     output = ROOT / args.output
-    generated = stable_bytes(build(source_50m, source_10m))
+    generated = stable_bytes(build(source_50m, source_10m, source_110m_land))
     if args.check:
-        if not output.is_file() or output.read_bytes() != generated:
+        current = output.read_bytes() if output.is_file() else b""
+        if current != generated:
+            mismatch = next((index for index, pair in enumerate(zip(current, generated)) if pair[0] != pair[1]), min(len(current), len(generated)))
+            current_slice = current[max(0, mismatch - 80):mismatch + 120].decode("utf-8", errors="replace")
+            generated_slice = generated[max(0, mismatch - 80):mismatch + 120].decode("utf-8", errors="replace")
+            print(f"reference-geography: current bytes={len(current)} generated bytes={len(generated)} first_mismatch={mismatch}")
+            print(f"reference-geography: current around mismatch: {current_slice!r}")
+            print(f"reference-geography: generated around mismatch: {generated_slice!r}")
             raise SystemExit(f"FAIL: reference geography is stale: {args.output}")
         print(f"reference-geography: PASS - {args.output} is deterministic and current")
         return 0
