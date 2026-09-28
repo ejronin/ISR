@@ -3584,6 +3584,16 @@ function enhanceEconomyVisual(article, context) {
   section.dataset.economicViz = 'year-timeline-snapshots'; section.dataset.futureScenario = 'no-new-change-flat'; section.dataset.interpolation = 'none';
   append(section, 'h2', '', '2026 economic snapshot and pressure timeline');
   append(section, 'p', 'section-note', 'The lines connect only recorded forecast snapshots. After the current evidence date, the dashed segment holds the latest published forecast flat through December as a simple “what if nothing else changed” reference—not a forecast. Sanction markers show timing; timing alone does not prove that a sanction caused a forecast change.');
+  const palette = ['#f0d072', '#79b7df', '#8fd0b3', '#c8a7df', '#e2a27f', '#9eb4dc', '#d6c97e'];
+  const seriesColors = rows.map((row, index) => row.country === 'Iran' ? palette[0] : palette[1 + (index % (palette.length - 1))]);
+  const seriesKey = append(section, 'div', 'economic-series-key'); seriesKey.setAttribute('aria-label', 'Economy series key');
+  rows.forEach((row, index) => {
+    const item = append(seriesKey, 'span', 'economic-series-key-item');
+    const swatch = append(item, 'span', 'economic-series-swatch', ''); swatch.style.setProperty('--economic-series-color', seriesColors[index]); swatch.setAttribute('aria-hidden', 'true');
+    append(item, 'strong', '', row.country);
+    append(item, 'span', 'economic-series-key-value', Number(row.current).toFixed(1) + '%');
+  });
+  append(section, 'p', 'economic-scroll-cue', 'On smaller screens, scroll horizontally to follow all 12 months. The economy key stays visible above the chart.');
   const chart = append(section, 'div', 'economic-year-chart'); chart.dataset.economicYear = '2026';
   const monthRow = append(chart, 'div', 'economic-year-months'); ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].forEach(month => append(monthRow, 'span', '', month));
   const svg = context.documentObject.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -3612,18 +3622,19 @@ function enhanceEconomyVisual(article, context) {
     const label = make('text', { x: x + 4, y: top + 38 + (index % 4) * 15, class: 'economic-sanction-label' });
     label.textContent = readableDate(date) + ' · ' + publicNarrative(record.metric || record.topic || record.title, 'Sanctions action');
   });
-  rows.forEach(row => {
+  rows.forEach((row, index) => {
     const dates = asArray(row.source_ids).map(sourceDate).filter(date => /^2026-/.test(date)).sort();
     const observedStart = dates[0] || '2026-01-01'; const observedEnd = dates[dates.length - 1] || evidenceDate;
     const xBase = left + width * xFor(observedStart); const xObserved = left + width * xFor(observedEnd);
     const yBase = top + height * yFor(row.prewar); const yCurrent = top + height * yFor(row.current);
     const lineClass = row.country === 'Iran' ? 'economic-line iran' : 'economic-line';
-    make('path', { d: 'M ' + xBase + ' ' + yBase + ' L ' + xObserved + ' ' + yCurrent, class: lineClass });
-    make('line', { x1: Math.max(xObserved, evidenceX), y1: yCurrent, x2: right, y2: yCurrent, class: lineClass + ' scenario' });
-    make('circle', { cx: xBase, cy: yBase, r: 4, class: 'economic-point' });
-    make('circle', { cx: xObserved, cy: yCurrent, r: row.country === 'Iran' ? 6 : 5, class: row.country === 'Iran' ? 'economic-point iran' : 'economic-point' });
-    const name = make('text', { x: 8, y: yCurrent + 4, class: row.country === 'Iran' ? 'economic-row-label iran' : 'economic-row-label' }); name.textContent = row.country;
-    const value = make('text', { x: right - 2, y: yCurrent - 7, class: 'economic-row-value', 'text-anchor': 'end' }); value.textContent = Number(row.current).toFixed(1) + '%';
+    const seriesStyle = 'stroke:' + seriesColors[index];
+    make('path', { d: 'M ' + xBase + ' ' + yBase + ' L ' + xObserved + ' ' + yCurrent, class: lineClass, style: seriesStyle });
+    make('line', { x1: Math.max(xObserved, evidenceX), y1: yCurrent, x2: right, y2: yCurrent, class: lineClass + ' scenario', style: seriesStyle });
+    make('circle', { cx: xBase, cy: yBase, r: 4, class: 'economic-point', style: 'fill:' + seriesColors[index] });
+    make('circle', { cx: xObserved, cy: yCurrent, r: row.country === 'Iran' ? 6 : 5, class: row.country === 'Iran' ? 'economic-point iran' : 'economic-point', style: 'fill:' + seriesColors[index] });
+    const name = make('text', { x: 8, y: yCurrent + 4, class: row.country === 'Iran' ? 'economic-row-label iran' : 'economic-row-label', style: 'fill:' + seriesColors[index] }); name.textContent = row.country;
+    const value = make('text', { x: right - 2, y: yCurrent - 7, class: 'economic-row-value', 'text-anchor': 'end', style: 'fill:' + seriesColors[index] }); value.textContent = Number(row.current).toFixed(1) + '%';
   });
   const legend = append(section, 'div', 'economic-chart-legend');
   append(legend, 'span', 'economic-legend observed', 'Recorded forecast change'); append(legend, 'span', 'economic-legend scenario', 'If nothing else changed'); append(legend, 'span', 'economic-legend sanctions', 'Sanctions action / implementation'); append(legend, 'span', 'economic-legend election', 'Nov. 3 election reference');
