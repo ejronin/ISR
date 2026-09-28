@@ -2467,7 +2467,8 @@ tbody tr:last-child td { border-bottom: 0; }
 
 .atlas-reference-land { fill: #263f4d !important; fill-opacity: 1 !important; stroke: #78909d !important; stroke-opacity: .95 !important; vector-effect: non-scaling-stroke; }
 
-.economic-year-chart { margin-top: .75rem; overflow-x: auto; border: 1px solid var(--line-soft); border-radius: .7rem; background: #0a141b; }
+.economic-snapshot-dashboard { min-width: 0; max-width: 100%; overflow: hidden; }
+.economic-year-chart { width: 100%; max-width: 100%; min-width: 0; margin-top: .75rem; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--line-soft); border-radius: .7rem; background: #0a141b; }
 .economic-year-months { display: grid; grid-template-columns: repeat(12, 1fr); min-width: 62rem; padding: .55rem 1.25rem .1rem 8rem; color: var(--muted); font-size: .7rem; text-align: center; }
 .economic-year-svg { display: block; width: 100%; min-width: 62rem; height: auto; }
 .economic-grid-line { stroke: #243844; stroke-width: 1; }
