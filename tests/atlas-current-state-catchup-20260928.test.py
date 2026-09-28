@@ -34,6 +34,7 @@ def main() -> int:
     assert intake["scope"]["prior_canonical_cutoff"] == "2026-09-27T00:00:00-04:00"
 
     events = {row["event_id"]: row for row in state["chronology"]}
+    packet_events = {row["event_id"]: row for row in packet["events"]}
     for event_id in (
         "G3-IRAN-POST-REJECTION-HORMUZ-POSITION-20260927",
         "G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927",
@@ -41,8 +42,9 @@ def main() -> int:
         "G3-QATAR-US-IRAN-AMENDED-SEVEN-DAY-TALKS-20260928",
     ):
         assert event_id in events
+        assert event_id in packet_events
 
-    assert events["G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927"]["strike_countable"] is False
+    assert packet_events["G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927"]["strike_countable"] is False
     assert "remain attributed" in events["G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927"]["summary"]
     assert "not independently treated" in events["G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927"]["summary"]
 
