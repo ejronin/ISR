@@ -45,8 +45,8 @@ def main() -> int:
         assert event_id in packet_events
 
     assert packet_events["G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927"]["strike_countable"] is False
-    assert "remain attributed" in events["G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927"]["summary"]
-    assert "not independently treated" in events["G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927"]["summary"]
+    assert "remain attributed" in packet_events["G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927"]["summary"]
+    assert "not independently treated" in packet_events["G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927"]["summary"]
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
     assert "IRAN_POST_REJECTION_HORMUZ_CONDITIONS_REAFFIRMED_SEP27" in diplomacy["status"]
