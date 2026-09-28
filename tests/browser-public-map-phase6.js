@@ -73,7 +73,8 @@ const PRESERVED_FACILITY_IDS = [
       layers: [...new Set(window.ATLAS_REFERENCE_GEOGRAPHY?.features.map(item => item.properties.layer))],
       map: Boolean(document.querySelector('.atlas-leaflet-map.leaflet-container')),
       coastPaths: document.querySelectorAll('.leaflet-atlas-reference-pane path').length,
-      filledLand: [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => { const style = getComputedStyle(path); return path.classList.contains('atlas-reference-land') && style.fill !== 'none' && Number.parseFloat(style.fillOpacity || '0') > .5; }),
+      filledLand: [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => { const style = getComputedStyle(path); return style.fill !== 'none' && Number.parseFloat(style.fillOpacity || '0') > .5; }),
+      referenceLayers: document.querySelector('.context-map')?.dataset.mapReferenceLayers || '',
       labels: [...document.querySelectorAll('.reference-map-label')].map(node => node.textContent.trim()),
       external: performance.getEntriesByType('resource').map(item => item.name).filter(url => new URL(url).origin !== location.origin)
     }))()`);
@@ -84,6 +85,7 @@ const PRESERVED_FACILITY_IDS = [
     assert.equal(local.map, true);
     assert(local.coastPaths >= 4, 'Hormuz map lacks detailed local coast/country geometry');
     assert.equal(local.filledLand, true, 'reference geography renders only outlines instead of visible land masses');
+    assert.match(local.referenceLayers, /western_context_110m/, 'wide Hormuz context map does not include western land context');
     assert(local.labels.some(label => /Strait of Hormuz/.test(label)), 'Hormuz reference label is missing');
     assert.deepEqual(local.external, [], `current map made an external runtime request: ${JSON.stringify(local.external)}`);
 
