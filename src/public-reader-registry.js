@@ -374,7 +374,7 @@
     ];
     const acceptedFor=(actor,goal)=>accepted.find(record=>record.actor===actor&&(objectiveKey(record.objective)===objectiveKey(goal)||objectiveKey(record.objective).includes(objectiveKey(goal))||objectiveKey(goal).includes(objectiveKey(record.objective))));
     const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Goals and current results');
-    add(s,'p','section-note','Status color summarizes the public result: gray is open, amber is failing or partial, green is achieved, and red is failed or abandoned. The underlying accepted finding and sources remain available on every card.');
+    add(s,'p','section-note','Status color summarizes the public result: gray is open, amber is failing or partial, green is achieved, and red is failed or abandoned. Sources behind the accepted evidence remain available on every card.');
     const legend=add(s,'div','objective-status-legend');[['not-yet','Open'],['partial','Failing / Partial'],['success','Achieved'],['failure','Failed / Abandoned']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
     const split=add(s,'div','objective-split-grid');
     ['United States','Iran'].forEach(actor=>{
@@ -446,9 +446,6 @@
         add(c,'h4','',presentation.goal);
         if(acceptedRecord&&acceptedRecord.origin){const origin=add(c,'p','objective-origin');add(origin,'strong','','Originally stated as: ');origin.append(context.documentObject.createTextNode?context.documentObject.createTextNode(txt(acceptedRecord.origin)):node(context.documentObject,'span','',txt(acceptedRecord.origin)));}
         add(c,'strong','','Why / what changed');add(c,'p','',presentation.why);
-        if(actor==='Iran'&&presentation.acceptedStatus&&txt(presentation.acceptedStatus)!==txt(presentation.status)){
-          const accepted=add(c,'p','objective-accepted-note');add(accepted,'strong','','Accepted evidence state: ');accepted.append(context.documentObject.createTextNode(txt(presentation.acceptedStatus).replaceAll('_',' ')));
-        }
         if(acceptedRecord) evidence(c,context,acceptedRecord,'Objective record & sources',sourceData.sources||{});
       });
     });
