@@ -1,0 +1,63 @@
+{
+  "artifact_role": "ATLAS_CURRENT_EVIDENCE_SWEEP",
+  "authority": "ATLAS_CURRENT_STATE_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-27T00:00:00-04:00",
+    "window_end": "2026-09-28T13:15:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-28T13:15:00-04:00",
+    "prior_canonical_cutoff": "2026-09-27T00:00:00-04:00",
+    "boundary_rule": "Admit only material, source-qualified developments public within the review window; preserve attributed claims and conflicting accounts without resolving beyond the source record."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_INTAKE_NO_PRIOR_PACKET_MUTATION",
+  "material_events": [
+    {
+      "proposed_event_id": "G3-IRAN-POST-REJECTION-HORMUZ-POSITION-20260927",
+      "event_date": "2026-09-27",
+      "summary": "After President Trump publicly rejected Iran's seven-day proposal, Foreign Minister Abbas Araqchi said Iran had not received a formal rejection through mediators, kept reopening Hormuz contingent on Iran's stated conditions, and said a negotiated solution was the way out of the impasse. Army commander Amir Hatam separately reiterated that Iran would not accept being unable to trade while others used regional waterways.",
+      "confidence": "HIGH_FOR_ATTRIBUTED_PUBLIC_POSITIONS",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/27/iran-insists-on-diplomatic-solution-after-trump-rejects-peace-plan"
+      ]
+    },
+    {
+      "proposed_event_id": "G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927",
+      "event_date": "2026-09-27",
+      "summary": "President Masoud Pezeshkian said Iran was ready for talks on its nuclear programme and other issues while rejecting what he called bullying or coercion. His separate statement that Iran does not seek nuclear weapons is retained as a longstanding stated position, not independently treated here as a new concession.",
+      "confidence": "HIGH_FOR_ATTRIBUTED_PUBLIC_POSITION",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/27/iran-insists-on-diplomatic-solution-after-trump-rejects-peace-plan"
+      ]
+    },
+    {
+      "proposed_event_id": "G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927",
+      "event_date": "2026-09-27",
+      "summary": "Yemen's Houthi-run health ministry said seven people were killed and 40 injured, including children, in a strike on shops at Mawiya junction in Taiz. Yemen's internationally recognized government said its forces targeted a Houthi military camp and vehicles at the same junction; three government military sources told Reuters the Houthis had recently established a camp near the market. Casualty and target accounts remain attributed.",
+      "confidence": "HIGH_FOR_REUTERS_REPORTING_OF_CONFLICTING_ATTRIBUTED_ACCOUNTS; CASUALTY_TOTAL_NOT_INDEPENDENTLY_CONFIRMED",
+      "sources": [
+        "https://www.anews.com.tr/middle-east/2026/09/27/seven-people-killed-in-strike-on-market-in-yemen-houthi-run-health-ministry-says"
+      ]
+    },
+    {
+      "proposed_event_id": "G3-QATAR-US-IRAN-AMENDED-SEVEN-DAY-TALKS-20260928",
+      "event_date": "2026-09-28",
+      "summary": "Reuters reported that Qatari mediators were expected to hold separate talks with Iranian Foreign Minister Abbas Araqchi and the U.S. side on Monday or Tuesday, focused on an amended version of Iran's seven-day proposal. ISNA said Araqchi would meet mediators and discuss the latest proposals and views. The contact establishes continued shuttle diplomacy, not an agreement.",
+      "confidence": "HIGH_FOR_REUTERS_REPORTING_OF_EXPECTED_MEDIATED_TALKS; NO_AGREEMENT_ESTABLISHED",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/28/us-iran-set-to-hold-separate-talks-with-mediators-on-monday-or-tuesday-official-says",
+        "https://www.axios.com/2026/09/27/trump-iran-war-hormuz-blockade-negotiations"
+      ]
+    }
+  ],
+  "checked_no_material_new_event": [
+    "No new accepted U.S.-Iran settlement or signed replacement agreement identified in the review window.",
+    "No new qualified Kpler/LSEG Hormuz daily transit count located that supersedes the existing public traffic series.",
+    "No new U.S. Treasury Iran sanctions action located in the review window that supersedes the existing sanctions chronology.",
+    "No basis found to convert the Taiz casualty claim into an independently confirmed casualty total or to erase the government's military-target account."
+  ],
+  "handoff": {
+    "claims_forensics": "NO_NEW_CLAIMS_ADJUDICATION_REQUESTED",
+    "web_of_lies": "OUT_OF_SCOPE_NO_PROPAGATION_SEMANTICS_CHANGED",
+    "public_product": "CONSUME_CANONICAL_CURRENT_STATE_AFTER_REGISTRATION; DO_NOT_INFER_SETTLEMENT_FROM_TALKS"
+  }
+}
