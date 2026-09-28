@@ -124,11 +124,72 @@
   const objectiveKey = value => txt(value).toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9]+/g, ' ').trim();
   function objectiveStatusFamily(status) {
     const value=txt(status).toUpperCase();
-    if (/UNRESOLVED|UNSCORED|NOT YET|OPEN/.test(value)) return ['not-yet','Not yet'];
+    if (/ABANDONED/.test(value)) return ['failure','Abandoned'];
+    if (/FAILING/.test(value)) return ['partial','Failing'];
+    if (/UNRESOLVED|UNSCORED|NOT YET|OPEN/.test(value)) return ['not-yet','Open'];
     if (/PART|SUBSTANTIAL|INCOMPLETE|SOFTEN/.test(value)) return ['partial','Partial'];
-    if (/NOT ACHIEVED|FAILED|REVERSED|MOSTLY UNMET|MOVING OPPOSITE|OBJECTIVE RETREATED/.test(value)) return ['failure','Failure'];
-    if (/ACHIEVED|CONTROLLING|SUCCESS/.test(value)) return ['success','Success'];
+    if (/NOT ACHIEVED|FAILED|REVERSED|MOSTLY UNMET|MOVING OPPOSITE|OBJECTIVE RETREATED/.test(value)) return ['failure','Failed'];
+    if (/ACHIEVED|CONTROLLING|SUCCESS/.test(value)) return ['success','Achieved'];
     return ['not-yet','Open'];
+  }
+
+  const IRAN_PUBLIC_OBJECTIVE_OVERRIDES = [
+    {
+      match: /war damages|reparations/i,
+      goal: 'War reparations',
+      status: 'ABANDONED',
+      family: 'failure',
+      label: 'Abandoned',
+      why: 'Iran demanded compensation for wartime damage, but no reparations payment was obtained. Later Iranian settlement terms kept other demands while reparations disappeared. The separate $300 billion June reconstruction/economic-development mechanism was conditional, was not legal reparations, and never became an operating fund.'
+    },
+    {
+      match: /frozen.*blocked.*assets|frozen.*assets/i,
+      goal: 'Recover frozen / blocked Iranian assets',
+      status: 'FAILING',
+      family: 'partial',
+      label: 'Failing',
+      why: 'Iran has not recovered broad, durable access to the assets it demanded. The June mechanism still required procedures and continuing performance and did not mature before the agreement collapsed. Iran continues to seek asset relief, but whether Washington will accept asset release as a condition of a final peace remains unresolved.'
+    },
+    {
+      match: /naval blockade/i,
+      goal: 'Compel removal of the U.S. naval blockade',
+      status: 'FAILED',
+      family: 'failure',
+      label: 'Failed',
+      why: 'Iran briefly obtained blockade relief under the June MOU, but the gain was reversed. Coercive pressure through Gulf-state pressure, attacks and regional military pressure, damage to U.S. facilities, and Hormuz/global-trade leverage did not force durable removal. The current bargaining problem is still blockade relief in exchange for restored freedom of navigation; no durable agreement has been reached.'
+    },
+    {
+      match: /withdrawal from bases|regional withdrawal/i,
+      goal: 'Force a U.S. regional withdrawal',
+      status: 'FAILED',
+      family: 'failure',
+      label: 'Failed',
+      why: 'The broad withdrawal Iran demanded did not happen. Gulf states did not expel U.S. forces under Iranian pressure; drawdowns already negotiated or scheduled before the war are not Iranian-forced retreats; and Iranian attacks damaged facilities without causing a broad U.S. regional withdrawal.'
+    },
+    {
+      match: /protection.*axis|axis allies/i,
+      goal: 'Secure protection / non-aggression for the Axis of Resistance',
+      status: 'FAILED',
+      family: 'failure',
+      label: 'Failed',
+      why: 'No durable Axis-wide protection arrangement was obtained. Lebanon and other regional states continued exercising their own sovereign authority over Iran-aligned armed groups rather than accepting an Iranian right to dictate their security policy. The later accepted record also establishes operational Iranian support to Houthi fighting, while not establishing Iranian command over every Houthi action.'
+    },
+    {
+      match: /no concessions.*nuclear|nuclear.*missiles.*defense/i,
+      goal: 'Make no concessions on nuclear, missile, defense or regional issues',
+      status: 'FAILING',
+      family: 'partial',
+      label: 'Failing',
+      why: 'Iran’s original categorical no-concessions position no longer holds intact. It has accepted negotiated or shared regional arrangements and publicly discussed negotiated inspection and nuclear arrangements that the earlier position treated categorically. Major enrichment, uranium-disposition, missile, defense and inspection terms remain unresolved, so the objective is failing rather than fully failed.'
+    }
+  ];
+  function publicObjectivePresentation(actor, goal, status, why) {
+    if (actor === 'Iran') {
+      const override=IRAN_PUBLIC_OBJECTIVE_OVERRIDES.find(item=>item.match.test(txt(goal)));
+      if (override) return { ...override, acceptedStatus: status, acceptedWhy: why };
+    }
+    const [family,label]=objectiveStatusFamily(status);
+    return { goal, status, family, label, why, acceptedStatus: status, acceptedWhy: why };
   }
 
   function overview(article, context) {
@@ -313,17 +374,18 @@
     ];
     const acceptedFor=(actor,goal)=>accepted.find(record=>record.actor===actor&&(objectiveKey(record.objective)===objectiveKey(goal)||objectiveKey(record.objective).includes(objectiveKey(goal))||objectiveKey(goal).includes(objectiveKey(record.objective))));
     const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Goals and current results');
-    add(s,'p','section-note','Status color summarizes the accepted current result only: gray is still open, amber is partial, green is achieved, and red is not achieved. The exact finding remains on every card.');
-    const legend=add(s,'div','objective-status-legend');[['not-yet','Not yet'],['partial','Partial'],['success','Success'],['failure','Failure']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
+    add(s,'p','section-note','Status color summarizes the public result: gray is open, amber is failing or partial, green is achieved, and red is failed or abandoned. The underlying accepted finding and sources remain available on every card.');
+    const legend=add(s,'div','objective-status-legend');[['not-yet','Open'],['partial','Failing / Partial'],['success','Achieved'],['failure','Failed / Abandoned']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
     const split=add(s,'div','objective-split-grid');
     ['United States','Iran'].forEach(actor=>{
       const g=add(split,'section','objective-actor-group');g.dataset.objectiveActor=actor==='United States'?'united-states':'iran';
       const heading=add(g,'h3','objective-actor-heading');heading.append(context.services.actorIdentity.create(context.documentObject,actor));
       const acceptedRows=accepted.filter(record=>record.actor===actor);
       const actorRows=acceptedRows.length?acceptedRows.map(record=>[actor,record.objective,record.status,record.assessment,record]):OBJECTIVES.filter(o=>o[0]===actor).map(row=>[...row,null]);
-      const families=actorRows.map(row=>objectiveStatusFamily(row[2])[0]);
-      const counts=Object.fromEntries(['not-yet','partial','success','failure'].map(key=>[key,families.filter(value=>value===key).length]));
-      const summary=add(g,'p','objective-actor-summary');summary.textContent=[counts.success&&`${counts.success} achieved`,counts.partial&&`${counts.partial} partial`,counts['not-yet']&&`${counts['not-yet']} open`,counts.failure&&`${counts.failure} not achieved`].filter(Boolean).join(' · ');
+      const presentations=actorRows.map(row=>publicObjectivePresentation(actor,row[1],row[2],row[3]));
+      const summaryCounts=presentations.reduce((acc,item)=>{const key=txt(item.label).toLowerCase();acc[key]=(acc[key]||0)+1;return acc;},{});
+      const summary=add(g,'p','objective-actor-summary');
+      summary.textContent=['achieved','partial','failing','open','failed','abandoned'].map(key=>summaryCounts[key]?`${summaryCounts[key]} ${key}`:'').filter(Boolean).join(' · ');
       if(actor==='Iran'){
         const walkbacks=(sourceData.iran_walkbacks||[]).slice();
         const original=walkbacks.find(item=>/ORIGINAL BENCHMARK/i.test(txt(item.type)));
@@ -351,6 +413,15 @@
           (currentSeries.said.source_ids||[]).forEach(id=>addPositionSource(item,id,currentSeries.said.date,txt(currentSeries.said.speaker)||'Iranian official position'));
           (currentPosition.source_ids||[]).forEach(id=>addPositionSource(item,id,currentPosition.date,'Speaker not named in accepted record — later Iranian public negotiating position'));
         }
+        {
+          const item=add(list,'li','objective-position-step change objective-position-reversal'); item.dataset.positionStep='june-mou-reversal';
+          add(item,'span','objective-position-marker','Position reversal');
+          const quote=add(item,'p','objective-position-copy'); add(quote,'strong','','July 18: '); quote.append(context.documentObject.createTextNode('Supreme Leader Mojtaba Khamenei said repeated U.S. breaches showed Trump’s signature on the June MOU was “worthless.”'));
+          const source=add(item,'p','objective-position-source'); add(source,'strong','','Reuters · 2026-07-18 · '); const link=add(source,'a','','Iran’s supreme leader says U.S. breaches show Trump’s signature is worthless'); link.href='https://www.reuters.com/world/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-is-worthless-2026-07-18/'; link.target='_blank'; link.rel='noopener noreferrer';
+          add(item,'p','objective-position-copy','After economic pressure intensified, Iranian officials repeatedly pressed to restore or reuse the June terms. By September, Foreign Minister Abbas Araqchi was again proposing Hormuz reopening if the United States took steps already contemplated in the June MOU.');
+          const selected=context.model.chronology.filter(event=>['G3-IRAN-HORMUZ-REOPENING-OFFER-20260922','G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925'].includes(event.event_id));
+          evidence(item,context,{source_ids:selected.flatMap(event=>event.source_ids||event.event?.source_ids||[])},'Later return-to-June-framework sources');
+        }
         if(downgrade){
           const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(downgrade.type);
           add(item,'span','objective-position-marker',txt(downgrade.type).replaceAll('_',' ').replace(/verified /i,''));
@@ -368,12 +439,16 @@
       }
       const l=add(g,'div','objective-card-list');
       actorRows.forEach(row=>{
-        const [side,goal,status,why,rowRecord]=row, [family,label]=objectiveStatusFamily(status), acceptedRecord=rowRecord||acceptedFor(side,goal);
-        const c=add(l,'article','provenance-card objective-result');c.dataset.objectiveStatus=family;c.dataset.objectiveGoal=objectiveKey(goal);
-        const top=add(c,'div','objective-card-head');add(top,'span',`objective-status objective-status-${family}`,label);add(top,'span','objective-finding-detail',txt(status).replaceAll('_',' '));
-        add(c,'h4','',goal);
+        const [side,goal,status,why,rowRecord]=row, acceptedRecord=rowRecord||acceptedFor(side,goal);
+        const presentation=publicObjectivePresentation(side,goal,status,why), family=presentation.family, label=presentation.label;
+        const c=add(l,'article','provenance-card objective-result');c.dataset.objectiveStatus=family;c.dataset.objectiveGoal=objectiveKey(goal);c.dataset.objectivePublicState=objectiveKey(presentation.status);
+        const top=add(c,'div','objective-card-head');add(top,'span',`objective-status objective-status-${family}`,label);add(top,'span','objective-finding-detail',txt(presentation.status).replaceAll('_',' '));
+        add(c,'h4','',presentation.goal);
         if(acceptedRecord&&acceptedRecord.origin){const origin=add(c,'p','objective-origin');add(origin,'strong','','Originally stated as: ');origin.append(context.documentObject.createTextNode?context.documentObject.createTextNode(txt(acceptedRecord.origin)):node(context.documentObject,'span','',txt(acceptedRecord.origin)));}
-        add(c,'strong','','Why / what changed');add(c,'p','',why);
+        add(c,'strong','','Why / what changed');add(c,'p','',presentation.why);
+        if(actor==='Iran'&&presentation.acceptedStatus&&txt(presentation.acceptedStatus)!==txt(presentation.status)){
+          const accepted=add(c,'p','objective-accepted-note');add(accepted,'strong','','Accepted evidence state: ');accepted.append(context.documentObject.createTextNode(txt(presentation.acceptedStatus).replaceAll('_',' ')));
+        }
         if(acceptedRecord) evidence(c,context,acceptedRecord,'Objective record & sources',sourceData.sources||{});
       });
     });
