@@ -3591,7 +3591,7 @@ function enhanceEconomyVisual(article, context) {
     const item = append(seriesKey, 'span', 'economic-series-key-item');
     const swatch = append(item, 'span', 'economic-series-swatch', ''); swatch.style.setProperty('--economic-series-color', seriesColors[index]); swatch.setAttribute('aria-hidden', 'true');
     append(item, 'strong', '', row.country);
-    const delta=Number(row.delta); const deltaText=(delta > 0 ? '+' : '') + delta.toFixed(1) + ' pp';
+    const rawDelta=Number(row.delta); const delta=Number.isFinite(rawDelta) ? rawDelta : Number(row.current) - Number(row.prewar); const deltaText=(delta > 0 ? '+' : '') + delta.toFixed(1) + ' pp';
     append(item, 'span', 'economic-series-key-value', Number(row.prewar).toFixed(1) + '% → ' + Number(row.current).toFixed(1) + '% · ' + deltaText);
   });
   append(section, 'p', 'economic-scroll-cue', 'On smaller screens, scroll horizontally to follow all 12 months. The economy key stays visible above the chart.');
@@ -3654,7 +3654,7 @@ function enhanceEconomyVisual(article, context) {
     const startLabel=make('text', { x: 10, y: startY + 5, class: row.country === 'Iran' ? 'economic-start-label iran' : 'economic-start-label', style: 'fill:' + seriesColors[index] });
     startLabel.textContent = row.country + ' · ' + Number(row.prewar).toFixed(1) + '%';
     make('line', { x1: end.x + 7, y1: end.y, x2: 930, y2: endY, class: 'economic-label-leader', style: seriesStyle });
-    const delta=Number(row.delta); const deltaText=(delta > 0 ? '+' : '') + delta.toFixed(1) + ' pp';
+    const rawDelta=Number(row.delta); const delta=Number.isFinite(rawDelta) ? rawDelta : Number(row.current) - Number(row.prewar); const deltaText=(delta > 0 ? '+' : '') + delta.toFixed(1) + ' pp';
     const endLabel=make('text', { x: 940, y: endY + 5, class: row.country === 'Iran' ? 'economic-end-label iran' : 'economic-end-label', style: 'fill:' + seriesColors[index] });
     endLabel.textContent = row.country + ' · ' + Number(row.current).toFixed(1) + '% · ' + deltaText;
   });
