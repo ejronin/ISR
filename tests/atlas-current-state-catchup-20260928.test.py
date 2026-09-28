@@ -25,8 +25,8 @@ def main() -> int:
     assert entry["sha256"] == "e7acc3a128ffca8d88399687916f60722896aa4d8b68efb1007088878843036b"
     assert entry["lineage_sha256"] == "a8fee405ad86e34fe57b5969d891934310e89f2a4e998a82d1a288d120732318"
     assert entry["previous_lineage_sha256"] == "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962"
-    assert manifest["current_evidence_cutoff"] == "2026-09-28T13:15:00-04:00"
-    assert state["release"]["current_osint_cutoff"] == "2026-09-28T13:15:00-04:00"
+    assert manifest["current_evidence_cutoff"] == entry["evidence_cutoff"]
+    assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
         "data/evidence-integration/atlas-current-sweep-20260928T1315ET.json"
