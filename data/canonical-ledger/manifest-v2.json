@@ -252,11 +252,22 @@
       "previous_lineage_sha256": "de03d86878d5c1cb76a229ebc3ec38efd32fc2854660923364b887ccb698468c",
       "sequence": 23,
       "sha256": "4f4e6bc4aad2d633c4ef65535af7435bc6ed12889c83b94c908e710ed3c5ea41"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-28T13:15:00-04:00",
+      "known_at": "2026-09-28T13:17:00-04:00",
+      "lineage_sha256": "2e90fe0d09cec387f92102769bb6cabb1a8248f5e6c728f8c0bd86f6dda26add",
+      "packet_id": "UPD-20260928-ATLAS-CURRENT-CATCHUP",
+      "path": "data/canonical-updates/UPD-20260928-ATLAS-CURRENT-CATCHUP.json",
+      "previous_lineage_sha256": "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962",
+      "sequence": 24,
+      "sha256": "23a92427cc446887dff96cbb5e9a02bf18eaf2c33a13d4ee3c8eb0b76b48d357"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-09-27T00:00:00-04:00",
+  "current_evidence_cutoff": "2026-09-28T13:15:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",

@@ -26,8 +26,9 @@ def main() -> int:
     assert entry["sha256"] == "4f4e6bc4aad2d633c4ef65535af7435bc6ed12889c83b94c908e710ed3c5ea41"
     assert entry["lineage_sha256"] == "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962"
     assert entry["previous_lineage_sha256"] == "de03d86878d5c1cb76a229ebc3ec38efd32fc2854660923364b887ccb698468c"
-    assert manifest["current_evidence_cutoff"] == entry["evidence_cutoff"]
+    assert manifest["current_evidence_cutoff"] == manifest["accepted_updates"][-1]["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
+    assert entry["evidence_cutoff"] <= manifest["current_evidence_cutoff"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
         "data/evidence-integration/rook-evidence-locker-sweep-20260927T0000ET.json"

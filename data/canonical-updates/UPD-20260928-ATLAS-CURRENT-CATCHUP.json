@@ -1,0 +1,126 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260928-ATLAS-CURRENT-CATCHUP",
+  "known_at": "2026-09-28T13:17:00-04:00",
+  "evidence_cutoff": "2026-09-28T13:15:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/atlas-current-sweep-20260928T1315ET.json"
+    ],
+    "collection_basis": "Direct Atlas current-state sweep of post-Sep.27-cutoff public reporting",
+    "web_of_lies": "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
+  },
+  "summary": "Advances Atlas current state through Sep. 28 13:15 ET. It records Iran's post-rejection Hormuz negotiating position, Pezeshkian's stated willingness to negotiate nuclear and other issues without treating his longstanding no-nuclear-weapons statement as a new concession, the disputed-target Taiz/Mawiya strike and attributed casualty report, and renewed Qatar-mediated U.S.-Iran shuttle diplomacy around an amended seven-day proposal. No settlement or accepted replacement agreement is inferred.",
+  "sources": [
+    {
+      "source_id": "SRC-0042073EBED2",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/27/iran-insists-on-diplomatic-solution-after-trump-rejects-peace-plan",
+      "source_role": "REUTERS_SYNDICATED_CURRENT_DIPLOMACY_AND_REGIONAL_CONFLICT_REPORT"
+    },
+    {
+      "source_id": "SRC-C370C850566F",
+      "url": "https://www.anews.com.tr/middle-east/2026/09/27/seven-people-killed-in-strike-on-market-in-yemen-houthi-run-health-ministry-says",
+      "source_role": "REUTERS_SYNDICATED_CONFLICTING_TAIZ_STRIKE_ACCOUNTS"
+    },
+    {
+      "source_id": "SRC-03EF3E9F6CD4",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/28/us-iran-set-to-hold-separate-talks-with-mediators-on-monday-or-tuesday-official-says",
+      "source_role": "REUTERS_SYNDICATED_CURRENT_MEDIATION_REPORT"
+    },
+    {
+      "source_id": "SRC-5572ACB81217",
+      "url": "https://www.axios.com/2026/09/27/trump-iran-war-hormuz-blockade-negotiations",
+      "source_role": "INDEPENDENT_REPORTING_ON_CONTINUING_QATARI_SHUTTLE_DIPLOMACY"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-IRAN-POST-REJECTION-HORMUZ-POSITION-20260927",
+      "event_date": "2026-09-27",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAN_POST_REJECTION_HORMUZ_CONDITIONS_AND_NEGOTIATION_POSITION",
+      "game_knowledge_time": "2026-09-28T13:17:00-04:00",
+      "evidence_horizon_time": "2026-09-28T13:15:00-04:00",
+      "strike_countable": false,
+      "summary": "After the U.S. president publicly rejected Iran's seven-day proposal, Foreign Minister Abbas Araqchi said Tehran had not received a formal rejection through mediators, kept reopening Hormuz contingent on Iran's stated conditions, and said a negotiated solution was the way out of the impasse. Army commander Amir Hatam separately reiterated that Iran would not accept being unable to trade while others used regional waterways.",
+      "source_ids": [
+        "SRC-0042073EBED2"
+      ]
+    },
+    {
+      "event_id": "G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927",
+      "event_date": "2026-09-27",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRANIAN_PRESIDENT_PUBLIC_WILLINGNESS_FOR_NUCLEAR_AND_OTHER_TALKS",
+      "game_knowledge_time": "2026-09-28T13:17:00-04:00",
+      "evidence_horizon_time": "2026-09-28T13:15:00-04:00",
+      "strike_countable": false,
+      "summary": "President Masoud Pezeshkian said Iran was ready for talks on its nuclear programme and other issues while rejecting what he called bullying or coercion. His statement that Iran does not seek nuclear weapons is retained as a longstanding stated position and is not independently treated by this packet as a new concession.",
+      "source_ids": [
+        "SRC-0042073EBED2"
+      ]
+    },
+    {
+      "event_id": "G3-YEMEN-TAIZ-MAWIYA-STRIKE-20260927",
+      "event_date": "2026-09-27",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "YEMEN_GOVERNMENT_STRIKE_AT_MAWIYA_JUNCTION_WITH_CONFLICTING_TARGET_AND_CASUALTY_ACCOUNTS",
+      "game_knowledge_time": "2026-09-28T13:17:00-04:00",
+      "evidence_horizon_time": "2026-09-28T13:15:00-04:00",
+      "strike_countable": false,
+      "summary": "Yemen's Houthi-run health ministry said seven people were killed and 40 injured, including children, in a strike on shops at Mawiya junction in Taiz province. Yemen's internationally recognized government said its forces targeted a Houthi military camp and vehicles at the same junction; three government military sources told Reuters the Houthis had recently established a camp near the market. The casualty total and target descriptions remain attributed rather than independently reconciled.",
+      "source_ids": [
+        "SRC-C370C850566F",
+        "SRC-0042073EBED2"
+      ]
+    },
+    {
+      "event_id": "G3-QATAR-US-IRAN-AMENDED-SEVEN-DAY-TALKS-20260928",
+      "event_date": "2026-09-28",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "QATAR_MEDIATED_US_IRAN_SHUTTLE_TALKS_ON_AMENDED_SEVEN_DAY_PROPOSAL",
+      "game_knowledge_time": "2026-09-28T13:17:00-04:00",
+      "evidence_horizon_time": "2026-09-28T13:15:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters reported that Qatari mediators were expected to hold separate talks with Iranian Foreign Minister Abbas Araqchi in New York and with the U.S. side on Monday or Tuesday, focused on an amended version of Iran's seven-day proposal. Iran's semi-official ISNA said Araqchi would meet mediators to examine the latest proposals and views. Continued shuttle diplomacy is established; an agreement is not.",
+      "source_ids": [
+        "SRC-03EF3E9F6CD4",
+        "SRC-5572ACB81217"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "MEDIATED_ENGAGEMENT_CONFIRMED; INDIRECT_FORMAT_SUPPORTED_BY_LATEST_REUTERS_RECONSTRUCTION; COMPETING_PUBLIC_CHARACTERIZATION_PRESERVED; PARTIES_REPORTED_FAR_APART_AS_OF_SEP24; DIPLOMACY_CONTINUED; PHASED_HORMUZ_BLOCKADE_FRAMEWORK_REPORTED; IRAN_SEVEN_DAY_PROPOSAL_PUBLICLY_STATED; WSJ_REPORTED_US_REJECTION_PRESERVED; DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26; POST_REJECTION_REGIONAL_POSITIONING_ACTIVE; SAUDI_PREWAR_NO_FEE_BASELINE_STATED; OMAN_MEDIATION_CONTINUES; RUSSIA_OFFERS_GULF_SECURITY_ARCHITECTURE_SUPPORT; IRAN_POST_REJECTION_HORMUZ_CONDITIONS_REAFFIRMED_SEP27; IRAN_OPEN_TO_NUCLEAR_AND_OTHER_TALKS_SEP27; QATAR_MEDIATION_CONTINUES_AFTER_REJECTION; AMENDED_SEVEN_DAY_PROPOSAL_IN_SHUTTLE_DISCUSSION_SEP28; NO_AGREEMENT; NO_ACCEPTED_SETTLEMENT; NO_COMMON_REGIONAL_FRAMEWORK_ESTABLISHED",
+        "observed_state": "After Trump's public rejection of Iran's original seven-day proposal, Araqchi said the rejection had not been formally relayed through mediators and kept Hormuz reopening conditional on Iran's stated terms. Trump's rejection does not establish that all diplomatic channels ended. Pezeshkian publicly said Iran was ready for nuclear and other talks while rejecting coercion. By Sep. 28, Reuters reported Qatari mediators were preparing separate contacts with Iran and the U.S. around an amended seven-day proposal. These contacts establish continuing mediated diplomacy and movement in the proposal, but no replacement U.S.-Iran agreement, settlement, or accepted replacement framework is established.",
+        "knowledge_time": "2026-09-28T13:17:00-04:00",
+        "source_ids": [
+          "SRC-F998CB101972",
+          "SRC-147F3EB0E6BC",
+          "SRC-25BB1B596B72",
+          "SRC-6D4B41984CFD",
+          "SRC-3C3CB8B494AA",
+          "SRC-B63B1CFF1B21",
+          "SRC-F98CA0A64F09",
+          "SRC-BE3466904600",
+          "SRC-E48C2BF4BA86",
+          "SRC-5EB57BE7099F",
+          "SRC-49ED905D994D",
+          "SRC-18A822A93DFC",
+          "SRC-C7A82D89ACEA",
+          "SRC-F917DE0C3BC3",
+          "SRC-A5BA6AAB7890",
+          "SRC-0042073EBED2",
+          "SRC-03EF3E9F6CD4",
+          "SRC-5572ACB81217"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
