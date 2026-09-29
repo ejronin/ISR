@@ -111,7 +111,29 @@
       "status": "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN",
       "existing_review_id": "VALENTI-NONINCIDENT-HOUTHI-MECCA-DRONE-CLAIM-202609",
       "note": "Existing WOL review already resolved this title as a non-incident. Treat the recovered direct watch ID as provenance maintenance only; do not reopen the semantic finding absent materially new body evidence."
+    },
+    {
+      "referral_id": "OUTCOME-HORMUZ-LEVERAGE-REVIEW-20260929",
+      "target": "EVIDENCE_OUTCOME_ADJUDICATION",
+      "subject": "Partial Hormuz export recovery plus resumed Yanbu loadings may change the accepted current assessment of blockade leverage and export-denial effects",
+      "status": "REVIEW_REQUIRED",
+      "note": "Review only objective/current-position records whose accepted rationale depends on actual shipping or economic denial. Do not change objective status from this handoff alone."
+    },
+    {
+      "referral_id": "PUBLIC-SEP29-TIMELINE-EVIDENCE-PROJECTION",
+      "target": "PUBLIC_PRODUCT_AND_READER_EXPERIENCE",
+      "subject": "Sep.29 midnight and noon canonical events must render in the public timeline and evidence chain",
+      "status": "VERIFY_AFTER_CANONICAL_REGISTRATION",
+      "note": "Consume canonical records only. No new public factual inference or wording change is authorized here."
+    },
+    {
+      "referral_id": "WOL-LEVINS-ZUQAR-IRAN-COORDINATION-20260929",
+      "target": "CLAIMS_FORENSICS_THEN_WOL_SOURCE_BEHAVIOR_REVIEW",
+      "subject": "Ethan Levins carried a Zuqar Island Houthi-operation claim and added that Iran was likely coordinating the attacks to control shipping and gain leverage",
+      "source_url": "https://t.me/s/ethanlevins",
+      "status": "NEW_SOURCE_EVIDENCE_REOPEN_REVIEW",
+      "note": "Preserve the 'likely' hedge. Separate the reported Houthi operation from Levins' Iran-coordination causal inference and source-order/amplification question. No adverse WOL score or incident increment is authorized until claim-level review."
     }
   ],
-  "web_of_lies": "SPECIALIST_REVIEW_REQUIRED_FOR_NEW_VALENTI_AND_LEVINS_SOURCE_EVIDENCE; NO_COUNTS_CHANGED_BY_THIS_HANDOFF"
+  "web_of_lies": "SPECIALIST_REVIEW_REQUIRED_FOR_NEW_VALENTI_AND_LEVINS_SOURCE_EVIDENCE; LEVINS ZUQAR/IRAN-COORDINATION MATERIAL ADDED; NO_COUNTS_CHANGED_BY_THIS_HANDOFF"
 }
