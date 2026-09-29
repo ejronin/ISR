@@ -34,7 +34,7 @@ def main() -> int:
     assert e26["sha256"] == "3460fd08d21f07e79ec2ea3ddbd5af241083421ba74deccefbe2e11a5ba7f924"
     assert e26["lineage_sha256"] == "619172d77f0e8e469207da2d0f70687364ded940b9262c3e4bbb209e37b10383"
     assert e26["previous_lineage_sha256"] == e25["lineage_sha256"]
-    assert manifest["current_evidence_cutoff"] == "2026-09-29T12:00:00-04:00"
+    assert manifest["current_evidence_cutoff"] == e26["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     assert sweep0["scope"]["window_start"] == "2026-09-28T13:15:00-04:00"
