@@ -411,11 +411,11 @@ nonfailures = {
 }
 assert nonfailures["VALENTI-HISTORY-NONFAILURE-VIETNAM-EMBEDDED-20260711"]["disposition"].startswith("NOT_QUALIFIED")
 assert nonfailures["VALENTI-HISTORY-NONFAILURE-SPUTNIK-STALIN-20250919"]["disposition"].startswith("NOT_QUALIFIED")
-assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
+assert valenti_lead["review_completion"]["status"] == "PRIOR_CHECKPOINT_COMPLETE_TARGETED_REOPEN_ACTIVE"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
 assert valenti_lead["review_completion"]["unresolved_excluded_count"] == 7
-assert valenti_lead["review_completion"]["next_action"] == "TARGETED_HISTORIAN_SOURCE_RECOVERY_ONLY"
+assert valenti_lead["review_completion"]["next_action"] == "CAPTURE_POSTCHECKPOINT_YOUTUBE_BODIES_AND_ATOMIZE_CLAIMS_BEFORE_WOL_SCORING"
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
 assert len(news_grift_basis) == 18
