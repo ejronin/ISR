@@ -77,7 +77,7 @@ def main() -> int:
 
     shipping = rows_by_id(state["entities"]["shipping"])["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]
     assert shipping["status"] == "PARTIAL_RECOVERY_BELOW_PREWAR_VOLUME"
-    economy = rows_by_id(state["entities"]["economic"])["ECON-IRAN-CIVILIAN-STRAIN-20260929"]["record"]
+    economy = rows_by_id(state["entities"]["economics"])["ECON-IRAN-CIVILIAN-STRAIN-20260929"]["record"]
     assert economy["status"] == "SEVERE_WARTIME_HOUSEHOLD_AND_PRIVATE_SECTOR_STRAIN"
 
     assert midnight["narrative_claims"] == []
