@@ -263,11 +263,33 @@
       "previous_lineage_sha256": "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962",
       "sequence": 24,
       "sha256": "23a92427cc446887dff96cbb5e9a02bf18eaf2c33a13d4ee3c8eb0b76b48d357"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-29T00:00:00-04:00",
+      "known_at": "2026-09-29T15:42:00-04:00",
+      "lineage_sha256": "d1c05e84ba65baa1d7a8d7a98793a0f9d3736e27ddefe8590a9a432ea39be1ba",
+      "packet_id": "UPD-20260929-ROOK-MIDNIGHT-CATCHUP",
+      "path": "data/canonical-updates/UPD-20260929-ROOK-MIDNIGHT-CATCHUP.json",
+      "previous_lineage_sha256": "2e90fe0d09cec387f92102769bb6cabb1a8248f5e6c728f8c0bd86f6dda26add",
+      "sequence": 25,
+      "sha256": "83624e77535498d880a09f847f0fe857697a9e237788673e2f61d4d2599ab9f6"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-29T12:00:00-04:00",
+      "known_at": "2026-09-29T15:42:01-04:00",
+      "lineage_sha256": "619172d77f0e8e469207da2d0f70687364ded940b9262c3e4bbb209e37b10383",
+      "packet_id": "UPD-20260929-ROOK-NOON-CATCHUP",
+      "path": "data/canonical-updates/UPD-20260929-ROOK-NOON-CATCHUP.json",
+      "previous_lineage_sha256": "d1c05e84ba65baa1d7a8d7a98793a0f9d3736e27ddefe8590a9a432ea39be1ba",
+      "sequence": 26,
+      "sha256": "3460fd08d21f07e79ec2ea3ddbd5af241083421ba74deccefbe2e11a5ba7f924"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-09-28T13:15:00-04:00",
+  "current_evidence_cutoff": "2026-09-29T12:00:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
