@@ -1,0 +1,87 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-28T13:15:00-04:00",
+    "window_end": "2026-09-29T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-29T15:42:00-04:00",
+    "evidence_horizon_time": "2026-09-29T00:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/atlas-current-sweep-20260928T1315ET.json",
+    "boundary_rule": "Recovery sweep after the routine scheduler failed to persist this window. Only evidence public after the prior 13:15 ET canonical cutoff and by midnight ET is admitted."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "recovery_context": {
+    "reason": "No scheduled midnight artifact was present on main; reconstructed under the current ROOK contract.",
+    "prior_canonical_cutoff": "2026-09-28T13:15:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-MEDIATOR-CONTACTS-CONFIRMED-20260928",
+      "event_type": "US_CONFIRMATION_OF_POST_REJECTION_MEDIATOR_CONTACTS",
+      "occurrence_time": "2026-09-28",
+      "public_available_time": "2026-09-28T15:09:00-04:00",
+      "collection_time": "2026-09-29T15:42:00-04:00",
+      "actor": "United States / President Donald Trump",
+      "summary": "Trump said U.S. officials spoke with mediators on Monday as part of efforts to end the war. This moves the Sep. 28 shuttle contacts from expected to confirmed without establishing direct U.S.-Iran talks or an agreement.",
+      "confidence": "HIGH_FOR_DIRECT_PUBLIC_STATEMENT; NO_AGREEMENT_INFERRED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/trump-says-us-will-win-iran-war-very-soon-2026-09-28/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-UAE-ISRAEL-IRAN-MEETING-CONFIRMED-20260928",
+      "event_type": "UAE_ISRAEL_LEADERSHIP_MEETING_WITH_IRAN_FOCUS",
+      "occurrence_time": "2026-09-27",
+      "public_available_time": "2026-09-28T17:03:00-04:00",
+      "collection_time": "2026-09-29T15:42:00-04:00",
+      "actor": "United Arab Emirates / Israel / Sheikh Mohamed bin Zayed / Benjamin Netanyahu",
+      "summary": "WAM gave the first UAE confirmation of Netanyahu's Sep. 27 visit. Netanyahu's office cited bilateral relations and regional challenges; three senior Israeli officials told Reuters the six-hour meeting focused on Iran.",
+      "confidence": "HIGH_FOR_VISIT_CONFIRMATION; IRAN_FOCUS_ATTRIBUTED_TO_ISRAELI_OFFICIALS",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/uae-president-discussed-bilateral-relations-with-israels-netanyahu-state-news-2026-09-28/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-US-IRAN-MEDIATOR-CONTACTS-ACTIVE-20260928-PM",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_US_CONFIRMATION_OF_MEDIATOR_CONTACT_AFTER_PRIOR_EXPECTED_TALKS",
+      "summary": "Trump confirmed U.S. officials had spoken with mediators. This confirms active shuttle contacts after his rejection but does not establish direct U.S.-Iran negotiations or accepted terms.",
+      "status": "MEDIATED_CONTACTS_ACTIVE; NO_AGREEMENT",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/trump-says-us-will-win-iran-war-very-soon-2026-09-28/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "source_discovery_additions": [],
+  "prior_drawer_reconciliation": [
+    "The earlier Sep. 28 Reuters report that mediators were expected to meet both sides was already inside the prior 13:15 ET cutoff and remains in the accepted Sep. 28 packet. This recovery records only the later confirmation that contacts actually occurred.",
+    "Reports that the U.S. was willing to offer sanctions relief for nuclear steps were already circulating before this recovery window closed, but the later presidential denial became public after midnight; the attribution conflict is preserved in the noon sweep rather than backdated."
+  ],
+  "unresolved_questions": [
+    "What specific amended terms did mediators transmit after Sep. 28 contacts?",
+    "Did the UAE-Israel meeting produce any concrete Iran-related security or diplomatic commitment beyond consultation?"
+  ],
+  "coverage": {
+    "material_results": [
+      "U.S. mediator contacts confirmed",
+      "UAE first public confirmation of Netanyahu visit and attributed Iran focus"
+    ],
+    "limitations": [
+      "No proprietary diplomatic channel access.",
+      "No inference from attributed meeting focus to an operational commitment."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RECOVERY_SWEEP",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}

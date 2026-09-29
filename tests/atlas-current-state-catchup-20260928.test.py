@@ -25,7 +25,7 @@ def main() -> int:
     assert entry["sha256"] == "23a92427cc446887dff96cbb5e9a02bf18eaf2c33a13d4ee3c8eb0b76b48d357"
     assert entry["lineage_sha256"] == "2e90fe0d09cec387f92102769bb6cabb1a8248f5e6c728f8c0bd86f6dda26add"
     assert entry["previous_lineage_sha256"] == "3f80fe46b6a9e5be5916a986141c915ba495ee9512a7cf377a47403d437c2962"
-    assert manifest["current_evidence_cutoff"] == entry["evidence_cutoff"]
+    assert manifest["current_evidence_cutoff"] >= entry["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [

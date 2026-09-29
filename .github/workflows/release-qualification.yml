@@ -122,6 +122,7 @@ jobs:
           python tests/rook-current-state-catchup-20260926.test.py
           python tests/rook-current-state-catchup-20260927.test.py
           python tests/atlas-current-state-catchup-20260928.test.py
+          python tests/atlas-current-state-catchup-20260929.test.py
           python tests/current-release-state-orchestration.test.py
           python scripts/validate_gate3_final.py
           python scripts/validate_lie_ledger_v2.py
