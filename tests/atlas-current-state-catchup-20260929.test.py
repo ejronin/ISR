@@ -82,7 +82,7 @@ def main() -> int:
     refs = {row["referral_id"]: row for row in handoff["referrals"]}
     assert refs["WOL-LEVINS-NYC-TALKS-NOTHING-20260928"]["status"] == "NEW_SOURCE_EVIDENCE_REOPEN_REVIEW"
     assert refs["WOL-VALENTI-DOOMSDAY-FALSE-FLAG-20260928"]["status"] == "NEW_CANDIDATE_BODY_REVIEW_REQUIRED"
-    assert refs["WOL-VALENTI-CHINA-NUCLEAR-WAR-DEDUPE-20260922"]["status"] == "LIKELY_ALREADY_REPRESENTED_NO_NEW_COUNT"
+    assert refs["WOL-VALENTI-PILOT-RIDGELINE-202609"]["status"] == "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN"\n    assert refs["WOL-VALENTI-PILOT-RIDGELINE-202609"]["existing_review_id"] == "VALENTI-NONINCIDENT-PILOT-7000FT-202609"\n    assert refs["WOL-VALENTI-HOUTHI-MECCA-RECEIPT-UPGRADE-202609"]["status"] == "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN"\n    assert refs["WOL-VALENTI-CHINA-NUCLEAR-WAR-DEDUPE-20260922"]["status"] == "EXISTING_INCIDENT_DIRECT_RECEIPT_UPGRADE_AVAILABLE"
     assert handoff["web_of_lies"].endswith("NO_COUNTS_CHANGED_BY_THIS_HANDOFF")
 
     print("atlas-current-state-catchup-20260929: PASS")
