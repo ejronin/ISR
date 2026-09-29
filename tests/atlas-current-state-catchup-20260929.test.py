@@ -31,8 +31,8 @@ def main() -> int:
     assert e25["lineage_sha256"] == "d1c05e84ba65baa1d7a8d7a98793a0f9d3736e27ddefe8590a9a432ea39be1ba"
     assert e26["sequence"] == 26
     assert e26["packet_id"] == noon["packet_id"]
-    assert e26["sha256"] == "3460fd08d21f07e79ec2ea3ddbd5af241083421ba74deccefbe2e11a5ba7f924"
-    assert e26["lineage_sha256"] == "619172d77f0e8e469207da2d0f70687364ded940b9262c3e4bbb209e37b10383"
+    assert e26["sha256"] == "085341b72bdcb2ed422e43d0ba96028648e02aa4a95a6367e315bc779d482ec3"
+    assert e26["lineage_sha256"] == "2bacdf2a89338f6fff1a5c9efb04400c3225f38e6fd0877510a473e21d48975d"
     assert e26["previous_lineage_sha256"] == e25["lineage_sha256"]
     assert manifest["current_evidence_cutoff"] == e26["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
@@ -56,6 +56,9 @@ def main() -> int:
         "G3-IRGC-US-VOTER-OPEN-LETTER-20260929",
         "G3-HORMUZ-KPLER-OIL-EXPORT-RECOVERY-20260929",
         "G3-IRAN-CIVILIAN-ECONOMIC-STRAIN-20260929",
+        "G3-IRAN-QATAR-NEW-IDEAS-HORMUZ-20260929",
+        "G3-SAUDI-YANBU-LOADINGS-RESUME-20260929",
+        "G3-US-IRAQ-WITHDRAWAL-ENDSTATE-20260929",
     }
     assert expected <= set(events)
     for event_id in expected:
@@ -69,6 +72,8 @@ def main() -> int:
     assert "US_MEDIATOR_CONTACTS_CONFIRMED_SEP28" in diplomacy["status"]
     assert "US_PUBLIC_DENIAL_OF_REPORTED_SANCTIONS_RELIEF_OFFER_SEP29" in diplomacy["status"]
     assert "NO_AGREEMENT" in diplomacy["status"]
+    assert "QATAR_MEDIATORS_CARRY_IDEAS_FOR_IRAN_CONDITIONS_SEP29" in diplomacy["status"]
+    assert "US_ACCEPTANCE_OF_IRAN_CONDITIONS_NOT_ESTABLISHED" in diplomacy["status"]
 
     shipping = rows_by_id(state["entities"]["shipping"])["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]
     assert shipping["status"] == "PARTIAL_RECOVERY_BELOW_PREWAR_VOLUME"
@@ -81,8 +86,14 @@ def main() -> int:
     assert handoff["baseline"]["levins"]["documented_incident_count"] == 36
     refs = {row["referral_id"]: row for row in handoff["referrals"]}
     assert refs["WOL-LEVINS-NYC-TALKS-NOTHING-20260928"]["status"] == "NEW_SOURCE_EVIDENCE_REOPEN_REVIEW"
+    assert refs["WOL-LEVINS-ZUQAR-IRAN-COORDINATION-20260929"]["status"] == "NEW_SOURCE_EVIDENCE_REOPEN_REVIEW"
+    assert refs["OUTCOME-HORMUZ-LEVERAGE-REVIEW-20260929"]["status"] == "REVIEW_REQUIRED"
+    assert refs["PUBLIC-SEP29-TIMELINE-EVIDENCE-PROJECTION"]["status"] == "VERIFY_AFTER_CANONICAL_REGISTRATION"
     assert refs["WOL-VALENTI-DOOMSDAY-FALSE-FLAG-20260928"]["status"] == "NEW_CANDIDATE_BODY_REVIEW_REQUIRED"
-    assert refs["WOL-VALENTI-PILOT-RIDGELINE-202609"]["status"] == "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN"\n    assert refs["WOL-VALENTI-PILOT-RIDGELINE-202609"]["existing_review_id"] == "VALENTI-NONINCIDENT-PILOT-7000FT-202609"\n    assert refs["WOL-VALENTI-HOUTHI-MECCA-RECEIPT-UPGRADE-202609"]["status"] == "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN"\n    assert refs["WOL-VALENTI-CHINA-NUCLEAR-WAR-DEDUPE-20260922"]["status"] == "EXISTING_INCIDENT_DIRECT_RECEIPT_UPGRADE_AVAILABLE"
+    assert refs["WOL-VALENTI-PILOT-RIDGELINE-202609"]["status"] == "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN"
+    assert refs["WOL-VALENTI-PILOT-RIDGELINE-202609"]["existing_review_id"] == "VALENTI-NONINCIDENT-PILOT-7000FT-202609"
+    assert refs["WOL-VALENTI-HOUTHI-MECCA-RECEIPT-UPGRADE-202609"]["status"] == "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN"
+    assert refs["WOL-VALENTI-CHINA-NUCLEAR-WAR-DEDUPE-20260922"]["status"] == "EXISTING_INCIDENT_DIRECT_RECEIPT_UPGRADE_AVAILABLE"
     assert handoff["web_of_lies"].endswith("NO_COUNTS_CHANGED_BY_THIS_HANDOFF")
 
     print("atlas-current-state-catchup-20260929: PASS")
