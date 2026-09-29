@@ -1,0 +1,54 @@
+{
+  "artifact_role": "ATLAS_DOWNSTREAM_SPECIALIST_REVIEW_ROUTING",
+  "authority": "EVIDENCE_INTEGRATION_ROUTING_ONLY",
+  "as_of": "2026-09-29T16:28:31-04:00",
+  "basis": [
+    "data/canonical-updates/UPD-20260929-0000ET-CATCHUP.json",
+    "data/canonical-updates/UPD-20260929-1200ET-CATCHUP.json"
+  ],
+  "referrals": [
+    {
+      "referral_id": "CF-REF-TRUMP-OFFER-DENIAL-20260928",
+      "target_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "reason": "Reuters preserves a direct Trump denial against anonymous-official reports that relief terms were available. Determine proposition/source treatment without inferring deception from contradiction alone.",
+      "wol_effect": "NONE_UNTIL_CLAIM_ADJUDICATION"
+    },
+    {
+      "referral_id": "CF-REF-IRGC-US-VOTER-LETTER-20260929",
+      "target_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "reason": "Atomize the IRGC letter's testable nuclear-intent and Hormuz-effectiveness assertions. Reuters directly juxtaposes the Hormuz rhetoric with Kpler estimates near 10 million bpd, but truth/misleadingness/knowledge remain Claims Forensics questions.",
+      "wol_effect": "REVIEW_AFTER_ATOMIC_FINDINGS"
+    },
+    {
+      "referral_id": "OBJ-REF-HORMUZ-LEVERAGE-20260929",
+      "target_lane": "EVIDENCE_OUTCOME_ADJUDICATION",
+      "reason": "Kpler/LSEG shipping recovery plus resumed Yanbu loadings materially update the operating evidence around blockade leverage and export-denial effects. Review only the objective/current-position records whose accepted benchmark depends on actual shipping/economic pressure.",
+      "wol_effect": "NONE"
+    },
+    {
+      "referral_id": "PUBLIC-REF-SEP29-TIMELINE-EVIDENCE",
+      "target_lane": "PUBLIC_PRODUCT_AND_READER_EXPERIENCE",
+      "reason": "Verify the two accepted catch-up packets project automatically into the public timeline and evidence drawers. No factual rewrite is authorized; consume canonical state.",
+      "wol_effect": "NONE"
+    },
+    {
+      "referral_id": "WOL-REF-ETHAN-ZUQAR-IRAN-COORDINATION-20260929",
+      "target_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION_THEN_WEB_OF_LIES",
+      "source": "https://t.me/s/ethanlevins",
+      "reason": "New source evidence after Levins' prior review completion: his channel carried the claim that the Houthis launched an operation for Zuqar Island and added that Iran was likely coordinating it to control shipping and gain leverage. The coordination statement is hedged and requires factual/causal review before any adverse WOL scoring.",
+      "current_effect": "REOPEN_REVIEW_ONLY_NO_INCIDENT_COUNT_CHANGE"
+    },
+    {
+      "referral_id": "WOL-REF-VALENTI-CURRENT-SWEEP-20260929",
+      "target_lane": "WEB_OF_LIES",
+      "source": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+      "reason": "No newly indexed Iran-war item requires count mutation. The 7,000-foot pilot and Houthi-Mecca items are already resolved nonincidents, and the China nuclear-war item is already in the promoted corpus. The Sep.25 'terrorist state' title is evaluative/attributed title material and does not by itself create a new factual WOL incident.",
+      "current_effect": "NO_CHANGE"
+    }
+  ],
+  "restrictions": [
+    "Do not change Valenti's 24 promoted-incident count from this routing artifact.",
+    "Do not change Levins' incident or award counts until the new source material is atomized and adjudicated.",
+    "Do not convert actor rhetoric into canonical fact merely because it appears in a current-state event."
+  ]
+}
