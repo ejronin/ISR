@@ -1,0 +1,160 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-29T00:00:00-04:00",
+    "window_end": "2026-09-29T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-29T15:42:01-04:00",
+    "evidence_horizon_time": "2026-09-29T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260929T0000ET.json",
+    "boundary_rule": "Recovery sweep after the routine noon scheduler did not persist an artifact. Only evidence public by 12:00 ET is admitted."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "recovery_context": {
+    "reason": "No scheduled noon artifact was present on main; reconstructed under the current ROOK contract.",
+    "prior_canonical_cutoff": "2026-09-29T00:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-IRAN-OFFER-REPORT-DENIAL-20260929",
+      "event_type": "PUBLIC_DISPUTE_OVER_US_SANCTIONS_RELIEF_OFFER_TERMS",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T02:45:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "United States / Iran / President Donald Trump / mediators",
+      "summary": "Trump denied reports that he was willing to offer sanctions relief and release frozen Iranian funds for concrete nuclear steps. Reuters preserved contrary Axios/CNN reporting based on unidentified U.S. officials. The public record is conflicting and is not resolved in the evidence lane.",
+      "confidence": "HIGH_FOR_PUBLIC_DENIAL_AND_EXISTENCE_OF_CONTRARY_REPORTING; UNDERLYING_OFFER_TERMS_UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/trump-denies-offering-iran-sanctions-relief-tehran-says-ready-talks-2026-09-29/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRGC-US-VOTER-OPEN-LETTER-20260929",
+      "event_type": "IRGC_PUBLIC_INFORMATION_CAMPAIGN_TARGETING_US_VOTERS",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T05:30:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "Iran / IRGC",
+      "summary": "The IRGC issued a 25-page open letter to the American public urging voters to reject Trump administration policies and advancing claims about Iran's nuclear intent and Hormuz leverage.",
+      "confidence": "HIGH_FOR_PUBLICATION_AND_ATTRIBUTED_CLAIMS; CLAIM_TRUTH_NOT_ADJUDICATED_HERE",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-HORMUZ-KPLER-OIL-EXPORT-RECOVERY-20260929",
+      "event_type": "KPLER_SEPTEMBER_HORMUZ_OIL_EXPORT_RECOVERY_ESTIMATE",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T05:30:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "Commercial shipping / Kpler data reported by Reuters",
+      "summary": "Kpler data reported by Reuters put September oil exports through Hormuz on pace for almost 10 million barrels per day, about half the pre-war volume.",
+      "confidence": "HIGH_FOR_REUTERS_REPORT_OF_KPLER_ESTIMATE; PARTIAL_RECOVERY_NOT_FULL_NORMALIZATION",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-CIVILIAN-ECONOMIC-STRAIN-20260929",
+      "event_type": "IRAN_WARTIME_CIVILIAN_ECONOMIC_STRAIN_SNAPSHOT",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T06:15:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "Iran / civilian economy",
+      "summary": "Reuters interviews and source reporting described affordability pressure on medicine, rent and basic goods, heavy private-sector job losses and increased black-market dependence. Sources said economic strain partly spurred the latest diplomatic push.",
+      "confidence": "HIGH_FOR_REUTERS_INTERVIEW_AND_MULTI_SOURCE_REPORTING; BARGAINING_EFFECT_UNCERTAIN",
+      "sources": [
+        "https://www.reuters.com/business/energy/iranians-stagger-under-soaring-costs-seven-months-war-2026-09-29/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-US-IRAN-DIPLOMACY-OFFER-DISPUTE-20260929-AM",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_CONFLICTING_PUBLIC_CHARACTERIZATION_OF_US_OFFER_TERMS_WITH_CONTINUING_MEDIATION",
+      "summary": "Trump denied reported sanctions-relief/frozen-funds terms while Reuters preserved contrary anonymous-official reporting. Pezeshkian reiterated willingness to negotiate, and separate mediator contacts continued.",
+      "status": "MEDIATED_CONTACTS_CONTINUE; OFFER_TERMS_PUBLICLY_DISPUTED; NO_AGREEMENT",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/trump-denies-offering-iran-sanctions-relief-tehran-says-ready-talks-2026-09-29/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "referral_id": "CLAIM-REF-IRGC-NUCLEAR-INTENT-20260929",
+      "claim": "The U.S. knows Iran is not seeking nuclear weapons / Iran's nuclear program is peaceful.",
+      "source_actor": "IRGC / Hossein Mohebbi",
+      "source": [
+        "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/"
+      ],
+      "disposition": "ROUTE_TO_INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "evidence_lane_action": "PRESERVE_AS_ATTRIBUTED_CLAIM_ONLY"
+    },
+    {
+      "referral_id": "CLAIM-REF-IRGC-HORMUZ-LEVERAGE-20260929",
+      "claim": "U.S.-protected passage is only a tiny high-risk trickle and does not show the Strait is open.",
+      "source_actor": "IRGC / Hossein Mohebbi",
+      "source": [
+        "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/"
+      ],
+      "competing_evidence": "Kpler data reported by Reuters put September oil exports through Hormuz near 10 million bpd, about half pre-war volume.",
+      "disposition": "ROUTE_TO_INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "evidence_lane_action": "PRESERVE_CLAIM_AND_COMMERCIAL_DATA_SEPARATELY"
+    },
+    {
+      "referral_id": "CLAIM-REF-US-SANCTIONS-OFFER-CONFLICT-20260929",
+      "claim": "The U.S. was willing to offer sanctions relief and release frozen funds for concrete Iranian nuclear steps.",
+      "source_actor": "Axios/CNN anonymous U.S. officials versus President Trump's public denial",
+      "source": [
+        "https://www.reuters.com/world/middle-east/trump-denies-offering-iran-sanctions-relief-tehran-says-ready-talks-2026-09-29/"
+      ],
+      "disposition": "ROUTE_TO_INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "evidence_lane_action": "CONFLICTING_ATTRIBUTIONS_UNRESOLVED"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "update_id": "ECON-IRAN-CIVILIAN-STRAIN-20260929",
+      "summary": "Severe household/private-sector wartime strain documented by Reuters; sources link economic pressure to renewed diplomacy without proving the eventual negotiation outcome.",
+      "sources": [
+        "https://www.reuters.com/business/energy/iranians-stagger-under-soaring-costs-seven-months-war-2026-09-29/"
+      ]
+    },
+    {
+      "update_id": "ENERGY-HORMUZ-KPLER-RECOVERY-20260929",
+      "summary": "September Hormuz oil exports estimated near 10 million bpd, roughly half pre-war volume.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [],
+  "prior_drawer_reconciliation": [],
+  "unresolved_questions": [
+    "Can the anonymous-official account of possible U.S. economic relief be independently confirmed against the president's denial?",
+    "Does the Kpler recovery continue into October and how much is escorted, rerouted, sanctioned or AIS-dark traffic?",
+    "Which IRGC open-letter assertions map cleanly to existing Lie Ledger families versus requiring new claim atoms?"
+  ],
+  "coverage": {
+    "material_results": [
+      "U.S. offer-term attribution conflict",
+      "IRGC U.S.-voter information campaign",
+      "Kpler Hormuz export recovery estimate",
+      "Iran civilian-economic strain snapshot"
+    ],
+    "limitations": [
+      "No proprietary Kpler terminal access; commercial estimate is preserved through Reuters attribution.",
+      "No truth/knowledge adjudication of IRGC or anonymous-official claims in ROOK."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RECOVERY_SWEEP",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
