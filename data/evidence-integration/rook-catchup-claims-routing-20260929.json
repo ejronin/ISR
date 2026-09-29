@@ -1,0 +1,107 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_TO_CLAIMS_FORENSICS_HANDOFF",
+  "authority": "FACTUAL_EVIDENCE_ROUTING_ONLY",
+  "as_of": "2026-09-29T15:42:02-04:00",
+  "basis": [
+    "data/evidence-integration/rook-evidence-locker-sweep-20260929T0000ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260929T1200ET.json"
+  ],
+  "rules": [
+    "Evidence Integration does not adjudicate deception, knowledge, Lie Ledger eligibility, award counts, or Web of Lies lineage.",
+    "Existing WOL and Lie Ledger findings remain frozen unless the specialist lane accepts a new source-backed claim atom.",
+    "Attributed reporting is not converted into an adverse source finding merely because a later official denial exists."
+  ],
+  "baseline": {
+    "valenti": {
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "promoted_incident_count": 24
+    },
+    "levins": {
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "documented_incident_count": 36,
+      "next_action_before_this_sweep": "REOPEN_ONLY_ON_NEW_SOURCE_EVIDENCE"
+    }
+  },
+  "referrals": [
+    {
+      "referral_id": "FORENSICS-IRGC-NUCLEAR-INTENT-20260929",
+      "target": "LIE_LEDGER_AND_WOL_CLAIM_FAMILY_REVIEW",
+      "subject": "IRGC claim that the U.S. knows Iran is not seeking nuclear weapons and that Iran's nuclear program is peaceful",
+      "source_url": "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/",
+      "status": "REVIEW_REQUIRED",
+      "note": "Atomize nuclear-intent and U.S.-knowledge propositions separately; no deception score assigned here."
+    },
+    {
+      "referral_id": "FORENSICS-IRGC-HORMUZ-LEVERAGE-20260929",
+      "target": "LIE_LEDGER_AND_WOL_CLAIM_FAMILY_REVIEW",
+      "subject": "IRGC claim minimizing protected Hormuz passage versus Kpler partial-recovery data",
+      "source_url": "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/",
+      "status": "REVIEW_REQUIRED",
+      "note": "Compare exact quantitative/rhetorical proposition against existing Hormuz-control families and commercial flow data; do not equate half-prewar oil exports with full opening."
+    },
+    {
+      "referral_id": "FORENSICS-US-OFFER-ATTRIBUTION-CONFLICT-20260929",
+      "target": "CLAIMS_FORENSICS",
+      "subject": "Anonymous-official reports of U.S. economic relief terms versus Trump's public denial",
+      "source_url": "https://www.reuters.com/world/middle-east/trump-denies-offering-iran-sanctions-relief-tehran-says-ready-talks-2026-09-29/",
+      "status": "REVIEW_REQUIRED",
+      "note": "Preserve as competing attributions unless independent evidence resolves the underlying offer terms."
+    },
+    {
+      "referral_id": "WOL-LEVINS-AXIOS-SANCTIONS-RELIEF-20260928",
+      "target": "WOL_SOURCE_BEHAVIOR_REVIEW",
+      "subject": "Ethan Levins repeated the sanctions-relief/frozen-assets report with explicit Axios attribution",
+      "source_url": "https://t.me/ethanlevins/5285",
+      "status": "NEW_SOURCE_EVIDENCE_REOPEN_REVIEW",
+      "note": "Do not score automatically. Attribution to Axios is material; compare wording against the source report and later presidential denial."
+    },
+    {
+      "referral_id": "WOL-LEVINS-NYC-TALKS-NOTHING-20260928",
+      "target": "WOL_SOURCE_BEHAVIOR_REVIEW",
+      "subject": "Ethan Levins stated that New York negotiations led to nothing and the Iranian delegation was flying home",
+      "source_url": "https://t.me/ethanlevins/5289",
+      "status": "NEW_SOURCE_EVIDENCE_REOPEN_REVIEW",
+      "note": "Separate the factual departure claim from the categorical implication that diplomacy produced nothing or ended. Current reporting preserves continuing mediator exchanges after Araghchi's departure."
+    },
+    {
+      "referral_id": "WOL-VALENTI-DOOMSDAY-FALSE-FLAG-20260928",
+      "target": "WOL_SOURCE_BEHAVIOR_AND_CLAIM_ATOM_REVIEW",
+      "subject": "Valenti Videos title: Iran prepares for a \"Doomsday War\" while Saudi Arabia stages a FALSE FLAG ATTACK on the U.K",
+      "source_url": "https://www.youtube.com/watch?v=DcmYGpfRybU",
+      "preservation_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+      "status": "NEW_CANDIDATE_BODY_REVIEW_REQUIRED",
+      "note": "The title contains a categorical false-flag assertion. Capture the spoken claim, claimed actor, target event and evidence before any WOL promotion."
+    },
+    {
+      "referral_id": "WOL-VALENTI-PILOT-RIDGELINE-202609",
+      "target": "WOL_SOURCE_BEHAVIOR_AND_CLAIM_ATOM_REVIEW",
+      "subject": "Valenti Videos title places scare quotes around the downed pilot and shootdown while questioning the 7,000-foot injured climb",
+      "source_url": "https://www.youtube.com/watch?v=9wY4LMuVnr4",
+      "preservation_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+      "status": "BODY_REVIEW_REQUIRED",
+      "competing_evidence_urls": [
+        "https://www.cbsnews.com/news/wounded-air-force-officer-evaded-capture-iran-60-minutes-transcript/",
+        "https://www.cbsnews.com/news/newly-declassified-videos-show-the-moments-downed-air-force-officers-were-rescued-in-iran/"
+      ],
+      "note": "CBS published the officer's account and declassified rescue material supporting the badly wounded 7,000-foot ridgeline account. Determine exactly what Valenti disputes before scoring."
+    },
+    {
+      "referral_id": "WOL-VALENTI-CHINA-NUCLEAR-WAR-DEDUPE-20260922",
+      "target": "WOL_DEDUPLICATION_CHECK",
+      "subject": "Valenti title: The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
+      "source_url": "https://www.youtube.com/watch?v=ZXamrgcdC78",
+      "status": "LIKELY_ALREADY_REPRESENTED_NO_NEW_COUNT",
+      "existing_event_id": "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+      "note": "Do not create a duplicate incident unless body review identifies a distinct proposition not already captured."
+    },
+    {
+      "referral_id": "WOL-VALENTI-IRAN-TERRORIST-STATE-202609",
+      "target": "WOL_SOURCE_BEHAVIOR_REVIEW",
+      "subject": "Valenti title: Iranian President says The United States of America is A TERRORIST STATE (HE'S RIGHT)",
+      "source_url": "https://www.youtube.com/watch?v=Vg0gifuqHAQ",
+      "status": "NO_AUTOMATIC_ADVERSE_FINDING",
+      "note": "The title is primarily attribution plus opinion. Review body only for distinct factual claims; do not score disagreement with the opinion itself."
+    }
+  ],
+  "web_of_lies": "SPECIALIST_REVIEW_REQUIRED_FOR_NEW_VALENTI_AND_LEVINS_SOURCE_EVIDENCE; NO_COUNTS_CHANGED_BY_THIS_HANDOFF"
+}
