@@ -2561,7 +2561,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti review is closed for the currently recoverable 2026 Iran-war corpus at 24 promoted/scored WOL incidents. Twenty-two additional reviewed publications were resolved as non-incidents/rejects. Four current-events candidates and three project-owner-recalled historian statements remain explicitly excluded from the final count because the necessary body/source attribution was not recovered. Reopen only for genuinely new source evidence or a newly recovered exact body/clip; do not restart routine channel searching.",
+      "notes": "Valenti's 24 promoted/scored Iran-war WOL incidents remain the frozen baseline from the Sep. 24 completed corpus review. New YouTube source evidence recovered on Sep. 29 reopens a targeted body/claim-review lane: the Doomsday/Saudi-U.K.-false-flag video, the Sep. 29 WW3/free-speech livestream, the Saudi/Mecca false-flag livestream, and a Cuba-invasion-imminent video outside the Iran core. No new incident is promoted from title packaging alone. Prior resolved nonincidents and historian-role findings remain unchanged.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -2661,6 +2661,54 @@
           "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
           "research_reason": "Direct watch ID recovered from the Valenti channel continuation page. The title is too vague to identify the alleged attacker, attack type, target or factual proposition. Do not score until the body/description fixes the underlying event and claim.",
           "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
+        },
+        {
+          "research_item_id": "VALENTI-BODY-DOOMSDAY-SAUDI-UK-FALSE-FLAG-202609",
+          "title": "Iran prepares for a \"Doomsday War\" while Saudi Arabia stages a FALSE FLAG ATTACK on the U.K",
+          "url": "https://www.youtube.com/watch?v=DcmYGpfRybU",
+          "publication_date": null,
+          "discovered_at": "2026-09-29T18:58:00-04:00",
+          "channel_surface_observation": "Newest main-video surface showed this item as shared 1 day ago.",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Separate the supported Araghchi 'doomsday war' quotation from the categorical claim that Saudi Arabia staged a false-flag attack on the United Kingdom. Identify the alleged incident, evidence offered, attribution chain and whether Valenti states the false-flag allegation as fact, inference, or quotation.",
+          "final_pass_status": "REOPENED_NEW_SOURCE_EVIDENCE_PENDING_BODY_REVIEW"
+        },
+        {
+          "research_item_id": "VALENTI-BODY-WW3-FREE-SPEECH-LIVESTREAM-20260929",
+          "title": "WW3 Escalates + Trump BANS Free Speech: Screaming Italian Socialist channels your rage",
+          "url": "https://www.youtube.com/watch?v=Et0yzV1yYDA",
+          "publication_date": null,
+          "discovered_at": "2026-09-29T18:58:00-04:00",
+          "channel_surface_observation": "Livestream surface showed this item as shared 15 hours ago.",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "The title contains broad evaluative and legal/policy claims and does not identify the Iran-war factual atoms presented in the body. Capture the livestream body before constructing any WOL proposition.",
+          "final_pass_status": "REOPENED_NEW_SOURCE_EVIDENCE_PENDING_BODY_REVIEW"
+        },
+        {
+          "research_item_id": "VALENTI-BODY-SAUDI-MECCA-FALSE-FLAG-LIVESTREAM-202609",
+          "title": "Saudi False Flag Attack On MECCA?: Screaming Italian Socialist channels your rage",
+          "url": "https://www.youtube.com/watch?v=8VfT81fZXrk",
+          "publication_date": null,
+          "discovered_at": "2026-09-29T18:58:00-04:00",
+          "channel_surface_observation": "Livestream surface showed this item as shared 4 days ago.",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "The title frames the Mecca incident as a question rather than a categorical assertion. Recover the body to determine whether Valenti actually alleges a Saudi false flag, merely examines the possibility, or rejects it.",
+          "final_pass_status": "REOPENED_NEW_SOURCE_EVIDENCE_PENDING_BODY_REVIEW"
+        },
+        {
+          "research_item_id": "VALENTI-BODY-CUBA-INVASION-IMMINENT-202609",
+          "title": "BREAKING: US army whistleblowers warn the U.S invasion of CUBA IS IMMINENT!",
+          "url": "https://www.youtube.com/watch?v=zhN4Nfdb4lg",
+          "publication_date": null,
+          "discovered_at": "2026-09-29T18:58:00-04:00",
+          "channel_surface_observation": "Main-video surface showed this item as shared 4 days ago.",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Outside the Iran-war core but material to Valenti's broader source-behavior corpus. Identify the claimed whistleblowers, what they actually said, and whether 'invasion is imminent' is sourced fact, interpretation, or creator inference.",
+          "final_pass_status": "REOPENED_NEW_SOURCE_EVIDENCE_PENDING_BODY_REVIEW"
         }
       ],
       "solicitation_review": {
@@ -2690,9 +2738,9 @@
         }
       },
       "review_progress": {
-        "status": "CURRENT_REVIEWED_CORPUS_COMPLETE_2026-09-24",
+        "status": "TARGETED_REOPEN_NEW_YOUTUBE_EVIDENCE_2026-09-29",
         "promoted_incident_count": 24,
-        "corpus_completion_claim": "CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS_REVIEWED",
+        "corpus_completion_claim": "PRIOR_CORPUS_COMPLETE_THROUGH_2026-09-24_POSTCHECKPOINT_YOUTUBE_REVIEW_OPEN",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
           {
@@ -2932,16 +2980,18 @@
           "continuation_rule": "Continue claim-family recovery across March-May major Iran-war events; deduplicate existing nuclear/ground-invasion/ammo/peace-deal chains and score only distinct unsupported factual/inferential propositions.",
           "latest_reviewed_reject": "2026-04-03 F-15E pilot missing after shootdown — supported at publication time; preserved for later posture-reversal comparison"
         },
-        "routine_search_status": "CLOSED",
-        "reopen_rule": "Reopen only when a genuinely new publication, exact transcript/timestamp, direct clip, or other source evidence is recovered. Do not repeat routine searches of already-reviewed channel surfaces.",
+        "routine_search_status": "TARGETED_REOPEN_NEW_SOURCE_EVIDENCE",
+        "reopen_rule": "Current targeted reopen is authorized by genuinely new Sep. 24-29 YouTube source evidence. Promote only after body/claim evidence satisfies existing governance; do not increment from titles alone.",
         "excluded_pending_new_evidence_count": 4,
         "historian_source_not_recovered_count": 3,
         "final_accounting": {
           "promoted_scored_incidents": 24,
           "resolved_nonincidents": 22,
           "excluded_current_events_pending_new_evidence": 4,
-          "excluded_historian_recollections_without_source_recovery": 3
-        }
+          "excluded_historian_recollections_without_source_recovery": 3,
+          "post_checkpoint_new_source_items_pending_body_review": 4
+        },
+        "post_checkpoint_pending_body_count": 4
       },
       "historian_role_review": {
         "status": "QUALIFYING_PATTERN_ESTABLISHED",
@@ -3353,7 +3403,7 @@
         }
       ],
       "review_completion": {
-        "status": "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS",
+        "status": "PRIOR_CHECKPOINT_COMPLETE_TARGETED_REOPEN_ACTIVE",
         "completed_at": "2026-09-24T19:22:00-04:00",
         "documented_incident_count": 24,
         "resolved_nonincident_count": 22,
@@ -3362,8 +3412,62 @@
           "current_events_body_or_facility_gate": 4,
           "historian_attribution_gate": 3
         },
-        "limitation": "This completion does not claim omniscient lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Valenti corpus has been reviewed to the point that remaining items lack the source evidence needed for responsible scoring. On 2026-09-26, three historian-content source leads were identified ('How America Created the \"Forever War\"' and the 'Valentified History' series); these reopen only the targeted historian source-recovery lane and do not alter the completed Iran-war incident count.",
-        "next_action": "TARGETED_HISTORIAN_SOURCE_RECOVERY_ONLY"
+        "limitation": "The Sep. 24 corpus checkpoint remains valid for evidence available through that review. Genuinely new YouTube publications recovered on Sep. 29 reopen only the targeted source/body-review lane and do not alter the 24 promoted-incident baseline by themselves.",
+        "next_action": "CAPTURE_POSTCHECKPOINT_YOUTUBE_BODIES_AND_ATOMIZE_CLAIMS_BEFORE_WOL_SCORING"
+      },
+      "post_checkpoint_youtube_sweep": {
+        "checked_at": "2026-09-29T18:58:00-04:00",
+        "prior_checkpoint": "2026-09-24T16:46:00-04:00",
+        "source_surfaces": [
+          "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg/streams",
+          "https://www.youtube.com/@valentivideos"
+        ],
+        "disposition": "TARGETED_REOPEN_NEW_SOURCE_EVIDENCE",
+        "promoted_incident_count_before_review": 24,
+        "count_change_authorized": false,
+        "items": [
+          {
+            "research_item_id": "VALENTI-BODY-DOOMSDAY-SAUDI-UK-FALSE-FLAG-202609",
+            "surface": "MAIN_VIDEO",
+            "initial_disposition": "BODY_REVIEW_REQUIRED",
+            "reason": "Title combines a supported Iranian 'doomsday war' quotation with a categorical Saudi/U.K. false-flag allegation that requires claim-level sourcing."
+          },
+          {
+            "research_item_id": "VALENTI-BODY-WW3-FREE-SPEECH-LIVESTREAM-20260929",
+            "surface": "LIVESTREAM",
+            "initial_disposition": "BODY_REVIEW_REQUIRED",
+            "reason": "New livestream absent from the prior corpus; title alone is too broad to construct Iran-war claim atoms."
+          },
+          {
+            "research_item_id": "VALENTI-BODY-SAUDI-MECCA-FALSE-FLAG-LIVESTREAM-202609",
+            "surface": "LIVESTREAM",
+            "initial_disposition": "BODY_REVIEW_REQUIRED",
+            "reason": "Question-mark framing is not equivalent to asserting a false flag as fact; body capture is required."
+          },
+          {
+            "research_item_id": "VALENTI-BODY-CUBA-INVASION-IMMINENT-202609",
+            "surface": "MAIN_VIDEO",
+            "initial_disposition": "BODY_REVIEW_REQUIRED_GENERAL_WOL_OUTSIDE_IRAN_CORE",
+            "reason": "New source-behavior candidate outside the Iran core; retain without affecting the Iran-war incident count."
+          },
+          {
+            "research_item_id": "VALENTI-POSTCHECK-NETANYAHU-PIRKER-MAMDANI-MUSK-UN-202609",
+            "title": "Netanyahu attacks HASAN PIKER and ZOHRAN MAMDANI while doing an ELON MUSK ADVERTISEMENT AT THE UN!!!",
+            "url": "https://www.youtube.com/watch?v=PFGCFFDKiyo",
+            "surface": "MAIN_VIDEO",
+            "initial_disposition": "NO_TITLE_LEVEL_ADVERSE_FINDING_BODY_OPTIONAL",
+            "reason": "The title is largely characterization of speech/behavior; no sufficiently atomic false proposition is established by the title alone."
+          },
+          {
+            "research_item_id": "VALENTI-POSTCHECK-IRAN-US-TERRORIST-STATE-202609",
+            "title": "Iranian President says The United States of America is A TERRORIST STATE (HE'S RIGHT)",
+            "url": "https://www.youtube.com/watch?v=Vg0gifuqHAQ",
+            "surface": "MAIN_VIDEO",
+            "initial_disposition": "ATTRIBUTION_PLUS_OPINION_NO_AUTOMATIC_ADVERSE_FINDING",
+            "reason": "The title attributes a political characterization and adds creator agreement. Disagreement with that opinion is not a WOL incident; only distinct factual body claims are reviewable."
+          }
+        ]
       }
     },
     {
