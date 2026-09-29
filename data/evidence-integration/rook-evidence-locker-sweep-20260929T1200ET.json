@@ -67,6 +67,45 @@
       "sources": [
         "https://www.reuters.com/business/energy/iranians-stagger-under-soaring-costs-seven-months-war-2026-09-29/"
       ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-QATAR-NEW-IDEAS-HORMUZ-20260929",
+      "event_type": "IRAN_QATAR_MEDIATION_NEW_IDEAS_FOR_HORMUZ_CONDITIONS",
+      "occurrence_time": "2026-09-28",
+      "public_available_time": "2026-09-29T04:52:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "Iran / Qatar / Foreign Minister Abbas Araqchi",
+      "summary": "Araqchi said Qatari mediators discussed ideas with Iran on how Iran's Hormuz conditions could be fulfilled and would take those ideas to the U.S. side. This establishes a more specific mediation step, not U.S. acceptance of Iran's conditions or a deal.",
+      "confidence": "HIGH_FOR_REUTERS_VIDEO_SYNDICATION_OF_ARAQCHI_STATEMENT; US_ACCEPTANCE_NOT_ESTABLISHED",
+      "sources": [
+        "https://ca.marketscreener.com/news/iran-says-qatar-will-convey-new-proposals-to-us-in-bid-to-end-war-ce785addda8cf626"
+      ]
+    },
+    {
+      "event_id": "LOCKER-SAUDI-YANBU-LOADINGS-RESUME-20260929",
+      "event_type": "SAUDI_RED_SEA_EXPORT_LOADINGS_RESUME",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T02:35:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "Saudi Arabia / Saudi Aramco",
+      "summary": "Reuters reported Saudi Arabia resumed crude and refined-product tanker loadings from Yanbu after restarting the East-West Pipeline. Trade sources put crude loading near 2 million bpd; Kpler estimated pipeline throughput around 2.65 million bpd with potential to rise, still below the pre-attack rate.",
+      "confidence": "HIGH_FOR_REUTERS_TRADE_SOURCE_AND_KPLER_REPORTING; FORWARD_THROUGHPUT_ESTIMATE_NOT_YET_OBSERVED",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-resumes-yanbu-oil-loading-after-pipeline-restart-2026-09-29/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-US-IRAQ-WITHDRAWAL-ENDSTATE-20260929",
+      "event_type": "US_FORCE_WITHDRAWAL_FROM_LAST_IRAQ_BASES",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T02:05:00-04:00",
+      "collection_time": "2026-09-29T15:42:01-04:00",
+      "actor": "United States / Iraq",
+      "summary": "Reuters reported U.S. forces were set to leave their last Iraq bases by Sep. 30 under the withdrawal arrangement agreed in 2024. Iran-aligned Iraqi groups publicly celebrated the departure; quoted Iraqi and Kurdish security concerns remain attributed.",
+      "confidence": "HIGH_FOR_REUTERS_REPORTING_OF_SCHEDULED_WITHDRAWAL_AND_PUBLIC_REACTIONS",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-forces-exit-iraq-after-two-decades-leaving-opening-iran-2026-09-29/"
+      ]
     }
   ],
   "existing_event_updates": [
@@ -78,6 +117,16 @@
       "status": "MEDIATED_CONTACTS_CONTINUE; OFFER_TERMS_PUBLICLY_DISPUTED; NO_AGREEMENT",
       "sources": [
         "https://www.reuters.com/world/middle-east/trump-denies-offering-iran-sanctions-relief-tehran-says-ready-talks-2026-09-29/"
+      ]
+    },
+    {
+      "update_id": "UPD-US-IRAN-QATAR-MEDIATION-IDEAS-20260929-AM",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_MEDIATOR_IDEAS_DESCRIBED_BY_IRAN",
+      "summary": "Araqchi said Qatar had discussed ideas for how Iran's Hormuz conditions could be fulfilled and would relay them to the U.S. side. This is a more specific description of mediation but does not establish U.S. acceptance or a settlement.",
+      "status": "QATAR_MEDIATORS_CARRY_IDEAS_FOR_IRAN_CONDITIONS; US_ACCEPTANCE_NOT_ESTABLISHED; NO_AGREEMENT",
+      "sources": [
+        "https://ca.marketscreener.com/news/iran-says-qatar-will-convey-new-proposals-to-us-in-bid-to-end-war-ce785addda8cf626"
       ]
     }
   ],
@@ -128,21 +177,50 @@
       "sources": [
         "https://www.reuters.com/world/middle-east/irans-revolutionary-guards-call-trump-big-liar-2026-09-29/"
       ]
+    },
+    {
+      "update_id": "ENERGY-SAUDI-YANBU-RECOVERY-20260929",
+      "summary": "Yanbu tanker loadings resumed after the East-West Pipeline restart; public reporting showed meaningful but still sub-pre-attack throughput with further recovery projected.",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-resumes-yanbu-oil-loading-after-pipeline-restart-2026-09-29/"
+      ]
     }
   ],
-  "source_discovery_additions": [],
-  "prior_drawer_reconciliation": [],
+  "source_discovery_additions": [
+    {
+      "source_class": "REUTERS_MEDIATION_VIDEO",
+      "addition": "Sep.29 Araqchi statement that Qatar would carry new ideas on satisfying Iran's Hormuz conditions to Washington."
+    },
+    {
+      "source_class": "REUTERS_SAUDI_ENERGY",
+      "addition": "Sep.29 Yanbu loading resumption and East-West Pipeline throughput recovery."
+    },
+    {
+      "source_class": "REUTERS_IRAQ_FORCE_POSTURE",
+      "addition": "Sep.29 reporting on the scheduled final U.S. base withdrawal by Sep.30."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Update the mediation drawer with Iran's description of Qatar carrying new ideas; do not infer U.S. acceptance.",
+    "Update the energy-pressure drawer with resumed Yanbu loadings and East-West Pipeline throughput below the pre-attack rate.",
+    "Record the final scheduled U.S. Iraq base withdrawal as regional force-posture context; do not convert quoted strategic interpretations into canonical causation."
+  ],
   "unresolved_questions": [
     "Can the anonymous-official account of possible U.S. economic relief be independently confirmed against the president's denial?",
     "Does the Kpler recovery continue into October and how much is escorted, rerouted, sanctioned or AIS-dark traffic?",
-    "Which IRGC open-letter assertions map cleanly to existing Lie Ledger families versus requiring new claim atoms?"
+    "Which IRGC open-letter assertions map cleanly to existing Lie Ledger families versus requiring new claim atoms?",
+    "What final U.S. response did Qatar relay after the Sep.29 mediator round?",
+    "Does Yanbu throughput continue toward the higher public estimate or stall below it?"
   ],
   "coverage": {
     "material_results": [
       "U.S. offer-term attribution conflict",
       "IRGC U.S.-voter information campaign",
       "Kpler Hormuz export recovery estimate",
-      "Iran civilian-economic strain snapshot"
+      "Iran civilian-economic strain snapshot",
+      "Qatar mediator ideas described by Iran",
+      "Yanbu loadings resumed",
+      "U.S. Iraq withdrawal end-state"
     ],
     "limitations": [
       "No proprietary Kpler terminal access; commercial estimate is preserved through Reuters attribution.",
