@@ -215,8 +215,28 @@ assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
-assert valenti_lead["review_progress"]["corpus_completion_claim"] == "CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS_REVIEWED"
+assert valenti_lead["review_progress"]["corpus_completion_claim"] == "PRIOR_CORPUS_COMPLETE_THROUGH_2026-09-24_POSTCHECKPOINT_YOUTUBE_REVIEW_OPEN"
 assert valenti_lead["review_progress"]["resolved_nonincident_count"] == 22
+
+# New Sep. 24-29 YouTube source evidence reopens only the targeted body-review lane.
+postcheck = valenti_lead["post_checkpoint_youtube_sweep"]
+assert postcheck["disposition"] == "TARGETED_REOPEN_NEW_SOURCE_EVIDENCE"
+assert postcheck["promoted_incident_count_before_review"] == 24
+assert postcheck["count_change_authorized"] is False
+postcheck_ids = {row["research_item_id"] for row in postcheck["items"]}
+for new_id in (
+    "VALENTI-BODY-DOOMSDAY-SAUDI-UK-FALSE-FLAG-202609",
+    "VALENTI-BODY-WW3-FREE-SPEECH-LIVESTREAM-20260929",
+    "VALENTI-BODY-SAUDI-MECCA-FALSE-FLAG-LIVESTREAM-202609",
+    "VALENTI-BODY-CUBA-INVASION-IMMINENT-202609",
+):
+    assert new_id in postcheck_ids
+    row = next(item for item in body_queue if item["research_item_id"] == new_id)
+    assert row["capture_status"] == "TITLE_DESCRIPTION_ONLY"
+    assert "TRANSCRIPT" in row["required_next_evidence"]
+assert valenti_lead["review_progress"]["status"] == "TARGETED_REOPEN_NEW_YOUTUBE_EVIDENCE_2026-09-29"
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
+assert valenti_lead["review_completion"]["status"] == "PRIOR_CHECKPOINT_COMPLETE_TARGETED_REOPEN_ACTIVE"
 resolved_nonincidents = {
     row["review_id"]: row
     for row in valenti_lead["resolved_nonincident_reviews"]
@@ -391,11 +411,11 @@ nonfailures = {
 }
 assert nonfailures["VALENTI-HISTORY-NONFAILURE-VIETNAM-EMBEDDED-20260711"]["disposition"].startswith("NOT_QUALIFIED")
 assert nonfailures["VALENTI-HISTORY-NONFAILURE-SPUTNIK-STALIN-20250919"]["disposition"].startswith("NOT_QUALIFIED")
-assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
+assert valenti_lead["review_completion"]["status"] == "PRIOR_CHECKPOINT_COMPLETE_TARGETED_REOPEN_ACTIVE"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
 assert valenti_lead["review_completion"]["unresolved_excluded_count"] == 7
-assert valenti_lead["review_completion"]["next_action"] == "TARGETED_HISTORIAN_SOURCE_RECOVERY_ONLY"
+assert valenti_lead["review_completion"]["next_action"] == "CAPTURE_POSTCHECKPOINT_YOUTUBE_BODIES_AND_ATOMIZE_CLAIMS_BEFORE_WOL_SCORING"
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
 assert len(news_grift_basis) == 18
