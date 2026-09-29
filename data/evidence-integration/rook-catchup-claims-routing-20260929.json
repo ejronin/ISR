@@ -78,21 +78,22 @@
       "subject": "Valenti Videos title places scare quotes around the downed pilot and shootdown while questioning the 7,000-foot injured climb",
       "source_url": "https://www.youtube.com/watch?v=9wY4LMuVnr4",
       "preservation_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
-      "status": "BODY_REVIEW_REQUIRED",
+      "status": "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN",
       "competing_evidence_urls": [
         "https://www.cbsnews.com/news/wounded-air-force-officer-evaded-capture-iran-60-minutes-transcript/",
         "https://www.cbsnews.com/news/newly-declassified-videos-show-the-moments-downed-air-force-officers-were-rescued-in-iran/"
       ],
-      "note": "CBS published the officer's account and declassified rescue material supporting the badly wounded 7,000-foot ridgeline account. Determine exactly what Valenti disputes before scoring."
+      "note": "Existing WOL review found the title substantially supported by CBS and Stars & Stripes. Today's sweep recovers the direct YouTube ID, but that is a receipt upgrade only. Reopen only if body-level evidence shows a distinct fabrication accusation or other proposition not already reviewed.",
+      "existing_review_id": "VALENTI-NONINCIDENT-PILOT-7000FT-202609"
     },
     {
       "referral_id": "WOL-VALENTI-CHINA-NUCLEAR-WAR-DEDUPE-20260922",
       "target": "WOL_DEDUPLICATION_CHECK",
       "subject": "Valenti title: The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
       "source_url": "https://www.youtube.com/watch?v=ZXamrgcdC78",
-      "status": "LIKELY_ALREADY_REPRESENTED_NO_NEW_COUNT",
+      "status": "EXISTING_INCIDENT_DIRECT_RECEIPT_UPGRADE_AVAILABLE",
       "existing_event_id": "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
-      "note": "Do not create a duplicate incident unless body review identifies a distinct proposition not already captured."
+      "note": "This is the already-promoted Sep. 22 incident. Today's sweep recovered the direct YouTube watch ID ZXamrgcdC78. Upgrade the receipt/provenance record; do not increment the incident count unless body review identifies a distinct proposition."
     },
     {
       "referral_id": "WOL-VALENTI-IRAN-TERRORIST-STATE-202609",
@@ -101,6 +102,15 @@
       "source_url": "https://www.youtube.com/watch?v=Vg0gifuqHAQ",
       "status": "NO_AUTOMATIC_ADVERSE_FINDING",
       "note": "The title is primarily attribution plus opinion. Review body only for distinct factual claims; do not score disagreement with the opinion itself."
+    },
+    {
+      "referral_id": "WOL-VALENTI-HOUTHI-MECCA-RECEIPT-UPGRADE-202609",
+      "target": "WOL_RECEIPT_MAINTENANCE",
+      "subject": "Valenti Videos Houthi drone / Mecca title rediscovered with direct YouTube ID",
+      "source_url": "https://www.youtube.com/watch?v=G-W6ObqeNcg",
+      "status": "ALREADY_RESOLVED_NOT_PROMOTED_NO_REOPEN",
+      "existing_review_id": "VALENTI-NONINCIDENT-HOUTHI-MECCA-DRONE-CLAIM-202609",
+      "note": "Existing WOL review already resolved this title as a non-incident. Treat the recovered direct watch ID as provenance maintenance only; do not reopen the semantic finding absent materially new body evidence."
     }
   ],
   "web_of_lies": "SPECIALIST_REVIEW_REQUIRED_FOR_NEW_VALENTI_AND_LEVINS_SOURCE_EVIDENCE; NO_COUNTS_CHANGED_BY_THIS_HANDOFF"
