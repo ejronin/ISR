@@ -51,6 +51,19 @@
       "relationship": "NEW_MERCHANT_SECURITY_INCIDENT_WITHOUT_TRAFFIC_SERIES_SUPERSESSION",
       "summary": "The Al Funtas incident adds a new physical-risk datapoint to the Hormuz security record. It does not by itself supersede the existing Kpler/LSEG traffic series or establish normalization/reversal of the broader traffic trend.",
       "status": "UPDATE_SECURITY_DRAWER; DO_NOT_SUPERSEDE_TRAFFIC_DENOMINATOR"
+    },
+    {
+      "update_id": "UPD-US-IRAQ-WITHDRAWAL-COMPLETE-20260929-PM",
+      "updates_existing_ref": "LOCKER-US-IRAQ-WITHDRAWAL-ENDSTATE-20260929",
+      "relationship": "SCHEDULED_FINAL_WITHDRAWAL_CONFIRMED_COMPLETE_BEFORE_MIDNIGHT_HORIZON",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29T20:01:00-04:00",
+      "collection_time": "2026-09-30T12:09:00-04:00",
+      "summary": "Reuters reported before the Sep.30 midnight ET evidence horizon that the final U.S. troops had departed their remaining Iraq base, ending the U.S.-led Operation Inherent Resolve presence in Iraq. The Pentagon said targeted training and intelligence support would continue. This supersedes the prior 'set to leave by Sep.30' posture with completion, without adopting actor claims about strategic victory or future militia effects.",
+      "status": "WITHDRAWAL_COMPLETED; CONTINUING_TARGETED_US_TRAINING_AND_INTELLIGENCE_SUPPORT_REPORTED",
+      "sources": [
+        "https://www.reuters.com/world/us-forces-exit-iraq-emboldening-irans-proxies-islamic-state-2026-09-30/"
+      ]
     }
   ],
   "claims_and_corrections": [],
@@ -99,14 +112,16 @@
     "UPDATE energy-response drawer with the U.S. SPR loan offer and U.S.-EU diesel-stock discussions; do not record offered volumes as actual drawdown.",
     "NO MATERIAL CHANGE to Saudi Yanbu/East-West Pipeline recovery drawer by the horizon.",
     "NO MATERIAL CHANGE to Yemen/Houthi frontline BDA, Lebanon/Hezbollah disposition, Gaza/Hamas, Iranian aviation restrictions, Iran IAEA/NPT status, or Cape Dao BDA by the horizon.",
-    "NO MATERIAL CHANGE to the qualified Hormuz commercial-traffic denominator from a newer comparable Kpler/LSEG series inside this window."
+    "NO MATERIAL CHANGE to the qualified Hormuz commercial-traffic denominator from a newer comparable Kpler/LSEG series inside this window.",
+    "UPDATE Iraq force-posture drawer: final U.S. troops departed before the midnight horizon; preserve future militia/ISIS effects as unresolved rather than inferred."
   ],
   "unresolved_questions": [
     "Who struck Al Funtas, with what weapon, and what independently verified damage resulted?",
     "How much of the newly offered U.S. SPR volume will companies actually borrow?",
     "Will EU states authorize additional emergency diesel releases?",
     "Will Qatari mediation produce a revised sequencing agreement or renewed U.S.-Iran exchange?",
-    "Is there a newer denominator-compatible Kpler/LSEG Hormuz traffic series after the existing partial-recovery figures?"
+    "Is there a newer denominator-compatible Kpler/LSEG Hormuz traffic series after the existing partial-recovery figures?",
+    "What measurable security or militia effects follow the completed U.S. withdrawal from Iraq, as distinct from actor victory claims and analyst forecasts?"
   ],
   "coverage": {
     "actor_source_families_checked": [
@@ -137,7 +152,8 @@
       "U.S. Iran defense-procurement sanctions package",
       "U.S. 40-million-barrel SPR loan offer",
       "U.S.-EU emergency diesel-stock discussions",
-      "continued Qatari U.S.-Iran shuttle mediation"
+      "continued Qatari U.S.-Iran shuttle mediation",
+      "Completed U.S. troop withdrawal from Iraq"
     ],
     "limitations": [
       "No proprietary AIS/Kpler/LSEG terminal access.",
