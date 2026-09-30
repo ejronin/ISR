@@ -2672,7 +2672,14 @@
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
           "research_reason": "Separate the supported Araghchi 'doomsday war' quotation from the categorical claim that Saudi Arabia staged a false-flag attack on the United Kingdom. Identify the alleged incident, evidence offered, attribution chain and whether Valenti states the false-flag allegation as fact, inference, or quotation.",
-          "final_pass_status": "REOPENED_NEW_SOURCE_EVIDENCE_PENDING_BODY_REVIEW"
+          "final_pass_status": "REOPENED_NEW_SOURCE_EVIDENCE_PENDING_BODY_REVIEW",
+          "claims_forensics_ref": "WOL-DISC-VALENTI-SAUDI-UK-FALSE-FLAG-20260929",
+          "current_comparison_status": "STRONG_CONTRARY_CONTEXT_IF_RAF_FAIRFORD_IS_THE_REFERENCED_UK_INCIDENT; EVENT_IDENTITY_AND_BODY_CLAIM_STILL_REQUIRED",
+          "comparison_sources": [
+            "https://www.reuters.com/world/uk/uk-airbase-suspect-tipped-off-police-times-says-2026-09-30/",
+            "https://apnews.com/article/1f9542e3e4e11fc5660f088b8750bb34",
+            "https://www.reuters.com/world/uk-police-say-no-explosive-devices-found-airbase-probe-2026-09-29/"
+          ]
         },
         {
           "research_item_id": "VALENTI-BODY-WW3-FREE-SPEECH-LIVESTREAM-20260929",
@@ -3468,6 +3475,20 @@
             "reason": "The title attributes a political characterization and adds creator agreement. Disagreement with that opinion is not a WOL incident; only distinct factual body claims are reviewable."
           }
         ]
+      },
+      "latest_channel_freshness_check": {
+        "checked_at": "2026-09-30T13:01:00-04:00",
+        "source": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+        "main_video_latest": {
+          "video_id": "DcmYGpfRybU",
+          "title": "Iran prepares for a \"Doomsday War\" while Saudi Arabia stages a FALSE FLAG ATTACK on the U.K",
+          "status": "NO_NEWER_MAIN_VIDEO_VISIBLE_AT_CHECK"
+        },
+        "livestream_latest": {
+          "video_id": "Et0yzV1yYDA",
+          "title": "WW3 Escalates + Trump BANS Free Speech: Screaming Italian Socialist channels your rage",
+          "status": "NO_NEWER_LIVESTREAM_VISIBLE_AT_CHECK"
+        }
       }
     },
     {
