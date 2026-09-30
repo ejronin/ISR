@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_NATIVE_DISCOVERY_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T19:55:00-04:00",
+  "as_of": "2026-09-30T13:01:00-04:00",
   "items": [
     {
       "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
@@ -539,6 +539,70 @@
         "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
         "observation": "Project owner reports Valenti said the U.S. essentially did not care and permitted the strikes in order to anger other actors, not merely that defenses rationed interceptors against missiles expected to miss valuable targets.",
         "evidentiary_limit": "Exact captions/timestamps are not yet machine-recovered, so this body-level motive proposition is not yet a scored WOL-native incident."
+      }
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-SAUDI-UK-FALSE-FLAG-20260929",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos headline alleging Saudi Arabia staged a false-flag attack on the United Kingdom",
+      "observations": [
+        {
+          "date": "2026-09-29",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "FOREIGN_STATE_FALSE_FLAG_ALLEGATION",
+          "statement_identity": "The publisher titled a video 'Iran prepares for a \"Doomsday War\" while Saudi Arabia stages a FALSE FLAG ATTACK on the U.K'."
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-SAUDI-UK-FALSE-FLAG-YOUTUBE-20260929",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=DcmYGpfRybU",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": "2026-09-29",
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-SAUDI-UK-FALSE-FLAG-CHANNEL-20260930",
+          "surface": "YOUTUBE",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PUBLIC_VIDEO_TITLE_INDEX",
+          "published_at": "2026-09-29",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_DIRECT_VIDEO_TITLE_IDENTITY; SPOKEN_BODY_TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The title directly attributes a Saudi false-flag attack in the United Kingdom to Valenti's publication packaging. It does not identify the underlying U.K. incident, evidentiary theory, alleged Saudi mechanism, or whether the spoken body qualifies, sources, or retreats from the categorical title.",
+      "downstream_note": "Claims Forensics should first identify the U.K. incident Valenti means. If the title refers to the Sep. 27 RAF Fairford security incident, current Sep. 30 Reuters/AP reporting says the U.K. government sees strong indications of Iranian involvement, while the investigation remains open and Iran denies involvement. No current high-quality reporting located in this review attributes that incident to Saudi Arabia. This is strong contrary context, not a final WOL behavior finding, until event identity and the spoken claim are preserved.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The title contains two separable atoms. Araqchi's 'doomsday war' language has independent public support and should not be scored merely because it shares a headline with the false-flag allegation. The Saudi/U.K. false-flag allegation is a distinct, testable factual claim with current contrary evidence but requires body capture under the existing video-governance rule before adverse source-behavior scoring.",
+      "comparison_sources": [
+        {
+          "url": "https://www.reuters.com/world/uk/uk-airbase-suspect-tipped-off-police-times-says-2026-09-30/",
+          "finding": "Reuters reported the U.K. prime minister said there were strong indications Iran played a part in the RAF Fairford incident; the investigation remained ongoing."
+        },
+        {
+          "url": "https://apnews.com/article/1f9542e3e4e11fc5660f088b8750bb34",
+          "finding": "AP reported the same U.K. assessment of strong indications of Iranian involvement and noted Iran's denial."
+        },
+        {
+          "url": "https://www.reuters.com/world/uk-police-say-no-explosive-devices-found-airbase-probe-2026-09-29/",
+          "finding": "Reuters reported no improvised explosive devices were found; petrol was recovered and the five men remained under investigation after release on bail."
+        },
+        {
+          "url": "https://zeteo.com/p/iran-prepares-for-a-doomsday-war",
+          "finding": "Contemporaneous reporting preserved Araqchi's public 'doomsday war' language, supporting that separate headline atom."
+        }
+      ],
+      "content_body_evidence": {
+        "medium": "AUDIO_VIDEO",
+        "capture_status": "TITLE_DESCRIPTION_ONLY",
+        "capture_scope": "Publisher title/direct video identity and current comparison evidence are captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition or adverse behavior finding is permitted.",
+        "transcript_receipts": [],
+        "body_claims": []
       }
     }
   ]
