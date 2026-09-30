@@ -1,1 +1,156 @@
-{}
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-29T12:00:00-04:00",
+    "window_end": "2026-09-30T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-30T00:02:00-04:00",
+    "evidence_horizon_time": "2026-09-30T00:00:00-04:00",
+    "boundary_rule": "Only evidence publicly available by the scheduled 00:00 ET horizon is admitted. Later Sep.30 reporting belongs to the next window."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "recovery_context": {
+    "stranded_branch": "evidence/rook-sweep-20260930T0000ET",
+    "recovery_reason": "Scheduled run created a placeholder artifact containing only an empty JSON object; this retry replaces only that invalid placeholder on the evidence branch.",
+    "canonical_or_public_mutation": false
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-AL-FUNTAS-HORMUZ-STRIKE-20260928-REPORTED-20260929",
+      "event_type": "HORMUZ_MERCHANT_VESSEL_STRIKE",
+      "occurrence_time": "2026-09-28T20:00:00+04:00",
+      "public_available_time": "2026-09-29",
+      "collection_time": "2026-09-30T00:02:00-04:00",
+      "actor": "Kuwait Oil Tanker Company / VLCC Al Funtas",
+      "summary": "Delayed UKMTO-derived maritime reporting said the Kuwait Oil Tanker Company VLCC Al Funtas was struck during an evening Strait of Hormuz transit. A fire was extinguished, the crew was reported safe and the vessel continued underway. Attacker, projectile type and full damage extent were not established in the collected public reporting.",
+      "confidence": "HIGH_FOR_REPORTED_INCIDENT_AND_SAFE_CREW; ATTRIBUTION_WEAPON_AND_FULL_BDA_UNRESOLVED"
+    },
+    {
+      "event_id": "LOCKER-US-IRAN-PROCUREMENT-SANCTIONS-20260929",
+      "event_type": "US_IRAN_DEFENSE_PROCUREMENT_SANCTIONS",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29",
+      "collection_time": "2026-09-30T00:02:00-04:00",
+      "actor": "United States / Treasury / State Department",
+      "summary": "The United States announced sanctions on 13 individuals and entities that U.S. authorities said supported Iranian weapons or component procurement, including targets associated with Russia, China, Hong Kong, Pakistan and Iran. The sanctions action is established; procurement allegations remain attributed to the U.S. government and no operational effect is inferred.",
+      "confidence": "HIGH_FOR_US_SANCTIONS_ACTION; UNDERLYING_PROCUREMENT_ALLEGATIONS_ATTRIBUTED_TO_US_GOVERNMENT"
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-US-IRAN-HORMUZ-MEDIATION-20260929-PM",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "CONTINUED_QATARI_SHUTTLE_MEDIATION_AFTER_US_REJECTION",
+      "summary": "Qatar publicly confirmed continued shuttle diplomacy and message exchange aimed at finding common ground after the U.S. rejection of Iran's seven-day proposal. No agreement to reopen Hormuz was established by the evidence horizon, and a new direct U.S.-Iran exchange was not established.",
+      "status": "MEDIATION_ACTIVE; NO_NEW_AGREEMENT_ESTABLISHED"
+    },
+    {
+      "update_id": "UPD-HORMUZ-SECURITY-AL-FUNTAS-20260929",
+      "updates_existing_ref": "HORMUZ-TRAFFIC-20260924",
+      "relationship": "NEW_MERCHANT_SECURITY_INCIDENT_WITHOUT_TRAFFIC_SERIES_SUPERSESSION",
+      "summary": "The Al Funtas incident adds a new physical-risk datapoint to the Hormuz security record. It does not by itself supersede the existing Kpler/LSEG traffic series or establish normalization/reversal of the broader traffic trend.",
+      "status": "UPDATE_SECURITY_DRAWER; DO_NOT_SUPERSEDE_TRAFFIC_DENOMINATOR"
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "update_id": "UPD-US-SPR-40M-BARREL-LOAN-OFFER-20260929",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29",
+      "collection_time": "2026-09-30T00:02:00-04:00",
+      "summary": "The U.S. government offered energy companies loans of up to 40 million barrels from the Strategic Petroleum Reserve, described as the remaining U.S. tranche of the coordinated IEA emergency-release program. The offer is established; actual borrowing was not established at the horizon.",
+      "sources": [
+        "https://www.reuters.com/business/energy/us-release-40-million-barrels-crude-strategic-petroleum-reserve-energy-2026-09-29/"
+      ]
+    },
+    {
+      "update_id": "UPD-US-EU-EMERGENCY-DIESEL-DRAWDOWN-REQUEST-20260929",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-29",
+      "collection_time": "2026-09-30T00:02:00-04:00",
+      "summary": "Public reporting said Washington urged European governments to draw down emergency diesel inventories amid continuing Iran-war and Hormuz supply pressure. EU Energy Commissioner Dan Jørgensen confirmed discussions while saying no decision had been made on additional releases.",
+      "confidence": "SUPPORTED_FOR_US_REQUEST_AND_EU_DISCUSSIONS; NO_ADDITIONAL_EU_RELEASE_DECISION_ESTABLISHED"
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "MARITIME_UKMTO_DERIVED_REPORTING",
+      "addition": "Delayed reporting on the Al Funtas Hormuz strike; retain attribution and weapon as unresolved."
+    },
+    {
+      "source_class": "US_SANCTIONS_AUTHORITIES",
+      "addition": "Sep.29 U.S. Iran defense-procurement sanctions action."
+    },
+    {
+      "source_class": "ENERGY_EMERGENCY_STOCKS",
+      "addition": "Sep.29 U.S. SPR loan offer and U.S.-EU emergency diesel discussions."
+    },
+    {
+      "source_class": "QATARI_MEDIATION",
+      "addition": "Continued shuttle diplomacy after U.S. rejection of Iran's seven-day Hormuz proposal."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE Hormuz maritime-security drawer with Al Funtas incident; do not infer attacker, projectile type or full BDA.",
+    "UPDATE U.S.-Iran diplomacy drawer for continuing Qatari shuttle mediation; no settlement or reopening agreement established.",
+    "UPDATE sanctions drawer with Sep.29 U.S. procurement-network designations; preserve U.S. allegations as attributed claims.",
+    "UPDATE energy-response drawer with the U.S. SPR loan offer and U.S.-EU diesel-stock discussions; do not record offered volumes as actual drawdown.",
+    "NO MATERIAL CHANGE to Saudi Yanbu/East-West Pipeline recovery drawer by the horizon.",
+    "NO MATERIAL CHANGE to Yemen/Houthi frontline BDA, Lebanon/Hezbollah disposition, Gaza/Hamas, Iranian aviation restrictions, Iran IAEA/NPT status, or Cape Dao BDA by the horizon.",
+    "NO MATERIAL CHANGE to the qualified Hormuz commercial-traffic denominator from a newer comparable Kpler/LSEG series inside this window."
+  ],
+  "unresolved_questions": [
+    "Who struck Al Funtas, with what weapon, and what independently verified damage resulted?",
+    "How much of the newly offered U.S. SPR volume will companies actually borrow?",
+    "Will EU states authorize additional emergency diesel releases?",
+    "Will Qatari mediation produce a revised sequencing agreement or renewed U.S.-Iran exchange?",
+    "Is there a newer denominator-compatible Kpler/LSEG Hormuz traffic series after the existing partial-recovery figures?"
+  ],
+  "coverage": {
+    "actor_source_families_checked": [
+      "Iran political/military/security leadership",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Syria-related actors",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy/commodity markets",
+      "public commercial shipping/AIS/Kpler/LSEG reporting",
+      "human-impact agencies",
+      "claims/corrections",
+      "independently published OSINT"
+    ],
+    "material_results": [
+      "Al Funtas Hormuz merchant-vessel incident",
+      "U.S. Iran defense-procurement sanctions package",
+      "U.S. 40-million-barrel SPR loan offer",
+      "U.S.-EU emergency diesel-stock discussions",
+      "continued Qatari U.S.-Iran shuttle mediation"
+    ],
+    "limitations": [
+      "No proprietary AIS/Kpler/LSEG terminal access.",
+      "No commercial satellite tasking or classified ISR.",
+      "Later Sep.30 publications were excluded from this midnight evidence horizon."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_EVIDENCE_BRANCH_PLACEHOLDER_RECOVERY",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
