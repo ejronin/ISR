@@ -215,6 +215,21 @@ assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
+
+# Sep. 30 follow-up: the categorical Saudi/U.K. false-flag title is preserved as
+# a Claims Forensics candidate with contrary RAF Fairford context, but remains
+# body-gated and cannot change the 24-event count without transcript evidence.
+native = json.loads((ROOT / "data/web-of-lies/native-discoveries.json").read_text(encoding="utf-8"))
+native_items = {row["discovery_id"]: row for row in native["items"]}
+uk_false_flag = native_items["WOL-DISC-VALENTI-SAUDI-UK-FALSE-FLAG-20260929"]
+assert uk_false_flag["review_target"] == "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
+assert uk_false_flag["content_body_evidence"]["capture_status"] == "TITLE_DESCRIPTION_ONLY"
+assert uk_false_flag["content_body_evidence"]["body_claims"] == []
+assert len(uk_false_flag["comparison_sources"]) >= 3
+assert "strong indications" in uk_false_flag["comparison_sources"][0]["finding"]
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
+assert valenti_lead["latest_channel_freshness_check"]["main_video_latest"]["video_id"] == "DcmYGpfRybU"
+assert valenti_lead["latest_channel_freshness_check"]["livestream_latest"]["video_id"] == "Et0yzV1yYDA"
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "PRIOR_CORPUS_COMPLETE_THROUGH_2026-09-24_POSTCHECKPOINT_YOUTUBE_REVIEW_OPEN"
 assert valenti_lead["review_progress"]["resolved_nonincident_count"] == 22
 
