@@ -216,18 +216,32 @@ assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
 
-# Sep. 30 follow-up: the categorical Saudi/U.K. false-flag title is preserved as
-# a Claims Forensics candidate with contrary RAF Fairford context, but remains
-# body-gated and cannot change the 24-event count without transcript evidence.
+# Sep. 30 follow-up: strengthen the existing Saudi/U.K. false-flag record with
+# the later RAF Fairford evidence. Event identity is resolved to Fairford from
+# timing/context; the later U.K. assessment strengthens the same claim record
+# and must never create a duplicate Valenti incident or increment the count.
 native = json.loads((ROOT / "data/web-of-lies/native-discoveries.json").read_text(encoding="utf-8"))
 native_items = {row["discovery_id"]: row for row in native["items"]}
 uk_false_flag = native_items["WOL-DISC-VALENTI-SAUDI-UK-FALSE-FLAG-20260929"]
 assert uk_false_flag["review_target"] == "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
+assert "treats RAF Fairford as the referenced event" in uk_false_flag["attribution_scope"]
+assert "does not create a second incident" in uk_false_flag["downstream_note"]
 assert uk_false_flag["content_body_evidence"]["capture_status"] == "TITLE_DESCRIPTION_ONLY"
 assert uk_false_flag["content_body_evidence"]["body_claims"] == []
+assert "RAF Fairford event identity" in uk_false_flag["content_body_evidence"]["capture_scope"]
 assert len(uk_false_flag["comparison_sources"]) >= 3
 assert "strong indications" in uk_false_flag["comparison_sources"][0]["finding"]
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
+fairford_queue = next(
+    row for row in body_queue
+    if row["research_item_id"] == "VALENTI-BODY-DOOMSDAY-SAUDI-UK-FALSE-FLAG-202609"
+)
+assert fairford_queue["current_comparison_status"] == (
+    "RAF_FAIRFORD_EVENT_IDENTITY_RESOLVED; "
+    "SEP30_UK_OFFICIAL_ASSESSMENT_POINTS_TO_IRAN_NOT_SAUDI_ARABIA; "
+    "EXISTING_CLAIM_STRENGTHENED_NO_NEW_INCIDENT_OR_COUNT_CHANGE"
+)
+assert "ADDITIONAL_BODY_LEVEL_PROPOSITION" in fairford_queue["required_next_evidence"]
 assert valenti_lead["latest_channel_freshness_check"]["main_video_latest"]["video_id"] == "DcmYGpfRybU"
 assert valenti_lead["latest_channel_freshness_check"]["livestream_latest"]["video_id"] == "Et0yzV1yYDA"
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "PRIOR_CORPUS_COMPLETE_THROUGH_2026-09-24_POSTCHECKPOINT_YOUTUBE_REVIEW_OPEN"

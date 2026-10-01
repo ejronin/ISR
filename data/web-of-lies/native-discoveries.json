@@ -575,10 +575,10 @@
         }
       ],
       "attribution_confidence": "HIGH_FOR_DIRECT_VIDEO_TITLE_IDENTITY; SPOKEN_BODY_TRANSCRIPT_NOT_YET_CAPTURED",
-      "attribution_scope": "The title directly attributes a Saudi false-flag attack in the United Kingdom to Valenti's publication packaging. It does not identify the underlying U.K. incident, evidentiary theory, alleged Saudi mechanism, or whether the spoken body qualifies, sources, or retreats from the categorical title.",
-      "downstream_note": "Claims Forensics should first identify the U.K. incident Valenti means. If the title refers to the Sep. 27 RAF Fairford security incident, current Sep. 30 Reuters/AP reporting says the U.K. government sees strong indications of Iranian involvement, while the investigation remains open and Iran denies involvement. No current high-quality reporting located in this review attributes that incident to Saudi Arabia. This is strong contrary context, not a final WOL behavior finding, until event identity and the spoken claim are preserved.",
+      "attribution_scope": "The title directly attributes a Saudi false-flag attack in the United Kingdom to Valenti's publication packaging. Based on the publication timing and the absence of another contemporaneous U.K. incident fitting the description, this review treats RAF Fairford as the referenced event. The spoken body is still required only to determine whether Valenti offered additional sourcing, qualification, or a separate factual theory beyond the categorical title.",
+      "downstream_note": "This record now treats the referenced U.K. incident as RAF Fairford. The original problem remains the categorical Saudi false-flag attribution without supporting evidence identified in the reviewed record. Subsequent Sep. 30 reporting materially strengthens the contrary evidence: the U.K. prime minister said there were strong indications Iran played a part, while the investigation remained open and Iran denied involvement. No high-quality reporting reviewed here attributes the Fairford incident to Saudi Arabia. This later evidence strengthens the existing finding; it does not create a second incident, increase the Valenti count, or establish what Valenti knew on Sep. 29.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "The title contains two separable atoms. Araqchi's 'doomsday war' language has independent public support and should not be scored merely because it shares a headline with the false-flag allegation. The Saudi/U.K. false-flag allegation is a distinct, testable factual claim with current contrary evidence but requires body capture under the existing video-governance rule before adverse source-behavior scoring.",
+      "review_reason": "The title contains two separable atoms. Araqchi's 'doomsday war' language has independent public support and should not be scored merely because it shares a headline with the false-flag allegation. The Saudi/Fairford false-flag allegation is the same existing factual claim under review; Sep. 30 official reporting now points in the opposite direction. That update strengthens the evidence against the Saudi attribution but does not create a new WOL incident or count change. Body capture remains relevant only for any additional body-level proposition beyond the categorical title.",
       "comparison_sources": [
         {
           "url": "https://www.reuters.com/world/uk/uk-airbase-suspect-tipped-off-police-times-says-2026-09-30/",
@@ -600,7 +600,7 @@
       "content_body_evidence": {
         "medium": "AUDIO_VIDEO",
         "capture_status": "TITLE_DESCRIPTION_ONLY",
-        "capture_scope": "Publisher title/direct video identity and current comparison evidence are captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition or adverse behavior finding is permitted.",
+        "capture_scope": "Publisher title/direct video identity, RAF Fairford event identity, and current comparison evidence are captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no additional body-level narrative or inference may be scored beyond the existing title-level claim.",
         "transcript_receipts": [],
         "body_claims": []
       }
