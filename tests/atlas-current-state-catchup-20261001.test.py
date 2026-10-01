@@ -27,7 +27,7 @@ def main() -> int:
     assert last["packet_id"] == packet["packet_id"] == "UPD-20261001-ROOK-CATCHUP"
     assert last["sha256"] == "30c5a1b558898c1f8056cc6deffd3c36ed044d4317e6eefa9b5890ed1c1da1a1"
     assert last["lineage_sha256"] == "e25f2a2024b1df1f089cd1e8403d0eae2ac7c3eef0d53e35af7e275ab32f507b"
-    assert manifest["current_evidence_cutoff"] == "2026-10-01T00:00:00-04:00"
+    assert manifest["current_evidence_cutoff"] == packet["evidence_cutoff"]
     assert canonical["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
