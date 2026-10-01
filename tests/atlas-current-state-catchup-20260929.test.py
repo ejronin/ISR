@@ -68,15 +68,21 @@ def main() -> int:
     assert "publicly disputed" in events["G3-US-IRAN-OFFER-REPORT-DENIAL-20260929"]["summary"]
     assert "about half the pre-war volume" in events["G3-HORMUZ-KPLER-OIL-EXPORT-RECOVERY-20260929"]["summary"]
 
+    prior_diplomacy = next(
+        row["record"] for row in noon["entities"]
+        if row["entity_id"] == "DIP-US-IRAN-UNGA-CONTACTS-20260922"
+    )
+    assert "US_MEDIATOR_CONTACTS_CONFIRMED_SEP28" in prior_diplomacy["status"]
+    assert "US_PUBLIC_DENIAL_OF_REPORTED_SANCTIONS_RELIEF_OFFER_SEP29" in prior_diplomacy["status"]
+    assert "NO_AGREEMENT" in prior_diplomacy["status"]
+    assert "QATAR_MEDIATORS_CARRY_IDEAS_FOR_IRAN_CONDITIONS_SEP29" in prior_diplomacy["status"]
+    assert "US_ACCEPTANCE_OF_IRAN_CONDITIONS_NOT_ESTABLISHED" in prior_diplomacy["status"]
+
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert "US_MEDIATOR_CONTACTS_CONFIRMED_SEP28" in diplomacy["status"]
-    assert "US_PUBLIC_DENIAL_OF_REPORTED_SANCTIONS_RELIEF_OFFER_SEP29" in diplomacy["status"]
-    assert "NO_AGREEMENT" in diplomacy["status"]
-    assert "QATAR_MEDIATORS_CARRY_IDEAS_FOR_IRAN_CONDITIONS_SEP29" in diplomacy["status"]
-    assert "US_ACCEPTANCE_OF_IRAN_CONDITIONS_NOT_ESTABLISHED" in diplomacy["status"]
+    assert diplomacy["status"] == "Mediated talks continue; no agreement"
 
     shipping = rows_by_id(state["entities"]["shipping"])["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]
-    assert shipping["status"] == "PARTIAL_RECOVERY_BELOW_PREWAR_VOLUME"
+    assert shipping["status"] == "Traffic and exports are recovering, but Hormuz is not back to normal"
     economy = rows_by_id(state["entities"]["economics"])["ECON-IRAN-CIVILIAN-STRAIN-20260929"]["record"]
     assert economy["status"] == "SEVERE_WARTIME_HOUSEHOLD_AND_PRIVATE_SECTOR_STRAIN"
 
