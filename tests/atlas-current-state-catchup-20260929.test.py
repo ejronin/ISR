@@ -23,8 +23,8 @@ def main() -> int:
     sweep12 = json.loads((ROOT / "data/evidence-integration/rook-evidence-locker-sweep-20260929T1200ET.json").read_text(encoding="utf-8"))
     handoff = json.loads((ROOT / "data/evidence-integration/rook-catchup-claims-routing-20260929.json").read_text(encoding="utf-8"))
 
-    e25 = manifest["accepted_updates"][-2]
-    e26 = manifest["accepted_updates"][-1]
+    e25 = next(item for item in manifest["accepted_updates"] if item["packet_id"] == midnight["packet_id"])
+    e26 = next(item for item in manifest["accepted_updates"] if item["packet_id"] == noon["packet_id"])
     assert e25["sequence"] == 25
     assert e25["packet_id"] == midnight["packet_id"]
     assert e25["sha256"] == "83624e77535498d880a09f847f0fe857697a9e237788673e2f61d4d2599ab9f6"
