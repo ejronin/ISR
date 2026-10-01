@@ -47,12 +47,9 @@ def main() -> int:
         assert packet_events[event_id]["event_class"] == "DIPLOMATIC_OR_POLICY_EVENT"
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert "DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26" in diplomacy["status"]
-    assert "SAUDI_PREWAR_NO_FEE_BASELINE_STATED" in diplomacy["status"]
-    assert "OMAN_MEDIATION_CONTINUES" in diplomacy["status"]
-    assert "RUSSIA_OFFERS_GULF_SECURITY_ARCHITECTURE_SUPPORT" in diplomacy["status"]
-    assert "NO_COMMON_REGIONAL_FRAMEWORK_ESTABLISHED" in diplomacy["status"]
-    assert "replacement U.S.-Iran agreement" in diplomacy["observed_state"]
+    assert diplomacy["status"] == "Mediated talks continue; no agreement"
+    assert "replacement agreement" in diplomacy["observed_state"]
+    assert "Hormuz reopening arrangement" in diplomacy["observed_state"]
 
     assert packet["narrative_claims"] == []
     assert routing["referrals"] == []
