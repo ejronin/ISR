@@ -1,0 +1,152 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-30T12:00:00-04:00",
+    "window_end": "2026-10-01T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-01T00:03:00-04:00",
+    "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260930T1200ET.json"
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-SAUDI-MBS-SHURA-20260930",
+      "event_type": "SAUDI_ROYAL_SECURITY_POLICY_ADDRESS",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-09-30T13:27:00-04:00",
+      "actor": "Saudi Crown Prince Mohammed bin Salman",
+      "summary": "Annual royal address paired continued de-escalation and diplomacy with a firm-response pledge, described Gulf security as indivisible, reaffirmed the Mecca Defense Alliance with Turkiye and Pakistan, supported Yemen's internationally recognized government, and rejected political or economic coercion through international waterways. This is policy signaling, not evidence of a new operational order.",
+      "sources": [
+        "https://www.arabnews.com/saudi-arabia/saudi-crown-prince-warns-of-regional-threats-hails-indivisibility-of-gulf-security-3003902",
+        "https://www.aa.com.tr/en/middle-east/saudi-crown-prince-says-mecca-defense-alliance-with-turkiye-pakistan-aims-to-bolster-regional-stability/4074097"
+      ]
+    },
+    {
+      "event_id": "LOCKER-FLYDUBAI-FZ1073-20260930",
+      "event_type": "CIVIL_AVIATION_SECURITY_INCIDENT",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-09-30T12:00:00-04:00",
+      "actor": "Flydubai flight FZ1073 / Saudi authorities",
+      "summary": "A Dubai-to-Tel Aviv flydubai flight diverted safely to Tabuk after a serious cockpit security incident. Saudi authorities detained the suspected crew member. Motive and any state or organizational linkage remain unresolved; airline reporting cautioned against premature attribution.",
+      "sources": [
+        "https://apnews.com/article/fd1835479898f2f944792913af7cbce6"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-RAF-FAIRFORD-IRAN-ATTRIBUTION-20260930",
+      "updates_existing_ref": "RAF-FAIRFORD-ARRESTS-20260927",
+      "relationship": "UK_GOVERNMENT_ATTRIBUTION_ASSESSMENT_STRENGTHENED_WITH_INVESTIGATION_ONGOING",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-09-30T12:00:00-04:00",
+      "summary": "The UK prime minister said there were strong indications Iran played a part in the suspected Fairford incident. Iran denied involvement. Preserve as a UK government assessment under active investigation, not independently proved Iranian direction.",
+      "status": "UK_HIGH_LEVEL_ATTRIBUTION_ASSESSMENT; INVESTIGATION_ONGOING; IRAN_DENIES",
+      "sources": [
+        "https://www.reuters.com/world/uk/uk-airbase-suspect-tipped-off-police-times-says-2026-09-30/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ENERGY-GULF-EXPORT-RECOVERY-CLOSE-20260930",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-09-30T16:16:00-04:00",
+      "summary": "Reuters reported Brent November settled at $103.50 per barrel and WTI at $90.42; Brent gained about 14% in September. Goldman Sachs continued to estimate Gulf oil exports at 23.3 million bpd over the prior week, roughly the 2025 average, while refined-fuel exports remained constrained. Export recovery does not establish normalized Hormuz security or traffic.",
+      "sources": [
+        "https://www.reuters.com/business/energy/analysts-raise-2026-oil-forecasts-prolonged-gulf-disruption-2026-09-30/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "SAUDI_OFFICIAL_POLICY_REPORTING",
+      "addition": "Sep.30 Shura Council royal address."
+    },
+    {
+      "source_class": "CIVIL_AVIATION_SECURITY_REPORTING",
+      "addition": "Flydubai FZ1073 incident."
+    },
+    {
+      "source_class": "UK_STATE_ATTRIBUTION_REPORTING",
+      "addition": "Sep.30 Fairford assessment."
+    },
+    {
+      "source_class": "ENERGY_MARKET_REPORTING",
+      "addition": "Sep.30 oil close and Gulf export recovery."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE Saudi/GCC security posture with MBS de-escalation plus firm-response language and alliance emphasis.",
+    "UPDATE civil-aviation drawer with FZ1073 safe diversion; motive and external attribution unresolved.",
+    "UPDATE RAF Fairford drawer with stronger UK public attribution assessment; investigation remains open and Iran denies involvement.",
+    "UPDATE energy drawer: Gulf crude export adaptation remained strong while refined-fuel constraints and conflict risk premium persisted.",
+    "NO MATERIAL CHANGE to U.S.-Iran seven-day-plan bargaining beyond the noon sequencing update; no signed agreement or Hormuz reopening established.",
+    "NO MATERIAL CHANGE to Sep.29 U.S. Iran sanctions package or standing Iranian-airline restrictions.",
+    "NO MATERIAL CHANGE to independently established Houthi BDA, Lebanon/Hezbollah disposition, Gaza/Hamas disposition, Syria material events, or IAEA implementation sufficient to supersede prior drawers.",
+    "NO MATERIAL CHANGE to a denominator-compatible public Kpler/LSEG Hormuz vessel-count series.",
+    "NO MATERIAL CHANGE to China or Russia material support sufficient for a new actor-specific event."
+  ],
+  "unresolved_questions": [
+    "Will Tehran accept Washington's requested sequencing?",
+    "Will Saudi Arabia operationalize its firmer Houthi-response language?",
+    "What motive and network, if any, will investigators establish for FZ1073?",
+    "Will UK investigators establish evidentiary linkage between the Fairford suspects and Iranian state direction?",
+    "Will Gulf crude-export recovery persist while refined-fuel exports remain constrained?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Saudi royal security-policy address",
+      "Flydubai FZ1073 security incident",
+      "UK Fairford attribution assessment strengthened",
+      "Sep.30 oil-market close and Gulf export recovery"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No signed U.S.-Iran/Hormuz agreement",
+      "No newer U.S. Iran sanctions package",
+      "No new qualified Iranian-airline country restriction change",
+      "No new independently verified Houthi BDA",
+      "No new qualified IAEA implementation event",
+      "No denominator-compatible public Kpler/LSEG Hormuz vessel-count series",
+      "No material Lebanon/Hezbollah or Gaza/Hamas disposition change",
+      "No material China/Russia intervention change"
+    ],
+    "actor_source_families_checked": [
+      "Iran political/military/security leadership",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Syria-related actors",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy/commodity markets",
+      "public commercial shipping/AIS/Kpler/LSEG reporting",
+      "human-impact reporting",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary Kpler/LSEG/AIS terminal access.",
+      "No commercial satellite tasking or classified ISR."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_SCHEDULED_SWEEP",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
