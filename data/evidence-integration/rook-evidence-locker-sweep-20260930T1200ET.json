@@ -1,0 +1,155 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-30T00:00:00-04:00",
+    "window_end": "2026-09-30T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-30T12:12:00-04:00",
+    "evidence_horizon_time": "2026-09-30T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260930T0000ET.json",
+    "boundary_rule": "Manual recovery of the missed scheduled noon run. Only evidence publicly available by 12:00 ET is admitted; later Sep.30 reporting belongs to the next window."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "recovery_context": {
+    "reason": "The noon automation did not execute because the standing Atlas Evidence Sweep task was disabled. The task has been restored to its original 00:00/12:00 ET schedule and this artifact backfills the missed 12:00 ET horizon.",
+    "prior_branch": "evidence/rook-sweep-20260930T0000ET",
+    "prior_artifact_commit": "9212d7729f53211db6f1a8fd25f296b78f3f41b5"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-EASA-SAUDI-JORDAN-AIRSPACE-RISK-20260930",
+      "event_type": "EASA_REGIONAL_CONFLICT_AIRSPACE_ADVISORY_UPDATE",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-09-30T11:31:00-04:00",
+      "collection_time": "2026-09-30T12:12:00-04:00",
+      "actor": "European Union Aviation Safety Agency",
+      "summary": "EASA issued an advisory urging covered operators to avoid Saudi Arabian airspace amid increased Houthi attacks, upgraded Jordan to an all-altitude avoidance recommendation, and extended warnings covering Lebanon, Iran, Iraq and territorial Gulf waters of Bahrain, Kuwait, Qatar, the UAE and Oman through November 16.",
+      "confidence": "HIGH_FOR_REUTERS_REPORT_OF_EASA_BULLETINS",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/eu-aviation-agency-issues-saudi-airspace-advisory-after-houthi-attacks-2026-09-30/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-US-IRAN-QATAR-SEQUENCING-20260930-AM",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "US_FEEDBACK_RELAYED_VIA_QATAR_AFTER_PUBLIC_REJECTION",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-09-30T03:27:00-04:00",
+      "collection_time": "2026-09-30T12:12:00-04:00",
+      "summary": "Reuters reported that Qatari mediators relayed U.S. feedback to Foreign Minister Abbas Araqchi on Iran's seven-day trust-building plan. A non-Iranian official briefed on the talks said the main disagreement concerned sequencing rather than the components of the plan. This establishes continuing mediated bargaining after Trump's public rejection, not U.S. acceptance or a new agreement.",
+      "status": "MEDIATED_BARGAINING_CONTINUES; SEQUENCING_DISPUTE_REPORTED; NO_NEW_AGREEMENT_ESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-receives-us-feedback-seven-day-trust-building-plan-2026-09-30/"
+      ]
+    },
+    {
+      "update_id": "UPD-HORMUZ-SHIPPING-RISK-REMAINS-ACTIVE-20260930-AM",
+      "updates_existing_ref": "HORMUZ-TRAFFIC-20260924",
+      "relationship": "CONTINUED_MARITIME_RISK_DURING_DIPLOMATIC_CONTACT",
+      "public_available_time": "2026-09-30T03:27:00-04:00",
+      "collection_time": "2026-09-30T12:12:00-04:00",
+      "summary": "Reuters reported that shipping through Hormuz had increased in recent weeks but crude, refined-product and gas flows remained substantially disrupted, while UKMTO continued to report projectile incidents. This does not establish normalization and does not replace denominator-compatible Kpler/LSEG traffic series.",
+      "status": "PARTIAL_RECOVERY_WITH_PERSISTENT_SECURITY_RISK; NO_NORMALIZATION_ADJUDICATION",
+      "sources": [
+        "https://www.reuters.com/world/us/iran-appeals-us-voters-american-troops-leave-iraq-2026-09-30/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "update_id": "ENERGY-GULF-EXPORT-RECOVERY-20260930-AM",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-09-30T10:50:00-04:00",
+      "collection_time": "2026-09-30T12:12:00-04:00",
+      "summary": "Reuters' intraday energy update reported Goldman Sachs estimated Gulf oil exports at 23.3 million barrels per day over the prior week, in line with the 2025 average, while JPMorgan estimated the five-day 10-day-average total oil-export rate at 20.5 million bpd, about 89% of 2025 levels. Brent and WTI were higher at the 10:50 ET market snapshot. These are bank/market estimates and do not establish full Hormuz traffic normalization.",
+      "confidence": "HIGH_FOR_REUTERS_REPORTING_OF_BANK_ESTIMATES_AND_TIMESTAMPED_MARKET_LEVELS",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-climbs-after-trump-denies-he-is-willing-ease-sanctions-iran-2026-09-30/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "EASA_CONFLICT_ZONE_ADVISORIES_VIA_REUTERS",
+      "addition": "Sep.30 Saudi/Jordan and wider Gulf conflict-airspace advisory changes."
+    },
+    {
+      "source_class": "QATARI_MEDIATION_REPORTING",
+      "addition": "Sep.30 Reuters report distinguishing plan components from sequencing disagreement."
+    },
+    {
+      "source_class": "ENERGY_FLOW_AND_BANK_ESTIMATES",
+      "addition": "Sep.30 Reuters intraday synthesis of Goldman/JPMorgan Gulf export-recovery estimates."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE U.S.-Iran diplomacy drawer: U.S. feedback was relayed through Qatar and the principal reported dispute is sequencing; no settlement or U.S. acceptance is established.",
+    "UPDATE regional aviation-risk drawer: EASA added Saudi avoidance guidance and upgraded Jordan to all-altitude avoidance while extending other regional warnings.",
+    "UPDATE energy-flow drawer: broad Gulf oil exports have materially recovered by bank estimates, but this is not equivalent to full Hormuz commercial-traffic normalization.",
+    "NO MATERIAL CHANGE to the Sep.29 U.S. procurement-sanctions package; no newer qualified U.S. Iran sanctions action was located inside this window.",
+    "NO MATERIAL CHANGE to Iranian-airline third-country restrictions beyond the previously accepted UAE/Oman/Iraq implementation and waiver-seeking record.",
+    "NO MATERIAL CHANGE to Saudi East-West Pipeline/Yanbu recovery beyond resumed loadings already captured in the prior drawer.",
+    "NO MATERIAL CHANGE to Lebanon/Hezbollah disposition, Gaza/Hamas ceasefire status, Iran nuclear/IAEA inspection implementation, or independently established Houthi strike BDA by the 12:00 ET horizon.",
+    "NO MATERIAL CHANGE to a denominator-compatible Kpler/LSEG Hormuz vessel-count series inside this window."
+  ],
+  "unresolved_questions": [
+    "What exact sequencing changes did Washington request in the seven-day plan, and will Tehran accept them?",
+    "Will EASA's Saudi advisory materially alter commercial carrier routing or capacity?",
+    "Do Gulf oil-export recovery estimates persist, and how much of the recovery is via Hormuz versus Red Sea/Mediterranean bypass routes?",
+    "Is there a new denominator-compatible Kpler/LSEG vessel-count series for Hormuz after Sep.29?",
+    "Will any additional country implement or relax restrictions on sanctioned Iranian airlines?"
+  ],
+  "coverage": {
+    "material_results": [
+      "U.S. feedback relayed to Iran through Qatar; sequencing reported as central dispute",
+      "EASA Saudi/Jordan conflict-airspace advisory changes",
+      "Broad Gulf oil-export recovery estimates with continued Hormuz disruption"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new U.S. Iran sanctions action after Sep.29 package",
+      "No new qualified Iranian-airline third-country implementation beyond existing restrictions/waiver activity",
+      "No new independently established Saudi/Houthi BDA superseding prior drawers",
+      "No new final U.S.-Iran agreement or Hormuz reopening arrangement",
+      "No new qualified IAEA implementation event",
+      "No new denominator-compatible Hormuz vessel-count series located"
+    ],
+    "actor_source_families_checked": [
+      "Iran political/military/security leadership",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy/commodity markets",
+      "public commercial shipping/AIS/Kpler/LSEG reporting",
+      "human-impact reporting",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary Kpler/LSEG/AIS terminal access.",
+      "No commercial satellite tasking or classified ISR.",
+      "Items first published after 12:00 ET are excluded from this recovery artifact even if collected minutes later."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_MISSED_NOON_SWEEP_RECOVERY",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
