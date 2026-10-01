@@ -1,0 +1,204 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-10-01T00:00:00-04:00",
+    "window_end": "2026-10-01T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-01T12:03:15-04:00",
+    "evidence_horizon_time": "2026-10-01T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20261001T0000ET.json",
+    "boundary_rule": "Only evidence publicly available by 12:00 ET is admitted; later reporting belongs to the next window."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAN-RENEWED-ATTACK-PLANNING-20261001",
+      "event_type": "IRAN_CONDITIONAL_ESCALATION_PLANNING",
+      "occurrence_time": "2026-10-01",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "actor": "Iranian leadership / military command",
+      "summary": "Reuters reported from multiple Iranian sources that commanders are intensifying contingency planning for a broader response if the United States resumes large-scale attacks. No final decision or operational order was established.",
+      "confidence": "HIGH_FOR_MULTI-SOURCE_REPORTING; CONDITIONAL_PLANNING_NOT_EXECUTION",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-readies-harder-retaliation-if-attacked-diplomacy-faces-long-odds-2026-10-01/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001",
+      "event_type": "REPORTED_SYRIA_HEZBOLLAH_DEESCALATION_CONTACT",
+      "occurrence_time": "2026-09",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "actor": "Syrian government representatives / Hezbollah / Turkey",
+      "summary": "Reuters reported from six briefed sources that Syrian officials and Hezbollah representatives met secretly in Turkey in September to de-escalate and discuss mutual security concerns. No final agreement was reached. Syria's English-language government account denied the meeting after publication.",
+      "confidence": "MULTI-SOURCE_REPORT_WITH_EXPLICIT_SYRIAN_DENIAL",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/syrian-government-officials-hezbollah-held-secret-talks-turkey-sources-say-2026-10-01/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-CHINA-FUEL-EXPORT-SUSPENSION-20261001",
+      "event_type": "CHINA_OIL_PRODUCT_EXPORT_SUSPENSION",
+      "occurrence_time": "2026-10-01",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "actor": "Chinese refiners",
+      "summary": "Reuters reported that Chinese refiners suspended oil-product exports beyond Hong Kong and Macau until further notice, tightening a fuel market already constrained by Middle East and Ukraine disruptions.",
+      "confidence": "HIGH_FOR_REUTERS_FOUR-SOURCE_REPORT",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-barely-changed-investors-assess-us-iran-peace-talks-gulf-exports-2026-10-01/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-THREE-TANKERS-PROJECTILE-20261001",
+      "updates_existing_ref": "HORMUZ_MARITIME_SECURITY_DRAWER",
+      "relationship": "LATER_REPORTING_IDENTIFIES_THREE_SEP30_PROJECTILE_STRIKES",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "summary": "Reuters reported shipping-intelligence service Marisks said three Liberian-flagged tankers were struck by unknown projectiles while transiting Hormuz. Weapon type, attacker and attribution remain unresolved.",
+      "status": "THREE_PROJECTILE_STRIKES_REPORTED; ATTRIBUTION_UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/business/energy/three-oil-tankers-hit-by-projectiles-hormuz-strait-tuesday-marisks-says-2026-10-01/"
+      ]
+    },
+    {
+      "update_id": "UPD-FLYDUBAI-FZ1073-INVESTIGATION-20261001",
+      "updates_existing_ref": "FLYDUBAI_FZ1073_SECURITY_INCIDENT_20260930",
+      "relationship": "MOTIVE_AND_ACTOR_ASSESSMENT_UPDATE",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "summary": "Reuters reported the co-pilot stabbed the captain during FZ1073. Israeli officials assessed the Omani co-pilot likely acted alone; UAE opened an investigation into motive, terrorism, prior planning or direction. No Iran/Houthi organizational link is established.",
+      "status": "SERIOUS_SECURITY_INCIDENT; UAE_INVESTIGATION_ACTIVE",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israel-vows-get-root-flydubai-attack-uae-launches-investigation-2026-10-01/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-SYRIA-DENIES-HEZBOLLAH-MEETING-20261001",
+      "claimant": "Syrian government English-language account",
+      "claim_time": "2026-10-01",
+      "claim": "Denied reporting that Syrian government representatives met Hezbollah in Turkey.",
+      "adjudication": "OFFICIAL_DENIAL_PRESERVED_AGAINST_MULTI-SOURCE_REPORT; NOT_RESOLVED_AS_FACTUAL_CORRECTION",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/syrian-government-officials-hezbollah-held-secret-talks-turkey-sources-say-2026-10-01/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "update_id": "ENERGY-FUJAIRAH-FUEL-RECOVERY-20261001",
+      "occurrence_time": "2026-10-01",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "summary": "Kpler data reported by Reuters showed Fujairah Q3 fuel-oil imports at 2.6 million metric tons versus 845,000 tons in Q2. September UAE fuel-oil exports exceeded 1.4 million tons. Bunker sales and inventories improved but remained below pre-war levels.",
+      "confidence": "HIGH_FOR_REUTERS_REPORTING_OF_KPLER/LSEG/S&P_DATA",
+      "sources": [
+        "https://www.reuters.com/business/energy/uaes-fujairah-restores-some-fuel-oil-supplies-despite-hormuz-disruption-boosts-2026-10-01/"
+      ]
+    },
+    {
+      "update_id": "ENERGY-CHINA-EXPORT-PAUSE-MARKET-20261001",
+      "occurrence_time": "2026-10-01",
+      "public_available_time": "2026-10-01",
+      "collection_time": "2026-10-01T12:03:15-04:00",
+      "summary": "Reuters reported December Brent above $101 and WTI above $92 late in the morning as China's fuel-export suspension tightened product-market expectations. These are timestamped market observations, not proof of Hormuz normalization.",
+      "confidence": "HIGH_FOR_REUTERS_TIMESTAMPED_MARKET_DATA",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-barely-changed-investors-assess-us-iran-peace-talks-gulf-exports-2026-10-01/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "IRAN_LEADERSHIP_MULTI-SOURCE_REPORTING",
+      "addition": "Reuters Oct.1 conditional retaliation-planning report."
+    },
+    {
+      "source_class": "MARITIME_INTELLIGENCE_VIA_REUTERS",
+      "addition": "Marisks report identifying three Sep.30 Hormuz projectile strikes."
+    },
+    {
+      "source_class": "KPLER_LSEG_FUJAIRAH_PRODUCT_FLOWS",
+      "addition": "Oct.1 fuel-oil import/export and bunkering recovery data."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE Iran escalation drawer: conditional broader-response planning is now multi-source reported; no final decision or execution established.",
+    "UPDATE Hormuz maritime-security drawer: later reporting identifies three Sep.30 tanker projectile strikes; attribution and weapon type remain unresolved.",
+    "UPDATE Flydubai FZ1073 drawer: Israeli preliminary assessment favors a lone actor while UAE investigation remains open; no Iran/Houthi link established.",
+    "UPDATE Syria/Hezbollah drawer: reported September Turkey-hosted de-escalation contact is paired with an official Syrian denial; no final agreement established.",
+    "UPDATE energy-adaptation drawer: Fujairah fuel-oil supply, exports and bunkering materially recovered but key measures remain below pre-war baselines.",
+    "UPDATE China/global-products drawer: Chinese refiners suspended product exports beyond Hong Kong/Macau.",
+    "NO MATERIAL CHANGE to a final U.S.-Iran/Hormuz settlement, Sep.29 U.S. sanctions package, Iranian-airline restrictions, qualified IAEA implementation, Gaza/Hamas disposition, or independently established new Houthi BDA.",
+    "NO denominator-compatible whole-Strait Kpler/LSEG vessel-count series was located."
+  ],
+  "unresolved_questions": [
+    "Will Iran's conditional broader-response planning become an operational order?",
+    "Who fired the projectiles that struck the three tankers?",
+    "Will independent evidence resolve the Syria-Hezbollah meeting report and denial?",
+    "Will the UAE investigation establish motive or external direction in FZ1073?",
+    "How durable is Fujairah's recovery if Hormuz attacks continue?",
+    "How long will China's oil-product export suspension last?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Iran conditional retaliation planning",
+      "Three Sep.30 Hormuz tanker projectile strikes identified",
+      "Syria-Hezbollah Turkey contact reported and denied",
+      "FZ1073 investigation update",
+      "Fujairah fuel-oil recovery",
+      "China oil-product export suspension"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz agreement",
+      "No newer qualified U.S. Iran sanctions package",
+      "No new Iranian-airline third-country implementation",
+      "No qualified new IAEA implementation event",
+      "No independently established new Houthi BDA",
+      "No denominator-compatible whole-Strait Kpler/LSEG vessel-count series"
+    ],
+    "actor_source_families_checked": [
+      "Iran political/military/security leadership",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Syria-related actors",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy/commodity markets",
+      "public commercial shipping/AIS/Kpler/LSEG reporting",
+      "human-impact reporting",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary Kpler/LSEG/AIS terminal access.",
+      "No commercial satellite tasking or classified ISR.",
+      "Items first published after 12:00 ET are excluded."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_EVIDENCE_LOCKER_SWEEP",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
