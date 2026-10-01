@@ -1,0 +1,287 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261001-ROOK-CATCHUP",
+  "known_at": "2026-10-01T06:19:22-04:00",
+  "evidence_cutoff": "2026-10-01T00:00:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20260930T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260930T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261001T0000ET.json"
+    ]
+  },
+  "summary": "Consumes the three evidence sweeps from September 29 at noon through October 1 at midnight. It adds the completed U.S. withdrawal from its remaining Iraq base, updated U.S.–Iran mediation, new regional airspace warnings, the Flydubai FZ1073 cockpit incident, the latest UK statement on RAF Fairford, Saudi regional-security remarks, and the latest oil and Gulf-export picture. The motive in the Flydubai incident remains unknown, and the Fairford investigation has not independently established Iranian state direction.",
+  "sources": [
+    {
+      "source_id": "SRC-3F3984FC0E97",
+      "url": "https://www.reuters.com/world/us-forces-exit-iraq-emboldening-irans-proxies-islamic-state-2026-09-30/",
+      "source_role": "Reuters report on completion of the scheduled U.S. troop withdrawal from Iraq"
+    },
+    {
+      "source_id": "SRC-3B387969FDE5",
+      "url": "https://www.reuters.com/business/energy/us-release-40-million-barrels-crude-strategic-petroleum-reserve-energy-2026-09-29/",
+      "source_role": "Reuters report on the U.S. Strategic Petroleum Reserve loan offer"
+    },
+    {
+      "source_id": "SRC-CB722ACC19D8",
+      "url": "https://www.reuters.com/world/middle-east/eu-aviation-agency-issues-saudi-airspace-advisory-after-houthi-attacks-2026-09-30/",
+      "source_role": "Reuters report on EASA regional airspace guidance"
+    },
+    {
+      "source_id": "SRC-243312AF638A",
+      "url": "https://www.reuters.com/world/middle-east/iran-receives-us-feedback-seven-day-trust-building-plan-2026-09-30/",
+      "source_role": "Reuters report on Qatar relaying U.S. feedback to Iran"
+    },
+    {
+      "source_id": "SRC-E64F1815F6DF",
+      "url": "https://www.reuters.com/world/us/iran-appeals-us-voters-american-troops-leave-iraq-2026-09-30/",
+      "source_role": "Reuters report on continuing Hormuz disruption and maritime risk"
+    },
+    {
+      "source_id": "SRC-18C8C7406338",
+      "url": "https://www.reuters.com/business/energy/oil-climbs-after-trump-denies-he-is-willing-ease-sanctions-iran-2026-09-30/",
+      "source_role": "Reuters report on Gulf export-recovery estimates"
+    },
+    {
+      "source_id": "SRC-6244002AAC7D",
+      "url": "https://www.arabnews.com/saudi-arabia/saudi-crown-prince-warns-of-regional-threats-hails-indivisibility-of-gulf-security-3003902",
+      "source_role": "Report on the Saudi crown prince's annual Shura Council address"
+    },
+    {
+      "source_id": "SRC-DAE0C142B00C",
+      "url": "https://www.aa.com.tr/en/middle-east/saudi-crown-prince-says-mecca-defense-alliance-with-turkiye-pakistan-aims-to-bolster-regional-stability/4074097",
+      "source_role": "Report on the Saudi crown prince's remarks about the Mecca Defense Alliance"
+    },
+    {
+      "source_id": "SRC-EE163BE442AB",
+      "url": "https://apnews.com/article/fd1835479898f2f944792913af7cbce6",
+      "source_role": "Associated Press report on Flydubai FZ1073"
+    },
+    {
+      "source_id": "SRC-712E5528BA71",
+      "url": "https://www.reuters.com/world/middle-east/diverted-flydubai-flight-israel-was-not-hijacking-incident-israeli-prime-2026-09-30/",
+      "source_role": "Reuters report on Flydubai FZ1073"
+    },
+    {
+      "source_id": "SRC-1AECCCF93BEB",
+      "url": "https://apnews.com/article/a71ea8173678705fb1895539b6e4eb24",
+      "source_role": "Associated Press follow-up on Flydubai FZ1073"
+    },
+    {
+      "source_id": "SRC-FF4DB1F1EF20",
+      "url": "https://www.reuters.com/world/uk/uk-airbase-suspect-tipped-off-police-times-says-2026-09-30/",
+      "source_role": "Reuters report on the UK government's RAF Fairford assessment and continuing investigation"
+    },
+    {
+      "source_id": "SRC-646C693ABA1E",
+      "url": "https://www.reuters.com/business/energy/analysts-raise-2026-oil-forecasts-prolonged-gulf-disruption-2026-09-30/",
+      "source_role": "Reuters report on September 30 oil prices and Gulf export recovery"
+    },
+    {
+      "source_id": "SRC-95955A0902E3",
+      "url": "https://www.reuters.com/business/energy/oil-climbs-us-iran-tensions-keep-supply-risks-focus-2026-02-26/",
+      "source_role": "Reuters pre-war Brent benchmark"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-US-IRAQ-WITHDRAWAL-COMPLETE-20260929",
+      "event_date": "2026-09-29",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_TROOP_WITHDRAWAL_FROM_IRAQ_COMPLETED",
+      "strike_countable": false,
+      "public_available_time": "2026-09-29T20:01:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "The final U.S. troops left the remaining base in Iraq under the scheduled withdrawal. The Pentagon said targeted training and intelligence support would continue.",
+      "source_ids": [
+        "SRC-3F3984FC0E97"
+      ]
+    },
+    {
+      "event_id": "G3-US-SPR-LOAN-OFFER-20260929",
+      "event_date": "2026-09-29",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "US_STRATEGIC_PETROLEUM_RESERVE_LOAN_OFFER",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "The U.S. offered energy companies loans of up to 40 million barrels from the Strategic Petroleum Reserve. The offer did not show how much companies would actually borrow.",
+      "source_ids": [
+        "SRC-3B387969FDE5"
+      ]
+    },
+    {
+      "event_id": "G3-EASA-SAUDI-JORDAN-AIRSPACE-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "EASA_REGIONAL_AIRSPACE_GUIDANCE_UPDATE",
+      "strike_countable": false,
+      "public_available_time": "2026-09-30T11:31:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "EASA advised covered airlines to avoid Saudi airspace amid increased Houthi attacks, upgraded Jordan to an all-altitude avoidance recommendation, and extended warnings covering several other conflict-affected states and Gulf waters.",
+      "source_ids": [
+        "SRC-CB722ACC19D8"
+      ]
+    },
+    {
+      "event_id": "G3-US-IRAN-QATAR-SEQUENCING-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "QATAR_RELAYS_US_FEEDBACK_TO_IRAN",
+      "strike_countable": false,
+      "public_available_time": "2026-09-30T03:27:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "Qatar relayed U.S. feedback to Iran on the seven-day proposal. A non-Iranian official briefed on the talks told Reuters that the main disagreement concerned the order of steps rather than the plan's components. Talks continued, but no agreement had been reached.",
+      "source_ids": [
+        "SRC-243312AF638A"
+      ]
+    },
+    {
+      "event_id": "G3-SAUDI-MBS-REGIONAL-SECURITY-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "SAUDI_REGIONAL_SECURITY_POLICY_ADDRESS",
+      "strike_countable": false,
+      "public_available_time": "2026-09-30T13:27:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "Saudi Crown Prince Mohammed bin Salman said Saudi Arabia would continue pursuing de-escalation and diplomacy while responding firmly to threats. He called Gulf security indivisible, reaffirmed the Mecca Defense Alliance with Türkiye and Pakistan, and rejected political or economic coercion through international waterways.",
+      "source_ids": [
+        "SRC-6244002AAC7D",
+        "SRC-DAE0C142B00C"
+      ]
+    },
+    {
+      "event_id": "G3-FLYDUBAI-FZ1073-COCKPIT-INCIDENT-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "FLYDUBAI_FZ1073_COCKPIT_SECURITY_INCIDENT",
+      "strike_countable": false,
+      "public_available_time": "2026-09-30T12:00:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "Flydubai flight FZ1073 from Dubai to Tel Aviv diverted to Tabuk after the co-pilot allegedly attacked the captain and tried to put the aircraft into a steep descent. The aircraft landed safely and Saudi authorities detained the suspect. Investigators had not established a motive or any state or group connection by midnight.",
+      "source_ids": [
+        "SRC-EE163BE442AB",
+        "SRC-712E5528BA71",
+        "SRC-1AECCCF93BEB"
+      ]
+    },
+    {
+      "event_id": "G3-RAF-FAIRFORD-IRAN-ASSESSMENT-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "UK_STATEMENT_ON_RAF_FAIRFORD_INCIDENT",
+      "strike_countable": false,
+      "public_available_time": "2026-09-30T12:00:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "The UK prime minister said there were “strong indications” Iran played a part in the suspicious incident near RAF Fairford. Iran denied involvement. The investigation remained open, and Iranian state direction had not been independently established.",
+      "source_ids": [
+        "SRC-FF4DB1F1EF20"
+      ]
+    },
+    {
+      "event_id": "G3-GULF-ENERGY-RECOVERY-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "GULF_EXPORT_RECOVERY_WITH_ELEVATED_OIL_PRICES",
+      "strike_countable": false,
+      "public_available_time": "2026-09-30T16:16:00-04:00",
+      "game_knowledge_time": "2026-10-01T06:19:22-04:00",
+      "evidence_horizon_time": "2026-10-01T00:00:00-04:00",
+      "summary": "Gulf crude exports had recovered sharply, with some estimates back near 2025 average levels, but energy markets had not returned to pre-war conditions. Brent closed at $103.50 on September 30, about 46% above its $70.75 February 26 pre-war close, even after falling from wartime peaks. Refined-fuel exports remained constrained.",
+      "source_ids": [
+        "SRC-18C8C7406338",
+        "SRC-646C693ABA1E",
+        "SRC-95955A0902E3"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "Mediated talks continue; no agreement",
+        "observed_state": "Qatar relayed U.S. feedback on Iran's seven-day proposal. Reuters reported that the main disagreement was the order of steps rather than the plan's components. The talks were still indirect and no replacement agreement or Hormuz reopening arrangement had been reached by midnight September 30.",
+        "knowledge_time": "2026-10-01T06:19:22-04:00",
+        "source_ids": [
+          "SRC-F998CB101972",
+          "SRC-147F3EB0E6BC",
+          "SRC-25BB1B596B72",
+          "SRC-6D4B41984CFD",
+          "SRC-3C3CB8B494AA",
+          "SRC-B63B1CFF1B21",
+          "SRC-F98CA0A64F09",
+          "SRC-BE3466904600",
+          "SRC-E48C2BF4BA86",
+          "SRC-5EB57BE7099F",
+          "SRC-49ED905D994D",
+          "SRC-18A822A93DFC",
+          "SRC-C7A82D89ACEA",
+          "SRC-F917DE0C3BC3",
+          "SRC-A5BA6AAB7890",
+          "SRC-0042073EBED2",
+          "SRC-03EF3E9F6CD4",
+          "SRC-5572ACB81217",
+          "SRC-1AC1B37EA9CB",
+          "SRC-275F840E5D1E",
+          "SRC-B52CFBB65D5A",
+          "SRC-243312AF638A"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Traffic and exports are recovering, but Hormuz is not back to normal",
+        "observed_state": "Shipping and oil exports increased during September, but crude, refined-product and gas flows through Hormuz remained disrupted and maritime security incidents continued. Broader Gulf crude exports recovered faster than normal Hormuz traffic because producers also used alternative routes.",
+        "knowledge_time": "2026-10-01T06:19:22-04:00",
+        "source_ids": [
+          "SRC-8C8DCF0C3D2F",
+          "SRC-E64F1815F6DF",
+          "SRC-18C8C7406338",
+          "SRC-646C693ABA1E"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-ENERGY-RECOVERY-20260930",
+      "mode": "add",
+      "record": {
+        "status": "Oil prices have fallen from wartime peaks but remain well above pre-war levels",
+        "observed_state": "Brent closed at $103.50 on September 30 versus $70.75 on February 26, the last pre-war trading day cited here. That is about 46% higher. Gulf crude exports had recovered sharply, while refined-fuel exports remained constrained.",
+        "knowledge_time": "2026-10-01T06:19:22-04:00",
+        "source_ids": [
+          "SRC-646C693ABA1E",
+          "SRC-95955A0902E3",
+          "SRC-18C8C7406338"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-SAUDI-REGIONAL-SECURITY-20260930",
+      "mode": "add",
+      "record": {
+        "status": "Saudi Arabia continues diplomacy while emphasizing collective Gulf security",
+        "observed_state": "In his annual Shura Council address, Mohammed bin Salman said Saudi Arabia would keep pursuing de-escalation and diplomacy while responding firmly to threats. He described Gulf security as indivisible, reaffirmed the Mecca Defense Alliance with Türkiye and Pakistan, and rejected using international waterways for political or economic coercion.",
+        "knowledge_time": "2026-10-01T06:19:22-04:00",
+        "source_ids": [
+          "SRC-6244002AAC7D",
+          "SRC-DAE0C142B00C"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
