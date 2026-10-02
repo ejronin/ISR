@@ -530,16 +530,34 @@
   const copyRouteState=(target,staged)=>['routeKey','pageOwner','primarySection','secondaryPage'].forEach(k=>{target[k]=staged[k];});
   function emitRouteFailure(win,state,error){state.readerError={code:error.code||'READER_FINALIZATION_FAILED'};root.console?.error?.('Atlas reader route finalization failed',error);if(win?.CustomEvent&&win.dispatchEvent)win.dispatchEvent(new win.CustomEvent('atlasreadererror',{detail:{code:state.readerError.code}}));}
 
+  function revealRailItem(link) {
+    const rail = link?.closest?.('nav');
+    if (!rail || !link) return;
+    const left = Number(link.offsetLeft);
+    const width = Number(link.offsetWidth);
+    const railWidth = Number(rail.clientWidth);
+    if (![left, width, railWidth].every(Number.isFinite) || railWidth <= 0) return;
+    const target = Math.max(0, left - Math.max(0, railWidth - width) / 2);
+    if (typeof rail.scrollTo === 'function') rail.scrollTo({ left: target, behavior: 'auto' });
+    else rail.scrollLeft = target;
+  }
+
+  function revealCurrentNavigation(app) {
+    app?.querySelectorAll?.('.primary-nav a[aria-current="page"], .context-route[aria-current="page"]').forEach(revealRailItem);
+  }
+
   function activateGuideSections(app, route, win) {
     const definitions = typeof base.pageSectionsFor === 'function' ? base.pageSectionsFor(route.key) : [];
     if (!definitions.length) return () => {};
     const links = [...app.querySelectorAll('[data-section-id]')];
     const setActive = id => {
+      let activeLink = null;
       links.forEach(link => {
         const active = link.dataset.sectionId === id;
-        if (active) link.setAttribute('aria-current', 'location');
+        if (active) { link.setAttribute('aria-current', 'location'); activeLink = link; }
         else if (link.getAttribute?.('aria-current') === 'location') link.removeAttribute?.('aria-current');
       });
+      if (activeLink) revealRailItem(activeLink);
     };
     const requested = definitions.find(item => item.id === route.params?.section);
     if (requested) {
@@ -595,6 +613,7 @@
         const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;finalized.app.dataset.routeKey=route.key;finalized.app.dataset.layoutScope=PROTECTED_LAYOUT_ROUTES.has(route.key)?'protected':'adaptive-wide';
         previousVisible.forEach(quiesceMaps);disposeSectionTracking();rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
         rootElement.className='atlas-ready';rootElement.dataset.status='ready';rootElement.setAttribute('aria-busy','false');copyRouteState(state,stagedState);delete state.readerError;
+        revealCurrentNavigation(finalized.app);
         disposeSectionTracking=activateGuideSections(finalized.app,route,win);
         if(focusHeading&&previousRouteKey&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route.key;return route;
       } catch(error) {
