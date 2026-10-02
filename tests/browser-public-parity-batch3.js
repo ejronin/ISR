@@ -343,7 +343,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: true });
       for (const key of ['start.overview', 'hormuz.shipping', 'hormuz.economy', 'talks.regional', 'military.campaigns', 'talks.overview']) {
         await routeKey(cdp, key);
-        const mobile = await cdp.eval(`({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,targets:[...document.querySelectorAll('.map-route-button,.map-imagery-button,.map-record-button,.map-card-close,.mobile-navigation summary,.mobile-navigation a')].filter(node => node.offsetParent !== null).map(node => node.getBoundingClientRect().height)})`);
+        const mobile = await cdp.eval(`({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,targets:[...document.querySelectorAll('.map-route-button,.map-imagery-button,.map-record-button,.map-card-close,.primary-nav a,.context-nav a')].filter(node => node.offsetParent !== null).map(node => node.getBoundingClientRect().height)})`);
         assert(mobile.scrollWidth <= mobile.clientWidth, `${key} overflows at ${width}px`);
         assert(mobile.targets.every(height => height >= 44), `${key} exposes a touch target below 44px at ${width}px`);
       }
