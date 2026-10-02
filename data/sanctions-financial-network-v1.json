@@ -1,0 +1,551 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "APPROVED_SANCTIONS_FINANCIAL_NETWORK_ANALYSIS",
+  "title": "Sanctions & Impact",
+  "as_of": "2026-10-02",
+  "public_rule": "Understand the plumbing at analyst depth. Show the reader which valve got closed, what stopped flowing, what still flows around it, and why they should care.",
+  "governing_rules": {
+    "designation_is_not_damage": "A legal designation establishes that a restriction was imposed. It does not by itself prove that money stopped moving, trade stopped, or the target lost access to every workaround.",
+    "legal_reach_is_not_behavioral_reach": "U.S. law does not directly prohibit every foreign transaction. Practical reach expands when foreign banks, insurers, shippers, suppliers, and payment firms change behavior to protect access to U.S. finance, markets, or counterparties."
+  },
+  "why_now": {
+    "lead": "Iran has lived with U.S. sanctions in changing forms since 1979. The wartime campaign shown here is different because it increasingly targets the financial and commercial routes around Iran as well as Iranian actors themselves.",
+    "points": [
+      {
+        "title": "Older sanctions often left usable detours.",
+        "text": "Iran built workarounds through exchange houses, front companies, smaller banks, local-currency settlement, shipping intermediaries, and third-country trade."
+      },
+      {
+        "title": "Wartime measures increasingly name the detours too.",
+        "text": "Treasury actions during the war have reached exchange houses, foreign financial institutions, aviation and procurement intermediaries, maritime insurance structures, crypto platforms, industrial suppliers, and other facilitators."
+      },
+      {
+        "title": "Secondary sanctions turn legal pressure into business pressure.",
+        "text": "A foreign firm may not be directly forbidden from every Iran-linked transaction, but it can still decide the business is not worth risking access to U.S. banks, dollar clearing, suppliers, or customers."
+      },
+      {
+        "title": "The effect is cumulative, not magical.",
+        "text": "Closing one route rarely ends the flow. The pressure comes from reducing clean alternatives, increasing screening and delay, raising cost, and making each remaining workaround easier to identify."
+      }
+    ],
+    "before_now": {
+      "before": {
+        "label": "Long-running pressure",
+        "text": "Sanction Iranian institutions and sectors while Iran develops detours through intermediaries and third-country trade."
+      },
+      "now": {
+        "label": "Wartime network pressure",
+        "text": "Sanction Iranian targets, identify the facilitators and settlement routes, and pressure foreign institutions that keep those routes commercially usable."
+      }
+    }
+  },
+  "definitions": [
+    {
+      "term": "Correspondent banking",
+      "plain": "The bank-to-bank relationships that let a bank send money internationally when it does not have its own branch in the other country."
+    },
+    {
+      "term": "Secondary sanctions",
+      "plain": "A non-U.S. bank or business may be outside a direct U.S. ban, but certain Iran-linked activity can still cost it access to U.S. finance, markets, or other U.S.-linked business."
+    },
+    {
+      "term": "50-percent rule",
+      "plain": "A company can be treated as blocked when sanctioned people or companies own 50 percent or more of it in the aggregate, even if that company is not separately named."
+    }
+  ],
+  "plumbing": {
+    "sources": [
+      {
+        "id": "oil-revenue",
+        "label": "Iranian oil revenue",
+        "type": "revenue"
+      },
+      {
+        "id": "state-finance",
+        "label": "State-linked finance",
+        "type": "finance"
+      }
+    ],
+    "core": {
+      "id": "iran-finance",
+      "label": "Iran",
+      "sublabel": "Oil sales, imports, procurement and state-linked finance"
+    },
+    "intermediaries": [
+      {
+        "id": "trader-front",
+        "label": "Trader / front company",
+        "state": "high-risk",
+        "explanation": "Can disguise the Iranian counterparty or commodity chain; naming the facilitator raises screening and ownership risk."
+      },
+      {
+        "id": "exchange-house",
+        "label": "Exchange houses",
+        "state": "degraded",
+        "explanation": "Move currency outside ordinary bank channels; wartime actions have targeted exchange networks used by sanctioned Iranian banks."
+      },
+      {
+        "id": "shipping-insurance",
+        "label": "Shipping / insurance",
+        "state": "degraded",
+        "explanation": "Cargo can move only if ships, brokers and coverage remain commercially available; sanctions can make a formally possible voyage unattractive."
+      },
+      {
+        "id": "foreign-bank",
+        "label": "Foreign bank / correspondent",
+        "state": "high-risk",
+        "explanation": "A foreign bank may pull back if Iran-linked business threatens correspondent access or creates unacceptable compliance risk."
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "crypto",
+        "label": "Digital-asset route",
+        "sublabel": "Exchanges and wallets",
+        "state": "degraded",
+        "explanation": "Still a workaround, but Treasury has increasingly named exchanges, developers and facilitators."
+      },
+      {
+        "id": "local-currency",
+        "label": "Local-currency / barter route",
+        "sublabel": "Non-dollar settlement",
+        "state": "usable",
+        "explanation": "Can reduce dependence on dollar clearing, but does not remove shipping, banking, ownership, supplier or secondary-sanctions risk."
+      }
+    ],
+    "legend": {
+      "blocked": "Legal or commercial route unavailable in the cited case",
+      "degraded": "Still possible, but with materially more friction or reduced availability",
+      "usable": "A remaining route; not a claim that it is cheap, safe, or sanction-proof",
+      "high-risk": "Increased screening, counterparty, ownership, or secondary-sanctions exposure"
+    }
+  },
+  "cascade": [
+    {
+      "step": 1,
+      "title": "One facilitator is named",
+      "text": "The legal action identifies a node that was helping an Iran-linked flow."
+    },
+    {
+      "step": 2,
+      "title": "Screening expands",
+      "text": "Banks and businesses check ownership, counterparties, payment paths and connected companies more closely."
+    },
+    {
+      "step": 3,
+      "title": "Banks pull back",
+      "text": "A bank can reject or delay transactions even when no authority physically prevents the payment."
+    },
+    {
+      "step": 4,
+      "title": "Insurers and suppliers reassess",
+      "text": "The same risk spreads into cargo cover, shipping, trade finance, parts and services."
+    },
+    {
+      "step": 5,
+      "title": "The route becomes expensive or toxic",
+      "text": "The transaction may still be possible, but fewer firms will touch it and the remaining path costs more time, money and risk."
+    }
+  ],
+  "sanctions_types": [
+    {
+      "type": "Primary sanctions",
+      "plain": "U.S. persons and transactions under U.S. jurisdiction are directly restricted by the applicable Iran sanctions rules."
+    },
+    {
+      "type": "Secondary sanctions",
+      "plain": "Certain non-U.S. dealings can trigger U.S. consequences even when the foreign company is not itself American."
+    }
+  ],
+  "map_nodes": [
+    {
+      "id": "node-iran",
+      "name": "Iran — sanctioned financial and industrial base",
+      "category": "Direct target",
+      "jurisdiction": "Iran",
+      "lat": 32,
+      "lon": 53,
+      "precision": "Country-level jurisdiction marker",
+      "note": "Represents the Iranian institutions, sectors and state-linked financial activity targeted by the sanctions program.",
+      "source_ids": [
+        "SAN-TREASURY-20261001-INDUSTRY"
+      ]
+    },
+    {
+      "id": "node-uae",
+      "name": "UAE — banking and aviation exposure",
+      "category": "Foreign intermediary / implementation",
+      "jurisdiction": "United Arab Emirates",
+      "lat": 24.4,
+      "lon": 54.4,
+      "precision": "Country-level jurisdiction marker; not an office location",
+      "note": "Treasury targeted Iran-linked access through a UAE bank in August; by September the UAE aviation authority publicly implemented the U.S. aviation restriction for Iranian airlines.",
+      "source_ids": [
+        "SAN-TREASURY-20260828-UAE",
+        "SAN-WAM-20260924-AVIATION"
+      ]
+    },
+    {
+      "id": "node-turkiye",
+      "name": "Türkiye — financial facilitators",
+      "category": "Exchange / settlement network",
+      "jurisdiction": "Türkiye",
+      "lat": 39,
+      "lon": 35,
+      "precision": "Country-level jurisdiction marker",
+      "note": "Treasury targeted financial lifelines and facilitators in Türkiye as part of the wartime campaign.",
+      "source_ids": [
+        "SAN-TREASURY-20260904-TURKIYE"
+      ]
+    },
+    {
+      "id": "node-russia",
+      "name": "Russia — VTB Bank",
+      "category": "Foreign bank",
+      "jurisdiction": "Russia",
+      "lat": 55.75,
+      "lon": 37.62,
+      "precision": "City-level jurisdiction marker; not an office-level pin",
+      "note": "Treasury designated VTB for Iran-related sanctions evasion, including alleged correspondent relationships and settlement channels with sanctioned Iranian banks.",
+      "source_ids": [
+        "SAN-TREASURY-20260914-VTB",
+        "SRC-F308AF16618A"
+      ]
+    },
+    {
+      "id": "node-iraq",
+      "name": "Iraq — aviation and trade pressure",
+      "category": "Regional implementation",
+      "jurisdiction": "Iraq",
+      "lat": 33.3,
+      "lon": 44.4,
+      "precision": "City-level jurisdiction marker; not a facility location",
+      "note": "Iraq became part of the observable implementation story when Iranian flight access was restricted during the September aviation-sanctions rollout.",
+      "source_ids": [
+        "SAN-REUTERS-20260924-AVIATION"
+      ]
+    },
+    {
+      "id": "node-china",
+      "name": "China — major oil and trade relationship",
+      "category": "Remaining commercial route",
+      "jurisdiction": "China",
+      "lat": 35.9,
+      "lon": 104.2,
+      "precision": "Country-level jurisdiction marker",
+      "note": "China remains economically important to Iran; the map marks exposure and remaining trade capacity, not a claim that Chinese trade has stopped.",
+      "source_ids": [
+        "SAN-REUTERS-20260903-PRESSURE"
+      ]
+    }
+  ],
+  "wartime_actions": [
+    {
+      "id": "san-20260710-exchange",
+      "date": "2026-07-10",
+      "title": "Supreme-leader financier and shadow exchange houses targeted",
+      "targeted_node": "Financial facilitator, exchange houses and shell-company layers",
+      "function": "Move funds for sanctioned Iranian banks and regime-linked actors outside ordinary transparent banking channels.",
+      "legal_effect": "OFAC designated the named financier and exchange-house network.",
+      "observed_effect": "The designation establishes legal pressure on the named network. This record does not by itself prove that all associated money flows stopped.",
+      "potential_effect": "Banks, exchanges and counterparties connected to the network face greater screening, ownership and sanctions exposure.",
+      "source_ids": [
+        "SAN-TREASURY-20260710-EXCHANGE"
+      ]
+    },
+    {
+      "id": "san-20260715-procurement",
+      "date": "2026-07-15",
+      "title": "IRGC procurement network targeted",
+      "targeted_node": "Foreign aviation, transport and financial conduits",
+      "function": "Obscure IRGC involvement while moving material, money and personnel for procurement.",
+      "legal_effect": "OFAC designated seven individuals and entities in the international procurement network.",
+      "observed_effect": "The action names specific procurement intermediaries; disruption to every downstream procurement route is not assumed.",
+      "potential_effect": "Suppliers and financial intermediaries dealing with connected actors face greater sanctions and compliance risk.",
+      "source_ids": [
+        "SAN-TREASURY-20260715-PROCUREMENT"
+      ]
+    },
+    {
+      "id": "san-20260729-hormuz",
+      "date": "2026-07-29",
+      "title": "Hormuz insurance and shadow-fleet network targeted",
+      "targeted_node": "Maritime insurance and service entities tied to the Strait",
+      "function": "Collect maritime payments and provide an IRGC-linked service layer around passage through Hormuz.",
+      "legal_effect": "OFAC designated firms Treasury described as integral to the maritime insurance/extortion scheme.",
+      "observed_effect": "The named service and payment structure became a sanctions target. The action does not prove that every vessel or every Iran-linked maritime payment stopped.",
+      "potential_effect": "Shipowners, brokers, insurers and payment firms have stronger reasons to avoid the named structure and connected counterparties.",
+      "source_ids": [
+        "SAN-TREASURY-20260729-HORMUZ"
+      ]
+    },
+    {
+      "id": "san-20260807-crypto",
+      "date": "2026-08-07",
+      "title": "Crypto and clandestine currency networks targeted",
+      "targeted_node": "Digital-asset exchanges, front companies and shadow-currency facilitators",
+      "function": "Move and obscure value outside ordinary bank channels and obtain foreign currency for state-linked actors.",
+      "legal_effect": "OFAC designated exchanges and facilitators Treasury linked to IRGC and sanctions-evasion activity.",
+      "observed_effect": "The named platforms and networks became directly exposed to sanctions. Digital assets remained a workaround category rather than disappearing.",
+      "potential_effect": "Exchanges, wallet services and counterparties become easier to screen out once the network is named.",
+      "source_ids": [
+        "SAN-TREASURY-20260807-CRYPTO",
+        "SAN-TREASURY-20260807-CURRENCY"
+      ]
+    },
+    {
+      "id": "san-20260828-uae",
+      "date": "2026-08-28",
+      "title": "Foreign-bank access pressure widened",
+      "targeted_node": "UAE banking access and Iran-linked financial actors",
+      "function": "Provide foreign-bank and correspondent access for Iran-linked financial activity.",
+      "legal_effect": "Treasury proposed restricting Banque Misr UAE's U.S. correspondent access and sanctioned additional Iran-linked financial actors.",
+      "observed_effect": "This moved the campaign beyond Iranian institutions into the foreign banking layer. Separate evidence is still required to measure transaction losses caused by the action.",
+      "potential_effect": "Foreign banks must weigh Iran-related business against access to U.S. correspondent relationships and the broader dollar system.",
+      "source_ids": [
+        "SAN-TREASURY-20260828-UAE"
+      ]
+    },
+    {
+      "id": "san-20260908-aviation",
+      "date": "2026-09-08",
+      "title": "Aviation network and intermediaries targeted",
+      "targeted_node": "Iranian airlines, foreign intermediaries and procurement/transshipment routes",
+      "function": "Move aircraft, parts, technology, personnel and cargo through aviation and procurement networks.",
+      "legal_effect": "Treasury sanctioned 36 targets and suspended Iran-related aviation authorizations.",
+      "observed_effect": "By September 24, the UAE aviation authority suspended Iranian airline operations to and from the UAE and cited the U.S. ban; Reuters also reported cancellations elsewhere. Worldwide grounding was not established.",
+      "potential_effect": "Foreign airports, service companies, suppliers, lessors and banks may withdraw from Iran-linked aviation to avoid sanctions exposure.",
+      "source_ids": [
+        "SAN-TREASURY-20260908-AVIATION",
+        "SAN-REUTERS-20260924-AVIATION",
+        "SAN-WAM-20260924-AVIATION"
+      ]
+    },
+    {
+      "id": "san-20260914-vtb",
+      "date": "2026-09-14",
+      "title": "Russia's VTB Bank targeted for Iran-related sanctions evasion",
+      "targeted_node": "Foreign bank and correspondent relationship",
+      "function": "Treasury alleged VTB maintained Iran offices, correspondent relationships with sanctioned Iranian banks, rial-ruble settlement channels and efforts involving frozen Iranian assets.",
+      "legal_effect": "Treasury designated VTB under an Iran-focused authority.",
+      "observed_effect": "The previously announced large-bank action became an enacted designation. The available accepted record does not quantify how much Iranian settlement volume stopped as a result.",
+      "potential_effect": "The action raises the cost and risk of using large foreign banks as durable substitutes for sanctioned Iranian banking channels.",
+      "source_ids": [
+        "SAN-TREASURY-20260914-VTB",
+        "SRC-F308AF16618A"
+      ]
+    },
+    {
+      "id": "san-20260929-procurement",
+      "date": "2026-09-29",
+      "title": "Military procurement networks hit again",
+      "targeted_node": "Foreign procurement companies and individuals",
+      "function": "Obtain weapons and components for Iran's defense sector through overseas commercial networks.",
+      "legal_effect": "Treasury sanctioned 10 individuals and entities in multiple jurisdictions under Operation Economic Outcast.",
+      "observed_effect": "The named procurement nodes were exposed and sanctioned. Loss of every alternate supplier or procurement route is not established.",
+      "potential_effect": "Suppliers and payment channels connected to the identified network face greater screening and transaction risk.",
+      "source_ids": [
+        "SAN-TREASURY-20260929-PROCUREMENT"
+      ]
+    },
+    {
+      "id": "san-20261001-industrial-a7",
+      "date": "2026-10-01",
+      "title": "Industrial suppliers and the A7 financial network targeted",
+      "targeted_node": "Automotive, rail, manufacturing, steel and financial-network facilitators",
+      "function": "Support industrial supply and move state-linked money through an intermediary network.",
+      "legal_effect": "Treasury announced measures covering Iranian industrial networks and foreign suppliers; Treasury and FinCEN separately announced action against the A7 Network.",
+      "observed_effect": "The legal perimeter widened again on October 1. The current accepted record establishes the action, not a quantified economy-wide loss caused by it.",
+      "potential_effect": "More supplier and payment relationships can become commercially unattractive as connected foreign firms assess U.S. financial and sanctions exposure.",
+      "source_ids": [
+        "SAN-TREASURY-20261001-INDUSTRY",
+        "SAN-TREASURY-20261001-A7"
+      ]
+    }
+  ],
+  "observed_effects": [
+    {
+      "title": "Regional aviation pullback became visible",
+      "status": "Observed",
+      "text": "The September aviation campaign produced concrete regional implementation: the UAE aviation authority suspended Iranian airline operations to and from the UAE, while Reuters reported additional cancellations. The evidence does not establish a complete global grounding.",
+      "source_ids": [
+        "SAN-REUTERS-20260924-AVIATION",
+        "SAN-WAM-20260924-AVIATION"
+      ]
+    },
+    {
+      "title": "Indian exports faced additional friction",
+      "status": "Observed / reported",
+      "text": "Reuters reported that India's exports to Iran were expected to fall further as a Dubai transshipment route was halted and U.S. sanctions pressure increased.",
+      "source_ids": [
+        "SRC-2C482D135C1B"
+      ]
+    },
+    {
+      "title": "Oil and foreign-currency pressure intensified alongside the blockade",
+      "status": "Observed / multi-cause",
+      "text": "Reuters reporting in early September described sharper pressure on Iranian oil exports and the wider economy from the combined blockade and sanctions campaign. The blockade and sanctions are not treated as interchangeable causes.",
+      "source_ids": [
+        "SRC-C32D1E38D1A3",
+        "SRC-C20A4B97E3D9"
+      ]
+    }
+  ],
+  "remaining_routes": [
+    {
+      "title": "Local-currency settlement",
+      "status": "Still possible",
+      "text": "Avoiding dollars can reduce direct dependence on dollar clearing, but it does not erase sanctions on the banks, owners, goods, shippers or counterparties involved."
+    },
+    {
+      "title": "Barter and commodity settlement",
+      "status": "Still possible",
+      "text": "Goods can be exchanged without a normal dollar payment, but the physical trade still needs suppliers, logistics, insurance and counterparties willing to accept the risk."
+    },
+    {
+      "title": "Digital assets",
+      "status": "Degraded, not eliminated",
+      "text": "Crypto can move value outside conventional bank rails, but exchanges, developers, wallet infrastructure and facilitators can themselves be identified and sanctioned."
+    },
+    {
+      "title": "Front companies and smaller intermediaries",
+      "status": "Still used, higher risk",
+      "text": "Layering ownership and using smaller facilitators can obscure a transaction, but each newly identified intermediary gives banks and suppliers more names, ownership links and patterns to screen."
+    },
+    {
+      "title": "Third-country banks and trade hubs",
+      "status": "Behavioral pressure is central",
+      "text": "A foreign bank may remain legally able to conduct some business yet still retreat because access to U.S. correspondent banking, counterparties or markets matters more than the Iran-linked transaction."
+    }
+  ],
+  "watch": [
+    {
+      "label": "Foreign-bank pullback",
+      "text": "More banks reducing or ending Iran-linked business, correspondent ties or settlement services."
+    },
+    {
+      "label": "Rial and FX pressure",
+      "text": "Whether foreign-currency access becomes harder and more expensive rather than merely volatile."
+    },
+    {
+      "label": "Import friction",
+      "text": "Longer settlement times, disrupted transshipment, supplier exits or difficulty paying for ordinary imports."
+    },
+    {
+      "label": "Procurement difficulty",
+      "text": "Evidence that sensitive or dual-use parts take longer, cost more, or require more layers of intermediaries."
+    },
+    {
+      "label": "Workaround substitution",
+      "text": "Whether trade shifts into local currency, barter, crypto, smaller banks or new front companies rather than disappearing."
+    }
+  ],
+  "sources": {
+    "SAN-TREASURY-20260710-EXCHANGE": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Targets Key Supreme Leader Financier and Iran’s Shadow Exchange Houses",
+      "date": "2026-07-10",
+      "url": "https://home.treasury.gov/news/press-releases/sb0558",
+      "source_role": "Primary official action",
+      "context": "Establishes the U.S. designation and Treasury's stated basis; Treasury allegations are not independently converted into proven downstream damage."
+    },
+    "SAN-TREASURY-20260715-PROCUREMENT": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Targets Global Network Procuring Weapons for Iranian Regime",
+      "date": "2026-07-15",
+      "url": "https://home.treasury.gov/news/press-releases/sb0564",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260729-HORMUZ": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Disrupts Iranian Regime’s Strait of Hormuz Extortion Network",
+      "date": "2026-07-29",
+      "url": "https://home.treasury.gov/news/press-releases/sb0581",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260807-CURRENCY": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Dismantles Iranian Regime’s Global Clandestine Currency Networks",
+      "date": "2026-08-07",
+      "url": "https://home.treasury.gov/news/press-releases/sb0596",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260807-CRYPTO": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Sanctions Crypto Exchanges Funding Iran’s IRGC and Enabling Illicit Finance",
+      "date": "2026-08-07",
+      "url": "https://home.treasury.gov/news/press-releases/sb0598",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260828-UAE": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Iran’s Access to UAE Banks Targeted Under Operation Economic Outcast",
+      "date": "2026-08-28",
+      "url": "https://home.treasury.gov/news/press-releases/sb0617/",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260904-TURKIYE": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Severs Iranian Regime’s Financial Lifelines in Türkiye",
+      "date": "2026-09-04",
+      "url": "https://home.treasury.gov/news/press-releases/treasury-severs-iranian-regime-s-financial-lifelines-turkiye/",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260908-AVIATION": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Treasury Grounds Iranian Airlines with Sweeping Sanctions Action",
+      "date": "2026-09-08",
+      "url": "https://home.treasury.gov/news/press-releases/sb0623",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260914-VTB": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Operation Economic Outcast Sanctions Major Bank Helping Iran Evade Sanctions",
+      "date": "2026-09-14",
+      "url": "https://home.treasury.gov/news/press-releases/sb0629",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20260929-PROCUREMENT": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "Operation Economic Outcast Takes Down Iranian Military Procurement Networks",
+      "date": "2026-09-29",
+      "url": "https://home.treasury.gov/news/press-releases/sb0637/",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20261001-INDUSTRY": {
+      "publisher": "U.S. Department of the Treasury",
+      "title": "October 1 Iran industrial-sector sanctions action",
+      "date": "2026-10-01",
+      "url": "https://home.treasury.gov/news/press-releases/sb0643",
+      "source_role": "Primary official action"
+    },
+    "SAN-TREASURY-20261001-A7": {
+      "publisher": "U.S. Department of the Treasury / FinCEN",
+      "title": "October 1 A7 Network financial action",
+      "date": "2026-10-01",
+      "url": "https://home.treasury.gov/news/press-releases/sb0644",
+      "source_role": "Primary official action"
+    },
+    "SAN-REUTERS-20260924-AVIATION": {
+      "publisher": "Reuters",
+      "title": "Iranian flights cancelled as new U.S. sanctions take effect",
+      "date": "2026-09-24",
+      "url": "https://www.reuters.com/world/middle-east/iranian-flights-cancelled-new-us-d-day-sanctions-take-effect-saudis-say-they-2026-09-24/",
+      "source_role": "Independent reporting on implementation"
+    },
+    "SAN-WAM-20260924-AVIATION": {
+      "publisher": "Emirates News Agency (WAM)",
+      "title": "General Civil Aviation Authority announces suspension of Iranian airline operations",
+      "date": "2026-09-24",
+      "url": "https://www.wam.ae/en/article/c2epfv7-general-civil-aviation-authority-announces",
+      "source_role": "Primary regional implementation notice"
+    },
+    "SAN-REUTERS-20260903-PRESSURE": {
+      "publisher": "Reuters",
+      "title": "US pressure on Iran starting to tell as sanctions, blockade bite",
+      "date": "2026-09-03",
+      "url": "https://www.reuters.com/world/middle-east/us-pressure-iran-starting-tell-sanctions-blockade-bite-2026-09-03/",
+      "source_role": "Independent reporting on observed effects"
+    }
+  }
+}
