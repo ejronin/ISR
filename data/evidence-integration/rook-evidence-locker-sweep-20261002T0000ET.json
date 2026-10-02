@@ -1,0 +1,132 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-10-01T12:00:00-04:00",
+    "window_end": "2026-10-02T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-01T23:58:00-04:00",
+    "evidence_horizon_time": "2026-10-02T00:00:00-04:00"
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-IRAN-INDUSTRIAL-SANCTIONS-20261001",
+      "event_type": "US_IRAN_INDUSTRIAL_SANCTIONS",
+      "occurrence_time": "2026-10-01",
+      "public_available_time": "2026-10-01",
+      "actor": "United States Treasury",
+      "summary": "Treasury enacted new measures covering Iranian automotive, rail, manufacturing and steel networks and related foreign suppliers.",
+      "sources": [
+        "https://home.treasury.gov/news/press-releases/sb0643"
+      ]
+    },
+    {
+      "event_id": "LOCKER-US-A7-FINANCIAL-ACTION-20261001",
+      "event_type": "US_FINANCIAL_NETWORK_ACTION",
+      "occurrence_time": "2026-10-01",
+      "public_available_time": "2026-10-01",
+      "actor": "United States Treasury",
+      "summary": "Treasury and FinCEN announced a new action against the A7 Network, which Treasury says has been used by Iranian state-linked actors.",
+      "sources": [
+        "https://home.treasury.gov/news/press-releases/sb0644"
+      ]
+    },
+    {
+      "event_id": "LOCKER-SAUDI-MEDINA-POWER-INCIDENT-20261001",
+      "event_type": "SAUDI_HOUTHI_CONTESTED_INCIDENT",
+      "occurrence_time": "2026-09-29",
+      "public_available_time": "2026-10-01",
+      "actor": "Saudi-led coalition / Houthis",
+      "summary": "Saudi authorities attributed damage at a Medina power-distribution station to the Houthis; Houthi sources denied responsibility. Attribution remains contested.",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-led-coalition-says-houthis-attacked-power-station-medina-2026-10-01/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-FLYDUBAI-FZ1073-20261001",
+      "updates_existing_ref": "FLYDUBAI_FZ1073_SECURITY_INCIDENT_20260930",
+      "relationship": "LATER_PUBLIC_ASSESSMENT_WITHOUT_IRAN_ATTRIBUTION",
+      "summary": "Later Israeli public comments described apparent radicalization but did not establish an Iran connection.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/netanyahu-says-flydubai-co-pilot-underwent-islamist-radical-indoctrination-2026-10-01/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-US-IRAN-INDUSTRIAL-SANCTIONS-20261001",
+      "summary": "New U.S. measures broadened pressure into Iranian industrial and rail sectors.",
+      "sources": [
+        "https://home.treasury.gov/news/press-releases/sb0643"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "PRIMARY_US_SANCTIONS",
+      "addition": "Treasury Oct. 1 actions."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE sanctions drawer for Oct. 1 U.S. measures.",
+    "UPDATE Saudi-Houthi drawer with contested Medina incident.",
+    "UPDATE FZ1073 drawer without establishing Iran attribution.",
+    "NO MATERIAL CHANGE to final U.S.-Iran/Hormuz settlement, IAEA implementation, Iranian-airline restrictions, Gaza/Hamas disposition, Syria-Hezbollah contact disposition, or attribution of the Sep. 30 Hormuz tanker incidents."
+  ],
+  "unresolved_questions": [
+    "What measurable effects follow the Oct. 1 U.S. measures?",
+    "Can independent evidence resolve attribution for the Medina incident?",
+    "Will the FZ1073 investigation establish motive or external direction?"
+  ],
+  "coverage": {
+    "material_results": [
+      "U.S. industrial sanctions",
+      "U.S. A7 financial action",
+      "Contested Medina incident",
+      "FZ1073 update"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz agreement",
+      "No qualified new IAEA implementation event",
+      "No new Iranian-airline restriction identified",
+      "No resolved attribution for Sep. 30 Hormuz tanker incidents",
+      "No material Gaza/Hamas disposition change identified"
+    ],
+    "actor_source_families_checked": [
+      "Iran",
+      "United States",
+      "Israel",
+      "GCC states",
+      "Iraq",
+      "Yemen",
+      "Lebanon",
+      "Gaza",
+      "Syria",
+      "Pakistan",
+      "Turkiye",
+      "China",
+      "Russia",
+      "Europe",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy markets",
+      "shipping reporting",
+      "human-impact reporting",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary commercial-data terminal access."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
