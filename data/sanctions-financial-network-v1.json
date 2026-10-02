@@ -41,7 +41,7 @@
     "source_ids": [
       "SAN-OFAC-IRAN-HISTORY",
       "SAN-TREASURY-IFSR-2010",
-      "SAN-TREASURY-2026-SECONDARY"
+      "SAN-TREASURY-20260914-VTB"
     ]
   },
   "definitions": [
@@ -57,7 +57,7 @@
       "plain": "A non-U.S. bank or business may be outside a direct U.S. ban, but certain Iran-linked activity can still cost it access to U.S. finance, markets, or other U.S.-linked business.",
       "source_ids": [
         "SAN-OFAC-FAQ-149",
-        "SAN-TREASURY-2026-SECONDARY"
+        "SAN-TREASURY-20260914-VTB"
       ]
     },
     {
@@ -175,7 +175,7 @@
       "plain": "Certain non-U.S. dealings can trigger U.S. consequences even when the foreign company is not itself American.",
       "source_ids": [
         "SAN-OFAC-FAQ-149",
-        "SAN-TREASURY-2026-SECONDARY"
+        "SAN-TREASURY-20260914-VTB"
       ]
     }
   ],
@@ -618,14 +618,6 @@
       "url": "https://home.treasury.gov/news/press-releases/tg829",
       "source_role": "Primary sanctions implementation history",
       "context": "Treasury explains correspondent/payable-through-account consequences and how foreign institutions adjust behavior to protect access to the U.S. financial system."
-    },
-    "SAN-TREASURY-2026-SECONDARY": {
-      "publisher": "U.S. Department of the Treasury",
-      "title": "Operation Economic Fury Targets Iran's Oil and Petrochemical Networks",
-      "date": "2026-07-09",
-      "url": "https://home.treasury.gov/news/press-releases/sb0556",
-      "source_role": "Primary current sanctions action",
-      "context": "Current Treasury material describing secondary-sanctions exposure for foreign firms and financial institutions involved in sanctionable Iran-related activity."
     }
   }
 }
