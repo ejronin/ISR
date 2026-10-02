@@ -812,9 +812,9 @@
 
   function failureDetail(error) {
     if (error && error.code === 'RELEASE_MISMATCH') return 'The site and its latest data did not load together.';
-    if (error && error.code === 'MODEL_INVALID') return 'The latest Atlas data could not be read.';
+    if (error && error.code === 'MODEL_INVALID') return 'The current evidence record could not be read.';
     if (error && error.code === 'UNDECLARED_DATA_DEPENDENCY') return 'This page could not load its supporting data.';
-    return 'The latest verified Atlas data is unavailable.';
+    return 'The latest verified Guide record is unavailable.';
   }
 
   function renderFailure(rootElement, error, retry) {
@@ -829,7 +829,7 @@
       return node;
     };
     appendText('p', 'boot-kicker', 'Current site unavailable');
-    appendText('h1', '', 'The latest Atlas data could not be loaded.');
+    appendText('h1', '', 'The current Guide record could not be loaded.');
     appendText('p', '', failureDetail(error));
     const actions = documentObject.createElement('div');
     actions.className = 'error-actions';
