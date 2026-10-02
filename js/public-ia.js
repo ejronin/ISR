@@ -1150,6 +1150,7 @@
       append(section, 'h2', '', options && options.title || 'Geographic context');
       const records = asArray(options && options.records);
       const relatedRecords = asArray(options && options.relatedRecords);
+      const localSources = options && options.localSources || {};
       const routes = asArray(options && options.routes).filter(route => routeGeometry(route).length > 1);
       const imagery = records.flatMap(record => imageryPayloads(record).map(payload => imageryDescriptor(payload, context.services.locationResolver, relatedRecords)));
       const imageryRecords = new Set(imagery.map(item => item.evidenceRecord));
@@ -1200,7 +1201,7 @@
         append(card, 'p', '', summary);
         if (extra && extra.meta) append(card, 'p', 'map-card-meta', extra.meta);
         const envelope = evidenceEnvelope(extra && extra.evidenceRecord || record);
-        if (envelope.source_ids.length) card.append(EvidenceDrawer.create(context, envelope, { relatedRecords: relatedRecordsFrom(extra && extra.evidenceRecord || record) }));
+        if (envelope.source_ids.length) card.append(EvidenceDrawer.create(context, envelope, { relatedRecords: relatedRecordsFrom(extra && extra.evidenceRecord || record), localSources }));
         const close = append(card, 'button', 'map-card-close', 'Close map card');
         close.type = 'button';
         close.addEventListener('click', () => { cardHost.hidden = true; cardHost.replaceChildren(); mapHost.focus(); });
@@ -2129,6 +2130,7 @@
     frame.article.append(MapView.create(context, {
       title: 'Where named financial and commercial nodes sit',
       records: asArray(network.map_nodes),
+      localSources,
       maxZoom: 4,
       description: 'Points identify the jurisdiction or city associated with a named banking, trade or sanctions node. They are analytical location markers, not office-level coordinates and not targeting-quality data.'
     }));
