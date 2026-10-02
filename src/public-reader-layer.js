@@ -48,6 +48,8 @@
     const section = findSection(article, title);
     if (!section || section.tagName === 'DETAILS') return section;
     const details = el(article.ownerDocument, 'details', 'secondary-context reader-method-detail');
+    if (section.id) details.id = section.id;
+    Object.entries(section.dataset || {}).forEach(([key, value]) => { details.dataset[key] = value; });
     append(details, 'summary', '', summaryText || title);
     [...section.children].forEach(child => {
       if (child.tagName !== 'H2') details.append(child);
