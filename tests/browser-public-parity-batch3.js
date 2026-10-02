@@ -229,7 +229,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(shipping.mapText, /rail lines are not exact track alignments/i);
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
-    assert(shipping.merchantLinks.every(link => link.startsWith('#/military/losses?loss=')));
+    assert(shipping.merchantLinks.every(link => link.startsWith('#/war/losses/?loss=')));
     assert.match(shipping.text, /remain separate from military equipment totals/i);
 
     await routeKey(cdp, 'hormuz.economy');
@@ -304,7 +304,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       damage: document.querySelectorAll('[data-damage-observation-id]').length,
       audits: document.querySelectorAll('.effect-proposition-group[data-facility-audit-id]').length,
       propositions: document.querySelectorAll('.effect-proposition-group .record-card').length,
-      facilityLinks: document.querySelectorAll('.effect-proposition-group a[href^="#/military/facilities"]').length,
+      facilityLinks: document.querySelectorAll('.effect-proposition-group a[href^="#/war/facilities/"]').length,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     assert(campaigns.strikes > 0);
@@ -324,8 +324,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       formalized: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized === 'true').length,
       proposalStates: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized !== 'true' && /propos(?:al|ed)/i.test(node.innerText || '')).length,
       evidence: document.querySelectorAll('[data-agreement-id] details.evidence-drawer').length,
-      mou: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/june-mou"]')),
-      nuclear: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/nuclear"]')),
+      mou: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/diplomacy/june-mou/"]')),
+      nuclear: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/diplomacy/nuclear/"]')),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     assert.equal(agreements.ids.length, 8);
