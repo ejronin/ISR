@@ -406,6 +406,20 @@ a:hover { color: #e0f2ff; }
 
 .boot-page-frame { padding-block: var(--space-8); }
 .boot-page-frame .eyebrow { margin: 0 0 var(--space-3); }
+.boot-heading {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2.5rem, 4.4vw, 4rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+.boot-guide-primary a,
+.boot-guide-context a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.boot-guide-primary a:hover,
+.boot-guide-context a:hover { color: var(--text-primary); }
 .boot-heading-skeleton {
   width: min(34rem, 75vw);
   height: clamp(2.5rem, 6vw, 4rem);
