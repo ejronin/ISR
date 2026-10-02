@@ -209,7 +209,7 @@
       "note": "Treasury designated VTB for Iran-related sanctions evasion, including alleged correspondent relationships and settlement channels with sanctioned Iranian banks.",
       "source_ids": [
         "SAN-TREASURY-20260914-VTB",
-        "SRC-F308AF16618A"
+        "SAN-REUTERS-20260914-VTB"
       ]
     },
     {
@@ -332,7 +332,7 @@
       "potential_effect": "The action raises the cost and risk of using large foreign banks as durable substitutes for sanctioned Iranian banking channels.",
       "source_ids": [
         "SAN-TREASURY-20260914-VTB",
-        "SRC-F308AF16618A"
+        "SAN-REUTERS-20260914-VTB"
       ]
     },
     {
@@ -378,7 +378,7 @@
       "status": "Observed / reported",
       "text": "Reuters reported that India's exports to Iran were expected to fall further as a Dubai transshipment route was halted and U.S. sanctions pressure increased.",
       "source_ids": [
-        "SRC-2C482D135C1B"
+        "SAN-REUTERS-20260824-INDIA"
       ]
     },
     {
@@ -386,8 +386,8 @@
       "status": "Observed / multi-cause",
       "text": "Reuters reporting in early September described sharper pressure on Iranian oil exports and the wider economy from the combined blockade and sanctions campaign. The blockade and sanctions are not treated as interchangeable causes.",
       "source_ids": [
-        "SRC-C32D1E38D1A3",
-        "SRC-C20A4B97E3D9"
+        "SAN-REUTERS-20260901-OIL",
+        "SAN-REUTERS-20260903-PRESSURE"
       ]
     }
   ],
@@ -546,6 +546,27 @@
       "date": "2026-09-03",
       "url": "https://www.reuters.com/world/middle-east/us-pressure-iran-starting-tell-sanctions-blockade-bite-2026-09-03/",
       "source_role": "Independent reporting on observed effects"
+    },
+    "SAN-REUTERS-20260824-INDIA": {
+      "publisher": "Reuters",
+      "title": "India's Iran exports set to fall further due to Dubai halt, U.S. sanctions",
+      "date": "2026-08-24",
+      "url": "https://www.reuters.com/world/india/indias-iran-exports-set-fall-further-due-dubai-halt-us-sanctions-2026-08-24/",
+      "source_role": "Independent reporting on observed trade effects"
+    },
+    "SAN-REUTERS-20260901-OIL": {
+      "publisher": "Reuters",
+      "title": "Blockade succeeds where sanctions failed, Iran oil exports stall",
+      "date": "2026-09-01",
+      "url": "https://www.reuters.com/business/energy/blockade-succeeds-where-sanctions-failed-iran-oil-exports-stall-2026-09-01/",
+      "source_role": "Independent reporting on observed oil-export pressure"
+    },
+    "SAN-REUTERS-20260914-VTB": {
+      "publisher": "Reuters",
+      "title": "U.S. imposes Iran-related sanctions on Russia's VTB",
+      "date": "2026-09-14",
+      "url": "https://www.reuters.com/world/middle-east/us-imposes-iran-related-sanctions-russias-vtb-2026-09-14/",
+      "source_role": "Independent reporting on enacted VTB action"
     }
   }
 }
