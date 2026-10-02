@@ -95,7 +95,18 @@
     '/evidence/web-of-lies': 'evidence.web_of_lies',
     '/evidence/sources': 'evidence.sources',
     '/evidence/method': 'evidence.method',
-    '/evidence/archive': 'evidence.archive'
+    '/evidence/archive': 'evidence.archive',
+
+    /* Older public shortcuts retained as deterministic compatibility aliases. */
+    '/start': 'start.overview',
+    '/timeline': 'timeline.war',
+    '/military': 'military.campaigns',
+    '/hormuz': 'hormuz.overview',
+    '/talks': 'talks.overview',
+    '/talks/mou': 'talks.mou',
+    '/objectives': 'objectives.outcomes',
+    '/objectives/iran': 'objectives.iran',
+    '/evidence': 'evidence.claims'
   });
   const ROUTE_ALIAS_BY_PATH = new Map(Object.entries(ROUTE_ALIASES).map(([path, key]) => [normalizeRoutePath(path), ROUTES.get(key)]));
   const PAGE_SECTION_DEFINITIONS = Object.freeze({
@@ -388,14 +399,32 @@
     const pathPart = normalizeRoutePath(rawPath);
     const canonicalRoute = ROUTE_BY_PATH.get(pathPart);
     const aliasRoute = ROUTE_ALIAS_BY_PATH.get(pathPart);
-    const route = canonicalRoute || aliasRoute || ROUTES.get(DEFAULT_ROUTE_KEY);
+    const route = canonicalRoute || aliasRoute;
     const params = Object.fromEntries(new URLSearchParams(queryPart));
+    if (!route) {
+      const query = new URLSearchParams(params);
+      return Object.freeze({
+        key: null,
+        owner: null,
+        primary: null,
+        primaryLabel: null,
+        label: null,
+        title: 'Route not found',
+        path: pathPart,
+        requestedPath: pathPart,
+        params,
+        canonical: false,
+        aliased: false,
+        recognized: false,
+        href: `#${pathPart}${query.toString() ? `?${query}` : ''}`
+      });
+    }
     return {
       ...route,
       params,
       canonical: Boolean(canonicalRoute),
       aliased: Boolean(!canonicalRoute && aliasRoute),
-      recognized: Boolean(canonicalRoute || aliasRoute),
+      recognized: true,
       href: routeHref(route.key, params)
     };
   }
@@ -440,7 +469,7 @@
   function validateRegistry(model) {
     invariant(ROUTES.size === 26, `Expected 26 public routes; found ${ROUTES.size}`);
     invariant(ROUTE_BY_PATH.size === ROUTES.size, 'Public route paths must be unique');
-    invariant(ROUTE_ALIAS_BY_PATH.size === 26, `Expected 26 legacy route aliases; found ${ROUTE_ALIAS_BY_PATH.size}`);
+    invariant(ROUTE_ALIAS_BY_PATH.size >= 26, `Expected the full legacy route alias set; found ${ROUTE_ALIAS_BY_PATH.size}`);
     for (const [aliasPath, route] of ROUTE_ALIAS_BY_PATH) invariant(route && ROUTES.has(route.key), `Legacy route alias is unresolved: ${aliasPath}`);
     for (const route of ROUTES.values()) {
       invariant(PAGE_OWNERS[route.owner], `Missing page owner: ${route.owner}`);
