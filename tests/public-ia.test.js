@@ -22,7 +22,7 @@ const expectedSecondary = {
   start: ['Overview', "Who's Involved"],
   timeline: ['War Timeline', 'All Events'],
   military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Images'],
-  hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
+  hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Sanctions & Impact', 'Current Hormuz Talks'],
   talks: ['Talks & Deals', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
   objectives: ['Goals & Results', 'Position Changes', "How Iran's Position Changed"],
   evidence: ['Claim Checks', 'Lie Ledger', 'Web of Lies', 'Sources', 'How We Check the Evidence', 'Archive']
@@ -31,9 +31,9 @@ for (const [primary, labels] of Object.entries(expectedSecondary)) {
   assert.deepEqual(ia.routesForPrimary(primary).map(route => route.label), labels, `secondary navigation mismatch: ${primary}`);
 }
 
-assert.equal(ia.ROUTES.size, 26);
-assert.equal(Object.keys(ia.PAGE_OWNERS).length, 26);
-assert.equal(new Set([...ia.ROUTES.values()].map(route => route.path)).size, 26);
+assert.equal(ia.ROUTES.size, 27);
+assert.equal(Object.keys(ia.PAGE_OWNERS).length, 27);
+assert.equal(new Set([...ia.ROUTES.values()].map(route => route.path)).size, 27);
 for (const route of ia.ROUTES.values()) {
   const href = ia.routeHref(route.key, { record: 'EV-1' });
   const parsed = ia.parseRoute(href);
@@ -167,4 +167,4 @@ assert.match(css, /:focus-visible/);
 assert.match(css, /\.atlas-app\[data-layout-scope="adaptive-wide"\]/, 'wide desktop layout must remain opt-in');
 assert.match(css, /@media \(min-width: 80rem\)/, 'wide desktop layout breakpoint is missing');
 
-console.log('public IA contract: PASS - 7 primary sections, 26 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');
+console.log('public IA contract: PASS - 7 primary sections, 27 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');

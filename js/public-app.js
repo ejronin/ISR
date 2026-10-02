@@ -56,9 +56,10 @@
     'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation']),
     'military.losses': freezeContract('military_record', ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties']),
     'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities']),
-    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.shipping', 'gate3.shipping']),
+    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'analysis.sanctions_network', 'ledger.shipping', 'gate3.shipping']),
     'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping']),
     'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics']),
+    'hormuz.sanctions': freezeContract('hormuz_economy', ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology']),
     'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'analysis.hormuz']),
     'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy']),
     'talks.mou': freezeContract('diplomacy_mou', ['analysis.hormuz', 'analysis.endgame_public_view']),
@@ -88,6 +89,7 @@
     '#/hormuz': 'hormuz.overview',
     '#/hormuz/shipping': 'hormuz.shipping',
     '#/hormuz/economy': 'hormuz.economy',
+    '#/hormuz/sanctions': 'hormuz.sanctions',
     '#/hormuz/talks': 'hormuz.talks',
     '#/talks': 'talks.overview',
     '#/talks/mou': 'talks.mou',
@@ -280,7 +282,7 @@
   function validateRouteDependencies(model, contracts) {
     const activeContracts = contracts || ROUTE_DATA_DEPENDENCIES;
     const entries = Object.entries(activeContracts);
-    invariant(entries.length === 26, 'MODEL_INVALID', `Expected 26 public route dependency contracts; found ${entries.length}.`);
+    invariant(entries.length === 27, 'MODEL_INVALID', `Expected 27 public route dependency contracts; found ${entries.length}.`);
     for (const [routeKey, contract] of entries) {
       invariant(contract && typeof contract.modelPage === 'string', 'MODEL_INVALID', `Route ${routeKey} has no page-data owner.`);
       invariant(Array.isArray(contract.datasets), 'MODEL_INVALID', `Route ${routeKey} has no dataset contract.`);
@@ -303,7 +305,7 @@
     invariant(coverage && coverage.schema_version === '1.0', 'MODEL_INVALID', 'Public consumer-coverage policy is missing.');
     invariant(Array.isArray(coverage.route_data_waivers) && Array.isArray(coverage.dataset_waivers), 'MODEL_INVALID', 'Public consumer-coverage waivers are malformed.');
     const routeEntries = Object.entries(activeContracts);
-    invariant(routeEntries.length === 26, 'MODEL_INVALID', `Expected 26 public route consumer contracts; found ${routeEntries.length}.`);
+    invariant(routeEntries.length === 27, 'MODEL_INVALID', `Expected 27 public route consumer contracts; found ${routeEntries.length}.`);
     const observedRoutes = observed && observed.routeAccesses && typeof observed.routeAccesses === 'object' ? observed.routeAccesses : {};
     const sharedAccesses = new Set(observed && Array.isArray(observed.sharedAccesses) ? observed.sharedAccesses : []);
     const routeWaivers = new Map();

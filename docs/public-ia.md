@@ -2,14 +2,14 @@
 
 The permanent public IA uses GitHub Pages-compatible hash routes. `#/military/facilities`, for example, is a direct link that survives refresh and does not require server rewrites. Ordinary anchors drive navigation; a single `hashchange` listener owned by `AppShell` handles back/forward updates from the already parsed current model.
 
-The seven primary sections and their secondary destinations are declared once in `js/public-ia.js`. Each of the 26 routes names one page owner. Web of Lies is a first-class companion to Lie Ledger in persistent Claims & Evidence navigation and is also reached from claim-level Trace links. That owner creates the page's visible DOM and composes shared components; no other module rewrites or rearranges it after render.
+The seven primary sections and their secondary destinations are declared once in `js/public-ia.js`. Each of the 27 routes names one page owner. Web of Lies is a first-class companion to Lie Ledger in persistent Claims & Evidence navigation and is also reached from claim-level Trace links. That owner creates the page's visible DOM and composes shared components; no other module rewrites or rearranges it after render.
 
 | Primary section | Secondary routes and owners |
 |---|---|
 | Start Here | Overview — `OverviewPage`; Who's Involved — `ActorsPage` |
 | Timeline | War Timeline — `TimelinePage`; Detailed Chronology — `ChronologyPage` |
 | Military Record | Campaigns & Strikes — `CampaignsPage`; Bases & Infrastructure — `FacilitiesPage`; Air, Missiles & Drones — `WeaponsPage`; Casualties & Losses — `LossesPage`; Damage Imagery — `ImageryPage` |
-| Hormuz & Economy | Why Hormuz Matters — `HormuzOverviewPage`; Shipping & Trade — `ShippingPage`; Oil & Economic Effects — `EconomyPage`; Current Hormuz Talks — `HormuzNegotiationsPage` |
+| Hormuz & Economy | Why Hormuz Matters — `HormuzOverviewPage`; Shipping & Trade — `ShippingPage`; Oil & Economic Effects — `EconomyPage`; Sanctions & Impact — `SanctionsPage`; Current Hormuz Talks — `HormuzNegotiationsPage` |
 | Talks & June Agreement | Talks & Agreements — `DiplomacyPage`; June MOU — `MouPage`; Nuclear Talks — `NuclearPage`; Regional Diplomacy — `RegionalDiplomacyPage` |
 | What Each Side Wanted | Objectives & Outcomes — `ObjectivesPage`; Position Changes — `PositionChangesPage`; How Iran's Position Changed — `IranMessagingPage` |
 | Claims & Evidence | Claim Checks — `ClaimChecksPage`; Information Environment — `InformationEnvironmentPage`; Sources — `SourcesPage`; How We Check the Evidence — `MethodPage`; Archive — `ArchivePage` |
