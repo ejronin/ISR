@@ -113,7 +113,8 @@ function addFinding(findings, routeKey, width, category, detail) {
                 ['SUMMARY', 'BUTTON', 'LABEL', 'OPTION'].includes(node.tagName) ? node.textContent || '' : ''
               ]).filter(Boolean).join(' ');
             const publicText = reader + ' ' + a11y;
-            const mobileSummary = document.querySelector('.mobile-navigation > summary');
+            const mobilePrimary = document.querySelector('.primary-nav');
+            const mobileContext = document.querySelector('.context-nav');
             const h1 = main?.querySelector('h1');
             return {
               routeKey: window.ATLAS_PUBLIC_STATE?.routeKey,
@@ -124,7 +125,7 @@ function addFinding(findings, routeKey, width, category, detail) {
               clientWidth: document.documentElement.clientWidth,
               scrollWidth: document.documentElement.scrollWidth,
               mainWidth: main?.getBoundingClientRect().width || 0,
-              mobileSummaryVisible: !mobileSummary || Boolean(mobileSummary.getClientRects().length),
+              mobileNavigationVisible: Boolean(mobilePrimary?.getClientRects().length && mobileContext?.getClientRects().length),
               mainTextLength: reader.trim().length
             };
           })()`);
@@ -135,7 +136,7 @@ function addFinding(findings, routeKey, width, category, detail) {
           snapshot.machine.forEach(token => addFinding(findings, routeRecord.key, width, 'machine-token', token));
           snapshot.internal.forEach(phrase => addFinding(findings, routeRecord.key, width, 'internal-copy', phrase));
           if (snapshot.scrollWidth > snapshot.clientWidth) addFinding(findings, routeRecord.key, width, 'overflow', `${snapshot.scrollWidth}>${snapshot.clientWidth}`);
-          if ((width === 390 || width === 320) && !snapshot.mobileSummaryVisible) addFinding(findings, routeRecord.key, width, 'mobile-nav', 'summary-not-visible');
+          if ((width === 390 || width === 320) && !snapshot.mobileNavigationVisible) addFinding(findings, routeRecord.key, width, 'mobile-nav', 'primary-or-context-rail-not-visible');
         } catch (error) {
           addFinding(findings, routeRecord.key, width, 'exception', String(error && error.message || error));
         }
@@ -246,15 +247,20 @@ function addFinding(findings, routeKey, width, category, detail) {
 
     await route(cdp, 'evidence.sources');
     const navigation = await cdp.eval(`(() => {
-      const nav = document.querySelector('.mobile-navigation');
-      const summary = nav?.querySelector(':scope > summary');
-      if (summary) summary.focus();
-      const focusable = !summary || document.activeElement === summary;
-      if (summary) summary.click();
-      const link = nav?.querySelector('a[href]');
-      return { exists:Boolean(nav), focusable, open:Boolean(nav?.open), link:Boolean(link) };
+      const primary = document.querySelector('.primary-nav');
+      const context = document.querySelector('.context-nav');
+      const link = primary?.querySelector('a[href]');
+      if (link) link.focus();
+      return {
+        exists: Boolean(primary && context),
+        focusable: Boolean(link && document.activeElement === link),
+        primaryLink: Boolean(link),
+        contextLink: Boolean(context?.querySelector('a[href]')),
+        primaryVisible: Boolean(primary?.getClientRects().length),
+        contextVisible: Boolean(context?.getClientRects().length)
+      };
     })()`);
-    if (!navigation.exists || !navigation.focusable || !navigation.open || !navigation.link) addFinding(findings, 'evidence.sources', 390, 'mobile-nav', 'not-focusable-openable-navigable');
+    if (!navigation.exists || !navigation.focusable || !navigation.primaryLink || !navigation.contextLink || !navigation.primaryVisible || !navigation.contextVisible) addFinding(findings, 'evidence.sources', 390, 'mobile-nav', 'always-visible-rails-not-focusable-navigable');
 
     const beforeHistory = await cdp.eval(`location.hash`);
     await route(cdp, 'evidence.method');
@@ -271,7 +277,7 @@ function addFinding(findings, routeKey, width, category, detail) {
       throw new assert.AssertionError({ message: 'aggregate public full-stack audit found release defects', actual: findings, expected: [] });
     }
 
-    console.log(`browser public full-stack audit: PASS - ${routeCount} routes x ${WIDTHS.length} widths (${routeCount * WIDTHS.length} renders), reader/a11y machine-language scan, overflow, disclosures, search/filter, map, mobile navigation and history verified`);
+    console.log(`browser public full-stack audit: PASS - ${routeCount} routes x ${WIDTHS.length} widths (${routeCount * WIDTHS.length} renders), reader/a11y machine-language scan, overflow, disclosures, search/filter, map, always-visible mobile navigation and history verified`);
   } finally {
     try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup is fallback */ }
     cdp.close();
