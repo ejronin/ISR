@@ -45,7 +45,7 @@ The in-flight Sanctions & Impact branch remains separately owned and is intentio
 
 ## Legacy URL contract
 
-All 26 former public hash paths remain deterministic aliases to their intended route keys. Query/deep-link state is preserved while the browser replaces the address with the canonical Guide path. An unrecognized route is distinct from an alias; an old evidence URL must never become Home merely because its path changed.
+All 26 former route paths remain deterministic aliases to their intended route keys, and the older public section shortcuts are retained as compatibility aliases as well. Query/deep-link state is preserved while the browser replaces the address with the canonical Guide path. An unrecognized route is distinct from an alias and fails closed; it never silently becomes Home.
 
 The route registry test enumerates every legacy alias and verifies both destination and query preservation.
 
