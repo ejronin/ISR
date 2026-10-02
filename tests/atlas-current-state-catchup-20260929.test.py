@@ -81,8 +81,11 @@ def main() -> int:
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
     assert diplomacy["status"] == "Mediated talks continue; no agreement"
 
-    shipping = rows_by_id(state["entities"]["shipping"])["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]
-    assert shipping["status"] == "Traffic and exports are recovering, but Hormuz is not back to normal"
+    prior_shipping = next(
+        row["record"] for row in noon["entities"]
+        if row["entity_id"] == "SHIP-HORMUZ-KPLER-RECOVERY-20260929"
+    )
+    assert prior_shipping["status"] == "PARTIAL_RECOVERY_BELOW_PREWAR_VOLUME"
     economy = rows_by_id(state["entities"]["economics"])["ECON-IRAN-CIVILIAN-STRAIN-20260929"]["record"]
     assert economy["status"] == "SEVERE_WARTIME_HOUSEHOLD_AND_PRIVATE_SECTOR_STRAIN"
 

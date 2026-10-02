@@ -1,0 +1,251 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261002-ROOK-CATCHUP",
+  "known_at": "2026-10-02T07:45:00-04:00",
+  "evidence_cutoff": "2026-10-02T00:00:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261001T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261002T0000ET.json"
+    ]
+  },
+  "summary": "Consumes the Oct. 1 noon and Oct. 2 midnight evidence sweeps. It adds Iran contingency-planning reporting, reported Syria-Hezbollah contacts in Turkey and Syria's denial, three Sep. 30 Hormuz tanker projectile incidents, the latest Flydubai FZ1073 investigation update, Fujairah fuel-flow recovery, China's fuel-export suspension, new U.S. industrial and financial measures on Iran, and the contested Medina power-station incident. Unresolved attribution remains unresolved.",
+  "sources": [
+    {
+      "source_id": "SRC-A2101A01B001",
+      "url": "https://www.reuters.com/world/middle-east/iran-readies-harder-retaliation-if-attacked-diplomacy-faces-long-odds-2026-10-01/",
+      "source_role": "Reuters report on conditional Iranian contingency planning"
+    },
+    {
+      "source_id": "SRC-A2101A01B002",
+      "url": "https://www.reuters.com/world/middle-east/syrian-government-officials-hezbollah-held-secret-talks-turkey-sources-say-2026-10-01/",
+      "source_role": "Reuters report on reported Syria-Hezbollah talks in Turkey and Syria's denial"
+    },
+    {
+      "source_id": "SRC-A2101A01B003",
+      "url": "https://www.reuters.com/business/energy/oil-prices-barely-changed-investors-assess-us-iran-peace-talks-gulf-exports-2026-10-01/",
+      "source_role": "Reuters report on China's fuel-export suspension and Oct. 1 oil-market conditions"
+    },
+    {
+      "source_id": "SRC-A2101A01B004",
+      "url": "https://www.reuters.com/business/energy/three-oil-tankers-hit-by-projectiles-hormuz-strait-tuesday-marisks-says-2026-10-01/",
+      "source_role": "Reuters report citing Marisks on three Sep. 30 Hormuz tanker projectile incidents"
+    },
+    {
+      "source_id": "SRC-A2101A01B005",
+      "url": "https://www.reuters.com/world/middle-east/israel-vows-get-root-flydubai-attack-uae-launches-investigation-2026-10-01/",
+      "source_role": "Reuters report on the UAE investigation and preliminary Israeli assessment of FZ1073"
+    },
+    {
+      "source_id": "SRC-A2101A01B006",
+      "url": "https://www.reuters.com/business/energy/uaes-fujairah-restores-some-fuel-oil-supplies-despite-hormuz-disruption-boosts-2026-10-01/",
+      "source_role": "Reuters report on Fujairah fuel-oil imports, exports, inventories and bunker sales"
+    },
+    {
+      "source_id": "SRC-A2101A01B007",
+      "url": "https://home.treasury.gov/news/press-releases/sb0643",
+      "source_role": "U.S. Treasury release on Oct. 1 measures covering Iranian industrial sectors and related suppliers"
+    },
+    {
+      "source_id": "SRC-A2101A01B008",
+      "url": "https://home.treasury.gov/news/press-releases/sb0644",
+      "source_role": "U.S. Treasury and FinCEN release on the A7 Network action"
+    },
+    {
+      "source_id": "SRC-A2101A01B009",
+      "url": "https://www.reuters.com/business/energy/saudi-led-coalition-says-houthis-attacked-power-station-medina-2026-10-01/",
+      "source_role": "Reuters report on the contested Medina power-distribution incident"
+    },
+    {
+      "source_id": "SRC-A2101A01B00A",
+      "url": "https://www.reuters.com/world/middle-east/netanyahu-says-flydubai-co-pilot-underwent-islamist-radical-indoctrination-2026-10-01/",
+      "source_role": "Reuters report on later Israeli comments about the FZ1073 co-pilot"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-IRAN-CONDITIONAL-RETALIATION-PLANNING-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "IRAN_CONDITIONAL_ESCALATION_PLANNING",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "Reuters reported multiple Iranian sources said commanders were intensifying contingency planning for a broader response if the United States resumed large-scale attacks. The reporting did not establish a final decision to attack or an order to do so.",
+      "source_ids": [
+        "SRC-A2101A01B001"
+      ]
+    },
+    {
+      "event_id": "G3-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "REPORTED_SYRIA_HEZBOLLAH_DEESCALATION_CONTACT",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "Reuters reported that Syrian government representatives and Hezbollah representatives met in Turkey in September to discuss de-escalation and security concerns. No agreement was reported. Syria later denied that the meeting occurred.",
+      "source_ids": [
+        "SRC-A2101A01B002"
+      ]
+    },
+    {
+      "event_id": "G3-HORMUZ-THREE-TANKERS-PROJECTILES-20260930",
+      "event_date": "2026-09-30",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "HORMUZ_TANKER_PROJECTILE_INCIDENTS",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "Maritime-intelligence service Marisks told Reuters that three Liberian-flagged tankers were struck by unknown projectiles while transiting the Strait of Hormuz on September 30. The weapon type and attacker remained unresolved.",
+      "source_ids": [
+        "SRC-A2101A01B004"
+      ]
+    },
+    {
+      "event_id": "G3-FLYDUBAI-FZ1073-INVESTIGATION-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "FLYDUBAI_FZ1073_INVESTIGATION_UPDATE",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "The UAE investigation into FZ1073 remained open. Israeli officials said the Omani co-pilot appeared to have acted alone, while later Israeli comments described apparent Islamist radicalization. No Iran or Houthi organizational connection had been established.",
+      "source_ids": [
+        "SRC-A2101A01B005",
+        "SRC-A2101A01B00A"
+      ]
+    },
+    {
+      "event_id": "G3-FUJAIRAH-FUEL-RECOVERY-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "FUJAIRAH_FUEL_FLOW_RECOVERY",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "Fuel-oil flows through Fujairah improved substantially. Reuters reported Kpler data showing third-quarter imports at 2.6 million metric tons, up from 845,000 tons in the second quarter, while bunker sales and inventories were still below pre-war levels.",
+      "source_ids": [
+        "SRC-A2101A01B006"
+      ]
+    },
+    {
+      "event_id": "G3-CHINA-FUEL-EXPORT-SUSPENSION-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "CHINA_OIL_PRODUCT_EXPORT_SUSPENSION",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "Reuters reported that Chinese refiners suspended oil-product exports beyond Hong Kong and Macau until further notice, tightening an already constrained global fuel market.",
+      "source_ids": [
+        "SRC-A2101A01B003"
+      ]
+    },
+    {
+      "event_id": "G3-US-IRAN-INDUSTRIAL-SANCTIONS-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_IRAN_INDUSTRIAL_SANCTIONS",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "The U.S. Treasury announced new measures covering Iranian automotive, rail, manufacturing and steel networks and related foreign suppliers.",
+      "source_ids": [
+        "SRC-A2101A01B007"
+      ]
+    },
+    {
+      "event_id": "G3-US-A7-FINANCIAL-ACTION-20261001",
+      "event_date": "2026-10-01",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_FINANCIAL_NETWORK_ACTION",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "The U.S. Treasury and FinCEN announced a new action against the A7 Network, which Treasury said had been used by Iranian state-linked actors.",
+      "source_ids": [
+        "SRC-A2101A01B008"
+      ]
+    },
+    {
+      "event_id": "G3-SAUDI-MEDINA-POWER-INCIDENT-20260929",
+      "event_date": "2026-09-29",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "SAUDI_MEDINA_POWER_INCIDENT_CONTESTED",
+      "strike_countable": false,
+      "game_knowledge_time": "2026-10-02T07:45:00-04:00",
+      "evidence_horizon_time": "2026-10-02T00:00:00-04:00",
+      "summary": "Saudi authorities attributed damage at a Medina power-distribution station to the Houthis. Houthi sources denied responsibility, and the attribution remained contested.",
+      "source_ids": [
+        "SRC-A2101A01B009"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Traffic has recovered somewhat, but attacks and disruption continue",
+        "observed_state": "Shipping and oil exports improved during September, but the Strait remained disrupted. Reuters reported that three Liberian-flagged tankers were struck by unknown projectiles on September 30, with the attacker and weapon type unresolved. Gulf producers continued using alternative routes, and Fujairah fuel flows improved without returning fully to pre-war conditions.",
+        "knowledge_time": "2026-10-02T07:45:00-04:00",
+        "source_ids": [
+          "SRC-8C8DCF0C3D2F",
+          "SRC-E64F1815F6DF",
+          "SRC-18C8C7406338",
+          "SRC-646C693ABA1E",
+          "SRC-A2101A01B004",
+          "SRC-A2101A01B006"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-ENERGY-RECOVERY-20260930",
+      "mode": "update",
+      "record": {
+        "status": "Fuel flows are improving, but the market is still far from pre-war conditions",
+        "observed_state": "Fujairah fuel-oil imports, exports and bunkering improved, although bunker sales and inventories remained below pre-war levels. Reuters also reported that Chinese refiners suspended oil-product exports beyond Hong Kong and Macau. Late on October 1, Brent remained above $101 and WTI above $92 in the cited market report.",
+        "knowledge_time": "2026-10-02T07:45:00-04:00",
+        "source_ids": [
+          "SRC-646C693ABA1E",
+          "SRC-95955A0902E3",
+          "SRC-18C8C7406338",
+          "SRC-A2101A01B006",
+          "SRC-A2101A01B003"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-IRAN-INDUSTRIAL-SANCTIONS-20261001",
+      "mode": "add",
+      "record": {
+        "status": "U.S. pressure expanded into additional Iranian industrial and financial networks",
+        "observed_state": "On October 1, the U.S. Treasury announced measures covering Iranian automotive, rail, manufacturing and steel networks and related foreign suppliers. Treasury and FinCEN separately announced action against the A7 Network, which Treasury said had been used by Iranian state-linked actors.",
+        "knowledge_time": "2026-10-02T07:45:00-04:00",
+        "source_ids": [
+          "SRC-A2101A01B007",
+          "SRC-A2101A01B008"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001",
+      "mode": "add",
+      "record": {
+        "status": "Reported Syria-Hezbollah talks in Turkey remain disputed",
+        "observed_state": "Reuters reported from six briefed sources that Syrian government and Hezbollah representatives met in Turkey in September to discuss de-escalation and security concerns. No agreement was reported, and Syria later denied the meeting.",
+        "knowledge_time": "2026-10-02T07:45:00-04:00",
+        "source_ids": [
+          "SRC-A2101A01B002"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
