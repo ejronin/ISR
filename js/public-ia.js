@@ -2073,6 +2073,19 @@
 
     const network = modelData(context.model, 'analysis.sanctions_network');
     const localSources = localSourceMap(network);
+    const liveSanctions = context.model.chronology
+      .filter(item => {
+        const type = eventType(item);
+        const record = item && item.event && typeof item.event === 'object' ? item.event : item || {};
+        return /(SANCTION|FINANCIAL_NETWORK|FINANCIAL_ACTION)/i.test(type) || /sanction/i.test(String(record.summary || ''));
+      })
+      .slice(-8)
+      .reverse();
+    const currentEconomics = mergeCurrentRecords(
+      modelData(context.model, 'ledger.economics'),
+      modelData(context.model, 'gate3.economics'),
+      ['economic_id', 'id']
+    ).filter(item => /sanction|financial|bank|currency|foreign exchange|aviation/i.test(JSON.stringify(item))).slice(-6).reverse();
 
     const summary = addSection(frame.article, 'What changed', 'content-section sanctions-summary-section');
     append(summary, 'p', 'lead-copy', 'The wartime campaign increasingly targets the routes around sanctioned Iranian actors: financial facilitators, exchange houses, foreign banks, aviation and procurement networks, shipping and insurance structures, digital-asset infrastructure, and industrial suppliers.');
@@ -2119,6 +2132,13 @@
       maxZoom: 4,
       description: 'Points identify the jurisdiction or city associated with a named banking, trade or sanctions node. They are analytical location markers, not office-level coordinates and not targeting-quality data.'
     }));
+
+    if (liveSanctions.length) {
+      const latest = addSection(frame.article, 'Latest accepted sanctions updates');
+      append(latest, 'p', 'section-note', 'This section is fed by the normal accepted chronology, so later ROOK/Evidence Integration sanctions updates can appear without changing the financial-plumbing model.');
+      const latestList = append(latest, 'div', 'record-list two-column-list');
+      liveSanctions.forEach(item => renderEventCard(latestList, item, context, { detail: true, topic: 'Sanctions' }));
+    }
 
     const reach = addSection(frame.article, 'Primary vs secondary sanctions');
     const reachGrid = append(reach, 'div', 'sanctions-reach-grid');
@@ -2192,6 +2212,18 @@
     })), { className: 'story-sequence sanctions-action-sequence' });
 
     const effects = addSection(frame.article, 'What has actually changed');
+    if (currentEconomics.length) {
+      const currentRecord = append(effects, 'details', 'secondary-context sanctions-current-economic-record');
+      append(currentRecord, 'summary', '', 'Current economic observations tied to sanctions or financial pressure');
+      const currentList = append(currentRecord, 'div', 'record-list two-column-list');
+      currentEconomics.forEach(item => addProvenanceCard(currentList, context, {
+        kicker: readableDate(item.date || item.event_date),
+        title: publicNarrative(item.topic || item.metric || item.status, 'Recorded economic observation'),
+        text: publicNarrative(item.finding || item.observed_state || item.assessment || item.note),
+        meta: publicNarrative(item.causation_note || item.adjudication, ''),
+        item
+      }));
+    }
     const effectGrid = append(effects, 'div', 'comparison-grid sanctions-effect-grid');
     const observed = append(effectGrid, 'section', 'comparison-column');
     append(observed, 'h3', '', 'Observed effects');
