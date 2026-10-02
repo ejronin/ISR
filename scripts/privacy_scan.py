@@ -7,6 +7,10 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_ROUTE_EXCEPTIONS = (
+    b"/home/actors/",  # Approved Guide URL, not a local Unix home directory.
+)
+
 PATTERNS = {
     "local_user_path": re.compile(rb"(?:[A-Za-z]:\\Users\\[^\\\s]+|/Users/[^/\s]+|/home/[^/\s]+)"),
     "email_address": re.compile(rb"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", re.I),
@@ -37,7 +41,11 @@ def main() -> int:
             continue
         scanned += 1
         for name, pattern in PATTERNS.items():
-            if pattern.search(data):
+            scan_data = data
+            if name == "local_user_path":
+                for route in PUBLIC_ROUTE_EXCEPTIONS:
+                    scan_data = scan_data.replace(route, b"/public-route/")
+            if pattern.search(scan_data):
                 findings[name].add(relative)
     failures = {name: paths for name, paths in findings.items() if paths}
     identities = set(git("log", "--all", "--format=%an|%ae").decode("utf-8", "replace").splitlines())
