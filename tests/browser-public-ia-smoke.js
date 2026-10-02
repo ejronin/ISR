@@ -279,9 +279,9 @@ async function loadDirectRoute(cdp, route) {
       landingLinks: [...document.querySelectorAll('main a')].filter(node => /Open Web of Lies/i.test(node.textContent || '')).map(node => node.getAttribute('href')),
       traceLinks: [...document.querySelectorAll('main a.reader-wol-trace')].map(node => node.getAttribute('href'))
     }))()`);
-    assert(webOfLiesDiscovery.landingLinks.some(href => href === '#/evidence/web-of-lies'), 'buried Web of Lies route is not discoverable from Lie Ledger');
+    assert(webOfLiesDiscovery.landingLinks.some(href => href === '#/intelligence/wol/'), 'buried Web of Lies route is not discoverable from Lie Ledger');
     assert(webOfLiesDiscovery.traceLinks.length > 0, 'Lie Ledger exposes no claim-level TRACE links');
-    assert(webOfLiesDiscovery.traceLinks.every(href => /^#\/evidence\/web-of-lies\?claim_family=/.test(href || '')), 'TRACE links do not resolve to claim-family Web of Lies views');
+    assert(webOfLiesDiscovery.traceLinks.every(href => /^#\/intelligence\/wol\/\?claim_family=/.test(href || '')), 'TRACE links do not resolve to claim-family Web of Lies views');
     const refreshRoute = [...ia.ROUTES.values()].at(-1);
     await setRoute(cdp, refreshRoute);
     await cdp.call('Page.reload', { ignoreCache: true });
@@ -354,7 +354,7 @@ async function loadDirectRoute(cdp, route) {
       host.style.cssText = 'position:fixed;left:-10000px;top:0;width:1024px;';
       document.body.append(host);
       const testWindow = {
-        location: { hash: '#/timeline/war' },
+        location: { hash: '#/war/timeline/' },
         history: { replaceState() {} },
         addEventListener() {},
         removeEventListener() {},
@@ -475,7 +475,7 @@ async function loadDirectRoute(cdp, route) {
       support: document.querySelectorAll('.support-column').length,
       contrary: document.querySelectorAll('.contrary-column').length,
       sourceLinks: [...document.querySelectorAll('.evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
-      recordLinks: [...document.querySelectorAll('.record-reference-list a')].every(link => link.getAttribute('href')?.startsWith('#/timeline/chronology?event=')),
+      recordLinks: [...document.querySelectorAll('.record-reference-list a')].every(link => link.getAttribute('href')?.startsWith('#/war/events/?event=')),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     const expectedClaimCount = await cdp.eval(`fetch('./data/public-current-state.json', { cache: 'no-store' })
