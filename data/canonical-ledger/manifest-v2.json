@@ -296,11 +296,22 @@
       "previous_lineage_sha256": "2bacdf2a89338f6fff1a5c9efb04400c3225f38e6fd0877510a473e21d48975d",
       "sequence": 27,
       "sha256": "30c5a1b558898c1f8056cc6deffd3c36ed044d4317e6eefa9b5890ed1c1da1a1"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-10-02T00:00:00-04:00",
+      "known_at": "2026-10-02T07:45:00-04:00",
+      "lineage_sha256": "01b1587c5f48953ff912141d8010363dc3a9752920c1ebed7ecd15d1847e9f3f",
+      "packet_id": "UPD-20261002-ROOK-CATCHUP",
+      "path": "data/canonical-updates/UPD-20261002-ROOK-CATCHUP.json",
+      "previous_lineage_sha256": "e25f2a2024b1df1f089cd1e8403d0eae2ac7c3eef0d53e35af7e275ab32f507b",
+      "sequence": 28,
+      "sha256": "ff1fc48fb071966f5c462a202f2a778f4e496034c19fe5596c8e0139a72dab1b"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-10-01T00:00:00-04:00",
+  "current_evidence_cutoff": "2026-10-02T00:00:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
