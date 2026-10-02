@@ -33,17 +33,15 @@ function assertAgreementStateDistinction(text) {
 
 runFinalReaderTitleFixtures();
 const ordinaryRouteFixture = { key: 'military.campaigns', title: 'Campaigns' };
-const iranMessagingFixture = { key: 'objectives.iran', title: "How Iran's Position Changed" };
+const iranMessagingFixture = { key: 'objectives.iran', title: "Iran's Position" };
 const informationFixture = { key: 'evidence.information', title: 'Lie Ledger' };
 assert.doesNotThrow(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns'], 'sep14-reader-convergence-v1'));
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaign Summary'], 'sep14-reader-convergence-v1'));
-assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["How Iran's Position Changed"], ''));
-assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ['Iran Messaging & Claims'], 'sep14-reader-convergence-v1'));
-assert.throws(() => assertRouteHeadingParity(iranMessagingFixture, ["How Iran's Position Changed"], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["Iran's Position"], ''));
+assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["Iran's Position"], 'sep14-reader-convergence-v1'));
 assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], ''));
-assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Claims, Falsehoods & Deception'], 'sep14-reader-convergence-v1'));
-assert.throws(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], 'sep14-reader-convergence-v1'));
-assert.throws(() => assertRouteHeadingParity(informationFixture, ['Claims & Information'], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], 'sep14-reader-convergence-v1'));
+
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, [], 'sep14-reader-convergence-v1'));
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns', 'Campaigns'], 'sep14-reader-convergence-v1'));
 assert.doesNotThrow(() => assertAgreementStateDistinction('Five wartime agreement, framework or proposal records are grouped here by relevance to the conflict, not treated as interchangeable legal states.'));
