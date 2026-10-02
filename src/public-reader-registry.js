@@ -459,9 +459,7 @@
   }
 
   function iranMessaging(stage, article) {
-    article.querySelector('h1')?.replaceChildren('Iran Messaging & Claims');
     intro(article,'This page follows Iranian rhetoric, threats, contradictions and narrative changes over time. It does not duplicate the objective scorecard or treat every changed phrase as a policy concession.');
-    stage.querySelectorAll('a').forEach(a=>{if(txt(a.textContent)==="How Iran's Position Changed")a.textContent='Iran Messaging & Claims';});
   }
 
   function claimChecks(article) {
@@ -469,9 +467,7 @@
   }
 
   function information(stage, article) {
-    article.querySelector('h1')?.replaceChildren('Claims, Falsehoods & Deception');
     intro(article,'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
-    stage.querySelectorAll('a').forEach(a=>{if(txt(a.textContent)==='Lie Ledger')a.textContent='Claims, Falsehoods & Deception';});
   }
 
   function finalizePublicProduct(stage, route, routeRuntime, doc) {
