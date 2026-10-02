@@ -2606,7 +2606,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .plain-number-list strong { line-height: 1.35; }
 .plain-number-list span { color: var(--muted); font-size: .82rem; line-height: 1.48; }
 
-.compact-metric-grid { margin-top: .15rem; }
+.compact-metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: .15rem; }
 .pressure-card-link { margin-top: auto; }
 
 .sanctions-mini-flow {
@@ -2826,6 +2826,7 @@ tbody tr:last-child td { border-bottom: 0; }
 }
 
 @media (max-width: 72rem) {
+  .compact-metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sanctions-summary-grid,
   .sanctions-watch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sanctions-plumbing-middle { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2859,5 +2860,9 @@ tbody tr:last-child td { border-bottom: 0; }
   .sanctions-cascade { grid-template-columns: 1fr; }
   .sanctions-plumbing-row:not(:last-child)::after { display: none; }
   .sanctions-state-legend { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 32rem) {
+  .compact-metric-grid { grid-template-columns: 1fr; }
 }
 
