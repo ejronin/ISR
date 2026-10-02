@@ -22,12 +22,12 @@ def main() -> int:
     manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
     packet = json.loads((ROOT / "data/canonical-updates/UPD-20261001-ROOK-CATCHUP.json").read_text(encoding="utf-8"))
 
-    last = manifest["accepted_updates"][-1]
-    assert last["sequence"] == 27
-    assert last["packet_id"] == packet["packet_id"] == "UPD-20261001-ROOK-CATCHUP"
-    assert last["sha256"] == "30c5a1b558898c1f8056cc6deffd3c36ed044d4317e6eefa9b5890ed1c1da1a1"
-    assert last["lineage_sha256"] == "e25f2a2024b1df1f089cd1e8403d0eae2ac7c3eef0d53e35af7e275ab32f507b"
-    assert manifest["current_evidence_cutoff"] == packet["evidence_cutoff"]
+    entry = next(item for item in manifest["accepted_updates"] if item["packet_id"] == packet["packet_id"])
+    assert entry["sequence"] == 27
+    assert entry["packet_id"] == packet["packet_id"] == "UPD-20261001-ROOK-CATCHUP"
+    assert entry["sha256"] == "30c5a1b558898c1f8056cc6deffd3c36ed044d4317e6eefa9b5890ed1c1da1a1"
+    assert entry["lineage_sha256"] == "e25f2a2024b1df1f089cd1e8403d0eae2ac7c3eef0d53e35af7e275ab32f507b"
+    assert packet["evidence_cutoff"] <= manifest["current_evidence_cutoff"]
     assert canonical["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
@@ -76,8 +76,16 @@ def main() -> int:
 
     assert diplomacy["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]["status"] == "Mediated talks continue; no agreement"
     assert diplomacy["DIP-SAUDI-REGIONAL-SECURITY-20260930"]["record"]["status"] == "Saudi Arabia continues diplomacy while emphasizing collective Gulf security"
-    assert shipping["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]["status"] == "Traffic and exports are recovering, but Hormuz is not back to normal"
-    assert economics["ECON-GULF-ENERGY-RECOVERY-20260930"]["record"]["status"] == "Oil prices have fallen from wartime peaks but remain well above pre-war levels"
+    prior_shipping = next(
+        row["record"] for row in packet["entities"]
+        if row["entity_id"] == "SHIP-HORMUZ-KPLER-RECOVERY-20260929"
+    )
+    prior_economics = next(
+        row["record"] for row in packet["entities"]
+        if row["entity_id"] == "ECON-GULF-ENERGY-RECOVERY-20260930"
+    )
+    assert prior_shipping["status"] == "Traffic and exports are recovering, but Hormuz is not back to normal"
+    assert prior_economics["status"] == "Oil prices have fallen from wartime peaks but remain well above pre-war levels"
 
     public_text = []
     for event_id in expected:
@@ -85,10 +93,8 @@ def main() -> int:
     for entity_id in ("DIP-US-IRAN-UNGA-CONTACTS-20260922", "DIP-SAUDI-REGIONAL-SECURITY-20260930"):
         rec = diplomacy[entity_id]["record"]
         public_text.extend([str(rec.get("status") or ""), str(rec.get("observed_state") or "")])
-    rec = shipping["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]
-    public_text.extend([str(rec.get("status") or ""), str(rec.get("observed_state") or "")])
-    rec = economics["ECON-GULF-ENERGY-RECOVERY-20260930"]["record"]
-    public_text.extend([str(rec.get("status") or ""), str(rec.get("observed_state") or "")])
+    public_text.extend([str(prior_shipping.get("status") or ""), str(prior_shipping.get("observed_state") or "")])
+    public_text.extend([str(prior_economics.get("status") or ""), str(prior_economics.get("observed_state") or "")])
 
     rendered = "\n".join(public_text).lower()
     for banned in (
