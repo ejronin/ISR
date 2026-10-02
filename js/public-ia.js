@@ -2120,11 +2120,16 @@
       append(block, 'p', '', publicNarrative(item && item.text));
     });
 
+    if (sourceIdsFrom(network.why_now || {}).length) {
+      why.append(EvidenceDrawer.create(context, sourceEnvelope(network.why_now), { localSources }));
+    }
+
     const definitions = append(why, 'div', 'sanctions-definition-grid');
     asArray(network.definitions).forEach(item => {
       const card = append(definitions, 'article', 'sanctions-definition-card');
       append(card, 'strong', '', publicNarrative(item.term));
       append(card, 'p', '', publicNarrative(item.plain));
+      if (sourceIdsFrom(item).length) card.append(EvidenceDrawer.create(context, sourceEnvelope(item), { localSources }));
     });
 
     frame.article.append(MapView.create(context, {
@@ -2148,6 +2153,7 @@
       const card = append(reachGrid, 'article', 'record-card sanctions-reach-card');
       append(card, 'h3', '', publicNarrative(item.type));
       append(card, 'p', '', publicNarrative(item.plain));
+      if (sourceIdsFrom(item).length) card.append(EvidenceDrawer.create(context, sourceEnvelope(item), { localSources }));
     });
     const behavior = append(reach, 'aside', 'scope-note sanctions-behavior-note');
     append(behavior, 'strong', '', 'Legal reach is not the same as behavioral reach.');
