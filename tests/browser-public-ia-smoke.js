@@ -131,7 +131,7 @@ async function loadDirectRoute(cdp, route) {
       owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
       mainFocused: document.activeElement === document.getElementById('main-content')
     }))()`);
-    assert.equal(skipped.hash, '#/military/facilities');
+    assert.equal(skipped.hash, '#/war/facilities/', 'legacy alias should canonicalize after successful route qualification');
     assert.equal(skipped.routeKey, 'military.facilities');
     assert.equal(skipped.owner, 'FacilitiesPage');
     assert.equal(skipped.mainFocused, true);
