@@ -9,7 +9,7 @@ The seven primary sections and their secondary destinations are declared once in
 | Start Here | Overview — `OverviewPage`; Who's Involved — `ActorsPage` |
 | Timeline | War Timeline — `TimelinePage`; Detailed Chronology — `ChronologyPage` |
 | Military Record | Campaigns & Strikes — `CampaignsPage`; Bases & Infrastructure — `FacilitiesPage`; Air, Missiles & Drones — `WeaponsPage`; Casualties & Losses — `LossesPage`; Damage Imagery — `ImageryPage` |
-| Hormuz & Economy | Why Hormuz Matters — `HormuzOverviewPage`; Shipping & Trade — `ShippingPage`; Oil & Economic Effects — `EconomyPage`; Sanctions & Impact — `SanctionsPage`; Current Hormuz Talks — `HormuzNegotiationsPage` |
+| Hormuz & Economy | Why Hormuz Matters — `HormuzOverviewPage`; Shipping & Trade — `ShippingPage`; Oil & Economic Effects — `EconomyPage`; Sanctions & Economy — `SanctionsPage` (page title: **Sanctions & Impact**); Current Hormuz Talks — `HormuzNegotiationsPage` |
 | Talks & June Agreement | Talks & Agreements — `DiplomacyPage`; June MOU — `MouPage`; Nuclear Talks — `NuclearPage`; Regional Diplomacy — `RegionalDiplomacyPage` |
 | What Each Side Wanted | Objectives & Outcomes — `ObjectivesPage`; Position Changes — `PositionChangesPage`; How Iran's Position Changed — `IranMessagingPage` |
 | Claims & Evidence | Claim Checks — `ClaimChecksPage`; Information Environment — `InformationEnvironmentPage`; Sources — `SourcesPage`; How We Check the Evidence — `MethodPage`; Archive — `ArchivePage` |
