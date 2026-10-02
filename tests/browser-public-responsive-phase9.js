@@ -191,7 +191,7 @@ function assertRouteView(view, route, width) {
         cases += 1;
       }
     }
-    assert.equal(cases, 52, 'responsive route/viewport case count changed');
+    assert.equal(cases, ia.ROUTES.size * VIEWPORTS.length, 'responsive route/viewport case count changed');
     const windowErrors = await cdp.eval('window.__atlasResponsiveSmokeErrors');
     assert.deepEqual(windowErrors, [], 'fatal window error occurred during responsive route smoke');
     assert.deepEqual(cdp.exceptions.filter(Boolean), [], 'uncaught runtime exception occurred during responsive route smoke');
