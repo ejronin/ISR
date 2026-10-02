@@ -1,25 +1,99 @@
-# Phase 3 public information architecture
+# The 2026 Iran War Guide — public IA runtime
 
-The permanent public IA uses GitHub Pages-compatible hash routes. `#/military/facilities`, for example, is a direct link that survives refresh and does not require server rewrites. Ordinary anchors drive navigation; a single `hashchange` listener owned by `AppShell` handles back/forward updates from the already parsed current model.
+## Implementation checkpoint
 
-The seven primary sections and their secondary destinations are declared once in `js/public-ia.js`. Each of the 26 routes names one page owner. Web of Lies is a first-class companion to Lie Ledger in persistent Claims & Evidence navigation and is also reached from claim-level Trace links. That owner creates the page's visible DOM and composes shared components; no other module rewrites or rearranges it after render.
+This document describes the first renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview is the only page body migrated to the new archetype in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the new shell until the tranche is reviewed.
 
-| Primary section | Secondary routes and owners |
-|---|---|
-| Start Here | Overview — `OverviewPage`; Who's Involved — `ActorsPage` |
-| Timeline | War Timeline — `TimelinePage`; Detailed Chronology — `ChronologyPage` |
-| Military Record | Campaigns & Strikes — `CampaignsPage`; Bases & Infrastructure — `FacilitiesPage`; Air, Missiles & Drones — `WeaponsPage`; Casualties & Losses — `LossesPage`; Damage Imagery — `ImageryPage` |
-| Hormuz & Economy | Why Hormuz Matters — `HormuzOverviewPage`; Shipping & Trade — `ShippingPage`; Oil & Economic Effects — `EconomyPage`; Current Hormuz Talks — `HormuzNegotiationsPage` |
-| Talks & June Agreement | Talks & Agreements — `DiplomacyPage`; June MOU — `MouPage`; Nuclear Talks — `NuclearPage`; Regional Diplomacy — `RegionalDiplomacyPage` |
-| What Each Side Wanted | Objectives & Outcomes — `ObjectivesPage`; Position Changes — `PositionChangesPage`; How Iran's Position Changed — `IranMessagingPage` |
-| Claims & Evidence | Claim Checks — `ClaimChecksPage`; Information Environment — `InformationEnvironmentPage`; Sources — `SourcesPage`; How We Check the Evidence — `MethodPage`; Archive — `ArchivePage` |
+GitHub Pages hash routing remains the transport. Canonical logical paths therefore appear after the hash, for example `#/war/campaigns/`. No hosting or router migration is bundled into this work.
 
-`ArchivePage` describes retained revision and snapshot metadata within the current evidence product. Historical HTML applications remain repository-only audit material: the route does not link to or load them, and the closed Pages artifact does not contain them.
+## Approved primary navigation
 
-Shared owners are `AppShell`, `PublicNavigation`, `EvidenceDrawer`, `ActorIdentity`, `EvidenceStatus`, and contextual `MapView`. Page-owner configuration maps each route to a subset of one of the seven approved `page_data` groups in `data/public-current-state.json`. Registry validation fails if a route requests a dataset outside its approved group or any `legacy.*` dataset.
+**Home | War | Themes | Diplomacy & Outcomes | Intelligence | Sources**
 
-Cross-links carry the same event or record ID in the hash query instead of copying a canonical record. The detailed chronology resolves event IDs against the single derived in-memory chronology (205 records at the Phase 3.5 migration boundary). Later accepted evidence packets can add relationships through canonical data without replacing navigation.
+The route key, page owner, and original public read-model authorization remain the stable execution boundary. Regrouping a route under a new primary navigation domain does not broaden its data access.
 
-Desktop navigation uses semantic primary and secondary `<nav>` elements. At mobile widths, a keyboard-operable disclosure presents the current primary/secondary location and vertically stacked links; it does not collapse the seven sections into a horizontal tab strip. Each page supplies exactly one H1. The shell-owned skip control moves focus directly to the current page-content container inside the single `main` landmark without changing the route hash, while route changes move focus to the new page heading.
+| Primary | Route | Canonical logical path | Owner | Existing read-model group |
+|---|---|---|---|---|
+| Home | Overview | `/` | `OverviewPage` | `start_here` |
+| Home | Who's Involved | `/home/actors/` | `ActorsPage` | `start_here` |
+| War | Timeline | `/war/timeline/` | `TimelinePage` | `timeline` |
+| War | All Events | `/war/events/` | `ChronologyPage` | `timeline` |
+| War | Campaigns & Strikes | `/war/campaigns/` | `CampaignsPage` | `military_record` |
+| War | Bases & Infrastructure | `/war/facilities/` | `FacilitiesPage` | `military_record` |
+| War | Air, Missiles & Drones | `/war/weapons/` | `WeaponsPage` | `military_record` |
+| War | Casualties & Losses | `/war/losses/` | `LossesPage` | `military_record` |
+| War | Damage Images | `/war/damage-images/` | `ImageryPage` | `military_record` |
+| Themes | Hormuz | `/themes/hormuz/` | `HormuzOverviewPage` | `hormuz_economy` |
+| Themes | Shipping & Trade | `/themes/shipping/` | `ShippingPage` | `hormuz_economy` |
+| Themes | Oil & Economic Effects | `/themes/economy/` | `EconomyPage` | `hormuz_economy` |
+| Diplomacy & Outcomes | Overview | `/diplomacy/overview/` | `DiplomacyPage` | `diplomacy_mou` |
+| Diplomacy & Outcomes | Current Hormuz Talks | `/diplomacy/hormuz/` | `HormuzNegotiationsPage` | `hormuz_economy` |
+| Diplomacy & Outcomes | June MOU | `/diplomacy/june-mou/` | `MouPage` | `diplomacy_mou` |
+| Diplomacy & Outcomes | Nuclear Talks | `/diplomacy/nuclear/` | `NuclearPage` | `diplomacy_mou` |
+| Diplomacy & Outcomes | Regional Diplomacy | `/diplomacy/regional/` | `RegionalDiplomacyPage` | `diplomacy_mou` |
+| Diplomacy & Outcomes | Goals & Results | `/diplomacy/outcomes/` | `ObjectivesPage` | `objectives_position_changes` |
+| Diplomacy & Outcomes | Position Changes | `/diplomacy/positions/` | `PositionChangesPage` | `objectives_position_changes` |
+| Diplomacy & Outcomes | Iran's Position | `/diplomacy/iran-position/` | `IranMessagingPage` | `objectives_position_changes` |
+| Intelligence | Claim Checks | `/intelligence/claims/` | `ClaimChecksPage` | `claims_sources` |
+| Intelligence | Lie Ledger | `/intelligence/lie-ledger/` | `InformationEnvironmentPage` | `claims_sources` |
+| Intelligence | Web of Lies | `/intelligence/wol/` | `WebOfLiesPage` | `claims_sources` |
+| Sources | Source Library | `/sources/` | `SourcesPage` | `claims_sources` |
+| Sources | Methodology | `/sources/methodology/` | `MethodPage` | `claims_sources` |
+| Sources | Archive | `/sources/archive/` | `ArchivePage` | `claims_sources` |
 
-Actor identity has two independent axes. A record is a person or an entity; a person may carry only a role explicitly supported by approved project data. Separately, the record resolves to an affiliated actor/entity with an affiliation type and, where applicable, a parent state. Flag treatment comes only from that affiliation. This lets a named parliament or IRGC official inherit Iranian state treatment while Hezbollah- and Houthi-affiliated people remain non-state and receive no host-country national flag. Unresolved identities keep their recorded name without a guessed role, affiliation, or flag.
+The in-flight Sanctions & Impact branch remains separately owned and is intentionally not absorbed into this tranche.
+
+## Legacy URL contract
+
+All 26 former public hash paths remain deterministic aliases to their intended route keys. Query/deep-link state is preserved while the browser replaces the address with the canonical Guide path. An unrecognized route is distinct from an alias; an old evidence URL must never become Home merely because its path changed.
+
+The route registry test enumerates every legacy alias and verifies both destination and query preservation.
+
+## Navigation behavior
+
+The shell owns two persistent horizontal rails:
+
+1. the six-domain primary navigation;
+2. the current domain's child routes plus, where registered, current-page anchors.
+
+Mobile uses the same two rails with horizontal scrolling and overflow cues. There is no hamburger replacement for this hierarchy.
+
+Long explanatory pages may expose an **On this page** rail at wide desktop sizes. It consumes the same page-section registry as the context anchors. It is never a second manually maintained navigation list.
+
+Scroll-linked section state uses `history.replaceState`; it does not add a history entry on every section transition. Durable section targets use the shared sticky-shell scroll offset.
+
+## Representative page tranche
+
+`start.overview` is the representative current-state / overview migration.
+
+Its registered durable sections are:
+
+- Current state
+- Conflict opening
+- Latest record
+- About
+- Unresolved
+
+The page adopts the approved editorial hierarchy, flat surfaces, elastic analytical width, restrained prose width, wide operational map treatment, and responsive summary recomposition. The underlying accepted records, map points, route geometry, evidence drawers, source resolution, and calculations are unchanged.
+
+No other page body is considered migrated by this checkpoint.
+
+## First paint and release integrity
+
+The old theatrical loading presentation is retired. The initial document exposes the Guide masthead, primary navigation, Home context navigation, stable page bounds, and the Overview H1 region. Delayed content uses a local low-contrast skeleton rather than a page-level spinner.
+
+The neutral bootstrap remains the only initial script. Signed runtime authorization, release-manifest validation, fail-closed reader staging, and validation-before-promotion remain the publication boundary.
+
+## Evidence and data boundary
+
+This tranche changes presentation and routing only.
+
+- Existing route keys remain stable.
+- Existing page owners remain stable.
+- Existing per-route `dataKeys` remain stable.
+- Existing `page_data` authorization groups remain stable.
+- `EvidenceDrawer` and source resolution remain one shared system.
+- Maps, chart calculations, state-flag assets, and evidence semantics are not replaced or recomputed.
+- No evidence, adjudication, ROOK/Evidence Locker, canonical-update, or sanctions-analysis dataset is modified.
+
+Mass page migration is intentionally stopped pending review of this tranche.
