@@ -354,8 +354,8 @@
       "title": "Industrial suppliers and the A7 financial network targeted",
       "targeted_node": "Automotive, rail, manufacturing, steel and financial-network facilitators",
       "function": "Support industrial supply and move state-linked money through an intermediary network.",
-      "legal_effect": "Treasury announced measures covering Iranian industrial networks and foreign suppliers; Treasury and FinCEN separately announced action against the A7 Network.",
-      "observed_effect": "The legal perimeter widened again on October 1. The current accepted record establishes the action, not a quantified economy-wide loss caused by it.",
+      "legal_effect": "OFAC expanded sectoral and entity sanctions across Iranian automotive, rail, manufacturing and steel networks and related foreign suppliers. Separately, OFAC sanctioned the A7 Network; FinCEN issued an alert and proposed—not finalized—a rule that would prohibit covered fund transmittals involving A7 Sub-Agents.",
+      "observed_effect": "The October 1 legal perimeter widened again. OFAC's A7 designation took effect, while FinCEN's Sub-Agent transaction restriction remained a proposed rule at this evidence cutoff; neither action by itself establishes a quantified economy-wide loss.",
       "potential_effect": "More supplier and payment relationships can become commercially unattractive as connected foreign firms assess U.S. financial and sanctions exposure.",
       "source_ids": [
         "SAN-TREASURY-20261001-INDUSTRY",
@@ -514,14 +514,14 @@
     },
     "SAN-TREASURY-20261001-INDUSTRY": {
       "publisher": "U.S. Department of the Treasury",
-      "title": "October 1 Iran industrial-sector sanctions action",
+      "title": "Operation Economic Outcast Targets Iran’s Remaining Industrial Lifelines",
       "date": "2026-10-01",
       "url": "https://home.treasury.gov/news/press-releases/sb0643",
       "source_role": "Primary official action"
     },
     "SAN-TREASURY-20261001-A7": {
       "publisher": "U.S. Department of the Treasury / FinCEN",
-      "title": "October 1 A7 Network financial action",
+      "title": "Operation Economic Outcast Takes Unprecedented Action Against Sanctions Evasion Network Used by Iran",
       "date": "2026-10-01",
       "url": "https://home.treasury.gov/news/press-releases/sb0644",
       "source_role": "Primary official action"
