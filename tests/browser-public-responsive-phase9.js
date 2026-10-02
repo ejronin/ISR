@@ -104,7 +104,7 @@ function assertRouteView(view, route, width) {
       return true;
     })()`);
 
-    assert.equal(ia.ROUTES.size, 26, 'responsive route inventory changed');
+    assert.equal(ia.ROUTES.size, 27, 'responsive route inventory changed');
     for (const width of VIEWPORTS) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 844, deviceScaleFactor: 1, mobile: true });
       for (const route of ia.ROUTES.values()) {
