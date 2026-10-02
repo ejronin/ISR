@@ -183,8 +183,16 @@ def main() -> int:
         fail("public release entrypoint pointer mismatch")
 
     index = canonical_text_bytes(site / "index.html").decode("utf-8")
-    if 'id="atlas-root"' not in index or "Loading the latest Atlas data…" not in index:
-        fail("minimal current-record loading shell is missing")
+    required_first_paint = (
+        'id="atlas-root"',
+        'data-first-paint-shell="guide"',
+        "THE 2026 IRAN WAR GUIDE",
+        "Preparing the current evidence record…",
+    )
+    if not all(token in index for token in required_first_paint):
+        fail("Guide first-paint shell is missing or incomplete")
+    if "Loading the latest Atlas data…" in index or "Current Atlas" in index:
+        fail("retired theatrical loading presentation remains in the initial document")
     if any(token in index for token in FORBIDDEN_INITIAL_CONTENT):
         fail("obsolete current content remains in the initial public document")
     script_tags = re.findall(r"<script\b[^>]*\bsrc=\"[^\"]+\"[^>]*>", index, re.I)
