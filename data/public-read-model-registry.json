@@ -313,6 +313,11 @@
       "role": "APPROVED_ANALYTICAL_DATA"
     },
     {
+      "key": "analysis.sanctions_network",
+      "path": "data/sanctions-financial-network-v1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
       "key": "analysis.information_war_claims",
       "path": "data/information_war_claims_v2_7.json",
       "role": "APPROVED_ANALYTICAL_DATA"
@@ -632,6 +637,7 @@
       "analysis.hormuz",
       "analysis.china_oil_shift",
       "analysis.oil_routes",
+      "analysis.sanctions_network",
       "analysis.endgame_current_aug25",
       "analysis.endgame_current_aug26"
     ],
