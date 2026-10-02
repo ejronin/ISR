@@ -17,8 +17,10 @@ const ROUTES = [
   'evidence.web_of_lies',
   'military.campaigns',
   'military.losses',
+  'hormuz.overview',
   'hormuz.shipping',
   'hormuz.economy',
+  'hormuz.sanctions',
   'talks.overview',
   'talks.mou',
   'evidence.archive',
@@ -33,6 +35,9 @@ const POLISH_FOCUS = [
   { routeKey: 'evidence.web_of_lies', label: 'web-of-lies-hall', selector: '.wol-hall-of-shame' },
   { routeKey: 'military.facilities', label: 'facility-status-dashboard', selector: '[data-reader-facility-dashboard]' },
   { routeKey: 'military.campaigns', label: 'campaign-constituents', selector: '[data-reader-drilldown="event-constituents"]' },
+  { routeKey: 'hormuz.overview', label: 'hormuz-pressure-pair', selector: '.hormuz-pressure-grid' },
+  { routeKey: 'hormuz.sanctions', label: 'sanctions-summary', selector: '.sanctions-summary-grid' },
+  { routeKey: 'hormuz.sanctions', label: 'sanctions-plumbing', selector: '.sanctions-plumbing' },
   { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' }
 ];
 const MAP_FOCUS = [
