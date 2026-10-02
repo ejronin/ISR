@@ -14,56 +14,99 @@
   const ANY_MACHINE_TOKEN_PATTERN = /\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\b/g;
 
   const PRIMARY_SECTIONS = Object.freeze([
-    { id: 'start', slug: 'start', label: 'Start Here', modelPage: 'start_here' },
-    { id: 'timeline', slug: 'timeline', label: 'Timeline', modelPage: 'timeline' },
-    { id: 'military', slug: 'military', label: 'War & Losses', modelPage: 'military_record' },
-    { id: 'hormuz', slug: 'hormuz', label: 'Hormuz & Economy', modelPage: 'hormuz_economy' },
-    { id: 'talks', slug: 'talks', label: 'Talks & Deals', modelPage: 'diplomacy_mou' },
-    { id: 'objectives', slug: 'objectives', label: 'Goals & Results', modelPage: 'objectives_position_changes' },
-    { id: 'evidence', slug: 'evidence', label: 'Claims & Evidence', modelPage: 'claims_sources' }
+    { id: 'home', slug: 'home', label: 'Home' },
+    { id: 'war', slug: 'war', label: 'War' },
+    { id: 'themes', slug: 'themes', label: 'Themes' },
+    { id: 'diplomacy', slug: 'diplomacy', label: 'Diplomacy & Outcomes' },
+    { id: 'intelligence', slug: 'intelligence', label: 'Intelligence' },
+    { id: 'sources', slug: 'sources', label: 'Sources' }
   ]);
 
   const ROUTE_DEFINITIONS = Object.freeze([
-    { key: 'start.overview', primary: 'start', slug: 'overview', label: 'Overview', title: 'Start Here', owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.gaps'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
-    { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors'], related: ['timeline.war', 'evidence.sources'] },
+    { key: 'start.overview', primary: 'home', slug: 'overview', path: "/", navOrder: 1, modelPage: 'start_here', archetype: 'overview', label: "Overview", title: "Overview", owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.gaps'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
+    { key: 'start.actors', primary: 'home', slug: 'actors', path: "/home/actors/", navOrder: 2, modelPage: 'start_here', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors'], related: ['timeline.war', 'evidence.sources'] },
 
-    { key: 'timeline.war', primary: 'timeline', slug: 'war', label: 'War Timeline', title: 'War Timeline', owner: 'TimelinePage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
-    { key: 'timeline.chronology', primary: 'timeline', slug: 'chronology', label: 'All Events', title: 'All Events', owner: 'ChronologyPage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
+    { key: 'timeline.war', primary: 'war', slug: 'war', path: "/war/timeline/", navOrder: 1, modelPage: 'timeline', label: "Timeline", title: "Timeline", owner: 'TimelinePage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
+    { key: 'timeline.chronology', primary: 'war', slug: 'chronology', path: "/war/events/", navOrder: 2, modelPage: 'timeline', label: "All Events", title: "All Events", owner: 'ChronologyPage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
 
-    { key: 'military.campaigns', primary: 'military', slug: 'campaigns', label: 'Campaigns & Strikes', title: 'Campaigns & Strikes', owner: 'CampaignsPage', dataKeys: ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities', 'gate3.movements'], related: ['timeline.chronology', 'military.facilities', 'military.imagery'] },
-    { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'forensic.facility_claim_audits', 'gate3.facilities'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
-    { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation'], related: ['military.campaigns', 'military.losses'] },
-    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties'], related: ['military.weapons', 'evidence.method'] },
-    { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Images', title: 'Damage Images', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
+    { key: 'military.campaigns', primary: 'war', slug: 'campaigns', path: "/war/campaigns/", navOrder: 3, modelPage: 'military_record', label: "Campaigns & Strikes", title: "Campaigns & Strikes", owner: 'CampaignsPage', dataKeys: ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities', 'gate3.movements'], related: ['timeline.chronology', 'military.facilities', 'military.imagery'] },
+    { key: 'military.facilities', primary: 'war', slug: 'facilities', path: "/war/facilities/", navOrder: 4, modelPage: 'military_record', label: "Bases & Infrastructure", title: "Bases & Infrastructure", owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'forensic.facility_claim_audits', 'gate3.facilities'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
+    { key: 'military.weapons', primary: 'war', slug: 'weapons', path: "/war/weapons/", navOrder: 5, modelPage: 'military_record', label: "Air, Missiles & Drones", title: "Air, Missiles & Drones", owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation'], related: ['military.campaigns', 'military.losses'] },
+    { key: 'military.losses', primary: 'war', slug: 'losses', path: "/war/losses/", navOrder: 6, modelPage: 'military_record', label: "Casualties & Losses", title: "Casualties & Losses", owner: 'LossesPage', dataKeys: ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties'], related: ['military.weapons', 'evidence.method'] },
+    { key: 'military.imagery', primary: 'war', slug: 'imagery', path: "/war/damage-images/", navOrder: 7, modelPage: 'military_record', label: "Damage Images", title: "Damage Images", owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
-    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
-    { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks', 'military.losses'] },
-    { key: 'hormuz.economy', primary: 'hormuz', slug: 'economy', label: 'Oil & Economic Effects', title: 'Oil & Economic Effects', owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics'], related: ['hormuz.shipping', 'hormuz.overview'] },
-    { key: 'hormuz.talks', primary: 'hormuz', slug: 'talks', label: 'Current Hormuz Talks', title: 'Current Hormuz Talks', owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping'] },
+    { key: 'hormuz.overview', primary: 'themes', slug: 'overview', path: "/themes/hormuz/", navOrder: 1, modelPage: 'hormuz_economy', label: "Hormuz", title: "Hormuz", owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
+    { key: 'hormuz.shipping', primary: 'themes', slug: 'shipping', path: "/themes/shipping/", navOrder: 2, modelPage: 'hormuz_economy', label: "Shipping & Trade", title: "Shipping & Trade", owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks', 'military.losses'] },
+    { key: 'hormuz.economy', primary: 'themes', slug: 'economy', path: "/themes/economy/", navOrder: 3, modelPage: 'hormuz_economy', label: "Oil & Economic Effects", title: "Oil & Economic Effects", owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics'], related: ['hormuz.shipping', 'hormuz.overview'] },
+    { key: 'hormuz.talks', primary: 'diplomacy', slug: 'talks', path: "/diplomacy/hormuz/", navOrder: 2, modelPage: 'hormuz_economy', label: "Current Hormuz Talks", title: "Current Hormuz Talks", owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping'] },
 
-    { key: 'talks.overview', primary: 'talks', slug: 'overview', label: 'Talks & Deals', title: 'Talks & Deals', owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
-    { key: 'talks.mou', primary: 'talks', slug: 'june-mou', label: 'June MOU', title: 'June MOU', owner: 'MouPage', dataKeys: ['analysis.hormuz', 'analysis.endgame_public_view'], related: ['hormuz.talks', 'talks.nuclear', 'objectives.outcomes'] },
-    { key: 'talks.nuclear', primary: 'talks', slug: 'nuclear', label: 'Nuclear Talks', title: 'Nuclear Talks', owner: 'NuclearPage', dataKeys: ['analysis.iran_messaging', 'analysis.endgame_public_view'], related: ['talks.overview', 'talks.mou', 'objectives.positions'] },
-    { key: 'talks.regional', primary: 'talks', slug: 'regional', label: 'Regional Diplomacy', title: 'Regional Diplomacy', owner: 'RegionalDiplomacyPage', dataKeys: ['ledger.agreements', 'gate3.agreements'], related: ['talks.overview', 'hormuz.talks', 'start.actors'] },
+    { key: 'talks.overview', primary: 'diplomacy', slug: 'overview', path: "/diplomacy/overview/", navOrder: 1, modelPage: 'diplomacy_mou', label: "Overview", title: "Diplomacy & Outcomes", owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
+    { key: 'talks.mou', primary: 'diplomacy', slug: 'june-mou', path: "/diplomacy/june-mou/", navOrder: 3, modelPage: 'diplomacy_mou', label: "June MOU", title: "June MOU", owner: 'MouPage', dataKeys: ['analysis.hormuz', 'analysis.endgame_public_view'], related: ['hormuz.talks', 'talks.nuclear', 'objectives.outcomes'] },
+    { key: 'talks.nuclear', primary: 'diplomacy', slug: 'nuclear', path: "/diplomacy/nuclear/", navOrder: 4, modelPage: 'diplomacy_mou', label: "Nuclear Talks", title: "Nuclear Talks", owner: 'NuclearPage', dataKeys: ['analysis.iran_messaging', 'analysis.endgame_public_view'], related: ['talks.overview', 'talks.mou', 'objectives.positions'] },
+    { key: 'talks.regional', primary: 'diplomacy', slug: 'regional', path: "/diplomacy/regional/", navOrder: 5, modelPage: 'diplomacy_mou', label: "Regional Diplomacy", title: "Regional Diplomacy", owner: 'RegionalDiplomacyPage', dataKeys: ['ledger.agreements', 'gate3.agreements'], related: ['talks.overview', 'hormuz.talks', 'start.actors'] },
 
-    { key: 'objectives.outcomes', primary: 'objectives', slug: 'outcomes', label: 'Goals & Results', title: 'Goals & Results', owner: 'ObjectivesPage', dataKeys: ['analysis.iran_outcomes', 'analysis.iran_messaging', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections'], related: ['objectives.positions', 'objectives.iran', 'talks.mou'] },
-    { key: 'objectives.positions', primary: 'objectives', slug: 'positions', label: 'Position Changes', title: 'Position Changes', owner: 'PositionChangesPage', dataKeys: ['analysis.endgame_us_objectives', 'analysis.iran_messaging'], related: ['objectives.outcomes', 'objectives.iran', 'timeline.chronology'] },
-    { key: 'objectives.iran', primary: 'objectives', slug: 'iran-position', label: "How Iran's Position Changed", title: "How Iran's Position Changed", owner: 'IranMessagingPage', dataKeys: ['analysis.iran_messaging'], related: ['objectives.positions', 'talks.overview', 'evidence.information'] },
+    { key: 'objectives.outcomes', primary: 'diplomacy', slug: 'outcomes', path: "/diplomacy/outcomes/", navOrder: 6, modelPage: 'objectives_position_changes', label: "Goals & Results", title: "Goals & Results", owner: 'ObjectivesPage', dataKeys: ['analysis.iran_outcomes', 'analysis.iran_messaging', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections'], related: ['objectives.positions', 'objectives.iran', 'talks.mou'] },
+    { key: 'objectives.positions', primary: 'diplomacy', slug: 'positions', path: "/diplomacy/positions/", navOrder: 7, modelPage: 'objectives_position_changes', label: "Position Changes", title: "Position Changes", owner: 'PositionChangesPage', dataKeys: ['analysis.endgame_us_objectives', 'analysis.iran_messaging'], related: ['objectives.outcomes', 'objectives.iran', 'timeline.chronology'] },
+    { key: 'objectives.iran', primary: 'diplomacy', slug: 'iran-position', path: "/diplomacy/iran-position/", navOrder: 8, modelPage: 'objectives_position_changes', label: "Iran's Position", title: "Iran's Position", owner: 'IranMessagingPage', dataKeys: ['analysis.iran_messaging'], related: ['objectives.positions', 'talks.overview', 'evidence.information'] },
 
-    { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
-    { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Lie Ledger', title: 'Lie Ledger', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability'], related: ['evidence.web_of_lies', 'evidence.claims', 'objectives.iran', 'evidence.method'] },
-    { key: 'evidence.web_of_lies', primary: 'evidence', slug: 'web-of-lies', label: 'Web of Lies', title: 'Web of Lies', owner: 'WebOfLiesPage', dataKeys: ['analysis.web_of_lies'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
-    { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources'], related: ['evidence.method', 'evidence.claims'] },
-    { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
-    { key: 'evidence.archive', primary: 'evidence', slug: 'archive', label: 'Archive', title: 'Archive', owner: 'ArchivePage', dataKeys: ['archive.snapshot_index'], related: ['evidence.method', 'start.overview'] }
+    { key: 'evidence.claims', primary: 'intelligence', slug: 'claims', path: "/intelligence/claims/", navOrder: 1, modelPage: 'claims_sources', label: "Claim Checks", title: "Claim Checks", owner: 'ClaimChecksPage', dataKeys: ['current.claims'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
+    { key: 'evidence.information', primary: 'intelligence', slug: 'information', path: "/intelligence/lie-ledger/", navOrder: 2, modelPage: 'claims_sources', label: "Lie Ledger", title: "Lie Ledger", owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability'], related: ['evidence.web_of_lies', 'evidence.claims', 'objectives.iran', 'evidence.method'] },
+    { key: 'evidence.web_of_lies', primary: 'intelligence', slug: 'web-of-lies', path: "/intelligence/wol/", navOrder: 3, modelPage: 'claims_sources', label: "Web of Lies", title: "Web of Lies", owner: 'WebOfLiesPage', dataKeys: ['analysis.web_of_lies'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
+    { key: 'evidence.sources', primary: 'sources', slug: 'sources', path: "/sources/", navOrder: 1, modelPage: 'claims_sources', label: "Source Library", title: "Sources", owner: 'SourcesPage', dataKeys: ['current.sources'], related: ['evidence.method', 'evidence.claims'] },
+    { key: 'evidence.method', primary: 'sources', slug: 'method', path: "/sources/methodology/", navOrder: 2, modelPage: 'claims_sources', label: "Methodology", title: "Methodology", owner: 'MethodPage', dataKeys: ['current.sources'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
+    { key: 'evidence.archive', primary: 'sources', slug: 'archive', path: "/sources/archive/", navOrder: 3, modelPage: 'claims_sources', label: "Archive", title: "Archive", owner: 'ArchivePage', dataKeys: ['archive.snapshot_index'], related: ['evidence.method', 'start.overview'] }
   ]);
 
   const PRIMARY_BY_ID = new Map(PRIMARY_SECTIONS.map(section => [section.id, section]));
+  const normalizeRoutePath = value => {
+    const raw = String(value || '/').trim();
+    if (!raw || raw === '/') return '/';
+    const leading = raw.startsWith('/') ? raw : `/${raw}`;
+    return leading.endsWith('/') ? leading : `${leading}/`;
+  };
   const ROUTES = new Map(ROUTE_DEFINITIONS.map(route => {
     const primary = PRIMARY_BY_ID.get(route.primary);
-    return [route.key, Object.freeze({ ...route, primaryLabel: primary.label, primarySlug: primary.slug, modelPage: primary.modelPage, path: `/${primary.slug}/${route.slug}` })];
+    return [route.key, Object.freeze({ ...route, primaryLabel: primary.label, primarySlug: primary.slug, path: normalizeRoutePath(route.path) })];
   }));
   const ROUTE_BY_PATH = new Map(Array.from(ROUTES.values()).map(route => [route.path, route]));
+  const ROUTE_ALIASES = Object.freeze({
+    '/start/overview': 'start.overview',
+    '/start/actors': 'start.actors',
+    '/timeline/war': 'timeline.war',
+    '/timeline/chronology': 'timeline.chronology',
+    '/military/campaigns': 'military.campaigns',
+    '/military/facilities': 'military.facilities',
+    '/military/weapons': 'military.weapons',
+    '/military/losses': 'military.losses',
+    '/military/imagery': 'military.imagery',
+    '/hormuz/overview': 'hormuz.overview',
+    '/hormuz/shipping': 'hormuz.shipping',
+    '/hormuz/economy': 'hormuz.economy',
+    '/hormuz/talks': 'hormuz.talks',
+    '/talks/overview': 'talks.overview',
+    '/talks/june-mou': 'talks.mou',
+    '/talks/nuclear': 'talks.nuclear',
+    '/talks/regional': 'talks.regional',
+    '/objectives/outcomes': 'objectives.outcomes',
+    '/objectives/positions': 'objectives.positions',
+    '/objectives/iran-position': 'objectives.iran',
+    '/evidence/claims': 'evidence.claims',
+    '/evidence/information': 'evidence.information',
+    '/evidence/web-of-lies': 'evidence.web_of_lies',
+    '/evidence/sources': 'evidence.sources',
+    '/evidence/method': 'evidence.method',
+    '/evidence/archive': 'evidence.archive'
+  });
+  const ROUTE_ALIAS_BY_PATH = new Map(Object.entries(ROUTE_ALIASES).map(([path, key]) => [normalizeRoutePath(path), ROUTES.get(key)]));
+  const PAGE_SECTION_DEFINITIONS = Object.freeze({
+    'start.overview': Object.freeze([
+      { id: 'current-state', label: 'Current state', heading: 'Where things stand now' },
+      { id: 'conflict-opening', label: 'Conflict opening', heading: 'How the conflict opened' },
+      { id: 'latest-record', label: 'Latest record', heading: 'Latest in the record' },
+      { id: 'about', label: 'About', heading: 'About the record' },
+      { id: 'unresolved', label: 'Unresolved', heading: 'What remains unresolved' }
+    ])
+  });
 
   const DATASET_LABELS = Object.freeze({
     'current.chronology': 'Current chronology',
@@ -341,18 +384,30 @@
 
   function parseRoute(hashValue) {
     const raw = String(hashValue || '').replace(/^#/, '');
-    const [pathPart, queryPart = ''] = raw.split('?');
-    const route = ROUTE_BY_PATH.get(pathPart) || ROUTES.get(DEFAULT_ROUTE_KEY);
+    const [rawPath = '/', queryPart = ''] = raw.split('?');
+    const pathPart = normalizeRoutePath(rawPath);
+    const canonicalRoute = ROUTE_BY_PATH.get(pathPart);
+    const aliasRoute = ROUTE_ALIAS_BY_PATH.get(pathPart);
+    const route = canonicalRoute || aliasRoute || ROUTES.get(DEFAULT_ROUTE_KEY);
+    const params = Object.fromEntries(new URLSearchParams(queryPart));
     return {
       ...route,
-      params: Object.fromEntries(new URLSearchParams(queryPart)),
-      canonical: ROUTE_BY_PATH.has(pathPart),
-      href: routeHref(route.key, Object.fromEntries(new URLSearchParams(queryPart)))
+      params,
+      canonical: Boolean(canonicalRoute),
+      aliased: Boolean(!canonicalRoute && aliasRoute),
+      recognized: Boolean(canonicalRoute || aliasRoute),
+      href: routeHref(route.key, params)
     };
   }
 
   function routesForPrimary(primaryId) {
-    return Array.from(ROUTES.values()).filter(route => route.primary === primaryId && !route.hiddenNav);
+    return Array.from(ROUTES.values())
+      .filter(route => route.primary === primaryId && !route.hiddenNav)
+      .sort((left, right) => Number(left.navOrder || 999) - Number(right.navOrder || 999));
+  }
+
+  function pageSectionsFor(routeKey) {
+    return PAGE_SECTION_DEFINITIONS[routeKey] || Object.freeze([]);
   }
 
   function modelData(model, key) {
@@ -385,6 +440,8 @@
   function validateRegistry(model) {
     invariant(ROUTES.size === 26, `Expected 26 public routes; found ${ROUTES.size}`);
     invariant(ROUTE_BY_PATH.size === ROUTES.size, 'Public route paths must be unique');
+    invariant(ROUTE_ALIAS_BY_PATH.size === 26, `Expected 26 legacy route aliases; found ${ROUTE_ALIAS_BY_PATH.size}`);
+    for (const [aliasPath, route] of ROUTE_ALIAS_BY_PATH) invariant(route && ROUTES.has(route.key), `Legacy route alias is unresolved: ${aliasPath}`);
     for (const route of ROUTES.values()) {
       invariant(PAGE_OWNERS[route.owner], `Missing page owner: ${route.owner}`);
       const mapping = model.page_data[route.modelPage];
@@ -3695,6 +3752,22 @@ function applyVisualSweep(article, context) {
   if (context.route.key === 'talks.mou') enhanceMouVisual(article, context);
 }
 
+  function applyPageSectionRegistry(article, context) {
+    const definitions = pageSectionsFor(context.route.key);
+    if (!definitions.length) return;
+    article.dataset.guideArchetype = context.route.archetype || 'standard';
+    const sections = [...article.querySelectorAll(':scope > section, :scope > details')];
+    definitions.forEach(definition => {
+      const match = sections.find(node => {
+        const heading = node.querySelector(':scope > h2, :scope > summary');
+        return heading && heading.textContent.trim() === definition.heading;
+      });
+      if (!match) return;
+      match.id = definition.id;
+      match.dataset.guideSection = definition.id;
+    });
+  }
+
   function preparePage(owner) {
     return context => {
       const article = owner(context);
@@ -3702,7 +3775,8 @@ function applyVisualSweep(article, context) {
       addEvidenceClocks(article, context);
       applyPresentationDisclosure(article, context);
       applyVisualSweep(article, context);
-      addPageLocalNavigation(article, context);
+      applyPageSectionRegistry(article, context);
+      if (!pageSectionsFor(context.route.key).length) addPageLocalNavigation(article, context);
       return article;
     };
   }
@@ -3737,28 +3811,109 @@ function applyVisualSweep(article, context) {
   });
 
   function navigationLink(documentObject, route, currentRoute, className) {
-    const link = element(documentObject, 'a', className || '', route.label); link.href = routeHref(route.key); link.dataset.routeKey = route.key; if (route.key === currentRoute.key) link.setAttribute('aria-current', 'page'); return link;
+    const link = element(documentObject, 'a', className || '', route.label);
+    link.href = routeHref(route.key);
+    link.dataset.routeKey = route.key;
+    if (route.key === currentRoute.key) link.setAttribute('aria-current', 'page');
+    return link;
+  }
+
+  function sectionLink(documentObject, currentRoute, definition) {
+    const link = element(documentObject, 'a', 'context-anchor', definition.label);
+    link.href = routeHref(currentRoute.key, { ...currentRoute.params, section: definition.id });
+    link.dataset.sectionId = definition.id;
+    if (currentRoute.params.section === definition.id) link.setAttribute('aria-current', 'location');
+    return link;
   }
 
   const PublicNavigation = Object.freeze({
-    renderPrimary(documentObject, currentRoute) { const nav = element(documentObject, 'nav', 'primary-nav'); nav.setAttribute('aria-label', 'Primary'); const list = append(nav, 'ul'); PRIMARY_SECTIONS.forEach(primary => { const item = append(list, 'li'); const defaultRoute = routesForPrimary(primary.id)[0]; const link = navigationLink(documentObject, { ...defaultRoute, label: primary.label }, currentRoute); if (primary.id === currentRoute.primary) link.setAttribute('aria-current', 'page'); item.append(link); }); return nav; },
-    renderSecondary(documentObject, currentRoute) { const nav = element(documentObject, 'nav', 'secondary-nav'); nav.setAttribute('aria-label', `${currentRoute.primaryLabel} pages`); append(nav, 'h2', '', currentRoute.primaryLabel); const list = append(nav, 'ul'); routesForPrimary(currentRoute.primary).forEach(route => { const item = append(list, 'li'); item.append(navigationLink(documentObject, route, currentRoute)); }); return nav; },
-    renderMobile(documentObject, currentRoute) { const details = element(documentObject, 'details', 'mobile-navigation'); details.dataset.component = 'PublicNavigation'; const summary = append(details, 'summary', '', `${currentRoute.primaryLabel} — ${currentRoute.label}`); summary.setAttribute('aria-label', 'Open public navigation'); const inner = append(details, 'div', 'mobile-navigation-inner'); const primary = append(inner, 'nav', 'mobile-primary'); primary.setAttribute('aria-label', 'Primary mobile'); const primaryList = append(primary, 'ul'); PRIMARY_SECTIONS.forEach(section => { const item = append(primaryList, 'li'); const defaultRoute = routesForPrimary(section.id)[0]; const link = navigationLink(documentObject, { ...defaultRoute, label: section.label }, currentRoute); if (section.id === currentRoute.primary) link.setAttribute('aria-current', 'page'); item.append(link); }); const secondary = append(inner, 'nav', 'mobile-secondary'); secondary.setAttribute('aria-label', `${currentRoute.primaryLabel} mobile pages`); append(secondary, 'h2', '', currentRoute.primaryLabel); const secondaryList = append(secondary, 'ul'); routesForPrimary(currentRoute.primary).forEach(route => { const item = append(secondaryList, 'li'); item.append(navigationLink(documentObject, route, currentRoute)); }); return details; }
+    renderPrimary(documentObject, currentRoute) {
+      const nav = element(documentObject, 'nav', 'primary-nav');
+      nav.setAttribute('aria-label', 'Primary');
+      const list = append(nav, 'ul');
+      PRIMARY_SECTIONS.forEach(primary => {
+        const item = append(list, 'li');
+        const defaultRoute = routesForPrimary(primary.id)[0];
+        const link = navigationLink(documentObject, { ...defaultRoute, label: primary.label }, currentRoute);
+        if (primary.id === currentRoute.primary) link.setAttribute('aria-current', 'page');
+        item.append(link);
+      });
+      return nav;
+    },
+    renderContext(documentObject, currentRoute) {
+      const nav = element(documentObject, 'nav', 'context-nav');
+      nav.setAttribute('aria-label', `${currentRoute.primaryLabel} navigation`);
+      const list = append(nav, 'ul', 'context-nav-list');
+      routesForPrimary(currentRoute.primary).forEach(route => {
+        const item = append(list, 'li', 'context-route-item');
+        item.append(navigationLink(documentObject, route, currentRoute, 'context-route'));
+      });
+      const sections = pageSectionsFor(currentRoute.key);
+      if (sections.length) {
+        const divider = append(list, 'li', 'context-nav-divider', '');
+        divider.setAttribute('aria-hidden', 'true');
+        sections.forEach(definition => {
+          const item = append(list, 'li', 'context-anchor-item');
+          item.append(sectionLink(documentObject, currentRoute, definition));
+        });
+      }
+      return nav;
+    },
+    renderContentsRail(documentObject, currentRoute) {
+      const sections = pageSectionsFor(currentRoute.key);
+      if (!sections.length) return null;
+      const nav = element(documentObject, 'nav', 'page-contents-rail');
+      nav.setAttribute('aria-label', 'On this page');
+      append(nav, 'h2', '', 'On this page');
+      const list = append(nav, 'ul');
+      sections.forEach(definition => {
+        const item = append(list, 'li');
+        item.append(sectionLink(documentObject, currentRoute, definition));
+      });
+      return nav;
+    },
+    renderSecondary(documentObject, currentRoute) { return this.renderContext(documentObject, currentRoute); },
+    renderMobile(documentObject, currentRoute) { return this.renderContext(documentObject, currentRoute); }
   });
 
   const AppShell = Object.freeze({
     create(documentObject) {
-      const app = element(documentObject, 'div', 'atlas-app'); app.dataset.component = 'AppShell'; const skip = append(app, 'button', 'skip-link', 'Skip to content'); skip.type = 'button'; const header = append(app, 'header', 'app-header'); const headerInner = append(header, 'div', 'header-inner'); const brand = append(headerInner, 'a', 'brand'); brand.href = routeHref(DEFAULT_ROUTE_KEY); append(brand, 'span', 'brand-title', 'Iran War Evidence Atlas'); append(brand, 'span', 'brand-subtitle', 'What happened, what the evidence shows, and what remains uncertain.'); const primaryHost = append(header, 'div', 'primary-nav-host'); const mobileHost = append(header, 'div', 'mobile-nav-host'); const grid = append(app, 'div', 'app-grid'); const aside = append(grid, 'aside', 'secondary-column'); const main = append(grid, 'div', 'page-host'); main.id = 'main-content'; main.tabIndex = -1; const focusMain = () => main.focus(); skip.addEventListener('click', focusMain); skip.addEventListener('keydown', event => { if (event.key !== 'Enter' && event.key !== ' ') return; event.preventDefault(); focusMain(); }); const footer = append(app, 'footer', 'page-footer'); return { app, primaryHost, mobileHost, aside, main, footer };
+      const app = element(documentObject, 'div', 'atlas-app guide-shell');
+      app.dataset.component = 'GuideShell';
+      const skip = append(app, 'button', 'skip-link', 'Skip to content');
+      skip.type = 'button';
+      const chrome = append(app, 'header', 'guide-chrome');
+      const masthead = append(chrome, 'div', 'guide-masthead');
+      const brand = append(masthead, 'a', 'brand');
+      brand.href = routeHref(DEFAULT_ROUTE_KEY);
+      append(brand, 'span', 'brand-title', 'THE 2026 IRAN WAR GUIDE');
+      const primaryHost = append(masthead, 'div', 'primary-nav-host');
+      const contextHost = append(chrome, 'div', 'context-nav-host');
+      const layout = append(app, 'div', 'guide-layout');
+      const main = append(layout, 'main', 'page-host');
+      main.id = 'main-content';
+      main.tabIndex = -1;
+      const contentsHost = append(layout, 'aside', 'page-contents-host');
+      contentsHost.setAttribute('aria-label', 'Page contents');
+      const focusMain = () => main.focus();
+      skip.addEventListener('click', focusMain);
+      skip.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        focusMain();
+      });
+      const footer = append(app, 'footer', 'page-footer');
+      return { app, primaryHost, contextHost, main, contentsHost, footer };
     }
   });
 
   function mount(options) {
     const settings = options || {}; const documentObject = settings.documentObject || root.document; const windowObject = settings.windowObject || root; const rootElement = settings.rootElement; const routeRuntime = settings.routeRuntime; const state = settings.state; invariant(documentObject && rootElement && routeRuntime && typeof routeRuntime.forRoute === 'function', 'Public IA mount requires a document, root element, and guarded route runtime'); const firstRoute = parseRoute(windowObject.location && windowObject.location.hash); const firstAccess = routeRuntime.forRoute(firstRoute); if (rootElement.__atlasRouteController) rootElement.__atlasRouteController.destroy(); const shell = AppShell.create(documentObject); rootElement.replaceChildren(shell.app); rootElement.className = 'atlas-ready'; rootElement.dataset.status = 'ready'; rootElement.setAttribute('aria-busy', 'false'); let previousRouteKey = null; let currentServices = firstAccess.services;
-    const renderRoute = (focusHeading, prepared) => { const route = parseRoute(windowObject.location && windowObject.location.hash); const access = prepared && prepared.routeKey === route.key ? prepared.access : routeRuntime.forRoute(route); const model = access.model; currentServices = access.services; if (!route.canonical && windowObject.history && windowObject.location) windowObject.history.replaceState(null, '', routeHref(route.key, route.params)); const context = { documentObject, windowObject, model, services: access.services, state, route }; shell.primaryHost.replaceChildren(PublicNavigation.renderPrimary(documentObject, route)); shell.mobileHost.replaceChildren(PublicNavigation.renderMobile(documentObject, route)); shell.aside.replaceChildren(PublicNavigation.renderSecondary(documentObject, route)); const page = PAGE_OWNERS[route.owner](context); shell.main.replaceChildren(page); shell.footer.replaceChildren(); append(shell.footer, 'span', '', `Evidence current through ${formatEvidenceClock(model.release.current_osint_cutoff)}. Historical review fixed at ${formatEvidenceClock(model.release.gate2_evidence_cutoff)}. `); const archive = append(shell.footer, 'a', '', 'Archive'); archive.href = routeHref('evidence.archive'); state.routeKey = route.key; state.pageOwner = route.owner; state.primarySection = route.primaryLabel; state.secondaryPage = route.label; documentObject.title = `${route.title} · Iran War Evidence Atlas`; if (focusHeading && previousRouteKey && previousRouteKey !== route.key) { const heading = shell.main.querySelector('h1'); if (heading) heading.focus(); } previousRouteKey = route.key; return route; };
+    const renderRoute = (focusHeading, prepared) => { const route = parseRoute(windowObject.location && windowObject.location.hash); const access = prepared && prepared.routeKey === route.key ? prepared.access : routeRuntime.forRoute(route); const model = access.model; currentServices = access.services; if (!route.canonical && windowObject.history && windowObject.location) windowObject.history.replaceState(null, '', routeHref(route.key, route.params)); const context = { documentObject, windowObject, model, services: access.services, state, route }; shell.primaryHost.replaceChildren(PublicNavigation.renderPrimary(documentObject, route)); shell.contextHost.replaceChildren(PublicNavigation.renderContext(documentObject, route)); const contents = PublicNavigation.renderContentsRail(documentObject, route); shell.contentsHost.replaceChildren(...(contents ? [contents] : [])); const page = PAGE_OWNERS[route.owner](context); shell.main.replaceChildren(page); shell.footer.replaceChildren(); append(shell.footer, 'span', '', `Evidence current through ${formatEvidenceClock(model.release.current_osint_cutoff)}. Historical review fixed at ${formatEvidenceClock(model.release.gate2_evidence_cutoff)}. `); const archive = append(shell.footer, 'a', '', 'Archive'); archive.href = routeHref('evidence.archive'); state.routeKey = route.key; state.pageOwner = route.owner; state.primarySection = route.primaryLabel; state.secondaryPage = route.label; documentObject.title = `${route.title} · The 2026 Iran War Guide`; if (focusHeading && previousRouteKey && previousRouteKey !== route.key) { const heading = shell.main.querySelector('h1'); if (heading) heading.focus(); } previousRouteKey = route.key; return route; };
     const onHashChange = () => renderRoute(true); windowObject.addEventListener('hashchange', onHashChange); const initialRoute = renderRoute(false, { routeKey: firstRoute.key, access: firstAccess }); const controller = Object.freeze({ render: () => renderRoute(false), current: () => parseRoute(windowObject.location && windowObject.location.hash), services: () => currentServices, destroy: () => windowObject.removeEventListener('hashchange', onHashChange), initialRoute }); rootElement.__atlasRouteController = controller; return controller;
   }
 
   return Object.freeze({
-    DEFAULT_ROUTE_KEY, PRIMARY_SECTIONS, ROUTE_DEFINITIONS, ROUTES, DATASET_LABELS, DISPLAY_TERMS, AFFILIATED_ACTORS, PERSON_PROFILES, PAGE_OWNERS, AppShell, PublicNavigation, EvidenceDrawer, ActorIdentity, EvidenceStatus, MapView, eventTemporalValues, eventEvidenceValues, formatEvidenceClock, propositionStatusLabel, knowledgeJudgmentDisplay, objectiveChangeLabel, lossQuantityLabel, materialAssetClass, displayTerm, publicNarrative, routeHref, parseRoute, routesForPrimary, modelData, recordArray, sortActorDirectory, validateRegistry, mount
+    DEFAULT_ROUTE_KEY, PRIMARY_SECTIONS, ROUTE_DEFINITIONS, ROUTES, ROUTE_ALIASES, PAGE_SECTION_DEFINITIONS, DATASET_LABELS, DISPLAY_TERMS, AFFILIATED_ACTORS, PERSON_PROFILES, PAGE_OWNERS, AppShell, PublicNavigation, EvidenceDrawer, ActorIdentity, EvidenceStatus, MapView, eventTemporalValues, eventEvidenceValues, formatEvidenceClock, propositionStatusLabel, knowledgeJudgmentDisplay, objectiveChangeLabel, lossQuantityLabel, materialAssetClass, displayTerm, publicNarrative, routeHref, parseRoute, routesForPrimary, pageSectionsFor, modelData, recordArray, sortActorDirectory, validateRegistry, mount
   });
 }));
