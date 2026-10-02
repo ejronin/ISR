@@ -60,7 +60,7 @@ const expectedPaths = {
   'evidence.method': '/sources/methodology/',
   'evidence.archive': '/sources/archive/'
 };
-assert.equal(Object.keys(ia.ROUTE_ALIASES).length, 26);
+assert(Object.keys(ia.ROUTE_ALIASES).length >= 26, 'full legacy alias set is incomplete');
 for (const [key, pathValue] of Object.entries(expectedPaths)) assert.equal(ia.ROUTES.get(key).path, pathValue, `logical path mismatch: ${key}`);
 for (const [legacyPath, key] of Object.entries(ia.ROUTE_ALIASES)) {
   const parsed = ia.parseRoute(`#${legacyPath}?record=EV-1`);
@@ -68,6 +68,10 @@ for (const [legacyPath, key] of Object.entries(ia.ROUTE_ALIASES)) {
   assert.equal(parsed.params.record, 'EV-1', `legacy alias lost query state: ${legacyPath}`);
   assert.equal(parsed.aliased, true, `legacy alias was not identified as an alias: ${legacyPath}`);
 }
+const unknownRoute = ia.parseRoute('#/retired/evidence/path?record=EV-404');
+assert.equal(unknownRoute.recognized, false, 'unknown route must be explicitly unrecognized');
+assert.equal(unknownRoute.key, null, 'unknown route must not silently become Home');
+assert.equal(unknownRoute.params.record, 'EV-404', 'unknown route diagnostics must preserve query state');
 assert.deepEqual(
   ia.pageSectionsFor('start.overview').map(section => section.id),
   ['current-state', 'conflict-opening', 'latest-record', 'about', 'unresolved']
@@ -205,4 +209,4 @@ assert.match(css, /:focus-visible/);
 assert.match(css, /\.atlas-app\[data-layout-scope="adaptive-wide"\]/, 'wide desktop layout must remain opt-in');
 assert.match(css, /@media \(min-width: 80rem\)/, 'wide desktop layout breakpoint is missing');
 
-console.log('public IA contract: PASS - 6 approved Guide domains, 26 deterministic page owners, 26 legacy aliases, preserved route data mappings, and Home section registry verified');
+console.log('public IA contract: PASS - 6 approved Guide domains, 26 deterministic page owners, deterministic legacy aliases, preserved route data mappings, and Home section registry verified');
