@@ -53,7 +53,8 @@ def main() -> int:
         actual = hashlib.sha256(data).hexdigest() if data is not None else None
         require(actual == expected, f"vendored Leaflet hash mismatch: {relative}", errors)
     require('id="atlas-root"' in html and 'data-status="loading"' in html, "neutral current-record root missing", errors)
-    require("Loading the latest Atlas data…" in html, "accessible current-record loading state missing", errors)
+    require('data-first-paint-shell="guide"' in html and "THE 2026 IRAN WAR GUIDE" in html and "Preparing the current evidence record…" in html, "Guide first-paint loading state missing", errors)
+    require("Loading the latest Atlas data…" not in html and "Current Atlas" not in html, "retired theatrical loading state remains", errors)
     require(
         html.count("<script ") == 1
         and f'src="{bootstrap.get("path")}"' in html
