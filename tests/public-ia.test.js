@@ -22,7 +22,7 @@ const expectedSecondary = {
   start: ['Overview', "Who's Involved"],
   timeline: ['War Timeline', 'All Events'],
   military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Images'],
-  hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Sanctions & Impact', 'Current Hormuz Talks'],
+  hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Sanctions & Economy', 'Current Hormuz Talks'],
   talks: ['Talks & Deals', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
   objectives: ['Goals & Results', 'Position Changes', "How Iran's Position Changed"],
   evidence: ['Claim Checks', 'Lie Ledger', 'Web of Lies', 'Sources', 'How We Check the Evidence', 'Archive']

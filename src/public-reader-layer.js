@@ -915,7 +915,7 @@
   }
 
   function simplifyHormuz(article) {
-    setPageIntro(article, 'Iran severely disrupted Hormuz but has not secured internationally recognized exclusive control of the Strait. Current talks concern a shared arrangement and unresolved passage, mine-clearing, inspection and fee rules.');
+    setPageIntro(article, 'How pressure on shipping, oil, finance, and commercial risk shapes the wider war economy.');
   }
 
   function simplifyMou(article) {

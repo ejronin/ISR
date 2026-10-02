@@ -39,7 +39,7 @@
     { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Hormuz & Economy', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'analysis.sanctions_network', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'talks.mou'] },
     { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'military.losses'] },
     { key: 'hormuz.economy', primary: 'hormuz', slug: 'economy', label: 'Oil & Economic Effects', title: 'Oil & Economic Effects', owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics'], related: ['hormuz.shipping', 'hormuz.sanctions', 'hormuz.overview'] },
-    { key: 'hormuz.sanctions', primary: 'hormuz', slug: 'sanctions', label: 'Sanctions & Impact', title: 'Sanctions & Impact', owner: 'SanctionsPage', dataKeys: ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.shipping', 'hormuz.talks'] },
+    { key: 'hormuz.sanctions', primary: 'hormuz', slug: 'sanctions', label: 'Sanctions & Economy', title: 'Sanctions & Impact', owner: 'SanctionsPage', dataKeys: ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.shipping', 'hormuz.talks'] },
     { key: 'hormuz.talks', primary: 'hormuz', slug: 'talks', label: 'Current Hormuz Talks', title: 'Current Hormuz Talks', owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping', 'hormuz.sanctions'] },
 
     { key: 'talks.overview', primary: 'talks', slug: 'overview', label: 'Talks & Deals', title: 'Talks & Deals', owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
@@ -2008,7 +2008,7 @@
       const node = append(miniFlow, 'span', 'sanctions-mini-node', label);
       if (index < 3) node.dataset.hasArrow = 'true';
     });
-    const sanctionsAction = append(sanctionsCard, 'a', 'inline-route-link pressure-card-link', 'Open Sanctions & Impact →');
+    const sanctionsAction = append(sanctionsCard, 'a', 'inline-route-link pressure-card-link', 'Open Sanctions & Economy →');
     sanctionsAction.href = routeHref('hormuz.sanctions');
 
     const sequence = addSection(frame.article, 'From wartime claim to current talks');
@@ -2050,7 +2050,7 @@
       item: action,
       localSources: localSanctionsSources
     }));
-    const openSanctions = append(sanctionsLink, 'a', 'inline-route-link', 'Open Sanctions & Impact →');
+    const openSanctions = append(sanctionsLink, 'a', 'inline-route-link', 'Open Sanctions & Economy →');
     openSanctions.href = routeHref('hormuz.sanctions');
 
     renderRelatedLinks(frame.article, context);
@@ -2087,6 +2087,14 @@
       modelData(context.model, 'gate3.economics'),
       ['economic_id', 'id']
     ).filter(item => /sanction|financial|bank|currency|foreign exchange|aviation/i.test(JSON.stringify(item))).slice(-6).reverse();
+
+    const currentTalkIds = new Set([
+      'G3-IRAN-HORMUZ-REOPENING-OFFER-20260922',
+      'G3-US-IRAN-PHASED-HORMUZ-BLOCKADE-20260924',
+      'G3-IRAN-POST-REJECTION-HORMUZ-POSITION-20260927',
+      'G3-US-IRAN-OFFER-REPORT-DENIAL-20260929'
+    ]);
+    const currentTalks = context.model.chronology.filter(item => currentTalkIds.has(item.event_id));
 
     const summary = addSection(frame.article, 'What changed', 'content-section sanctions-summary-section');
     append(summary, 'p', 'lead-copy', 'The wartime campaign increasingly targets the routes around sanctioned Iranian actors: financial facilitators, exchange houses, foreign banks, aviation and procurement networks, shipping and insurance structures, digital-asset infrastructure, and industrial suppliers.');
@@ -2218,6 +2226,16 @@
       item: action,
       localSources
     })), { className: 'story-sequence sanctions-action-sequence' });
+
+    const talks = addSection(frame.article, 'Current talks', 'content-section sanctions-current-talks');
+    append(talks, 'p', 'section-note', 'Sanctions, blockade relief and commercial access are bargaining subjects in the current record. Discussion of relief is not the same as relief being granted or a final bargain being reached.');
+    const talkList = append(talks, 'div', 'record-list two-column-list');
+    currentTalks.forEach(item => renderEventCard(talkList, item, context, { detail: true, topic: 'Sanctions / negotiations' }));
+    const talkActions = append(talks, 'div', 'record-actions');
+    const hormuzTalks = append(talkActions, 'a', 'inline-route-link', 'Open Current Hormuz Talks →');
+    hormuzTalks.href = routeHref('hormuz.talks');
+    const widerTalks = append(talkActions, 'a', 'inline-route-link', 'Open Talks & Deals →');
+    widerTalks.href = routeHref('talks.overview');
 
     const effects = addSection(frame.article, 'What has actually changed');
     if (currentEconomics.length) {
