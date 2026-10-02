@@ -156,7 +156,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(coverage.coveredDatasetCount, Object.keys(model.datasets).length + 2);
     assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);
     assert.equal(coverage.routeWaiverCount, 0);
-    assert.equal(Object.keys(diagnostics.routeAccesses).length, 26);
+    assert.equal(Object.keys(diagnostics.routeAccesses).length, 27);
     assert.deepEqual(diagnostics.sharedAccesses, ['current.actors', 'current.locations', 'current.sources']);
 
     await routeKey(cdp, 'start.overview');
