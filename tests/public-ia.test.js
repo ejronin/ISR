@@ -87,7 +87,7 @@ for (const route of ia.ROUTES.values()) {
   assert(route.dataKeys.every(key => !key.startsWith('legacy.')), `route maps legacy data: ${route.key}`);
   assert(route.related.every(key => ia.ROUTES.has(key)), `route has unresolved cross-link: ${route.key}`);
 }
-assert.equal(ia.parseRoute('#/not/a-route').key, 'start.overview');
+assert.equal(ia.parseRoute('#/not/a-route').key, null, 'unknown routes must fail closed instead of falling back to Home');
 assert(ia.validateRegistry(model));
 ia.ActorIdentity.configure(model);
 
