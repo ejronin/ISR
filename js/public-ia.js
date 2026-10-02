@@ -36,10 +36,11 @@
     { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties'], related: ['military.weapons', 'evidence.method'] },
     { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Images', title: 'Damage Images', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
-    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
-    { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks', 'military.losses'] },
-    { key: 'hormuz.economy', primary: 'hormuz', slug: 'economy', label: 'Oil & Economic Effects', title: 'Oil & Economic Effects', owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics'], related: ['hormuz.shipping', 'hormuz.overview'] },
-    { key: 'hormuz.talks', primary: 'hormuz', slug: 'talks', label: 'Current Hormuz Talks', title: 'Current Hormuz Talks', owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping'] },
+    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'analysis.sanctions_network', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'talks.mou'] },
+    { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'military.losses'] },
+    { key: 'hormuz.economy', primary: 'hormuz', slug: 'economy', label: 'Oil & Economic Effects', title: 'Oil & Economic Effects', owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics'], related: ['hormuz.shipping', 'hormuz.sanctions', 'hormuz.overview'] },
+    { key: 'hormuz.sanctions', primary: 'hormuz', slug: 'sanctions', label: 'Sanctions & Impact', title: 'Sanctions & Impact', owner: 'SanctionsPage', dataKeys: ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.shipping', 'hormuz.talks'] },
+    { key: 'hormuz.talks', primary: 'hormuz', slug: 'talks', label: 'Current Hormuz Talks', title: 'Current Hormuz Talks', owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping', 'hormuz.sanctions'] },
 
     { key: 'talks.overview', primary: 'talks', slug: 'overview', label: 'Talks & Deals', title: 'Talks & Deals', owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
     { key: 'talks.mou', primary: 'talks', slug: 'june-mou', label: 'June MOU', title: 'June MOU', owner: 'MouPage', dataKeys: ['analysis.hormuz', 'analysis.endgame_public_view'], related: ['hormuz.talks', 'talks.nuclear', 'objectives.outcomes'] },
@@ -101,6 +102,7 @@
     'analysis.asset_display': 'Iranian asset display',
     'analysis.hormuz': 'Hormuz record',
     'analysis.oil_routes': 'Oil-route record',
+    'analysis.sanctions_network': 'Sanctions financial network',
     'analysis.china_oil_shift': 'China oil-sourcing shift',
     'analysis.endgame_public_view': 'Agreement and outcome record',
     'analysis.endgame_current_aug25': 'Agreement status update',
@@ -383,7 +385,7 @@
   }
 
   function validateRegistry(model) {
-    invariant(ROUTES.size === 26, `Expected 26 public routes; found ${ROUTES.size}`);
+    invariant(ROUTES.size === 27, `Expected 27 public routes; found ${ROUTES.size}`);
     invariant(ROUTE_BY_PATH.size === ROUTES.size, 'Public route paths must be unique');
     for (const route of ROUTES.values()) {
       invariant(PAGE_OWNERS[route.owner], `Missing page owner: ${route.owner}`);
@@ -1958,7 +1960,100 @@
   }
 
   function HormuzOverviewPage(context) {
-    const frame = pageFrame(context, 'Iran has made Hormuz dangerous and severely disrupted traffic, but it has not established internationally recognized exclusive control over the Strait. Current talks center on a shared arrangement.'); const hormuz = modelData(context.model, 'analysis.hormuz'); const reality = hormuz.hormuz_reality_check; const why = addSection(frame.article, 'Why the Strait matters', 'content-section lead-story'); append(why, 'p', 'lead-copy', publicNarrative(reality.bottom_line)); const metrics = append(why, 'div', 'metric-grid'); asArray(reality.metrics).forEach(metric => addMetric(metrics, metric.value, publicNarrative(metric.label), publicNarrative(metric.note))); const sequence = addSection(frame.article, 'From wartime claim to current talks'); const controlTrack = asArray(hormuz.mou_position_tracks).find(track => /legal sovereignty/i.test(track.topic || '')); const shipping = mergeCurrentRecords(modelData(context.model, 'ledger.shipping'), modelData(context.model, 'gate3.shipping'), ['shipping_id', 'id']); const latestShipping = shipping.filter(item => item.date).slice(-2); addSequence(sequence, context, [{ title: 'Iran claimed a controlling role', text: publicNarrative(controlTrack && controlTrack.iran_max, 'Iran publicly sought control or dominant management of the Strait.'), item: controlTrack || {}, localSources: localSourceMap(hormuz) }, { title: 'The Strait became commercially disrupted', text: 'Some physical transit continued, but tracked commercial traffic, insurance and operator willingness fell far below normal. “Open” and “closed” did not describe the same thing.', item: latestShipping[0] || {} }, { title: 'Iran retained practical gatekeeping leverage', text: 'The record shows threats, delays and selective passage used as leverage. That coercion did not create internationally recognized sovereignty or a permanent toll right.', item: controlTrack || {}, localSources: localSourceMap(hormuz) }, { title: 'The negotiating lane became shared', text: 'Iran originally said it would control and manage the Strait. It is now negotiating a shared arrangement with Oman and other Gulf states. That is a step backward from its original claim. The final terms are still being negotiated.', item: controlTrack || {}, localSources: localSourceMap(hormuz) }, { title: 'The end state remains unresolved', text: 'Final authority, revenue, mine-clearing, inspection and permanent passage rules have not been settled. The record therefore shows a walk-back and concession, not total Iranian capitulation.', item: latestShipping[1] || {} }]); frame.article.append(MapView.create(context, { title: 'Hormuz and connected conflict locations', records: asArray(hormuz.current_board_delta), description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks.' })); const adaptation = addSection(frame.article, 'What prolonged disruption changed'); const cards = append(adaptation, 'div', 'record-list two-column-list'); asArray(reality.erosion_mechanisms).forEach(mechanism => addProvenanceCard(cards, context, { title: publicNarrative(mechanism.mechanism), text: publicNarrative(mechanism.effect), item: mechanism, localSources: localSourceMap(hormuz) })); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(
+      context,
+      'Hormuz and sanctions are two different pressure systems. One changes the physical and commercial risk of moving cargo; the other changes whether banks, insurers, suppliers and intermediaries are willing or able to support the transaction.'
+    );
+    const hormuz = modelData(context.model, 'analysis.hormuz');
+    const sanctions = modelData(context.model, 'analysis.sanctions_network');
+    const reality = hormuz.hormuz_reality_check;
+    const localSanctionsSources = localSourceMap(sanctions);
+
+    const drivers = addSection(frame.article, 'Why the pressure matters', 'content-section lead-story');
+    const driverGrid = append(drivers, 'div', 'hormuz-pressure-grid');
+
+    const hormuzCard = append(driverGrid, 'section', 'pressure-explainer-card pressure-explainer-hormuz');
+    append(hormuzCard, 'p', 'card-kicker', 'PHYSICAL AND COMMERCIAL CHOKEPOINT');
+    append(hormuzCard, 'h3', '', 'Why Hormuz Matters');
+    append(hormuzCard, 'p', 'lead-copy', publicNarrative(reality.bottom_line));
+    const hormuzPoints = append(hormuzCard, 'ol', 'plain-number-list');
+    [
+      ['Hormuz is a narrow shipping choke point.', 'A small stretch of water carries a large share of global oil and LNG flows.'],
+      ['Partial disruption is enough to matter.', 'Cargo can still move while delays, rerouting and uncertainty raise cost.'],
+      ['Risk changes behavior before a total closure.', 'Insurers, shipowners and traders can pull back because a voyage becomes harder to cover or price.'],
+      ['Passage and normal commerce are different questions.', 'The key question is not only whether a ship can get through, but whether routine traffic can do so safely and economically.']
+    ].forEach(([title, text]) => {
+      const li = append(hormuzPoints, 'li');
+      append(li, 'strong', '', title);
+      append(li, 'span', '', text);
+    });
+    const metrics = append(hormuzCard, 'div', 'metric-grid compact-metric-grid');
+    asArray(reality.metrics).slice(0, 3).forEach(metric => addMetric(metrics, metric.value, publicNarrative(metric.label), publicNarrative(metric.note)));
+    const hormuzAction = append(hormuzCard, 'a', 'inline-route-link pressure-card-link', 'Open Shipping & Trade →');
+    hormuzAction.href = routeHref('hormuz.shipping');
+
+    const sanctionsCard = append(driverGrid, 'section', 'pressure-explainer-card pressure-explainer-sanctions');
+    append(sanctionsCard, 'p', 'card-kicker', 'FINANCIAL AND COMMERCIAL PRESSURE');
+    append(sanctionsCard, 'h3', '', 'Why Sanctions Matter');
+    append(sanctionsCard, 'p', 'lead-copy', publicNarrative(sanctions.why_now && sanctions.why_now.lead));
+    const sanctionsPoints = append(sanctionsCard, 'ol', 'plain-number-list');
+    asArray(sanctions.why_now && sanctions.why_now.points).forEach(point => {
+      const li = append(sanctionsPoints, 'li');
+      append(li, 'strong', '', publicNarrative(point.title));
+      append(li, 'span', '', publicNarrative(point.text));
+    });
+    const miniFlow = append(sanctionsCard, 'div', 'sanctions-mini-flow');
+    ['Iran-linked transaction', 'Middleman / bank / insurer', 'Secondary-sanctions risk', 'Fewer willing counterparties'].forEach((label, index) => {
+      const node = append(miniFlow, 'span', 'sanctions-mini-node', label);
+      if (index < 3) node.dataset.hasArrow = 'true';
+    });
+    const sanctionsAction = append(sanctionsCard, 'a', 'inline-route-link pressure-card-link', 'Open Sanctions & Impact →');
+    sanctionsAction.href = routeHref('hormuz.sanctions');
+
+    const sequence = addSection(frame.article, 'From wartime claim to current talks');
+    const controlTrack = asArray(hormuz.mou_position_tracks).find(track => /legal sovereignty/i.test(track.topic || ''));
+    const shipping = mergeCurrentRecords(modelData(context.model, 'ledger.shipping'), modelData(context.model, 'gate3.shipping'), ['shipping_id', 'id']);
+    const latestShipping = shipping.filter(item => item.date).slice(-2);
+    addSequence(sequence, context, [
+      { title: 'Iran claimed a controlling role', text: publicNarrative(controlTrack && controlTrack.iran_max, 'Iran publicly sought control or dominant management of the Strait.'), item: controlTrack || {}, localSources: localSourceMap(hormuz) },
+      { title: 'The Strait became commercially disrupted', text: 'Some physical transit continued, but tracked commercial traffic, insurance and operator willingness fell far below normal. “Open” and “closed” did not describe the same thing.', item: latestShipping[0] || {} },
+      { title: 'Iran retained practical gatekeeping leverage', text: 'The record shows threats, delays and selective passage used as leverage. That coercion did not create internationally recognized sovereignty or a permanent toll right.', item: controlTrack || {}, localSources: localSourceMap(hormuz) },
+      { title: 'The negotiating lane became shared', text: 'Iran originally said it would control and manage the Strait. It is now negotiating a shared arrangement with Oman and other Gulf states. That is a step backward from its original claim. The final terms are still being negotiated.', item: controlTrack || {}, localSources: localSourceMap(hormuz) },
+      { title: 'The end state remains unresolved', text: 'Final authority, revenue, mine-clearing, inspection and permanent passage rules have not been settled. The record therefore shows a walk-back and concession, not total Iranian capitulation.', item: latestShipping[1] || {} }
+    ]);
+
+    frame.article.append(MapView.create(context, {
+      title: 'Hormuz and connected conflict locations',
+      records: asArray(hormuz.current_board_delta),
+      description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks.'
+    }));
+
+    const adaptation = addSection(frame.article, 'What prolonged disruption changed');
+    const cards = append(adaptation, 'div', 'record-list two-column-list');
+    asArray(reality.erosion_mechanisms).forEach(mechanism => addProvenanceCard(cards, context, {
+      title: publicNarrative(mechanism.mechanism),
+      text: publicNarrative(mechanism.effect),
+      item: mechanism,
+      localSources: localSourceMap(hormuz)
+    }));
+
+    const sanctionsLink = addSection(frame.article, 'Sanctions and the wider economy');
+    append(sanctionsLink, 'p', 'lead-copy', 'The sanctions page follows the financial plumbing separately from oil prices and Hormuz traffic: what was legally targeted, which routes were affected, what still works around the restrictions, and which effects are actually observed.');
+    const latestSanctions = asArray(sanctions.wartime_actions).slice(-3);
+    const sanctionsPreview = append(sanctionsLink, 'div', 'record-list three-column-list');
+    latestSanctions.forEach(action => addProvenanceCard(sanctionsPreview, context, {
+      kicker: readableDate(action.date),
+      title: publicNarrative(action.title),
+      text: publicNarrative(action.observed_effect),
+      meta: 'Designation and observed effect are kept separate.',
+      item: action,
+      localSources: localSanctionsSources
+    }));
+    const openSanctions = append(sanctionsLink, 'a', 'inline-route-link', 'Open Sanctions & Impact →');
+    openSanctions.href = routeHref('hormuz.sanctions');
+
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
   }
 
   function ShippingPage(context) {
@@ -1967,6 +2062,180 @@
 
   function EconomyPage(context) {
     const frame = pageFrame(context, 'Economic effects extend beyond military spending. Oil flows, sanctions, insurance, infrastructure damage and growth forecasts are shown separately so unlike numbers are not mixed together.'); const economics = modelData(context.model, 'ledger.economics'); const currentEconomics = mergeCurrentRecords(economics, modelData(context.model, 'gate3.economics'), ['economic_id', 'id']); const china = modelData(context.model, 'analysis.china_oil_shift'); const oilRouteData = modelData(context.model, 'analysis.oil_routes'); const oilRoutes = asArray(oilRouteData.routes); frame.article.append(MapView.create(context, { title: 'Economic exposure and transport alternatives', routes: oilRoutes, maxZoom: 5, description: 'Maritime, pipeline and rail corridor records connect chokepoint exposure with transport alternatives. Geometry is schematic and does not state capacity, current movement, or exact alignment.' })); const forecast = addSection(frame.article, '2026 growth forecasts'); addBarChart(forecast, asArray(economics.forecast_context.rows).map(row => ({ label: row.country, value: row.delta, display: `${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} points` })), { label: 'Change in 2026 real GDP growth forecasts, percentage points', note: publicNarrative(economics.forecast_context.note) }); const comparison = addSection(frame.article, 'GCC and Iran: forecast changes'); append(comparison, 'p', 'section-note', `${publicNarrative(economics.forecast_context.metric)} These are forecasts, not realized GDP or a measure of military success. Pre-war and current forecasts are compared within the same series.`); const comparisonGrid = append(comparison, 'div', 'comparison-grid economic-comparison'); const forecastRows = asArray(economics.forecast_context.rows); const gccNames = new Set(['Saudi Arabia', 'Oman', 'United Arab Emirates', 'Bahrain', 'Kuwait', 'Qatar']); [['GCC states', forecastRows.filter(row => gccNames.has(row.country))], ['Iran', forecastRows.filter(row => row.country === 'Iran')]].forEach(([label, rows]) => { const column = append(comparisonGrid, 'section', 'comparison-column'); append(column, 'h3', '', label); rows.forEach(row => { const card = addProvenanceCard(column, context, { kicker: 'Forecast · percentage points', title: row.country, text: `Pre-war forecast: ${row.prewar.toFixed(1)}%. Current forecast: ${row.current.toFixed(1)}%. Change: ${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} percentage points.`, meta: 'Forecast comparison; not actual GDP output.', item: row }); card.dataset.economicComparisonCountry = row.country; appendActorIdentities(card, context, [row.country]); }); }); const current = addSection(frame.article, 'Recorded economic effects'); const list = append(current, 'div', 'record-list two-column-list'); currentEconomics.slice().reverse().forEach(record => addProvenanceCard(list, context, { kicker: readableDate(record.date), title: publicNarrative(record.topic), text: publicNarrative(record.finding), meta: publicNarrative(record.causation_note), item: record })); const trade = addSection(frame.article, 'China and trade adaptation'); append(trade, 'p', 'lead-copy', publicNarrative(china.assessment)); const tradeRoutes = append(trade, 'div', 'record-list'); asArray(china.routes).forEach(route => addProvenanceCard(tradeRoutes, context, { kicker: `${plainLabel(route.status)} · ${plainLabel(route.line_class)}`, title: publicNarrative(route.name), text: publicNarrative(route.flow_evidence), meta: publicNarrative(route.note), item: route })); const arcticLinks = asArray(china.linked_existing_routes); if (arcticLinks.length) { const arctic = append(trade, 'details', 'secondary-context arctic-context'); append(arctic, 'summary', '', 'Secondary context: Arctic / Northern Sea Route'); append(arctic, 'p', '', 'Russia’s Arctic oil route to China is relevant as alternative supply context. It is not evidence of Iranian wartime shipments or a measured replacement for lost Iranian volume.'); arcticLinks.forEach(route => { const card = addProvenanceCard(arctic, context, { kicker: 'Contextual link · not mapped', title: route.route_id, text: publicNarrative(route.note), item: route }); card.dataset.arcticRouteId = route.route_id; }); } const corridorIndex = addSection(frame.article, 'Strategic transport corridors'); append(corridorIndex, 'p', '', publicNarrative(oilRouteData.geometry_policy)); const corridorList = append(corridorIndex, 'div', 'record-list two-column-list'); oilRoutes.forEach(route => { const card = addProvenanceCard(corridorList, context, { kicker: `${plainLabel(route.mode)} · Schematic`, title: publicNarrative(route.name), text: publicNarrative(route.note), technicalId: route.id, technicalIdLabel: 'Stable corridor ID', item: route }); card.dataset.economyRouteId = route.id; }); const note = append(frame.article, 'aside', 'scope-note'); append(note, 'strong', '', 'What these numbers do not combine'); append(note, 'p', '', publicNarrative(economics.separation_rule)); renderRelatedLinks(frame.article, context); return frame.article;
+  }
+
+  function SanctionsPage(context) {
+    const frame = pageFrame(
+      context,
+      'Which financial valves were closed, what still flows around them, and why this wartime sanctions campaign is not simply the same thing Iran has faced for decades.'
+    );
+    frame.article.dataset.sanctionsPage = 'true';
+
+    const network = modelData(context.model, 'analysis.sanctions_network');
+    const localSources = localSourceMap(network);
+
+    const summary = addSection(frame.article, 'What changed', 'content-section sanctions-summary-section');
+    append(summary, 'p', 'lead-copy', 'The wartime campaign increasingly targets the routes around sanctioned Iranian actors: financial facilitators, exchange houses, foreign banks, aviation and procurement networks, shipping and insurance structures, digital-asset infrastructure, and industrial suppliers.');
+    const summaryGrid = append(summary, 'div', 'sanctions-summary-grid');
+    [
+      ['WHAT CHANGED', 'The target set widened from Iran itself to more of the middlemen, foreign institutions and commercial routes that keep transactions moving.'],
+      ['WHY IT MATTERS', 'The practical pressure comes when banks and businesses decide Iran-linked business is not worth the compliance, correspondent-banking or market-access risk.'],
+      ['WHAT STILL FLOWS', 'Local-currency trade, barter, digital assets, front companies and third-country settlement remain possible in parts of the network.'],
+      ['EVIDENCE RULE', 'A designation proves legal action. It does not, by itself, prove that a route stopped or that the Iranian economy suffered a specific amount of damage.']
+    ].forEach(([title, text], index) => {
+      const card = append(summaryGrid, 'article', `sanctions-summary-card sanctions-summary-${index + 1}`);
+      append(card, 'p', 'card-kicker', title);
+      append(card, 'p', '', text);
+    });
+
+    const why = addSection(frame.article, 'Why sanctions matter now', 'content-section lead-story');
+    append(why, 'p', 'lead-copy', publicNarrative(network.why_now && network.why_now.lead));
+    const whyGrid = append(why, 'div', 'sanctions-why-grid');
+    const pointList = append(whyGrid, 'ol', 'plain-number-list sanctions-why-list');
+    asArray(network.why_now && network.why_now.points).forEach(point => {
+      const li = append(pointList, 'li');
+      append(li, 'strong', '', publicNarrative(point.title));
+      append(li, 'span', '', publicNarrative(point.text));
+    });
+    const beforeNow = append(whyGrid, 'aside', 'sanctions-before-now');
+    append(beforeNow, 'h3', '', '47 years is not the same as now');
+    [['BEFORE', network.why_now && network.why_now.before_now && network.why_now.before_now.before], ['NOW', network.why_now && network.why_now.before_now && network.why_now.before_now.now]].forEach(([kicker, item]) => {
+      const block = append(beforeNow, 'div', `sanctions-era sanctions-era-${String(kicker).toLowerCase()}`);
+      append(block, 'p', 'card-kicker', kicker);
+      append(block, 'strong', '', publicNarrative(item && item.label));
+      append(block, 'p', '', publicNarrative(item && item.text));
+    });
+
+    const definitions = append(why, 'div', 'sanctions-definition-grid');
+    asArray(network.definitions).forEach(item => {
+      const card = append(definitions, 'article', 'sanctions-definition-card');
+      append(card, 'strong', '', publicNarrative(item.term));
+      append(card, 'p', '', publicNarrative(item.plain));
+    });
+
+    frame.article.append(MapView.create(context, {
+      title: 'Where named financial and commercial nodes sit',
+      records: asArray(network.map_nodes),
+      maxZoom: 4,
+      description: 'Points identify the jurisdiction or city associated with a named banking, trade or sanctions node. They are analytical location markers, not office-level coordinates and not targeting-quality data.'
+    }));
+
+    const reach = addSection(frame.article, 'Primary vs secondary sanctions');
+    const reachGrid = append(reach, 'div', 'sanctions-reach-grid');
+    asArray(network.sanctions_types).forEach(item => {
+      const card = append(reachGrid, 'article', 'record-card sanctions-reach-card');
+      append(card, 'h3', '', publicNarrative(item.type));
+      append(card, 'p', '', publicNarrative(item.plain));
+    });
+    const behavior = append(reach, 'aside', 'scope-note sanctions-behavior-note');
+    append(behavior, 'strong', '', 'Legal reach is not the same as behavioral reach.');
+    append(behavior, 'p', '', publicNarrative(network.governing_rules && network.governing_rules.legal_reach_is_not_behavioral_reach));
+
+    const plumbingSection = addSection(frame.article, 'How the money moved');
+    append(plumbingSection, 'p', 'section-note', 'This is a functional model of the payment and trade network. It shows why hitting an intermediary can affect several downstream routes without pretending that every route is physically blocked.');
+    const plumbing = append(plumbingSection, 'div', 'sanctions-plumbing');
+    plumbing.setAttribute('role', 'img');
+    plumbing.setAttribute('aria-label', 'Iran-linked revenue and state finance feed through traders, exchange houses, shipping and insurance, and foreign banks, with digital-asset and local-currency alternatives remaining available at higher risk or friction.');
+
+    const sourceRow = append(plumbing, 'div', 'sanctions-plumbing-row sanctions-plumbing-sources');
+    asArray(network.plumbing && network.plumbing.sources).forEach(item => {
+      const node = append(sourceRow, 'div', 'sanctions-node sanctions-node-source');
+      append(node, 'strong', '', publicNarrative(item.label));
+    });
+    const coreRow = append(plumbing, 'div', 'sanctions-plumbing-row sanctions-plumbing-core');
+    const core = append(coreRow, 'div', 'sanctions-node sanctions-node-core');
+    append(core, 'strong', '', publicNarrative(network.plumbing && network.plumbing.core && network.plumbing.core.label));
+    append(core, 'small', '', publicNarrative(network.plumbing && network.plumbing.core && network.plumbing.core.sublabel));
+
+    const middleRow = append(plumbing, 'div', 'sanctions-plumbing-row sanctions-plumbing-middle');
+    asArray(network.plumbing && network.plumbing.intermediaries).forEach(item => {
+      const node = append(middleRow, 'article', 'sanctions-node sanctions-node-intermediary');
+      node.dataset.sanctionsState = item.state || 'unknown';
+      append(node, 'strong', '', publicNarrative(item.label));
+      append(node, 'p', '', publicNarrative(item.explanation));
+    });
+    const altRow = append(plumbing, 'div', 'sanctions-plumbing-row sanctions-plumbing-alternatives');
+    asArray(network.plumbing && network.plumbing.alternatives).forEach(item => {
+      const node = append(altRow, 'article', 'sanctions-node sanctions-node-alternative');
+      node.dataset.sanctionsState = item.state || 'unknown';
+      append(node, 'strong', '', publicNarrative(item.label));
+      if (item.sublabel) append(node, 'small', '', publicNarrative(item.sublabel));
+      append(node, 'p', '', publicNarrative(item.explanation));
+    });
+
+    const legend = append(plumbingSection, 'div', 'sanctions-state-legend');
+    Object.entries(network.plumbing && network.plumbing.legend || {}).forEach(([state, explanation]) => {
+      const item = append(legend, 'span', 'sanctions-state-key');
+      item.dataset.sanctionsState = state;
+      append(item, 'strong', '', plainLabel(state));
+      append(item, 'span', '', publicNarrative(explanation));
+    });
+
+    const cascadeSection = addSection(frame.article, 'Why one node can matter');
+    append(cascadeSection, 'p', 'lead-copy', 'A relatively obscure facilitator can matter more than its name suggests when several banks, suppliers or shipping relationships depend on it.');
+    const cascade = append(cascadeSection, 'ol', 'sanctions-cascade');
+    asArray(network.cascade).forEach(item => {
+      const step = append(cascade, 'li', 'sanctions-cascade-step');
+      append(step, 'span', 'step-number', String(item.step).padStart(2, '0'));
+      append(step, 'strong', '', publicNarrative(item.title));
+      append(step, 'p', '', publicNarrative(item.text));
+    });
+
+    const timeline = addSection(frame.article, 'Wartime sanctions and entities named');
+    append(timeline, 'p', 'section-note', 'Each entry separates the legal action from what is actually observed afterward. Open the evidence drawer for the primary action or supporting reporting.');
+    addSequence(timeline, context, asArray(network.wartime_actions).map(action => ({
+      date: action.date,
+      title: publicNarrative(action.title),
+      text: `${publicNarrative(action.targeted_node)} — ${publicNarrative(action.function)}`,
+      item: action,
+      localSources
+    })), { className: 'story-sequence sanctions-action-sequence' });
+
+    const effects = addSection(frame.article, 'What has actually changed');
+    const effectGrid = append(effects, 'div', 'comparison-grid sanctions-effect-grid');
+    const observed = append(effectGrid, 'section', 'comparison-column');
+    append(observed, 'h3', '', 'Observed effects');
+    asArray(network.observed_effects).forEach(item => addProvenanceCard(observed, context, {
+      kicker: publicNarrative(item.status),
+      title: publicNarrative(item.title),
+      text: publicNarrative(item.text),
+      item,
+      localSources
+    }));
+    const potential = append(effectGrid, 'section', 'comparison-column');
+    append(potential, 'h3', '', 'What the actions are designed to pressure');
+    asArray(network.wartime_actions).slice(-5).forEach(action => addProvenanceCard(potential, context, {
+      kicker: 'Potential consequence — not automatically observed',
+      title: publicNarrative(action.targeted_node),
+      text: publicNarrative(action.potential_effect),
+      item: action,
+      localSources
+    }));
+
+    const routes = addSection(frame.article, 'What still flows around the sanctions');
+    append(routes, 'p', 'section-note', 'A workaround means a route remains possible. It does not mean the route is frictionless, cheap, legal in every circumstance, or immune from later enforcement.');
+    const routeGrid = append(routes, 'div', 'record-list two-column-list');
+    asArray(network.remaining_routes).forEach(item => {
+      const card = append(routeGrid, 'article', 'record-card sanctions-workaround-card');
+      append(card, 'p', 'card-kicker', publicNarrative(item.status));
+      append(card, 'h3', '', publicNarrative(item.title));
+      append(card, 'p', '', publicNarrative(item.text));
+    });
+
+    const watch = addSection(frame.article, 'What to watch');
+    const watchGrid = append(watch, 'div', 'sanctions-watch-grid');
+    asArray(network.watch).forEach(item => {
+      const card = append(watchGrid, 'article', 'sanctions-watch-card');
+      append(card, 'strong', '', publicNarrative(item.label));
+      append(card, 'p', '', publicNarrative(item.text));
+    });
+
+    const boundary = append(frame.article, 'aside', 'scope-note sanctions-evidence-boundary');
+    append(boundary, 'strong', '', 'Designation ≠ damage.');
+    append(boundary, 'p', '', publicNarrative(network.governing_rules && network.governing_rules.designation_is_not_damage));
+
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
   }
 
   function HormuzNegotiationsPage(context) {
@@ -3720,6 +3989,7 @@ function applyVisualSweep(article, context) {
     HormuzOverviewPage: preparePage(HormuzOverviewPage),
     ShippingPage: preparePage(ShippingPage),
     EconomyPage: preparePage(EconomyPage),
+    SanctionsPage: preparePage(SanctionsPage),
     HormuzNegotiationsPage: preparePage(HormuzNegotiationsPage),
     DiplomacyPage: preparePage(DiplomacyPage),
     MouPage: preparePage(MouPage),
