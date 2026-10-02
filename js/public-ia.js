@@ -36,7 +36,7 @@
     { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties'], related: ['military.weapons', 'evidence.method'] },
     { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Images', title: 'Damage Images', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
-    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'analysis.sanctions_network', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'talks.mou'] },
+    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Hormuz & Economy', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'analysis.sanctions_network', 'ledger.shipping', 'gate3.shipping'], related: ['hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'talks.mou'] },
     { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.talks', 'military.losses'] },
     { key: 'hormuz.economy', primary: 'hormuz', slug: 'economy', label: 'Oil & Economic Effects', title: 'Oil & Economic Effects', owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics'], related: ['hormuz.shipping', 'hormuz.sanctions', 'hormuz.overview'] },
     { key: 'hormuz.sanctions', primary: 'hormuz', slug: 'sanctions', label: 'Sanctions & Impact', title: 'Sanctions & Impact', owner: 'SanctionsPage', dataKeys: ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.shipping', 'hormuz.talks'] },
@@ -1963,7 +1963,7 @@
   function HormuzOverviewPage(context) {
     const frame = pageFrame(
       context,
-      'Hormuz and sanctions are two different pressure systems. One changes the physical and commercial risk of moving cargo; the other changes whether banks, insurers, suppliers and intermediaries are willing or able to support the transaction.'
+      'How pressure on shipping, oil, finance, and commercial risk shapes the wider war economy.'
     );
     const hormuz = modelData(context.model, 'analysis.hormuz');
     const sanctions = modelData(context.model, 'analysis.sanctions_network');
