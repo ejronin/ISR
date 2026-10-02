@@ -64,7 +64,7 @@ async function routeView(cdp) {
     h1: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
     publicProductVersion: document.querySelector('.public-page')?.dataset.publicProduct || '',
     machineTokens: ['CURRENT_OVERLAY','HISTORICAL_RECONCILIATION','NOT_YET_ADJUDICABLE'].filter(token => document.body.innerText.includes(token)),
-    currentSecondary: document.querySelector('.secondary-nav a[aria-current="page"]')?.textContent.trim()
+    currentSecondary: document.querySelector('.context-route[aria-current="page"]')?.textContent.trim()
   }))()`);
 }
 
@@ -114,7 +114,7 @@ async function loadDirectRoute(cdp, route) {
     assert.equal(direct.owner, 'FacilitiesPage');
     assert.equal(direct.h1, 'Bases & Infrastructure');
     assert(direct.navs.includes('Primary'));
-    assert(direct.navs.includes('War & Losses pages'));
+    assert(direct.navs.includes('War navigation'));
     assert.equal(direct.tabs, 0, 'global navigation must not use tab semantics');
     assert.equal(direct.skipTag, 'BUTTON', 'skip control must not enter the hash-router namespace');
     assert.equal(direct.skipHref, null, 'skip control must not create a fragment route');
@@ -496,28 +496,28 @@ async function loadDirectRoute(cdp, route) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
       await setRoute(cdp, ia.ROUTES.get('evidence.method'));
       const mobile = await cdp.eval(`(() => {
-        const details = document.querySelector('.mobile-navigation');
-        details.open = true;
-        const link = details.querySelector('a');
-        link.focus();
+        const primary = document.querySelector('.primary-nav');
+        const context = document.querySelector('.context-nav');
+        const link = primary?.querySelector('a');
+        link?.focus();
         return {
           width: document.documentElement.clientWidth,
           scrollWidth: document.documentElement.scrollWidth,
-          visible: getComputedStyle(details).display !== 'none',
-          summary: details.querySelector('summary').textContent.trim(),
+          primaryVisible: Boolean(primary && getComputedStyle(primary).display !== 'none'),
+          contextVisible: Boolean(context && getComputedStyle(context).display !== 'none'),
           focusedLink: document.activeElement === link,
-          touchTarget: link.getBoundingClientRect().height,
-          primaryCurrent: details.querySelector('.mobile-primary a[aria-current="page"]')?.textContent.trim(),
-          secondaryCurrent: details.querySelector('.mobile-secondary a[aria-current="page"]')?.textContent.trim()
+          touchTarget: link?.getBoundingClientRect().height || 0,
+          primaryCurrent: primary?.querySelector('a[aria-current="page"]')?.textContent.trim(),
+          secondaryCurrent: context?.querySelector('.context-route[aria-current="page"]')?.textContent.trim()
         };
       })()`);
-      assert.equal(mobile.visible, true, `mobile navigation hidden at ${width}px`);
+      assert.equal(mobile.primaryVisible, true, `primary rail hidden at ${width}px`);
+      assert.equal(mobile.contextVisible, true, `context rail hidden at ${width}px`);
       assert(mobile.scrollWidth <= mobile.width, `page-level horizontal overflow at ${width}px`);
-      assert.match(mobile.summary, /Claims & Evidence.*How We Check the Evidence/);
-      assert.equal(mobile.focusedLink, true, `mobile navigation link not keyboard focusable at ${width}px`);
-      assert(mobile.touchTarget >= 44, `mobile navigation target below 44px at ${width}px`);
-      assert.equal(mobile.primaryCurrent, 'Claims & Evidence');
-      assert.equal(mobile.secondaryCurrent, 'How We Check the Evidence');
+      assert.equal(mobile.focusedLink, true, `mobile primary navigation link not keyboard focusable at ${width}px`);
+      assert(mobile.touchTarget >= 44, `mobile primary navigation target below 44px at ${width}px`);
+      assert.equal(mobile.primaryCurrent, 'Sources');
+      assert.equal(mobile.secondaryCurrent, 'Methodology');
 
       await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
       const mobileTargets = await cdp.eval(`(() => ({
@@ -532,7 +532,7 @@ async function loadDirectRoute(cdp, route) {
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
-    console.log('browser public IA smoke: PASS — 25 direct artifact entries plus refresh, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
+    console.log('browser public IA smoke: PASS — 25 direct artifact entries plus refresh, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and always-visible 320/390px mobile navigation accessibility verified');
   } finally {
     cdp.close();
   }
