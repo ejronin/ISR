@@ -308,7 +308,7 @@ async function route(cdp, hash, key) {
         }))
       };
     })()`);
-    const expectedClaims = records('current.claims');
+    const expectedClaims = model.datasets['current.claims'].payload.claims;
     assert.equal(claimChecks.migrated, true);
     assert.deepEqual(claimChecks.sections, ['claim-checks']);
     assert.equal(claimChecks.records.length, expectedClaims.length, 'Claim Checks facelift changed claim membership');
