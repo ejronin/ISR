@@ -902,15 +902,14 @@
       const findingTarget = selectedCard.querySelector('.reader-chain-outcome, .reader-ledger-single-actions, .reader-ledger-card-head');
       const evidenceTarget = selectedCard.querySelector('.reader-chain-how-we-know, .reader-how-we-know');
       const developmentTarget = selectedCard.querySelector('.reader-chain-claims-detail');
-      const relatedTarget = selectedCard.querySelector('.reader-wol-trace');
       insertGuideAnchor(claimTarget, 'claim');
       insertGuideAnchor(findingTarget, 'finding');
       insertGuideAnchor(evidenceTarget, 'evidence');
       insertGuideAnchor(developmentTarget, 'development');
-      insertGuideAnchor(relatedTarget, 'related-material');
     }
 
     const footerLinks = append(article, 'nav', 'reader-ledger-footer-links');
+    if (requestedCaseId) insertGuideAnchor(footerLinks, 'related-material');
     footerLinks.setAttribute('aria-label', 'Lie Ledger related pages');
     const forensicLink = append(footerLinks, 'a', 'inline-route-link', 'Open Web of Lies');
     forensicLink.href = base.routeHref('evidence.web_of_lies');
