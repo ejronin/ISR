@@ -102,18 +102,25 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
 
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
-  const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
-  fixedRoles.forEach(role => assert.equal(applicationAssets.filter(asset => asset.role === role).length, 1, `${role} must remain singular`));
+  const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'visualization_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+  const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet'];
+  [...fixedRoles, ...capabilityRoles].forEach(role => assert.equal(applicationAssets.filter(asset => asset.role === role).length, 1, `${role} must remain singular`));
   assert.equal(applicationAssets.filter(asset => asset.role === 'state_flag').length, manifest.application.state_flags.length);
   assert(manifest.application.state_flags.length >= 3, 'closed state-flag inventory must be present');
-  assert(applicationAssets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)));
+  assert(applicationAssets.every(asset => fixedRoles.includes(asset.role) || capabilityRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)));
+  assert.equal(manifest.application.capabilities.maplibre.version, '6.11.2');
+  assert.equal(manifest.application.capabilities.maplibre.loading, 'lazy');
+  assert.equal(manifest.application.capabilities.maplibre.fallback, 'leaflet');
+  assert.equal(manifest.application.capabilities.maplibre.same_origin_only, true);
   const graphRuntime = app.assetForRole(manifest, 'graph_runtime');
   const baseRuntime = app.assetForRole(manifest, 'base_runtime');
+  const visualizationRuntime = app.assetForRole(manifest, 'visualization_runtime');
   const readerSupport = app.assetForRole(manifest, 'reader_support');
   const pageRegistry = app.assetForRole(manifest, 'page_registry');
   const readerStylesheet = app.assetForRole(manifest, 'reader_stylesheet');
   assert.equal(graphRuntime.source_path, 'vendor/cytoscape/cytoscape.min.js');
   assert.equal(baseRuntime.source_path, 'js/public-ia.js');
+  assert.equal(visualizationRuntime.source_path, 'js/public-visualization-renderer.js');
   assert.equal(readerSupport.source_path, 'src/public-reader-layer.js');
   assert.equal(pageRegistry.source_path, 'src/public-reader-registry.js');
   assert.equal(readerStylesheet.source_path, 'src/public-reader-layer.css');
@@ -121,6 +128,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
     app.assetForRole(manifest, 'map_runtime').path,
     graphRuntime.path,
     baseRuntime.path,
+    visualizationRuntime.path,
     readerSupport.path,
     pageRegistry.path
   ]);
@@ -133,7 +141,12 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   for (const asset of [bootstrapAsset, ...applicationAssets]) {
     const generated = read(asset.path);
     const source = read(asset.source_path);
-    assert.equal(generated, canonical(source), `generated asset bytes differ from source: ${asset.role}`);
+    if (!['maplibre_runtime', 'maplibre_worker'].includes(asset.role)) {
+      assert.equal(generated, canonical(source), `generated asset bytes differ from source: ${asset.role}`);
+    } else {
+      assert.notEqual(generated, canonical(source), `${asset.role} must rewrite its sibling module import to the signed content-addressed shared module`);
+      assert(generated.includes(path.basename(manifest.application.capabilities.maplibre.shared.path)), `${asset.role} does not reference the signed shared module`);
+    }
     assert.equal(digest(generated), asset.sha256, `generated asset hash mismatch: ${asset.role}`);
     assert.equal(integrity(generated), asset.integrity, `generated asset SRI mismatch: ${asset.role}`);
     assert.equal(byteLength(generated), asset.bytes, `generated asset byte count mismatch: ${asset.role}`);
