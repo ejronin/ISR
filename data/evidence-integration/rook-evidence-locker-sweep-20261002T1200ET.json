@@ -1,0 +1,177 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-10-02T00:00:00-04:00",
+    "window_end": "2026-10-02T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-03T18:02:00-04:00",
+    "evidence_horizon_time": "2026-10-02T12:00:00-04:00"
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-YEMEN-TAIZ-20-STRIKES-20261002",
+      "event_type": "YEMEN_GOVERNMENT_AIRSTRIKES_ON_HOUTHI_TARGETS",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T02:21:00-04:00",
+      "actor": "Yemen internationally recognized government",
+      "summary": "A Yemeni military spokesperson said government-aligned warplanes carried out 20 strikes over three hours on Houthi movements, personnel, vehicles and military equipment in Taiz province. Reuters reported the claim as part of the sharpest Saudi-Houthi escalation since the 2022 truce.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemen-carried-out-20-strikes-houthi-targets-taiz-province-spokesperson-says-2026-10-02/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-WFP-HUNGER-20261002",
+      "event_type": "YEMEN_HUMANITARIAN_DETERIORATION",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T06:26:00-04:00",
+      "actor": "World Food Programme",
+      "summary": "WFP said 74% of households in government-controlled areas it could access lacked sufficient food after renewed fighting displaced tens of thousands. WFP said it needed about $109 million within weeks to sustain assistance to newly displaced people and existing beneficiaries.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/record-numbers-going-hungry-yemen-amid-escalating-conflict-wfp-says-2026-10-02/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-EU-RED-SEA-ASPIDES-20261002",
+      "event_type": "EU_RED_SEA_NAVAL_MISSION_CAPACITY_WARNING",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T09:07:00-04:00",
+      "actor": "Italy / European Union",
+      "summary": "Italy's defence minister said current EU contributions to Operation Aspides remained insufficient to guarantee safe passage through the Red Sea and Bab el-Mandeb. Reuters reported diplomats saying six warships were deployed while EU officials had said more than ten would be needed.",
+      "sources": [
+        "https://www.reuters.com/world/italy-says-eu-naval-mission-red-sea-still-insufficient-2026-10-02/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-MECCA-PACT-HOUTHI-EMERGENCY-TALKS-20261002",
+      "event_type": "MECCA_PACT_HOUTHI_POLICY_CONSULTATION",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T10:06:00-04:00",
+      "actor": "Pakistan / Saudi Arabia / Turkiye",
+      "summary": "Pakistan's foreign minister said Saudi Arabia, Turkiye and Pakistan would hold an emergency Mecca Defence Pact meeting in Riyadh to discuss Iran's suggestion that the Houthis be engaged politically as an alternative to further military action.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/pakistan-says-mecca-pact-members-hold-emergency-talks-engaging-houthis-2026-10-02/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-US-HAMAS-FINANCE-SANCTIONS-20261002",
+      "event_type": "US_HAMAS_FINANCING_SANCTIONS",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T10:33:00-04:00",
+      "actor": "United States Treasury",
+      "summary": "The United States imposed additional sanctions on a Hamas financing network. Treasury said the network moved more than $2 million through charitable fronts and cryptocurrency channels.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-issues-sanctions-against-hamas-financing-network-treasury-says-2026-10-02/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-LNG-RECOVERY-20261002",
+      "updates_existing_ref": "HORMUZ_SHIPPING_RECOVERY",
+      "relationship": "RECOVERY_SIGNAL_WITH_CONTINUED_SECURITY_RISK",
+      "summary": "Reuters reported S&P Global data showing 19 LNG cargoes exited Hormuz in September and Kpler data showing 21, the highest monthly level since the war began. Analysts cautioned that this remained far below pre-war traffic and that security and escalation risks persisted.",
+      "sources": [
+        "https://www.reuters.com/business/energy/september-lng-shipments-through-hormuz-hit-highest-since-start-us-iran-war-2026-10-02/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLAIM-PAKISTAN-IRAN-DISTANCING-20261002",
+      "actor": "Pakistan Foreign Minister Ishaq Dar",
+      "claim": "Dar said Iran had distanced itself from the Houthis and Iraqi militias and that Iranian leaders wanted the Houthi issue concluded.",
+      "status": "ACTOR_CLAIM_NOT_INDEPENDENTLY_ESTABLISHED_IN_THIS_SWEEP",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/pakistan-says-mecca-pact-members-hold-emergency-talks-engaging-houthis-2026-10-02/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-HORMUZ-LNG-RECOVERY-20261002",
+      "summary": "September LNG transit through Hormuz improved to the highest monthly level since the war began, but remained a fraction of pre-war traffic and still carried high security and escort costs.",
+      "sources": [
+        "https://www.reuters.com/business/energy/september-lng-shipments-through-hormuz-hit-highest-since-start-us-iran-war-2026-10-02/"
+      ]
+    },
+    {
+      "economic_id": "ECON-OPEC-CAPACITY-REVIEW-DELAY-20261002",
+      "summary": "Reuters reported that OPEC+ delayed its production-capacity review to mid-November because the Iran war had disrupted Middle East expansion projects and complicated estimates used for 2027 production baselines.",
+      "sources": [
+        "https://www.reuters.com/business/energy/opec-delays-oil-capacity-review-after-iran-war-disrupts-expansion-plans-sources-2026-10-02/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "REUTERS_MARITIME_ENERGY",
+      "addition": "Oct. 2 Hormuz LNG transit and OPEC+ capacity-review reporting."
+    },
+    {
+      "source_class": "UN_HUMANITARIAN",
+      "addition": "WFP Yemen food-security deterioration reporting."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE Hormuz shipping drawer with improved September LNG traffic while preserving that traffic remained well below pre-war levels.",
+    "UPDATE Yemen/Houthi drawer with Taiz strikes, worsening food insecurity and a new Mecca Pact consultation track.",
+    "UPDATE Red Sea security drawer with Italy's statement that current EU naval coverage remained insufficient.",
+    "UPDATE Hamas finance-pressure drawer with new U.S. sanctions.",
+    "NO MATERIAL CHANGE to a final U.S.-Iran/Hormuz settlement, IAEA implementation, RAF Fairford attribution, FZ1073 external-direction attribution, Lebanon/Hezbollah disposition, or China/Russia material military support."
+  ],
+  "unresolved_questions": [
+    "Will the Mecca Pact meeting produce a political-engagement channel with the Houthis or reinforce preparations for military action?",
+    "Can higher LNG transit volumes be sustained without a material deterioration in Hormuz security?",
+    "Will the Yemen food-security deterioration accelerate displacement or constrain military operations?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Yemen Taiz strikes",
+      "Yemen food-security deterioration",
+      "Hormuz LNG recovery",
+      "EU Red Sea mission capacity warning",
+      "Mecca Pact Houthi consultation",
+      "U.S. Hamas finance sanctions",
+      "OPEC+ capacity-review delay"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz agreement",
+      "No qualified new IAEA implementation event",
+      "No resolved FZ1073 external-direction attribution",
+      "No material Lebanon/Hezbollah disposition change identified"
+    ],
+    "actor_source_families_checked": [
+      "Iran",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Syria-related actors",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy and commodity markets",
+      "commercial shipping reporting",
+      "human-impact agencies",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary commercial-data terminal access."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
