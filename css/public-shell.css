@@ -2884,3 +2884,159 @@ tbody tr:last-child td { border-bottom: 0; }
     min-height: clamp(30rem, 52vh, 44rem);
   }
 }
+
+
+/* Guide archetype migration tranche 2 — explanatory and map/data-heavy pages. */
+.guide-migrated-page {
+  gap: 0;
+}
+
+.guide-migrated-page > .page-intro {
+  margin-bottom: var(--space-7);
+}
+
+.guide-summary-strip {
+  margin: 0 0 var(--space-8);
+  padding: var(--space-5) 0 var(--space-6);
+  border: 0;
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-summary-strip > h2 {
+  max-width: var(--reading-width);
+  margin-top: 0;
+}
+
+.guide-summary-strip > .lead-copy {
+  max-width: var(--reading-width);
+}
+
+.guide-summary-strip .orientation-grid {
+  margin-top: var(--space-5);
+}
+
+.guide-editorial-section {
+  width: 100%;
+  margin: 0;
+  padding: var(--space-8) 0;
+  border: 0;
+  border-top: 1px solid var(--border-divider);
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-analysis-width {
+  max-width: var(--analysis-width);
+}
+
+.guide-section-heading {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-4);
+  max-width: var(--analysis-width);
+  margin: 0 0 var(--space-5);
+  font-size: clamp(1.45rem, 2.1vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.guide-section-heading::before {
+  content: attr(data-guide-marker);
+  color: var(--text-secondary);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.guide-subordinate-section {
+  margin: 0;
+  padding: var(--space-6) 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-subordinate-section > h2 {
+  max-width: var(--reading-width);
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+}
+
+.guide-structural-panel {
+  max-width: none;
+  padding-inline: 0;
+  background: transparent;
+}
+
+.guide-structural-panel > p,
+.guide-editorial-section > .section-note,
+.guide-editorial-section > .lead-copy {
+  max-width: var(--reading-width);
+}
+
+.guide-structural-panel .atlas-leaflet-map {
+  min-height: clamp(31rem, 56vh, 47.5rem);
+  border-radius: var(--radius-md);
+}
+
+.guide-dense-records {
+  gap: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.guide-dense-records > article {
+  margin: 0;
+  padding: var(--space-4) 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-campaign-page .effect-framework-grid {
+  margin-top: var(--space-5);
+}
+
+.guide-campaign-page [data-phase5-chart-equivalent="campaign-tempo"],
+.guide-campaign-page [data-reader-drilldown="event-constituents"] {
+  max-width: var(--analysis-width);
+}
+
+@media (min-width: 72rem) {
+  .guide-summary-strip .orientation-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .guide-migrated-page > .page-intro {
+    margin-bottom: var(--space-6);
+  }
+
+  .guide-summary-strip {
+    margin-bottom: var(--space-7);
+    padding-block: var(--space-4) var(--space-5);
+  }
+
+  .guide-editorial-section {
+    padding-block: var(--space-7);
+  }
+
+  .guide-section-heading {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+
+  .guide-structural-panel .atlas-leaflet-map {
+    min-height: clamp(20rem, 52vh, 27.5rem);
+  }
+
+  .guide-subordinate-section {
+    padding-block: var(--space-5);
+  }
+}

@@ -207,6 +207,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
         mapText: map?.innerText || '',
         merchant: document.querySelectorAll('.merchant-loss-details [data-loss-id]').length,
         merchantLinks: [...document.querySelectorAll('.merchant-loss-details [data-loss-id] a.inline-route-link')].map(node => node.getAttribute('href')),
+        guideSections: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideSection),
+        guideMarkers: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideMarker || ''),
+        migrated: document.querySelector('.public-page')?.classList.contains('guide-shipping-page') || false,
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
@@ -230,6 +233,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
     assert(shipping.merchantLinks.every(link => link.startsWith('#/war/losses/?loss=')));
+    assert.equal(shipping.migrated, true);
+    assert.deepEqual(shipping.guideSections, ['observed-shipping', 'routes', 'alternative-paths', 'merchant-losses']);
+    assert.deepEqual(shipping.guideMarkers, ['01', '02', '03', '04']);
     assert.match(shipping.text, /remain separate from military equipment totals/i);
 
     await routeKey(cdp, 'hormuz.economy');
@@ -305,6 +311,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       audits: document.querySelectorAll('.effect-proposition-group[data-facility-audit-id]').length,
       propositions: document.querySelectorAll('.effect-proposition-group .record-card').length,
       facilityLinks: document.querySelectorAll('.effect-proposition-group a[href^="#/war/facilities/"]').length,
+      guideSections: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideSection),
+      guideMarkers: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideMarker || ''),
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-campaign-page') || false,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     assert(campaigns.strikes > 0);
@@ -313,6 +322,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(campaigns.audits, 4);
     assert(campaigns.propositions > campaigns.audits);
     assert.equal(campaigns.facilityLinks, 4);
+    assert.equal(campaigns.migrated, true);
+    assert.deepEqual(campaigns.guideSections, ['damage-effect', 'campaign-activity', 'strike-geography', 'physical-damage', 'operational-effect', 'developments']);
+    assert.deepEqual(campaigns.guideMarkers, ['01', '02', '03', '04', '05', '06']);
     assert.match(campaigns.text, /Attack occurrence/);
     assert.match(campaigns.text, /Physical effect/);
     assert.match(campaigns.text, /Operating effect/);

@@ -60,6 +60,31 @@
     Object.entries(el.dataset || {}).forEach(([key, value]) => { d.dataset[key] = value; });
     [...el.children].forEach(child => { if (!/^H[1-6]$/.test(child.tagName)) d.append(child); }); el.replaceWith(d); return d;
   }
+  function addClass(el, className) {
+    if (!el || !className) return el;
+    const classes = new Set(String(el.className || '').split(/\s+/).filter(Boolean));
+    String(className).split(/\s+/).filter(Boolean).forEach(value => classes.add(value));
+    el.className = [...classes].join(' ');
+    return el;
+  }
+  function markGuideSection(el, id, marker, title) {
+    if (!el) return null;
+    el.dataset.guideSection = id;
+    if (marker) el.dataset.guideMarker = marker;
+    addClass(el, 'guide-editorial-section');
+    const heading = el.querySelector(':scope > h2, :scope > summary');
+    if (heading) {
+      if (title) heading.textContent = title;
+      if (marker) heading.dataset.guideMarker = marker;
+      addClass(heading, 'guide-section-heading');
+    }
+    return el;
+  }
+  function markGuideSupport(el) {
+    if (!el) return null;
+    addClass(el, 'guide-subordinate-section');
+    return el;
+  }
   function accessContext(routeRuntime, route, doc) { const a = routeRuntime.forRoute(route); return { documentObject: doc, model: a.model, services: a.services, route }; }
   function modelData(model, key) { return base.modelData ? base.modelData(model, key) : null; }
   function records(model, key) {
@@ -249,19 +274,53 @@
   }
 
   function campaigns(article) {
+    addClass(article, 'guide-migrated-page guide-campaign-page');
     intro(article,'Read the campaign as action and result: objective, target or action, established effect, and current result. Recorded-event totals describe the evidence record; they are not a proxy for combat intensity.');
-    const s=section(article,'Current campaign results','Recent fighting changed infrastructure and geography, while several attribution and operating-status questions remain open.'), g=add(s,'div','orientation-grid');
+
+    const summary=section(article,'Current campaign results','Recent fighting changed infrastructure and geography, while several attribution and operating-status questions remain open.');
+    addClass(summary,'guide-summary-strip');
+    const g=add(summary,'div','orientation-grid');
     card(g,'Saudi energy route hit','The Sep. 11 Iraqi-origin attack damaged the East-West pipeline. Later reporting puts it mostly out of service for roughly three to five weeks; the responsible group and ordering authority remain unresolved.','EFFECT ESTABLISHED');
     card(g,'Houthi west-coast gains','Greater and Lesser Hanish and Perim/Mayun improve the Houthi position around Bab el-Mandeb. They do not establish total control of commercial passage.','TERRITORIAL GAIN');
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
-    routeLink(s,'military.facilities','See authoritative facility status');
-    const m=findSection(article,/^At a glance$/i); if(m) collapse(m,'Record coverage');
-    const f=findSection(article,/^What did the damage change\?$/i);
-    if(f){
-      const h=f.querySelector(':scope > h2'); if(h) h.textContent='Attack and effect evidence';
-      add(f,'p','scope-note','These records show the attack, physical damage and operating effect separately. Current facility status is shown on the facility page.');
-      routeLink(f,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
+    routeLink(summary,'military.facilities','See authoritative facility status');
+
+    const coverage=findSection(article,/^At a glance$/i);
+    if(coverage) collapse(coverage,'Record coverage');
+
+    const boundary=markGuideSection(findSection(article,/^From damage to war results$/i),'damage-effect','01','Damage is not the same as effect');
+    const tempo=markGuideSection(findSection(article,/^Recorded military activity by month$/i),'campaign-activity','02','Campaign activity');
+    const strikeMap=article.querySelector(':scope > [data-visual-sweep-hero="campaign"]')||article.querySelector(':scope > .context-map');
+    markGuideSection(strikeMap,'strike-geography','03','Where strikes occurred');
+    addClass(strikeMap,'guide-structural-panel');
+
+    const attacks=markGuideSupport(findSection(article,/^U\.S\. \/ coalition attacks inside Iran:/i));
+    const physical=markGuideSection(findSection(article,/^What was physically damaged\?$/i),'physical-damage','04','Physical damage');
+    if(physical&&attacks) physical.after(attacks);
+
+    const effect=markGuideSection(findSection(article,/^What did the damage change\?$/i),'operational-effect','05','Operational effect');
+    if(effect){
+      add(effect,'p','scope-note','These records show the attack, physical damage and operating effect separately. Current facility status is shown on the facility page.');
+      routeLink(effect,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
     }
+
+    const posture=findSection(article,/^Troop and force movements$/i);
+    const developments=findSection(article,/^Representative campaign developments$/i);
+    if(posture){
+      markGuideSection(posture,'developments','06','Movements & developments');
+      markGuideSupport(developments);
+    } else {
+      markGuideSection(developments,'developments','06','Movements & developments');
+    }
+
+    [boundary,tempo,physical,effect].forEach(sectionNode=>{if(sectionNode)addClass(sectionNode,'guide-analysis-width');});
+
+    /* Reorder only whole top-level analytical objects; charts, maps and evidence-bearing records remain the same nodes. */
+    let campaignAnchor=summary;
+    [boundary,tempo,strikeMap,physical,attacks,effect,posture,developments].filter(Boolean).forEach(sectionNode=>{
+      campaignAnchor.after(sectionNode);
+      campaignAnchor=sectionNode;
+    });
     article.querySelectorAll('[data-reader-drilldown="event-constituents"] .section-note').forEach(n=>n.textContent='This is a count of recorded military events, not combat intensity or weapon quantity. Open a month to inspect the records behind the count.');
   }
 
@@ -310,12 +369,38 @@
   }
 
   function shipping(article, context) {
+    addClass(article, 'guide-migrated-page guide-shipping-page');
     intro(article,'Hormuz traffic remains severely depressed, but physical closure is not established. Bab el-Mandeb traffic continued near its recent observable average despite Houthi territorial gains.');
-    const s=section(article,'Current maritime picture','Tracked traffic, physical passage and commercial or legal acceptance are separate facts.'),g=add(s,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
+
+    const summary=section(article,'Current maritime picture','Tracked traffic, physical passage and commercial or legal acceptance are separate facts.');
+    addClass(summary,'guide-summary-strip');
+    const g=add(summary,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
     const h=card(g,'Hormuz: severely depressed','Reuters preliminary tracking counted four commodity vessels exiting and ten entering the Gulf over the weekend. AIS-dark vessels are outside these tracked counts. The evidence does not show a complete physical closure.','PRELIMINARY OBSERVATION');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-HORMUZ-TRAFFIC-20260914'));
     const b=card(g,'Bab el-Mandeb: general traffic continues','Reuters counted 24 transits Saturday and 27 Sunday, approximately in line with the recent 10-day average. Houthi territorial gains do not establish general closure.','OBSERVED TRAFFIC');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
     const a=card(g,'Iran’s 77-vessel list','Iran announced possible fines, detention or confiscation and warned maritime service providers. External legal recognition, enforceability and insurer/P&I/classification-society compliance are not established.','IRANIAN ANNOUNCEMENT');evidence(a,context,rows.find(r=>r.shipping_id==='SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'));
-    const m=findSection(article,/How to read the traffic observations/i);if(m)collapse(m,'How provider and AIS traffic data should be read');
+
+    const method=findSection(article,/^How to read the traffic observations$/i);
+    const methodDetails=method?collapse(method,'How provider and AIS traffic data should be read'):null;
+    if(methodDetails) markGuideSupport(methodDetails);
+
+    const observed=markGuideSection(findSection(article,/^Observed shipping record$/i),'observed-shipping','01','Observed shipping');
+    const routeMap=article.querySelector(':scope > [data-shipping-map-system]')||article.querySelector(':scope > .context-map');
+    markGuideSection(routeMap,'routes','02','The routes');
+    addClass(routeMap,'guide-structural-panel');
+    const alternatives=markGuideSection(findSection(article,/^Alternative routes and trade changes$/i),'alternative-paths','03','Alternative paths');
+    const merchant=markGuideSection(findSection(article,/^Merchant-vessel losses$/i),'merchant-losses','04','Merchant losses');
+
+    if(observed){
+      const list=observed.querySelector('.record-list'); if(list)addClass(list,'guide-dense-records');
+    }
+    if(merchant){
+      const list=merchant.querySelector('.record-list'); if(list)addClass(list,'guide-dense-records');
+    }
+    [observed,alternatives,merchant].forEach(sectionNode=>{if(sectionNode)addClass(sectionNode,'guide-analysis-width');});
+
+    /* Reorder only whole top-level analytical objects. The map instance, records, route geometry and controls remain untouched. */
+    let anchor=summary;
+    [methodDetails,observed,routeMap,alternatives,merchant].filter(Boolean).forEach(sectionNode=>{anchor.after(sectionNode);anchor=sectionNode;});
   }
 
   function economy(article, context) {

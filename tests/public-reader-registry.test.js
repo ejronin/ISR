@@ -46,6 +46,11 @@ assert.match(registrySource,/baseRuntime\.PAGE_OWNERS\[route\.owner\]/,'registry
 assert.match(registrySource,/readerSupportRuntime\.projectShell/,'reader support must execute before validation/promotion');
 assert.match(registrySource,/PROTECTED_LAYOUT_ROUTES = new Set\(\['evidence\.information','evidence\.web_of_lies'\]\)/,'unmigrated intelligence layouts must remain explicitly isolated while Home joins the representative tranche');
 assert.match(registrySource,/dataset\.layoutScope=PROTECTED_LAYOUT_ROUTES\.has\(route\.key\)\?'protected':'adaptive-wide'/,'adaptive desktop layout must be route-scoped rather than global');
+assert.match(registrySource,/guide-migrated-page guide-campaign-page/,'Campaigns is not marked as a migrated Guide archetype');
+assert.match(registrySource,/guide-migrated-page guide-shipping-page/,'Shipping is not marked as a migrated Guide archetype');
+assert.match(registrySource,/markGuideSection\(findSection\(article,\/\^From damage to war results/,'Campaigns lacks the approved damage/effect landmark');
+assert.match(registrySource,/markGuideSection\(findSection\(article,\/\^Observed shipping record/,'Shipping lacks the approved observed-shipping landmark');
+assert.match(registrySource,/anchor\.after\(sectionNode\)/,'Shipping whole-object ordering contract is absent');
 assert.match(registrySource,/currentPositionData=modelData\(context\.model,'analysis\.iran_messaging'\)/,'Goals & Results does not consume the accepted current-position record');
 assert.match(registrySource,/const acceptedRows=accepted\.filter\(record=>record\.actor===actor\)/,'Goals & Results is not driven by accepted objective records');
 assert.match(registrySource,/dataset\.positionHistory='iran'/,'Iran position history is missing');

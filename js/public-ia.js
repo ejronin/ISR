@@ -116,6 +116,20 @@
       { id: 'latest-record', label: 'Latest record', heading: 'Latest in the record' },
       { id: 'about', label: 'About', heading: 'About the record' },
       { id: 'unresolved', label: 'Unresolved', heading: 'What remains unresolved' }
+    ]),
+    'military.campaigns': Object.freeze([
+      { id: 'damage-effect', label: 'Damage vs effect', heading: 'Damage is not the same as effect' },
+      { id: 'campaign-activity', label: 'Campaign activity', heading: 'Campaign activity' },
+      { id: 'strike-geography', label: 'Strike geography', heading: 'Where strikes occurred' },
+      { id: 'physical-damage', label: 'Physical damage', heading: 'Physical damage' },
+      { id: 'operational-effect', label: 'Operational effect', heading: 'Operational effect' },
+      { id: 'developments', label: 'Developments', heading: 'Movements & developments' }
+    ]),
+    'hormuz.shipping': Object.freeze([
+      { id: 'observed-shipping', label: 'Observed shipping', heading: 'Observed shipping' },
+      { id: 'routes', label: 'The routes', heading: 'The routes' },
+      { id: 'alternative-paths', label: 'Alternative paths', heading: 'Alternative paths' },
+      { id: 'merchant-losses', label: 'Merchant losses', heading: 'Merchant losses' }
     ])
   });
 

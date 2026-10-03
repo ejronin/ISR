@@ -2,7 +2,7 @@
 
 ## Implementation checkpoint
 
-This document describes the first renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview is the only page body migrated to the new archetype in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the new shell until the tranche is reviewed.
+This document describes the accepted Guide shell plus the second representative renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, and Shipping & Trade are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
 
 GitHub Pages hash routing remains the transport. Canonical logical paths therefore appear after the hash, for example `#/war/campaigns/`. No hosting or router migration is bundled into this work.
 
@@ -62,21 +62,29 @@ Long explanatory pages may expose an **On this page** rail at wide desktop sizes
 
 Scroll-linked section state uses `history.replaceState`; it does not add a history entry on every section transition. Durable section targets use the shared sticky-shell scroll offset.
 
-## Representative page tranche
+## Representative page tranches
 
-`start.overview` is the representative current-state / overview migration.
+`start.overview` remains the representative current-state / overview migration, with durable sections for Current state, Conflict opening, Latest record, About, and Unresolved.
 
-Its registered durable sections are:
+`military.campaigns` is the representative explanatory-analysis / campaign migration. Its durable sections are:
 
-- Current state
-- Conflict opening
-- Latest record
-- About
-- Unresolved
+- Damage vs effect
+- Campaign activity
+- Strike geography
+- Physical damage
+- Operational effect
+- Developments
 
-The page adopts the approved editorial hierarchy, flat surfaces, elastic analytical width, restrained prose width, wide operational map treatment, and responsive summary recomposition. The underlying accepted records, map points, route geometry, evidence drawers, source resolution, and calculations are unchanged.
+`hormuz.shipping` is the representative map / data-heavy migration. Its durable sections are:
 
-No other page body is considered migrated by this checkpoint.
+- Observed shipping
+- The routes
+- Alternative paths
+- Merchant losses
+
+Campaigns keeps the existing monthly recorded-event calculation, constituent drilldown, strike map, damage observations, facility-effect propositions, force-movement records, and chronology records. Shipping keeps the existing chokepoint/network map system, route geometry, route controls, traffic records, alternative-route records, merchant-loss records, and loss cross-links. The migration changes hierarchy, durable section navigation, whole-object ordering, spacing and responsive presentation only.
+
+The remaining page bodies are not considered migrated by this checkpoint.
 
 ## First paint and release integrity
 
@@ -96,4 +104,4 @@ This tranche changes presentation and routing only.
 - Maps, chart calculations, state-flag assets, and evidence semantics are not replaced or recomputed.
 - No evidence, adjudication, ROOK/Evidence Locker, canonical-update, or sanctions-analysis dataset is modified.
 
-Mass page migration is intentionally stopped pending review of this tranche.
+Further page-body migration is intentionally stopped at this checkpoint pending review of the Campaigns & Strikes and Shipping & Trade archetypes.
