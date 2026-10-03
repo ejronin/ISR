@@ -406,13 +406,13 @@
     const used=markGuideSection(findSection(article,/^Weapons used$/i),'weapons-used','01');
     const totals=markGuideSection(findSection(article,/^Reported totals over time$/i),'reported-totals','02');
     const estimates=markGuideSection(findSection(article,/^Missile and launcher estimates$/i),'weapon-estimates','03');
-    const losses=markGuideSection(findSection(article,/^Related equipment losses$/i),'weapon-losses','04');
-    const aviation=markGuideSection(findSection(article,/^Aircraft loss cross-check$/i),'aviation-cross-check','05');
-    const limits=markGuideSection(findSection(article,/^Limits of these totals$/i),'weapon-limits','06');
-    [used,totals,estimates,losses,aviation,limits].forEach(node=>addClass(node,'guide-analysis-width'));
-    [used,totals,estimates,losses,aviation].forEach(node=>node?.querySelectorAll('.record-list,.comparison-grid').forEach(list=>addClass(list,'guide-dense-records')));
+    const lossLink=markGuideSection(findSection(article,/^Equipment losses and aircraft incidents$/i),'loss-record-link','04');
+    const limits=markGuideSection(findSection(article,/^Limits of these totals$/i),'weapon-limits','05');
+    [used,totals,estimates,lossLink,limits].forEach(node=>addClass(node,'guide-analysis-width'));
+    [used,totals,estimates].forEach(node=>node?.querySelectorAll('.record-list,.comparison-grid').forEach(list=>addClass(list,'guide-dense-records')));
+    addClass(lossLink,'guide-crosslink-section');
     const introBlock=article.querySelector('.page-intro');if(introBlock)introBlock.after(s);
-    let anchor=s;[method,used,totals,estimates,losses,aviation,limits].filter(Boolean).forEach(node=>{anchor.after(node);anchor=node;});
+    let anchor=s;[method,used,totals,estimates,lossLink,limits].filter(Boolean).forEach(node=>{anchor.after(node);anchor=node;});
   }
 
   function imagery(article) {
