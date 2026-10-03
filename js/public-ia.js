@@ -147,8 +147,7 @@
       { id: 'browse-sources', label: 'Browse sources', heading: 'Source Library' }
     ]),
     'evidence.information': Object.freeze([
-      { id: 'finding-method', label: 'Finding method', heading: 'How the ledger reaches a finding' },
-      { id: 'ledger-cases', label: 'Cases', heading: 'Narrative and proposition chains' }
+      { id: 'ledger-cases', label: 'Cases', heading: 'Lie Ledger' }
     ]),
     'evidence.web_of_lies': Object.freeze([
       { id: 'wol-network', label: 'Network', heading: 'Web of Lies network' },
