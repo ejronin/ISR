@@ -2,7 +2,7 @@
 
 ## Implementation checkpoint
 
-This document describes the accepted Guide shell plus the first broad page-body propagation tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, Shipping & Trade, the Web of Lies actor dossier, the Lie Ledger case dossier, Claim Checks, Source Library, Who's Involved, All Events, the Lie Ledger collection, the Web of Lies collection, and Archive are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
+This document describes the accepted Guide shell plus the second broad page-body propagation tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Timeline, All Events, Campaigns & Strikes, Bases & Infrastructure, Air, Missiles & Drones, Casualties & Losses, Damage Images, Shipping & Trade, Who's Involved, the Web of Lies actor dossier, the Lie Ledger case dossier, Claim Checks, Source Library, the Lie Ledger collection, the Web of Lies collection, and Archive are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
 
 GitHub Pages hash routing remains the transport. Canonical logical paths therefore appear after the hash, for example `#/war/campaigns/`. No hosting or router migration is bundled into this work.
 
@@ -127,6 +127,18 @@ The approved Collection / Index archetype is now propagated without reconstructi
 
 No accepted public wording, record membership, ordering or evidence relationship is changed by this propagation tranche.
 
+### War operational / map-data propagation
+
+The approved Map / Data-Heavy and restrained Evidence / Forensics grammar is now propagated across the remaining War operational pages:
+
+- **Timeline** keeps the existing phase orientation, density view, date/topic/actor controls, event selection, contextual map and prewar disclosure. Whole existing blocks are reordered only so the phase orientation precedes the interactive canvas.
+- **Bases & Infrastructure** keeps the authoritative facility-status dashboard, facility IDs, current-status predicates, full-record disclosure, source-supported map and evidence drawers.
+- **Air, Missiles & Drones** keeps expenditure records, reported totals, missile/launcher estimates, related loss records, aviation cross-checks and counting limits. The existing no-single-percentage boundary becomes the page summary strip.
+- **Casualties & Losses** keeps casualty records, material-loss IDs, comparison accounting, filters, loss map, asset breakdown, estimated ranges and aviation/pilot records. The existing no-single-reliable-total boundary is moved ahead of the analytical canvas as a whole unchanged block.
+- **Damage Images** keeps the imagery/damage-review map, observation identities, progressive-disclosure rows, physical-damage observations and linked facility claim checks.
+
+No map instance, map point, event/facility/loss/imagery identity, chart calculation, filter behavior, EvidenceDrawer relationship or record ordering is recomputed by this tranche.
+
 The remaining page bodies are not considered migrated by this checkpoint.
 
 ## First paint and release integrity
@@ -147,4 +159,4 @@ This tranche changes presentation and routing only.
 - Maps, chart calculations, state-flag assets, and evidence semantics are not replaced or recomputed.
 - No evidence, adjudication, ROOK/Evidence Locker, canonical-update, or sanctions-analysis dataset is modified.
 
-Further page-body migration is intentionally stopped at this checkpoint pending review of the broad Collection / Index propagation across Who's Involved, All Events, Lie Ledger, Web of Lies, and Archive.
+Further page-body migration is intentionally stopped at this checkpoint pending review of the War operational / map-data propagation across Timeline, Bases & Infrastructure, Air, Missiles & Drones, Casualties & Losses, and Damage Images.
