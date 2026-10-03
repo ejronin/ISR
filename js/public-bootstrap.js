@@ -72,6 +72,7 @@
     const mapRuntime = validateContentAddressedAsset(assetForRole(manifest, 'map_runtime'), 'js');
     const graphRuntime = validateContentAddressedAsset(assetForRole(manifest, 'graph_runtime'), 'js');
     const baseRuntime = validateContentAddressedAsset(assetForRole(manifest, 'base_runtime'), 'js');
+    const visualizationRuntime = validateContentAddressedAsset(assetForRole(manifest, 'visualization_runtime'), 'js');
     const readerSupport = validateContentAddressedAsset(assetForRole(manifest, 'reader_support'), 'js');
     const pageRegistry = validateContentAddressedAsset(assetForRole(manifest, 'page_registry'), 'js');
     const mapStyle = validateContentAddressedAsset(assetForRole(manifest, 'map_stylesheet'), 'css');
@@ -81,7 +82,7 @@
     const entry = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
     const evidenceImages = (manifest.application.assets || []).filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
     const stateFlags = (manifest.application.assets || []).filter(asset => asset.role === 'state_flag').map(validateStateFlag);
-    const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+    const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'visualization_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
     const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet'];
     invariant(fixedRoles.every(role => (manifest.application.assets || []).filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'A required application asset role is missing or duplicated.');
     invariant(capabilityRoles.every(role => (manifest.application.assets || []).filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'The signed MapLibre capability is missing or duplicated.');
@@ -93,9 +94,9 @@
     const maplibreWorker = validateContentAddressedAsset(capability.worker, 'js');
     const maplibreStyle = validateContentAddressedAsset(capability.stylesheet, 'css');
     invariant(maplibreRuntime.role === 'maplibre_runtime' && maplibreShared.role === 'maplibre_shared' && maplibreWorker.role === 'maplibre_worker' && maplibreStyle.role === 'maplibre_stylesheet', 'RELEASE_MISMATCH', 'The MapLibre capability roles are invalid.');
-    const runtimes = [mapRuntime, graphRuntime, baseRuntime, readerSupport, pageRegistry];
+    const runtimes = [mapRuntime, graphRuntime, baseRuntime, visualizationRuntime, readerSupport, pageRegistry];
     const styles = [mapStyle, style, readerStyle];
-    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 5 && runtimes.every((asset, index) => manifest.application.runtime[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized runtime paths are inconsistent.');
+    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 6 && runtimes.every((asset, index) => manifest.application.runtime[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized runtime paths are inconsistent.');
     invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 3 && styles.every((asset, index) => manifest.application.stylesheets[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized stylesheet paths are inconsistent.');
     invariant(manifest.application.stylesheet === style.path, 'RELEASE_MISMATCH', 'The authorized stylesheet path is inconsistent.');
     invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The authorized reference-geography path is inconsistent.');
