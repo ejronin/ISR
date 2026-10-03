@@ -125,6 +125,37 @@
     'timeline.chronology': Object.freeze([
       { id: 'event-directory', label: 'Event directory', heading: 'All Events' }
     ]),
+    'timeline.war': Object.freeze([
+      { id: 'conflict-phases', label: 'Conflict phases', heading: 'Conflict phases' },
+      { id: 'timeline-explorer', label: 'Interactive timeline', heading: 'Explore the war timeline' }
+    ]),
+    'military.facilities': Object.freeze([
+      { id: 'facility-status', label: 'Current status', heading: 'Current facility status' },
+      { id: 'facility-map', label: 'Facility map', heading: 'Facilities in the current record' },
+      { id: 'facility-records', label: 'Facility records', heading: 'Facility records' }
+    ]),
+    'military.weapons': Object.freeze([
+      { id: 'counts-boundary', label: 'Counting boundary', heading: 'No single whole-war percentage' },
+      { id: 'weapons-used', label: 'Weapons used', heading: 'Weapons used' },
+      { id: 'reported-totals', label: 'Reported totals', heading: 'Reported totals over time' },
+      { id: 'weapon-estimates', label: 'Estimates', heading: 'Missile and launcher estimates' },
+      { id: 'loss-record-link', label: 'Loss records', heading: 'Equipment losses and aircraft incidents' },
+      { id: 'weapon-limits', label: 'Limits', heading: 'Limits of these totals' }
+    ]),
+    'military.losses': Object.freeze([
+      { id: 'loss-boundary', label: 'Counting boundary', heading: 'No single reliable total' },
+      { id: 'loss-map', label: 'Loss map', heading: 'Where recorded losses occurred' },
+      { id: 'loss-status-type', label: 'Status & type', heading: 'Losses by status and type' },
+      { id: 'people', label: 'People', heading: 'People' },
+      { id: 'equipment', label: 'Equipment', heading: 'Equipment' },
+      { id: 'loss-estimates', label: 'Estimated ranges', heading: 'Estimated loss ranges' },
+      { id: 'aviation-pilots', label: 'Aviation & pilots', heading: 'Aviation and pilot details' }
+    ]),
+    'military.imagery': Object.freeze([
+      { id: 'imagery-map', label: 'Map', heading: 'Locations with imagery or damage-review records' },
+      { id: 'imagery-review', label: 'Imagery review', heading: 'Imagery review' },
+      { id: 'facility-claim-evidence', label: 'Facility claims', heading: 'Facility claim evidence' }
+    ]),
     'military.campaigns': Object.freeze([
       { id: 'damage-effect', label: 'Damage vs effect', heading: 'Damage is not the same as effect' },
       { id: 'campaign-activity', label: 'Campaign activity', heading: 'Campaign activity' },

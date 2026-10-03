@@ -102,6 +102,26 @@ assert.deepEqual(
   ['event-directory']
 );
 assert.deepEqual(
+  ia.pageSectionsFor('timeline.war').map(section => section.id),
+  ['conflict-phases', 'timeline-explorer']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('military.facilities').map(section => section.id),
+  ['facility-status', 'facility-map', 'facility-records']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('military.weapons').map(section => section.id),
+  ['counts-boundary', 'weapons-used', 'reported-totals', 'weapon-estimates', 'loss-record-link', 'weapon-limits']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('military.losses').map(section => section.id),
+  ['loss-boundary', 'loss-map', 'loss-status-type', 'people', 'equipment', 'loss-estimates', 'aviation-pilots']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('military.imagery').map(section => section.id),
+  ['imagery-map', 'imagery-review', 'facility-claim-evidence']
+);
+assert.deepEqual(
   ia.pageSectionsFor('evidence.information').map(section => section.id),
   ['ledger-cases']
 );

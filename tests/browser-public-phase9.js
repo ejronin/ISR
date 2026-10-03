@@ -16,7 +16,10 @@ const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'pub
 const records = key => {
   const payload = model.datasets[key].payload;
   if (Array.isArray(payload)) return payload;
-  return payload.records || payload.items || payload.events || payload.entries || [];
+  for (const field of ['records', 'strikes', 'facilities', 'claims', 'overlays', 'series', 'routes', 'outcomes', 'assessments', 'revisions', 'requests', 'profiles', 'branches', 'clauses', 'decisions', 'networks', 'domains', 'items', 'coverage', 'events', 'entries']) {
+    if (Array.isArray(payload && payload[field])) return payload[field];
+  }
+  return [];
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
@@ -115,7 +118,9 @@ async function route(cdp, hash, key) {
       densityText: document.querySelector('[data-timeline-density="record-count-only"]')?.innerText || '',
       scaleLabels: [...(document.querySelector('[data-timeline-scale-model="semantic-conflict-span"]')?.options || [])].map(option => option.textContent.trim()),
       topicLabels: [...document.querySelectorAll('.timeline-controls label')].find(label => /^Topic/.test(label.textContent.trim())) ? [...[...document.querySelectorAll('.timeline-controls label')].find(label => /^Topic/.test(label.textContent.trim())).querySelectorAll('option')].map(option => option.textContent.trim()) : [],
-      fullLabel: [...document.querySelectorAll('.timeline-navigation button')].find(button => /full conflict/i.test(button.textContent))?.textContent.trim() || ''
+      fullLabel: [...document.querySelectorAll('.timeline-navigation button')].find(button => /full conflict/i.test(button.textContent))?.textContent.trim() || '',
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-timeline-page') || false,
+      guideSections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection)
     }))()`);
     assert.equal(timeline.count, model.counts.chronology_records);
     assert.equal(timeline.cutoff, model.release.current_osint_cutoff);
@@ -130,6 +135,8 @@ async function route(cdp, hash, key) {
     assert.deepEqual(timeline.scaleLabels, ['Full', '4×', '8×', '16×']);
     assert.deepEqual(timeline.topicLabels, ['All topics', 'Military', 'Hormuz', 'Economy', 'Diplomacy', 'Losses and damage', 'Wider record'], 'timeline scale presentation corrupted the Topic filter');
     assert.equal(timeline.fullLabel, 'Back to full conflict');
+    assert.equal(timeline.migrated, true, 'Timeline did not receive Map / Data-Heavy Guide presentation');
+    assert.deepEqual(timeline.guideSections, ['conflict-phases', 'timeline-explorer']);
 
     const selected = await cdp.eval(`(() => {
       const narrow = () => document.querySelector('.timeline-marker.cluster')?.click();
@@ -159,19 +166,59 @@ async function route(cdp, hash, key) {
     assert(chronology.classes > 0, 'chronology records do not expose their record class');
     assert(chronology.controls.every(height => height >= 44), 'chronology has a touch target below 44px');
 
+    await route(cdp, ia.routeHref('military.facilities'), 'military.facilities');
+    const facilityAudit = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-facilities-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      ids: [...document.querySelectorAll('.reader-facility-card[data-facility-id]')].map(node => node.dataset.facilityId),
+      // The Guide section ID is applied to the existing MapView root when the map is top-level.
+      map: Boolean(document.querySelector('#facility-map[data-component="MapView"] .leaflet-container, #facility-map [data-component="MapView"] .leaflet-container')),
+      recordsDisclosure: Boolean(document.querySelector('#facility-records'))
+    }))()`);
+    const expectedFacilityIds = [...new Set([...records('ledger.facilities'), ...records('gate3.facilities')].map(record => record.facility_id || record.id || record.name).filter(Boolean))];
+    assert.equal(facilityAudit.migrated, true, 'Facilities did not receive Map / Data-Heavy Guide presentation');
+    assert.deepEqual(facilityAudit.sections, ['facility-status', 'facility-map', 'facility-records']);
+    assert.equal(facilityAudit.ids.length, expectedFacilityIds.length, 'facility facelift changed current facility membership');
+    assert.equal(new Set(facilityAudit.ids).size, facilityAudit.ids.length, 'facility facelift duplicated current facility records');
+    assert.equal(facilityAudit.map, true, 'facility map was removed by facelift');
+    assert.equal(facilityAudit.recordsDisclosure, true, 'full facility record disclosure was removed by facelift');
+
+    await route(cdp, ia.routeHref('military.weapons'), 'military.weapons');
+    const weaponAudit = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-weapons-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      expenditureIds: [...document.querySelectorAll('[data-expenditure-id]')].map(node => node.dataset.expenditureId),
+      duplicatedLossIds: [...document.querySelectorAll('[data-weapon-loss-id]')].map(node => node.dataset.weaponLossId),
+      aviationIds: [...document.querySelectorAll('[data-aviation-id]')].map(node => node.dataset.aviationId),
+      lossCrosslink: document.querySelector('#loss-record-link a.inline-route-link')?.getAttribute('href') || ''
+    }))()`);
+    assert.equal(weaponAudit.migrated, true, 'Weapons did not receive explanatory Guide presentation');
+    assert.deepEqual(weaponAudit.sections, ['counts-boundary', 'weapons-used', 'reported-totals', 'weapon-estimates', 'loss-record-link', 'weapon-limits']);
+    assert.equal(weaponAudit.expenditureIds.length, records('ledger.munitions_expenditure').length, 'weapons facelift changed expenditure-record membership');
+    assert.equal(new Set(weaponAudit.expenditureIds).size, weaponAudit.expenditureIds.length, 'weapons facelift duplicated expenditure records');
+    assert.deepEqual(weaponAudit.duplicatedLossIds, [], 'Weapons facelift reintroduced duplicated material-loss records');
+    assert.deepEqual(weaponAudit.aviationIds, [], 'Weapons facelift reintroduced duplicated aviation incident records');
+    assert.equal(weaponAudit.lossCrosslink, '#/war/losses/', 'Weapons facelift lost the canonical Casualties & Losses cross-link');
+
     await route(cdp, '#/military/losses', 'military.losses');
     const losses = await cdp.eval(`(() => ({
       groups: [...document.querySelectorAll('[data-loss-side-group]')].map(node => node.dataset.lossSideGroup),
       casualtyRecords: document.querySelectorAll('[data-casualty-id]').length,
       method: document.querySelector('.casualty-method summary')?.textContent.trim(),
       badHeading: (document.querySelector('main')?.innerText || '').includes('Do not add the headline categories'),
-      cards: document.querySelectorAll('[data-loss-id]').length
+      cards: document.querySelectorAll('[data-loss-id]').length,
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-losses-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      ids: [...document.querySelectorAll('[data-loss-id]')].map(node => node.dataset.lossId)
     }))()`);
     assert.deepEqual(losses.groups, ['us-coalition', 'iran-aligned', 'civilian-commercial', 'unclassified']);
     assert.equal(losses.casualtyRecords, records('gate3.casualties').length);
     assert.equal(losses.method, 'How casualty totals are counted');
     assert.equal(losses.badHeading, false);
     assert.equal(losses.cards, model.counts.material_loss_records);
+    assert.equal(losses.migrated, true, 'Losses did not receive Map / Data-Heavy Guide presentation');
+    assert.deepEqual(losses.sections, ['loss-boundary', 'loss-map', 'loss-status-type', 'people', 'equipment', 'loss-estimates', 'aviation-pilots']);
+    assert.equal(new Set(losses.ids).size, losses.ids.length, 'loss facelift duplicated material-loss records');
 
     await route(cdp, '#/military/imagery', 'military.imagery');
     const imagery = await cdp.eval(`(() => ({
@@ -179,12 +226,18 @@ async function route(cdp, hash, key) {
       open: document.querySelectorAll('[data-imagery-summary][open]').length,
       identities: document.querySelectorAll('[data-imagery-summary] > summary [data-actor-name]').length,
       unresolvedDates: [...document.querySelectorAll('[data-map-imagery-control]')].filter(node => /Date unresolved/i.test(node.innerText)).length,
-      map: Boolean(document.querySelector('[data-component="MapView"] .leaflet-container'))
+      map: Boolean(document.querySelector('[data-component="MapView"] .leaflet-container')),
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-imagery-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      observationIds: [...document.querySelectorAll('[data-damage-observation-id]')].map(node => node.dataset.damageObservationId)
     }))()`);
     assert(imagery.summaries > 0 && imagery.open === 0, 'imagery evidence is not progressively disclosed');
     assert.equal(imagery.identities, imagery.summaries, 'imagery summaries lack actor identity context');
     assert.equal(imagery.unresolvedDates, 0, 'undated imagery controls expose repetitive unresolved-date text');
     assert.equal(imagery.map, true);
+    assert.equal(imagery.migrated, true, 'Imagery did not receive Map / Data-Heavy Guide presentation');
+    assert.deepEqual(imagery.sections, ['imagery-map', 'imagery-review', 'facility-claim-evidence']);
+    assert.equal(new Set(imagery.observationIds).size, imagery.observationIds.length, 'imagery facelift duplicated physical-damage observations');
     const imageryDetail = await cdp.eval(`(() => {
       const row = document.querySelector('[data-imagery-summary]');
       row.open = true;
