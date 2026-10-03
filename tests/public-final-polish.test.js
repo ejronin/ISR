@@ -25,7 +25,7 @@ assert(releaseBuilder.includes('from build_public_release_core import *'), 'rele
 assert(releaseCore.includes('graph_runtime') && releaseCore.includes('vendor/cytoscape/cytoscape.min.js'), 'single-pass core does not publish the Cytoscape graph runtime explicitly');
 assert(releaseCore.includes('reader_support') && releaseCore.includes('reader_stylesheet'), 'single-pass core does not publish reader assets explicitly');
 assert(releaseCore.includes('src/public-reader-layer.js') && releaseCore.includes('src/public-reader-layer.css'), 'single-pass core does not source the reader modules directly');
-assert(releaseCore.includes('2.6-web-of-lies-cytoscape-runtime'), 'authoritative reader registry generator contract is missing');
+assert(releaseCore.includes('2.7-maplibre-representative-capability'), 'representative visualization release generator contract is missing');
 assert(!releaseCore.includes('compose_reader_sources'), 'single-pass core still concatenates reader source into base assets');
 
 assert(!appSource.includes('ROOK_NARRATIVE_CURRENT'), 'tracked public entrypoint still contains persona narrative payload');
@@ -36,7 +36,7 @@ assert(appSource.includes('ATLAS_PRIVILEGED_NARRATIVE_RETIRED'), 'tracked public
 assert(appSource.includes("assetForRole(manifest, 'graph_runtime')"), 'tracked public entrypoint does not authorize graph runtime');
 assert(appSource.includes("assetForRole(manifest, 'reader_support')"), 'tracked public entrypoint does not authorize reader runtime');
 assert(appSource.includes("assetForRole(manifest, 'reader_stylesheet')"), 'tracked public entrypoint does not authorize reader stylesheet');
-assert(appSource.includes('authorization.runtimeAssets.length === 5'), 'tracked public entrypoint does not require all five runtime assets');
+assert(appSource.includes('authorization.runtimeAssets.length === 6'), 'tracked public entrypoint does not require all six runtime assets');
 assert(appSource.includes('authorization.stylesheetAssets.length === 3'), 'tracked public entrypoint does not require all three stylesheet assets');
 
 for (const phrase of [
