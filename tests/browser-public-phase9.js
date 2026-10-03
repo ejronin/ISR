@@ -585,17 +585,29 @@ async function route(cdp, hash, key) {
     assert.match(lossAudit.comparisonText, /Unknown does not mean zero|unknown quantities/i);
 
     await route(cdp, '#/hormuz/shipping', 'hormuz.shipping');
-    const shippingVisual = await cdp.eval(`(() => ({
-      views: [...document.querySelectorAll('[data-shipping-map-view]')].map(node => node.dataset.shippingMapView),
-      routeLines: document.querySelectorAll('[data-shipping-map-view="network"] [data-route-id]').length,
-      contextLabels: [...document.querySelectorAll('[data-shipping-map-view="network"] .reference-map-label')].map(node => node.textContent.trim()).filter(Boolean),
-      chokepointLabels: [...document.querySelectorAll('[data-shipping-map-view="chokepoint"] .reference-map-label')].map(node => node.textContent.trim()).filter(Boolean),
-      text: document.querySelector('[data-shipping-map-system]')?.innerText || ''
-    }))()`);
-    assert.deepEqual(shippingVisual.views, ['chokepoint', 'network']);
-    assert(shippingVisual.routeLines >= 4, 'supported oil/shipping route geometry is not visibly rendered');
-    assert(shippingVisual.contextLabels.length > 0, 'broader route map lacks named city/port/corridor context');
-    assert(shippingVisual.chokepointLabels.some(label => /Iran|Oman|Hormuz|Persian Gulf|Gulf of Oman/i.test(label)), 'chokepoint map lacks basic geographic orientation');
+    await waitFor(cdp, `document.querySelector('[data-shipping-map-view="continuous"] .atlas-maplibre-map')?.dataset.mapState === 'ready'`);
+    const shippingVisual = await cdp.eval(`(() => {
+      const view = document.querySelector('[data-shipping-map-view="continuous"]');
+      const map = view?._atlasMapLibre;
+      const labels = [...view?.querySelectorAll('.guide-map-label') || []].map(node => node.textContent.trim()).filter(Boolean);
+      return {
+        views: [...document.querySelectorAll('[data-shipping-map-view]')].map(node => node.dataset.shippingMapView),
+        renderer: view?.dataset.mapRenderer || '',
+        rendererVersion: view?.dataset.mapRendererVersion || '',
+        routeCount: Number(view?.dataset.mapRouteCount || 0),
+        cameraModes: [...view?.querySelectorAll('.visualization-mode-button') || []].map(node => node.textContent.trim()),
+        labels,
+        worker: view?.dataset.maplibreWorker || '',
+        text: document.querySelector('[data-shipping-map-system]')?.innerText || ''
+      };
+    })()`);
+    assert.deepEqual(shippingVisual.views, ['continuous']);
+    assert.equal(shippingVisual.renderer, 'maplibre-gl-js');
+    assert.equal(shippingVisual.rendererVersion, '6.11.2');
+    assert(shippingVisual.routeCount >= 4, 'supported oil/shipping route geometry is not rendered in the MapLibre proof');
+    assert.deepEqual(shippingVisual.cameraModes, ['THEATER', 'GULF', 'HORMUZ']);
+    assert(shippingVisual.labels.length > 0, 'continuous map lacks progressive geographic or route labels');
+    assert(/\/assets\/releases\/maplibre-gl-worker\.[a-f0-9]{64}\.js$/.test(new URL(shippingVisual.worker).pathname), 'MapLibre worker is not same-origin content-addressed');
     assert.match(shippingVisual.text, /\bschematic\b/i, 'Shipping presentation does not identify route geometry as schematic');
     assert.match(shippingVisual.text, /not[^.\n]{0,160}precise vessel tracks/i, 'Shipping presentation does not disclaim precise vessel tracks');
     assert.match(shippingVisual.text, /not[^.\n]{0,160}surveyed alignment/i, 'Shipping presentation does not disclaim surveyed alignment');
