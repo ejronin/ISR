@@ -314,6 +314,13 @@
     }
 
     [boundary,tempo,physical,effect].forEach(sectionNode=>{if(sectionNode)addClass(sectionNode,'guide-analysis-width');});
+
+    /* Reorder only whole top-level analytical objects; charts, maps and evidence-bearing records remain the same nodes. */
+    let campaignAnchor=summary;
+    [boundary,tempo,strikeMap,physical,attacks,effect,posture,developments].filter(Boolean).forEach(sectionNode=>{
+      campaignAnchor.after(sectionNode);
+      campaignAnchor=sectionNode;
+    });
     article.querySelectorAll('[data-reader-drilldown="event-constituents"] .section-note').forEach(n=>n.textContent='This is a count of recorded military events, not combat intensity or weapon quantity. Open a month to inspect the records behind the count.');
   }
 
