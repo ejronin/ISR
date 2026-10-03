@@ -316,7 +316,7 @@ async function route(cdp, hash, key) {
         text: normalize(card?.textContent),
         listItems: [...(card?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
         summaries: [...(card?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent)),
-        childOrder: [...(card?.children || [])].map(node => node.tagName + ':' + (node.className || '')),
+        childOrder: [...(card?.children || [])].filter(node => !node.classList.contains('guide-dossier-anchor')).map(node => node.tagName + ':' + (node.className || '')),
         visibleCards: [...document.querySelectorAll('.reader-ledger-chain-card')].filter(node => !node.hidden).length,
         sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
         breadcrumb: Boolean(document.querySelector('.dossier-breadcrumb'))
