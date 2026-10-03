@@ -111,7 +111,7 @@ assert.deepEqual(
 );
 assert.deepEqual(
   ia.pageSectionsFor('military.weapons').map(section => section.id),
-  ['counts-boundary', 'weapons-used', 'reported-totals', 'weapon-estimates', 'weapon-losses', 'aviation-cross-check', 'weapon-limits']
+  ['counts-boundary', 'weapons-used', 'reported-totals', 'weapon-estimates', 'loss-record-link', 'weapon-limits']
 );
 assert.deepEqual(
   ia.pageSectionsFor('military.losses').map(section => section.id),
