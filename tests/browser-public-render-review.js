@@ -256,7 +256,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
     await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); document.querySelector('.wol-network')?.scrollIntoView({ block: 'start', behavior: 'auto' }); true`);
     await sleep(180);
-    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-trace-0390.png', 1800);
+    await captureElement(cdp, '.wol-mobile-trace:not([hidden])', 'wol-actor-dossier-trace-0390.png', 1800);
 
     // Lie Ledger case dossier — same accepted case record, desktop/ultrawide/mobile.
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
