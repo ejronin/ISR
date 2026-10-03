@@ -186,26 +186,51 @@ async function captureViewport(cdp, filename) {
       }
     }
 
-    // Dedicated WOL reader-mode review.
+    // Dedicated WOL actor-dossier reader-mode review.
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
     await route(cdp, 'evidence.web_of_lies');
     await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
-    await cdp.eval(`(() => {
+    const wolActorId = await cdp.eval(`(() => {
       const picker = document.querySelector('.wol-node-picker');
-      const candidate = [...picker.options].find(option => option.value && option.textContent.includes('💩')) || [...picker.options].find(option => option.value);
-      if (candidate) { picker.value = candidate.value; picker.dispatchEvent(new Event('change', { bubbles: true })); }
+      return ([...picker.options].find(option => option.value && option.textContent.includes('💩')) || [...picker.options].find(option => option.value))?.value || '';
+    })()`);
+    assert(wolActorId, 'No WOL actor is available for dossier review');
+    await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: '__ACTOR__' }).replace('__ACTOR__', wolActorId))};true`);
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.web_of_lies' && document.querySelector('.public-page')?.dataset?.dossierSource === ${JSON.stringify(wolActorId)} || Boolean(document.querySelector('.wol-node-detail[data-guide-section="current-record"]'))`);
+    await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
+    await cdp.eval(`(() => {
       document.querySelector('[data-wol-mode="full"]')?.click();
       document.querySelector('.wol-network')?.scrollIntoView({ block: 'center', behavior: 'auto' });
       return true;
     })()`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-full-1440.png');
+    await captureViewport(cdp, 'wol-actor-dossier-full-1440.png');
     await cdp.eval(`document.querySelector('[data-wol-mode="direct"]')?.click(); true`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-direct-1440.png');
+    await captureViewport(cdp, 'wol-actor-dossier-direct-1440.png');
     await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); true`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-trace-1440.png');
+    await captureViewport(cdp, 'wol-actor-dossier-trace-1440.png');
+
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+    await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); document.querySelector('.wol-network')?.scrollIntoView({ block: 'start', behavior: 'auto' }); true`);
+    await sleep(180);
+    await captureViewport(cdp, 'wol-actor-dossier-trace-0390.png');
+
+    // Lie Ledger case dossier — same accepted case record, desktop/ultrawide/mobile.
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+    await route(cdp, 'evidence.information');
+    const lieCaseHref = await cdp.eval(`document.querySelector('.reader-case-link')?.getAttribute('href') || ''`);
+    assert(lieCaseHref, 'No Lie Ledger case dossier link is available for review');
+    await cdp.eval(`location.hash=${JSON.stringify(lieCaseHref)};scrollTo(0,0);true`);
+    await waitFor(cdp, `Boolean(document.querySelector('.guide-lie-ledger-dossier .guide-dossier-record'))`);
+    await captureViewport(cdp, 'lie-ledger-dossier-1440.png');
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
+    await sleep(120);
+    await captureViewport(cdp, 'lie-ledger-dossier-1920.png');
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+    await sleep(120);
+    await captureViewport(cdp, 'lie-ledger-dossier-0390.png');
 
     // Same-record MapLibre / Leaflet fallback comparison on Shipping.
     await route(cdp, 'hormuz.shipping');
@@ -239,9 +264,10 @@ async function captureViewport(cdp, filename) {
       map_focus_captures: mapFocusCaptures,
       polish_focus: POLISH_FOCUS.map(({ routeKey, label, selector }) => ({ routeKey, label, selector })),
       polish_focus_captures: polishFocusCaptures,
-      wol_mode_captures: ['wol-full-1440.png', 'wol-direct-1440.png', 'wol-trace-1440.png'],
+      wol_mode_captures: ['wol-actor-dossier-full-1440.png', 'wol-actor-dossier-direct-1440.png', 'wol-actor-dossier-trace-1440.png', 'wol-actor-dossier-trace-0390.png'],
+      lie_ledger_dossier_captures: ['lie-ledger-dossier-1920.png', 'lie-ledger-dossier-1440.png', 'lie-ledger-dossier-0390.png'],
       maplibre_leaflet_comparison: ['shipping-maplibre-1440.png', 'shipping-leaflet-fallback-1440.png'],
-      total_review_captures: captures + mapFocusCaptures + polishFocusCaptures + 5
+      total_review_captures: captures + mapFocusCaptures + polishFocusCaptures + 9
     };
     fs.writeFileSync(path.join(OUTPUT, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
     console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots + ${polishFocusCaptures} evidence-first focus screenshots`);
