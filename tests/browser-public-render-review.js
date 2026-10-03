@@ -92,8 +92,15 @@ async function waitFor(cdp, expression, timeout = 30000) {
 }
 
 async function route(cdp, routeKey) {
-  await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref(routeKey))};scrollTo(0,0);true`);
-  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`);
+  const hash = ia.routeHref(routeKey);
+  const ready = `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`;
+  await cdp.eval(`location.hash=${JSON.stringify(hash)};scrollTo(0,0);true`);
+  try {
+    await waitFor(cdp, ready, 10000);
+  } catch (_) {
+    await cdp.call('Page.navigate', { url: `${SITE}${hash}` });
+    await waitFor(cdp, ready, 30000);
+  }
   await sleep(120);
 }
 
