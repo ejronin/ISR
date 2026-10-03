@@ -94,6 +94,26 @@ assert.deepEqual(
   ['source-context', 'browse-sources']
 );
 assert.deepEqual(
+  ia.pageSectionsFor('start.actors').map(section => section.id),
+  ['actor-directory']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('timeline.chronology').map(section => section.id),
+  ['event-directory']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('evidence.information').map(section => section.id),
+  ['ledger-cases']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('evidence.web_of_lies').map(section => section.id),
+  ['wol-network', 'hall-of-shame', 'claim-trails']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('evidence.archive').map(section => section.id),
+  ['archived-editions']
+);
+assert.deepEqual(
   ia.pageSectionsFor({ key: 'evidence.web_of_lies', params: { dossier: 'actor', source: 'SOURCE-1' } }).map(section => section.id),
   ['current-record', 'findings', 'claim-activity', 'chronology', 'network-claim-trails']
 );
@@ -102,8 +122,8 @@ assert.deepEqual(
   ['claim', 'finding', 'evidence', 'development', 'related-material']
 );
 assert.deepEqual(
-  ia.pageSectionsFor({ key: 'evidence.web_of_lies', params: { source: 'SOURCE-1' } }),
-  [],
+  ia.pageSectionsFor({ key: 'evidence.web_of_lies', params: { source: 'SOURCE-1' } }).map(section => section.id),
+  ['wol-network', 'hall-of-shame', 'claim-trails'],
   'ordinary WOL source selection must remain the collection view rather than becoming a dossier'
 );
 for (const route of ia.ROUTES.values()) {

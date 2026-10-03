@@ -253,6 +253,15 @@
 
   function actors(article) {
     intro(article,'Start with the actors, not the data model: states and armed forces, non-state armed groups, leaders, mediators and international organizations appear here according to the role they actually play in the record.');
+    addClass(article,'guide-migrated-page guide-collection-page guide-actor-directory-page');
+    const controls=article.querySelector(':scope > .actor-controls');
+    if(controls){
+      addClass(controls,'guide-filter-rail');
+      controls.dataset.guideSection='actor-directory';
+      controls.id='actor-directory';
+    }
+    article.querySelectorAll(':scope > section .actor-directory').forEach(list=>addClass(list,'guide-dense-directory'));
+    article.querySelectorAll(':scope > section').forEach(sectionNode=>addClass(sectionNode,'guide-collection-group'));
     const n=article.querySelector('.scope-note'); if(n) collapse(n,'How actor identity is assigned');
   }
 
@@ -268,9 +277,15 @@
 
   function chronology(article) {
     intro(article,'Browse the complete chronology by date, actor, event type, evidence status and ordinary text search. Technical identifiers remain in provenance details rather than normal reader controls.');
+    addClass(article,'guide-migrated-page guide-collection-page guide-event-directory-page');
     const c=article.querySelector('.chronology-controls'); if(!c) return;
+    addClass(c,'guide-filter-rail');
+    c.dataset.guideSection='event-directory';
+    c.id='event-directory';
     c.querySelectorAll('label').forEach(l=>{ const i=l.querySelector('input'); if(/source id|record id/i.test(l.textContent)||/^SRC-/i.test(i?.placeholder||'')) l.remove(); });
     const q=c.querySelector('input[type="search"]'); if(q) q.placeholder='Event, location, actor, or text';
+    addClass(article.querySelector(':scope > .record-list'),'guide-dense-directory');
+    addClass(article.querySelector(':scope > .pager'),'guide-collection-pager');
   }
 
   function campaigns(article) {
@@ -578,8 +593,53 @@
     article.querySelector(':scope > .source-directory')?.classList.add('guide-dense-directory');
   }
 
-  function information(stage, article) {
+  function information(stage, article, route) {
     intro(article,'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
+    if(route?.params?.case) return;
+    addClass(article,'guide-migrated-page guide-collection-page guide-lie-ledger-collection');
+    const ledger=article.querySelector(':scope > .reader-lie-ledger');
+    if(ledger){
+      ledger.dataset.guideSection='ledger-cases';
+      ledger.id='ledger-cases';
+      addClass(ledger,'guide-collection-group');
+    }
+    addClass(article.querySelector('.reader-ledger-controls'),'guide-filter-rail');
+    article.querySelectorAll('.reader-ledger-chain-card').forEach(card=>addClass(card,'guide-collection-record'));
+  }
+
+  function webOfLiesCollection(article, route) {
+    if(route?.params?.dossier === 'actor') return;
+    addClass(article,'guide-migrated-page guide-collection-page guide-wol-collection');
+    const network=findSection(article,/^Web of Lies network$|^Explore the connection web$/i);
+    if(network){
+      network.dataset.guideSection='wol-network';
+      network.id='wol-network';
+      addClass(network,'guide-structural-panel');
+    }
+    const hall=findSection(article,/Hall of Shame|Bullshitter awardees/i);
+    if(hall){
+      hall.dataset.guideSection='hall-of-shame';
+      hall.id='hall-of-shame';
+      addClass(hall,'guide-collection-group');
+    }
+    const trails=findSection(article,/^Claim trails$/i);
+    if(trails){
+      trails.dataset.guideSection='claim-trails';
+      trails.id='claim-trails';
+      addClass(trails,'guide-collection-group');
+    }
+    article.querySelectorAll('.wol-hall-grid,.wol-family-list,.wol-source-events').forEach(list=>addClass(list,'guide-dense-directory'));
+  }
+
+  function archive(article) {
+    addClass(article,'guide-migrated-page guide-collection-page guide-archive-page');
+    const editions=findSection(article,/^Archived editions$/i);
+    if(editions){
+      editions.dataset.guideSection='archived-editions';
+      editions.id='archived-editions';
+      addClass(editions,'guide-collection-group');
+      addClass(editions.querySelector('.record-list'),'guide-dense-directory');
+    }
   }
 
   function finalizePublicProduct(stage, route, routeRuntime, doc) {
@@ -590,7 +650,7 @@
     if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
     if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
-    if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article); if(k==='evidence.sources')sourceLibrary(article);
+    if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
     connectMappedCards(article,k);
   }
 

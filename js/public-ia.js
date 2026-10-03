@@ -119,6 +119,12 @@
       { id: 'about', label: 'About', heading: 'About the record' },
       { id: 'unresolved', label: 'Unresolved', heading: 'What remains unresolved' }
     ]),
+    'start.actors': Object.freeze([
+      { id: 'actor-directory', label: 'Actor directory', heading: "Who's Involved" }
+    ]),
+    'timeline.chronology': Object.freeze([
+      { id: 'event-directory', label: 'Event directory', heading: 'All Events' }
+    ]),
     'military.campaigns': Object.freeze([
       { id: 'damage-effect', label: 'Damage vs effect', heading: 'Damage is not the same as effect' },
       { id: 'campaign-activity', label: 'Campaign activity', heading: 'Campaign activity' },
@@ -139,6 +145,17 @@
     'evidence.sources': Object.freeze([
       { id: 'source-context', label: 'Source context', heading: 'How source context works' },
       { id: 'browse-sources', label: 'Browse sources', heading: 'Source Library' }
+    ]),
+    'evidence.information': Object.freeze([
+      { id: 'ledger-cases', label: 'Cases', heading: 'Lie Ledger' }
+    ]),
+    'evidence.web_of_lies': Object.freeze([
+      { id: 'wol-network', label: 'Network', heading: 'Web of Lies network' },
+      { id: 'hall-of-shame', label: 'Hall of Shame', heading: 'Hall of Shame' },
+      { id: 'claim-trails', label: 'Claim trails', heading: 'Claim trails' }
+    ]),
+    'evidence.archive': Object.freeze([
+      { id: 'archived-editions', label: 'Archived editions', heading: 'Archived editions' }
     ])
   });
 
