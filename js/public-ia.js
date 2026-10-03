@@ -4175,6 +4175,10 @@ function enhanceShippingVisual(article, context) {
     ...recordArray(modelData(context.model, 'gate3.shipping')),
     ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))
   ];
+  const inHormuz = shippingRecords.filter(record => {
+    const point = pointFromRecord(record, context.services.locationResolver);
+    return point && point.lat >= 22.4 && point.lat <= 28.9 && point.lon >= 50.8 && point.lon <= 60.8;
+  });
   const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero');
   system.dataset.shippingMapSystem = 'continuous-maplibre';
   append(system, 'h2', '', 'From theater to Hormuz');
@@ -4195,6 +4199,13 @@ function enhanceShippingVisual(article, context) {
   });
   map.dataset.shippingMapView = 'continuous';
   system.append(map);
+  if (!inHormuz.length) {
+    system.append(createStateNotice(context, {
+      variant: 'no-geolocated-records',
+      message: 'This map provides geographic context. Current public shipping evidence in this view is primarily corridor- and reporting-based rather than represented by mapped commercial-vessel loss records.',
+      accounting: 'Mapped shipping or commercial-vessel loss records in this view: 0'
+    }));
+  }
   const oldMaps = Array.from(article.querySelectorAll(':scope > .context-map'));
   oldMaps.forEach(oldMap => {
     if (oldMap === map) return;
