@@ -2394,6 +2394,11 @@
       return roles.length ? `${name} · ${roles.join(' + ')}` : name;
     };
     const nodeLabel = node => [...nodeMarkers(node), nodeName(node)].filter(Boolean).join(' ');
+    const actorDossierRequested = context.route.params.dossier === 'actor';
+    const actorDossierNode = actorDossierRequested ? graphNodeById.get(context.route.params.source) : null;
+    if (actorDossierRequested && (!actorDossierNode || actorDossierNode.node_type !== 'BULLSHITTER')) {
+      throw new Error(`Requested Web of Lies actor dossier was not found: ${context.route.params.source || ''}`);
+    }
     const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
       const wrapper = append(host, tagName, className);
       const asset = nodeFlagAsset(node);
@@ -2806,6 +2811,23 @@
       amplificationEvidence.forEach(observation => appendAmplificationAwardCard(evidenceBlock, profile, observation));
       return evidence;
     };
+
+    if (actorDossierNode) {
+      frame.article.classList.add('guide-wol-dossier');
+      frame.article.dataset.dossierSource = actorDossierNode.node_id;
+      const header = frame.article.querySelector('.page-intro');
+      const breadcrumb = element(context.documentObject, 'nav', 'dossier-breadcrumb');
+      breadcrumb.setAttribute('aria-label', 'Breadcrumb');
+      const intelligence = append(breadcrumb, 'a', '', 'Intelligence');
+      intelligence.href = routeHref('evidence.claims');
+      append(breadcrumb, 'span', 'dossier-breadcrumb-separator', '›');
+      const parent = append(breadcrumb, 'a', '', 'Web of Lies');
+      parent.href = routeHref('evidence.web_of_lies');
+      append(breadcrumb, 'span', 'dossier-breadcrumb-separator', '›');
+      const current = append(breadcrumb, 'span', 'dossier-breadcrumb-current', nodeName(actorDossierNode));
+      current.setAttribute('aria-current', 'page');
+      header?.prepend(breadcrumb);
+    }
 
     const companionNav = append(frame.article, 'nav', 'forensic-companion-nav');
     companionNav.setAttribute('aria-label', 'Lie Ledger and Web of Lies');
@@ -3256,8 +3278,22 @@
     let renderAwardeeSelection = () => {};
 
     const selectNode = nodeId => {
+      const nextNode = nodeId && graphNodeById.has(nodeId) ? graphNodeById.get(nodeId) : null;
+      if (nextNode) {
+        const params = nextNode.node_type === 'BULLSHITTER'
+          ? { dossier: 'actor', source: nodeId }
+          : { source: nodeId };
+        const nextHref = routeHref('evidence.web_of_lies', params);
+        if (context.windowObject?.location?.hash !== nextHref) {
+          context.windowObject.location.hash = nextHref;
+          return;
+        }
+      } else if (context.route.params.dossier === 'actor' || context.route.params.source) {
+        context.windowObject.location.hash = routeHref('evidence.web_of_lies');
+        return;
+      }
       selectedEdgeId = '';
-      selectedNodeId = nodeId && graphNodeById.has(nodeId) ? nodeId : '';
+      selectedNodeId = nextNode ? nodeId : '';
       picker.value = selectedNodeId;
       renderDetail(selectedNodeId);
       focusGraph(selectedNodeId, '');
@@ -3277,6 +3313,19 @@
     reset.addEventListener('click', () => selectNode(''));
     renderDetail(selectedNodeId);
     updateResetVisibility();
+    if (actorDossierNode) {
+      workspace.prepend(detailSection);
+      detailSection.dataset.guideSection = 'current-record';
+      detailSection.id = 'current-record';
+      const findings = detailHost.querySelector('.wol-earned-titles');
+      const activity = detailHost.querySelector('.wol-bullshit-ledger');
+      const chronology = detailHost.querySelector('.wol-award-evidence-list');
+      if (findings) { findings.dataset.guideSection = 'findings'; findings.id = 'findings'; }
+      if (activity) { activity.dataset.guideSection = 'claim-activity'; activity.id = 'claim-activity'; }
+      if (chronology) { chronology.dataset.guideSection = 'chronology'; chronology.id = 'chronology'; }
+      graphColumn.dataset.guideSection = 'network-claim-trails';
+      graphColumn.id = 'network-claim-trails';
+    }
 
     const initializeGraphWhenMounted = attempt => {
       if (graphHost.isConnected) {
