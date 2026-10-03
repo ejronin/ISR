@@ -411,7 +411,10 @@ def validate_document_shell(root: Path, bootstrap_asset: dict[str, Any]) -> None
         f'crossorigin="anonymous" data-bootstrap-sha256="{bootstrap_asset["sha256"]}"'
     )
     if expected not in document:
-        raise ValueError("Document shell does not bind the exact content-addressed bootstrap asset")
+        raise ValueError(
+            "Document shell does not bind the exact content-addressed bootstrap asset; "
+            f"expected {expected}"
+        )
     if re.search(r'<script\b[^>]*\bsrc="js/public-app\.js', document, re.I):
         raise ValueError("Document shell must not execute the mutable application source directly")
     if re.search(r'<link\b[^>]*\bhref="css/public-shell\.css', document, re.I):
