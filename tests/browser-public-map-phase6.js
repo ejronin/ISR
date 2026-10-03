@@ -90,6 +90,12 @@ const PRESERVED_FACILITY_IDS = [
     assert.deepEqual(local.external, [], `current map made an external runtime request: ${JSON.stringify(local.external)}`);
 
     await setRoute(cdp, 'hormuz.shipping');
+    await waitFor(cdp, `(() => {
+      const view = document.querySelector('[data-component="MapView"], [data-component="MapLibreView"]');
+      return view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+    })()`);
     const shipping = await cdp.eval(`(() => {
       const button = document.querySelector('.map-route-button');
       const routeMap = button?.closest('[data-component="MapView"], [data-component="MapLibreView"]');
@@ -105,7 +111,7 @@ const PRESERVED_FACILITY_IDS = [
         equivalent: routeMap?.querySelector('[data-phase6-map-equivalent]')?.textContent || ''
       };
     })()`);
-    assert(shipping.routeButtons >= 1 && shipping.routes >= 1 && shipping.flow, 'stored maritime route did not render with its route controls and flow marker');
+    assert(shipping.routeButtons >= 1 && shipping.routes >= 1 && shipping.flow, `stored maritime route did not render with its route controls and flow marker: ${JSON.stringify(shipping)}`);
     assert.match(shipping.card, /Schematic reference route/i);
     assert.match(shipping.card, /not live (?:vessel )?tracking/i);
     assert.equal(shipping.drawer, true, 'route card does not use the shared evidence drawer');
