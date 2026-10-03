@@ -97,6 +97,12 @@ async function route(cdp, routeKey) {
   await sleep(120);
 }
 
+async function resetReviewPage(cdp) {
+  await cdp.call('Page.navigate', { url: `${SITE}#/start/overview` });
+  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === "start.overview"`);
+  await sleep(180);
+}
+
 async function captureViewport(cdp, filename) {
   const screenshot = await cdp.call('Page.captureScreenshot', { format: 'png', fromSurface: true, captureBeyondViewport: false });
   fs.writeFileSync(path.join(OUTPUT, filename), Buffer.from(screenshot.data, 'base64'));
@@ -127,6 +133,8 @@ async function captureViewport(cdp, filename) {
         captures += 1;
       }
     }
+
+    await resetReviewPage(cdp);
 
     let mapFocusCaptures = 0;
     for (const width of WIDTHS) {
@@ -172,6 +180,8 @@ async function captureViewport(cdp, filename) {
       }
     }
 
+    await resetReviewPage(cdp);
+
     let polishFocusCaptures = 0;
     for (const width of WIDTHS) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
@@ -185,6 +195,8 @@ async function captureViewport(cdp, filename) {
         polishFocusCaptures += 1;
       }
     }
+
+    await resetReviewPage(cdp);
 
     // Dedicated WOL actor-dossier reader-mode review.
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
