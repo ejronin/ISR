@@ -115,12 +115,23 @@
   }
 
   function routeSources(route) {
-    return unique([
+    const localSources = {};
+    const sourceIds = unique([
       ...asArray(route && route.source_ids),
-      ...asArray(route && route.sources),
       ...asArray(route && route.evidence_sources),
       route && route.source_id
     ].flatMap(value => typeof value === 'string' ? [value] : []));
+    asArray(route && route.sources).forEach((source, index) => {
+      if (typeof source === 'string') {
+        sourceIds.push(source);
+        return;
+      }
+      if (!Array.isArray(source) || !source[0]) return;
+      const sourceId = `${route.id || route.route_id || 'ROUTE'}-SOURCE-${index + 1}`;
+      sourceIds.push(sourceId);
+      localSources[sourceId] = { title: source[0], url: source[1] || null, publisher: 'Route evidence source' };
+    });
+    return { sourceIds: unique(sourceIds), localSources };
   }
 
   function recordTitle(record) {
@@ -375,8 +386,8 @@
     });
   }
 
-  function evidenceDrawer(context, item, ia) {
-    try { return ia.EvidenceDrawer.create(context, item); } catch (_) { return null; }
+  function evidenceDrawer(context, item, ia, options) {
+    try { return ia.EvidenceDrawer.create(context, item, options); } catch (_) { return null; }
   }
 
   function renderSelection(host, context, ia, item, type) {
@@ -404,8 +415,9 @@
           : 'Schematic · not exact rail alignment, live movement, or targeting-quality geometry.');
       const meta = append(article, 'p', 'record-status', [item.mode, item.authority_class].filter(Boolean).join(' · '));
       if (!meta.textContent) meta.remove();
-      const drawer = evidenceDrawer(context, { source_ids: routeSources(item) }, ia);
-      if (drawer && routeSources(item).length) article.append(drawer);
+      const sources = routeSources(item);
+      const drawer = evidenceDrawer(context, { source_ids: sources.sourceIds }, ia, { localSources: sources.localSources });
+      if (drawer && sources.sourceIds.length) article.append(drawer);
     } else {
       const drawer = evidenceDrawer(context, item, ia);
       if (drawer) article.append(drawer);
