@@ -20,7 +20,7 @@
 
   const VERSION = 'atlas-reader-registry-v1';
   const PRODUCT_VERSION = 'sep14-reader-convergence-v1';
-  const PROTECTED_LAYOUT_ROUTES = new Set(['start.overview','evidence.information','evidence.web_of_lies']);
+  const PROTECTED_LAYOUT_ROUTES = new Set(['evidence.information','evidence.web_of_lies']);
   const INTERNAL_TEXT = /(?<![\w./-])ROOK(?![\w./-])|\bPR\/CI\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure|\bcommit\s+SHA\b|\bmerge\s+SHA\b|\bpull request\b|\bGitHub Actions\b|\bworkflow run\b|\bcanonical material-loss records\b|\bcurrent qualification\b|\banalyst position\b|\bEvidence\s*\/\s*BDA\b/i;
 
   class ReaderRegistryError extends Error {
@@ -56,6 +56,7 @@
   function collapse(el, label) {
     if (!el || el.tagName === 'DETAILS') return el;
     const d = node(el.ownerDocument, 'details', 'secondary-context reader-method-detail'); add(d, 'summary', '', label);
+    if (el.id) d.id = el.id;
     Object.entries(el.dataset || {}).forEach(([key, value]) => { d.dataset[key] = value; });
     [...el.children].forEach(child => { if (!/^H[1-6]$/.test(child.tagName)) d.append(child); }); el.replaceWith(d); return d;
   }
@@ -458,9 +459,7 @@
   }
 
   function iranMessaging(stage, article) {
-    article.querySelector('h1')?.replaceChildren('Iran Messaging & Claims');
     intro(article,'This page follows Iranian rhetoric, threats, contradictions and narrative changes over time. It does not duplicate the objective scorecard or treat every changed phrase as a policy concession.');
-    stage.querySelectorAll('a').forEach(a=>{if(txt(a.textContent)==="How Iran's Position Changed")a.textContent='Iran Messaging & Claims';});
   }
 
   function claimChecks(article) {
@@ -468,9 +467,7 @@
   }
 
   function information(stage, article) {
-    article.querySelector('h1')?.replaceChildren('Claims, Falsehoods & Deception');
     intro(article,'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
-    stage.querySelectorAll('a').forEach(a=>{if(txt(a.textContent)==='Lie Ledger')a.textContent='Claims, Falsehoods & Deception';});
   }
 
   function finalizePublicProduct(stage, route, routeRuntime, doc) {
@@ -533,6 +530,59 @@
   const copyRouteState=(target,staged)=>['routeKey','pageOwner','primarySection','secondaryPage'].forEach(k=>{target[k]=staged[k];});
   function emitRouteFailure(win,state,error){state.readerError={code:error.code||'READER_FINALIZATION_FAILED'};root.console?.error?.('Atlas reader route finalization failed',error);if(win?.CustomEvent&&win.dispatchEvent)win.dispatchEvent(new win.CustomEvent('atlasreadererror',{detail:{code:state.readerError.code}}));}
 
+  function revealRailItem(link) {
+    const rail = link?.closest?.('nav');
+    if (!rail || !link) return;
+    const left = Number(link.offsetLeft);
+    const width = Number(link.offsetWidth);
+    const railWidth = Number(rail.clientWidth);
+    if (![left, width, railWidth].every(Number.isFinite) || railWidth <= 0) return;
+    const target = Math.max(0, left - Math.max(0, railWidth - width) / 2);
+    if (typeof rail.scrollTo === 'function') rail.scrollTo({ left: target, behavior: 'auto' });
+    else rail.scrollLeft = target;
+  }
+
+  function revealCurrentNavigation(app) {
+    app?.querySelectorAll?.('.primary-nav a[aria-current="page"], .context-route[aria-current="page"]').forEach(revealRailItem);
+  }
+
+  function activateGuideSections(app, route, win) {
+    const definitions = typeof base.pageSectionsFor === 'function' ? base.pageSectionsFor(route.key) : [];
+    if (!definitions.length) return () => {};
+    const links = [...app.querySelectorAll('[data-section-id]')];
+    const setActive = id => {
+      let activeLink = null;
+      links.forEach(link => {
+        const active = link.dataset.sectionId === id;
+        if (active) { link.setAttribute('aria-current', 'location'); activeLink = link; }
+        else if (link.getAttribute?.('aria-current') === 'location') link.removeAttribute?.('aria-current');
+      });
+      if (activeLink) revealRailItem(activeLink);
+    };
+    const requested = definitions.find(item => item.id === route.params?.section);
+    if (requested) {
+      setActive(requested.id);
+      const target = app.querySelector(`[data-guide-section="${requested.id}"]`);
+      target?.scrollIntoView?.({ block: 'start' });
+    }
+    if (typeof win?.IntersectionObserver !== 'function') return () => {};
+    let activeId = requested?.id || null;
+    const observer = new win.IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((left, right) => Math.abs(left.boundingClientRect?.top || 0) - Math.abs(right.boundingClientRect?.top || 0));
+      const id = visible[0]?.target?.dataset?.guideSection;
+      if (!id || id === activeId) return;
+      activeId = id;
+      setActive(id);
+      const params = { ...(route.params || {}), section: id };
+      win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.01] });
+    definitions.forEach(definition => {
+      const target = app.querySelector(`[data-guide-section="${definition.id}"]`);
+      if (target) observer.observe(target);
+    });
+    return () => observer.disconnect();
+  }
+
   function mount(options) {
     const settings=options||{},doc=settings.documentObject||root.document,win=settings.windowObject||root,rootElement=settings.rootElement,routeRuntime=settings.routeRuntime,state=settings.state||{};
     const baseRuntime=settings.baseRuntime||base,readerSupportRuntime=settings.readerSupportRuntime||readerSupport;
@@ -540,7 +590,7 @@
     invariant(baseRuntime&&typeof baseRuntime.parseRoute==='function'&&baseRuntime.AppShell&&baseRuntime.PublicNavigation&&baseRuntime.PAGE_OWNERS,'READER_BASE_SUPPORT_UNAVAILABLE','Reader render primitives are unavailable.');
     invariant(readerSupportRuntime&&typeof readerSupportRuntime.projectShell==='function'&&readerSupportRuntime.READER_SUPPORT_VERSION,'READER_SUPPORT_UNAVAILABLE','Reader projection support is unavailable.');
     rootElement.__atlasRouteController?.destroy?.();
-    let destroyed=false,previousRouteKey=null,currentServices=null;
+    let destroyed=false,previousRouteKey=null,currentServices=null,disposeSectionTracking=()=>{};
     const stageRoute=(focusHeading,propagateFailure=false)=>{
       invariant(!destroyed,'READER_REGISTRY_DESTROYED','Reader registry is no longer active.');
       const previousTitle=doc.title,previousVisible=Array.from(rootElement.children||[]).filter(n=>!n.dataset?.atlasReaderStaging),hasQualified=rootElement.dataset?.status==='ready'&&previousVisible.length>0,stagedState={...state},stage=createStagingHost(doc,rootElement,win);
@@ -550,18 +600,21 @@
         if(!route.canonical&&win.history&&win.location)win.history.replaceState(null,'',baseRuntime.routeHref(route.key,route.params));
         const shell=baseRuntime.AppShell.create(doc);stage.replaceChildren(shell.app);
         shell.primaryHost.replaceChildren(baseRuntime.PublicNavigation.renderPrimary(doc,route));
-        shell.mobileHost.replaceChildren(baseRuntime.PublicNavigation.renderMobile(doc,route));
-        shell.aside.replaceChildren(baseRuntime.PublicNavigation.renderSecondary(doc,route));
+        shell.contextHost.replaceChildren(baseRuntime.PublicNavigation.renderContext(doc,route));
+        const contents=baseRuntime.PublicNavigation.renderContentsRail(doc,route);
+        shell.contentsHost.replaceChildren(...(contents?[contents]:[]));
         const owner=baseRuntime.PAGE_OWNERS[route.owner];invariant(typeof owner==='function','READER_PAGE_OWNER_MISSING',`Reader page owner is unavailable: ${route.owner}`);
         const page=owner(context);shell.main.replaceChildren(page);
         shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the latest evidence date'}. `);
         const archive=add(shell.footer,'a','','Archive');archive.href=baseRuntime.routeHref('evidence.archive');
-        stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · Iran War Evidence Atlas`;
+        stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · The 2026 Iran War Guide`;
         readerSupportRuntime.projectShell(shell.app,context);
         finalizePublicProduct(stage,route,routeRuntime,doc);
         const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;finalized.app.dataset.routeKey=route.key;finalized.app.dataset.layoutScope=PROTECTED_LAYOUT_ROUTES.has(route.key)?'protected':'adaptive-wide';
-        previousVisible.forEach(quiesceMaps);rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
+        previousVisible.forEach(quiesceMaps);disposeSectionTracking();rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
         rootElement.className='atlas-ready';rootElement.dataset.status='ready';rootElement.setAttribute('aria-busy','false');copyRouteState(state,stagedState);delete state.readerError;
+        revealCurrentNavigation(finalized.app);
+        disposeSectionTracking=activateGuideSections(finalized.app,route,win);
         if(focusHeading&&previousRouteKey&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route.key;return route;
       } catch(error) {
         stage.remove();doc.title=previousTitle;
@@ -571,7 +624,7 @@
     };
     const onHashChange=()=>stageRoute(true,false);win?.addEventListener?.('hashchange',onHashChange);let initialRoute;
     try{initialRoute=stageRoute(false,false);}catch(error){win?.removeEventListener?.('hashchange',onHashChange);throw error;}
-    const controller=Object.freeze({render:()=>stageRoute(false,true),current:()=>baseRuntime.parseRoute(win.location&&win.location.hash),services:()=>currentServices,destroy:()=>{destroyed=true;win?.removeEventListener?.('hashchange',onHashChange);},initialRoute});
+    const controller=Object.freeze({render:()=>stageRoute(false,true),current:()=>baseRuntime.parseRoute(win.location&&win.location.hash),services:()=>currentServices,destroy:()=>{destroyed=true;disposeSectionTracking();win?.removeEventListener?.('hashchange',onHashChange);},initialRoute});
     rootElement.__atlasRouteController=controller;return controller;
   }
 

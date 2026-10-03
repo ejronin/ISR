@@ -175,7 +175,7 @@ async function route(cdp, hash, key) {
       metrics: document.querySelectorAll('[data-weapon-metric-id]').length,
       expenditures: document.querySelectorAll('[data-expenditure-id]').length,
       aviation: document.querySelectorAll('[data-aviation-id]').length,
-      lossCrosslink: [...document.querySelectorAll('a.inline-route-link')].some(node => node.getAttribute('href') === '#/military/losses'),
+      lossCrosslink: [...document.querySelectorAll('a.inline-route-link')].some(node => node.getAttribute('href') === '#/war/losses/'),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     assert.equal(weapons.durable, 0, 'Weapons duplicates the material-loss inventory instead of linking to its canonical reader view');

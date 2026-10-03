@@ -8,24 +8,22 @@ const ia = require('../js/public-ia.js');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current-state.json'), 'utf8'));
 
 const expectedPrimary = [
-  'Start Here',
-  'Timeline',
-  'War & Losses',
-  'Hormuz & Economy',
-  'Talks & Deals',
-  'Goals & Results',
-  'Claims & Evidence'
+  'Home',
+  'War',
+  'Themes',
+  'Diplomacy & Outcomes',
+  'Intelligence',
+  'Sources'
 ];
 assert.deepEqual(ia.PRIMARY_SECTIONS.map(section => section.label), expectedPrimary);
 
 const expectedSecondary = {
-  start: ['Overview', "Who's Involved"],
-  timeline: ['War Timeline', 'All Events'],
-  military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Images'],
-  hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
-  talks: ['Talks & Deals', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
-  objectives: ['Goals & Results', 'Position Changes', "How Iran's Position Changed"],
-  evidence: ['Claim Checks', 'Lie Ledger', 'Web of Lies', 'Sources', 'How We Check the Evidence', 'Archive']
+  home: ['Overview', "Who's Involved"],
+  war: ['Timeline', 'All Events', 'Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Images'],
+  themes: ['Hormuz', 'Shipping & Trade', 'Oil & Economic Effects'],
+  diplomacy: ['Overview', 'Current Hormuz Talks', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy', 'Goals & Results', 'Position Changes', "Iran's Position"],
+  intelligence: ['Claim Checks', 'Lie Ledger', 'Web of Lies'],
+  sources: ['Source Library', 'Methodology', 'Archive']
 };
 for (const [primary, labels] of Object.entries(expectedSecondary)) {
   assert.deepEqual(ia.routesForPrimary(primary).map(route => route.label), labels, `secondary navigation mismatch: ${primary}`);
@@ -34,6 +32,50 @@ for (const [primary, labels] of Object.entries(expectedSecondary)) {
 assert.equal(ia.ROUTES.size, 26);
 assert.equal(Object.keys(ia.PAGE_OWNERS).length, 26);
 assert.equal(new Set([...ia.ROUTES.values()].map(route => route.path)).size, 26);
+const expectedPaths = {
+  'start.overview': '/',
+  'start.actors': '/home/actors/',
+  'timeline.war': '/war/timeline/',
+  'timeline.chronology': '/war/events/',
+  'military.campaigns': '/war/campaigns/',
+  'military.facilities': '/war/facilities/',
+  'military.weapons': '/war/weapons/',
+  'military.losses': '/war/losses/',
+  'military.imagery': '/war/damage-images/',
+  'hormuz.overview': '/themes/hormuz/',
+  'hormuz.shipping': '/themes/shipping/',
+  'hormuz.economy': '/themes/economy/',
+  'hormuz.talks': '/diplomacy/hormuz/',
+  'talks.overview': '/diplomacy/overview/',
+  'talks.mou': '/diplomacy/june-mou/',
+  'talks.nuclear': '/diplomacy/nuclear/',
+  'talks.regional': '/diplomacy/regional/',
+  'objectives.outcomes': '/diplomacy/outcomes/',
+  'objectives.positions': '/diplomacy/positions/',
+  'objectives.iran': '/diplomacy/iran-position/',
+  'evidence.claims': '/intelligence/claims/',
+  'evidence.information': '/intelligence/lie-ledger/',
+  'evidence.web_of_lies': '/intelligence/wol/',
+  'evidence.sources': '/sources/',
+  'evidence.method': '/sources/methodology/',
+  'evidence.archive': '/sources/archive/'
+};
+assert(Object.keys(ia.ROUTE_ALIASES).length >= 26, 'full legacy alias set is incomplete');
+for (const [key, pathValue] of Object.entries(expectedPaths)) assert.equal(ia.ROUTES.get(key).path, pathValue, `logical path mismatch: ${key}`);
+for (const [legacyPath, key] of Object.entries(ia.ROUTE_ALIASES)) {
+  const parsed = ia.parseRoute(`#${legacyPath}?record=EV-1`);
+  assert.equal(parsed.key, key, `legacy alias failed: ${legacyPath}`);
+  assert.equal(parsed.params.record, 'EV-1', `legacy alias lost query state: ${legacyPath}`);
+  assert.equal(parsed.aliased, true, `legacy alias was not identified as an alias: ${legacyPath}`);
+}
+const unknownRoute = ia.parseRoute('#/retired/evidence/path?record=EV-404');
+assert.equal(unknownRoute.recognized, false, 'unknown route must be explicitly unrecognized');
+assert.equal(unknownRoute.key, null, 'unknown route must not silently become Home');
+assert.equal(unknownRoute.params.record, 'EV-404', 'unknown route diagnostics must preserve query state');
+assert.deepEqual(
+  ia.pageSectionsFor('start.overview').map(section => section.id),
+  ['current-state', 'conflict-opening', 'latest-record', 'about', 'unresolved']
+);
 for (const route of ia.ROUTES.values()) {
   const href = ia.routeHref(route.key, { record: 'EV-1' });
   const parsed = ia.parseRoute(href);
@@ -45,7 +87,7 @@ for (const route of ia.ROUTES.values()) {
   assert(route.dataKeys.every(key => !key.startsWith('legacy.')), `route maps legacy data: ${route.key}`);
   assert(route.related.every(key => ia.ROUTES.has(key)), `route has unresolved cross-link: ${route.key}`);
 }
-assert.equal(ia.parseRoute('#/not/a-route').key, 'start.overview');
+assert.equal(ia.parseRoute('#/not/a-route').key, null, 'unknown routes must fail closed instead of falling back to Home');
 assert(ia.validateRegistry(model));
 ia.ActorIdentity.configure(model);
 
@@ -167,4 +209,4 @@ assert.match(css, /:focus-visible/);
 assert.match(css, /\.atlas-app\[data-layout-scope="adaptive-wide"\]/, 'wide desktop layout must remain opt-in');
 assert.match(css, /@media \(min-width: 80rem\)/, 'wide desktop layout breakpoint is missing');
 
-console.log('public IA contract: PASS - 7 primary sections, 26 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');
+console.log('public IA contract: PASS - 6 approved Guide domains, 26 deterministic page owners, deterministic legacy aliases, preserved route data mappings, and Home section registry verified');

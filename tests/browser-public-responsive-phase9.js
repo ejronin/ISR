@@ -73,9 +73,9 @@ function assertRouteView(view, route, width) {
   assert.equal(view.routeKey, route.key, `route did not render: ${label}`);
   assert.equal(view.owner, route.owner, `wrong page owner: ${label}`);
   assertFinalReaderHeading(route, view.h1, view.publicProductVersion, `route must expose exactly one authoritative primary H1: ${label}`);
-  assert.equal(view.mobileNavigationVisible, true, `primary mobile navigation is unreachable: ${label}`);
-  assert(view.primaryLinks > 0, `primary mobile navigation contains no links: ${label}`);
-  assert.equal(view.primaryLinkFocusable, true, `primary mobile navigation link is not focusable: ${label}`);
+  assert.equal(view.mobileNavigationVisible, true, `always-visible mobile navigation is unreachable: ${label}`);
+  assert(view.primaryLinks > 0, `primary mobile rail contains no links: ${label}`);
+  assert.equal(view.primaryLinkFocusable, true, `primary mobile rail link is not focusable: ${label}`);
   assert.equal(view.mainReachable, true, `Skip to content cannot reach main content: ${label}`);
   if (view.controlCount) assert.equal(view.controlFocusable, true, `primary route control is not focusable: ${label}`);
   assert(view.pageScrollWidth <= view.pageWidth, `page-level horizontal overflow: ${label} (${view.pageScrollWidth} > ${view.pageWidth})`);
@@ -111,9 +111,9 @@ function assertRouteView(view, route, width) {
         await setRoute(cdp, route);
         const view = await cdp.eval(`(() => {
           const main = document.querySelector('main');
-          const navigation = document.querySelector('.mobile-navigation');
-          navigation.open = true;
-          const primaryLink = navigation.querySelector('.mobile-primary a');
+          const navigation = document.querySelector('.primary-nav');
+          const contextNavigation = document.querySelector('.context-nav');
+          const primaryLink = navigation.querySelector('a');
           primaryLink.focus();
           const primaryLinkFocusable = document.activeElement === primaryLink;
           const controls = [...main.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), summary, a[href]')]
@@ -135,8 +135,8 @@ function assertRouteView(view, route, width) {
             owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
             h1: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
             publicProductVersion: document.querySelector('.public-page')?.dataset.publicProduct || '',
-            mobileNavigationVisible: getComputedStyle(navigation).display !== 'none',
-            primaryLinks: navigation.querySelectorAll('.mobile-primary a').length,
+            mobileNavigationVisible: getComputedStyle(navigation).display !== 'none' && getComputedStyle(contextNavigation).display !== 'none',
+            primaryLinks: navigation.querySelectorAll('a').length,
             primaryLinkFocusable,
             mainReachable: document.activeElement === document.getElementById('main-content'),
             controlCount: controls.length,

@@ -52,11 +52,11 @@ for (const phrase of [
   'Four strategic transport corridors are shown'
 ]) assert(source.includes(phrase) || phrase === 'Four strategic transport corridors are shown' && source.includes('strategic transport corridor'), `missing final-polish public contract: ${phrase}`);
 
-assert(source.includes("now.dataset.currentStateSummary = 'four-domain'"), 'Start Here current-state summary is not explicitly four-domain');
-for (const domain of ['Military', 'Hormuz', 'Economy', 'Diplomacy']) assert(source.includes(`domain: '${domain}'`), `Start Here missing ${domain} orientation card`);
-assert(source.includes("const firstWar = context.model.chronology.find"), 'Start Here opening-war context is not derived from chronology');
-assert(source.includes("const diplomaticEvents = context.model.chronology.filter"), 'Start Here diplomacy context is not derived from chronology');
-assert(source.includes("const publicView = modelData(context.model, 'analysis.endgame_public_view')"), 'Start Here does not consume its neutral public evidence view');
+assert(source.includes("now.dataset.currentStateSummary = 'four-domain'"), 'Home current-state summary is not explicitly four-domain');
+for (const domain of ['Military', 'Hormuz', 'Economy', 'Diplomacy']) assert(source.includes(`domain: '${domain}'`), `Home missing ${domain} orientation card`);
+assert(source.includes("const firstWar = context.model.chronology.find"), 'Home opening-war context is not derived from chronology');
+assert(source.includes("const diplomaticEvents = context.model.chronology.filter"), 'Home diplomacy context is not derived from chronology');
+assert(source.includes("const publicView = modelData(context.model, 'analysis.endgame_public_view')"), 'Home does not consume its neutral public evidence view');
 assert(source.includes("wartime.dataset.agreementGroup = 'wartime'"), 'wartime agreements group is absent');
 const diplomacyPageSource = source.slice(source.indexOf('function DiplomacyPage'), source.indexOf('function MouPage'));
 assert(!diplomacyPageSource.includes("'analysis.endgame_public_view'"), 'Talks overview reaches outside its mapped agreements/diplomacy evidence contract');
