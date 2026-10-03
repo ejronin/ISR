@@ -473,10 +473,16 @@
     });
   }
 
-  function createLegend(section) {
-    const legend = append(section, 'div', 'visualization-legend');
+  function createLegend(section, routes) {
+    const legend = append(section, 'div', 'visualization-legend map-legend');
     legend.setAttribute('aria-label', 'Map legend');
-    [['◆', 'Military / strike'], ['●', 'Shipping / maritime'], ['■', 'Facility / loss'], ['━', 'Accepted route']].forEach(([mark, label]) => {
+    const entries = [['◆', 'Military / strike'], ['●', 'Shipping / maritime'], ['■', 'Facility / loss']];
+    const modes = new Set(asArray(routes).map(route => String(route.mode || '').toLowerCase()));
+    if (modes.has('maritime')) entries.push(['━', 'Maritime · schematic']);
+    if (modes.has('pipeline')) entries.push(['┄', 'Pipeline · schematic']);
+    if (modes.has('rail')) entries.push(['┈', 'Rail · schematic']);
+    if (!modes.size) entries.push(['━', 'Accepted route']);
+    entries.forEach(([mark, label]) => {
       const item = append(legend, 'span', 'visualization-legend-item');
       append(item, 'b', '', mark); append(item, 'span', '', label);
     });
@@ -534,10 +540,9 @@
     const selection = append(shell, 'aside', 'visualization-selection-rail map-selection-card');
     selection.hidden = true;
     selection.setAttribute('aria-live', 'polite');
-    createLegend(section);
-
     const records = asArray(options && options.records);
     const routes = asArray(options && options.routes);
+    createLegend(section, routes);
     const recordIndexByKey = new Map();
     records.forEach((record, index) => recordKeys(record).forEach(key => recordIndexByKey.set(key, index)));
     let focusRecordByIndex = null;
@@ -560,7 +565,9 @@
     const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
     const fallbackLatLon = options && (options.viewportOverride || options.fallbackViewport) || [[8, 28], [42, 70]];
     const theaterBounds = derivedBounds(points, routeData, ia, fallbackLatLon);
-    section.dataset.mapBounds = JSON.stringify(theaterBounds);
+    const publicBounds = [[theaterBounds[0][1], theaterBounds[0][0]], [theaterBounds[1][1], theaterBounds[1][0]]];
+    section.dataset.mapExtentSource = points.features.length || routeData.collection.features.length ? 'visible-records' : 'deterministic-fallback';
+    section.dataset.mapBounds = JSON.stringify(publicBounds);
     section.dataset.mapRouteModes = unique(routes.map(route => String(route.mode || '').toLowerCase())).sort().join(',');
     section.dataset.mapRouteCount = String(routeData.collection.features.length);
     section.dataset.mapPointCount = String(points.features.length);
