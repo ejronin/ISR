@@ -341,7 +341,7 @@ async function route(cdp, hash, key) {
     assert(sourceLibrary.ids.length > 0 && sourceLibrary.ids.every(Boolean), 'Source Library facelift lost source identities');
     assert.equal(new Set(sourceLibrary.ids).size, sourceLibrary.ids.length, 'Source Library facelift duplicated source records');
     assert(sourceLibrary.families.length > 0 && sourceLibrary.outlets > 0, 'Source Library facelift collapsed grouped source structure');
-    assert.match(sourceLibrary.count, /^\\d[\\d,]* of \\d[\\d,]* sources shown$/);
+    assert.match(sourceLibrary.count, /^\d[\d,]* of \d[\d,]* sources shown$/);
 
     await route(cdp, '#/intelligence/lie-ledger/', 'evidence.information');
     const ledgerCollectionRecord = await cdp.eval(`(() => {
