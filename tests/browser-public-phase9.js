@@ -343,7 +343,52 @@ async function route(cdp, hash, key) {
     assert(sourceLibrary.families.length > 0 && sourceLibrary.outlets > 0, 'Source Library facelift collapsed grouped source structure');
     assert.match(sourceLibrary.count, /^\d[\d,]* of \d[\d,]* sources shown$/);
 
+    await route(cdp, ia.routeHref('start.actors'), 'start.actors');
+    const actorCollection = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-actor-directory-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      ids: [...document.querySelectorAll('[data-actor-id]')].map(node => node.dataset.actorId),
+      count: document.querySelector('.actor-controls .filter-result-count')?.textContent.trim() || ''
+    }))()`);
+    assert.equal(actorCollection.migrated, true, 'actor directory did not receive Collection / Index presentation');
+    assert.deepEqual(actorCollection.sections, ['actor-directory']);
+    assert(actorCollection.ids.length > 0 && actorCollection.ids.every(Boolean), 'actor directory lost actor identities');
+    assert.equal(new Set(actorCollection.ids).size, actorCollection.ids.length, 'actor directory duplicated actor identities during facelift');
+    assert.match(actorCollection.count, /^\d[\d,]* of \d[\d,]* actor identities shown$/);
+
+    await route(cdp, ia.routeHref('timeline.chronology'), 'timeline.chronology');
+    const eventCollection = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-event-directory-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      ids: [...document.querySelectorAll('.chronology-card[data-event-id]')].map(node => node.dataset.eventId),
+      hasPager: Boolean(document.querySelector('.pager'))
+    }))()`);
+    assert.equal(eventCollection.migrated, true, 'All Events did not receive Collection / Index presentation');
+    assert.deepEqual(eventCollection.sections, ['event-directory']);
+    assert(eventCollection.ids.length > 0 && eventCollection.ids.every(Boolean), 'All Events lost visible chronology records');
+    assert.equal(new Set(eventCollection.ids).size, eventCollection.ids.length, 'All Events duplicated visible chronology records');
+    assert.equal(eventCollection.hasPager, true, 'All Events pagination was removed by facelift');
+
+    await route(cdp, ia.routeHref('evidence.archive'), 'evidence.archive');
+    const archiveCollection = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-archive-page') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      records: document.querySelectorAll('#archived-editions .record-card').length
+    }))()`);
+    assert.equal(archiveCollection.migrated, true, 'Archive did not receive Collection / Index presentation');
+    assert.deepEqual(archiveCollection.sections, ['archived-editions']);
+    assert(archiveCollection.records > 0, 'Archive facelift removed archived edition records');
+
     await route(cdp, '#/intelligence/lie-ledger/', 'evidence.information');
+    const ledgerCollectionShell = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-lie-ledger-collection') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+      cards: document.querySelectorAll('.reader-ledger-chain-card').length
+    }))()`);
+    assert.equal(ledgerCollectionShell.migrated, true, 'Lie Ledger collection did not receive Collection / Index presentation');
+    assert.deepEqual(ledgerCollectionShell.sections, ['ledger-cases']);
+    assert.equal(ledgerCollectionShell.cards, expectedReaderChains, 'Lie Ledger collection facelift changed chain membership');
+
     const ledgerCollectionRecord = await cdp.eval(`(() => {
       const card = document.querySelector('.reader-ledger-chain-card[data-reader-case-id]');
       if (!card) return null;
@@ -387,6 +432,15 @@ async function route(cdp, hash, key) {
     assert.equal(ledgerDossierRecord.breadcrumb, true, 'Lie Ledger dossier breadcrumb missing');
 
     await route(cdp, '#/intelligence/wol/', 'evidence.web_of_lies');
+    const wolCollectionShell = await cdp.eval(`(() => ({
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-wol-collection') || false,
+      dossier: document.querySelector('.public-page')?.classList.contains('guide-wol-dossier') || false,
+      sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection)
+    }))()`);
+    assert.equal(wolCollectionShell.migrated, true, 'Web of Lies collection did not receive Collection / Index presentation');
+    assert.equal(wolCollectionShell.dossier, false, 'Web of Lies collection was incorrectly promoted to actor dossier');
+    assert.deepEqual(wolCollectionShell.sections, ['wol-network', 'hall-of-shame', 'claim-trails']);
+
     const wolActorId = await cdp.eval(`document.querySelector('.wol-awardee-button[data-source-id]')?.dataset.sourceId || ''`);
     assert(wolActorId, 'Web of Lies has no parameterizable awardee actor');
     await route(cdp, ia.routeHref('evidence.web_of_lies', { source: wolActorId }), 'evidence.web_of_lies');
