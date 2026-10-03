@@ -48,7 +48,7 @@ for (const phrase of [
   'Current diplomatic state',
   'Wartime agreements and negotiations',
   'Earlier agreements relevant to the war',
-  'Mapped shipping or commercial-vessel loss records in this view: 0',
+  'One continuous map connects the wider transport network to the Gulf and the Strait without changing the accepted route geometry.',
   'Four strategic transport corridors are shown'
 ]) assert(source.includes(phrase) || phrase === 'Four strategic transport corridors are shown' && source.includes('strategic transport corridor'), `missing final-polish public contract: ${phrase}`);
 
