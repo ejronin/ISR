@@ -25,6 +25,10 @@
       "path": "js/public-ia.js"
     },
     {
+      "role": "visualization_runtime",
+      "path": "js/public-visualization-renderer.js"
+    },
+    {
       "role": "reader_support",
       "path": "src/public-reader-layer.js"
     },
@@ -93,6 +97,11 @@
       "service": "non-authoritative base rendering library",
       "path": "js/public-ia.js",
       "symbol": "PAGE_OWNERS"
+    },
+    {
+      "service": "representative visualization renderer and MapLibre capability loader",
+      "path": "js/public-visualization-renderer.js",
+      "symbol": "function create"
     },
     {
       "service": "non-authoritative reader support module module",
