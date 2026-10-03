@@ -291,6 +291,58 @@ async function route(cdp, hash, key) {
     assert.match(filteredLedger.count, /^\d+ of \d+ chains shown$/);
 
     await route(cdp, '#/intelligence/claims/', 'evidence.claims');
+    const claimChecks = await cdp.eval(`(() => {
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      const cases = [...document.querySelectorAll('.claim-case')];
+      return {
+        migrated: document.querySelector('.public-page')?.classList.contains('guide-forensics-page') || false,
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        records: cases.map(section => ({
+          title: normalize(section.querySelector(':scope > h2')?.textContent),
+          claimant: normalize(section.querySelector('.claim-finding .card-kicker')?.textContent),
+          verdict: normalize(section.querySelector('.claim-finding strong')?.textContent),
+          outcome: normalize(section.querySelector('.claim-finding p:last-child')?.textContent),
+          unresolved: [...section.querySelectorAll('.unresolved-box li')].map(node => normalize(node.textContent)),
+          supporting: [...section.querySelectorAll('.support-column li')].map(node => normalize(node.textContent)),
+          contrary: [...section.querySelectorAll('.contrary-column li')].map(node => normalize(node.textContent))
+        }))
+      };
+    })()`);
+    const expectedClaims = model.datasets['current.claims'].payload.claims;
+    assert.equal(claimChecks.migrated, true);
+    assert.deepEqual(claimChecks.sections, ['claim-checks']);
+    assert.equal(claimChecks.records.length, expectedClaims.length, 'Claim Checks facelift changed claim membership');
+    expectedClaims.forEach((claim, index) => {
+      const actual = claimChecks.records[index];
+      const supporting = Array.isArray(claim.evidence_supporting_claim) && claim.evidence_supporting_claim.length
+        ? claim.evidence_supporting_claim.map(value => String(value).trim())
+        : ['No supporting evidence is recorded in this case file.'];
+      assert.equal(actual.title, String(claim.claim || '').trim(), `Claim Checks title/order changed at record ${index + 1}`);
+      assert.equal(actual.outcome, String(claim.what_actually_happened || '').trim(), `Claim Checks outcome changed at record ${index + 1}`);
+      assert.deepEqual(actual.unresolved, (claim.unresolved_questions || []).map(value => String(value).trim()), `Claim Checks unresolved list changed at record ${index + 1}`);
+      assert.deepEqual(actual.supporting, supporting, `Claim Checks supporting-evidence list changed at record ${index + 1}`);
+      assert.deepEqual(actual.contrary, (claim.counterevidence || []).map(value => String(value).trim()), `Claim Checks contrary-evidence list changed at record ${index + 1}`);
+    });
+
+    await route(cdp, '#/sources/', 'evidence.sources');
+    const sourceLibrary = await cdp.eval(`(() => {
+      const cards = [...document.querySelectorAll('.source-card')];
+      return {
+        migrated: document.querySelector('.public-page')?.classList.contains('guide-collection-page') || false,
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        ids: cards.map(card => card.dataset.sourceId),
+        families: [...document.querySelectorAll('.source-family > h2')].map(node => node.textContent.trim()),
+        outlets: document.querySelectorAll('.source-outlet').length,
+        count: document.querySelector('.source-controls .filter-result-count')?.textContent.trim() || ''
+      };
+    })()`);
+    assert.equal(sourceLibrary.migrated, true);
+    assert.deepEqual(sourceLibrary.sections, ['source-context', 'browse-sources']);
+    assert(sourceLibrary.ids.length > 0 && sourceLibrary.ids.every(Boolean), 'Source Library facelift lost source identities');
+    assert.equal(new Set(sourceLibrary.ids).size, sourceLibrary.ids.length, 'Source Library facelift duplicated source records');
+    assert(sourceLibrary.families.length > 0 && sourceLibrary.outlets > 0, 'Source Library facelift collapsed grouped source structure');
+    assert.match(sourceLibrary.count, /^\d[\d,]* of \d[\d,]* sources shown$/);
+
     await route(cdp, '#/intelligence/lie-ledger/', 'evidence.information');
     const ledgerCollectionRecord = await cdp.eval(`(() => {
       const card = document.querySelector('.reader-ledger-chain-card[data-reader-case-id]');

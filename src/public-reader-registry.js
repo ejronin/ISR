@@ -549,6 +549,33 @@
 
   function claimChecks(article) {
     article.querySelectorAll('.unresolved-box').forEach(b=>{if(![...b.querySelectorAll('li')].some(li=>txt(li.textContent)))b.remove();});
+    article.classList.add('guide-claim-checks-page','guide-forensics-page');
+    const cases=[...article.querySelectorAll(':scope > .claim-case')];
+    cases.forEach((section,index)=>{
+      section.classList.add('guide-forensic-record');
+      section.dataset.guideRecord=String(index+1).padStart(2,'0');
+    });
+    if(cases[0]){
+      cases[0].dataset.guideSection='claim-checks';
+      cases[0].id='claim-checks';
+    }
+  }
+
+  function sourceLibrary(article) {
+    article.classList.add('guide-source-library-page','guide-collection-page');
+    const sourceContext=findSection(article,/^How source context works$/i);
+    if(sourceContext){
+      sourceContext.classList.add('guide-source-context');
+      sourceContext.dataset.guideSection='source-context';
+      sourceContext.id='source-context';
+    }
+    const controls=article.querySelector(':scope > .source-controls');
+    if(controls){
+      controls.classList.add('guide-filter-rail');
+      controls.dataset.guideSection='browse-sources';
+      controls.id='browse-sources';
+    }
+    article.querySelector(':scope > .source-directory')?.classList.add('guide-dense-directory');
   }
 
   function information(stage, article) {
@@ -563,7 +590,7 @@
     if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
     if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
-    if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article);
+    if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article); if(k==='evidence.sources')sourceLibrary(article);
     connectMappedCards(article,k);
   }
 

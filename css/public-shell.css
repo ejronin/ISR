@@ -3170,3 +3170,208 @@ tbody tr:last-child td { border-bottom: 0; }
     min-height: 21rem;
   }
 }
+
+
+/* Guide tranche 4 — Collection / Index and Evidence / Forensics archetypes. */
+.guide-collection-page,
+.guide-forensics-page {
+  gap: 0;
+}
+
+/* Claim Checks: evidence carries the visual weight; containers recede. */
+.guide-claim-checks-page > .claim-case {
+  position: relative;
+  max-width: var(--analysis-width);
+  margin: 0;
+  padding: var(--space-8) 0;
+  border: 0;
+  border-top: 1px solid var(--border-divider);
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-claim-checks-page > .claim-case > h2 {
+  max-width: var(--reading-width);
+  margin: 0 0 var(--space-5);
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+
+.guide-claim-checks-page .claim-finding {
+  max-width: var(--reading-width);
+  padding: .25rem 0 .25rem 1rem;
+  border: 0;
+  border-left: 4px solid var(--accent);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-claim-checks-page .claim-finding p {
+  margin-top: .45rem;
+}
+
+.guide-claim-checks-page .unresolved-box {
+  max-width: var(--reading-width);
+  padding: var(--space-5) 0 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0;
+}
+
+.guide-claim-checks-page .claim-reasoning {
+  max-width: var(--analysis-width);
+  margin: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-claim-checks-page .claim-reasoning > summary {
+  padding-inline: 0;
+}
+
+.guide-claim-checks-page .claim-reasoning > :not(summary) {
+  margin-inline: 0;
+}
+
+.guide-claim-checks-page .evidence-columns {
+  gap: var(--space-5);
+}
+
+.guide-claim-checks-page .evidence-column {
+  padding: var(--space-4) 0 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-claim-checks-page .support-column {
+  border-top-color: var(--good);
+}
+
+.guide-claim-checks-page .contrary-column {
+  border-top-color: var(--warn);
+}
+
+/* Source Library: dense grouped reference list, not nested card soup. */
+.guide-source-library-page .guide-source-context {
+  max-width: var(--reading-width);
+  margin: 0 0 var(--space-6);
+  padding: 0 0 var(--space-5);
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-source-library-page .guide-filter-rail {
+  grid-template-columns: minmax(16rem, 1fr) auto;
+  align-items: end;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4) 0;
+  border: 0;
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-source-library-page .guide-filter-rail .filter-result-count {
+  white-space: nowrap;
+}
+
+.guide-source-library-page .guide-dense-directory {
+  gap: 0;
+}
+
+.guide-source-library-page .source-family {
+  margin: 0;
+  padding: var(--space-7) 0;
+  border: 0;
+  border-top: 1px solid var(--border-divider);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-source-library-page .source-family > h2 {
+  margin: 0 0 .25rem;
+  font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+  letter-spacing: -.015em;
+}
+
+.guide-source-library-page .source-origin {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+}
+
+.guide-source-library-page .source-origin > h3 {
+  margin-bottom: var(--space-3);
+}
+
+.guide-source-library-page .source-outlet {
+  margin-top: 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-source-library-page .source-outlet:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.guide-source-library-page .source-outlet > summary {
+  padding: .7rem 0;
+}
+
+.guide-source-library-page .source-outlet-meta {
+  margin: 0 0 .65rem;
+}
+
+.guide-source-library-page .source-outlet .source-list {
+  gap: 0;
+  margin: 0 0 var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.guide-source-library-page .source-outlet .source-card {
+  padding: .8rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-source-library-page .source-outlet .source-card h4 {
+  margin: 0 0 .35rem;
+}
+
+.guide-source-library-page .source-context-row {
+  margin-top: .45rem;
+}
+
+@media (max-width: 48rem) {
+  .guide-claim-checks-page > .claim-case {
+    padding-block: var(--space-7);
+  }
+
+  .guide-source-library-page .guide-filter-rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-source-library-page .guide-filter-rail .filter-result-count {
+    white-space: normal;
+  }
+
+  .guide-source-library-page .source-family {
+    padding-block: var(--space-6);
+  }
+}
