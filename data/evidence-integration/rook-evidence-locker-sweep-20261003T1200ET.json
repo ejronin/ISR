@@ -1,0 +1,145 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-10-03T00:00:00-04:00",
+    "window_end": "2026-10-03T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-03T18:02:00-04:00",
+    "evidence_horizon_time": "2026-10-03T12:00:00-04:00"
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-HOUTHI-RIYADH-ARAMCO-CLAIM-20261003",
+      "event_type": "HOUTHI_CLAIMED_ATTACK_ON_SAUDI_ENERGY_INFRASTRUCTURE",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-03T07:48:00-04:00",
+      "actor": "Houthis / Saudi Arabia",
+      "summary": "The Houthis said they targeted an Aramco facility in Riyadh with ballistic missiles and drones. A Reuters witness saw a large plume of smoke and fire near an Aramco facility, but Saudi authorities and Aramco had not confirmed the Houthi attribution or damage at the time of reporting.",
+      "sources": [
+        "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-PORTUGAL-LAJES-LEGAL-PROBE-20261003",
+      "event_type": "PORTUGAL_PROBE_US_LAJES_BASE_USE_IRAN_WAR",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-03T09:10:00-04:00",
+      "actor": "Portugal",
+      "summary": "Portuguese prosecutors opened an investigation into the legality of the government's authorization for U.S. use of Lajes Air Base during the Iran war after an opposition complaint. Portugal's foreign minister defended the authorization as lawful.",
+      "sources": [
+        "https://www.reuters.com/world/portugal-prosecutors-probe-legality-us-use-lajes-base-iran-war-2026-10-03/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-FLYDUBAI-FZ1073-UAE-TERROR-CLASSIFICATION-20261003",
+      "updates_existing_ref": "FLYDUBAI_FZ1073_SECURITY_INCIDENT_20260930",
+      "relationship": "UAE_OFFICIAL_CLASSIFICATION_MOTIVE_AND_EXTERNAL_DIRECTION_STILL_OPEN",
+      "summary": "The UAE prosecutor general said FZ1073's co-pilot attempted a terrorist attack, attacked the captain with a crash axe and tried to take control of the aircraft. The suspect was identified in Reuters reporting as Omani. The UAE-led investigation into motive and any outside direction remained open; no Iran or Houthi organizational connection had been established.",
+      "sources": [
+        "https://www.reuters.com/business/aerospace-defense/flydubai-co-pilot-attacked-pilot-with-axe-attempted-terrorist-attack-uae-says-2026-10-03/"
+      ]
+    },
+    {
+      "update_id": "UPD-RAF-FAIRFORD-BAIL-20261003",
+      "updates_existing_ref": "RAF-FAIRFORD-ARRESTS-20260927",
+      "relationship": "ADDITIONAL_ARREST_RELEASED_ON_BAIL_INVESTIGATION_CONTINUES",
+      "summary": "British counter-terrorism police said a 25-year-old dual UK-Iranian national arrested in the Fairford investigation was released on police bail. Searches at two London properties concluded, while the investigation into possible foreign-state involvement continued. Iran continued to deny involvement.",
+      "sources": [
+        "https://www.reuters.com/world/uk/man-arrested-fairford-air-base-investigation-released-bail-2026-10-03/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLAIM-HOUTHI-RIYADH-ARAMCO-20261003",
+      "actor": "Houthis",
+      "claim": "The Houthis said they struck an Aramco facility in Riyadh with ballistic missiles and drones.",
+      "status": "PARTIALLY_CORROBORATED_FIRE_SMOKE_OBSERVED_ATTRIBUTION_AND_DAMAGE_NOT_CONFIRMED",
+      "sources": [
+        "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-RIYADH-ARAMCO-ATTACK-RISK-20261003",
+      "summary": "A fire and smoke plume near an Aramco facility in Riyadh coincided with a Houthi claim of a missile-and-drone attack, adding renewed risk to Saudi energy infrastructure. Attribution and damage remained unconfirmed by Saudi authorities at the sweep cutoff.",
+      "sources": [
+        "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "UAE_PRIMARY_LEGAL",
+      "addition": "UAE prosecutor-general statement carried in Reuters reporting on FZ1073."
+    },
+    {
+      "source_class": "UK_COUNTERTERRORISM",
+      "addition": "British police Fairford bail/investigation update."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE FZ1073: UAE authorities now classify the cockpit takeover attempt as a terrorist attack; motive and any outside direction remain unresolved.",
+    "UPDATE RAF Fairford: an additional dual UK-Iranian suspect was released on bail; the foreign-state inquiry remains open and no final attribution has been established.",
+    "UPDATE Saudi-Houthi drawer with a Houthi claim against an Aramco facility in Riyadh plus independent observation of nearby fire and smoke; attribution and damage remain unconfirmed.",
+    "ADD Portugal legal review of U.S. use of Lajes Air Base during the Iran war.",
+    "NO MATERIAL CHANGE to a final U.S.-Iran/Hormuz settlement, IAEA implementation, Lebanon/Hezbollah disposition, or independently established China/Russia material support."
+  ],
+  "unresolved_questions": [
+    "What caused the fire near the Riyadh Aramco facility, and what damage occurred?",
+    "Will the Fairford investigation establish an evidentiary link to Iranian state direction?",
+    "Will the FZ1073 investigation establish motive, network support or outside direction?",
+    "Will Portugal's Lajes inquiry alter U.S. access or remain a domestic legal dispute?"
+  ],
+  "coverage": {
+    "material_results": [
+      "FZ1073 UAE terrorist-attack classification",
+      "RAF Fairford bail/investigation update",
+      "Houthi claim against Riyadh Aramco facility",
+      "Portugal Lajes legal probe"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz agreement",
+      "No qualified new IAEA implementation event",
+      "No final RAF Fairford attribution",
+      "No established Iran/Houthi link to FZ1073",
+      "No material Lebanon/Hezbollah disposition change identified"
+    ],
+    "actor_source_families_checked": [
+      "Iran",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Syria-related actors",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy and commodity markets",
+      "commercial shipping reporting",
+      "human-impact agencies",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary commercial-data terminal access."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
