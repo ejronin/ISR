@@ -1,0 +1,140 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-10-02T12:00:00-04:00",
+    "window_end": "2026-10-03T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-03T18:02:00-04:00",
+    "evidence_horizon_time": "2026-10-03T00:00:00-04:00"
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-SAUDI-HOUTHI-OFFENSIVE-PLANNING-20261002",
+      "event_type": "REPORTED_SAUDI_BACKED_YEMEN_OFFENSIVE_PLANNING",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T14:13:00-04:00",
+      "actor": "Saudi Arabia / Yemen internationally recognized government",
+      "summary": "Reuters reported that Saudi Arabia was planning a Yemeni-led offensive against the Houthis, with options ranging from a focused coastal push around Bab el-Mandeb to broader synchronized operations. Sources said Saudi air support and U.S. intelligence were expected, while no launch date had been fixed.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/saudis-plan-assault-houthis-break-red-sea-chokehold-2026-10-02/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-OMAN-TANKER-PROJECTILE-20261002",
+      "event_type": "MARITIME_PROJECTILE_INCIDENT_OFF_OMAN",
+      "occurrence_time": "2026-10-02",
+      "public_available_time": "2026-10-02T19:31:00-04:00",
+      "actor": "Unknown",
+      "summary": "UKMTO said the master of a crude oil tanker reported the vessel was struck by an unknown projectile about four nautical miles east of Oman. All crew were reported safe and no environmental impact was reported; attacker and weapon type were unresolved.",
+      "sources": [
+        "https://www.reuters.com/business/energy/crude-oil-tanker-struck-by-unknown-projectile-off-oman-ukmto-says-2026-10-02/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-GAZA-STRIKE-FIVE-KILLED-20261003",
+      "event_type": "GAZA_ISRAELI_AIRSTRIKE_CASUALTIES",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-02T19:50:00-04:00",
+      "actor": "Israel / Gaza",
+      "summary": "Gaza health and civil-defence officials said an Israeli strike on a Gaza City apartment building killed at least five Palestinians, including four women. Israel separately said it carried out an overnight strike intended to kill Hamas political official Ali al-Amoudi, but it was not immediately clear whether that was the same strike.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israeli-strike-kills-four-people-gaza-medics-say-2026-10-02/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-SAUDI-HOUTHI-BAB-EL-MANDEB-20261002",
+      "updates_existing_ref": "SAUDI_HOUTHI_RED_SEA_CONFLICT",
+      "relationship": "MILITARY_COUNTEROFFENSIVE_PLANNING_REPORTED",
+      "summary": "Saudi policy moved beyond defensive response toward reported planning for a ground offensive led by Yemeni forces to reverse Houthi territorial gains around Bab el-Mandeb. Timing and final scope remained undecided.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/saudis-plan-assault-houthis-break-red-sea-chokehold-2026-10-02/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLAIM-SAUDI-OFFENSIVE-PLANS-20261002",
+      "actor": "Regional and Western officials speaking to Reuters",
+      "claim": "Saudi Arabia is preparing a Yemeni-led offensive against Houthi-held territory with Saudi air support.",
+      "status": "MULTISOURCE_REUTERS_REPORTING_PLANS_NOT_YET_EXECUTED",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/saudis-plan-assault-houthis-break-red-sea-chokehold-2026-10-02/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-OMAN-TANKER-PROJECTILE-RISK-20261002",
+      "summary": "A new projectile strike on a tanker just east of Oman reinforced continuing physical risk around Gulf shipping despite improving export volumes.",
+      "sources": [
+        "https://www.reuters.com/business/energy/crude-oil-tanker-struck-by-unknown-projectile-off-oman-ukmto-says-2026-10-02/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "MARITIME_AUTHORITY",
+      "addition": "UKMTO report of an Oct. 2 tanker projectile incident east of Oman."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "UPDATE Yemen/Houthi drawer: Saudi Arabia is now reported to be planning a Yemeni-led counteroffensive aimed in part at Bab el-Mandeb.",
+    "UPDATE maritime-risk drawer with a new tanker projectile incident east of Oman; attribution remains unresolved.",
+    "UPDATE Gaza/Hamas drawer with a new Gaza City strike and separate Israeli targeting claim, preserving uncertainty over whether they refer to the same strike.",
+    "NO MATERIAL CHANGE to a final U.S.-Iran/Hormuz agreement, IAEA implementation, FZ1073 motive/external direction, RAF Fairford final attribution, or Lebanon/Hezbollah disposition."
+  ],
+  "unresolved_questions": [
+    "Will Saudi Arabia authorize the reported Yemen offensive, and if so will it be limited to the coast or expand to multiple fronts?",
+    "Who fired the projectile that struck the tanker east of Oman?",
+    "Was Ali al-Amoudi present at the Gaza City strike that killed five people?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Saudi/Yemeni counteroffensive planning",
+      "Tanker projectile incident east of Oman",
+      "Gaza City strike"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz agreement",
+      "No qualified new IAEA implementation event",
+      "No final RAF Fairford attribution",
+      "No resolved FZ1073 external-direction attribution",
+      "No material Lebanon/Hezbollah disposition change identified"
+    ],
+    "actor_source_families_checked": [
+      "Iran",
+      "United States",
+      "Israel",
+      "Saudi Arabia/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen/Houthis",
+      "Lebanon/Hezbollah",
+      "Gaza/Hamas",
+      "Syria-related actors",
+      "Pakistan/Turkiye",
+      "China",
+      "Russia",
+      "Europe/EU",
+      "UN/IAEA/IMO",
+      "maritime and aviation authorities",
+      "sanctions authorities",
+      "energy and commodity markets",
+      "commercial shipping reporting",
+      "human-impact agencies",
+      "claims/corrections"
+    ],
+    "limitations": [
+      "No proprietary commercial-data terminal access."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
