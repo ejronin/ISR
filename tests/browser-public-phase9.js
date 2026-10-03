@@ -188,13 +188,17 @@ async function route(cdp, hash, key) {
       migrated: document.querySelector('.public-page')?.classList.contains('guide-weapons-page') || false,
       sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
       expenditureIds: [...document.querySelectorAll('[data-expenditure-id]')].map(node => node.dataset.expenditureId),
-      aviationIds: [...document.querySelectorAll('[data-aviation-id]')].map(node => node.dataset.aviationId)
+      duplicatedLossIds: [...document.querySelectorAll('[data-weapon-loss-id]')].map(node => node.dataset.weaponLossId),
+      aviationIds: [...document.querySelectorAll('[data-aviation-id]')].map(node => node.dataset.aviationId),
+      lossCrosslink: document.querySelector('#loss-record-link a.inline-route-link')?.getAttribute('href') || ''
     }))()`);
     assert.equal(weaponAudit.migrated, true, 'Weapons did not receive explanatory Guide presentation');
-    assert.deepEqual(weaponAudit.sections, ['counts-boundary', 'weapons-used', 'reported-totals', 'weapon-estimates', 'weapon-losses', 'aviation-cross-check', 'weapon-limits']);
+    assert.deepEqual(weaponAudit.sections, ['counts-boundary', 'weapons-used', 'reported-totals', 'weapon-estimates', 'loss-record-link', 'weapon-limits']);
     assert.equal(weaponAudit.expenditureIds.length, records('ledger.munitions_expenditure').length, 'weapons facelift changed expenditure-record membership');
     assert.equal(new Set(weaponAudit.expenditureIds).size, weaponAudit.expenditureIds.length, 'weapons facelift duplicated expenditure records');
-    assert.equal(weaponAudit.aviationIds.length, records('forensic.aviation_reconciliation').length, 'weapons facelift changed aviation cross-check membership');
+    assert.deepEqual(weaponAudit.duplicatedLossIds, [], 'Weapons facelift reintroduced duplicated material-loss records');
+    assert.deepEqual(weaponAudit.aviationIds, [], 'Weapons facelift reintroduced duplicated aviation incident records');
+    assert.equal(weaponAudit.lossCrosslink, '#/war/losses/', 'Weapons facelift lost the canonical Casualties & Losses cross-link');
 
     await route(cdp, '#/military/losses', 'military.losses');
     const losses = await cdp.eval(`(() => ({
