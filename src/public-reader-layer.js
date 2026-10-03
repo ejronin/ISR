@@ -37,6 +37,33 @@
     return node;
   }
 
+  function prependDossierBreadcrumb(article, parentRouteKey, parentLabel, currentLabel) {
+    const header = article.querySelector('.page-intro');
+    if (!header || header.querySelector('.dossier-breadcrumb')) return null;
+    const nav = el(article.ownerDocument, 'nav', 'dossier-breadcrumb');
+    nav.setAttribute('aria-label', 'Breadcrumb');
+    const intelligence = append(nav, 'a', '', 'Intelligence');
+    intelligence.href = base.routeHref('evidence.claims');
+    append(nav, 'span', 'dossier-breadcrumb-separator', '›');
+    const parent = append(nav, 'a', '', parentLabel);
+    parent.href = base.routeHref(parentRouteKey);
+    append(nav, 'span', 'dossier-breadcrumb-separator', '›');
+    const current = append(nav, 'span', 'dossier-breadcrumb-current', currentLabel);
+    current.setAttribute('aria-current', 'page');
+    header.prepend(nav);
+    return nav;
+  }
+
+  function insertGuideAnchor(beforeNode, id) {
+    if (!beforeNode || !beforeNode.parentNode) return null;
+    const anchor = el(beforeNode.ownerDocument, 'span', 'guide-dossier-anchor');
+    anchor.dataset.guideSection = id;
+    anchor.id = id;
+    anchor.setAttribute('aria-hidden', 'true');
+    beforeNode.parentNode.insertBefore(anchor, beforeNode);
+    return anchor;
+  }
+
   function findSection(article, title) {
     return [...article.querySelectorAll(':scope > section, :scope > details')].find(node => {
       const heading = node.querySelector(':scope > h2, :scope > summary');
@@ -649,6 +676,7 @@
     const chains = asArray(payload.records).length ? asArray(payload.records) : base.recordArray(payload);
     const documentObject = article.ownerDocument;
     const header = article.querySelector('.page-intro');
+    const requestedCaseId = text(context.route && context.route.params && context.route.params.case);
     if (!header) return;
 
     setPageIntro(article, 'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
@@ -706,6 +734,8 @@
       if (chainFinding) findingKeys.add(chainFinding.key);
 
       const card = append(section, 'article', 'reader-ledger-card reader-ledger-chain-card');
+      const caseId = text(chain.chain_id || chain.narrative_family_id);
+      if (caseId) card.dataset.readerCaseId = caseId;
       card.dataset.readerFindings = [...findingKeys].join(' ');
       const searchText = [
         chain.public_title,
@@ -729,7 +759,13 @@
       append(copy, 'p', 'card-kicker', ['Claim record', dateLabel].filter(Boolean).join(' · '));
 
       const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
-      append(copy, 'h3', '', chainTitle || 'Claim record');
+      const titleHeading = append(copy, 'h3');
+      if (caseId) {
+        const caseLink = append(titleHeading, 'a', 'reader-case-link', chainTitle || 'Claim record');
+        caseLink.href = base.routeHref('evidence.information', { case: caseId });
+      } else {
+        titleHeading.textContent = chainTitle || 'Claim record';
+      }
       appendLedgerActorKicker(copy, context, first, false);
       const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'Trace this claim');
       traceLink.href = base.routeHref('evidence.web_of_lies', { claim_family: chain.chain_id || chain.narrative_family_id });
@@ -847,6 +883,30 @@
     search.addEventListener('input', draw);
     status.addEventListener('change', draw);
     draw();
+
+    if (requestedCaseId) {
+      const selectedCard = cards.find(card => card.dataset.readerCaseId === requestedCaseId);
+      if (!selectedCard) throw new Error(`Requested Lie Ledger case was not found: ${requestedCaseId}`);
+      article.classList.add('guide-lie-ledger-dossier');
+      article.dataset.dossierCase = requestedCaseId;
+      const selectedTitle = text(selectedCard.querySelector('.reader-ledger-card-head h3')?.textContent) || 'Claim record';
+      prependDossierBreadcrumb(article, 'evidence.information', 'Lie Ledger', selectedTitle);
+      controls.hidden = true;
+      resultCount.hidden = true;
+      cards.forEach(card => { card.hidden = card !== selectedCard; });
+      selectedCard.classList.add('guide-dossier-record');
+
+      const claimTarget = selectedCard.querySelector('.reader-chain-baseline, .reader-ledger-card-head');
+      const findingTarget = selectedCard.querySelector('.reader-chain-outcome, .reader-ledger-single-actions, .reader-ledger-card-head');
+      const evidenceTarget = selectedCard.querySelector('.reader-chain-how-we-know, .reader-how-we-know');
+      const developmentTarget = selectedCard.querySelector('.reader-chain-claims-detail');
+      const relatedTarget = selectedCard.querySelector('.reader-wol-trace');
+      insertGuideAnchor(claimTarget, 'claim');
+      insertGuideAnchor(findingTarget, 'finding');
+      insertGuideAnchor(evidenceTarget, 'evidence');
+      insertGuideAnchor(developmentTarget, 'development');
+      insertGuideAnchor(relatedTarget, 'related-material');
+    }
 
     const footerLinks = append(article, 'nav', 'reader-ledger-footer-links');
     footerLinks.setAttribute('aria-label', 'Lie Ledger related pages');
