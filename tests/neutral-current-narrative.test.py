@@ -14,7 +14,7 @@ assert "narrativeContract: null" in source
 assert "ATLAS_PRIVILEGED_NARRATIVE_RETIRED" in source
 assert "reader_support" in source
 assert "reader_stylesheet" in source
-assert "runtime.length === 5" in source
+assert "runtime.length === 6" in source
 assert "stylesheets.length === 3" in source
 
 builder = (ROOT / "scripts" / "build_public_release.py").read_text(encoding="utf-8")
