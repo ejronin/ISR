@@ -1,5 +1,6 @@
 import './prototype.css';
-import maplibregl from 'maplibre-gl';
+import * as maplibregl from 'maplibre-gl';
+import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import cytoscape from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 import elk from 'cytoscape-elk';
@@ -7,6 +8,8 @@ import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { AriaComponent, GridComponent, TooltipComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
+
+maplibregl.setWorkerUrl(maplibreWorkerUrl);
 
 cytoscape.use(fcose);
 cytoscape.use(elk);
@@ -107,6 +110,7 @@ async function initMapPrototype() {
     attributionControl: true,
     dragRotate: false,
     pitchWithRotate: false,
+    cooperativeGestures: true,
     style: {
       version: 8,
       sources: {
