@@ -4021,6 +4021,23 @@ tbody tr:last-child td { border-bottom: 0; }
 .guide-maplibre-view .maplibregl-ctrl-bottom-left,
 .guide-maplibre-view .maplibregl-ctrl-bottom-right { display: none; }
 .guide-maplibre-view .maplibregl-canvas { outline: 0; }
+.guide-map-label {
+  display: inline-block;
+  max-width: 8rem;
+  padding: .12rem .28rem;
+  border-radius: var(--radius-xs);
+  background: rgb(8 13 19 / 72%);
+  color: var(--text-secondary);
+  font-size: .66rem;
+  font-weight: 680;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 1px 2px var(--canvas);
+  pointer-events: none;
+}
+.guide-map-label--port,
+.guide-map-label--place { color: var(--accent-blue-strong); }
+.guide-map-label[hidden] { display: none; }
 
 .shipping-map-system {
   container-type: inline-size;
