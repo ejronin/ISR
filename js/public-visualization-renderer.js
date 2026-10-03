@@ -350,6 +350,17 @@
         'line-opacity': 1
       }
     });
+    map.addLayer({
+      id: 'guide-route-flow', type: 'symbol', source: 'guide-routes',
+      layout: {
+        'symbol-placement': 'line-center',
+        'text-field': ['match', ['get', 'mode'], 'maritime', '›', 'pipeline', '◆', 'rail', 'Ⅱ', ''],
+        'text-size': 18,
+        'text-allow-overlap': false,
+        'text-rotation-alignment': 'map'
+      },
+      paint: { 'text-color': '#d9f1ff', 'text-halo-color': '#080d13', 'text-halo-width': 1.2 }
+    });
   }
 
   function addPointLayers(map) {
@@ -376,12 +387,21 @@
     }
     host.hidden = false;
     const article = append(host, 'article', 'visualization-selection');
-    append(article, 'p', 'card-kicker', type === 'route' ? 'SELECTED ROUTE' : 'SELECTED LOCATION');
+    const routeAuthority = type === 'route' ? String(item.authority_class || '') : '';
+    append(article, 'p', 'card-kicker', type === 'route'
+      ? (routeAuthority === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : 'Selected route')
+      : 'Selected location');
     append(article, 'h3', '', type === 'route' ? String(item.name || item.id || item.route_id || 'Route') : recordTitle(item));
     append(article, 'p', '', type === 'route'
       ? String(item.note || item.description || 'The accepted route geometry is shown without adding inferred segments.')
       : recordSummary(item));
     if (type === 'route') {
+      const mode = String(item.mode || '').toLowerCase();
+      append(article, 'p', 'map-card-meta', mode === 'maritime'
+        ? 'Schematic · not live vessel tracking.'
+        : mode === 'pipeline'
+          ? 'Schematic · not a surveyed pipeline alignment or targeting-quality geometry.'
+          : 'Schematic · not exact rail alignment, live movement, or targeting-quality geometry.');
       const meta = append(article, 'p', 'record-status', [item.mode, item.authority_class].filter(Boolean).join(' · '));
       if (!meta.textContent) meta.remove();
       const drawer = evidenceDrawer(context, { source_ids: routeSources(item) }, ia);
@@ -409,6 +429,23 @@
       const input = append(label, 'input'); input.type = 'checkbox'; input.checked = true;
       append(label, 'span', '', mode.charAt(0).toUpperCase() + mode.slice(1));
       input.addEventListener('change', () => { input.checked ? enabled.add(mode) : enabled.delete(mode); apply(); });
+    });
+  }
+
+  function addRouteSelectionControls(section, map, routes, selection, context, ia) {
+    if (!routes.length) return;
+    const controls = append(section, 'div', 'map-route-controls');
+    routes.forEach(route => {
+      const button = append(controls, 'button', 'map-route-button', String(route.name || route.id || route.route_id || 'Transport route'));
+      button.type = 'button';
+      button.dataset.routeId = String(route.id || route.route_id || '');
+      button.dataset.routeMode = String(route.mode || '').toLowerCase();
+      button.addEventListener('click', () => {
+        const routeId = String(route.id || route.route_id || '');
+        if (map.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], routeId]);
+        if (map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
+        renderSelection(selection, context, ia, route, 'route');
+      });
     });
   }
 
@@ -569,6 +606,7 @@
             if (map.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], '__none__']);
             if (map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
           };
+          if (routeData.records.length) addRouteSelectionControls(section, map, routeData.records, selection, context, ia);
           focusRecordByIndex = index => {
             if (!Number.isInteger(index) || index < 0 || index >= records.length) return;
             const feature = points.features.find(candidate => Number(candidate.properties.recordIndex) === index);
