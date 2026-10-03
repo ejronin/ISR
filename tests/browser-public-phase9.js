@@ -290,6 +290,7 @@ async function route(cdp, hash, key) {
     assert(filteredLedger && filteredLedger.visible > 0, 'reader chain search does not preserve matching chains');
     assert.match(filteredLedger.count, /^\d+ of \d+ chains shown$/);
 
+    await route(cdp, '#/intelligence/claims/', 'evidence.claims');
     await route(cdp, '#/intelligence/lie-ledger/', 'evidence.information');
     const ledgerCollectionRecord = await cdp.eval(`(() => {
       const card = document.querySelector('.reader-ledger-chain-card[data-reader-case-id]');
