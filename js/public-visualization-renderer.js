@@ -445,6 +445,25 @@
     });
   }
 
+  function appendTextEquivalent(section, context, records, routes, ia) {
+    const equivalent = append(section, 'details');
+    equivalent.dataset.phase5MapEquivalent = 'locations';
+    equivalent.dataset.phase6MapEquivalent = 'geography';
+    const mapped = [];
+    asArray(records).forEach(record => {
+      const point = ia.MapView.pointFromRecord(record, context.services.locationResolver, asArray(context.relatedRecords));
+      if (point && Number.isFinite(Number(point.lat)) && Number.isFinite(Number(point.lon))) mapped.push({ record, point });
+    });
+    append(equivalent, 'summary', '', `Text equivalent for this map (${mapped.length} locations)`);
+    const list = append(equivalent, 'ul');
+    mapped.forEach(item => append(list, 'li', '', `${String(item.point.label || recordTitle(item.record))} · ${String(item.point.precision || 'recorded location')} · ${recordTitle(item.record)}`));
+    asArray(routes).forEach(route => {
+      const authority = String(route.authority_class || '').replaceAll('_', ' ').toLowerCase();
+      append(list, 'li', '', `${String(route.name || route.id || route.route_id || 'Route')} · ${authority || 'accepted route'} · ${String(route.note || route.description || '')}`.trim());
+    });
+    return equivalent;
+  }
+
   function renderFallback(section, context, options, ia, error) {
     const fallback = ia.MapView.create(context, options);
     fallback.dataset.mapRenderer = 'leaflet-fallback';
@@ -508,6 +527,7 @@
     section.dataset.mapRouteModes = unique(routes.map(route => String(route.mode || '').toLowerCase())).sort().join(',');
     section.dataset.mapRouteCount = String(routeData.collection.features.length);
     section.dataset.mapPointCount = String(points.features.length);
+    appendTextEquivalent(section, context, records, routes, ia);
 
     Promise.resolve().then(async () => {
       try {
