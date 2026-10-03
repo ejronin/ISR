@@ -25,14 +25,14 @@ The Guide should not use one renderer for every information class.
 
 The target platform is:
 
-| Information class | Decision | Target |
+| Information class | Contract state | Target |
 | --- | --- | --- |
-| Maps | **REPLACE, STAGED** | MapLibre GL JS for primary cartography; retain the current Leaflet MapView as the production implementation until signed-runtime, browser, WebGL and fallback gates pass |
+| Maps | **REPLACE** | MapLibre GL JS for primary cartography; retain the current Leaflet MapView as the production implementation until signed-runtime, browser, WebGL2 and fallback gates pass |
 | WOL networks | **UPGRADE** | Keep Cytoscape.js; evaluate fCoSE as the full-network layout and use deterministic presentation positions; preserve the existing interaction/evidence model |
-| Directed flows | **UPGRADE / SELECTIVE** | Native HTML/CSS/SVG for simple flows; Cytoscape + ELK only for branching or genuinely graph-shaped directed diagrams |
-| Quantitative charts | **KEEP + UPGRADE** | Keep protected current economic charts unchanged; use modular Apache ECharts as the default for future quantitative chart classes and later faithful renderer migrations |
-| General page layout | **KEEP / UPGRADE** | Native semantic HTML, CSS Grid, Flexbox, custom properties and container queries |
-| Bootstrap | **DO NOT ADOPT** | It does not solve the visualization or editorial-composition problem |
+| Directed flows | **PROTOTYPE FIRST** | Native HTML/CSS/SVG for simple flows; Cytoscape + ELK only for branching or genuinely graph-shaped directed diagrams |
+| Quantitative charts | **KEEP** existing / **PROTOTYPE FIRST** future migrations | Keep protected current economic charts unchanged; use modular Apache ECharts as the default for future quantitative chart classes and separately approved faithful renderer migrations |
+| General page layout | **KEEP** | Native semantic HTML, CSS Grid, Flexbox, custom properties and container queries; continue upgrading shared primitives without changing platform |
+| Bootstrap | **KEEP OUT** | Do not adopt it; it does not solve the visualization or editorial-composition problem |
 | Icons | **UPGRADE** | Vendored, pinned Lucide SVG subset; no icon runtime; existing country flags remain untouched |
 
 The key architectural change is not a wholesale framework swap. It is a **capability-based visualization layer** that preserves the current signed read model and loads expensive renderers only on routes that need them.
