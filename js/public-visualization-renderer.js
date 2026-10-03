@@ -206,6 +206,60 @@
     return { type: 'FeatureCollection', features };
   }
 
+  function geometryCenter(feature) {
+    const coordinates = [];
+    const walk = value => {
+      if (!Array.isArray(value)) return;
+      if (value.length >= 2 && Number.isFinite(Number(value[0])) && Number.isFinite(Number(value[1]))) {
+        coordinates.push([Number(value[0]), Number(value[1])]);
+        return;
+      }
+      value.forEach(walk);
+    };
+    walk(feature && feature.geometry && feature.geometry.coordinates);
+    if (!coordinates.length) return null;
+    const lons = coordinates.map(value => value[0]);
+    const lats = coordinates.map(value => value[1]);
+    return [(Math.min(...lons) + Math.max(...lons)) / 2, (Math.min(...lats) + Math.max(...lats)) / 2];
+  }
+
+  function addProgressiveLabels(map, maplibregl, documentObject, geography, contextLabels) {
+    const candidates = [];
+    const seen = new Set();
+    asArray(geography && geography.features)
+      .filter(feature => feature && feature.properties && feature.properties.layer === 'regional_50m')
+      .forEach(feature => {
+        const label = String(feature.properties.name || '').trim();
+        if (!label || seen.has(label)) return;
+        const center = geometryCenter(feature);
+        if (!center) return;
+        seen.add(label);
+        candidates.push({ label, lon: center[0], lat: center[1], priority: 2, kind: 'country' });
+      });
+    asArray(contextLabels).forEach(row => {
+      const label = String(row && row.label || '').trim();
+      const lat = Number(row && row.lat); const lon = Number(row && row.lon);
+      if (!label || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
+      candidates.push({ label, lat, lon, priority: Number(row.priority || 0), kind: row.kind || 'place' });
+    });
+    const markers = candidates.slice(0, 80).map(row => {
+      const node = element(documentObject, 'span', `guide-map-label guide-map-label--${row.kind}`, row.label);
+      node.dataset.labelPriority = String(row.priority);
+      const marker = new maplibregl.Marker({ element: node, anchor: 'center' }).setLngLat([row.lon, row.lat]).addTo(map);
+      return { marker, node, priority: row.priority };
+    });
+    const update = () => {
+      const zoom = map.getZoom();
+      markers.forEach(row => {
+        const visible = row.priority <= 0 || (row.priority <= 2 && zoom >= 3.2) || zoom >= 5.2;
+        row.node.hidden = !visible;
+      });
+    };
+    update();
+    map.on('zoom', update);
+    return markers;
+  }
+
   function addMarkerImages(map, documentObject) {
     const definitions = {
       military: { shape: 'diamond', fill: '#eea0a0' },
@@ -425,6 +479,8 @@
     const theaterBounds = derivedBounds(points, routeData, ia, fallbackLatLon);
     section.dataset.mapBounds = JSON.stringify(theaterBounds);
     section.dataset.mapRouteModes = unique(routes.map(route => String(route.mode || '').toLowerCase())).sort().join(',');
+    section.dataset.mapRouteCount = String(routeData.collection.features.length);
+    section.dataset.mapPointCount = String(points.features.length);
 
     Promise.resolve().then(async () => {
       try {
@@ -456,6 +512,7 @@
           addReferenceLayers(map);
           if (routeData.collection.features.length) addRouteLayers(map);
           if (points.features.length) { addMarkerImages(map, documentObject); addPointLayers(map); }
+          section._atlasMapLibreLabels = addProgressiveLabels(map, capability.maplibregl, documentObject, geography, options && options.contextLabels);
 
           map.fitBounds(theaterBounds, { padding: 48, duration: 0 });
           createCameraControls(section, map, theaterBounds, context.windowObject || root, options && options.cameraModes);
