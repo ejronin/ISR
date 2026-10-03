@@ -50,7 +50,7 @@ function fakeBootstrapScript(sourceManifest = manifest) {
 function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const entrypoint = app.assetForRole(sourceManifest, 'entrypoint');
   const stylesheet = app.assetForRole(sourceManifest, 'stylesheet');
-  const runtimes = ['map_runtime', 'graph_runtime', 'base_runtime', 'reader_support', 'page_registry'].map(role => app.assetForRole(sourceManifest, role));
+  const runtimes = ['map_runtime', 'graph_runtime', 'base_runtime', 'visualization_runtime', 'reader_support', 'page_registry'].map(role => app.assetForRole(sourceManifest, role));
   const stylesheets = ['map_stylesheet', 'stylesheet', 'reader_stylesheet'].map(role => app.assetForRole(sourceManifest, role));
   const geography = app.assetForRole(sourceManifest, 'reference_geography');
   const authorization = {
@@ -62,6 +62,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
     runtimeAssets: runtimes.map(runtime => ({ path: runtime.path, sha256: runtime.sha256 })),
     stylesheetAssets: stylesheets.map(style => ({ path: style.path, sha256: style.sha256 })),
     referenceGeography: { path: geography.path, sha256: geography.sha256 },
+    capabilities: { maplibre: { version: sourceManifest.application.capabilities.maplibre.version } },
     evidenceImages: [],
     entrypointSha256: entrypoint.sha256,
     stylesheetSha256: stylesheet.sha256
