@@ -453,3 +453,83 @@
     text-align: center;
   }
 }
+
+
+/* Guide dossier facelift — Lie Ledger case view. Accepted record text/list order is unchanged. */
+.guide-lie-ledger-dossier .reader-lie-ledger {
+  gap: 0;
+}
+
+.guide-lie-ledger-dossier .reader-ledger-lead,
+.guide-lie-ledger-dossier .forensic-companion-nav {
+  margin-bottom: 1rem;
+}
+
+.guide-lie-ledger-dossier .guide-dossier-record {
+  max-width: var(--analysis-width, 74rem);
+  padding: clamp(1rem, 2.2vw, 1.5rem) 0 0;
+  border-width: 0 0 0 4px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-lie-ledger-dossier .guide-dossier-record > * {
+  scroll-margin-top: var(--guide-sticky-offset, 8rem);
+}
+
+.guide-lie-ledger-dossier .reader-ledger-card-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--atlas-border, #263746);
+}
+
+.guide-lie-ledger-dossier .reader-chain-baseline,
+.guide-lie-ledger-dossier .reader-chain-outcome {
+  margin: 0;
+  padding: 1.1rem 0 1.1rem 1rem;
+  background: transparent;
+}
+
+.guide-lie-ledger-dossier .reader-how-we-know,
+.guide-lie-ledger-dossier .reader-chain-claims-detail,
+.guide-lie-ledger-dossier .reader-chain-open-gaps {
+  margin-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-lie-ledger-dossier .reader-how-we-know {
+  border-bottom: 1px solid var(--atlas-border, #263746);
+}
+
+.guide-lie-ledger-dossier .reader-chain-claims-detail {
+  padding-top: .35rem;
+}
+
+.guide-lie-ledger-dossier .reader-ledger-footer-links {
+  padding-top: 1rem;
+  border-top: 1px solid var(--atlas-border, #263746);
+}
+
+.reader-case-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.reader-case-link:hover,
+.reader-case-link:focus-visible {
+  color: var(--atlas-accent-strong, #8fd8ff);
+  text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+  .guide-lie-ledger-dossier .guide-dossier-record {
+    padding-top: .75rem;
+  }
+
+  .guide-lie-ledger-dossier .reader-chain-baseline,
+  .guide-lie-ledger-dossier .reader-chain-outcome {
+    padding-left: .8rem;
+  }
+}

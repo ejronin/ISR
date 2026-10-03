@@ -632,7 +632,7 @@
   }
 
   function activateGuideSections(app, route, win) {
-    const definitions = typeof base.pageSectionsFor === 'function' ? base.pageSectionsFor(route.key) : [];
+    const definitions = typeof base.pageSectionsFor === 'function' ? base.pageSectionsFor(route) : [];
     if (!definitions.length) return () => {};
     const links = [...app.querySelectorAll('[data-section-id]')];
     const setActive = id => {

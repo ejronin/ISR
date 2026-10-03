@@ -133,6 +133,23 @@
     ])
   });
 
+  const DOSSIER_SECTION_DEFINITIONS = Object.freeze({
+    wolActor: Object.freeze([
+      { id: 'current-record', label: 'Current record' },
+      { id: 'findings', label: 'Findings' },
+      { id: 'claim-activity', label: 'Claim activity' },
+      { id: 'chronology', label: 'Chronology' },
+      { id: 'network-claim-trails', label: 'Network & claim trails' }
+    ]),
+    lieLedgerCase: Object.freeze([
+      { id: 'claim', label: 'Claim' },
+      { id: 'finding', label: 'Finding' },
+      { id: 'evidence', label: 'Evidence' },
+      { id: 'development', label: 'Development' },
+      { id: 'related-material', label: 'Related material' }
+    ])
+  });
+
   const DATASET_LABELS = Object.freeze({
     'current.chronology': 'Current chronology',
     'current.sources': 'Source catalog',
@@ -449,7 +466,11 @@
       .sort((left, right) => Number(left.navOrder || 999) - Number(right.navOrder || 999));
   }
 
-  function pageSectionsFor(routeKey) {
+  function pageSectionsFor(routeOrKey, paramsOverride) {
+    const routeKey = typeof routeOrKey === 'string' ? routeOrKey : routeOrKey && routeOrKey.key;
+    const params = paramsOverride || (routeOrKey && typeof routeOrKey === 'object' ? routeOrKey.params : null) || {};
+    if (routeKey === 'evidence.web_of_lies' && params.dossier === 'actor' && params.source) return DOSSIER_SECTION_DEFINITIONS.wolActor;
+    if (routeKey === 'evidence.information' && params.case) return DOSSIER_SECTION_DEFINITIONS.lieLedgerCase;
     return PAGE_SECTION_DEFINITIONS[routeKey] || Object.freeze([]);
   }
 
@@ -2373,6 +2394,11 @@
       return roles.length ? `${name} · ${roles.join(' + ')}` : name;
     };
     const nodeLabel = node => [...nodeMarkers(node), nodeName(node)].filter(Boolean).join(' ');
+    const actorDossierRequested = context.route.params.dossier === 'actor';
+    const actorDossierNode = actorDossierRequested ? graphNodeById.get(context.route.params.source) : null;
+    if (actorDossierRequested && (!actorDossierNode || actorDossierNode.node_type !== 'BULLSHITTER')) {
+      throw new Error(`Requested Web of Lies actor dossier was not found: ${context.route.params.source || ''}`);
+    }
     const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
       const wrapper = append(host, tagName, className);
       const asset = nodeFlagAsset(node);
@@ -2786,6 +2812,25 @@
       return evidence;
     };
 
+    if (actorDossierNode) {
+      frame.article.classList.add('guide-wol-dossier');
+      frame.article.dataset.dossierSource = actorDossierNode.node_id;
+      const header = frame.article.querySelector('.page-intro');
+      const breadcrumb = element(context.documentObject, 'nav', 'dossier-breadcrumb');
+      breadcrumb.setAttribute('aria-label', 'Breadcrumb');
+      const intelligence = append(breadcrumb, 'a', '', 'Intelligence');
+      intelligence.href = routeHref('evidence.claims');
+      append(breadcrumb, 'span', 'dossier-breadcrumb-separator', '›');
+      const parent = append(breadcrumb, 'a', '', 'Web of Lies');
+      parent.href = routeHref('evidence.web_of_lies');
+      append(breadcrumb, 'span', 'dossier-breadcrumb-separator', '›');
+      const current = append(breadcrumb, 'span', 'dossier-breadcrumb-current', nodeName(actorDossierNode));
+      current.setAttribute('aria-current', 'page');
+      const dossierHeading = header?.querySelector('h1');
+      if (dossierHeading) dossierHeading.textContent = nodeName(actorDossierNode);
+      header?.prepend(breadcrumb);
+    }
+
     const companionNav = append(frame.article, 'nav', 'forensic-companion-nav');
     companionNav.setAttribute('aria-label', 'Lie Ledger and Web of Lies');
     const ledgerLink = append(companionNav, 'a', 'forensic-companion-link', 'Lie Ledger');
@@ -2841,6 +2886,8 @@
 
     const detailSection = append(workspace, 'aside', 'wol-node-detail');
     append(detailSection, 'h3', '', 'Selection details');
+    const dossierAction = append(detailSection, 'a', 'inline-route-link wol-dossier-link', 'Open dossier');
+    dossierAction.hidden = true;
     const detailHost = append(detailSection, 'div', 'wol-node-detail-host');
 
     const adjacencyFor = nodeId => {
@@ -2890,6 +2937,8 @@
       detailHost.replaceChildren();
       if (!nodeId || !graphNodeById.has(nodeId)) {
         detailSection.dataset.selectionState = 'empty';
+        dossierAction.hidden = true;
+        dossierAction.removeAttribute('href');
         const prompt = append(detailHost, 'aside', 'scope-note wol-node-prompt');
         append(prompt, 'strong', '', 'Select a person, outlet, or connection');
         append(prompt, 'p', '', 'Choose from the picker or click the graph. The network will isolate that path and show the supporting receipts here.');
@@ -2897,6 +2946,10 @@
       }
       detailSection.dataset.selectionState = 'node';
       const node = graphNodeById.get(nodeId);
+      dossierAction.hidden = actorDossierRequested || node.node_type !== 'BULLSHITTER';
+      dossierAction.href = node.node_type === 'BULLSHITTER'
+        ? routeHref('evidence.web_of_lies', { dossier: 'actor', source: nodeId })
+        : '';
       const heading = append(detailHost, 'div', 'wol-selected-heading');
       append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'AMPLIFIER');
       appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-selected-node-identity');
@@ -2906,7 +2959,6 @@
         ['Account type', plainLabel(node.authenticity_class, 'Unknown')],
         ['Direct connections', formatNumber(adjacencyFor(nodeId).size)]
       ]);
-
       if (node.node_type === 'BULLSHITTER') {
         appendAwardEvidenceBlocks(detailHost, nodeId);
 
@@ -3256,6 +3308,19 @@
     reset.addEventListener('click', () => selectNode(''));
     renderDetail(selectedNodeId);
     updateResetVisibility();
+    if (actorDossierNode) {
+      workspace.prepend(detailSection);
+      detailSection.dataset.guideSection = 'current-record';
+      detailSection.id = 'current-record';
+      const findings = detailHost.querySelector('.wol-earned-titles');
+      const activity = detailHost.querySelector('.wol-bullshit-ledger');
+      const chronology = detailHost.querySelector('.wol-award-evidence-list');
+      if (findings) { findings.dataset.guideSection = 'findings'; findings.id = 'findings'; }
+      if (activity) { activity.dataset.guideSection = 'claim-activity'; activity.id = 'claim-activity'; }
+      if (chronology) { chronology.dataset.guideSection = 'chronology'; chronology.id = 'chronology'; }
+      graphColumn.dataset.guideSection = 'network-claim-trails';
+      graphColumn.id = 'network-claim-trails';
+    }
 
     const initializeGraphWhenMounted = attempt => {
       if (graphHost.isConnected) {
@@ -3796,7 +3861,7 @@ function applyVisualSweep(article, context) {
 }
 
   function applyPageSectionRegistry(article, context) {
-    const definitions = pageSectionsFor(context.route.key);
+    const definitions = pageSectionsFor(context.route);
     if (!definitions.length) return;
     article.dataset.guideArchetype = context.route.archetype || 'standard';
     const sections = [...article.querySelectorAll(':scope > section, :scope > details')];
@@ -3819,7 +3884,7 @@ function applyVisualSweep(article, context) {
       applyPresentationDisclosure(article, context);
       applyVisualSweep(article, context);
       applyPageSectionRegistry(article, context);
-      if (!pageSectionsFor(context.route.key).length) addPageLocalNavigation(article, context);
+      if (!pageSectionsFor(context.route).length) addPageLocalNavigation(article, context);
       return article;
     };
   }
@@ -3891,7 +3956,7 @@ function applyVisualSweep(article, context) {
         const item = append(list, 'li', 'context-route-item');
         item.append(navigationLink(documentObject, route, currentRoute, 'context-route'));
       });
-      const sections = pageSectionsFor(currentRoute.key);
+      const sections = pageSectionsFor(currentRoute);
       if (sections.length) {
         const divider = append(list, 'li', 'context-nav-divider', '');
         divider.setAttribute('aria-hidden', 'true');
@@ -3903,7 +3968,7 @@ function applyVisualSweep(article, context) {
       return nav;
     },
     renderContentsRail(documentObject, currentRoute) {
-      const sections = pageSectionsFor(currentRoute.key);
+      const sections = pageSectionsFor(currentRoute);
       if (!sections.length) return null;
       const nav = element(documentObject, 'nav', 'page-contents-rail');
       nav.setAttribute('aria-label', 'On this page');

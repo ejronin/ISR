@@ -2,7 +2,7 @@
 
 ## Implementation checkpoint
 
-This document describes the accepted Guide shell plus the second representative renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, and Shipping & Trade are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
+This document describes the accepted Guide shell plus the third representative renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, Shipping & Trade, the Web of Lies actor dossier, and the Lie Ledger case dossier are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
 
 GitHub Pages hash routing remains the transport. Canonical logical paths therefore appear after the hash, for example `#/war/campaigns/`. No hosting or router migration is bundled into this work.
 
@@ -84,6 +84,28 @@ Scroll-linked section state uses `history.replaceState`; it does not add a histo
 
 Campaigns keeps the existing monthly recorded-event calculation, constituent drilldown, strike map, damage observations, facility-effect propositions, force-movement records, and chronology records. Shipping keeps the existing chokepoint/network map system, route geometry, route controls, traffic records, alternative-route records, merchant-loss records, and loss cross-links. The migration changes hierarchy, durable section navigation, whole-object ordering, spacing and responsive presentation only.
 
+### Parameterized Intelligence dossiers
+
+The dossier archetypes are parameterized views over the same accepted records; they are not new page owners or new datasets.
+
+**Web of Lies actor dossier** uses `#/intelligence/wol/?dossier=actor&source=<source_id>` and registers:
+
+- Current record
+- Findings
+- Claim activity
+- Chronology
+- Network & claim trails
+
+**Lie Ledger case dossier** uses `#/intelligence/lie-ledger/?case=<chain_id>` and registers:
+
+- Claim
+- Finding
+- Evidence
+- Development
+- Related material
+
+The dossier facelift may change hierarchy, spacing, breadcrumbs, rails, responsive composition, section landmarks, and visual emphasis. It may not rewrite accepted public language, relabel findings, change item membership, reorder evidence/list items, alter receipts, or create a second adjudication layer. Browser qualification compares the selected collection record with its dossier view to enforce text, list-membership, list-order, disclosure-label, and content-order preservation.
+
 The remaining page bodies are not considered migrated by this checkpoint.
 
 ## First paint and release integrity
@@ -104,4 +126,4 @@ This tranche changes presentation and routing only.
 - Maps, chart calculations, state-flag assets, and evidence semantics are not replaced or recomputed.
 - No evidence, adjudication, ROOK/Evidence Locker, canonical-update, or sanctions-analysis dataset is modified.
 
-Further page-body migration is intentionally stopped at this checkpoint pending review of the Campaigns & Strikes and Shipping & Trade archetypes.
+Further page-body migration is intentionally stopped at this checkpoint pending review of the Web of Lies actor dossier and Lie Ledger case dossier archetypes.

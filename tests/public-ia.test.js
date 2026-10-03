@@ -84,6 +84,19 @@ assert.deepEqual(
   ia.pageSectionsFor('hormuz.shipping').map(section => section.id),
   ['observed-shipping', 'routes', 'alternative-paths', 'merchant-losses']
 );
+assert.deepEqual(
+  ia.pageSectionsFor({ key: 'evidence.web_of_lies', params: { dossier: 'actor', source: 'SOURCE-1' } }).map(section => section.id),
+  ['current-record', 'findings', 'claim-activity', 'chronology', 'network-claim-trails']
+);
+assert.deepEqual(
+  ia.pageSectionsFor({ key: 'evidence.information', params: { case: 'CASE-1' } }).map(section => section.id),
+  ['claim', 'finding', 'evidence', 'development', 'related-material']
+);
+assert.deepEqual(
+  ia.pageSectionsFor({ key: 'evidence.web_of_lies', params: { source: 'SOURCE-1' } }),
+  [],
+  'ordinary WOL source selection must remain the collection view rather than becoming a dossier'
+);
 for (const route of ia.ROUTES.values()) {
   const href = ia.routeHref(route.key, { record: 'EV-1' });
   const parsed = ia.parseRoute(href);
