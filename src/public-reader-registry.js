@@ -290,7 +290,7 @@
 
     const boundary=markGuideSection(findSection(article,/^From damage to war results$/i),'damage-effect','01','Damage is not the same as effect');
     const tempo=markGuideSection(findSection(article,/^Recorded military activity by month$/i),'campaign-activity','02','Campaign activity');
-    const strikeMap=[...article.querySelectorAll(':scope > .context-map')].find(map=>/^Strike geography$/i.test(map.querySelector(':scope > h2')?.textContent||''))||article.querySelector(':scope > .context-map');
+    const strikeMap=article.querySelector(':scope > [data-visual-sweep-hero="campaign"]')||article.querySelector(':scope > .context-map');
     markGuideSection(strikeMap,'strike-geography','03','Where strikes occurred');
     addClass(strikeMap,'guide-structural-panel');
 
@@ -377,7 +377,7 @@
     if(methodDetails) markGuideSupport(methodDetails);
 
     const observed=markGuideSection(findSection(article,/^Observed shipping record$/i),'observed-shipping','01','Observed shipping');
-    const routeMap=[...article.querySelectorAll(':scope > .context-map')].find(map=>map.dataset.shippingMapView==='network')||article.querySelector(':scope > .context-map');
+    const routeMap=article.querySelector(':scope > [data-shipping-map-system]')||article.querySelector(':scope > .context-map');
     markGuideSection(routeMap,'routes','02','The routes');
     addClass(routeMap,'guide-structural-panel');
     const alternatives=markGuideSection(findSection(article,/^Alternative routes and trade changes$/i),'alternative-paths','03','Alternative paths');
