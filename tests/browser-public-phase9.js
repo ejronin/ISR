@@ -290,6 +290,90 @@ async function route(cdp, hash, key) {
     assert(filteredLedger && filteredLedger.visible > 0, 'reader chain search does not preserve matching chains');
     assert.match(filteredLedger.count, /^\d+ of \d+ chains shown$/);
 
+    await route(cdp, '#/intelligence/lie-ledger/', 'evidence.information');
+    const ledgerCollectionRecord = await cdp.eval(`(() => {
+      const card = document.querySelector('.reader-ledger-chain-card[data-reader-case-id]');
+      if (!card) return null;
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        caseId: card.dataset.readerCaseId,
+        title: normalize(card.querySelector('.reader-ledger-card-head h3')?.textContent),
+        text: normalize(card.textContent),
+        listItems: [...card.querySelectorAll('li')].map(node => normalize(node.textContent)),
+        summaries: [...card.querySelectorAll('details > summary')].map(node => normalize(node.textContent)),
+        childOrder: [...card.children].map(node => node.tagName + ':' + (node.className || ''))
+      };
+    })()`);
+    assert(ledgerCollectionRecord?.caseId, 'Lie Ledger has no parameterizable case record');
+    await route(cdp, ia.routeHref('evidence.information', { case: ledgerCollectionRecord.caseId }), 'evidence.information');
+    const ledgerDossierRecord = await cdp.eval(`(() => {
+      const card = document.querySelector('.reader-ledger-chain-card.guide-dossier-record');
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        caseId: document.querySelector('.public-page')?.dataset.dossierCase || '',
+        title: normalize(card?.querySelector('.reader-ledger-card-head h3')?.textContent),
+        h1: normalize(document.querySelector('.page-intro h1')?.textContent),
+        text: normalize(card?.textContent),
+        listItems: [...(card?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
+        summaries: [...(card?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent)),
+        childOrder: [...(card?.children || [])].map(node => node.tagName + ':' + (node.className || '')),
+        visibleCards: [...document.querySelectorAll('.reader-ledger-chain-card')].filter(node => !node.hidden).length,
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        breadcrumb: Boolean(document.querySelector('.dossier-breadcrumb'))
+      };
+    })()`);
+    assert.equal(ledgerDossierRecord.caseId, ledgerCollectionRecord.caseId, 'Lie Ledger dossier resolved the wrong case');
+    assert.equal(ledgerDossierRecord.title, ledgerCollectionRecord.title, 'Lie Ledger dossier changed the accepted case title');
+    assert.equal(ledgerDossierRecord.h1, ledgerCollectionRecord.title, 'Lie Ledger dossier heading must use the accepted case title verbatim');
+    assert.equal(ledgerDossierRecord.text, ledgerCollectionRecord.text, 'Lie Ledger dossier rewrote selected-case language');
+    assert.deepEqual(ledgerDossierRecord.listItems, ledgerCollectionRecord.listItems, 'Lie Ledger dossier changed list membership or order');
+    assert.deepEqual(ledgerDossierRecord.summaries, ledgerCollectionRecord.summaries, 'Lie Ledger dossier changed disclosure labels or order');
+    assert.deepEqual(ledgerDossierRecord.childOrder, ledgerCollectionRecord.childOrder, 'Lie Ledger dossier reordered selected-case content');
+    assert.equal(ledgerDossierRecord.visibleCards, 1, 'Lie Ledger dossier must isolate one existing case without cloning it');
+    assert.deepEqual(ledgerDossierRecord.sections, ['claim', 'finding', 'evidence', 'development', 'related-material']);
+    assert.equal(ledgerDossierRecord.breadcrumb, true, 'Lie Ledger dossier breadcrumb missing');
+
+    await route(cdp, '#/intelligence/wol/', 'evidence.web_of_lies');
+    const wolActorId = await cdp.eval(`document.querySelector('.wol-awardee-button[data-source-id]')?.dataset.sourceId || ''`);
+    assert(wolActorId, 'Web of Lies has no parameterizable awardee actor');
+    await route(cdp, ia.routeHref('evidence.web_of_lies', { source: wolActorId }), 'evidence.web_of_lies');
+    const wolCollectionRecord = await cdp.eval(`(() => {
+      const host = document.querySelector('.wol-node-detail-host');
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        identity: normalize(host?.querySelector('.wol-selected-node-identity .wol-node-identity-label')?.textContent),
+        text: normalize(host?.textContent),
+        listItems: [...(host?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
+        summaries: [...(host?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent))
+      };
+    })()`);
+    await route(cdp, ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: wolActorId }), 'evidence.web_of_lies');
+    const wolDossierRecord = await cdp.eval(`(() => {
+      const page = document.querySelector('.guide-wol-dossier');
+      const host = page?.querySelector('.wol-node-detail-host');
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        sourceId: page?.dataset.dossierSource || '',
+        identity: normalize(host?.querySelector('.wol-selected-node-identity .wol-node-identity-label')?.textContent),
+        h1: normalize(document.querySelector('.page-intro h1')?.textContent),
+        text: normalize(host?.textContent),
+        listItems: [...(host?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
+        summaries: [...(host?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent)),
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        breadcrumb: Boolean(document.querySelector('.dossier-breadcrumb')),
+        dossierLinkInsideRecord: Boolean(host?.querySelector('.wol-dossier-link'))
+      };
+    })()`);
+    assert.equal(wolDossierRecord.sourceId, wolActorId, 'WOL dossier resolved the wrong actor');
+    assert.equal(wolDossierRecord.identity, wolCollectionRecord.identity, 'WOL dossier changed the accepted actor identity');
+    assert.equal(wolDossierRecord.h1, wolCollectionRecord.identity.replace(/ · .*$/, ''), 'WOL dossier heading must use the accepted actor name verbatim');
+    assert.equal(wolDossierRecord.text, wolCollectionRecord.text, 'WOL dossier rewrote accepted actor evidence language');
+    assert.deepEqual(wolDossierRecord.listItems, wolCollectionRecord.listItems, 'WOL dossier changed actor evidence list membership or order');
+    assert.deepEqual(wolDossierRecord.summaries, wolCollectionRecord.summaries, 'WOL dossier changed actor disclosure labels or order');
+    assert.deepEqual(wolDossierRecord.sections, ['current-record', 'findings', 'claim-activity', 'chronology', 'network-claim-trails']);
+    assert.equal(wolDossierRecord.breadcrumb, true, 'WOL dossier breadcrumb missing');
+    assert.equal(wolDossierRecord.dossierLinkInsideRecord, false, 'WOL dossier navigation chrome leaked into accepted actor record content');
+
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {
       await route(cdp, ia.routeHref(routeRecord.key), routeRecord.key);
