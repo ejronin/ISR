@@ -678,14 +678,26 @@
       target?.scrollIntoView?.({ block: 'start' });
     }
     if (typeof win?.IntersectionObserver !== 'function') return () => {};
+    const defaultSectionId = definitions[0]?.id || '';
     let activeId = requested?.id || null;
+    let sectionParam = route.params?.section || '';
     const observer = new win.IntersectionObserver(entries => {
       const visible = entries.filter(entry => entry.isIntersecting).sort((left, right) => Math.abs(left.boundingClientRect?.top || 0) - Math.abs(right.boundingClientRect?.top || 0));
       const id = visible[0]?.target?.dataset?.guideSection;
       if (!id || id === activeId) return;
       activeId = id;
       setActive(id);
+      if (id === defaultSectionId) {
+        if (!sectionParam) return;
+        const params = { ...(route.params || {}) };
+        delete params.section;
+        sectionParam = '';
+        win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
+        return;
+      }
+      if (sectionParam === id) return;
       const params = { ...(route.params || {}), section: id };
+      sectionParam = id;
       win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
     }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.01] });
     definitions.forEach(definition => {
