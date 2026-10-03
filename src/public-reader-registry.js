@@ -266,6 +266,7 @@
   }
 
   function timeline(article, context) {
+    addClass(article,'guide-migrated-page guide-map-data-page guide-timeline-page');
     const counts=context.model.counts||{}, chronologyCount=Number(counts.chronology_records)||0, conflictDays=Number(counts.gate3_daily_coverage_days)||0;
     intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. All Events contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
     const s=section(article,'Conflict phases','The phase guide is orientation, not a replacement for the exhaustive chronology.'), g=add(s,'div','orientation-grid');
@@ -273,6 +274,15 @@
     card(g,'Sustained strikes and mounting losses','Repeated strikes, interceptions and infrastructure damage accumulated through the spring and summer.','SPRING–SUMMER');
     card(g,'Hormuz coercion and interim bargain','Iran used maritime disruption as leverage; the June MOU temporarily structured behavior but did not become a final settlement.','JUNE–AUGUST');
     card(g,'Renewed pressure and regional spillover','By September, Hormuz remained badly disrupted, Yemen fighting intensified, Saudi energy infrastructure was hit and talks were unsettled.','SEPTEMBER');
+    const phases=markGuideSection(s,'conflict-phases','01');
+    const explorer=markGuideSection(findSection(article,/^Explore the war timeline$/i),'timeline-explorer','02');
+    addClass(explorer,'guide-structural-panel');
+    addClass(explorer?.querySelector('.timeline-controls'),'guide-filter-rail');
+    const prewar=article.querySelector(':scope > .prewar-context');
+    if(prewar) markGuideSupport(prewar);
+    const introBlock=article.querySelector('.page-intro');
+    if(introBlock&&phases) introBlock.after(phases);
+    if(phases&&explorer) phases.after(explorer);
   }
 
   function chronology(article) {
@@ -340,6 +350,7 @@
   }
 
   function facilities(article, context) {
+    addClass(article,'guide-migrated-page guide-map-data-page guide-facilities-page');
     intro(article,'This is the authoritative reader view of current facility state. Damage, operating status and administrative withdrawal are distinct; continued presence is not proof that a facility is operating.');
     article.querySelector('[data-reader-facility-dashboard]')?.remove();
     const all=[...records(context.model,'ledger.facilities'),...records(context.model,'gate3.facilities')], map=new Map();
@@ -355,32 +366,71 @@
     order.forEach(k=>{const rows=groups.get(k);if(!rows.length)return;const d=add(panels,'details',`reader-facility-drawer ${FSTAT[k][1]}`);add(d,'summary','',`${FSTAT[k][0]} (${rows.length})`);const list=add(d,'div','reader-facility-list');
       rows.sort((a,b)=>txt(a[1].name||a[0]).localeCompare(txt(b[1].name||b[0]))).forEach(([id,r,p])=>{const c=add(list,'article','reader-facility-card');c.dataset.facilityId=id;add(c,'h4','',txt(r.name||r.facility_name||id));add(c,'p','card-kicker',`What this status covers: ${p[1]}`);const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Evidence through ${dates.at(-1)}`);add(c,'strong','','Current status');add(c,'p','',p[2]);evidence(c,context,r,'Why this status is supported');});});
     const m=article.querySelector(':scope > .context-map'); if(m) article.insertBefore(s,m); else article.querySelector('.page-intro')?.after(s);
-    const full=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility assessments$/i); if(full) collapse(full,`Browse full facility records (${map.size})`);
+    const fullNode=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility assessments$/i);
+    const full=fullNode?collapse(fullNode,`Browse full facility records (${map.size})`):null;
+    markGuideSection(s,'facility-status','01');
+    markGuideSection(m,'facility-map','02');
+    addClass(m,'guide-structural-panel');
+    if(full){full.dataset.guideSection='facility-records';full.id='facility-records';addClass(full,'guide-subordinate-section guide-facility-records');}
+    article.querySelectorAll('.reader-facility-list').forEach(list=>addClass(list,'guide-dense-records'));
   }
 
   function losses(article) {
+    addClass(article,'guide-migrated-page guide-map-data-page guide-losses-page');
     intro(article,'Casualties and equipment losses are separate. Some numbers are exact or minimum counts, but the evidence does not support one reliable equipment-loss total for the whole war.');
     const s=section(article,'No single reliable total','There is no reliable single number covering every side and every kind of equipment loss. Only matching, non-duplicate physical counts are added. Claims, estimates, mixed categories and unknown quantities stay separate.');
     const g=add(s,'div','orientation-grid'); card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
+    s.dataset.guideSection='loss-boundary';s.id='loss-boundary';addClass(s,'guide-summary-strip');
     const c=article.querySelector('[data-loss-comparison]'); if(c){const h=c.querySelector('h2');if(h)h.textContent='Loss records by side and type';const n=c.querySelector('.section-note');if(n)n.textContent='These totals count loss records, not individual destroyed or damaged items when the quantity is unknown. Unknown quantities stay unknown. Open a category to see the records behind the total.';c.classList.add('secondary-context');}
+    const map=article.querySelector(':scope > .context-map');markGuideSection(map,'loss-map','01');addClass(map,'guide-structural-panel');
+    const statusType=markGuideSection(findSection(article,/^Losses by status and type$/i),'loss-status-type','02');
+    const people=markGuideSection(findSection(article,/^People$/i),'people','03');
+    const equipment=markGuideSection(findSection(article,/^Equipment$/i),'equipment','04');
+    const estimates=markGuideSection(findSection(article,/^Estimated loss ranges$/i),'loss-estimates','05');
+    const aviation=markGuideSection(findSection(article,/^Aviation and pilot details$/i),'aviation-pilots','06');
+    [statusType,people,equipment,estimates,aviation].forEach(node=>addClass(node,'guide-analysis-width'));
+    [findSection(article,/^Iranian asset breakdown$/i),findSection(article,/^Pilot recovery timeline$/i),findSection(article,/^How these records are counted$/i),c].filter(Boolean).forEach(markGuideSupport);
+    addClass(article.querySelector('.loss-controls'),'guide-filter-rail');
+    article.querySelectorAll('.loss-side-group .record-list,.reader-full-facility-records .record-list').forEach(list=>addClass(list,'guide-dense-records'));
+    const introBlock=article.querySelector('.page-intro');if(introBlock)introBlock.after(s);
+    let anchor=s;[map,statusType,people,equipment,estimates,aviation].filter(Boolean).forEach(node=>{anchor.after(node);anchor=node;});
   }
 
   function weapons(article) {
+    addClass(article,'guide-migrated-page guide-analysis-page guide-weapons-page');
     intro(article,'Read weapons by incident: what was launched, what was intercepted or reached a target, and what damage followed. The evidence does not support one whole-war effectiveness percentage.');
     const s=section(article,'No single whole-war percentage','Launches, interceptions, penetrations, impacts and damage come from different incidents, sources and time periods. Those numbers are not one shared total.');
     card(s,'Sep. 8 Jordan-base attack','Jordan reported 20 ballistic missiles launched and 18 intercepted; it initially said two fell in unpopulated areas. Later U.S.-sourced reporting established real aircraft damage, so this is not a clean 18-of-20 interception-to-zero-hit chain.','EVENT-LEVEL CHAIN');
-    const m=findSection(article,/^What counts mean$/i);if(m)collapse(m,'How weapon counts are kept compatible');
+    s.dataset.guideSection='counts-boundary';s.id='counts-boundary';addClass(s,'guide-summary-strip');
+    const methodNode=findSection(article,/^What counts mean$/i), method=methodNode?collapse(methodNode,'How weapon counts are kept compatible'):null;if(method)markGuideSupport(method);
+    const used=markGuideSection(findSection(article,/^Weapons used$/i),'weapons-used','01');
+    const totals=markGuideSection(findSection(article,/^Reported totals over time$/i),'reported-totals','02');
+    const estimates=markGuideSection(findSection(article,/^Missile and launcher estimates$/i),'weapon-estimates','03');
+    const losses=markGuideSection(findSection(article,/^Related equipment losses$/i),'weapon-losses','04');
+    const aviation=markGuideSection(findSection(article,/^Aircraft loss cross-check$/i),'aviation-cross-check','05');
+    const limits=markGuideSection(findSection(article,/^Limits of these totals$/i),'weapon-limits','06');
+    [used,totals,estimates,losses,aviation,limits].forEach(node=>addClass(node,'guide-analysis-width'));
+    [used,totals,estimates,losses,aviation].forEach(node=>node?.querySelectorAll('.record-list,.comparison-grid').forEach(list=>addClass(list,'guide-dense-records')));
+    const introBlock=article.querySelector('.page-intro');if(introBlock)introBlock.after(s);
+    let anchor=s;[method,used,totals,estimates,losses,aviation,limits].filter(Boolean).forEach(node=>{anchor.after(node);anchor=node;});
   }
 
   function imagery(article) {
+    addClass(article,'guide-migrated-page guide-map-data-page guide-imagery-page');
     intro(article,'Start with what the imagery shows: the site, comparison date and visible physical change. Geolocation precision and interpretation limits come after the observation.');
-    const m=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||''));if(m)collapse(m,'How map location accuracy works');
+    const methodNode=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||'')),method=methodNode?collapse(methodNode,'How map location accuracy works'):null;if(method)markGuideSupport(method);
+    const map=article.querySelector(':scope > .context-map');markGuideSection(map,'imagery-map','01');addClass(map,'guide-structural-panel');
+    const review=markGuideSection(findSection(article,/^Imagery review$/i),'imagery-review','02');
     const a=findSection(article,/claims about these facilities hold up|facility assessments/i);
     if(a){
       const h=a.querySelector(':scope > h2'); if(h) h.textContent='Facility claim evidence';
       add(a,'p','scope-note','These checks compare specific claims with imagery and reporting. The facility page shows the current operating status.');
       routeLink(a,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
+      markGuideSection(a,'facility-claim-evidence','03');
     }
+    [review,a].forEach(node=>addClass(node,'guide-analysis-width'));
+    addClass(review?.querySelector('.imagery-summary-list'),'guide-dense-records');
+    addClass(a?.querySelector('.record-list'),'guide-dense-records');
   }
 
   function shipping(article, context) {
