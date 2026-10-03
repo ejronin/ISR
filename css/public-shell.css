@@ -3704,3 +3704,182 @@ tbody tr:last-child td { border-bottom: 0; }
     padding-block: var(--space-6);
   }
 }
+
+
+/* Guide broad migration — remaining Collection / Index pages. */
+.guide-collection-page .guide-filter-rail {
+  align-items: end;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4) 0;
+  border: 0;
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-collection-page .guide-filter-rail label {
+  min-width: 0;
+}
+
+.guide-collection-page .guide-filter-rail .filter-result-count {
+  margin: 0;
+}
+
+.guide-collection-page .guide-collection-group {
+  margin: 0;
+  padding: var(--space-7) 0;
+  border: 0;
+  border-top: 1px solid var(--border-divider);
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-collection-page .guide-collection-group > h2 {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.2rem, 1.7vw, 1.65rem);
+  letter-spacing: -.015em;
+}
+
+.guide-collection-page .guide-dense-directory {
+  gap: 0;
+}
+
+.guide-collection-page .guide-collection-pager {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Actor directory: identity rows rather than a wall of cards. */
+.guide-actor-directory-page .guide-filter-rail {
+  grid-template-columns: minmax(15rem, 1fr) auto;
+}
+
+.guide-actor-directory-page .actor-directory {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-6);
+}
+
+.guide-actor-directory-page .actor-card {
+  padding: .8rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* All Events: compact chronology rows retain every existing action and receipt. */
+.guide-event-directory-page .chronology-controls {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.guide-event-directory-page > .record-list {
+  gap: 0;
+}
+
+.guide-event-directory-page > .record-list > .chronology-card {
+  padding: var(--space-4) 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-event-directory-page .chronology-card > h3 {
+  max-width: var(--reading-width);
+  margin-bottom: .35rem;
+}
+
+.guide-event-directory-page .chronology-card .record-meta {
+  margin-bottom: .35rem;
+}
+
+/* Lie Ledger collection: dense case index; dossier presentation remains separate. */
+.guide-lie-ledger-collection .reader-lie-ledger {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-lie-ledger-collection .reader-lie-ledger > h2 {
+  margin-bottom: .25rem;
+  font-size: clamp(1.3rem, 1.8vw, 1.75rem);
+}
+
+.guide-lie-ledger-collection .reader-ledger-controls {
+  margin-block: var(--space-5) var(--space-6);
+}
+
+.guide-lie-ledger-collection .reader-ledger-chain-card {
+  margin: 0;
+  padding: var(--space-5) 0;
+  border-width: 0 0 1px;
+  border-color: var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-lie-ledger-collection .reader-ledger-chain-card:first-of-type {
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* WOL collection: graph remains the structural object; indexes flatten around it. */
+.guide-wol-collection .guide-structural-panel {
+  margin-bottom: var(--space-7);
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-wol-collection .guide-collection-group {
+  padding-block: var(--space-7);
+}
+
+.guide-wol-collection .wol-hall-grid,
+.guide-wol-collection .wol-family-list,
+.guide-wol-collection .wol-source-events {
+  gap: 0;
+}
+
+.guide-wol-collection .wol-hall-grid > *,
+.guide-wol-collection .wol-family-list > *,
+.guide-wol-collection .wol-source-events > * {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Archive: deliberately quiet reference rows. */
+.guide-archive-page .record-list {
+  gap: 0;
+}
+
+.guide-archive-page .record-card {
+  padding: .85rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+@media (max-width: 48rem) {
+  .guide-collection-page .guide-filter-rail,
+  .guide-actor-directory-page .guide-filter-rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-actor-directory-page .actor-directory {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-collection-page .guide-collection-group {
+    padding-block: var(--space-6);
+  }
+
+  .guide-event-directory-page > .record-list > .chronology-card,
+  .guide-lie-ledger-collection .reader-ledger-chain-card {
+    padding-block: var(--space-4);
+  }
+}
