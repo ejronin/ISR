@@ -16,7 +16,10 @@ const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'pub
 const records = key => {
   const payload = model.datasets[key].payload;
   if (Array.isArray(payload)) return payload;
-  return payload.records || payload.items || payload.events || payload.entries || [];
+  for (const field of ['records', 'strikes', 'facilities', 'claims', 'overlays', 'series', 'routes', 'outcomes', 'assessments', 'revisions', 'requests', 'profiles', 'branches', 'clauses', 'decisions', 'networks', 'domains', 'items', 'coverage', 'events', 'entries']) {
+    if (Array.isArray(payload && payload[field])) return payload[field];
+  }
+  return [];
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
