@@ -164,7 +164,7 @@ The target is a **vendored SVG subset**, not an icon-font or runtime package.
 
 MapLibre is selected because the approved visual direction requires one continuous camera and zoom-dependent cartographic grammar from theater to Gulf to Hormuz. That requirement materially favors a style/layer engine over DOM/SVG overlay composition.
 
-Leaflet remains production until the MapLibre implementation passes the gates in this contract. Leaflet is also the preferred fallback candidate for browsers where qualified WebGL is unavailable.
+Leaflet remains production until the MapLibre implementation passes the gates in this contract. Because MapLibre GL JS v6 requires WebGL2, Leaflet is also the preferred signed fallback candidate for browsers/devices where qualified WebGL2 is unavailable.
 
 ## WOL networks — UPGRADE
 
@@ -276,16 +276,16 @@ Until then, a signed same-origin GeoJSON asset is simpler and easier to verify.
 
 ## Worker and CSP policy
 
-MapLibre 6 supports a same-origin worker URL under strict CSP. Production must:
+MapLibre GL JS v6 is ESM-only, requires WebGL2, and ships its worker as a separate module. Production must set an explicit same-origin worker URL and:
 
 - self-host the worker;
-- content-address and manifest-bind it;
+- content-address and manifest-bind both the main module and worker;
 - add only `worker-src 'self'` to the current CSP;
 - keep `connect-src 'self'`;
 - keep `img-src 'self' data: blob:`;
 - never permit a CDN or hosted basemap merely to satisfy the renderer.
 
-No `blob:` worker permission is necessary when the worker is self-hosted.
+No `blob:` worker permission is necessary when the worker is self-hosted. The prototype therefore uses MapLibre's explicit worker URL path rather than relying on the default Blob-worker laundering behavior.
 
 ## Camera policy
 
@@ -600,8 +600,8 @@ The general reader qualification must continue to run even if the map-specific l
 - MapLibre GL JS 6.11.2 — BSD-3-Clause
 - cytoscape-fcose 2.2.0 — MIT
 - cytoscape-elk 2.3.0 — MIT
-- elkjs — transitive layout engine; preserve its EPL-2.0/GPL dual-license notice and select the compatible distribution deliberately
-- Apache ECharts 6.0.0 stable — Apache-2.0
+- elkjs 0.9.3 — EPL-2.0 under the current `cytoscape-elk` 2.3.0 dependency; production must pin the resolved artifact exactly
+- Apache ECharts 6.1.0 — Apache-2.0
 - Lucide — ISC, vendored SVG subset
 
 Do not promote an RC dependency merely because upstream `main` has a newer package version.
@@ -622,6 +622,8 @@ For each promoted dependency:
 8. add a CI rule rejecting remote runtime URLs.
 
 Lucide should be vendored as sanitized individual SVGs, not as an application dependency.
+
+The prototype's `package.json` pins exact top-level lab versions, but it is not the production dependency authority. Production promotion requires the complete resolved dependency closure to be pinned/vendored, license-reviewed, hashed, classified and manifest-bound before any runtime is allowed across the signed boundary.
 
 Existing country flags remain untouched.
 
@@ -893,13 +895,14 @@ Inputs:
 Proof:
 
 - one MapLibre camera;
+- explicit same-origin MapLibre v6 worker packaging;
 - 110m → 50m → 10m geography visibility by zoom;
 - current schematic route IDs and exact current coordinate arrays, converted only from the repository’s `[lat, lon]` presentation form to GeoJSON `[lon, lat]`;
 - current sanctions jurisdiction markers;
 - theater / Gulf / Hormuz named camera controls;
 - no remote tiles/style/API.
 
-No route geometry is edited.
+No route geometry is edited. The lab build also runs `verify-inputs.mjs` against the same current files before bundling and copies only the prototype inputs into its isolated `dist/` tree; none of that output is part of the signed public release.
 
 ## N2. WOL/network proof
 
