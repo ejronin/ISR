@@ -253,7 +253,6 @@
         if (date) append(row, 'small', '', ` ${date}`);
       });
     });
-    collapseSection(article, 'From damage to war results', 'How damage and operating results are kept separate');
   }
 
   function normalizeActor(record) {
