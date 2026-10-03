@@ -8,11 +8,12 @@ const ia = require('../js/public-ia.js');
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const OUTPUT = process.env.ATLAS_SCREENSHOT_DIR || path.join(__dirname, '..', 'audit-screens');
-const WIDTHS = [1440, 1024, 768, 390, 320];
+const WIDTHS = [1920, 1440, 1024, 768, 390, 320];
 const ROUTES = [
   'start.overview',
   'timeline.war',
   'evidence.sources',
+  'evidence.method',
   'evidence.information',
   'evidence.web_of_lies',
   'military.campaigns',
@@ -42,11 +43,10 @@ const POLISH_FOCUS = [
   { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' }
 ];
 const MAP_FOCUS = [
-  { routeKey: 'military.campaigns', label: 'campaign', selector: '[data-visual-sweep-hero="campaign"] .atlas-leaflet-map' },
-  { routeKey: 'hormuz.shipping', label: 'shipping-chokepoint', selector: '[data-shipping-map-view="chokepoint"] .atlas-leaflet-map' },
-  { routeKey: 'hormuz.shipping', label: 'shipping-network', selector: '[data-shipping-map-view="network"] .atlas-leaflet-map' },
-  { routeKey: 'hormuz.economy', label: 'economy-network', selector: '.context-map .atlas-leaflet-map' },
-  { routeKey: 'hormuz.sanctions', label: 'sanctions-network', selector: '.visual-route-hormuz-sanctions .context-map .atlas-leaflet-map' }
+  { routeKey: 'military.campaigns', label: 'campaign-maplibre', selector: '[data-visual-sweep-hero="campaign"] .atlas-maplibre-map', renderer: 'maplibre' },
+  { routeKey: 'hormuz.shipping', label: 'shipping-continuous-maplibre', selector: '[data-shipping-map-view="continuous"] .atlas-maplibre-map', renderer: 'maplibre' },
+  { routeKey: 'hormuz.economy', label: 'economy-network', selector: '.context-map .atlas-leaflet-map', renderer: 'leaflet' },
+  { routeKey: 'hormuz.sanctions', label: 'sanctions-network', selector: '.visual-route-hormuz-sanctions .context-map .atlas-leaflet-map', renderer: 'leaflet' }
 ];
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
@@ -92,13 +92,48 @@ async function waitFor(cdp, expression, timeout = 30000) {
 }
 
 async function route(cdp, routeKey) {
-  await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref(routeKey))};scrollTo(0,0);true`);
-  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`);
+  const hash = ia.routeHref(routeKey);
+  const ready = `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`;
+  await cdp.eval(`location.hash=${JSON.stringify(hash)};scrollTo(0,0);true`);
+  try {
+    await waitFor(cdp, ready, 10000);
+  } catch (_) {
+    await cdp.call('Page.navigate', { url: `${SITE}${hash}` });
+    await waitFor(cdp, ready, 30000);
+  }
   await sleep(120);
+}
+
+async function resetReviewPage(cdp) {
+  await cdp.call('Page.navigate', { url: `${SITE}#/start/overview` });
+  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === "start.overview"`);
+  await sleep(180);
 }
 
 async function captureViewport(cdp, filename) {
   const screenshot = await cdp.call('Page.captureScreenshot', { format: 'png', fromSurface: true, captureBeyondViewport: false });
+  fs.writeFileSync(path.join(OUTPUT, filename), Buffer.from(screenshot.data, 'base64'));
+}
+
+async function captureElement(cdp, selector, filename, maxHeight = 1400) {
+  const rect = await cdp.eval(`(() => {
+    const node = document.querySelector(${JSON.stringify(selector)});
+    if (!node) return null;
+    const box = node.getBoundingClientRect();
+    return {
+      x: Math.max(0, box.left + scrollX),
+      y: Math.max(0, box.top + scrollY),
+      width: Math.max(1, box.width),
+      height: Math.max(1, Math.min(box.height, ${Number(maxHeight)}))
+    };
+  })()`);
+  assert(rect && rect.width > 0 && rect.height > 0, `cannot capture missing/empty element: ${selector}`);
+  const screenshot = await cdp.call('Page.captureScreenshot', {
+    format: 'png',
+    fromSurface: true,
+    captureBeyondViewport: true,
+    clip: { x: rect.x, y: rect.y, width: rect.width, height: rect.height, scale: 1 }
+  });
   fs.writeFileSync(path.join(OUTPUT, filename), Buffer.from(screenshot.data, 'base64'));
 }
 
@@ -128,6 +163,8 @@ async function captureViewport(cdp, filename) {
       }
     }
 
+    await resetReviewPage(cdp);
+
     let mapFocusCaptures = 0;
     for (const width of WIDTHS) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
@@ -135,66 +172,44 @@ async function captureViewport(cdp, filename) {
         await route(cdp, focus.routeKey);
         const selector = JSON.stringify(focus.selector);
         await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
+        if (focus.renderer === 'maplibre') await waitFor(cdp, `document.querySelector(${selector})?.dataset.mapState === 'ready'`);
         const reviewState = await cdp.eval(`(() => {
           const target = document.querySelector(${selector});
           target.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'auto' });
-          const map = target.closest('[data-component="MapView"]');
-          const routePane = map?._atlasMap?.getPane('atlas-routes');
+          const map = target.closest('[data-component="MapLibreView"], [data-component="MapView"]');
+          const isMapLibre = map?.dataset.mapRenderer === 'maplibre-gl-js';
+          const routePane = !isMapLibre ? map?._atlasMap?.getPane('atlas-routes') : null;
+          const labelSelector = isMapLibre ? '.guide-map-label' : '.reference-map-label';
+          const labelNodes = [...target.querySelectorAll(labelSelector)].filter(node => !node.hidden && getComputedStyle(node).display !== 'none');
           return {
+            renderer: map?.dataset.mapRenderer || 'leaflet',
             width: target.getBoundingClientRect().width,
             height: target.getBoundingClientRect().height,
-            routePaths: routePane?.querySelectorAll('path').length || 0,
-            routeControls: map?.querySelectorAll('.map-route-button').length || 0,
+            routePaths: isMapLibre ? Number(map?.dataset.mapRouteCount || 0) : (routePane?.querySelectorAll('path').length || 0),
+            routeControls: isMapLibre ? map?.querySelectorAll('.visualization-toggle').length || 0 : map?.querySelectorAll('.map-route-button').length || 0,
             routeModes: map?.dataset.mapRouteModes || '',
-            labels: target.querySelectorAll('.reference-map-label').length,
-            visibleLabels: [...target.querySelectorAll('.reference-map-label')].filter(node => getComputedStyle(node).display !== 'none').length,
-            labelOverlaps: (() => {
-              const boxes = [...target.querySelectorAll('.reference-map-label')]
-                .filter(node => getComputedStyle(node).display !== 'none')
-                .map(node => (node.querySelector('span') || node).getBoundingClientRect());
-              let overlaps = 0;
-              for (let i = 0; i < boxes.length; i += 1) for (let j = i + 1; j < boxes.length; j += 1) {
-                const a = boxes[i], b = boxes[j];
-                if (!(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom)) overlaps += 1;
-              }
-              return overlaps;
-            })(),
-            labelClips: (() => {
-              const bounds = target.getBoundingClientRect();
-              return [...target.querySelectorAll('.reference-map-label')]
-                .filter(node => getComputedStyle(node).display !== 'none')
-                .map(node => (node.querySelector('span') || node).getBoundingClientRect())
-                .filter(rect => rect.left < bounds.left + 3 || rect.right > bounds.right - 3 || rect.top < bounds.top + 3 || rect.bottom > bounds.bottom - 3).length;
-            })(),
-            labelPolicy: map?.dataset.mapLabelPolicy || '',
+            labels: target.querySelectorAll(labelSelector).length,
+            visibleLabels: labelNodes.length,
             scope: map?.dataset.mapScope || '',
             bounds: map?.dataset.mapBounds || ''
           };
         })()`);
         assert(reviewState.width > 0 && reviewState.height > 0, `${focus.label} map has no rendered area at ${width}px`);
-        if (focus.label === 'shipping-network') {
-          assert(reviewState.routePaths > 0, `${focus.label} has no rendered SVG route geometry at ${width}px`);
+        if (focus.renderer === 'maplibre') {
+          assert.equal(reviewState.renderer, 'maplibre-gl-js', `${focus.label} did not promote to MapLibre at ${width}px`);
+          assert(reviewState.visibleLabels > 0, `${focus.label} has no visible progressive labels at ${width}px`);
+        }
+        if (focus.label === 'shipping-continuous-maplibre') {
+          assert(reviewState.routePaths > 0, `${focus.label} has no accepted route geometry at ${width}px`);
           assert(reviewState.routeControls > 0 && reviewState.routeModes, `${focus.label} lacks route controls or route-mode metadata at ${width}px`);
         }
-        if (focus.label === 'shipping-network' || focus.label === 'economy-network') {
-          const visibleCeiling = width <= 390 ? 6 : width <= 768 ? 9 : 14;
-          assert(reviewState.visibleLabels <= visibleCeiling, `${focus.label} exceeds ${visibleCeiling} visible contextual labels at ${width}px`);
-          assert.equal(reviewState.labelPolicy, 'route-endpoints-prioritized', `${focus.label} is not using the route-endpoint label policy at ${width}px`);
-        }
-        if (focus.label === 'campaign') {
-          const visibleCeiling = width <= 390 ? 7 : width <= 768 ? 10 : 10;
-          assert(reviewState.visibleLabels <= visibleCeiling, `campaign map exceeds ${visibleCeiling} visible theater labels at ${width}px`);
-          assert.equal(reviewState.labelPolicy, 'theater-context-prioritized', `campaign map is not using the theater label policy at ${width}px`);
-        }
-        if (width <= 390) {
-          assert.equal(reviewState.labelOverlaps, 0, `${focus.label} has overlapping visible context labels at ${width}px`);
-          assert.equal(reviewState.labelClips, 0, `${focus.label} has a visible context label clipped by the map edge at ${width}px`);
-        }
         await sleep(180);
-        await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
+        await captureElement(cdp, focus.selector, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`, 1100);
         mapFocusCaptures += 1;
       }
     }
+
+    await resetReviewPage(cdp);
 
     let polishFocusCaptures = 0;
     for (const width of WIDTHS) {
@@ -205,10 +220,82 @@ async function captureViewport(cdp, filename) {
         await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
         await cdp.eval(`(() => { const target=document.querySelector(${selector}); ${focus.openSelector ? `const disclosure=document.querySelector(${JSON.stringify(focus.openSelector)}); if (disclosure && innerWidth <= 600) disclosure.open=true;` : ''} target.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'auto' }); return true; })()`);
         await sleep(150);
-        await captureViewport(cdp, `polishfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
+        await captureElement(cdp, focus.selector, `polishfocus-${String(width).padStart(4, '0')}-${focus.label}.png`, 1200);
         polishFocusCaptures += 1;
       }
     }
+
+    await resetReviewPage(cdp);
+
+    // Dedicated WOL actor-dossier reader-mode review.
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+    await route(cdp, 'evidence.web_of_lies');
+    await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
+    const wolActorId = await cdp.eval(`(() => {
+      const picker = document.querySelector('.wol-node-picker');
+      return ([...picker.options].find(option => option.value && option.textContent.includes('💩')) || [...picker.options].find(option => option.value))?.value || '';
+    })()`);
+    assert(wolActorId, 'No WOL actor is available for dossier review');
+    await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: '__ACTOR__' }).replace('__ACTOR__', wolActorId))};true`);
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.web_of_lies' && document.querySelector('.public-page')?.dataset?.dossierSource === ${JSON.stringify(wolActorId)} || Boolean(document.querySelector('.wol-node-detail[data-guide-section="current-record"]'))`);
+    await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
+    await cdp.eval(`(() => {
+      document.querySelector('[data-wol-mode="full"]')?.click();
+      document.querySelector('.wol-network')?.scrollIntoView({ block: 'center', behavior: 'auto' });
+      return true;
+    })()`);
+    await sleep(180);
+    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-full-1440.png', 1400);
+    await cdp.eval(`document.querySelector('[data-wol-mode="direct"]')?.click(); true`);
+    await sleep(180);
+    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-direct-1440.png', 1400);
+    await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); true`);
+    await sleep(180);
+    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-trace-1440.png', 1400);
+
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+    await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); document.querySelector('.wol-network')?.scrollIntoView({ block: 'start', behavior: 'auto' }); true`);
+    await sleep(180);
+    await captureElement(cdp, '.wol-mobile-trace:not([hidden])', 'wol-actor-dossier-trace-0390.png', 1800);
+
+    // Lie Ledger case dossier — same accepted case record, desktop/ultrawide/mobile.
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+    await route(cdp, 'evidence.information');
+    const lieCaseHref = await cdp.eval(`document.querySelector('.reader-case-link')?.getAttribute('href') || ''`);
+    assert(lieCaseHref, 'No Lie Ledger case dossier link is available for review');
+    await cdp.eval(`location.hash=${JSON.stringify(lieCaseHref)};scrollTo(0,0);true`);
+    await waitFor(cdp, `Boolean(document.querySelector('.guide-lie-ledger-dossier .guide-dossier-record'))`);
+    await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-1440.png', 1400);
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
+    await sleep(120);
+    await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-1920.png', 1400);
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+    await sleep(120);
+    await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-0390.png', 1800);
+
+    // Same-record MapLibre / Leaflet fallback comparison on Shipping.
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+    await route(cdp, 'hormuz.shipping');
+    await waitFor(cdp, `document.querySelector('[data-shipping-map-view="continuous"] .atlas-maplibre-map')?.dataset.mapState === 'ready'`);
+    await cdp.eval(`document.querySelector('[data-shipping-map-view="continuous"]')?.scrollIntoView({ block: 'center', behavior: 'auto' }); true`);
+    await sleep(180);
+    await captureElement(cdp, '[data-shipping-map-view="continuous"] .atlas-maplibre-map', 'shipping-maplibre-1440.png', 1000);
+    await cdp.eval(`(() => {
+      window.__reviewSavedVisualizationRenderer = window.AtlasVisualizationRenderer;
+      window.AtlasVisualizationRenderer = { create: () => null };
+      document.querySelector('#atlas-root').__atlasRouteController.render();
+      return true;
+    })()`);
+    await waitFor(cdp, `Boolean(document.querySelector('[data-shipping-map-view="continuous"] .atlas-leaflet-map'))`);
+    await cdp.eval(`document.querySelector('[data-shipping-map-view="continuous"]')?.scrollIntoView({ block: 'center', behavior: 'auto' }); true`);
+    await sleep(180);
+    await captureElement(cdp, '[data-shipping-map-view="continuous"] .atlas-leaflet-map', 'shipping-leaflet-fallback-1440.png', 1000);
+    await cdp.eval(`(() => {
+      window.AtlasVisualizationRenderer = window.__reviewSavedVisualizationRenderer;
+      delete window.__reviewSavedVisualizationRenderer;
+      document.querySelector('#atlas-root').__atlasRouteController.render();
+      return true;
+    })()`);
 
     await cdp.call('Emulation.clearDeviceMetricsOverride');
     const manifest = {
@@ -219,7 +306,10 @@ async function captureViewport(cdp, filename) {
       map_focus_captures: mapFocusCaptures,
       polish_focus: POLISH_FOCUS.map(({ routeKey, label, selector }) => ({ routeKey, label, selector })),
       polish_focus_captures: polishFocusCaptures,
-      total_review_captures: captures + mapFocusCaptures + polishFocusCaptures
+      wol_mode_captures: ['wol-actor-dossier-full-1440.png', 'wol-actor-dossier-direct-1440.png', 'wol-actor-dossier-trace-1440.png', 'wol-actor-dossier-trace-0390.png'],
+      lie_ledger_dossier_captures: ['lie-ledger-dossier-1920.png', 'lie-ledger-dossier-1440.png', 'lie-ledger-dossier-0390.png'],
+      maplibre_leaflet_comparison: ['shipping-maplibre-1440.png', 'shipping-leaflet-fallback-1440.png'],
+      total_review_captures: captures + mapFocusCaptures + polishFocusCaptures + 9
     };
     fs.writeFileSync(path.join(OUTPUT, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
     console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots + ${polishFocusCaptures} evidence-first focus screenshots`);

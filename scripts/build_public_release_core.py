@@ -26,7 +26,7 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "2.6-web-of-lies-cytoscape-runtime"
+GENERATOR_VERSION = "2.7-maplibre-representative-capability"
 REQUIRED_PILLOW_VERSION = "12.3.0"
 EVIDENCE_MEDIA_ROOT = "assets/evidence"
 SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
@@ -40,6 +40,7 @@ ASSET_SPECS = (
     ("map_runtime", "leaflet", "vendor/leaflet/leaflet.js", "js"),
     ("graph_runtime", "cytoscape", "vendor/cytoscape/cytoscape.min.js", "js"),
     ("base_runtime", "public-ia", "js/public-ia.js", "js"),
+    ("visualization_runtime", "public-visualization-renderer", "js/public-visualization-renderer.js", "js"),
     ("reader_support", "public-reader-layer", "src/public-reader-layer.js", "js"),
     ("page_registry", "public-reader-registry", "src/public-reader-registry.js", "js"),
     ("map_stylesheet", "leaflet", "vendor/leaflet/leaflet.css", "css"),
@@ -48,6 +49,9 @@ ASSET_SPECS = (
     ("reference_geography", "atlas-reference-geography", "assets/geography/atlas-reference-geography.geojson", "geojson"),
     ("entrypoint", "public-app", "js/public-app.js", "js"),
 )
+MAPLIBRE_VERSION = "6.11.2"
+MAPLIBRE_SOURCE_ROOT = f"vendor/maplibre/{MAPLIBRE_VERSION}"
+
 FLAG_ASSET_SPECS = (
     ("ae", "United Arab Emirates"), ("au", "Australia"), ("bd", "Bangladesh"), ("bg", "Bulgaria"),
     ("bh", "Bahrain"), ("cn", "China"), ("dj", "Djibouti"), ("eg", "Egypt"), ("fr", "France"),
@@ -111,6 +115,58 @@ def materialize_asset(root: Path, role: str, name: str, source_path: str, extens
         "bytes": len(data),
         "hash_basis": "UTF8_LF_NORMALIZED",
     }
+
+
+def materialize_transformed_module(root: Path, role: str, name: str, source_path: str, replacements: dict[bytes, bytes]) -> dict[str, Any]:
+    source = root / source_path
+    if not source.is_file():
+        raise FileNotFoundError(f"Public application source asset is missing: {source_path}")
+    data = canonical_text_bytes(source)
+    for before, after in replacements.items():
+        if before not in data:
+            raise ValueError(f"Expected module import was not found in {source_path}: {before!r}")
+        data = data.replace(before, after)
+    digest = sha256(data)
+    relative_path = f"assets/releases/{name}.{digest}.js"
+    output = root / relative_path
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if not output.is_file() or output.read_bytes() != data:
+        output.write_bytes(data)
+    return {
+        "role": role,
+        "name": name,
+        "source_path": source_path,
+        "path": relative_path,
+        "sha256": digest,
+        "integrity": sri_sha256(data),
+        "bytes": len(data),
+        "hash_basis": "UTF8_LF_NORMALIZED",
+        "version": MAPLIBRE_VERSION,
+    }
+
+
+def materialize_maplibre_capability(root: Path) -> dict[str, dict[str, Any]]:
+    shared = materialize_asset(
+        root, "maplibre_shared", "maplibre-gl-shared",
+        f"{MAPLIBRE_SOURCE_ROOT}/maplibre-gl-shared.js", "js"
+    )
+    shared["version"] = MAPLIBRE_VERSION
+    shared_basename = PurePosixPath(shared["path"]).name.encode("utf-8")
+    rewrite = {b'./maplibre-gl-shared.js': b'./' + shared_basename}
+    runtime = materialize_transformed_module(
+        root, "maplibre_runtime", "maplibre-gl",
+        f"{MAPLIBRE_SOURCE_ROOT}/maplibre-gl.js", rewrite
+    )
+    worker = materialize_transformed_module(
+        root, "maplibre_worker", "maplibre-gl-worker",
+        f"{MAPLIBRE_SOURCE_ROOT}/maplibre-gl-worker.js", rewrite
+    )
+    stylesheet = materialize_asset(
+        root, "maplibre_stylesheet", "maplibre-gl",
+        f"{MAPLIBRE_SOURCE_ROOT}/maplibre-gl.css", "css"
+    )
+    stylesheet["version"] = MAPLIBRE_VERSION
+    return {"runtime": runtime, "shared": shared, "worker": worker, "stylesheet": stylesheet}
 
 
 def validate_flag_svg(source_path: str, data: bytes) -> None:
@@ -355,7 +411,10 @@ def validate_document_shell(root: Path, bootstrap_asset: dict[str, Any]) -> None
         f'crossorigin="anonymous" data-bootstrap-sha256="{bootstrap_asset["sha256"]}"'
     )
     if expected not in document:
-        raise ValueError("Document shell does not bind the exact content-addressed bootstrap asset")
+        raise ValueError(
+            "Document shell does not bind the exact content-addressed bootstrap asset; "
+            f"expected {expected}"
+        )
     if re.search(r'<script\b[^>]*\bsrc="js/public-app\.js', document, re.I):
         raise ValueError("Document shell must not execute the mutable application source directly")
     if re.search(r'<link\b[^>]*\bhref="css/public-shell\.css', document, re.I):
@@ -367,6 +426,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     version = validate_source_versions(root)
     asset_records = [materialize_asset(root, *spec) for spec in ASSET_SPECS]
     assets_by_role = {asset["role"]: asset for asset in asset_records}
+    maplibre = materialize_maplibre_capability(root)
     validate_document_shell(root, assets_by_role["bootstrap"])
 
     state_path = root / CURRENT_STATE_PATH
@@ -385,6 +445,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         assets_by_role["map_runtime"],
         assets_by_role["graph_runtime"],
         assets_by_role["base_runtime"],
+        assets_by_role["visualization_runtime"],
         assets_by_role["reader_support"],
         assets_by_role["page_registry"],
         assets_by_role["map_stylesheet"],
@@ -392,6 +453,10 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         assets_by_role["reader_stylesheet"],
         assets_by_role["reference_geography"],
         assets_by_role["entrypoint"],
+        maplibre["runtime"],
+        maplibre["shared"],
+        maplibre["worker"],
+        maplibre["stylesheet"],
         *state_flags,
         *evidence_images,
     ]
@@ -425,11 +490,23 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         },
         "application": {
             "version": version,
-            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["graph_runtime"]["path"], assets_by_role["base_runtime"]["path"], assets_by_role["reader_support"]["path"], assets_by_role["page_registry"]["path"]],
+            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["graph_runtime"]["path"], assets_by_role["base_runtime"]["path"], assets_by_role["visualization_runtime"]["path"], assets_by_role["reader_support"]["path"], assets_by_role["page_registry"]["path"]],
             "entrypoint": assets_by_role["entrypoint"]["path"],
             "stylesheet": assets_by_role["stylesheet"]["path"],
             "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"], assets_by_role["reader_stylesheet"]["path"]],
             "reference_geography": assets_by_role["reference_geography"]["path"],
+            "capabilities": {
+                "maplibre": {
+                    "version": MAPLIBRE_VERSION,
+                    "runtime": maplibre["runtime"],
+                    "shared": maplibre["shared"],
+                    "worker": maplibre["worker"],
+                    "stylesheet": maplibre["stylesheet"],
+                    "loading": "lazy",
+                    "fallback": "leaflet",
+                    "same_origin_only": True,
+                }
+            },
             "evidence_images": [asset["path"] for asset in evidence_images],
             "state_flags": state_flags,
             "asset_set_sha256": asset_set_sha256,

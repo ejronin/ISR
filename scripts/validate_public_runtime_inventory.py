@@ -24,6 +24,7 @@ REQUIRED_CURRENT_SERVICE_OWNERS = (
     ("public application", "js/public-app.js", "async function boot"),
     ("authoritative reader-first page registry and route lifecycle", "src/public-reader-registry.js", "function mount"),
     ("non-authoritative base rendering library", "js/public-ia.js", "PAGE_OWNERS"),
+    ("representative visualization renderer and MapLibre capability loader", "js/public-visualization-renderer.js", "function create"),
     ("non-authoritative reader support module module", "src/public-reader-layer.js", "READER_SUPPORT_VERSION"),
     ("shared evidence drawer", "js/public-ia.js", "EvidenceDrawer"),
     ("shared MapView", "js/public-ia.js", "MapView"),
@@ -129,7 +130,7 @@ def validate_repository(root: Path) -> dict[str, int]:
     current_package_support = set(inventory.get("current_package_support") or [])
     classified_support = archive_assets | current_package_support
     support_actual = set()
-    for pattern in ("assets/flags/*", "assets/icons/*", "legacy/*", "vendor/leaflet/**/*", "vendor/mermaid/**/*", "vendor/cytoscape/**/*"):
+    for pattern in ("assets/flags/*", "assets/icons/*", "legacy/*", "vendor/leaflet/**/*", "vendor/mermaid/**/*", "vendor/cytoscape/**/*", "vendor/maplibre/**/*"):
         support_actual |= files_under(root, pattern)
     support_current = {path for path in current_paths if path.startswith("vendor/")}
     require_exact(support_actual, classified_support | support_current, "presentation support asset")

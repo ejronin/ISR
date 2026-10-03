@@ -82,6 +82,13 @@ def workspace() -> Iterator[Path]:
         target = Path(directory)
         for _, _, source_path, _ in release.ASSET_SPECS:
             copy(source_path, target)
+        for relative in (
+            f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl.js",
+            f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl-shared.js",
+            f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl-worker.js",
+            f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl.css",
+        ):
+            copy(relative, target)
         for code, _ in release.FLAG_ASSET_SPECS:
             copy(f"assets/flags/{code}.svg", target)
         for relative in (

@@ -99,7 +99,15 @@ class PublicRuntimeInventoryTests(unittest.TestCase):
     def test_repository_archive_is_retained_but_not_deployed(self) -> None:
         self.assertTrue(SNAPSHOT.is_file(), "historical snapshot must remain in repository history")
         counts = validate_repository(ROOT)
-        self.assertEqual(counts["current_sources"], 11)
+        inventory = json.loads((ROOT / "config/public-runtime-inventory.json").read_text(encoding="utf-8"))
+        expected_roles = {
+            "bootstrap", "map_runtime", "graph_runtime", "base_runtime", "visualization_runtime",
+            "reader_support", "page_registry", "map_stylesheet", "stylesheet", "reader_stylesheet",
+            "reference_geography", "entrypoint",
+            "maplibre_runtime", "maplibre_shared", "maplibre_worker", "maplibre_stylesheet",
+        }
+        self.assertEqual({item["role"] for item in inventory["current_sources"]}, expected_roles)
+        self.assertEqual(counts["current_sources"], len(expected_roles))
         manifest = json.loads((ROOT / "data/public-release.json").read_text(encoding="utf-8"))
         self.assertEqual(counts["signed_release_assets"], 1 + len(manifest["application"]["assets"]))
 

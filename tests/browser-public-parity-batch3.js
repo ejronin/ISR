@@ -159,16 +159,20 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
 
     await routeKey(cdp, 'start.overview');
     const overview = await cdp.eval(`(() => {
-      const map = document.querySelector('[data-component="MapView"]');
+      const map = document.querySelector('[data-component="MapView"], [data-component="MapLibreView"]');
       const bounds = JSON.parse(map.dataset.mapBounds);
       const leaflet = map._atlasMap;
-      const fitted = leaflet.getBounds();
+      const maplibre = map._atlasMapLibre;
+      const fitted = leaflet ? leaflet.getBounds() : maplibre?.getBounds();
+      const inside = leaflet
+        ? fitted.contains(bounds[0]) && fitted.contains(bounds[1])
+        : Boolean(fitted && fitted.contains([bounds[0][1], bounds[0][0]]) && fitted.contains([bounds[1][1], bounds[1][0]]));
       return {
         extent: map.dataset.mapExtentSource,
         rule: map.dataset.selectionRule,
         bounds,
-        fitted: [[fitted.getSouth(), fitted.getWest()], [fitted.getNorth(), fitted.getEast()]],
-        inside: fitted.contains(bounds[0]) && fitted.contains(bounds[1]),
+        fitted: fitted ? [[fitted.getSouth(), fitted.getWest()], [fitted.getNorth(), fitted.getEast()]] : null,
+        inside,
         text: map.innerText
       };
     })()`);
@@ -181,28 +185,28 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     const routeIds = ['REDSEA-SUEZ-MARITIME', 'REDSEA-SAUDI-EAST-WEST', 'RAIL-CN-IR-APRIN', 'RAIL-RU-IR-APRIN'];
     await routeKey(cdp, 'hormuz.shipping');
     const shipping = await cdp.eval(`(() => {
-      const maps = [...document.querySelectorAll('[data-component="MapView"]')];
+      const maps = [...document.querySelectorAll('[data-component="MapView"], [data-component="MapLibreView"]')];
       const routeOwners = maps.filter(candidate => candidate.querySelector('button[data-route-id]'));
-      const networkMaps = maps.filter(candidate => candidate.dataset.shippingMapView === 'network');
-      const chokepointMaps = maps.filter(candidate => candidate.dataset.shippingMapView === 'chokepoint');
+      const continuousMaps = maps.filter(candidate => candidate.dataset.shippingMapView === 'continuous');
       const map = routeOwners[0];
       const controls = map ? [...map.querySelectorAll('button[data-route-id]')] : [];
       const bounds = map ? JSON.parse(map.dataset.mapBounds) : null;
-      const fitted = map?._atlasMap?.getBounds();
-      const chokepointBounds = chokepointMaps.length === 1 ? JSON.parse(chokepointMaps[0].dataset.mapBounds) : null;
+      const leaflet = map?._atlasMap;
+      const maplibre = map?._atlasMapLibre;
+      const fitted = leaflet ? leaflet.getBounds() : maplibre?.getBounds();
+      const inside = leaflet
+        ? Boolean(fitted && bounds && fitted.contains(bounds[0]) && fitted.contains(bounds[1]))
+        : Boolean(fitted && bounds && fitted.contains([bounds[0][1], bounds[0][0]]) && fitted.contains([bounds[1][1], bounds[1][0]]));
       return {
         routeOwnerCount: routeOwners.length,
-        networkMapCount: networkMaps.length,
-        networkOwnsRoutes: routeOwners.length === 1 && networkMaps.length === 1 && routeOwners[0] === networkMaps[0],
-        chokepointMapCount: chokepointMaps.length,
-        chokepointRouteControls: chokepointMaps.reduce((count, candidate) => count + candidate.querySelectorAll('button[data-route-id]').length, 0),
-        chokepointBounds,
+        continuousMapCount: continuousMaps.length,
+        continuousOwnsRoutes: routeOwners.length === 1 && continuousMaps.length === 1 && routeOwners[0] === continuousMaps[0],
         routeIds: controls.map(node => node.dataset.routeId),
         modes: [...new Set(controls.map(node => node.dataset.routeMode))].sort(),
         mapModes: map?.dataset.mapRouteModes || '',
         bounds,
         fitted: fitted ? [[fitted.getSouth(), fitted.getWest()], [fitted.getNorth(), fitted.getEast()]] : null,
-        inside: Boolean(fitted && bounds && fitted.contains(bounds[0]) && fitted.contains(bounds[1])),
+        inside,
         legend: map?.querySelector('.map-legend')?.innerText || '',
         mapText: map?.innerText || '',
         merchant: document.querySelectorAll('.merchant-loss-details [data-loss-id]').length,
@@ -213,12 +217,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
-    assert.equal(shipping.routeOwnerCount, 1, 'exactly one Shipping MapView must own transport route controls');
-    assert.equal(shipping.networkMapCount, 1, 'Shipping must expose exactly one network MapView');
-    assert.equal(shipping.networkOwnsRoutes, true, 'the Shipping network MapView must be the sole owner of transport route controls');
-    assert.equal(shipping.chokepointMapCount, 1, 'Shipping must retain one independently testable chokepoint MapView');
-    assert.equal(shipping.chokepointRouteControls, 0, 'the Hormuz chokepoint MapView must not duplicate network route controls');
-    assert(shipping.chokepointBounds && shipping.chokepointBounds[0][1] >= 50 && shipping.chokepointBounds[1][1] <= 61, 'Shipping chokepoint map lost its Hormuz-scoped bounds');
+    assert.equal(shipping.routeOwnerCount, 1, 'exactly one Shipping map must own transport route controls');
+    assert.equal(shipping.continuousMapCount, 1, 'Shipping must expose exactly one continuous map');
+    assert.equal(shipping.continuousOwnsRoutes, true, 'the continuous Shipping map must be the sole owner of transport route controls');
     assert.deepEqual(shipping.routeIds.sort(), routeIds.slice().sort());
     assert.deepEqual(shipping.modes, ['maritime', 'pipeline', 'rail']);
     assert.equal(shipping.mapModes, 'maritime,pipeline,rail');
@@ -228,8 +229,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(shipping.legend, /Pipeline · schematic/);
     assert.match(shipping.legend, /Rail · schematic/);
     assert.match(shipping.mapText, /not live vessel tracking/i);
-    assert.match(shipping.mapText, /pipeline lines are not surveyed alignments/i);
-    assert.match(shipping.mapText, /rail lines are not exact track alignments/i);
+    assert.match(shipping.mapText, /not a surveyed pipeline alignment|pipeline lines are not surveyed alignments/i);
+    assert.match(shipping.mapText, /not exact rail alignment|rail lines are not exact track alignments/i);
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
     assert(shipping.merchantLinks.every(link => link.startsWith('#/war/losses/?loss=')));

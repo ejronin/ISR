@@ -127,9 +127,10 @@ def main() -> int:
     application = manifest.get("application") or {}
     assets = application.get("assets") or []
     expected_roles = {
-        "map_runtime", "graph_runtime", "base_runtime", "reader_support", "page_registry",
+        "map_runtime", "graph_runtime", "base_runtime", "visualization_runtime", "reader_support", "page_registry",
         "map_stylesheet", "stylesheet", "reader_stylesheet",
         "reference_geography", "entrypoint",
+        "maplibre_runtime", "maplibre_shared", "maplibre_worker", "maplibre_stylesheet",
     }
     role_counts = {role: sum(asset.get("role") == role for asset in assets) for role in expected_roles}
     if any(count != 1 for count in role_counts.values()) or any(asset.get("role") not in expected_roles | {"evidence_image", "state_flag"} for asset in assets):
@@ -139,6 +140,7 @@ def main() -> int:
     validate_asset(site, by_role["map_runtime"], "map_runtime", "js")
     validate_asset(site, by_role["graph_runtime"], "graph_runtime", "js")
     validate_asset(site, by_role["base_runtime"], "base_runtime", "js")
+    validate_asset(site, by_role["visualization_runtime"], "visualization_runtime", "js")
     validate_asset(site, by_role["reader_support"], "reader_support", "js")
     validate_asset(site, by_role["page_registry"], "page_registry", "js")
     validate_asset(site, by_role["map_stylesheet"], "map_stylesheet", "css")
@@ -146,6 +148,16 @@ def main() -> int:
     validate_asset(site, by_role["reader_stylesheet"], "reader_stylesheet", "css")
     validate_asset(site, by_role["reference_geography"], "reference_geography", "geojson")
     validate_asset(site, by_role["entrypoint"], "entrypoint", "js")
+    validate_asset(site, by_role["maplibre_runtime"], "maplibre_runtime", "js")
+    validate_asset(site, by_role["maplibre_shared"], "maplibre_shared", "js")
+    validate_asset(site, by_role["maplibre_worker"], "maplibre_worker", "js")
+    validate_asset(site, by_role["maplibre_stylesheet"], "maplibre_stylesheet", "css")
+    capability = application.get("capabilities", {}).get("maplibre", {})
+    if capability.get("version") != "6.11.2" or capability.get("loading") != "lazy" or capability.get("fallback") != "leaflet" or capability.get("same_origin_only") is not True:
+        fail("MapLibre capability contract mismatch")
+    for key, role in (("runtime", "maplibre_runtime"), ("shared", "maplibre_shared"), ("worker", "maplibre_worker"), ("stylesheet", "maplibre_stylesheet")):
+        if capability.get(key, {}).get("path") != by_role[role].get("path"):
+            fail(f"MapLibre capability {key} pointer mismatch")
     evidence_images = [asset for asset in assets if asset.get("role") == "evidence_image"]
     for asset in evidence_images:
         extension = str(asset.get("path") or "").rsplit(".", 1)[-1]
@@ -161,6 +173,7 @@ def main() -> int:
         by_role["map_runtime"].get("path"),
         by_role["graph_runtime"].get("path"),
         by_role["base_runtime"].get("path"),
+        by_role["visualization_runtime"].get("path"),
         by_role["reader_support"].get("path"),
         by_role["page_registry"].get("path"),
     ]:
@@ -214,6 +227,9 @@ def main() -> int:
         fail("initial document activates mutable application CSS directly")
     if 'meta name="atlas-bootstrap-protocol" content="atlas-release-bootstrap-v1"' not in index:
         fail("neutral bootstrap protocol marker is missing")
+    csp = re.search(r'<meta http-equiv="Content-Security-Policy" content="([^"]+)"', index)
+    if not csp or "worker-src 'self'" not in csp.group(1) or "'unsafe-eval'" in csp.group(1):
+        fail("MapLibre worker CSP must be limited to same-origin and must not permit unsafe-eval")
 
     if args.require_build_info and not (site / "build-info.json").is_file():
         fail("build-info.json is missing from the Pages artifact")

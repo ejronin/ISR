@@ -673,14 +673,14 @@
   function quiesceMaps(node) {
     if (!node || typeof node.querySelectorAll !== 'function') return;
     [node, ...node.querySelectorAll('*')].forEach(candidate => {
-      const map = candidate && candidate._atlasMap; if (!map) return;
+      const map = candidate && (candidate._atlasMapLibre || candidate._atlasMap); if (!map) return;
       if (typeof map.stop === 'function') try { map.stop(); } catch (_) {}
       if (map._animatingZoom) map._animatingZoom = false;
     });
   }
   function removeMaps(node) {
     if (!node || typeof node.querySelectorAll !== 'function') return;
-    [node, ...node.querySelectorAll('*')].forEach(candidate => { const map=candidate&&candidate._atlasMap;if(map&&typeof map.remove==='function')try{map.remove();}catch(_){} });
+    [node, ...node.querySelectorAll('*')].forEach(candidate => { const map=candidate&&(candidate._atlasMapLibre||candidate._atlasMap);if(map&&typeof map.remove==='function')try{map.remove();}catch(_){} });
   }
   function retireVisibleNodes(doc, rootElement, nodes) {
     if (!nodes?.length) return; const host=doc.createElement('div');host.dataset.atlasReaderRetirement=VERSION;host.setAttribute('aria-hidden','true');

@@ -433,7 +433,7 @@ async function loadDirectRoute(cdp, route) {
 
     for (const key of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
       await setRoute(cdp, ia.ROUTES.get(key));
-      assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"] .leaflet-container'))`), true, `map-first page lacks rendered contextual map: ${key}`);
+      assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"] .leaflet-container, [data-component="MapLibreView"] .atlas-maplibre-map'))`), true, `map-first page lacks rendered contextual map: ${key}`);
     }
     for (const key of ['talks.mou', 'objectives.outcomes', 'objectives.positions', 'evidence.method']) {
       await setRoute(cdp, ia.ROUTES.get(key));
