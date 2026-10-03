@@ -138,6 +138,16 @@
     ) || 'This location is supplied by the accepted public record.');
   }
 
+  function recordKeys(record) {
+    if (!record || typeof record !== 'object') return [];
+    const nested = record.event && typeof record.event === 'object' ? record.event : {};
+    return unique([
+      record.event_id, record.facility_id, record.loss_id, record.shipping_id, record.economic_id,
+      record.observation_id, record.overlay_id, record.casualty_id, record.movement_id, record.id,
+      nested.event_id, nested.id
+    ].filter(Boolean).map(String));
+  }
+
   function pointKind(record) {
     const material = String([
       record && record.target_type, record && record.event_type, record && record.category,
@@ -465,13 +475,30 @@
     const status = append(viewport, 'div', 'visualization-local-state', 'Preparing map…');
     status.setAttribute('role', 'status');
     status.setAttribute('aria-live', 'polite');
-    const selection = append(shell, 'aside', 'visualization-selection-rail');
+    const selection = append(shell, 'aside', 'visualization-selection-rail map-selection-card');
     selection.hidden = true;
     selection.setAttribute('aria-live', 'polite');
     createLegend(section);
 
     const records = asArray(options && options.records);
     const routes = asArray(options && options.routes);
+    const recordIndexByKey = new Map();
+    records.forEach((record, index) => recordKeys(record).forEach(key => recordIndexByKey.set(key, index)));
+    let focusRecordByIndex = null;
+    let pendingFocusKey = '';
+    section._atlasHasRecord = value => {
+      const keys = typeof value === 'string' ? [value] : recordKeys(value);
+      return keys.some(key => recordIndexByKey.has(String(key)));
+    };
+    section._atlasFocusRecord = value => {
+      const keys = typeof value === 'string' ? [value] : recordKeys(value);
+      const key = keys.map(String).find(candidate => recordIndexByKey.has(candidate));
+      if (!key) return false;
+      if (!focusRecordByIndex) { pendingFocusKey = key; return true; }
+      focusRecordByIndex(recordIndexByKey.get(key));
+      return true;
+    };
+    section.dataset.mapSelectableRecords = String(recordIndexByKey.size);
     const points = pointsGeoJSON(records, ia, context);
     const routeData = routesGeoJSON(routes, ia);
     const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
@@ -522,6 +549,20 @@
             if (map.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], '__none__']);
             if (map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
           };
+          focusRecordByIndex = index => {
+            if (!Number.isInteger(index) || index < 0 || index >= records.length) return;
+            const feature = points.features.find(candidate => Number(candidate.properties.recordIndex) === index);
+            if (!feature) return;
+            clearSelections();
+            map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], index]);
+            renderSelection(selection, context, ia, records[index], 'record');
+            map.easeTo({ center: feature.geometry.coordinates, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
+            viewport.focus();
+          };
+          if (pendingFocusKey && recordIndexByKey.has(pendingFocusKey)) {
+            focusRecordByIndex(recordIndexByKey.get(pendingFocusKey));
+            pendingFocusKey = '';
+          }
           if (routeData.records.length) {
             map.on('click', 'guide-routes', event => {
               const feature = event.features && event.features[0];
@@ -540,8 +581,7 @@
               if (!feature) return;
               clearSelections();
               const index = Number(feature.properties.recordIndex);
-              map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], index]);
-              renderSelection(selection, context, ia, records[index], 'record');
+              focusRecordByIndex(index);
             });
             map.on('mouseenter', 'guide-points', () => { map.getCanvas().style.cursor = 'pointer'; });
             map.on('mouseleave', 'guide-points', () => { map.getCanvas().style.cursor = ''; });
