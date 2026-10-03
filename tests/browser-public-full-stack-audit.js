@@ -234,13 +234,16 @@ function addFinding(findings, routeKey, width, category, detail) {
 
     await route(cdp, 'military.campaigns');
     const mapInteraction = await cdp.eval(`(() => {
-      const map = document.querySelector('[data-component="MapView"] .leaflet-container');
-      const marker = document.querySelector('[data-component="MapView"] .leaflet-marker-icon');
+      const view = document.querySelector('[data-component="MapView"], [data-component="MapLibreView"]');
+      const map = view?.querySelector('.leaflet-container, .atlas-maplibre-map');
+      const marker = view?.querySelector('.leaflet-marker-icon');
       if (marker) marker.click();
-      const card = document.querySelector('.map-card');
+      const recordButton = view?.querySelector('.map-record-button');
+      if (!marker && recordButton) recordButton.click();
+      const card = view?.querySelector('.map-card, .visualization-selection');
       const close = card?.querySelector('.map-card-close');
       if (close) close.click();
-      return { map:Boolean(map), marker:Boolean(marker), cardOpened:Boolean(card), cardClosed: !document.querySelector('.map-card') || document.querySelector('.map-card')?.parentElement?.hidden === true };
+      return { map:Boolean(map), marker:Boolean(marker || recordButton), cardOpened:Boolean(card), cardClosed: !view?.querySelector('.map-card') || view?.querySelector('.map-card')?.parentElement?.hidden === true };
     })()`);
     if (!mapInteraction.map) addFinding(findings, 'military.campaigns', 390, 'map', 'missing-map-runtime');
     if (mapInteraction.marker && !mapInteraction.cardOpened) addFinding(findings, 'military.campaigns', 390, 'map', 'marker-does-not-open-context');
