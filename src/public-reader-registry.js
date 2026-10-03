@@ -366,7 +366,7 @@
     order.forEach(k=>{const rows=groups.get(k);if(!rows.length)return;const d=add(panels,'details',`reader-facility-drawer ${FSTAT[k][1]}`);add(d,'summary','',`${FSTAT[k][0]} (${rows.length})`);const list=add(d,'div','reader-facility-list');
       rows.sort((a,b)=>txt(a[1].name||a[0]).localeCompare(txt(b[1].name||b[0]))).forEach(([id,r,p])=>{const c=add(list,'article','reader-facility-card');c.dataset.facilityId=id;add(c,'h4','',txt(r.name||r.facility_name||id));add(c,'p','card-kicker',`What this status covers: ${p[1]}`);const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Evidence through ${dates.at(-1)}`);add(c,'strong','','Current status');add(c,'p','',p[2]);evidence(c,context,r,'Why this status is supported');});});
     const m=article.querySelector(':scope > .context-map'); if(m) article.insertBefore(s,m); else article.querySelector('.page-intro')?.after(s);
-    const fullNode=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility assessments$/i);
+    const fullNode=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility (?:assessments|status)$/i);
     const full=fullNode?collapse(fullNode,`Browse full facility records (${map.size})`):null;
     markGuideSection(s,'facility-status','01');
     markGuideSection(m,'facility-map','02');
