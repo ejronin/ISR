@@ -238,13 +238,13 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
       return true;
     })()`);
     await sleep(180);
-    await captureElement(cdp, '.wol-graph-workspace', 'wol-actor-dossier-full-1440.png', 1400);
+    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-full-1440.png', 1400);
     await cdp.eval(`document.querySelector('[data-wol-mode="direct"]')?.click(); true`);
     await sleep(180);
-    await captureElement(cdp, '.wol-graph-workspace', 'wol-actor-dossier-direct-1440.png', 1400);
+    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-direct-1440.png', 1400);
     await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); true`);
     await sleep(180);
-    await captureElement(cdp, '.wol-graph-workspace', 'wol-actor-dossier-trace-1440.png', 1400);
+    await captureElement(cdp, '.wol-graph-column', 'wol-actor-dossier-trace-1440.png', 1400);
 
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
     await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); document.querySelector('.wol-network')?.scrollIntoView({ block: 'start', behavior: 'auto' }); true`);
@@ -267,6 +267,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
     await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-0390.png', 1800);
 
     // Same-record MapLibre / Leaflet fallback comparison on Shipping.
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
     await route(cdp, 'hormuz.shipping');
     await waitFor(cdp, `document.querySelector('[data-shipping-map-view="continuous"] .atlas-maplibre-map')?.dataset.mapState === 'ready'`);
     await cdp.eval(`document.querySelector('[data-shipping-map-view="continuous"]')?.scrollIntoView({ block: 'center', behavior: 'auto' }); true`);
