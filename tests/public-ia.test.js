@@ -85,6 +85,14 @@ assert.deepEqual(
   ['observed-shipping', 'routes', 'alternative-paths', 'merchant-losses']
 );
 assert.deepEqual(
+  ia.pageSectionsFor('evidence.claims').map(section => section.id),
+  ['claim-checks']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('evidence.sources').map(section => section.id),
+  ['source-context', 'browse-sources']
+);
+assert.deepEqual(
   ia.pageSectionsFor({ key: 'evidence.web_of_lies', params: { dossier: 'actor', source: 'SOURCE-1' } }).map(section => section.id),
   ['current-record', 'findings', 'claim-activity', 'chronology', 'network-claim-trails']
 );
