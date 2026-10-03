@@ -2949,6 +2949,10 @@
         ['Account type', plainLabel(node.authenticity_class, 'Unknown')],
         ['Direct connections', formatNumber(adjacencyFor(nodeId).size)]
       ]);
+      if (node.node_type === 'BULLSHITTER' && !actorDossierRequested) {
+        const dossierLink = append(heading, 'a', 'inline-route-link wol-dossier-link', 'Open dossier');
+        dossierLink.href = routeHref('evidence.web_of_lies', { dossier: 'actor', source: nodeId });
+      }
 
       if (node.node_type === 'BULLSHITTER') {
         appendAwardEvidenceBlocks(detailHost, nodeId);
@@ -3278,22 +3282,8 @@
     let renderAwardeeSelection = () => {};
 
     const selectNode = nodeId => {
-      const nextNode = nodeId && graphNodeById.has(nodeId) ? graphNodeById.get(nodeId) : null;
-      if (nextNode) {
-        const params = nextNode.node_type === 'BULLSHITTER'
-          ? { dossier: 'actor', source: nodeId }
-          : { source: nodeId };
-        const nextHref = routeHref('evidence.web_of_lies', params);
-        if (context.windowObject?.location?.hash !== nextHref) {
-          context.windowObject.location.hash = nextHref;
-          return;
-        }
-      } else if (context.route.params.dossier === 'actor' || context.route.params.source) {
-        context.windowObject.location.hash = routeHref('evidence.web_of_lies');
-        return;
-      }
       selectedEdgeId = '';
-      selectedNodeId = nextNode ? nodeId : '';
+      selectedNodeId = nodeId && graphNodeById.has(nodeId) ? nodeId : '';
       picker.value = selectedNodeId;
       renderDetail(selectedNodeId);
       focusGraph(selectedNodeId, '');
