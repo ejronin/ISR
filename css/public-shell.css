@@ -3883,3 +3883,282 @@ tbody tr:last-child td { border-bottom: 0; }
     padding-block: var(--space-4);
   }
 }
+
+
+/* Representative visualization tranche — approved shared Guide grammar. */
+.guide-visualization {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5) 0;
+  border: 0;
+  border-block: 1px solid var(--border-divider);
+  border-radius: 0;
+  background: transparent;
+}
+.visualization-header {
+  display: grid;
+  gap: var(--space-2);
+  max-width: var(--reading-width);
+}
+.visualization-header h2 { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.65rem); }
+.visualization-type {
+  margin: 0;
+  color: var(--accent-blue);
+  font-size: .7rem;
+  font-weight: 780;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.visualization-purpose { margin: 0; color: var(--text-secondary); line-height: 1.55; }
+.visualization-shell {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.visualization-shell:has(.visualization-selection-rail:not([hidden])) {
+  grid-template-columns: minmax(0, 2.1fr) minmax(17rem, .9fr);
+  align-items: start;
+}
+.atlas-maplibre-map {
+  position: relative;
+  width: 100%;
+  height: clamp(30rem, 58vh, 42rem);
+  min-height: 30rem;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--canvas);
+}
+.atlas-maplibre-map:focus-visible {
+  outline: 3px solid var(--accent-blue-strong);
+  outline-offset: 3px;
+}
+.visualization-local-state {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: var(--space-5);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  text-align: center;
+}
+.visualization-selection-rail {
+  min-width: 0;
+  max-height: clamp(30rem, 58vh, 42rem);
+  overflow: auto;
+  padding-inline-start: var(--space-4);
+  border-inline-start: 1px solid var(--border-divider);
+}
+.visualization-selection { display: grid; gap: var(--space-3); }
+.visualization-selection h3,
+.visualization-selection p { margin: 0; }
+.visualization-legend,
+.visualization-mode-controls,
+.visualization-layer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+.visualization-legend {
+  color: var(--text-secondary);
+  font-size: .78rem;
+}
+.visualization-legend-item {
+  display: inline-flex;
+  gap: .35rem;
+  align-items: center;
+}
+.visualization-legend-item b { color: var(--accent-blue-strong); }
+.visualization-mode-controls { order: -1; }
+.visualization-mode-button,
+.wol-mode-button {
+  min-height: 2.35rem;
+  padding: .45rem .72rem;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-size: .72rem;
+  font-weight: 760;
+  letter-spacing: .055em;
+}
+.visualization-mode-button:hover,
+.wol-mode-button:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.visualization-mode-button[aria-pressed="true"],
+.wol-mode-button[aria-pressed="true"] {
+  border-color: var(--accent-blue);
+  background: var(--surface-3);
+  color: var(--text-primary);
+}
+.visualization-mode-button:focus-visible,
+.wol-mode-button:focus-visible,
+.visualization-toggle input:focus-visible {
+  outline: 3px solid var(--accent-blue-strong);
+  outline-offset: 2px;
+}
+.visualization-layer-controls {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--text-secondary);
+  font-size: .78rem;
+}
+.visualization-layer-controls legend {
+  float: left;
+  margin-inline-end: var(--space-2);
+  color: var(--text-primary);
+  font-weight: 720;
+}
+.visualization-toggle {
+  display: inline-flex;
+  gap: .35rem;
+  align-items: center;
+}
+.guide-maplibre-view .maplibregl-ctrl-bottom-left,
+.guide-maplibre-view .maplibregl-ctrl-bottom-right { display: none; }
+.guide-maplibre-view .maplibregl-canvas { outline: 0; }
+
+.shipping-map-system {
+  container-type: inline-size;
+  padding: var(--space-6) 0;
+  border-block: 1px solid var(--border-divider);
+  background: transparent;
+}
+.shipping-map-system > h2,
+.shipping-map-system > p { max-width: var(--reading-width); }
+.shipping-map-system .guide-visualization { border-bottom: 0; }
+.campaign-hero .guide-visualization { min-width: 0; }
+
+.wol-mode-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+.wol-cytoscape-host[data-graph-mode="direct"],
+.wol-cytoscape-host[data-graph-mode="trace"] { border-color: var(--border-strong); }
+.wol-mobile-trace { display: none; }
+.wol-mobile-trace-list {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.wol-mobile-trace-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-divider);
+}
+.wol-mobile-trace-arrow { color: var(--accent-blue-strong); font-weight: 800; }
+
+/* Flatter source/reference surfaces for the representative Sources / Methodology tranche. */
+.source-family,
+.source-origin {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.source-family { border-top: 1px solid var(--border-divider); padding-top: var(--space-5); }
+.source-origin { border-top: 1px solid var(--border-subtle); padding-top: var(--space-3); }
+.source-outlet {
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+.source-card {
+  padding: var(--space-3) 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+.visual-route-evidence-method .content-section,
+.visual-route-evidence-sources .content-section {
+  max-width: var(--reading-width);
+}
+.method-list { max-width: var(--reading-width); }
+
+@container (min-width: 92rem) {
+  .atlas-maplibre-map { height: clamp(36rem, 62vh, 48rem); }
+  .visualization-shell:has(.visualization-selection-rail:not([hidden])) {
+    grid-template-columns: minmax(0, 2.6fr) minmax(20rem, .8fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .guide-maplibre-view,
+  .wol-network,
+  .shipping-map-system { max-width: var(--wide-analysis-width); }
+  .wol-graph-workspace { grid-template-columns: minmax(0, 3fr) minmax(20rem, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .visualization-shell:has(.visualization-selection-rail:not([hidden])) { grid-template-columns: 1fr; }
+  .visualization-selection-rail {
+    max-height: none;
+    padding-inline-start: 0;
+    padding-top: var(--space-4);
+    border-inline-start: 0;
+    border-top: 1px solid var(--border-divider);
+  }
+  .wol-graph-workspace { grid-template-columns: 1fr; }
+  .wol-node-detail {
+    position: static;
+    max-height: none;
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-visualization { padding-block: var(--space-4); }
+  .atlas-maplibre-map {
+    height: 62svh;
+    min-height: 26rem;
+    max-height: 40rem;
+    border-inline: 0;
+    border-radius: 0;
+    margin-inline: calc(-1 * var(--guide-edge));
+    width: calc(100% + (2 * var(--guide-edge)));
+  }
+  .visualization-mode-controls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .visualization-mode-button { min-width: 0; padding-inline: .35rem; }
+  .wol-cytoscape-host {
+    height: 27rem;
+    min-height: 27rem;
+  }
+  .wol-mode-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .wol-mode-button { text-align: left; }
+  .wol-mobile-trace:not([hidden]) {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-divider);
+  }
+  .wol-mobile-trace h3 { margin: 0; }
+  .wol-mobile-trace-step { grid-template-columns: 1fr; }
+  .wol-mobile-trace-arrow { transform: rotate(90deg); justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-maplibre-view *,
+  .wol-network * {
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
