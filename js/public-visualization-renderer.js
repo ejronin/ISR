@@ -78,6 +78,17 @@
     documentObject.head.append(link);
   }
 
+  async function verifyTextAsset(asset, windowObject) {
+    const response = await (windowObject.fetch || root.fetch)(sameOriginUrl(asset.path, windowObject).href, { cache: 'no-store', credentials: 'same-origin' });
+    if (!response || !response.ok) throw new Error('A signed visualization capability asset could not be loaded.');
+    const text = (await response.text()).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    const bytes = new TextEncoder().encode(text);
+    const digest = await (windowObject.crypto || root.crypto).subtle.digest('SHA-256', bytes);
+    const hex = Array.from(new Uint8Array(digest), value => value.toString(16).padStart(2, '0')).join('');
+    if (hex !== asset.sha256) throw new Error('A signed visualization capability asset failed exact-SHA validation.');
+    return text;
+  }
+
   async function loadMapLibre(documentObject, windowObject) {
     if (capabilityPromise) return capabilityPromise;
     capabilityPromise = (async () => {
@@ -87,6 +98,9 @@
       ensureModulePreload(documentObject, cap.shared, windowObject);
       const runtimeUrl = sameOriginUrl(cap.runtime.path, windowObject);
       const workerUrl = sameOriginUrl(cap.worker.path, windowObject);
+      await verifyTextAsset(cap.worker, windowObject);
+      const testCanvas = documentObject.createElement('canvas');
+      if (!testCanvas.getContext('webgl2')) throw new Error('WebGL2 is unavailable; using Leaflet fallback.');
       const maplibregl = await import(runtimeUrl.href);
       if (!maplibregl || typeof maplibregl.Map !== 'function' || typeof maplibregl.setWorkerUrl !== 'function') {
         throw new Error('MapLibre module did not expose the required API.');
