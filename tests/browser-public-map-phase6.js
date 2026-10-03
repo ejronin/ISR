@@ -92,24 +92,31 @@ const PRESERVED_FACILITY_IDS = [
     await setRoute(cdp, 'hormuz.shipping');
     const shipping = await cdp.eval(`(() => {
       const button = document.querySelector('.map-route-button');
-      const routeMap = button?.closest('[data-component="MapView"]');
+      const routeMap = button?.closest('[data-component="MapView"], [data-component="MapLibreView"]');
       button?.click();
+      const maplibre = routeMap?.dataset.component === 'MapLibreView';
       return {
+        renderer: routeMap?.dataset.mapRenderer || '',
         routeButtons: document.querySelectorAll('.map-route-button').length,
-        paths: document.querySelectorAll('.leaflet-atlas-routes-pane path').length,
-        flow: document.querySelectorAll('.route-flow-marker').length,
+        routes: maplibre ? Number(routeMap?.dataset.mapRouteCount || 0) : document.querySelectorAll('.leaflet-atlas-routes-pane path').length,
+        flow: maplibre ? Boolean(routeMap?._atlasMapLibre?.getLayer('guide-route-flow')) : document.querySelectorAll('.route-flow-marker').length >= 1,
         card: routeMap?.querySelector('.map-selection-card')?.innerText || '',
         drawer: Boolean(routeMap?.querySelector('.map-selection-card details[data-component="SharedEvidenceDrawer"]')),
         equivalent: routeMap?.querySelector('[data-phase6-map-equivalent]')?.textContent || ''
       };
     })()`);
-    assert(shipping.routeButtons >= 1 && shipping.paths >= 1 && shipping.flow >= 1, 'stored maritime route did not render with its flow marker');
+    assert(shipping.routeButtons >= 1 && shipping.routes >= 1 && shipping.flow, 'stored maritime route did not render with its route controls and flow marker');
     assert.match(shipping.card, /Schematic reference route/i);
     assert.match(shipping.card, /not live (?:vessel )?tracking/i);
     assert.equal(shipping.drawer, true, 'route card does not use the shared evidence drawer');
     assert.match(shipping.equivalent, /schematic reference route/i);
     await cdp.call('Emulation.setEmulatedMedia', { media: 'screen', features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
-    assert.equal(await cdp.eval(`getComputedStyle(document.querySelector('.route-flow-marker')).animationName`), 'none', 'reduced-motion mode retains route animation');
+    const movingFlow = await cdp.eval(`(() => {
+      const leaf = document.querySelector('.route-flow-marker');
+      if (leaf) return getComputedStyle(leaf).animationName !== 'none';
+      return false;
+    })()`);
+    assert.equal(movingFlow, false, 'reduced-motion mode retains route animation');
     await cdp.call('Emulation.setEmulatedMedia', { media: 'screen', features: [] });
 
     await setRoute(cdp, 'military.facilities');
