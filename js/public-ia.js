@@ -2826,6 +2826,8 @@
       append(breadcrumb, 'span', 'dossier-breadcrumb-separator', '›');
       const current = append(breadcrumb, 'span', 'dossier-breadcrumb-current', nodeName(actorDossierNode));
       current.setAttribute('aria-current', 'page');
+      const dossierHeading = header?.querySelector('h1');
+      if (dossierHeading) dossierHeading.textContent = nodeName(actorDossierNode);
       header?.prepend(breadcrumb);
     }
 
@@ -2884,6 +2886,8 @@
 
     const detailSection = append(workspace, 'aside', 'wol-node-detail');
     append(detailSection, 'h3', '', 'Selection details');
+    const dossierAction = append(detailSection, 'a', 'inline-route-link wol-dossier-link', 'Open dossier');
+    dossierAction.hidden = true;
     const detailHost = append(detailSection, 'div', 'wol-node-detail-host');
 
     const adjacencyFor = nodeId => {
@@ -2933,6 +2937,8 @@
       detailHost.replaceChildren();
       if (!nodeId || !graphNodeById.has(nodeId)) {
         detailSection.dataset.selectionState = 'empty';
+        dossierAction.hidden = true;
+        dossierAction.removeAttribute('href');
         const prompt = append(detailHost, 'aside', 'scope-note wol-node-prompt');
         append(prompt, 'strong', '', 'Select a person, outlet, or connection');
         append(prompt, 'p', '', 'Choose from the picker or click the graph. The network will isolate that path and show the supporting receipts here.');
@@ -2940,6 +2946,10 @@
       }
       detailSection.dataset.selectionState = 'node';
       const node = graphNodeById.get(nodeId);
+      dossierAction.hidden = actorDossierRequested || node.node_type !== 'BULLSHITTER';
+      dossierAction.href = node.node_type === 'BULLSHITTER'
+        ? routeHref('evidence.web_of_lies', { dossier: 'actor', source: nodeId })
+        : '';
       const heading = append(detailHost, 'div', 'wol-selected-heading');
       append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'AMPLIFIER');
       appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-selected-node-identity');
@@ -2949,11 +2959,6 @@
         ['Account type', plainLabel(node.authenticity_class, 'Unknown')],
         ['Direct connections', formatNumber(adjacencyFor(nodeId).size)]
       ]);
-      if (node.node_type === 'BULLSHITTER' && !actorDossierRequested) {
-        const dossierLink = append(heading, 'a', 'inline-route-link wol-dossier-link', 'Open dossier');
-        dossierLink.href = routeHref('evidence.web_of_lies', { dossier: 'actor', source: nodeId });
-      }
-
       if (node.node_type === 'BULLSHITTER') {
         appendAwardEvidenceBlocks(detailHost, nodeId);
 
