@@ -171,6 +171,7 @@ async function route(cdp, hash, key) {
       migrated: document.querySelector('.public-page')?.classList.contains('guide-facilities-page') || false,
       sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
       ids: [...document.querySelectorAll('.reader-facility-card[data-facility-id]')].map(node => node.dataset.facilityId),
+      // The Guide section ID is applied to the existing MapView root when the map is top-level.
       map: Boolean(document.querySelector('#facility-map[data-component="MapView"] .leaflet-container, #facility-map [data-component="MapView"] .leaflet-container')),
       recordsDisclosure: Boolean(document.querySelector('#facility-records'))
     }))()`);
