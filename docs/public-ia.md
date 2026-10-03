@@ -2,7 +2,7 @@
 
 ## Implementation checkpoint
 
-This document describes the accepted Guide shell plus the third representative renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, Shipping & Trade, the Web of Lies actor dossier, and the Lie Ledger case dossier are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
+This document describes the accepted Guide shell plus the fourth representative renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, Shipping & Trade, the Web of Lies actor dossier, the Lie Ledger case dossier, Claim Checks, and Source Library are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
 
 GitHub Pages hash routing remains the transport. Canonical logical paths therefore appear after the hash, for example `#/war/campaigns/`. No hosting or router migration is bundled into this work.
 
@@ -106,6 +106,14 @@ The dossier archetypes are parameterized views over the same accepted records; t
 
 The dossier facelift may change hierarchy, spacing, breadcrumbs, rails, responsive composition, section landmarks, and visual emphasis. It may not rewrite accepted public language, relabel findings, change item membership, reorder evidence/list items, alter receipts, or create a second adjudication layer. Browser qualification compares the selected collection record with its dossier view to enforce text, list-membership, list-order, disclosure-label, and content-order preservation.
 
+### Collection / Index and Evidence / Forensics representatives
+
+**Claim Checks** is the representative Evidence / Forensics migration. It keeps the existing claim sequence and every accepted claim title, finding, observed outcome, unresolved item, supporting-evidence item, contrary-evidence item, and EvidenceDrawer relationship unchanged. The facelift reduces container chrome and gives the claim/finding/evidence sequence a flatter editorial hierarchy.
+
+**Source Library** is the representative Collection / Index migration. It keeps the existing source resolver, family/origin/outlet grouping, source identities, saved-version handling, search behavior, item order, and source-detail disclosures. The facelift converts nested card treatment into dense grouped rows and a compact filter rail without removing information.
+
+The preservation rule is the same as for dossiers: presentation may change; accepted public language, item membership, list membership, list order, evidence relationships, and source identities may not.
+
 The remaining page bodies are not considered migrated by this checkpoint.
 
 ## First paint and release integrity
@@ -126,4 +134,4 @@ This tranche changes presentation and routing only.
 - Maps, chart calculations, state-flag assets, and evidence semantics are not replaced or recomputed.
 - No evidence, adjudication, ROOK/Evidence Locker, canonical-update, or sanctions-analysis dataset is modified.
 
-Further page-body migration is intentionally stopped at this checkpoint pending review of the Web of Lies actor dossier and Lie Ledger case dossier archetypes.
+Further page-body migration is intentionally stopped at this checkpoint pending review of the Claim Checks evidence/forensics and Source Library collection/index archetypes.
