@@ -139,8 +139,7 @@
       { id: 'weapons-used', label: 'Weapons used', heading: 'Weapons used' },
       { id: 'reported-totals', label: 'Reported totals', heading: 'Reported totals over time' },
       { id: 'weapon-estimates', label: 'Estimates', heading: 'Missile and launcher estimates' },
-      { id: 'weapon-losses', label: 'Equipment losses', heading: 'Related equipment losses' },
-      { id: 'aviation-cross-check', label: 'Aircraft cross-check', heading: 'Aircraft loss cross-check' },
+      { id: 'loss-record-link', label: 'Loss records', heading: 'Equipment losses and aircraft incidents' },
       { id: 'weapon-limits', label: 'Limits', heading: 'Limits of these totals' }
     ]),
     'military.losses': Object.freeze([
