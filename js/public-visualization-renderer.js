@@ -271,9 +271,14 @@
     });
     const update = () => {
       const zoom = map.getZoom();
+      const width = map.getContainer()?.clientWidth || 0;
+      const budget = zoom < 3.2 ? (width <= 480 ? 4 : 7) : zoom < 5.2 ? (width <= 480 ? 9 : 18) : markers.length;
+      let shown = 0;
       markers.forEach(row => {
-        const visible = row.priority <= 0 || (row.priority <= 2 && zoom >= 3.2) || zoom >= 5.2;
+        const eligible = row.priority <= 0 || row.priority <= 2 || zoom >= 5.2;
+        const visible = eligible && (row.priority <= 0 || shown < budget);
         row.node.hidden = !visible;
+        if (visible && row.priority > 0) shown += 1;
       });
     };
     update();
