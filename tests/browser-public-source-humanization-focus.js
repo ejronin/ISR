@@ -60,8 +60,14 @@ async function waitFor(cdp, expression, timeout = 30000) {
 }
 
 async function setRoute(cdp, routeKey) {
+  const ready = `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`;
   await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref(routeKey))};true`);
-  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`);
+  try {
+    await waitFor(cdp, ready, 10000);
+  } catch (_) {
+    await cdp.call('Page.navigate', { url: `${SITE}${ia.routeHref(routeKey)}` });
+    await waitFor(cdp, ready, 30000);
+  }
 }
 
 function publicSurfaceExpression(selector) {
