@@ -4182,8 +4182,7 @@ function enhanceShippingVisual(article, context) {
   const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero');
   system.dataset.shippingMapSystem = 'continuous-maplibre';
   append(system, 'h2', '', 'From theater to Hormuz');
-  append(system, 'p', 'section-note meaning-first-summary', 'One continuous map connects the wider transport network to the Gulf and the Strait without changing the accepted route geometry.');
-  append(system, 'p', 'section-note', 'Four strategic transport corridors are shown.');
+  append(system, 'p', 'section-note meaning-first-summary', 'Four strategic transport corridors are shown in one continuous map from the wider transport network to the Gulf and the Strait, without changing the accepted route geometry.');
   append(system, 'p', 'method-note', 'These are source-supported schematic routes, not precise vessel tracks, surveyed alignment, or targeting-quality geometry. They are not live tracking or navigation data.');
   const map = createRepresentativeMap(context, {
     typeLabel: 'SHIPPING & TRADE MAP',
