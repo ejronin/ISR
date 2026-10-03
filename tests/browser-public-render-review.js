@@ -108,6 +108,28 @@ async function captureViewport(cdp, filename) {
   fs.writeFileSync(path.join(OUTPUT, filename), Buffer.from(screenshot.data, 'base64'));
 }
 
+async function captureElement(cdp, selector, filename, maxHeight = 1400) {
+  const rect = await cdp.eval(`(() => {
+    const node = document.querySelector(${JSON.stringify(selector)});
+    if (!node) return null;
+    const box = node.getBoundingClientRect();
+    return {
+      x: Math.max(0, box.left + scrollX),
+      y: Math.max(0, box.top + scrollY),
+      width: Math.max(1, box.width),
+      height: Math.max(1, Math.min(box.height, ${Number(maxHeight)}))
+    };
+  })()`);
+  assert(rect && rect.width > 0 && rect.height > 0, `cannot capture missing/empty element: ${selector}`);
+  const screenshot = await cdp.call('Page.captureScreenshot', {
+    format: 'png',
+    fromSurface: true,
+    captureBeyondViewport: true,
+    clip: { x: rect.x, y: rect.y, width: rect.width, height: rect.height, scale: 1 }
+  });
+  fs.writeFileSync(path.join(OUTPUT, filename), Buffer.from(screenshot.data, 'base64'));
+}
+
 (async () => {
   fs.mkdirSync(OUTPUT, { recursive: true });
   const targets = await (await fetch(`${DEBUG}/json`)).json();
@@ -175,7 +197,7 @@ async function captureViewport(cdp, filename) {
           assert(reviewState.routeControls > 0 && reviewState.routeModes, `${focus.label} lacks route controls or route-mode metadata at ${width}px`);
         }
         await sleep(180);
-        await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
+        await captureElement(cdp, focus.selector, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`, 1100);
         mapFocusCaptures += 1;
       }
     }
@@ -191,7 +213,7 @@ async function captureViewport(cdp, filename) {
         await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
         await cdp.eval(`(() => { const target=document.querySelector(${selector}); ${focus.openSelector ? `const disclosure=document.querySelector(${JSON.stringify(focus.openSelector)}); if (disclosure && innerWidth <= 600) disclosure.open=true;` : ''} target.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'auto' }); return true; })()`);
         await sleep(150);
-        await captureViewport(cdp, `polishfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
+        await captureElement(cdp, focus.selector, `polishfocus-${String(width).padStart(4, '0')}-${focus.label}.png`, 1200);
         polishFocusCaptures += 1;
       }
     }
@@ -216,18 +238,18 @@ async function captureViewport(cdp, filename) {
       return true;
     })()`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-actor-dossier-full-1440.png');
+    await captureElement(cdp, '.wol-network', 'wol-actor-dossier-full-1440.png', 1400);
     await cdp.eval(`document.querySelector('[data-wol-mode="direct"]')?.click(); true`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-actor-dossier-direct-1440.png');
+    await captureElement(cdp, '.wol-network', 'wol-actor-dossier-direct-1440.png', 1400);
     await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); true`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-actor-dossier-trace-1440.png');
+    await captureElement(cdp, '.wol-network', 'wol-actor-dossier-trace-1440.png', 1400);
 
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
     await cdp.eval(`document.querySelector('[data-wol-mode="trace"]')?.click(); document.querySelector('.wol-network')?.scrollIntoView({ block: 'start', behavior: 'auto' }); true`);
     await sleep(180);
-    await captureViewport(cdp, 'wol-actor-dossier-trace-0390.png');
+    await captureElement(cdp, '.wol-network', 'wol-actor-dossier-trace-0390.png', 1600);
 
     // Lie Ledger case dossier — same accepted case record, desktop/ultrawide/mobile.
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
@@ -236,20 +258,20 @@ async function captureViewport(cdp, filename) {
     assert(lieCaseHref, 'No Lie Ledger case dossier link is available for review');
     await cdp.eval(`location.hash=${JSON.stringify(lieCaseHref)};scrollTo(0,0);true`);
     await waitFor(cdp, `Boolean(document.querySelector('.guide-lie-ledger-dossier .guide-dossier-record'))`);
-    await captureViewport(cdp, 'lie-ledger-dossier-1440.png');
+    await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-1440.png', 1400);
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
     await sleep(120);
-    await captureViewport(cdp, 'lie-ledger-dossier-1920.png');
+    await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-1920.png', 1400);
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
     await sleep(120);
-    await captureViewport(cdp, 'lie-ledger-dossier-0390.png');
+    await captureElement(cdp, '.guide-lie-ledger-dossier .guide-dossier-record', 'lie-ledger-dossier-0390.png', 1800);
 
     // Same-record MapLibre / Leaflet fallback comparison on Shipping.
     await route(cdp, 'hormuz.shipping');
     await waitFor(cdp, `document.querySelector('[data-shipping-map-view="continuous"] .atlas-maplibre-map')?.dataset.mapState === 'ready'`);
     await cdp.eval(`document.querySelector('[data-shipping-map-view="continuous"]')?.scrollIntoView({ block: 'center', behavior: 'auto' }); true`);
     await sleep(180);
-    await captureViewport(cdp, 'shipping-maplibre-1440.png');
+    await captureElement(cdp, '[data-shipping-map-view="continuous"] .atlas-maplibre-map', 'shipping-maplibre-1440.png', 1000);
     await cdp.eval(`(() => {
       window.__reviewSavedVisualizationRenderer = window.AtlasVisualizationRenderer;
       window.AtlasVisualizationRenderer = { create: () => null };
@@ -259,7 +281,7 @@ async function captureViewport(cdp, filename) {
     await waitFor(cdp, `Boolean(document.querySelector('[data-shipping-map-view="continuous"] .atlas-leaflet-map'))`);
     await cdp.eval(`document.querySelector('[data-shipping-map-view="continuous"]')?.scrollIntoView({ block: 'center', behavior: 'auto' }); true`);
     await sleep(180);
-    await captureViewport(cdp, 'shipping-leaflet-fallback-1440.png');
+    await captureElement(cdp, '[data-shipping-map-view="continuous"] .atlas-leaflet-map', 'shipping-leaflet-fallback-1440.png', 1000);
     await cdp.eval(`(() => {
       window.AtlasVisualizationRenderer = window.__reviewSavedVisualizationRenderer;
       delete window.__reviewSavedVisualizationRenderer;
