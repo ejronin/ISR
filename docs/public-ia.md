@@ -2,7 +2,7 @@
 
 ## Implementation checkpoint
 
-This document describes the accepted Guide shell plus the fourth representative renderer migration tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, Shipping & Trade, the Web of Lies actor dossier, the Lie Ledger case dossier, Claim Checks, and Source Library are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
+This document describes the accepted Guide shell plus the first broad page-body propagation tranche. The Guide shell and route registry are implemented globally. **Home / Overview, Campaigns & Strikes, Shipping & Trade, the Web of Lies actor dossier, the Lie Ledger case dossier, Claim Checks, Source Library, Who's Involved, All Events, the Lie Ledger collection, the Web of Lies collection, and Archive are migrated to their approved archetypes in this checkpoint.** The remaining page owners continue to render their existing accepted content structures under the Guide shell until a later migration tranche.
 
 GitHub Pages hash routing remains the transport. Canonical logical paths therefore appear after the hash, for example `#/war/campaigns/`. No hosting or router migration is bundled into this work.
 
@@ -115,6 +115,18 @@ The dossier facelift may change hierarchy, spacing, breadcrumbs, rails, responsi
 
 The preservation rule is the same as for dossiers: presentation may change; accepted public language, item membership, list membership, list order, evidence relationships, and source identities may not.
 
+### Collection / Index propagation
+
+The approved Collection / Index archetype is now propagated without reconstructing record renderers:
+
+- **Who's Involved** keeps the existing actor identities, group membership, search behavior, roles, affiliations and flags; the actor cards become dense identity rows.
+- **All Events** keeps the existing chronology filters, pagination, event order, event IDs, cross-links and EvidenceDrawer relationships; visible results become compact chronology rows.
+- **Lie Ledger** keeps the existing chain membership, finding filters, case links, evidence drawers and chain order; the collection view is visually flattened while the parameterized case dossier remains a distinct presentation.
+- **Web of Lies** keeps the existing propagation graph, Hall of Shame records, awardee records, claim trails and graph-selection behavior; the graph remains the primary structural object while collection lists become denser.
+- **Archive** keeps the existing edition records and order; it becomes a quiet reference list rather than a card wall.
+
+No accepted public wording, record membership, ordering or evidence relationship is changed by this propagation tranche.
+
 The remaining page bodies are not considered migrated by this checkpoint.
 
 ## First paint and release integrity
@@ -135,4 +147,4 @@ This tranche changes presentation and routing only.
 - Maps, chart calculations, state-flag assets, and evidence semantics are not replaced or recomputed.
 - No evidence, adjudication, ROOK/Evidence Locker, canonical-update, or sanctions-analysis dataset is modified.
 
-Further page-body migration is intentionally stopped at this checkpoint pending review of the Claim Checks evidence/forensics and Source Library collection/index archetypes.
+Further page-body migration is intentionally stopped at this checkpoint pending review of the broad Collection / Index propagation across Who's Involved, All Events, Lie Ledger, Web of Lies, and Archive.
