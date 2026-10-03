@@ -25,6 +25,7 @@ REQUIRED_FILES = [
     "js/public-app.js",
     "js/public-ia.js",
     "src/public-reader-layer.js",
+        "src/public-reader-registry.js",
     "src/public-reader-layer.css",
     "data/public-release.json",
     ".nojekyll",
@@ -151,7 +152,7 @@ def main() -> int:
                 failures += fail(f"social preview dimensions {(width, height)} != (1200, 630)")
 
     css = (ROOT / "css/public-shell.css").read_text(encoding="utf-8")
-    for token in ("prefers-reduced-motion: reduce", ".secondary-nav", ".mobile-navigation"):
+    for token in ("prefers-reduced-motion: reduce", ".guide-chrome", ".primary-nav", ".context-nav", ".page-contents-rail", "[data-guide-section]"):
         if token not in css:
             failures += fail(f"public shell responsive/accessibility style missing: {token}")
 

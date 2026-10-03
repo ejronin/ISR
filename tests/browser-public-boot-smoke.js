@@ -157,7 +157,9 @@ function base64(value) {
       'OVERVIEW OPERATIONS EFFECTS INFORMATION EVIDENCE',
       'ATLAS TIMELINE ANALYSIS MOU SOURCES'
     ]) assert(!loading.text.toUpperCase().includes(forbidden), `cold shell revealed stale content: ${forbidden}`);
-    assert.match(loading.text, /Loading the latest Atlas data/i);
+    assert.match(loading.text, /THE 2026 IRAN WAR GUIDE/i);
+    assert.match(loading.text, /Preparing the current evidence record/i);
+    assert(!/Loading the latest Atlas data/i.test(loading.text), 'retired theatrical loader returned');
     await cdp.call('Fetch.continueRequest', { requestId: paused.requestId });
     await cdp.call('Fetch.disable');
     await waitFor(cdp, `['ready','error'].includes(window.ATLAS_PUBLIC_STATE?.status)`);
@@ -225,7 +227,7 @@ function base64(value) {
       archive: Boolean(document.querySelector('.error-actions a')),
       old: Boolean(document.getElementById('primaryNav') || document.getElementById('map'))
     }))()`);
-    assert.match(failure.text, /The latest Atlas data could not be loaded/i);
+    assert.match(failure.text, /The current Guide record could not be loaded/i);
     assert.equal(failure.retry, true);
     assert.equal(failure.archive, false, 'failure state must not link to a repository-only snapshot');
     assert.equal(failure.old, false, 'failure state must not reveal the old dashboard');

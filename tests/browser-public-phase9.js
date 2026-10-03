@@ -290,6 +290,143 @@ async function route(cdp, hash, key) {
     assert(filteredLedger && filteredLedger.visible > 0, 'reader chain search does not preserve matching chains');
     assert.match(filteredLedger.count, /^\d+ of \d+ chains shown$/);
 
+    await route(cdp, '#/intelligence/claims/', 'evidence.claims');
+    const claimChecks = await cdp.eval(`(() => {
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      const cases = [...document.querySelectorAll('.claim-case')];
+      return {
+        migrated: document.querySelector('.public-page')?.classList.contains('guide-forensics-page') || false,
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        records: cases.map(section => ({
+          title: normalize(section.querySelector(':scope > h2')?.textContent),
+          claimant: normalize(section.querySelector('.claim-finding .card-kicker')?.textContent),
+          verdict: normalize(section.querySelector('.claim-finding strong')?.textContent),
+          outcome: normalize(section.querySelector('.claim-finding p:last-child')?.textContent),
+          unresolved: [...section.querySelectorAll('.unresolved-box li')].map(node => normalize(node.textContent)),
+          supporting: [...section.querySelectorAll('.support-column li')].map(node => normalize(node.textContent)),
+          contrary: [...section.querySelectorAll('.contrary-column li')].map(node => normalize(node.textContent))
+        }))
+      };
+    })()`);
+    const expectedClaims = model.datasets['current.claims'].payload.claims;
+    assert.equal(claimChecks.migrated, true);
+    assert.deepEqual(claimChecks.sections, ['claim-checks']);
+    assert.equal(claimChecks.records.length, expectedClaims.length, 'Claim Checks facelift changed claim membership');
+    expectedClaims.forEach((claim, index) => {
+      const actual = claimChecks.records[index];
+      const supporting = Array.isArray(claim.evidence_supporting_claim) && claim.evidence_supporting_claim.length
+        ? claim.evidence_supporting_claim.map(value => String(value).trim())
+        : ['No supporting evidence is recorded in this case file.'];
+      assert.equal(actual.title, String(claim.claim || '').trim(), `Claim Checks title/order changed at record ${index + 1}`);
+      assert.equal(actual.outcome, String(claim.what_actually_happened || '').trim(), `Claim Checks outcome changed at record ${index + 1}`);
+      assert.deepEqual(actual.unresolved, (claim.unresolved_questions || []).map(value => String(value).trim()), `Claim Checks unresolved list changed at record ${index + 1}`);
+      assert.deepEqual(actual.supporting, supporting, `Claim Checks supporting-evidence list changed at record ${index + 1}`);
+      assert.deepEqual(actual.contrary, (claim.counterevidence || []).map(value => String(value).trim()), `Claim Checks contrary-evidence list changed at record ${index + 1}`);
+    });
+
+    await route(cdp, '#/sources/', 'evidence.sources');
+    const sourceLibrary = await cdp.eval(`(() => {
+      const cards = [...document.querySelectorAll('.source-card')];
+      return {
+        migrated: document.querySelector('.public-page')?.classList.contains('guide-collection-page') || false,
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        ids: cards.map(card => card.dataset.sourceId),
+        families: [...document.querySelectorAll('.source-family > h2')].map(node => node.textContent.trim()),
+        outlets: document.querySelectorAll('.source-outlet').length,
+        count: document.querySelector('.source-controls .filter-result-count')?.textContent.trim() || ''
+      };
+    })()`);
+    assert.equal(sourceLibrary.migrated, true);
+    assert.deepEqual(sourceLibrary.sections, ['source-context', 'browse-sources']);
+    assert(sourceLibrary.ids.length > 0 && sourceLibrary.ids.every(Boolean), 'Source Library facelift lost source identities');
+    assert.equal(new Set(sourceLibrary.ids).size, sourceLibrary.ids.length, 'Source Library facelift duplicated source records');
+    assert(sourceLibrary.families.length > 0 && sourceLibrary.outlets > 0, 'Source Library facelift collapsed grouped source structure');
+    assert.match(sourceLibrary.count, /^\d[\d,]* of \d[\d,]* sources shown$/);
+
+    await route(cdp, '#/intelligence/lie-ledger/', 'evidence.information');
+    const ledgerCollectionRecord = await cdp.eval(`(() => {
+      const card = document.querySelector('.reader-ledger-chain-card[data-reader-case-id]');
+      if (!card) return null;
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        caseId: card.dataset.readerCaseId,
+        title: normalize(card.querySelector('.reader-ledger-card-head h3')?.textContent),
+        text: normalize(card.textContent),
+        listItems: [...card.querySelectorAll('li')].map(node => normalize(node.textContent)),
+        summaries: [...card.querySelectorAll('details > summary')].map(node => normalize(node.textContent)),
+        childOrder: [...card.children].map(node => node.tagName + ':' + (node.className || ''))
+      };
+    })()`);
+    assert(ledgerCollectionRecord?.caseId, 'Lie Ledger has no parameterizable case record');
+    await route(cdp, ia.routeHref('evidence.information', { case: ledgerCollectionRecord.caseId }), 'evidence.information');
+    const ledgerDossierRecord = await cdp.eval(`(() => {
+      const card = document.querySelector('.reader-ledger-chain-card.guide-dossier-record');
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        caseId: document.querySelector('.public-page')?.dataset.dossierCase || '',
+        title: normalize(card?.querySelector('.reader-ledger-card-head h3')?.textContent),
+        h1: normalize(document.querySelector('.page-intro h1')?.textContent),
+        text: normalize(card?.textContent),
+        listItems: [...(card?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
+        summaries: [...(card?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent)),
+        childOrder: [...(card?.children || [])].filter(node => !node.classList.contains('guide-dossier-anchor')).map(node => node.tagName + ':' + (node.className || '')),
+        visibleCards: [...document.querySelectorAll('.reader-ledger-chain-card')].filter(node => !node.hidden).length,
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        breadcrumb: Boolean(document.querySelector('.dossier-breadcrumb'))
+      };
+    })()`);
+    assert.equal(ledgerDossierRecord.caseId, ledgerCollectionRecord.caseId, 'Lie Ledger dossier resolved the wrong case');
+    assert.equal(ledgerDossierRecord.title, ledgerCollectionRecord.title, 'Lie Ledger dossier changed the accepted case title');
+    assert.equal(ledgerDossierRecord.h1, ledgerCollectionRecord.title, 'Lie Ledger dossier heading must use the accepted case title verbatim');
+    assert.equal(ledgerDossierRecord.text, ledgerCollectionRecord.text, 'Lie Ledger dossier rewrote selected-case language');
+    assert.deepEqual(ledgerDossierRecord.listItems, ledgerCollectionRecord.listItems, 'Lie Ledger dossier changed list membership or order');
+    assert.deepEqual(ledgerDossierRecord.summaries, ledgerCollectionRecord.summaries, 'Lie Ledger dossier changed disclosure labels or order');
+    assert.deepEqual(ledgerDossierRecord.childOrder, ledgerCollectionRecord.childOrder, 'Lie Ledger dossier reordered selected-case content');
+    assert.equal(ledgerDossierRecord.visibleCards, 1, 'Lie Ledger dossier must isolate one existing case without cloning it');
+    assert.deepEqual(ledgerDossierRecord.sections, ['claim', 'finding', 'evidence', 'development', 'related-material']);
+    assert.equal(ledgerDossierRecord.breadcrumb, true, 'Lie Ledger dossier breadcrumb missing');
+
+    await route(cdp, '#/intelligence/wol/', 'evidence.web_of_lies');
+    const wolActorId = await cdp.eval(`document.querySelector('.wol-awardee-button[data-source-id]')?.dataset.sourceId || ''`);
+    assert(wolActorId, 'Web of Lies has no parameterizable awardee actor');
+    await route(cdp, ia.routeHref('evidence.web_of_lies', { source: wolActorId }), 'evidence.web_of_lies');
+    const wolCollectionRecord = await cdp.eval(`(() => {
+      const host = document.querySelector('.wol-node-detail-host');
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        identity: normalize(host?.querySelector('.wol-selected-node-identity .wol-node-identity-label')?.textContent),
+        text: normalize(host?.textContent),
+        listItems: [...(host?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
+        summaries: [...(host?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent))
+      };
+    })()`);
+    await route(cdp, ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: wolActorId }), 'evidence.web_of_lies');
+    const wolDossierRecord = await cdp.eval(`(() => {
+      const page = document.querySelector('.guide-wol-dossier');
+      const host = page?.querySelector('.wol-node-detail-host');
+      const normalize = value => String(value || '').replace(/\\s+/g, ' ').trim();
+      return {
+        sourceId: page?.dataset.dossierSource || '',
+        identity: normalize(host?.querySelector('.wol-selected-node-identity .wol-node-identity-label')?.textContent),
+        h1: normalize(document.querySelector('.page-intro h1')?.textContent),
+        text: normalize(host?.textContent),
+        listItems: [...(host?.querySelectorAll('li') || [])].map(node => normalize(node.textContent)),
+        summaries: [...(host?.querySelectorAll('details > summary') || [])].map(node => normalize(node.textContent)),
+        sections: [...document.querySelectorAll('[data-guide-section]')].map(node => node.dataset.guideSection),
+        breadcrumb: Boolean(document.querySelector('.dossier-breadcrumb')),
+        dossierLinkInsideRecord: Boolean(host?.querySelector('.wol-dossier-link'))
+      };
+    })()`);
+    assert.equal(wolDossierRecord.sourceId, wolActorId, 'WOL dossier resolved the wrong actor');
+    assert.equal(wolDossierRecord.identity, wolCollectionRecord.identity, 'WOL dossier changed the accepted actor identity');
+    assert.equal(wolDossierRecord.h1, wolCollectionRecord.identity.replace(/ · .*$/, ''), 'WOL dossier heading must use the accepted actor name verbatim');
+    assert.equal(wolDossierRecord.text, wolCollectionRecord.text, 'WOL dossier rewrote accepted actor evidence language');
+    assert.deepEqual(wolDossierRecord.listItems, wolCollectionRecord.listItems, 'WOL dossier changed actor evidence list membership or order');
+    assert.deepEqual(wolDossierRecord.summaries, wolCollectionRecord.summaries, 'WOL dossier changed actor disclosure labels or order');
+    assert.deepEqual(wolDossierRecord.sections, ['current-record', 'findings', 'claim-activity', 'chronology', 'network-claim-trails']);
+    assert.equal(wolDossierRecord.breadcrumb, true, 'WOL dossier breadcrumb missing');
+    assert.equal(wolDossierRecord.dossierLinkInsideRecord, false, 'WOL dossier navigation chrome leaked into accepted actor record content');
+
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {
       await route(cdp, ia.routeHref(routeRecord.key), routeRecord.key);
@@ -370,7 +507,7 @@ async function route(cdp, hash, key) {
       drilldown: document.querySelector('[data-reader-drilldown="event-constituents"]')?.textContent || ''
     }))()`);
     assert.equal(phase10Effects.cards, 7);
-    assert.match(phase10Effects.text, /How damage and operating results are kept separate/);
+    assert.match(phase10Effects.text, /Damage is not the same as effect/);
     assert.match(phase10Effects.text, /The attack, the physical damage and what it changed are separate findings/i);
     assert.match(phase10Effects.text, /does not automatically show that a platform or whole site stopped operating or was destroyed/i);
     assertCampaignEventCountSemanticBoundary(phase10Effects.drilldown);

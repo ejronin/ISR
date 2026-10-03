@@ -222,8 +222,13 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
     'id="primaryNav"',
     'id="map"'
   ]) assert(!index.includes(forbidden), `initial document exposes legacy state: ${forbidden}`);
-  assert(index.includes('Loading the latest Atlas data…'));
-  assert(index.includes('The Atlas will not show older data as current.'));
+  assert(index.includes('data-first-paint-shell="guide"'), 'initial document must paint the Guide shell before model rendering');
+  assert(index.includes('THE 2026 IRAN WAR GUIDE'));
+  assert(index.includes('Home</a>') && index.includes('Diplomacy &amp; Outcomes</a>') && index.includes('Sources</a>'));
+  assert(index.includes('Preparing the current evidence record…'));
+  assert(!index.includes('Loading the latest Atlas data…'), 'the theatrical Atlas loading presentation must be retired');
+  assert(!index.includes('Current Atlas'), 'internal/legacy product identity must not remain in first paint');
+  assert(index.includes('The Guide will not present an unverified record as current.'));
   assert(!index.includes('snapshots/'), 'current shell must not link to repository-only snapshots');
   assert(!read('js/public-bootstrap.js').includes('snapshots/'), 'current bootstrap must not link to repository-only snapshots');
   assert(!read('js/public-app.js').includes('snapshots/'), 'current application must not link to repository-only snapshots');
@@ -233,7 +238,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   assert(legacy.includes('>108</b><span>current chronology records'), 'retired presentation reference must preserve its obsolete baseline state');
   assert(!index.includes('legacy/phase1-public-runtime-reference.html'), 'retired presentation reference must not enter current boot');
 
-  console.log(`public boot contract: PASS - neutral bootstrap, explicit signed reader assets, runtime authorization, ${model.counts.chronology_records}-record model, mismatch rejection, and retired successor chain verified`);
+  console.log(`public boot contract: PASS - Guide first paint, neutral bootstrap, explicit signed reader assets, runtime authorization, ${model.counts.chronology_records}-record model, mismatch rejection, and retired successor chain verified`);
 })().catch(error => {
   console.error(error.stack || error);
   process.exitCode = 1;

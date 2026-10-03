@@ -64,7 +64,7 @@ async function routeView(cdp) {
     h1: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
     publicProductVersion: document.querySelector('.public-page')?.dataset.publicProduct || '',
     machineTokens: ['CURRENT_OVERLAY','HISTORICAL_RECONCILIATION','NOT_YET_ADJUDICABLE'].filter(token => document.body.innerText.includes(token)),
-    currentSecondary: document.querySelector('.secondary-nav a[aria-current="page"]')?.textContent.trim()
+    currentSecondary: document.querySelector('.context-route[aria-current="page"]')?.textContent.trim()
   }))()`);
 }
 
@@ -114,7 +114,7 @@ async function loadDirectRoute(cdp, route) {
     assert.equal(direct.owner, 'FacilitiesPage');
     assert.equal(direct.h1, 'Bases & Infrastructure');
     assert(direct.navs.includes('Primary'));
-    assert(direct.navs.includes('War & Losses pages'));
+    assert(direct.navs.includes('War navigation'));
     assert.equal(direct.tabs, 0, 'global navigation must not use tab semantics');
     assert.equal(direct.skipTag, 'BUTTON', 'skip control must not enter the hash-router namespace');
     assert.equal(direct.skipHref, null, 'skip control must not create a fragment route');
@@ -131,7 +131,7 @@ async function loadDirectRoute(cdp, route) {
       owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
       mainFocused: document.activeElement === document.getElementById('main-content')
     }))()`);
-    assert.equal(skipped.hash, '#/military/facilities');
+    assert.equal(skipped.hash, '#/war/facilities/', 'legacy alias should canonicalize after successful route qualification');
     assert.equal(skipped.routeKey, 'military.facilities');
     assert.equal(skipped.owner, 'FacilitiesPage');
     assert.equal(skipped.mainFocused, true);
@@ -279,9 +279,9 @@ async function loadDirectRoute(cdp, route) {
       landingLinks: [...document.querySelectorAll('main a')].filter(node => /Open Web of Lies/i.test(node.textContent || '')).map(node => node.getAttribute('href')),
       traceLinks: [...document.querySelectorAll('main a.reader-wol-trace')].map(node => node.getAttribute('href'))
     }))()`);
-    assert(webOfLiesDiscovery.landingLinks.some(href => href === '#/evidence/web-of-lies'), 'buried Web of Lies route is not discoverable from Lie Ledger');
+    assert(webOfLiesDiscovery.landingLinks.some(href => href === '#/intelligence/wol/'), 'buried Web of Lies route is not discoverable from Lie Ledger');
     assert(webOfLiesDiscovery.traceLinks.length > 0, 'Lie Ledger exposes no claim-level TRACE links');
-    assert(webOfLiesDiscovery.traceLinks.every(href => /^#\/evidence\/web-of-lies\?claim_family=/.test(href || '')), 'TRACE links do not resolve to claim-family Web of Lies views');
+    assert(webOfLiesDiscovery.traceLinks.every(href => /^#\/intelligence\/wol\/\?claim_family=/.test(href || '')), 'TRACE links do not resolve to claim-family Web of Lies views');
     const refreshRoute = [...ia.ROUTES.values()].at(-1);
     await setRoute(cdp, refreshRoute);
     await cdp.call('Page.reload', { ignoreCache: true });
@@ -354,7 +354,7 @@ async function loadDirectRoute(cdp, route) {
       host.style.cssText = 'position:fixed;left:-10000px;top:0;width:1024px;';
       document.body.append(host);
       const testWindow = {
-        location: { hash: '#/timeline/war' },
+        location: { hash: '#/war/timeline/' },
         history: { replaceState() {} },
         addEventListener() {},
         removeEventListener() {},
@@ -475,7 +475,7 @@ async function loadDirectRoute(cdp, route) {
       support: document.querySelectorAll('.support-column').length,
       contrary: document.querySelectorAll('.contrary-column').length,
       sourceLinks: [...document.querySelectorAll('.evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
-      recordLinks: [...document.querySelectorAll('.record-reference-list a')].every(link => link.getAttribute('href')?.startsWith('#/timeline/chronology?event=')),
+      recordLinks: [...document.querySelectorAll('.record-reference-list a')].every(link => link.getAttribute('href')?.startsWith('#/war/events/?event=')),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     const expectedClaimCount = await cdp.eval(`fetch('./data/public-current-state.json', { cache: 'no-store' })
@@ -496,28 +496,28 @@ async function loadDirectRoute(cdp, route) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
       await setRoute(cdp, ia.ROUTES.get('evidence.method'));
       const mobile = await cdp.eval(`(() => {
-        const details = document.querySelector('.mobile-navigation');
-        details.open = true;
-        const link = details.querySelector('a');
-        link.focus();
+        const primary = document.querySelector('.primary-nav');
+        const context = document.querySelector('.context-nav');
+        const link = primary?.querySelector('a');
+        link?.focus();
         return {
           width: document.documentElement.clientWidth,
           scrollWidth: document.documentElement.scrollWidth,
-          visible: getComputedStyle(details).display !== 'none',
-          summary: details.querySelector('summary').textContent.trim(),
+          primaryVisible: Boolean(primary && getComputedStyle(primary).display !== 'none'),
+          contextVisible: Boolean(context && getComputedStyle(context).display !== 'none'),
           focusedLink: document.activeElement === link,
-          touchTarget: link.getBoundingClientRect().height,
-          primaryCurrent: details.querySelector('.mobile-primary a[aria-current="page"]')?.textContent.trim(),
-          secondaryCurrent: details.querySelector('.mobile-secondary a[aria-current="page"]')?.textContent.trim()
+          touchTarget: link?.getBoundingClientRect().height || 0,
+          primaryCurrent: primary?.querySelector('a[aria-current="page"]')?.textContent.trim(),
+          secondaryCurrent: context?.querySelector('.context-route[aria-current="page"]')?.textContent.trim()
         };
       })()`);
-      assert.equal(mobile.visible, true, `mobile navigation hidden at ${width}px`);
+      assert.equal(mobile.primaryVisible, true, `primary rail hidden at ${width}px`);
+      assert.equal(mobile.contextVisible, true, `context rail hidden at ${width}px`);
       assert(mobile.scrollWidth <= mobile.width, `page-level horizontal overflow at ${width}px`);
-      assert.match(mobile.summary, /Claims & Evidence.*How We Check the Evidence/);
-      assert.equal(mobile.focusedLink, true, `mobile navigation link not keyboard focusable at ${width}px`);
-      assert(mobile.touchTarget >= 44, `mobile navigation target below 44px at ${width}px`);
-      assert.equal(mobile.primaryCurrent, 'Claims & Evidence');
-      assert.equal(mobile.secondaryCurrent, 'How We Check the Evidence');
+      assert.equal(mobile.focusedLink, true, `mobile primary navigation link not keyboard focusable at ${width}px`);
+      assert(mobile.touchTarget >= 44, `mobile primary navigation target below 44px at ${width}px`);
+      assert.equal(mobile.primaryCurrent, 'Sources');
+      assert.equal(mobile.secondaryCurrent, 'Methodology');
 
       await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
       const mobileTargets = await cdp.eval(`(() => ({
@@ -532,7 +532,7 @@ async function loadDirectRoute(cdp, route) {
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
-    console.log('browser public IA smoke: PASS — 25 direct artifact entries plus refresh, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
+    console.log('browser public IA smoke: PASS — 25 direct artifact entries plus refresh, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and always-visible 320/390px mobile navigation accessibility verified');
   } finally {
     cdp.close();
   }

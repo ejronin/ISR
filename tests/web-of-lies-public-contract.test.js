@@ -15,10 +15,10 @@ const shellSource = fs.readFileSync(path.join(root, 'css', 'public-shell.css'), 
 
 const route = ia.ROUTES.get('evidence.web_of_lies');
 assert(route, 'Web of Lies route is missing');
-assert.equal(route.path, '/evidence/web-of-lies');
+assert.equal(route.path, '/intelligence/wol/');
 assert.equal(route.owner, 'WebOfLiesPage');
 assert.notEqual(route.hiddenNav, true, 'Web of Lies must remain visible as the Lie Ledger companion view');
-assert(ia.routesForPrimary('evidence').some(item => item.key === route.key), 'Web of Lies is missing from persistent Claims & Evidence navigation');
+assert(ia.routesForPrimary('intelligence').some(item => item.key === route.key), 'Web of Lies is missing from persistent Intelligence navigation');
 
 const roundTrip = ia.parseRoute(ia.routeHref('evidence.web_of_lies', { claim_family: 'CH-F15E-CSAR-URANIUM' }));
 assert.equal(roundTrip.key, 'evidence.web_of_lies');

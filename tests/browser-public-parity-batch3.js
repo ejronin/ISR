@@ -33,17 +33,15 @@ function assertAgreementStateDistinction(text) {
 
 runFinalReaderTitleFixtures();
 const ordinaryRouteFixture = { key: 'military.campaigns', title: 'Campaigns' };
-const iranMessagingFixture = { key: 'objectives.iran', title: "How Iran's Position Changed" };
+const iranMessagingFixture = { key: 'objectives.iran', title: "Iran's Position" };
 const informationFixture = { key: 'evidence.information', title: 'Lie Ledger' };
 assert.doesNotThrow(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns'], 'sep14-reader-convergence-v1'));
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaign Summary'], 'sep14-reader-convergence-v1'));
-assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["How Iran's Position Changed"], ''));
-assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ['Iran Messaging & Claims'], 'sep14-reader-convergence-v1'));
-assert.throws(() => assertRouteHeadingParity(iranMessagingFixture, ["How Iran's Position Changed"], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["Iran's Position"], ''));
+assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["Iran's Position"], 'sep14-reader-convergence-v1'));
 assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], ''));
-assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Claims, Falsehoods & Deception'], 'sep14-reader-convergence-v1'));
-assert.throws(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], 'sep14-reader-convergence-v1'));
-assert.throws(() => assertRouteHeadingParity(informationFixture, ['Claims & Information'], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], 'sep14-reader-convergence-v1'));
+
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, [], 'sep14-reader-convergence-v1'));
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns', 'Campaigns'], 'sep14-reader-convergence-v1'));
 assert.doesNotThrow(() => assertAgreementStateDistinction('Five wartime agreement, framework or proposal records are grouped here by relevance to the conflict, not treated as interchangeable legal states.'));
@@ -209,6 +207,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
         mapText: map?.innerText || '',
         merchant: document.querySelectorAll('.merchant-loss-details [data-loss-id]').length,
         merchantLinks: [...document.querySelectorAll('.merchant-loss-details [data-loss-id] a.inline-route-link')].map(node => node.getAttribute('href')),
+        guideSections: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideSection),
+        guideMarkers: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideMarker || ''),
+        migrated: document.querySelector('.public-page')?.classList.contains('guide-shipping-page') || false,
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
@@ -231,7 +232,10 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(shipping.mapText, /rail lines are not exact track alignments/i);
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
-    assert(shipping.merchantLinks.every(link => link.startsWith('#/military/losses?loss=')));
+    assert(shipping.merchantLinks.every(link => link.startsWith('#/war/losses/?loss=')));
+    assert.equal(shipping.migrated, true);
+    assert.deepEqual(shipping.guideSections, ['observed-shipping', 'routes', 'alternative-paths', 'merchant-losses']);
+    assert.deepEqual(shipping.guideMarkers, ['01', '02', '03', '04']);
     assert.match(shipping.text, /remain separate from military equipment totals/i);
 
     await routeKey(cdp, 'hormuz.economy');
@@ -306,7 +310,10 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       damage: document.querySelectorAll('[data-damage-observation-id]').length,
       audits: document.querySelectorAll('.effect-proposition-group[data-facility-audit-id]').length,
       propositions: document.querySelectorAll('.effect-proposition-group .record-card').length,
-      facilityLinks: document.querySelectorAll('.effect-proposition-group a[href^="#/military/facilities"]').length,
+      facilityLinks: document.querySelectorAll('.effect-proposition-group a[href^="#/war/facilities/"]').length,
+      guideSections: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideSection),
+      guideMarkers: [...document.querySelectorAll('.public-page [data-guide-section]')].map(node => node.dataset.guideMarker || ''),
+      migrated: document.querySelector('.public-page')?.classList.contains('guide-campaign-page') || false,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     assert(campaigns.strikes > 0);
@@ -315,6 +322,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(campaigns.audits, 4);
     assert(campaigns.propositions > campaigns.audits);
     assert.equal(campaigns.facilityLinks, 4);
+    assert.equal(campaigns.migrated, true);
+    assert.deepEqual(campaigns.guideSections, ['damage-effect', 'campaign-activity', 'strike-geography', 'physical-damage', 'operational-effect', 'developments']);
+    assert.deepEqual(campaigns.guideMarkers, ['01', '02', '03', '04', '05', '06']);
     assert.match(campaigns.text, /Attack occurrence/);
     assert.match(campaigns.text, /Physical effect/);
     assert.match(campaigns.text, /Operating effect/);
@@ -326,8 +336,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       formalized: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized === 'true').length,
       proposalStates: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized !== 'true' && /propos(?:al|ed)/i.test(node.innerText || '')).length,
       evidence: document.querySelectorAll('[data-agreement-id] details.evidence-drawer').length,
-      mou: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/june-mou"]')),
-      nuclear: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/nuclear"]')),
+      mou: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/diplomacy/june-mou/"]')),
+      nuclear: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/diplomacy/nuclear/"]')),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     assert.equal(agreements.ids.length, 8);
@@ -343,7 +353,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: true });
       for (const key of ['start.overview', 'hormuz.shipping', 'hormuz.economy', 'talks.regional', 'military.campaigns', 'talks.overview']) {
         await routeKey(cdp, key);
-        const mobile = await cdp.eval(`({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,targets:[...document.querySelectorAll('.map-route-button,.map-imagery-button,.map-record-button,.map-card-close,.mobile-navigation summary,.mobile-navigation a')].filter(node => node.offsetParent !== null).map(node => node.getBoundingClientRect().height)})`);
+        const mobile = await cdp.eval(`({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,targets:[...document.querySelectorAll('.map-route-button,.map-imagery-button,.map-record-button,.map-card-close,.primary-nav a,.context-nav a')].filter(node => node.offsetParent !== null).map(node => node.getBoundingClientRect().height)})`);
         assert(mobile.scrollWidth <= mobile.clientWidth, `${key} overflows at ${width}px`);
         assert(mobile.targets.every(height => height >= 44), `${key} exposes a touch target below 44px at ${width}px`);
       }
