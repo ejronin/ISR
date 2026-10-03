@@ -1944,6 +1944,17 @@
     });
   }
 
+  function createRepresentativeMap(context, options) {
+    const renderer = root && root.AtlasVisualizationRenderer;
+    if (renderer && typeof renderer.create === 'function') {
+      const view = renderer.create(context, options || {});
+      if (view) return view;
+    }
+    const fallback = MapView.create(context, options || {});
+    fallback.dataset.mapRenderer = 'leaflet-fallback';
+    return fallback;
+  }
+
   function OverviewPage(context) {
     const frame = pageFrame(context, 'The conflict began with U.S. and Israeli strikes on Iran on February 28, 2026. Iran retaliated across the region, and the war developed into a sustained military, maritime, economic and diplomatic confrontation.');
     frame.article.classList.add('overview-page');
@@ -1992,7 +2003,7 @@
     if (firstWar) whatHappened.append(EvidenceDrawer.create(context, firstWar));
 
     const theaterRecords = mappedChronology(context.model.chronology, context.services.locationResolver).filter(item => { const point = pointFromRecord(item, context.services.locationResolver); return point && point.lat >= 8 && point.lat <= 42 && point.lon >= 28 && point.lon <= 70; });
-    const theaterMap = MapView.create(context, { title: 'Where the conflict extends', records: theaterRecords, fallbackViewport: [[11, 32], [40.5, 67.5]], maxZoom: 5, description: `This map shows ${theaterRecords.length.toLocaleString()} recorded events with source-supported locations across the Iran–Gulf–Levant–Red Sea theater. Multiple events at the same location may be grouped; records without reliable coordinates remain in the timeline.` });
+    const theaterMap = createRepresentativeMap(context, { typeLabel: 'THEATER MAP', cameraModes: ['theater'], title: 'Where the conflict extends', records: theaterRecords, fallbackViewport: [[11, 32], [40.5, 67.5]], maxZoom: 5, description: `This map shows ${theaterRecords.length.toLocaleString()} recorded events with source-supported locations across the Iran–Gulf–Levant–Red Sea theater. Multiple events at the same location may be grouped; records without reliable coordinates remain in the timeline.` });
     theaterMap.classList.add('overview-theater-map'); theaterMap.dataset.selectionRule = 'accepted-chronology-with-supported-coordinate-in-broad-theater'; frame.article.append(theaterMap);
 
     const developments = addSection(frame.article, 'Latest in the record');
@@ -2060,7 +2071,7 @@
     const frame = pageFrame(context, 'The campaign unfolded across a wide region. A launch, penetration, impact, physical damage, whether something stopped working, and the effect on war goals are separate questions.');
     const boundary = addSection(frame.article, 'From damage to war results'); append(boundary, 'p', 'phase10-guardrail', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.'); const framework = append(boundary, 'div', 'effect-framework-grid'); [['Physical damage', 'Visible or otherwise documented physical harm. Operating effect is shown separately.'], ['Asset lost', 'An individual asset is established destroyed, sunk, captured, abandoned, or otherwise unavailable. Broader force losses are shown separately.'], ['Subsystem damaged or lost', 'A component was damaged or lost. The status of the larger platform or system is shown separately.'], ['Function reduced', 'A specific operating function was reduced, interrupted, or unavailable. Physical damage is shown separately.'], ['Local effect', 'A demonstrated result at a specific site, unit, or limited area.'], ['Wider military effect', 'A documented effect on the broader campaign or theater.'], ['Effect on war goals', 'A documented effect on an actor’s ability to reach a stated war goal.']].forEach(([title, text]) => { const card = append(framework, 'article', 'effect-framework-card'); append(card, 'h3', '', title); append(card, 'p', '', text); }); append(boundary, 'p', 'section-note', 'This is not a severity ladder. Physical loss, operating effect and effect on war goals are separate findings. Atlas links them only when the evidence supports each step.');
     const chronology = context.model.chronology.filter(item => /(STRIKE|ATTACK|MISSILE|DRONE|INTERCEPT|MILITARY_OPERATION|NAVAL)/.test(eventType(item))); const tempo = addSection(frame.article, 'Recorded military activity by month'); const months = new Map(); chronology.forEach(item => { const month = String(item.timeline && item.timeline.date || '').slice(0, 7); if (month) months.set(month, (months.get(month) || 0) + 1); }); addBarChart(tempo, Array.from(months, ([label, value]) => ({ label, value })), { label: 'Recorded military activity by month', note: 'Number of documented military events—not weapons fired. One record can describe a wave, and quieter dates may reflect gaps in available reporting.', key: 'campaign-tempo', valuesLabel: 'Recorded military-event counts', tableCaption: 'Recorded military events by month', categoryLabel: 'Period', valueLabel: 'Recorded events', numericNote: 'These are recorded military-event counts. They are not totals for weapons, successful hits, destruction, or the complete pace of fighting.' });
-    const strikes = recordArray(modelData(context.model, 'reconciliation.strikes')); frame.article.append(MapView.create(context, { title: 'Strike geography', records: strikes, description: `${strikes.length.toLocaleString()} documented strike locations are plotted. Location precision follows the source record.` }));
+    const strikes = recordArray(modelData(context.model, 'reconciliation.strikes')); frame.article.append(createRepresentativeMap(context, { typeLabel: 'STRIKE GEOGRAPHY', cameraModes: ['theater', 'gulf'], title: 'Strike geography', records: strikes, description: `${strikes.length.toLocaleString()} documented strike locations are plotted. Location precision follows the source record.` }));
     const coalitionIranStrikes = strikes.filter(strike => /USA|US_ISR_COMBINED/.test(String(strike.actor || '')) && strike.target_type !== 'maritime_blockade_strike' && Number(strike.lat) >= 25 && Number(strike.lat) <= 40 && Number(strike.lon) >= 44 && Number(strike.lon) <= 64); const effects = addSection(frame.article, 'U.S. / coalition attacks inside Iran: what the evidence establishes'); append(effects, 'p', 'section-note', 'The attack, the physical damage and what it changed are separate findings. An unknown later result stays unknown.'); const effectsList = append(effects, 'div', 'record-list two-column-list'); coalitionIranStrikes.forEach(strike => { const card = addProvenanceCard(effectsList, context, { kicker: `${readableDate(strike.event_date)} · ${plainLabel(strike.verification)}`, title: publicNarrative(strike.name, strike.id), text: publicNarrative(strike.target_type || strike.purpose, 'Attack occurrence recorded; the target finding remains bounded by the cited source.'), technicalId: strike.id, technicalIdLabel: 'Stable strike record ID', item: strike }); card.dataset.strikeEffectId = strike.id; appendActorIdentities(card, context, [strike.actor || 'Actor unresolved']); addFactList(card, [['Attack occurrence', publicNarrative(strike.target_type || strike.purpose, 'Recorded; detail unresolved')], ['Physical effect', publicNarrative(strike.impact_grade || strike.effect, 'Unresolved')], ['Operating result', publicNarrative(strike.operational_effect, 'Unresolved unless separately established by the evidence')]]); });
     const damageObservations = recordArray(modelData(context.model, 'forensic.damage_observations')); const physical = addSection(frame.article, 'What was physically damaged?'); append(physical, 'p', 'section-note', 'These records show physical damage. Operating effects are shown separately.'); const physicalList = append(physical, 'div', 'record-list two-column-list'); damageObservations.forEach(observation => { const card = addProvenanceCard(physicalList, context, { kicker: `${plainLabel(observation.damage_confidence)} evidence strength`, title: publicNarrative(observation.target, observation.observation_id), text: publicNarrative(observation.observation), meta: 'Operating effect is shown separately.', technicalId: observation.observation_id, technicalIdLabel: 'Stable damage record ID', item: { source_ids: asArray(observation.sources) } }); card.dataset.damageObservationId = observation.observation_id; });
     const audits = recordArray(modelData(context.model, 'forensic.facility_claim_audits')); const propositions = addSection(frame.article, 'What did the damage change?'); append(propositions, 'p', 'section-note', 'Each question keeps its own finding. A strike or damaged component does not automatically show that a platform or whole site stopped operating or was destroyed.'); const facilities = recordArray(modelData(context.model, 'ledger.facilities')); audits.forEach(audit => { const group = append(propositions, 'article', 'effect-proposition-group'); group.dataset.facilityAuditId = audit.facility_audit_id; append(group, 'h3', '', publicNarrative(audit.facility_name, audit.facility_id)); const list = append(group, 'div', 'record-list'); asArray(audit.propositions).forEach(proposition => addProvenanceCard(list, context, { kicker: `${plainLabel(proposition.axis, 'Evidence question')} · ${plainLabel(proposition.disposition)}`, title: publicNarrative(proposition.question), text: asArray(proposition.inference_basis).map(publicNarrative).join(' '), meta: `Evidence strength: ${plainLabel(proposition.analytic_confidence)}`, item: { source_ids: asArray(proposition.basis_sources) }, relatedRecords: [audit.facility_id] })); const facility = facilities.find(record => record.facility_id === audit.facility_id); if (facility) { const link = append(group, 'a', 'inline-route-link', `Open ${publicNarrative(facility.name, audit.facility_name)} in Bases & Infrastructure`); link.href = routeHref('military.facilities', { facility: audit.facility_id }); } });
@@ -4052,23 +4063,45 @@ function enhanceCampaignVisual(article, context) {
 
 function enhanceShippingVisual(article, context) {
   if (article.querySelector('[data-shipping-map-system]')) return;
-  const oil = modelData(context.model, 'analysis.oil_routes') || {}; const routes = asArray(oil.routes);
+  const oil = modelData(context.model, 'analysis.oil_routes') || {};
+  const routes = asArray(oil.routes);
   if (!routes.length) {
-    const warning = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Route data unavailable', message: 'Atlas cannot render the broader shipping network because no supported route geometry is present in the current public model.', accounting: 'No route geometry is inferred to fill this gap.' });
-    warning.dataset.shippingRouteDependency = 'missing'; visualSweepInsertAfterStatus(article, warning); return;
+    const warning = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Route data unavailable', message: 'The Guide cannot render the broader shipping network because no supported route geometry is present in the current public model.', accounting: 'No route geometry is inferred to fill this gap.' });
+    warning.dataset.shippingRouteDependency = 'missing';
+    visualSweepInsertAfterStatus(article, warning);
+    return;
   }
-  const shippingRecords = [...recordArray(modelData(context.model, 'ledger.shipping')), ...recordArray(modelData(context.model, 'gate3.shipping')), ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))];
-  const inHormuz = shippingRecords.filter(record => { const point = pointFromRecord(record, context.services.locationResolver); return point && point.lat >= 22.4 && point.lat <= 28.9 && point.lon >= 50.8 && point.lon <= 60.8; });
-  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero'); system.dataset.shippingMapSystem = 'chokepoint-network';
-  append(system, 'h2', '', 'From chokepoint to network consequences');
-  append(system, 'p', 'section-note meaning-first-summary', `${routes.length.toLocaleString()} strategic transport corridor${routes.length === 1 ? ' is' : 's are'} shown.`);
+  const shippingRecords = [
+    ...recordArray(modelData(context.model, 'ledger.shipping')),
+    ...recordArray(modelData(context.model, 'gate3.shipping')),
+    ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))
+  ];
+  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero');
+  system.dataset.shippingMapSystem = 'continuous-maplibre';
+  append(system, 'h2', '', 'From theater to Hormuz');
+  append(system, 'p', 'section-note meaning-first-summary', 'One continuous map connects the wider transport network to the Gulf and the Strait without changing the accepted route geometry.');
   append(system, 'p', 'method-note', 'These are source-supported schematic routes, not precise vessel tracks, surveyed alignment, or targeting-quality geometry.');
-  const grid = append(system, 'div', 'shipping-map-grid');
-  const choke = MapView.create(context, { title: 'Hormuz chokepoint', records: inHormuz, viewportOverride: [[22.4, 50.8], [28.9, 60.8]], scope: 'hormuz-chokepoint', maxZoom: 7, contextNote: 'Country, coastline and named evidence locations provide orientation. Geographic precision remains bounded by the underlying record.', description: inHormuz.length ? `${inHormuz.length.toLocaleString()} geolocated shipping or commercial-loss record${inHormuz.length === 1 ? '' : 's'} are shown within the public Hormuz context window.` : 'This map provides geographic context for the Strait; current public shipping evidence in this view is primarily corridor- and reporting-based rather than point-mapped loss evidence.' });
-  choke.dataset.shippingMapView = 'chokepoint';
-  if (!inHormuz.length) choke.append(createStateNotice(context, { variant: 'no-geolocated-records', message: 'This map provides geographic context. Current public shipping evidence in this view is primarily corridor- and reporting-based rather than represented by mapped commercial-vessel loss records.', accounting: 'Mapped shipping or commercial-vessel loss records in this view: 0' }));
-  const network = MapView.create(context, { title: 'Network consequences', records: shippingRecords, routes, scope: 'route-network', maxZoom: 5, contextLabels: routeContextLabels(routes), contextNote: 'Named route nodes provide city, port and corridor context. Roads are not inferred where no deterministic road reference layer is packaged.', description: 'Broader maritime, pipeline and rail corridors show how pressure at Hormuz connects to Red Sea, Arabian Peninsula and Eurasian alternatives.' }); network.dataset.shippingMapView = 'network';
-  grid.append(choke, network); const oldMap = article.querySelector('.context-map'); if (oldMap && oldMap !== choke && oldMap !== network) { if (oldMap._atlasMap && oldMap._atlasMap.remove) oldMap._atlasMap.remove(); oldMap.remove(); }
+  const map = createRepresentativeMap(context, {
+    typeLabel: 'SHIPPING & TRADE MAP',
+    title: 'Shipping pressure and strategic bypass corridors',
+    records: shippingRecords,
+    routes,
+    scope: 'shipping-continuous',
+    maxZoom: 8,
+    cameraModes: ['theater', 'gulf', 'hormuz'],
+    contextLabels: routeContextLabels(routes),
+    contextNote: 'Named route nodes provide corridor context. No unrecorded route segment is inferred.',
+    description: 'Use Theater, Gulf, and Hormuz to move through the same accepted route and point dataset. Route IDs, geometry, semantics, and evidence relationships are unchanged.'
+  });
+  map.dataset.shippingMapView = 'continuous';
+  system.append(map);
+  const oldMaps = Array.from(article.querySelectorAll(':scope > .context-map'));
+  oldMaps.forEach(oldMap => {
+    if (oldMap === map) return;
+    if (oldMap._atlasMap && oldMap._atlasMap.remove) oldMap._atlasMap.remove();
+    if (oldMap._atlasMapLibre && oldMap._atlasMapLibre.remove) oldMap._atlasMapLibre.remove();
+    oldMap.remove();
+  });
   visualSweepInsertAfterStatus(article, system);
 }
 
