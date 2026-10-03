@@ -318,7 +318,7 @@
     map.setFilter('guide-land-context', ['==', ['get', 'layer'], 'western_context_110m']);
     map.addLayer({
       id: 'guide-land-regional', type: 'fill', source: 'guide-reference',
-      minzoom: 2.6, maxzoom: 6.2, paint: { 'fill-color': '#17232e', 'fill-opacity': 1 }
+      minzoom: 0, maxzoom: 6.2, paint: { 'fill-color': '#17232e', 'fill-opacity': 1 }
     });
     map.setFilter('guide-land-regional', ['==', ['get', 'layer'], 'regional_50m']);
     map.addLayer({
@@ -328,7 +328,7 @@
     map.setFilter('guide-land-hormuz', ['==', ['get', 'layer'], 'hormuz_10m']);
     for (const [id, layerName, minzoom, maxzoom] of [
       ['guide-boundary-context', 'western_context_110m', 0, 3.8],
-      ['guide-boundary-regional', 'regional_50m', 2.6, 6.2],
+      ['guide-boundary-regional', 'regional_50m', 0, 6.2],
       ['guide-boundary-hormuz', 'hormuz_10m', 5.0, 24]
     ]) {
       map.addLayer({
