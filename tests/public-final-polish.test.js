@@ -48,9 +48,8 @@ for (const phrase of [
   'Current diplomatic state',
   'Wartime agreements and negotiations',
   'Earlier agreements relevant to the war',
-  'One continuous map connects the wider transport network to the Gulf and the Strait without changing the accepted route geometry.',
-  'Four strategic transport corridors are shown'
-]) assert(source.includes(phrase) || phrase === 'Four strategic transport corridors are shown' && source.includes('strategic transport corridor'), `missing final-polish public contract: ${phrase}`);
+  'Four strategic transport corridors are shown in one continuous map from the wider transport network to the Gulf and the Strait, without changing the accepted route geometry.'
+]) assert(source.includes(phrase), `missing final-polish public contract: ${phrase}`);
 
 assert(source.includes("now.dataset.currentStateSummary = 'four-domain'"), 'Home current-state summary is not explicitly four-domain');
 for (const domain of ['Military', 'Hormuz', 'Economy', 'Diplomacy']) assert(source.includes(`domain: '${domain}'`), `Home missing ${domain} orientation card`);
