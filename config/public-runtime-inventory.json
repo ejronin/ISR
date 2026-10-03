@@ -51,6 +51,22 @@
     {
       "role": "entrypoint",
       "path": "js/public-app.js"
+    },
+    {
+      "role": "maplibre_runtime",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl.js"
+    },
+    {
+      "role": "maplibre_shared",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl-shared.js"
+    },
+    {
+      "role": "maplibre_worker",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl-worker.js"
+    },
+    {
+      "role": "maplibre_stylesheet",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl.css"
     }
   ],
   "current_shell_sources": [
@@ -254,7 +270,8 @@
     "vendor/leaflet/images/layers.png",
     "vendor/leaflet/images/marker-icon-2x.png",
     "vendor/leaflet/images/marker-icon.png",
-    "vendor/leaflet/images/marker-shadow.png"
+    "vendor/leaflet/images/marker-shadow.png",
+    "vendor/maplibre/6.11.2/LICENSE.txt"
   ],
   "repository_archive_roots": [
     "snapshots"
