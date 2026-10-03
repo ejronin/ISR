@@ -890,6 +890,8 @@
       article.classList.add('guide-lie-ledger-dossier');
       article.dataset.dossierCase = requestedCaseId;
       const selectedTitle = text(selectedCard.querySelector('.reader-ledger-card-head h3')?.textContent) || 'Claim record';
+      const dossierHeading = header.querySelector('h1');
+      if (dossierHeading) dossierHeading.textContent = selectedTitle;
       prependDossierBreadcrumb(article, 'evidence.information', 'Lie Ledger', selectedTitle);
       controls.hidden = true;
       resultCount.hidden = true;
