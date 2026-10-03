@@ -221,11 +221,18 @@ function assertStaticBoundary() {
     assert.deepEqual(synthetic.surface.match(MACHINE_PATTERN) || [], [], 'synthetic Sources surface exposes an underscore-delimited token');
 
     const widerLeaks = [];
+    let routeAuditIndex = 0;
     for (const route of ia.ROUTES.values()) {
-      await setRoute(cdp, route.key);
+      if (routeAuditIndex > 0 && routeAuditIndex % 6 === 0) {
+        await cdp.call('Page.navigate', { url: `${SITE}${ia.routeHref(route.key)}` });
+        await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+      } else {
+        await setRoute(cdp, route.key);
+      }
       const surface = await cdp.eval(publicSurfaceExpression('main'));
       const tokens = [...new Set(surface.match(MACHINE_PATTERN) || [])];
       widerLeaks.push(...tokens.map(token => `${route.key}:${token}`));
+      routeAuditIndex += 1;
     }
     assert.deepEqual(widerLeaks, [], 'wider runtime audit found raw taxonomy on a public route');
     assert.deepEqual(cdp.exceptions.filter(Boolean), [], 'uncaught runtime exception during focused qualification');
