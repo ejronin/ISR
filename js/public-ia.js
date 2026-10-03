@@ -133,6 +133,23 @@
     ])
   });
 
+  const DOSSIER_SECTION_DEFINITIONS = Object.freeze({
+    wolActor: Object.freeze([
+      { id: 'current-record', label: 'Current record' },
+      { id: 'findings', label: 'Findings' },
+      { id: 'claim-activity', label: 'Claim activity' },
+      { id: 'chronology', label: 'Chronology' },
+      { id: 'network-claim-trails', label: 'Network & claim trails' }
+    ]),
+    lieLedgerCase: Object.freeze([
+      { id: 'claim', label: 'Claim' },
+      { id: 'finding', label: 'Finding' },
+      { id: 'evidence', label: 'Evidence' },
+      { id: 'development', label: 'Development' },
+      { id: 'related-material', label: 'Related material' }
+    ])
+  });
+
   const DATASET_LABELS = Object.freeze({
     'current.chronology': 'Current chronology',
     'current.sources': 'Source catalog',
@@ -449,7 +466,11 @@
       .sort((left, right) => Number(left.navOrder || 999) - Number(right.navOrder || 999));
   }
 
-  function pageSectionsFor(routeKey) {
+  function pageSectionsFor(routeOrKey, paramsOverride) {
+    const routeKey = typeof routeOrKey === 'string' ? routeOrKey : routeOrKey && routeOrKey.key;
+    const params = paramsOverride || (routeOrKey && typeof routeOrKey === 'object' ? routeOrKey.params : null) || {};
+    if (routeKey === 'evidence.web_of_lies' && params.dossier === 'actor' && params.source) return DOSSIER_SECTION_DEFINITIONS.wolActor;
+    if (routeKey === 'evidence.information' && params.case) return DOSSIER_SECTION_DEFINITIONS.lieLedgerCase;
     return PAGE_SECTION_DEFINITIONS[routeKey] || Object.freeze([]);
   }
 
@@ -3796,7 +3817,7 @@ function applyVisualSweep(article, context) {
 }
 
   function applyPageSectionRegistry(article, context) {
-    const definitions = pageSectionsFor(context.route.key);
+    const definitions = pageSectionsFor(context.route);
     if (!definitions.length) return;
     article.dataset.guideArchetype = context.route.archetype || 'standard';
     const sections = [...article.querySelectorAll(':scope > section, :scope > details')];
@@ -3819,7 +3840,7 @@ function applyVisualSweep(article, context) {
       applyPresentationDisclosure(article, context);
       applyVisualSweep(article, context);
       applyPageSectionRegistry(article, context);
-      if (!pageSectionsFor(context.route.key).length) addPageLocalNavigation(article, context);
+      if (!pageSectionsFor(context.route).length) addPageLocalNavigation(article, context);
       return article;
     };
   }
@@ -3891,7 +3912,7 @@ function applyVisualSweep(article, context) {
         const item = append(list, 'li', 'context-route-item');
         item.append(navigationLink(documentObject, route, currentRoute, 'context-route'));
       });
-      const sections = pageSectionsFor(currentRoute.key);
+      const sections = pageSectionsFor(currentRoute);
       if (sections.length) {
         const divider = append(list, 'li', 'context-nav-divider', '');
         divider.setAttribute('aria-hidden', 'true');
@@ -3903,7 +3924,7 @@ function applyVisualSweep(article, context) {
       return nav;
     },
     renderContentsRail(documentObject, currentRoute) {
-      const sections = pageSectionsFor(currentRoute.key);
+      const sections = pageSectionsFor(currentRoute);
       if (!sections.length) return null;
       const nav = element(documentObject, 'nav', 'page-contents-rail');
       nav.setAttribute('aria-label', 'On this page');
