@@ -133,7 +133,7 @@ The approved Map / Data-Heavy and restrained Evidence / Forensics grammar is now
 
 - **Timeline** keeps the existing phase orientation, density view, date/topic/actor controls, event selection, contextual map and prewar disclosure. Whole existing blocks are reordered only so the phase orientation precedes the interactive canvas.
 - **Bases & Infrastructure** keeps the authoritative facility-status dashboard, facility IDs, current-status predicates, full-record disclosure, source-supported map and evidence drawers.
-- **Air, Missiles & Drones** keeps expenditure records, reported totals, missile/launcher estimates, related loss records, aviation cross-checks and counting limits. The existing no-single-percentage boundary becomes the page summary strip.
+- **Air, Missiles & Drones** keeps expenditure records, reported totals, missile/launcher estimates and counting limits. The qualified reader's existing de-duplication remains authoritative: equipment-loss and aviation incident records stay on Casualties & Losses, while Weapons keeps the existing **Equipment losses and aircraft incidents** cross-link. The existing no-single-percentage boundary becomes the page summary strip.
 - **Casualties & Losses** keeps casualty records, material-loss IDs, comparison accounting, filters, loss map, asset breakdown, estimated ranges and aviation/pilot records. The existing no-single-reliable-total boundary is moved ahead of the analytical canvas as a whole unchanged block.
 - **Damage Images** keeps the imagery/damage-review map, observation identities, progressive-disclosure rows, physical-damage observations and linked facility claim checks.
 
