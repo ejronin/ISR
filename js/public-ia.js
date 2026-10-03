@@ -130,6 +130,13 @@
       { id: 'routes', label: 'The routes', heading: 'The routes' },
       { id: 'alternative-paths', label: 'Alternative paths', heading: 'Alternative paths' },
       { id: 'merchant-losses', label: 'Merchant losses', heading: 'Merchant losses' }
+    ]),
+    'evidence.claims': Object.freeze([
+      { id: 'claim-checks', label: 'Claim checks', heading: 'Claim Checks' }
+    ]),
+    'evidence.sources': Object.freeze([
+      { id: 'source-context', label: 'Source context', heading: 'How source context works' },
+      { id: 'browse-sources', label: 'Browse sources', heading: 'Source Library' }
     ])
   });
 
