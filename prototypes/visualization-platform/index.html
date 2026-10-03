@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualization Platform Lab — The 2026 Iran War Guide</title>
+  <meta name="referrer" content="no-referrer">
+</head>
+<body>
+  <main class="prototype-shell">
+    <header class="prototype-header">
+      <p class="prototype-kicker">ARCHITECTURE PROTOTYPE · NOT A PUBLIC ROUTE</p>
+      <h1>Visualization Platform Lab</h1>
+      <p class="prototype-lead">Representative renderer proofs using current Guide data. This lab does not alter evidence, public wording, route geometry, WOL relationships, or economic values, and it is not part of the signed public release.</p>
+    </header>
+
+    <section class="prototype-section" aria-labelledby="map-title">
+      <div class="section-heading">
+        <p class="section-number">01</p>
+        <div>
+          <h2 id="map-title">Continuous cartography</h2>
+          <p>One MapLibre camera, the current signed Natural Earth-derived geography, current schematic route geometry, and current sanctions jurisdiction markers.</p>
+        </div>
+      </div>
+      <div class="map-toolbar" aria-label="Map camera">
+        <button type="button" data-map-camera="theater">Theater</button>
+        <button type="button" data-map-camera="gulf">Regional Gulf</button>
+        <button type="button" data-map-camera="hormuz">Hormuz detail</button>
+      </div>
+      <div id="map-prototype" class="map-canvas" aria-label="Prototype map using current Guide geography and route data"></div>
+      <p id="map-status" class="viz-status" role="status" aria-live="polite">Loading current geography and routes…</p>
+      <div id="map-detail" class="viz-detail" tabindex="-1"></div>
+      <details class="text-equivalent">
+        <summary>Text equivalent: current mapped records</summary>
+        <div id="map-text-equivalent"></div>
+      </details>
+    </section>
+
+    <section class="prototype-section" aria-labelledby="wol-title">
+      <div class="section-heading">
+        <p class="section-number">02</p>
+        <div>
+          <h2 id="wol-title">Web of Lies network</h2>
+          <p>Cytoscape with fCoSE over the current generated propagation graph. Selection and trace modes use only existing accepted edges.</p>
+        </div>
+      </div>
+      <div class="wol-controls">
+        <label>
+          Actor / outlet
+          <select id="wol-actor">
+            <option value="">Select a current graph node</option>
+          </select>
+        </label>
+        <div class="segmented-control" role="group" aria-label="Network mode">
+          <button type="button" data-wol-mode="full" aria-pressed="true">Full network</button>
+          <button type="button" data-wol-mode="direct" aria-pressed="false">Direct connections</button>
+          <button type="button" data-wol-mode="trace" aria-pressed="false">Trace propagation</button>
+        </div>
+        <label class="toggle-control">
+          <input id="wol-enable-zoom" type="checkbox">
+          Enable wheel/pinch graph zoom
+        </label>
+        <div class="button-row" aria-label="Graph zoom controls">
+          <button type="button" id="wol-zoom-in">Zoom in</button>
+          <button type="button" id="wol-zoom-out">Zoom out</button>
+          <button type="button" id="wol-fit">Fit network</button>
+        </div>
+      </div>
+      <div id="wol-prototype" class="graph-canvas" aria-label="Prototype Web of Lies network"></div>
+      <p id="wol-status" class="viz-status" role="status" aria-live="polite">Loading the current Web of Lies read model…</p>
+      <div id="wol-detail" class="viz-detail"></div>
+      <details class="text-equivalent">
+        <summary>Text equivalent: selected network path</summary>
+        <ol id="wol-trace-list"></ol>
+      </details>
+    </section>
+
+    <section class="prototype-section" aria-labelledby="flow-title">
+      <div class="section-heading">
+        <p class="section-number">03</p>
+        <div>
+          <h2 id="flow-title">Directed-flow layout</h2>
+          <p>Cytoscape + ELK over the existing ordered sanctions cascade. This demonstrates the layered renderer without creating new sanctions relationships.</p>
+        </div>
+      </div>
+      <div id="flow-prototype" class="flow-canvas" aria-label="Prototype directed sanctions cascade"></div>
+      <p id="flow-status" class="viz-status" role="status" aria-live="polite">Loading the current sanctions cascade…</p>
+      <details class="text-equivalent" open>
+        <summary>Text equivalent: current cascade</summary>
+        <ol id="flow-text-equivalent"></ol>
+      </details>
+    </section>
+
+    <section class="prototype-section" aria-labelledby="chart-title">
+      <div class="section-heading">
+        <p class="section-number">04</p>
+        <div>
+          <h2 id="chart-title">Quantitative chart platform</h2>
+          <p>Apache ECharts over the stored 2026 GDP forecast-delta values. This is a renderer proof only; the protected production economic charts remain unchanged.</p>
+        </div>
+      </div>
+      <div id="chart-prototype" class="chart-canvas" aria-label="Prototype economic forecast delta chart"></div>
+      <p id="chart-status" class="viz-status" role="status" aria-live="polite">Loading current economic rows…</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Exact stored values used by the prototype</caption>
+          <thead>
+            <tr>
+              <th scope="col">Country</th>
+              <th scope="col">Pre-war forecast</th>
+              <th scope="col">Current forecast</th>
+              <th scope="col">Stored change</th>
+            </tr>
+          </thead>
+          <tbody id="chart-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./prototype.js"></script>
+</body>
+</html>
