@@ -3410,11 +3410,11 @@
     let selectedEdgeId = '';
     let graphMode = actorDossierRequested && selectedNodeId ? 'direct' : 'full';
     let cyGraph = null;
-    let traceTimer = null;
+    let traceFrame = null;
 
     const stopTraceMotion = () => {
-      if (traceTimer && root && typeof root.clearInterval === 'function') root.clearInterval(traceTimer);
-      traceTimer = null;
+      if (traceFrame && root && typeof root.cancelAnimationFrame === 'function') root.cancelAnimationFrame(traceFrame);
+      traceFrame = null;
     };
     const setModePressed = () => modeButtons.forEach((button, mode) => button.setAttribute('aria-pressed', String(mode === graphMode)));
 
@@ -3505,13 +3505,19 @@
             appendNodeIdentity(item, targetNode || { display_name: edge.to_node_id }, 'span');
           });
         }
-        if (!motionReduced && visitedEdges.size && root && typeof root.setInterval === 'function') {
+        if (!motionReduced && visitedEdges.size && root && typeof root.requestAnimationFrame === 'function') {
           let offset = 0;
-          traceTimer = root.setInterval(() => {
+          let previousStamp = 0;
+          const animateTrace = stamp => {
             if (!cyGraph || !graphHost.isConnected || graphMode !== 'trace') { stopTraceMotion(); return; }
-            offset = (offset + 1) % 18;
-            edgeCollection.style('line-dash-offset', offset);
-          }, 120);
+            if (!previousStamp || stamp - previousStamp >= 120) {
+              offset = (offset + 1) % 18;
+              edgeCollection.style('line-dash-offset', offset);
+              previousStamp = stamp;
+            }
+            traceFrame = root.requestAnimationFrame(animateTrace);
+          };
+          traceFrame = root.requestAnimationFrame(animateTrace);
         }
       } else {
         const neighborhood = target.closedNeighborhood();
