@@ -3238,6 +3238,18 @@
     const reset = append(graphControls, 'button', 'action wol-graph-reset', 'Clear selection');
     reset.type = 'button';
     reset.hidden = true;
+    const modeControls = append(graphSection, 'div', 'wol-mode-controls');
+    modeControls.setAttribute('role', 'group');
+    modeControls.setAttribute('aria-label', 'Network reader mode');
+    let applyGraphMode = () => {};
+    const modeButtons = new Map();
+    [['full', 'FULL NETWORK'], ['direct', 'DIRECT CONNECTIONS'], ['trace', 'TRACE PROPAGATION']].forEach(([mode, label]) => {
+      const button = append(modeControls, 'button', 'wol-mode-button', label);
+      button.type = 'button';
+      button.dataset.wolMode = mode;
+      button.addEventListener('click', () => applyGraphMode(mode));
+      modeButtons.set(mode, button);
+    });
 
     const workspace = append(graphSection, 'div', 'wol-graph-workspace');
     const graphColumn = append(workspace, 'div', 'wol-graph-column');
@@ -3392,7 +3404,15 @@
       ? context.route.params.source
       : '';
     let selectedEdgeId = '';
+    let graphMode = actorDossierRequested && selectedNodeId ? 'direct' : 'full';
     let cyGraph = null;
+    let traceTimer = null;
+
+    const stopTraceMotion = () => {
+      if (traceTimer && root && typeof root.clearInterval === 'function') root.clearInterval(traceTimer);
+      traceTimer = null;
+    };
+    const setModePressed = () => modeButtons.forEach((button, mode) => button.setAttribute('aria-pressed', String(mode === graphMode)));
 
     const updateResetVisibility = () => {
       reset.hidden = !(selectedNodeId || selectedEdgeId);
@@ -3404,7 +3424,15 @@
 
     const focusGraph = (nodeId, edgeId) => {
       if (!cyGraph) return;
-      cyGraph.elements().removeClass('dimmed focused connected focused-link');
+      stopTraceMotion();
+      cyGraph.elements().removeClass('dimmed focused connected focused-link trace-edge');
+      const motionReduced = root && root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fit = (elements, padding) => {
+        if (!elements || !elements.length) return;
+        if (motionReduced) cyGraph.fit(elements, padding);
+        else cyGraph.animate({ fit: { eles: elements, padding }, duration: 220 });
+      };
+
       if (edgeId && graphEdgeById.has(edgeId)) {
         const edge = cyGraph.getElementById(edgeId);
         if (!edge || edge.empty()) return;
@@ -3413,7 +3441,7 @@
         cyGraph.elements().not(selection).addClass('dimmed');
         edge.addClass('connected focused-link');
         endpoints.addClass('connected');
-        cyGraph.animate({ fit: { eles: selection, padding: 110 }, duration: 220 });
+        fit(selection, 110);
         const record = graphEdgeById.get(edgeId);
         const source = graphNodeById.get(record.from_node_id);
         const target = graphNodeById.get(record.to_node_id);
@@ -3422,26 +3450,72 @@
           : `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${formatNumber(record.amplified_claim_count || 0)} documented claim${Number(record.amplified_claim_count || 0) === 1 ? '' : 's'} carried.`;
         return;
       }
+
       if (!nodeId || !graphNodeById.has(nodeId)) {
         cyGraph.fit(cyGraph.elements(), 48);
-        graphStatus.textContent = `Showing the full network: ${graphNodes.length} people/outlets and ${graphEdges.length} documented connections.`;
+        graphStatus.textContent = graphMode === 'full'
+          ? `Showing the full network: ${graphNodes.length} people/outlets and ${graphEdges.length} documented connections.`
+          : 'Choose a person or outlet to use this reader mode.';
+        graphHost.dataset.graphMode = graphMode;
         return;
       }
+
       const target = cyGraph.getElementById(nodeId);
       if (!target || target.empty()) return;
-      const neighborhood = target.closedNeighborhood();
-      cyGraph.elements().not(neighborhood).addClass('dimmed');
       target.addClass('focused');
-      target.neighborhood('node').addClass('connected');
-      target.connectedEdges().addClass('connected');
-      cyGraph.animate({
-        fit: { eles: neighborhood, padding: 84 },
-        duration: 220
-      });
-      const connections = adjacencyFor(nodeId).size;
-      graphStatus.textContent =
-        `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${connections} direct connection${connections === 1 ? '' : 's'}.`;
+
+      if (graphMode === 'trace') {
+        const visitedNodes = new Set([nodeId]);
+        const visitedEdges = new Set();
+        const queue = [nodeId];
+        while (queue.length) {
+          const sourceId = queue.shift();
+          graphEdges.filter(edge => edge.from_node_id === sourceId).forEach(edge => {
+            visitedEdges.add(edge.edge_id);
+            if (!visitedNodes.has(edge.to_node_id)) {
+              visitedNodes.add(edge.to_node_id);
+              queue.push(edge.to_node_id);
+            }
+          });
+        }
+        const nodeCollection = Array.from(visitedNodes).reduce((collection, id) => collection.union(cyGraph.getElementById(id)), cyGraph.collection());
+        const edgeCollection = Array.from(visitedEdges).reduce((collection, id) => collection.union(cyGraph.getElementById(id)), cyGraph.collection());
+        const trace = nodeCollection.union(edgeCollection);
+        cyGraph.elements().not(trace).addClass('dimmed');
+        nodeCollection.not(target).addClass('connected');
+        edgeCollection.addClass('connected trace-edge');
+        fit(trace, 92);
+        graphStatus.textContent = `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${visitedEdges.size} accepted directed propagation edge${visitedEdges.size === 1 ? '' : 's'} in this trace.`;
+        if (!motionReduced && visitedEdges.size && root && typeof root.setInterval === 'function') {
+          let offset = 0;
+          traceTimer = root.setInterval(() => {
+            if (!cyGraph || !graphHost.isConnected || graphMode !== 'trace') { stopTraceMotion(); return; }
+            offset = (offset + 1) % 18;
+            edgeCollection.style('line-dash-offset', offset);
+          }, 120);
+        }
+      } else {
+        const neighborhood = target.closedNeighborhood();
+        cyGraph.elements().not(neighborhood).addClass('dimmed');
+        target.neighborhood('node').addClass('connected');
+        target.connectedEdges().addClass('connected');
+        if (graphMode === 'direct') fit(neighborhood, 84);
+        else cyGraph.fit(cyGraph.elements(), 48);
+        const connections = adjacencyFor(nodeId).size;
+        graphStatus.textContent = graphMode === 'direct'
+          ? `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${connections} direct connection${connections === 1 ? '' : 's'}.`
+          : `${nodeRoleLabel(graphNodeById.get(nodeId))} selected · direct relationships emphasized within the full network.`;
+      }
+      graphHost.dataset.graphMode = graphMode;
     };
+
+    applyGraphMode = mode => {
+      if (!['full', 'direct', 'trace'].includes(mode)) return;
+      graphMode = mode;
+      setModePressed();
+      focusGraph(selectedNodeId, selectedEdgeId);
+    };
+    setModePressed();
 
     const initializeGraph = () => {
       if (!graphNodes.length) {
