@@ -432,7 +432,7 @@
     });
   }
 
-  function addRouteSelectionControls(section, map, routes, selection, context, ia) {
+  function addRouteSelectionControls(section, routes, selection, context, ia) {
     if (!routes.length) return;
     const controls = append(section, 'div', 'map-route-controls');
     routes.forEach(route => {
@@ -441,9 +441,10 @@
       button.dataset.routeId = String(route.id || route.route_id || '');
       button.dataset.routeMode = String(route.mode || '').toLowerCase();
       button.addEventListener('click', () => {
+        const map = section._atlasMapLibre;
         const routeId = String(route.id || route.route_id || '');
-        if (map.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], routeId]);
-        if (map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
+        if (map?.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], routeId]);
+        if (map?.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
         renderSelection(selection, context, ia, route, 'route');
       });
     });
@@ -572,6 +573,9 @@
     section.dataset.mapRouteCount = String(routeData.collection.features.length);
     section.dataset.mapPointCount = String(points.features.length);
     appendTextEquivalent(section, context, records, routes, ia);
+    addRouteSelectionControls(section, routeData.records, selection, context, ia);
+    if (routes.length) append(section, 'p', 'map-mode-boundary', 'Strategic corridor diagrams are schematic: maritime lines are not live vessel tracking, pipeline lines are not surveyed alignments, and rail lines are not exact track alignments or live movements.');
+    append(section, 'small', 'map-caveat', 'Locations follow the evidence record · routes are schematic · not live tracking, surveyed alignment, targeting, or navigation data');
 
     Promise.resolve().then(async () => {
       try {
@@ -613,7 +617,6 @@
             if (map.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], '__none__']);
             if (map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
           };
-          if (routeData.records.length) addRouteSelectionControls(section, map, routeData.records, selection, context, ia);
           focusRecordByIndex = index => {
             if (!Number.isInteger(index) || index < 0 || index >= records.length) return;
             const feature = points.features.find(candidate => Number(candidate.properties.recordIndex) === index);
