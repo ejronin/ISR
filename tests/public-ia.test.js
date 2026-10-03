@@ -76,6 +76,14 @@ assert.deepEqual(
   ia.pageSectionsFor('start.overview').map(section => section.id),
   ['current-state', 'conflict-opening', 'latest-record', 'about', 'unresolved']
 );
+assert.deepEqual(
+  ia.pageSectionsFor('military.campaigns').map(section => section.id),
+  ['damage-effect', 'campaign-activity', 'strike-geography', 'physical-damage', 'operational-effect', 'developments']
+);
+assert.deepEqual(
+  ia.pageSectionsFor('hormuz.shipping').map(section => section.id),
+  ['observed-shipping', 'routes', 'alternative-paths', 'merchant-losses']
+);
 for (const route of ia.ROUTES.values()) {
   const href = ia.routeHref(route.key, { record: 'EV-1' });
   const parsed = ia.parseRoute(href);
