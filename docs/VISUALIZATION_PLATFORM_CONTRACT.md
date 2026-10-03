@@ -558,7 +558,7 @@ The exact schema may differ, but these rules are mandatory:
 
 ## CSP delta
 
-Current policy stays intact except for the minimum worker permission required by MapLibre/ELK workers:
+Current policy stays intact except for the minimum worker permission required by MapLibre's explicit worker:
 
 ```text
 worker-src 'self'
@@ -584,6 +584,25 @@ Before MapLibre promotion, add a dedicated map qualification lane that proves:
 - desktop and mobile camera/bounds behavior.
 
 The general reader qualification must continue to run even if the map-specific lane is isolated.
+
+## Static Pages / build integration
+
+The public product remains a static GitHub Pages deployment. No renderer may require a server-side tile process, runtime package registry, API key exchange, or network service outside the signed same-origin artifact.
+
+Production promotion therefore requires explicit changes to the existing release machinery rather than bypassing it:
+
+- add new capability asset roles to `scripts/build_public_release_core.py` and the manifest validator;
+- classify every new runtime/worker/stylesheet in `config/public-runtime-inventory.json`;
+- teach `scripts/assemble_public_site.py` to publish only the manifest-authorized capability files;
+- extend `scripts/validate_public_deployment.py` and runtime-inventory tests to fail closed on missing, duplicated or unclassified visualization assets;
+- keep all generated runtime files deterministic and content-addressed;
+- preserve exact-SHA qualification before Pages deployment.
+
+The Vite lab in `prototypes/visualization-platform/` is not the production build system. It exists only to exercise candidate renderers. Production stays on the current signed Python release builder unless a separately approved build-system change is justified.
+
+No service worker or offline cache is introduced by this contract. “Static/offline-friendly” means the deployed Guide has no external runtime dependency and can be packaged as a closed same-origin artifact; disconnected-after-first-load behavior would require a separate cache/offline contract.
+
+If PMTiles is adopted later, qualification must first prove byte-range reads against the actual Pages artifact and must bind the archive bytes in the same release manifest.
 
 ---
 
