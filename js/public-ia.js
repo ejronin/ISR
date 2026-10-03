@@ -3258,6 +3258,10 @@
     graphHost.setAttribute('aria-label', 'Interactive Web of Lies connection network');
     const graphStatus = append(graphColumn, 'p', 'section-note wol-graph-status');
     graphStatus.setAttribute('aria-live', 'polite');
+    const mobileTrace = append(graphColumn, 'div', 'wol-mobile-trace');
+    mobileTrace.hidden = true;
+    append(mobileTrace, 'h3', '', 'Propagation trace');
+    const mobileTraceList = append(mobileTrace, 'ol', 'wol-mobile-trace-list');
 
     const detailSection = append(workspace, 'aside', 'wol-node-detail');
     append(detailSection, 'h3', '', 'Selection details');
@@ -3425,6 +3429,8 @@
     const focusGraph = (nodeId, edgeId) => {
       if (!cyGraph) return;
       stopTraceMotion();
+      mobileTrace.hidden = true;
+      mobileTraceList.replaceChildren();
       cyGraph.elements().removeClass('dimmed focused connected focused-link trace-edge');
       const motionReduced = root && root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const fit = (elements, padding) => {
@@ -3486,6 +3492,19 @@
         edgeCollection.addClass('connected trace-edge');
         fit(trace, 92);
         graphStatus.textContent = `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${visitedEdges.size} accepted directed propagation edge${visitedEdges.size === 1 ? '' : 's'} in this trace.`;
+        mobileTrace.hidden = false;
+        if (!visitedEdges.size) {
+          append(mobileTraceList, 'li', '', 'No downstream accepted propagation edge is recorded from this selection.');
+        } else {
+          Array.from(visitedEdges).map(id => graphEdgeById.get(id)).filter(Boolean).forEach(edge => {
+            const source = graphNodeById.get(edge.from_node_id);
+            const targetNode = graphNodeById.get(edge.to_node_id);
+            const item = append(mobileTraceList, 'li', 'wol-mobile-trace-step');
+            appendNodeIdentity(item, source || { display_name: edge.from_node_id }, 'span');
+            append(item, 'span', 'wol-mobile-trace-arrow', '→');
+            appendNodeIdentity(item, targetNode || { display_name: edge.to_node_id }, 'span');
+          });
+        }
         if (!motionReduced && visitedEdges.size && root && typeof root.setInterval === 'function') {
           let offset = 0;
           traceTimer = root.setInterval(() => {
