@@ -3883,3 +3883,225 @@ tbody tr:last-child td { border-bottom: 0; }
     padding-block: var(--space-4);
   }
 }
+
+
+/* Guide broad migration — War operational / map-data pages. */
+.guide-map-data-page,
+.guide-analysis-page {
+  gap: 0;
+}
+
+.guide-map-data-page .guide-structural-panel {
+  padding-block: var(--space-7);
+  border-top: 1px solid var(--border-divider);
+  scroll-margin-top: var(--guide-sticky-offset);
+}
+
+.guide-map-data-page .guide-filter-rail {
+  margin: var(--space-4) 0;
+  padding: var(--space-4) 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Timeline: phase orientation, then the interactive analytical canvas. */
+.guide-timeline-page #conflict-phases {
+  max-width: var(--analysis-width);
+}
+
+.guide-timeline-page #conflict-phases .orientation-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.guide-timeline-page #timeline-explorer {
+  max-width: none;
+  padding-inline: 0;
+}
+
+.guide-timeline-page #timeline-explorer > .section-note {
+  max-width: var(--reading-width);
+}
+
+.guide-timeline-page .timeline-controls {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.guide-timeline-page .timeline-map-host .context-map {
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-timeline-page .timeline-map-host .atlas-leaflet-map {
+  min-height: clamp(31rem, 56vh, 47.5rem);
+  border-radius: var(--radius-md);
+}
+
+.guide-timeline-page .prewar-context {
+  margin: var(--space-7) 0 0;
+}
+
+/* Facilities: status is the current finding; map is the analytical canvas. */
+.guide-facilities-page #facility-status {
+  max-width: var(--analysis-width);
+}
+
+.guide-facilities-page .reader-facility-status-bar {
+  margin-block: var(--space-5);
+}
+
+.guide-facilities-page .reader-facility-panels {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.guide-facilities-page .reader-facility-drawer {
+  margin: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.guide-facilities-page .reader-facility-drawer:first-child {
+  border-top: 0;
+}
+
+.guide-facilities-page .reader-facility-list {
+  gap: 0;
+}
+
+.guide-facilities-page .reader-facility-card {
+  padding: .85rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-facilities-page #facility-map {
+  max-width: none;
+}
+
+.guide-facilities-page .guide-facility-records {
+  max-width: var(--analysis-width);
+}
+
+/* Weapons: explanatory evidence sequence with dense supporting records. */
+.guide-weapons-page .guide-summary-strip {
+  max-width: var(--analysis-width);
+}
+
+.guide-weapons-page .guide-dense-records {
+  gap: 0;
+}
+
+.guide-weapons-page .guide-dense-records > article,
+.guide-weapons-page .guide-dense-records > section {
+  margin: 0;
+  padding: var(--space-4) 0;
+  border-right: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-weapons-page .comparison-grid.guide-dense-records {
+  gap: var(--space-6);
+}
+
+.guide-weapons-page #weapon-limits {
+  padding-bottom: var(--space-6);
+}
+
+/* Losses: counting boundary → map → charts → people → equipment. */
+.guide-losses-page #loss-boundary {
+  max-width: var(--analysis-width);
+}
+
+.guide-losses-page #loss-map {
+  max-width: none;
+}
+
+.guide-losses-page #loss-status-type .bar-chart {
+  max-width: var(--analysis-width);
+}
+
+.guide-losses-page #people .casualty-columns {
+  margin-top: var(--space-5);
+}
+
+.guide-losses-page #equipment .loss-controls {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.guide-losses-page .loss-side-group {
+  margin: 0;
+  padding: var(--space-5) 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-losses-page .loss-side-group .record-list {
+  gap: 0;
+}
+
+.guide-losses-page .loss-side-group .record-card,
+.guide-losses-page #loss-estimates .record-card,
+.guide-losses-page #aviation-pilots .record-card {
+  margin: 0;
+  padding: var(--space-4) 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Imagery: map first, then compact observation rows and claim checks. */
+.guide-imagery-page #imagery-map {
+  max-width: none;
+}
+
+.guide-imagery-page .imagery-summary-list {
+  gap: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.guide-imagery-page .imagery-summary-row {
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-imagery-page .imagery-summary {
+  padding-inline: 0;
+}
+
+.guide-imagery-page .imagery-detail-body {
+  margin-inline: 0;
+}
+
+@media (max-width: 64rem) {
+  .guide-timeline-page #conflict-phases .orientation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .guide-timeline-page #conflict-phases .orientation-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-timeline-page .timeline-map-host .atlas-leaflet-map {
+    min-height: clamp(20rem, 52vh, 27.5rem);
+  }
+
+  .guide-facilities-page .reader-facility-card,
+  .guide-losses-page .loss-side-group .record-card,
+  .guide-losses-page #loss-estimates .record-card,
+  .guide-losses-page #aviation-pilots .record-card {
+    padding-block: .8rem;
+  }
+}
