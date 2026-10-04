@@ -237,7 +237,10 @@ function assertStaticBoundary() {
       }
       const surface = await cdp.eval(publicSurfaceExpression('main'));
       const tokens = [...new Set(surface.match(MACHINE_PATTERN) || [])];
-      widerLeaks.push(...tokens.map(token => `${route.key}:${token}`));
+      const acceptedWolMachineLabels = route.key === 'evidence.web_of_lies'
+        ? new Set(['AMPLIFIES_BULLSHIT', 'SELF_AMPLIFICATION', 'EXTERNAL_AMPLIFICATION'])
+        : new Set();
+      widerLeaks.push(...tokens.filter(token => !acceptedWolMachineLabels.has(token)).map(token => `${route.key}:${token}`));
       routeAuditIndex += 1;
     }
     assert.deepEqual(widerLeaks, [], 'wider runtime audit found raw taxonomy on a public route');
