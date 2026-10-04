@@ -487,10 +487,18 @@
         seen.add(label);
         candidates.push({ label, lon: center[0], lat: center[1], priority: 2, kind: 'country' });
       });
+    asArray(geography && geography.metadata && geography.metadata.labels).forEach(row => {
+      const label = String(row && row.label || '').trim();
+      const lat = Number(row && row.lat); const lon = Number(row && row.lon);
+      if (!label || seen.has(label) || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
+      seen.add(label);
+      candidates.push({ label, lat, lon, priority: row.kind === 'water' ? 0 : Number(row.priority ?? 1), kind: row.kind || 'place' });
+    });
     asArray(contextLabels).forEach(row => {
       const label = String(row && row.label || '').trim();
       const lat = Number(row && row.lat); const lon = Number(row && row.lon);
-      if (!label || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
+      if (!label || seen.has(label) || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
+      seen.add(label);
       candidates.push({ label, lat, lon, priority: Number(row.priority || 0), kind: row.kind || 'place' });
     });
     const markers = candidates.slice(0, 80).map(row => {
@@ -780,6 +788,7 @@
     section.dataset.mapRenderer = 'maplibre-gl-js';
     section.dataset.mapRendererVersion = MAPLIBRE_VERSION;
     section.dataset.mapScope = options && options.scope || 'context';
+    section.dataset.mapReferenceLayers = 'western_context_110m,regional_50m,hormuz_10m';
     const header = append(section, 'header', 'visualization-header');
     if (options && options.typeLabel) append(header, 'p', 'visualization-type', options.typeLabel);
     append(header, 'h2', '', options && options.title || 'Geographic context');
