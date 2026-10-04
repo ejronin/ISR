@@ -77,29 +77,31 @@ No visualization may become a second source of truth. Charts, maps, diagrams, co
 
 **Preserve semantics does not mean preserve old presentation.** The presentation is the thing being redesigned.
 
-### Absolute forensic-language lock: Web of Lies and Lie Ledger
+### Forensic authority boundary: Web of Lies and Lie Ledger
 
-For **Web of Lies** and **Lie Ledger**—including collection views, case dossiers, actor dossiers, claim chains, receipts, findings, chronology, and related material—the facelift is **presentation-only**.
+For **Web of Lies** and **Lie Ledger**—including collection views, case dossiers, actor dossiers, claim chains, receipts, findings, chronology, and related material—the facelift is **presentation-only with respect to the current accepted record**.
 
-The renderer, visual-architecture pass, mockup pass, and implementation pass may **not**:
-- rewrite, paraphrase, shorten, summarize, “clarify,” humanize, soften, harden, or otherwise alter accepted language;
-- change adjudications, findings, knowledge states, claim text, proposition meaning, chronology, case membership, record order where protected, evidence association, receipt wording, or relationship semantics;
-- generate new labels that restate a finding in different words where the accepted wording already exists;
-- collapse multiple accepted findings into a new synthesized statement;
+The renderer, visual-architecture pass, mockup pass, and implementation pass may **not independently modify the current accepted record**. In particular, they may not:
+- rewrite, paraphrase, shorten, summarize, “clarify,” humanize, soften, harden, or otherwise alter currently accepted language;
+- change current adjudications, findings, knowledge states, claim text, proposition meaning, chronology, case membership, protected record order, evidence association, receipt wording, or relationship semantics;
+- generate replacement labels that restate an existing finding in different words where accepted wording already exists;
+- collapse multiple accepted findings into a new synthesized ruling;
 - infer new WOL edges, relationship types, actor roles, narrative groupings, or case relationships.
 
-They may change only:
+They may change presentation only:
 - spatial composition;
 - typography;
 - spacing;
-- visual grouping that preserves the existing record structure;
+- visual grouping that preserves the accepted record structure;
 - selection/focus behavior;
 - graph layout;
 - node/edge styling that maps existing node/edge semantics without changing them;
 - responsive/mobile presentation;
 - evidence-control placement while continuing to invoke the existing evidence system.
 
-**No language or adjudication changes to WOL or Lie Ledger are authorized by this facelift. Period.**
+**New evidence, new claim instances, new case material, new accepted relationships, corrections, and revised adjudications may still be added through the normal authorized WOL / Lie Ledger evidence-adjudication process.** The facelift does not freeze those systems in time.
+
+**Authority rule:** any change to an existing WOL or Lie Ledger ruling, adjudication, finding, accepted wording, or relationship must come from the authorized **WOL / Information Claims & Forensic Adjudication engineer** under the controlling claims-adjudication contract—not from the renderer, UX/UI engineer, visualization engineer, or facelift process.
 
 ---
 
