@@ -99,9 +99,11 @@ They may change presentation only:
 - responsive/mobile presentation;
 - evidence-control placement while continuing to invoke the existing evidence system.
 
-**New evidence, new claim instances, new case material, new accepted relationships, corrections, and revised adjudications may still be added through the normal authorized WOL / Lie Ledger evidence-adjudication process.** The facelift does not freeze those systems in time.
+**Facelift scope rule:** for this facelift task, the current accepted WOL / Lie Ledger record is read-only. The facelift does not add, revise, correct, re-adjudicate, or reinterpret evidentiary findings, rulings, claims, relationships, chronology, or accepted language.
 
-**Authority rule:** any change to an existing WOL or Lie Ledger ruling, adjudication, finding, accepted wording, or relationship must come from the authorized **WOL / Information Claims & Forensic Adjudication engineer** under the controlling claims-adjudication contract—not from the renderer, UX/UI engineer, visualization engineer, or facelift process.
+If the underlying WOL / Lie Ledger record changes later through its normal authorized evidence/adjudication workflow, the facelift implementation may render that newly accepted state automatically through the existing read model. That external workflow is not part of this facelift task and is not authorized by this specification.
+
+**Authority rule:** the renderer, UX/UI engineer, visualization engineer, and facelift process have zero authority to modify WOL / Lie Ledger adjudications or evidentiary findings. Their authority is presentation-only.
 
 ---
 
