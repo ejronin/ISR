@@ -10,11 +10,13 @@
   'use strict';
 
   const MAPLIBRE_VERSION = '6.11.2';
+  const ECHARTS_VERSION = '6.1.0';
   const CAMERA_PRESETS = Object.freeze({
     gulf: Object.freeze([[43.0, 18.0], [63.5, 33.5]]),
     hormuz: Object.freeze([[50.8, 22.4], [60.8, 28.9]])
   });
   let capabilityPromise = null;
+  let echartsCapabilityPromise = null;
 
   function element(documentObject, tag, className, text) {
     const node = documentObject.createElement(tag);
@@ -38,6 +40,12 @@
   function authorization() {
     const capability = root.ATLAS_RELEASE_AUTHORIZATION && root.ATLAS_RELEASE_AUTHORIZATION.capabilities && root.ATLAS_RELEASE_AUTHORIZATION.capabilities.maplibre;
     if (!capability || capability.version !== MAPLIBRE_VERSION) throw new Error('Signed MapLibre capability is unavailable.');
+    return capability;
+  }
+
+  function echartsAuthorization() {
+    const capability = root.ATLAS_RELEASE_AUTHORIZATION && root.ATLAS_RELEASE_AUTHORIZATION.capabilities && root.ATLAS_RELEASE_AUTHORIZATION.capabilities.echarts;
+    if (!capability || capability.version !== ECHARTS_VERSION || capability.profile !== 'simple') throw new Error('Signed ECharts capability is unavailable.');
     return capability;
   }
 
@@ -112,6 +120,226 @@
       throw error;
     });
     return capabilityPromise;
+  }
+
+
+  async function loadECharts(documentObject, windowObject) {
+    if (root.echarts && typeof root.echarts.init === 'function') return Object.freeze({ echarts: root.echarts, cap: echartsAuthorization() });
+    if (echartsCapabilityPromise) return echartsCapabilityPromise;
+    echartsCapabilityPromise = (async () => {
+      const cap = echartsAuthorization();
+      await verifyTextAsset(cap.runtime, windowObject);
+      const selector = `script[data-guide-echarts-runtime="${cap.runtime.sha256}"]`;
+      let script = documentObject.querySelector(selector);
+      if (!script) {
+        script = documentObject.createElement('script');
+        script.src = sameOriginUrl(cap.runtime.path, windowObject).href;
+        script.integrity = cap.runtime.integrity;
+        script.crossOrigin = 'anonymous';
+        script.dataset.guideEchartsRuntime = cap.runtime.sha256;
+        await new Promise((resolve, reject) => {
+          script.onload = resolve;
+          script.onerror = () => reject(new Error('ECharts runtime failed integrity loading.'));
+          documentObject.head.append(script);
+        });
+      } else if (!(root.echarts && typeof root.echarts.init === 'function')) {
+        await new Promise((resolve, reject) => {
+          script.addEventListener('load', resolve, { once: true });
+          script.addEventListener('error', () => reject(new Error('ECharts runtime failed integrity loading.')), { once: true });
+        });
+      }
+      if (!root.echarts || typeof root.echarts.init !== 'function') throw new Error('ECharts runtime did not expose the required API.');
+      return Object.freeze({ echarts: root.echarts, cap });
+    })().catch(error => {
+      echartsCapabilityPromise = null;
+      throw error;
+    });
+    return echartsCapabilityPromise;
+  }
+
+  function appendChartEquivalent(section, rows, options) {
+    const details = append(section, 'details', 'visualization-text-equivalent');
+    details.dataset.phase1ChartEquivalent = options && options.key || 'chart-values';
+    append(details, 'summary', '', options && options.valuesLabel || 'Numeric values for this chart');
+    if (options && options.numericNote) append(details, 'p', '', options.numericNote);
+    const table = append(details, 'table');
+    append(table, 'caption', '', options && options.tableCaption || options && options.title || 'Chart values');
+    const thead = append(table, 'thead');
+    const hr = append(thead, 'tr');
+    const ch = append(hr, 'th', '', options && options.categoryLabel || 'Category'); ch.scope = 'col';
+    const vh = append(hr, 'th', '', options && options.valueLabel || 'Value'); vh.scope = 'col';
+    const tbody = append(table, 'tbody');
+    asArray(rows).forEach(row => {
+      const tr = append(tbody, 'tr');
+      const th = append(tr, 'th', '', String(row.label)); th.scope = 'row';
+      append(tr, 'td', '', row.display === undefined ? String(row.value) : String(row.display));
+    });
+    return details;
+  }
+
+  function chartFrame(context, rows, options, className) {
+    const documentObject = context.documentObject;
+    const section = element(documentObject, 'section', `guide-visualization guide-echarts-view ${className || ''}`.trim());
+    section.dataset.chartRenderer = 'apache-echarts';
+    section.dataset.chartRendererVersion = ECHARTS_VERSION;
+    const header = append(section, 'header', 'visualization-header');
+    if (options && options.typeLabel) append(header, 'p', 'visualization-type', options.typeLabel);
+    append(header, 'h3', '', options && options.title || 'Quantitative view');
+    if (options && options.description) append(header, 'p', 'visualization-purpose', options.description);
+    const host = append(section, 'div', 'guide-echarts-canvas');
+    host.setAttribute('role', 'img');
+    host.setAttribute('aria-label', options && options.ariaLabel || options && options.title || 'Evidence-linked chart');
+    const status = append(section, 'p', 'visualization-local-state', 'Preparing chart…');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    appendChartEquivalent(section, rows, options || {});
+    return { section, host, status };
+  }
+
+  function createCategoryBars(context, options) {
+    const rows = asArray(options && options.rows).filter(row => row && Number.isFinite(Number(row.value)));
+    const frame = chartFrame(context, rows, options || {}, 'guide-category-bars');
+    const { section, host, status } = frame;
+    Promise.resolve().then(async () => {
+      try {
+        const capability = await loadECharts(context.documentObject, context.windowObject || root);
+        if (!section.isConnected) return;
+        const chart = capability.echarts.init(host, null, { renderer: 'svg' });
+        section._atlasChart = chart;
+        chart.setOption({
+          animation: !reducedMotion(context.windowObject || root),
+          backgroundColor: 'transparent',
+          grid: { left: 12, right: 24, top: 12, bottom: 12, containLabel: true },
+          xAxis: {
+            type: 'value',
+            minInterval: 1,
+            axisLabel: { color: '#aab5bf' },
+            splitLine: { lineStyle: { color: '#202d38' } }
+          },
+          yAxis: {
+            type: 'category',
+            data: rows.map(row => String(row.label)),
+            axisLabel: { color: '#dce5eb', width: 150, overflow: 'truncate' },
+            axisLine: { lineStyle: { color: '#355063' } }
+          },
+          series: [{
+            type: 'bar',
+            data: rows.map(row => Number(row.value)),
+            barMaxWidth: 24,
+            itemStyle: { color: '#79b7df', borderRadius: [0, 3, 3, 0] },
+            label: { show: true, position: 'right', color: '#f1f4f7' }
+          }]
+        });
+        status.remove();
+        section.dataset.chartState = 'ready';
+        section.dispatchEvent(new CustomEvent('guide:visualization-ready', { bubbles: true, detail: { renderer: 'echarts', version: ECHARTS_VERSION } }));
+      } catch (error) {
+        if (!section.isConnected) return;
+        status.textContent = 'Interactive chart unavailable; numeric values remain available below.';
+        section.dataset.chartState = 'fallback';
+        section.dataset.echartsFailure = String(error && error.message || 'ECharts unavailable');
+      }
+    });
+    return section;
+  }
+
+  function createEventDensity(context, options) {
+    const rows = asArray(options && options.rows)
+      .filter(row => row && row.label && Number.isFinite(Number(row.value)))
+      .slice()
+      .sort((a, b) => String(a.label).localeCompare(String(b.label)));
+    const frame = chartFrame(context, rows, options || {}, 'guide-event-density');
+    const { section, host, status } = frame;
+    let chart = null;
+    let silentRange = false;
+    let pendingRange = null;
+    const indexForDate = (date, fallback) => {
+      const exact = rows.findIndex(row => String(row.label) === String(date));
+      if (exact >= 0) return exact;
+      if (!rows.length) return fallback;
+      if (fallback === 0) {
+        const next = rows.findIndex(row => String(row.label) >= String(date));
+        return next >= 0 ? next : rows.length - 1;
+      }
+      for (let i = rows.length - 1; i >= 0; i -= 1) if (String(rows[i].label) <= String(date)) return i;
+      return 0;
+    };
+    const applyRange = (startDate, endDate) => {
+      pendingRange = [startDate, endDate];
+      if (!chart || !rows.length) return;
+      const startValue = indexForDate(startDate, 0);
+      const endValue = indexForDate(endDate, rows.length - 1);
+      silentRange = true;
+      chart.dispatchAction({ type: 'dataZoom', startValue, endValue });
+      silentRange = false;
+    };
+    section._atlasSetRange = applyRange;
+    Promise.resolve().then(async () => {
+      try {
+        const capability = await loadECharts(context.documentObject, context.windowObject || root);
+        if (!section.isConnected) return;
+        chart = capability.echarts.init(host, null, { renderer: 'svg' });
+        section._atlasChart = chart;
+        chart.setOption({
+          animation: !reducedMotion(context.windowObject || root),
+          backgroundColor: 'transparent',
+          grid: { left: 44, right: 16, top: 12, bottom: 58 },
+          xAxis: {
+            type: 'category',
+            data: rows.map(row => String(row.label)),
+            boundaryGap: true,
+            axisLabel: { color: '#aab5bf', hideOverlap: true },
+            axisLine: { lineStyle: { color: '#355063' } }
+          },
+          yAxis: {
+            type: 'value',
+            minInterval: 1,
+            name: 'accepted records',
+            nameTextStyle: { color: '#aab5bf' },
+            axisLabel: { color: '#aab5bf' },
+            splitLine: { lineStyle: { color: '#202d38' } }
+          },
+          dataZoom: [
+            { type: 'inside', filterMode: 'none', zoomOnMouseWheel: false, moveOnMouseWheel: false, moveOnMouseMove: true },
+            { type: 'slider', filterMode: 'none', height: 24, bottom: 10, borderColor: '#355063', textStyle: { color: '#aab5bf' }, brushSelect: false }
+          ],
+          series: [{
+            type: 'bar',
+            name: 'Accepted records',
+            data: rows.map(row => Number(row.value)),
+            barMaxWidth: 12,
+            itemStyle: { color: '#79b7df' }
+          }]
+        });
+        chart.on('datazoom', event => {
+          if (silentRange || !rows.length) return;
+          const payload = event && event.batch && event.batch[0] || event || {};
+          const startIndex = Number.isFinite(Number(payload.startValue))
+            ? Number(payload.startValue)
+            : Math.round((Number(payload.start || 0) / 100) * Math.max(0, rows.length - 1));
+          const endIndex = Number.isFinite(Number(payload.endValue))
+            ? Number(payload.endValue)
+            : Math.round((Number(payload.end === undefined ? 100 : payload.end) / 100) * Math.max(0, rows.length - 1));
+          const start = rows[Math.max(0, Math.min(rows.length - 1, startIndex))];
+          const end = rows[Math.max(0, Math.min(rows.length - 1, endIndex))];
+          if (!start || !end) return;
+          section.dispatchEvent(new CustomEvent('guide:chart-range', {
+            bubbles: true,
+            detail: { startDate: String(start.label), endDate: String(end.label) }
+          }));
+        });
+        if (pendingRange) applyRange(pendingRange[0], pendingRange[1]);
+        status.remove();
+        section.dataset.chartState = 'ready';
+        section.dispatchEvent(new CustomEvent('guide:visualization-ready', { bubbles: true, detail: { renderer: 'echarts', version: ECHARTS_VERSION } }));
+      } catch (error) {
+        if (!section.isConnected) return;
+        status.textContent = 'Interactive density navigator unavailable; daily accepted-record counts remain available below.';
+        section.dataset.chartState = 'fallback';
+        section.dataset.echartsFailure = String(error && error.message || 'ECharts unavailable');
+      }
+    });
+    return section;
   }
 
   function routeSources(route) {
@@ -696,5 +924,13 @@
     return section;
   }
 
-  return Object.freeze({ MAPLIBRE_VERSION, create, loadMapLibre });
+  return Object.freeze({
+    MAPLIBRE_VERSION,
+    ECHARTS_VERSION,
+    create,
+    createCategoryBars,
+    createEventDensity,
+    loadMapLibre,
+    loadECharts
+  });
 }));
