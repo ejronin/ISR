@@ -20,7 +20,7 @@ assert "stylesheets.length === 3" in source
 builder = (ROOT / "scripts" / "build_public_release.py").read_text(encoding="utf-8")
 core_builder = (ROOT / "scripts" / "build_public_release_core.py").read_text(encoding="utf-8")
 assert "from build_public_release_core import *" in builder
-assert "2.7-maplibre-representative-capability" in core_builder
+assert "2.8-phase1-visualization-capabilities" in core_builder
 assert core_builder.count('("graph_runtime", "cytoscape", "vendor/cytoscape/cytoscape.min.js", "js")') == 1
 assert '"visualization_runtime"' in core_builder
 assert 'MAPLIBRE_VERSION = "6.11.2"' in core_builder
