@@ -877,6 +877,7 @@
             clearSelections();
             map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], index]);
             renderSelection(selection, context, ia, records[index], 'record');
+            section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'record', recordIndex: index, record: records[index] } }));
             map.easeTo({ center: feature.geometry.coordinates, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
             viewport.focus();
           };
@@ -892,6 +893,7 @@
               const route = routeData.records[Number(feature.properties.recordIndex)];
               map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], String(feature.properties.routeId || '')]);
               renderSelection(selection, context, ia, route, 'route');
+              section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'route', recordIndex: Number(feature.properties.recordIndex), record: route } }));
             });
             map.on('mouseenter', 'guide-routes', () => { map.getCanvas().style.cursor = 'pointer'; });
             map.on('mouseleave', 'guide-routes', () => { map.getCanvas().style.cursor = ''; });
@@ -907,11 +909,18 @@
             map.on('mouseenter', 'guide-points', () => { map.getCanvas().style.cursor = 'pointer'; });
             map.on('mouseleave', 'guide-points', () => { map.getCanvas().style.cursor = ''; });
           }
+          section._atlasReset = () => {
+            clearSelections();
+            renderSelection(selection, context, ia, null, '');
+            map.fitBounds(theaterBounds, { padding: 48, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
+            section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'reset', record: null } }));
+          };
           map.on('click', event => {
             const features = map.queryRenderedFeatures(event.point, { layers: ['guide-points', 'guide-routes'].filter(id => map.getLayer(id)) });
             if (features.length) return;
             clearSelections();
             renderSelection(selection, context, ia, null, '');
+            section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'reset', record: null } }));
           });
 
           status.remove();

@@ -253,21 +253,32 @@
 
   function actors(article) {
     intro(article,'Start with the actors, not the data model: states and armed forces, non-state armed groups, leaders, mediators and international organizations appear here according to the role they actually play in the record.');
-    addClass(article,'guide-migrated-page guide-collection-page guide-actor-directory-page');
-    const controls=article.querySelector(':scope > .actor-controls');
-    if(controls){
-      addClass(controls,'guide-filter-rail');
-      controls.dataset.guideSection='actor-directory';
-      controls.id='actor-directory';
+    addClass(article,'guide-migrated-page guide-collection-page guide-actor-directory-page guide-phase1-actors');
+    const explorer=article.querySelector('.actor-explorer');
+    if(explorer) addClass(explorer,'guide-structural-panel');
+    const controls=article.querySelector('.actor-controls');
+    if(controls) addClass(controls,'guide-filter-rail');
+    const index=article.querySelector('.actor-index');
+    if(index){
+      index.dataset.guideSection='actor-directory';
+      index.id='actor-directory';
+      addClass(index,'guide-collection-group');
     }
-    article.querySelectorAll(':scope > section .actor-directory').forEach(list=>addClass(list,'guide-dense-directory'));
-    article.querySelectorAll(':scope > section').forEach(sectionNode=>addClass(sectionNode,'guide-collection-group'));
-    const n=article.querySelector('.scope-note'); if(n) collapse(n,'How actor identity is assigned');
+    article.querySelectorAll('.actor-directory').forEach(list=>addClass(list,'guide-dense-directory'));
+    article.querySelectorAll('.actor-family-section').forEach(sectionNode=>addClass(sectionNode,'guide-collection-group'));
+    const n=article.querySelector(':scope > .scope-note'); if(n) collapse(n,'How actor identity is assigned');
   }
 
   function timeline(article, context) {
     const counts=context.model.counts||{}, chronologyCount=Number(counts.chronology_records)||0, conflictDays=Number(counts.gate3_daily_coverage_days)||0;
     intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. All Events contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
+    addClass(article,'guide-migrated-page guide-phase1-timeline');
+    const explorer=article.querySelector('.timeline-explorer');
+    if(explorer) addClass(explorer,'guide-structural-panel');
+    const density=article.querySelector('.guide-event-density');
+    if(density) addClass(density,'guide-phase1-primary-visual');
+    const summary=article.querySelector('.timeline-period-summary');
+    if(summary) addClass(summary,'guide-summary-strip');
     const s=section(article,'Conflict phases','The phase guide is orientation, not a replacement for the exhaustive chronology.'), g=add(s,'div','orientation-grid');
     card(g,'Opening strikes and regional expansion','Direct attacks quickly spread across bases, air-defense sites, maritime routes and aligned armed groups.','FEB–MAR');
     card(g,'Sustained strikes and mounting losses','Repeated strikes, interceptions and infrastructure damage accumulated through the spring and summer.','SPRING–SUMMER');
@@ -299,6 +310,10 @@
     card(g,'Houthi west-coast gains','Greater and Lesser Hanish and Perim/Mayun improve the Houthi position around Bab el-Mandeb. They do not establish total control of commercial passage.','TERRITORIAL GAIN');
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
     routeLink(summary,'military.facilities','See authoritative facility status');
+
+    const guard=article.querySelector('.guide-phase1-campaign-guardrail')||add(summary,'aside','scope-note guide-phase1-campaign-guardrail');
+    if(!guard.querySelector('strong')) add(guard,'strong','','HIT ≠ DAMAGED ≠ DESTROYED ≠ INEFFECTIVE');
+    if(!guard.querySelector('p')) add(guard,'p','','Each step requires independent support in the accepted record; the visualization does not collapse them into one state.');
 
     const coverage=findSection(article,/^At a glance$/i);
     if(coverage) collapse(coverage,'Record coverage');
@@ -360,9 +375,61 @@
 
   function losses(article) {
     intro(article,'Casualties and equipment losses are separate. Some numbers are exact or minimum counts, but the evidence does not support one reliable equipment-loss total for the whole war.');
+    addClass(article,'guide-migrated-page guide-phase1-losses');
     const s=section(article,'No single reliable total','There is no reliable single number covering every side and every kind of equipment loss. Only matching, non-duplicate physical counts are added. Claims, estimates, mixed categories and unknown quantities stay separate.');
-    const g=add(s,'div','orientation-grid'); card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
-    const c=article.querySelector('[data-loss-comparison]'); if(c){const h=c.querySelector('h2');if(h)h.textContent='Loss records by side and type';const n=c.querySelector('.section-note');if(n)n.textContent='These totals count loss records, not individual destroyed or damaged items when the quantity is unknown. Unknown quantities stay unknown. Open a category to see the records behind the total.';c.classList.add('secondary-context');}
+    addClass(s,'guide-summary-strip');
+    const g=add(s,'div','orientation-grid');
+    card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');
+    card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');
+    card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
+
+    const material=findSection(article,/^Equipment$/i);
+    if(material){
+      addClass(material,'phase1-loss-accounting');
+      const us=material.querySelector('[data-loss-side-group="us-coalition"]');
+      const iran=material.querySelector('[data-loss-side-group="iran-aligned"]');
+      if(us&&iran&&!material.querySelector('.phase1-loss-pair')){
+        const pair=article.ownerDocument.createElement('div');
+        pair.className='phase1-loss-pair';
+        pair.dataset.lossComparison='paired-accounting';
+        material.insertBefore(pair,us);
+        pair.append(us,iran);
+      }
+      const sourceClassFilter=material.querySelector('select[data-loss-filter="class"]');
+      if(sourceClassFilter&&!material.querySelector('[data-loss-category-compare]')){
+        const compare=article.ownerDocument.createElement('div');
+        compare.className='phase1-loss-compare';
+        compare.dataset.lossCategoryCompare='shared-category';
+        add(compare,'strong','','COMPARE ONE SHARED CATEGORY');
+        add(compare,'p','section-note','Both military columns keep the same selected accounting category. Record state, quantity and evidence remain attached to each accepted record; no kill ratio or composite score is calculated.');
+        const label=add(compare,'label','','Shared category');
+        const select=add(label,'select','');
+        [...sourceClassFilter.options].forEach(option=>{
+          const copy=article.ownerDocument.createElement('option');
+          copy.value=option.value;copy.textContent=option.textContent;select.append(copy);
+        });
+        select.addEventListener('change',()=>{sourceClassFilter.value=select.value;sourceClassFilter.dispatchEvent(new Event('change',{bubbles:true}));});
+        sourceClassFilter.addEventListener('change',()=>{select.value=sourceClassFilter.value;});
+        const physicalFilter=material.querySelector('select[data-loss-filter="physical"]');
+        if(physicalFilter){
+          const states=add(compare,'div','phase1-loss-state-key');
+          states.setAttribute('aria-label','Recorded loss-state key');
+          [...physicalFilter.options].filter(option=>option.value).forEach(option=>add(states,'span','phase1-loss-state',option.textContent));
+        }
+        const first=material.querySelector('.loss-controls');
+        if(first) first.before(compare); else material.prepend(compare);
+      }
+      const boundary=add(material,'aside','scope-note phase1-loss-boundary');
+      add(boundary,'strong','','ACCOUNTING · NOT SCORE');
+      add(boundary,'p','','No kill ratio · no incompatible totals · unknown is never zero · category and denominator remain visible.');
+    }
+
+    const c=article.querySelector('[data-loss-comparison]');
+    if(c){
+      const h=c.querySelector('h2');if(h)h.textContent='Loss records by side and type';
+      const n=c.querySelector('.section-note');if(n)n.textContent='These totals count loss records, not individual destroyed or damaged items when the quantity is unknown. Unknown quantities stay unknown. Open a category to see the records behind the total.';
+      c.classList.add('secondary-context');
+    }
   }
 
   function weapons(article) {
@@ -380,6 +447,37 @@
       const h=a.querySelector(':scope > h2'); if(h) h.textContent='Facility claim evidence';
       add(a,'p','scope-note','These checks compare specific claims with imagery and reporting. The facility page shows the current operating status.');
       routeLink(a,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
+    }
+  }
+
+  function hormuzOverview(article, context) {
+    addClass(article,'guide-migrated-page guide-phase1-hormuz');
+    const map=article.querySelector(':scope > [data-component="MapLibreView"], :scope > .context-map');
+    if(map){
+      addClass(map,'guide-phase1-primary-visual guide-hormuz-map');
+      const strip=article.ownerDocument.createElement('div');
+      strip.className='hormuz-context-strip guide-filter-rail';
+      strip.dataset.hormuzContext='temporal-not-causal';
+      const cutoff=context.model?.release?.current_osint_cutoff_display||context.model?.release?.current_osint_cutoff||'current accepted cutoff';
+      const date=add(strip,'span','hormuz-basis','DATE BASIS · '+String(cutoff));
+      add(strip,'span','hormuz-basis','SOURCE BASIS · accepted public record');
+      const selected=add(strip,'span','hormuz-selection-state','SELECTION · full accepted context');
+      const reset=add(strip,'button','action','RESET');
+      reset.type='button';
+      reset.addEventListener('click',()=>{
+        if(typeof map._atlasReset==='function')map._atlasReset();
+        selected.textContent='SELECTION · full accepted context';
+      });
+      map.addEventListener('guide:map-selection',event=>{
+        const record=event.detail&&event.detail.record;
+        const when=record&&(record.date||record.event_date||record.timeline?.date||record.event?.event_date);
+        selected.textContent=when?`SELECTION · ${when} · shared accepted date context only`:'SELECTION · accepted record';
+      });
+      map.before(strip);
+      const note=add(article,'aside','scope-note hormuz-temporal-note');
+      add(note,'strong','','Cross-highlight = shared accepted context');
+      add(note,'p','','Shared date or geography does not establish causation unless the underlying evidence does.');
+      map.after(note);
     }
   }
 
@@ -427,7 +525,33 @@
     const f=card(g,'Freight and crude logistics','Reuters reported tighter sour-crude expectations, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. The reporting showed disruption and higher costs, not a stop to all Saudi deliveries.','SOURCE-REPORTED');evidence(f,context,er.find(r=>r.economic_id==='ECON-ASIA-REFINERS-20260914'));
     card(g,'Saudi East-West pipeline','Later reporting says the line is expected to remain mostly out of service for roughly three to five weeks. Yanbu inventories and delivery timing are therefore material.','DAMAGED / MOSTLY OUT OF SERVICE');
     card(g,'Announced bank sanction','As of Sep. 14 at 12:01 p.m. ET, the announced U.S. sanction on a large bank had not been enacted. Treasury/OFAC had not publicly named the bank.','NOT ENACTED');
-    const m=findSection(article,/economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);if(m)collapse(m,'Forecast context — does not interpolate values between observations');
+    const forecast=findSection(article,/^2026 growth forecasts$|economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);
+    if(forecast){
+      forecast.dataset.protectedEconomicChart='retained';
+      addClass(forecast,'guide-protected-economic-chart guide-phase1-primary-visual');
+      const badge=add(forecast,'p','card-kicker protected-chart-badge','PROTECTED BASELINE · existing calculation / series retained');
+      forecast.insertBefore(badge,forecast.firstChild);
+    }
+    const compare=findSection(article,/^GCC and Iran: forecast changes$/i);
+    const events=findSection(article,/^Recorded economic effects$/i);
+    const modes=article.ownerDocument.createElement('div');
+    modes.className='economic-mode-controls visualization-mode-controls';
+    modes.setAttribute('role','group');
+    modes.setAttribute('aria-label','Economic analytical views supported by the accepted read model');
+    const mode=(label,target)=>{
+      const button=add(modes,'button','visualization-mode-button',label);
+      button.type='button';
+      button.addEventListener('click',()=>target?.scrollIntoView?.({behavior:'smooth',block:'start'}));
+      return button;
+    };
+    mode('PROTECTED BASELINE',forecast);
+    if(compare)mode('COMPARE',compare);
+    if(events)mode('EVENT CONTEXT',events);
+    const introNode=article.querySelector('.page-intro');
+    if(introNode)introNode.after(modes);else article.prepend(modes);
+    const grammar=add(article,'aside','scope-note economic-causality-boundary');
+    add(grammar,'strong','','Transmission grammar boundary');
+    add(grammar,'p','','Observed findings and their existing causation notes remain separate. This read model does not authorize a synthetic mechanism → consequence chain, so none is inferred. Chronology is not causality; gaps remain gaps.');
   }
 
   function hormuzTalks(article) {
@@ -629,6 +753,9 @@
       addClass(trails,'guide-collection-group');
     }
     article.querySelectorAll('.wol-hall-grid,.wol-family-list,.wol-source-events').forEach(list=>addClass(list,'guide-dense-directory'));
+    addClass(article.querySelector('.wol-semantic-legend'),'guide-status-key');
+    const graph=article.querySelector('.wol-cytoscape-host');
+    if(graph)graph.dataset.layoutSemantics='presentation-only';
   }
 
   function archive(article) {
@@ -647,7 +774,7 @@
     const k=route.key;
     if(k==='start.overview')overview(article,context); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
     if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
-    if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
+    if(k==='hormuz.overview')hormuzOverview(article,context); if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
     if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
@@ -673,14 +800,21 @@
   function quiesceMaps(node) {
     if (!node || typeof node.querySelectorAll !== 'function') return;
     [node, ...node.querySelectorAll('*')].forEach(candidate => {
-      const map = candidate && (candidate._atlasMapLibre || candidate._atlasMap); if (!map) return;
-      if (typeof map.stop === 'function') try { map.stop(); } catch (_) {}
-      if (map._animatingZoom) map._animatingZoom = false;
+      const map = candidate && (candidate._atlasMapLibre || candidate._atlasMap);
+      if (map) {
+        if (typeof map.stop === 'function') try { map.stop(); } catch (_) {}
+        if (map._animatingZoom) map._animatingZoom = false;
+      }
+      const chart = candidate && candidate._atlasChart;
+      if (chart && typeof chart.resize === 'function') try { chart.resize(); } catch (_) {}
     });
   }
   function removeMaps(node) {
     if (!node || typeof node.querySelectorAll !== 'function') return;
-    [node, ...node.querySelectorAll('*')].forEach(candidate => { const map=candidate&&(candidate._atlasMapLibre||candidate._atlasMap);if(map&&typeof map.remove==='function')try{map.remove();}catch(_){} });
+    [node, ...node.querySelectorAll('*')].forEach(candidate => {
+      const map=candidate&&(candidate._atlasMapLibre||candidate._atlasMap);if(map&&typeof map.remove==='function')try{map.remove();}catch(_){}
+      const chart=candidate&&candidate._atlasChart;if(chart&&typeof chart.dispose==='function')try{chart.dispose();}catch(_){}
+    });
   }
   function retireVisibleNodes(doc, rootElement, nodes) {
     if (!nodes?.length) return; const host=doc.createElement('div');host.dataset.atlasReaderRetirement=VERSION;host.setAttribute('aria-hidden','true');
