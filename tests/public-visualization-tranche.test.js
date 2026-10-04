@@ -50,6 +50,7 @@ assert.match(renderer, /MapView\.create\(context, options\)/, 'Leaflet local fal
 assert(!/https?:\/\//.test(renderer.replace(/https:\/\/ejronin\.github\.io\/ISR\//g, '')), 'Renderer contains an external runtime origin');
 
 const ia = text('js/public-ia.js');
+const readerRegistry = text('src/public-reader-registry.js');
 for (const mode of ['FULL NETWORK', 'DIRECT CONNECTIONS', 'TRACE PROPAGATION']) assert(ia.includes(mode), `WOL mode missing: ${mode}`);
 assert.match(ia, /opacity': 0\.12/);
 assert.match(ia, /prefers-reduced-motion: reduce/);
@@ -60,8 +61,8 @@ assert.match(builder, /"echarts_runtime"/);
 assert.match(renderer, /loadECharts/);
 assert.match(renderer, /createEventDensity/);
 assert.match(renderer, /createCategoryBars/);
-assert.match(ia, /PROTECTED BASELINE/);
-assert.match(ia, /HIT ≠ DAMAGED ≠ DESTROYED ≠ INEFFECTIVE/);
+assert.match(readerRegistry, /PROTECTED BASELINE/);
+assert.match(readerRegistry, /HIT ≠ DAMAGED ≠ DESTROYED ≠ INEFFECTIVE/);
 
 const csp = text('templates/public-index.html');
 assert.match(csp, /worker-src 'self'/);
