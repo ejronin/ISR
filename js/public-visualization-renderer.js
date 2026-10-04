@@ -652,6 +652,14 @@
       const drawer = evidenceDrawer(context, { source_ids: sources.sourceIds }, ia, { localSources: sources.localSources });
       if (drawer && sources.sourceIds.length) article.append(drawer);
     } else {
+      const physical = item && (item.physical_damage || item.impact_grade || item.damage_state || item.damage);
+      const operational = item && (item.operational_effect || item.operating_result || item.operational_status);
+      if (physical || operational) {
+        const facts = append(article, 'dl', 'visualization-distinction-facts');
+        if (physical) { append(facts, 'dt', '', 'Physical damage'); append(facts, 'dd', '', String(physical)); }
+        if (operational) { append(facts, 'dt', '', 'Operational effect'); append(facts, 'dd', '', String(operational)); }
+        append(article, 'p', 'map-card-meta', 'Physical damage and operational effect are separate evidentiary dimensions.');
+      }
       const drawer = evidenceDrawer(context, item, ia);
       if (drawer) article.append(drawer);
     }
@@ -924,10 +932,189 @@
     return section;
   }
 
+
+  function normalizedGeographyName(value) {
+    return String(value || '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, ' ').trim();
+  }
+
+  function featureCoordinateBounds(features) {
+    let west = Infinity, south = Infinity, east = -Infinity, north = -Infinity;
+    const visit = value => {
+      if (!Array.isArray(value)) return;
+      if (value.length >= 2 && Number.isFinite(Number(value[0])) && Number.isFinite(Number(value[1])) && typeof value[0] !== 'object') {
+        const lon = Number(value[0]), lat = Number(value[1]);
+        west = Math.min(west, lon); east = Math.max(east, lon); south = Math.min(south, lat); north = Math.max(north, lat);
+        return;
+      }
+      value.forEach(visit);
+    };
+    asArray(features).forEach(feature => visit(feature && feature.geometry && feature.geometry.coordinates));
+    return [west, south, east, north].every(Number.isFinite) ? [[west, south], [east, north]] : null;
+  }
+
+  function createRegionMap(context, options) {
+    const documentObject = context.documentObject;
+    const section = element(documentObject, 'section', 'context-map guide-visualization guide-region-map');
+    section.dataset.component = 'RegionMapView';
+    section.dataset.mapRenderer = 'maplibre-gl-js';
+    section.dataset.mapRendererVersion = MAPLIBRE_VERSION;
+    const header = append(section, 'header', 'visualization-header');
+    if (options && options.typeLabel) append(header, 'p', 'visualization-type', options.typeLabel);
+    append(header, 'h2', '', options && options.title || 'State geography');
+    if (options && options.description) append(header, 'p', 'visualization-purpose', options.description);
+
+    const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
+    const regions = asArray(options && options.regions);
+    const regionalFeatures = asArray(geography && geography.features).filter(feature => feature && feature.properties && feature.properties.layer === 'regional_50m');
+    const featureByName = new Map(regionalFeatures.map(feature => [normalizedGeographyName(feature.properties.name), feature]));
+    const resolved = regions.map(region => {
+      const feature = featureByName.get(normalizedGeographyName(region && region.name));
+      if (!feature) return null;
+      return {
+        region,
+        feature: {
+          ...feature,
+          properties: {
+            ...(feature.properties || {}),
+            actorId: String(region.actorId || ''),
+            actorName: String(region.name || feature.properties.name || '')
+          }
+        }
+      };
+    }).filter(Boolean);
+
+    const shell = append(section, 'div', 'visualization-shell');
+    const viewport = append(shell, 'div', 'atlas-maplibre-map');
+    viewport.setAttribute('role', 'region');
+    viewport.setAttribute('aria-label', options && options.ariaLabel || 'Selectable accepted state geography');
+    viewport.tabIndex = 0;
+    const status = append(viewport, 'div', 'visualization-local-state', 'Preparing state geography…');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    const selection = append(shell, 'aside', 'visualization-selection-rail map-selection-card');
+    selection.hidden = true;
+    const controls = append(section, 'div', 'visualization-mode-controls');
+    const reset = append(controls, 'button', 'visualization-mode-button', 'RESET');
+    reset.type = 'button';
+
+    const equivalent = append(section, 'details', 'visualization-text-equivalent');
+    append(equivalent, 'summary', '', `Text equivalent for mapped state actors (${resolved.length})`);
+    const list = append(equivalent, 'ul');
+    resolved.forEach(({ region }) => append(list, 'li', '', String(region.name)));
+    const unmatched = regions.filter(region => !resolved.some(row => row.region.actorId === region.actorId));
+    if (unmatched.length) append(equivalent, 'p', 'section-note', `${unmatched.length} accepted state actor${unmatched.length === 1 ? '' : 's'} remain in the canonical index because the signed regional reference layer does not contain an exact matching state geometry.`);
+
+    const resolvedById = new Map(resolved.map(row => [String(row.region.actorId), row]));
+    let focusRegion = actorId => {
+      section.dataset.pendingRegion = String(actorId || '');
+    };
+    section._atlasHasRegion = actorId => resolvedById.has(String(actorId || ''));
+    section._atlasFocusRegion = actorId => focusRegion(String(actorId || ''));
+
+    Promise.resolve().then(async () => {
+      try {
+        if (!geography || !resolved.length) throw new Error('No exact accepted state geography is available for this actor set.');
+        const capability = await loadMapLibre(documentObject, context.windowObject || root);
+        if (!section.isConnected) return;
+        const map = new capability.maplibregl.Map({
+          container: viewport,
+          style: {
+            version: 8,
+            sources: {},
+            layers: [{ id: 'guide-water', type: 'background', paint: { 'background-color': '#080d13' } }]
+          },
+          attributionControl: false,
+          scrollZoom: false,
+          dragRotate: false,
+          touchPitch: false,
+          pitchWithRotate: false,
+          maxZoom: 7,
+          renderWorldCopies: false,
+          fadeDuration: reducedMotion(context.windowObject || root) ? 0 : 180
+        });
+        section._atlasMapLibre = map;
+        map.on('load', () => {
+          if (!section.isConnected) { map.remove(); return; }
+          map.addSource('guide-reference', { type: 'geojson', data: referenceLayers(geography) });
+          addReferenceLayers(map);
+          map.addSource('guide-actor-regions', { type: 'geojson', data: { type: 'FeatureCollection', features: resolved.map(row => row.feature) } });
+          map.addLayer({
+            id: 'guide-actor-regions',
+            type: 'fill',
+            source: 'guide-actor-regions',
+            paint: { 'fill-color': '#295d7a', 'fill-opacity': 0.32 }
+          });
+          map.addLayer({
+            id: 'guide-actor-region-lines',
+            type: 'line',
+            source: 'guide-actor-regions',
+            paint: { 'line-color': '#79b7df', 'line-width': 1.4, 'line-opacity': 0.9 }
+          });
+          map.addLayer({
+            id: 'guide-actor-region-selected',
+            type: 'line',
+            source: 'guide-actor-regions',
+            filter: ['==', ['get', 'actorId'], '__none__'],
+            paint: { 'line-color': '#f1f4f7', 'line-width': 4, 'line-opacity': 1 }
+          });
+
+          const bounds = featureCoordinateBounds(resolved.map(row => row.feature));
+          if (bounds) map.fitBounds(bounds, { padding: 42, duration: 0 });
+
+          const clear = () => {
+            if (map.getLayer('guide-actor-region-selected')) map.setFilter('guide-actor-region-selected', ['==', ['get', 'actorId'], '__none__']);
+            selection.hidden = true;
+            selection.replaceChildren();
+          };
+          focusRegion = actorId => {
+            const row = resolvedById.get(String(actorId || ''));
+            if (!row) return;
+            map.setFilter('guide-actor-region-selected', ['==', ['get', 'actorId'], String(actorId)]);
+            selection.replaceChildren();
+            selection.hidden = false;
+            const card = append(selection, 'article', 'visualization-selection');
+            append(card, 'p', 'card-kicker', 'ACCEPTED STATE ACTOR');
+            append(card, 'h3', '', String(row.region.name));
+            append(card, 'p', '', 'The shaded area is the accepted state geography from the signed reference layer. It is not a point location for a person, unit, or non-state group.');
+            const rowBounds = featureCoordinateBounds([row.feature]);
+            if (rowBounds) map.fitBounds(rowBounds, { padding: 54, maxZoom: 5, duration: reducedMotion(context.windowObject || root) ? 0 : 320 });
+            section.dispatchEvent(new CustomEvent('guide:region-select', { bubbles: true, detail: { actorId: String(actorId) } }));
+          };
+          section._atlasFocusRegion = actorId => focusRegion(String(actorId || ''));
+          reset.addEventListener('click', () => {
+            clear();
+            if (bounds) map.fitBounds(bounds, { padding: 42, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
+          });
+          map.on('click', 'guide-actor-regions', event => {
+            const feature = event.features && event.features[0];
+            if (feature && feature.properties && feature.properties.actorId) focusRegion(feature.properties.actorId);
+          });
+          map.on('mouseenter', 'guide-actor-regions', () => { map.getCanvas().style.cursor = 'pointer'; });
+          map.on('mouseleave', 'guide-actor-regions', () => { map.getCanvas().style.cursor = ''; });
+          map.on('click', event => {
+            const features = map.queryRenderedFeatures(event.point, { layers: ['guide-actor-regions'] });
+            if (!features.length) clear();
+          });
+          status.remove();
+          viewport.dataset.mapState = 'ready';
+          const pending = section.dataset.pendingRegion;
+          if (pending && resolvedById.has(pending)) focusRegion(pending);
+        });
+      } catch (error) {
+        if (!section.isConnected) return;
+        status.textContent = 'Interactive state geography unavailable; the canonical actor index remains available below.';
+        section.dataset.mapState = 'fallback';
+        section.dataset.maplibreFailure = String(error && error.message || 'MapLibre unavailable');
+      }
+    });
+    return section;
+  }
+
   return Object.freeze({
     MAPLIBRE_VERSION,
     ECHARTS_VERSION,
     create,
+    createRegionMap,
     createCategoryBars,
     createEventDensity,
     loadMapLibre,
