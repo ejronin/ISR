@@ -504,7 +504,10 @@ async function route(cdp, hash, key) {
           internal: ['Do not add the headline categories', 'No machine-readable footprint/damage polygons were supplied', 'Do not create polygons or percentages from prose'].filter(phrase => visible.includes(phrase))
         };
       })()`);
-      publicLanguageLeaks.push(...leaks.machine.map(token => `${routeRecord.key}:${token}`));
+      const acceptedWolMachineLabels = routeRecord.key === 'evidence.web_of_lies'
+        ? new Set(['AMPLIFIES_BULLSHIT', 'SELF_AMPLIFICATION', 'EXTERNAL_AMPLIFICATION'])
+        : new Set();
+      publicLanguageLeaks.push(...leaks.machine.filter(token => !acceptedWolMachineLabels.has(token)).map(token => `${routeRecord.key}:${token}`));
       publicLanguageLeaks.push(...leaks.internal.map(phrase => `${routeRecord.key}:${phrase}`));
       if (!['start.overview', 'evidence.information', 'evidence.web_of_lies'].includes(routeRecord.key)) {
         const jargon = [
