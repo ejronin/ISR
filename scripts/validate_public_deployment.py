@@ -131,6 +131,7 @@ def main() -> int:
         "map_stylesheet", "stylesheet", "reader_stylesheet",
         "reference_geography", "entrypoint",
         "maplibre_runtime", "maplibre_shared", "maplibre_worker", "maplibre_stylesheet",
+        "echarts_runtime",
     }
     role_counts = {role: sum(asset.get("role") == role for asset in assets) for role in expected_roles}
     if any(count != 1 for count in role_counts.values()) or any(asset.get("role") not in expected_roles | {"evidence_image", "state_flag"} for asset in assets):
@@ -152,12 +153,18 @@ def main() -> int:
     validate_asset(site, by_role["maplibre_shared"], "maplibre_shared", "js")
     validate_asset(site, by_role["maplibre_worker"], "maplibre_worker", "js")
     validate_asset(site, by_role["maplibre_stylesheet"], "maplibre_stylesheet", "css")
+    validate_asset(site, by_role["echarts_runtime"], "echarts_runtime", "js")
     capability = application.get("capabilities", {}).get("maplibre", {})
     if capability.get("version") != "6.11.2" or capability.get("loading") != "lazy" or capability.get("fallback") != "leaflet" or capability.get("same_origin_only") is not True:
         fail("MapLibre capability contract mismatch")
     for key, role in (("runtime", "maplibre_runtime"), ("shared", "maplibre_shared"), ("worker", "maplibre_worker"), ("stylesheet", "maplibre_stylesheet")):
         if capability.get(key, {}).get("path") != by_role[role].get("path"):
             fail(f"MapLibre capability {key} pointer mismatch")
+    echarts = application.get("capabilities", {}).get("echarts", {})
+    if echarts.get("version") != "6.1.0" or echarts.get("profile") != "simple" or echarts.get("loading") != "lazy" or echarts.get("same_origin_only") is not True:
+        fail("ECharts capability contract mismatch")
+    if echarts.get("runtime", {}).get("path") != by_role["echarts_runtime"].get("path"):
+        fail("ECharts capability runtime pointer mismatch")
     evidence_images = [asset for asset in assets if asset.get("role") == "evidence_image"]
     for asset in evidence_images:
         extension = str(asset.get("path") or "").rsplit(".", 1)[-1]
