@@ -2131,8 +2131,10 @@
     explorer.addEventListener('guide:region-select', event => {
       const actor = directory.find(item => item.actor_id === event.detail?.actorId);
       if (!actor) return;
+      frame.article.querySelectorAll('[data-actor-id][aria-pressed]').forEach(node => node.setAttribute('aria-pressed', 'false'));
       const card = frame.article.querySelector(`[data-actor-id="${actor.actor_id}"]`);
-      if (card) card.click(); else renderDetail(actor);
+      if (card) card.setAttribute('aria-pressed', 'true');
+      renderDetail(actor);
     });
     draw();
     renderDetail(null);
@@ -3438,6 +3440,11 @@
       button.addEventListener('click', () => applyGraphMode(mode));
       modeButtons.set(mode, button);
     });
+    const fitGraphButton = append(modeControls, 'button', 'wol-mode-button', 'FIT');
+    fitGraphButton.type = 'button';
+    const zoomGraphButton = append(modeControls, 'button', 'wol-mode-button', 'ZOOM');
+    zoomGraphButton.type = 'button';
+    zoomGraphButton.setAttribute('aria-pressed', 'false');
 
     const workspace = append(graphSection, 'div', 'wol-graph-workspace');
     const graphColumn = append(workspace, 'div', 'wol-graph-column');
@@ -3599,6 +3606,14 @@
     let graphMode = actorDossierRequested && selectedNodeId ? 'direct' : 'full';
     let cyGraph = null;
     let traceFrame = null;
+    let graphZoomEnabled = false;
+    fitGraphButton.addEventListener('click', () => { if (cyGraph) cyGraph.fit(cyGraph.elements(), 48); });
+    zoomGraphButton.addEventListener('click', () => {
+      graphZoomEnabled = !graphZoomEnabled;
+      zoomGraphButton.setAttribute('aria-pressed', String(graphZoomEnabled));
+      zoomGraphButton.textContent = graphZoomEnabled ? 'ZOOM ON' : 'ZOOM';
+      if (cyGraph && typeof cyGraph.userZoomingEnabled === 'function') cyGraph.userZoomingEnabled(graphZoomEnabled);
+    });
 
     const stopTraceMotion = () => {
       if (traceFrame && root && typeof root.cancelAnimationFrame === 'function') root.cancelAnimationFrame(traceFrame);
@@ -3757,6 +3772,7 @@
         minZoom: 0.25,
         maxZoom: 2.6,
         wheelSensitivity: 0.22,
+        userZoomingEnabled: false,
         boxSelectionEnabled: false,
         autoungrabify: false,
         style: [
@@ -3889,10 +3905,12 @@
           const id = node.id();
           const type = node.data('node_type');
           const index = type === 'BULLSHITTER' ? (bullIndex.get(id) || 0) : (megaIndex.get(id) || 0);
-          const total = Math.max(1, type === 'BULLSHITTER' ? orderedBullshitters.length : orderedMegaphones.length);
+          const perColumn = 10;
+          const column = Math.floor(index / perColumn);
+          const row = index % perColumn;
           return {
-            x: type === 'BULLSHITTER' ? 150 : 610,
-            y: 90 + index * Math.max(74, 720 / total)
+            x: type === 'BULLSHITTER' ? 140 + column * 230 : 610 + column * 210,
+            y: 90 + row * 86
           };
         }
       }).run();
