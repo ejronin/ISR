@@ -77,6 +77,30 @@ No visualization may become a second source of truth. Charts, maps, diagrams, co
 
 **Preserve semantics does not mean preserve old presentation.** The presentation is the thing being redesigned.
 
+### Absolute forensic-language lock: Web of Lies and Lie Ledger
+
+For **Web of Lies** and **Lie Ledger**—including collection views, case dossiers, actor dossiers, claim chains, receipts, findings, chronology, and related material—the facelift is **presentation-only**.
+
+The renderer, visual-architecture pass, mockup pass, and implementation pass may **not**:
+- rewrite, paraphrase, shorten, summarize, “clarify,” humanize, soften, harden, or otherwise alter accepted language;
+- change adjudications, findings, knowledge states, claim text, proposition meaning, chronology, case membership, record order where protected, evidence association, receipt wording, or relationship semantics;
+- generate new labels that restate a finding in different words where the accepted wording already exists;
+- collapse multiple accepted findings into a new synthesized statement;
+- infer new WOL edges, relationship types, actor roles, narrative groupings, or case relationships.
+
+They may change only:
+- spatial composition;
+- typography;
+- spacing;
+- visual grouping that preserves the existing record structure;
+- selection/focus behavior;
+- graph layout;
+- node/edge styling that maps existing node/edge semantics without changing them;
+- responsive/mobile presentation;
+- evidence-control placement while continuing to invoke the existing evidence system.
+
+**No language or adjudication changes to WOL or Lie Ledger are authorized by this facelift. Period.**
+
 ---
 
 ## 3. Reader model: design for four audiences at once
