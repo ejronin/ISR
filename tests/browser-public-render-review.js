@@ -45,7 +45,7 @@ const POLISH_FOCUS = [
 const MAP_FOCUS = [
   { routeKey: 'military.campaigns', label: 'campaign-maplibre', selector: '[data-visual-sweep-hero="campaign"] .atlas-maplibre-map', renderer: 'maplibre' },
   { routeKey: 'hormuz.shipping', label: 'shipping-continuous-maplibre', selector: '[data-shipping-map-view="continuous"] .atlas-maplibre-map', renderer: 'maplibre' },
-  { routeKey: 'hormuz.economy', label: 'economy-network', selector: '.context-map .atlas-leaflet-map', renderer: 'leaflet' },
+  { routeKey: 'hormuz.economy', label: 'economy-network', selector: '.context-map .atlas-maplibre-map', renderer: 'maplibre' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-network', selector: '.visual-route-hormuz-sanctions .context-map .atlas-leaflet-map', renderer: 'leaflet' }
 ];
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
