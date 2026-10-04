@@ -533,3 +533,340 @@
     padding-left: .8rem;
   }
 }
+
+
+/* PHASE 1 APPROVED VISUAL-INFORMATION SYSTEM */
+
+.guide-echarts-view,
+.guide-region-map,
+.guide-phase1-primary-visual {
+  min-width: 0;
+}
+
+.guide-echarts-view {
+  display: grid;
+  gap: .75rem;
+  padding: 1rem;
+  border: 1px solid var(--atlas-border, #263746);
+  border-radius: .9rem;
+  background: var(--atlas-surface-card, #0e1822);
+}
+
+.guide-echarts-canvas {
+  width: 100%;
+  min-height: 18rem;
+}
+
+.guide-event-density .guide-echarts-canvas {
+  min-height: 20rem;
+}
+
+.visualization-text-equivalent {
+  border-top: 1px solid var(--atlas-border, #263746);
+  padding-top: .35rem;
+}
+
+.visualization-text-equivalent > summary {
+  min-height: 2.75rem;
+  cursor: pointer;
+  padding: .65rem .15rem;
+  font-weight: 700;
+}
+
+.visualization-text-equivalent table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.visualization-text-equivalent th,
+.visualization-text-equivalent td {
+  padding: .45rem .6rem;
+  border-top: 1px solid var(--atlas-border, #263746);
+  text-align: left;
+}
+
+.timeline-period-summary {
+  display: grid;
+  gap: .3rem;
+  margin: .85rem 0;
+  padding: .9rem 1rem;
+  border: 1px solid var(--atlas-border-strong, #355063);
+  border-radius: .8rem;
+  background: var(--atlas-surface-card, #0e1822);
+}
+
+.timeline-period-summary p,
+.timeline-period-summary strong {
+  margin: 0;
+}
+
+.timeline-period-range {
+  font-size: 1.02rem;
+}
+
+.timeline-period-meta {
+  color: var(--atlas-muted, #aeb8c2);
+  line-height: 1.45;
+}
+
+.guide-phase1-campaign-guardrail,
+.phase1-loss-boundary,
+.hormuz-temporal-note,
+.economic-causality-boundary {
+  margin-top: .85rem;
+}
+
+.guide-phase1-campaign-guardrail strong,
+.phase1-loss-boundary strong {
+  letter-spacing: .035em;
+}
+
+.phase1-loss-accounting {
+  container-type: inline-size;
+}
+
+.phase1-loss-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.phase1-loss-pair > .loss-side-group {
+  min-width: 0;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--atlas-border, #263746);
+  border-radius: .85rem;
+  background: var(--atlas-surface-card, #0e1822);
+}
+
+.phase1-loss-pair .record-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.phase1-loss-compare {
+  display: grid;
+  gap: .55rem;
+  margin: 1rem 0;
+  padding: .9rem 1rem;
+  border: 1px solid var(--atlas-border-strong, #355063);
+  border-radius: .8rem;
+  background: var(--atlas-surface-card, #0e1822);
+}
+
+.phase1-loss-compare > p,
+.phase1-loss-compare > strong {
+  margin: 0;
+}
+
+.phase1-loss-compare label {
+  display: grid;
+  gap: .35rem;
+  max-width: 24rem;
+  font-weight: 700;
+}
+
+.phase1-loss-compare select {
+  min-height: 2.75rem;
+}
+
+.phase1-loss-state-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.phase1-loss-state {
+  padding: .28rem .48rem;
+  border: 1px solid var(--atlas-border, #263746);
+  border-radius: 999px;
+  color: var(--atlas-muted, #aeb8c2);
+  font-size: .76rem;
+}
+
+.actor-explorer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(16rem, .7fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.actor-explorer > .section-note,
+.actor-explorer > .actor-controls {
+  grid-column: 1 / -1;
+}
+
+.actor-explorer > .guide-region-map {
+  grid-column: 1;
+}
+
+.actor-selected-detail {
+  grid-column: 2;
+  position: sticky;
+  top: var(--atlas-sticky-offset, 8rem);
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--atlas-border-strong, #355063);
+  border-radius: .85rem;
+  background: var(--atlas-surface-card, #0e1822);
+}
+
+.actor-selected-detail > .card-kicker {
+  margin-top: 0;
+}
+
+.actor-card-button {
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+}
+
+.actor-card-button[aria-pressed="true"] {
+  outline: 2px solid var(--atlas-accent, #79b7df);
+  outline-offset: 2px;
+}
+
+.guide-region-map .visualization-shell {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hormuz-context-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  align-items: center;
+  margin: 1rem 0 .65rem;
+}
+
+.hormuz-basis,
+.hormuz-selection-state {
+  display: inline-flex;
+  min-height: 2.1rem;
+  align-items: center;
+  padding: .35rem .55rem;
+  border: 1px solid var(--atlas-border, #263746);
+  border-radius: 999px;
+  color: var(--atlas-muted, #aeb8c2);
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.hormuz-selection-state {
+  border-color: var(--atlas-border-strong, #355063);
+  color: var(--atlas-text, #f1f4f7);
+}
+
+.economic-mode-controls {
+  margin: .75rem 0 1rem;
+}
+
+.guide-protected-economic-chart {
+  border-color: var(--atlas-border-strong, #355063);
+}
+
+.protected-chart-badge {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.wol-semantic-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: .55rem;
+  margin: .75rem 0;
+}
+
+.wol-semantic-item {
+  display: grid;
+  gap: .15rem;
+  padding: .65rem .75rem;
+  border: 1px solid var(--atlas-border, #263746);
+  border-radius: .65rem;
+  background: var(--atlas-surface-card, #0e1822);
+}
+
+.wol-semantic-item strong {
+  overflow-wrap: anywhere;
+  font-size: .78rem;
+}
+
+.wol-semantic-item small {
+  color: var(--atlas-muted, #aeb8c2);
+}
+
+.visualization-distinction-facts {
+  display: grid;
+  grid-template-columns: minmax(8rem, .4fr) minmax(0, 1fr);
+  gap: .35rem .7rem;
+  margin: .8rem 0;
+  padding-top: .65rem;
+  border-top: 1px solid var(--atlas-border, #263746);
+}
+
+.visualization-distinction-facts dt {
+  font-weight: 750;
+}
+
+.visualization-distinction-facts dd {
+  margin: 0;
+  color: var(--atlas-muted, #aeb8c2);
+}
+
+@container (max-width: 54rem) {
+  .phase1-loss-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .actor-explorer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .actor-explorer > .guide-region-map,
+  .actor-selected-detail {
+    grid-column: 1;
+  }
+
+  .actor-selected-detail {
+    position: static;
+    order: -1;
+  }
+
+  .guide-event-density .guide-echarts-canvas {
+    min-height: 15rem;
+  }
+
+  .timeline-marker-rail {
+    min-height: 5.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .guide-echarts-view {
+    padding: .75rem;
+  }
+
+  .guide-echarts-canvas {
+    min-height: 14rem;
+  }
+
+  .timeline-period-summary,
+  .phase1-loss-compare {
+    padding: .75rem;
+  }
+
+  .hormuz-context-strip {
+    align-items: stretch;
+  }
+
+  .hormuz-basis,
+  .hormuz-selection-state {
+    width: 100%;
+    border-radius: .55rem;
+  }
+}

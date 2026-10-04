@@ -133,7 +133,10 @@ function addFinding(findings, routeKey, width, category, detail) {
           if (snapshot.routeKey !== routeRecord.key) addFinding(findings, routeRecord.key, width, 'route', `resolved-${snapshot.routeKey}`);
           if (!snapshot.h1 || !snapshot.h1Visible) addFinding(findings, routeRecord.key, width, 'heading', 'missing-or-hidden-h1');
           if (snapshot.mainTextLength < 20) addFinding(findings, routeRecord.key, width, 'content', 'empty-reading-surface');
-          snapshot.machine.forEach(token => addFinding(findings, routeRecord.key, width, 'machine-token', token));
+          const acceptedWolMachineLabels = routeRecord.key === 'evidence.web_of_lies'
+            ? new Set(['AMPLIFIES_BULLSHIT', 'SELF_AMPLIFICATION', 'EXTERNAL_AMPLIFICATION'])
+            : new Set();
+          snapshot.machine.filter(token => !acceptedWolMachineLabels.has(token)).forEach(token => addFinding(findings, routeRecord.key, width, 'machine-token', token));
           snapshot.internal.forEach(phrase => addFinding(findings, routeRecord.key, width, 'internal-copy', phrase));
           if (snapshot.scrollWidth > snapshot.clientWidth) addFinding(findings, routeRecord.key, width, 'overflow', `${snapshot.scrollWidth}>${snapshot.clientWidth}`);
           if ((width === 390 || width === 320) && !snapshot.mobileNavigationVisible) addFinding(findings, routeRecord.key, width, 'mobile-nav', 'primary-or-context-rail-not-visible');

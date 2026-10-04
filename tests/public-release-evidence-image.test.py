@@ -87,6 +87,7 @@ def workspace() -> Iterator[Path]:
             f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl-shared.js",
             f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl-worker.js",
             f"{release.MAPLIBRE_SOURCE_ROOT}/maplibre-gl.css",
+            f"{release.ECHARTS_SOURCE_ROOT}/echarts.simple.min.js",
         ):
             copy(relative, target)
         for code, _ in release.FLAG_ASSET_SPECS:

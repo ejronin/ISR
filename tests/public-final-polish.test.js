@@ -25,7 +25,7 @@ assert(releaseBuilder.includes('from build_public_release_core import *'), 'rele
 assert(releaseCore.includes('graph_runtime') && releaseCore.includes('vendor/cytoscape/cytoscape.min.js'), 'single-pass core does not publish the Cytoscape graph runtime explicitly');
 assert(releaseCore.includes('reader_support') && releaseCore.includes('reader_stylesheet'), 'single-pass core does not publish reader assets explicitly');
 assert(releaseCore.includes('src/public-reader-layer.js') && releaseCore.includes('src/public-reader-layer.css'), 'single-pass core does not source the reader modules directly');
-assert(releaseCore.includes('2.7-maplibre-representative-capability'), 'representative visualization release generator contract is missing');
+assert(releaseCore.includes('2.8-phase1-visualization-capabilities'), 'Phase 1 visualization release generator contract is missing');
 assert(!releaseCore.includes('compose_reader_sources'), 'single-pass core still concatenates reader source into base assets');
 
 assert(!appSource.includes('ROOK_NARRATIVE_CURRENT'), 'tracked public entrypoint still contains persona narrative payload');

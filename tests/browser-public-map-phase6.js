@@ -65,25 +65,45 @@ const PRESERVED_FACILITY_IDS = [
     await cdp.call('Network.enable');
     await cdp.call('Page.navigate', { url: `${SITE}?phase6=map-${Date.now()}#/hormuz/overview` });
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready'`);
+    await waitFor(cdp, `(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      return view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+    })()`);
 
-    const local = await cdp.eval(`(() => ({
-      leaflet: window.L?.version,
-      role: window.ATLAS_REFERENCE_GEOGRAPHY?.artifact_role,
-      version: window.ATLAS_REFERENCE_GEOGRAPHY?.metadata?.version,
-      layers: [...new Set(window.ATLAS_REFERENCE_GEOGRAPHY?.features.map(item => item.properties.layer))],
-      map: Boolean(document.querySelector('.atlas-leaflet-map.leaflet-container')),
-      coastPaths: document.querySelectorAll('.leaflet-atlas-reference-pane path').length,
-      filledLand: [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => { const style = getComputedStyle(path); return style.fill !== 'none' && Number.parseFloat(style.fillOpacity || '0') > .5; }),
-      referenceLayers: document.querySelector('.context-map')?.dataset.mapReferenceLayers || '',
-      labels: [...document.querySelectorAll('.reference-map-label')].map(node => node.textContent.trim()),
-      external: performance.getEntriesByType('resource').map(item => item.name).filter(url => new URL(url).origin !== location.origin)
-    }))()`);
+    const local = await cdp.eval(`(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      const maplibre = view?.dataset.component === 'MapLibreView';
+      const map = maplibre ? view?._atlasMapLibre : null;
+      const referenceBoundaryIds = ['guide-boundary-context', 'guide-boundary-regional', 'guide-boundary-hormuz'];
+      const referenceFillIds = ['guide-land-context', 'guide-land-regional', 'guide-land-hormuz'];
+      return {
+        leaflet: window.L?.version,
+        renderer: view?.dataset.mapRenderer || '',
+        role: window.ATLAS_REFERENCE_GEOGRAPHY?.artifact_role,
+        version: window.ATLAS_REFERENCE_GEOGRAPHY?.metadata?.version,
+        layers: [...new Set(window.ATLAS_REFERENCE_GEOGRAPHY?.features.map(item => item.properties.layer))],
+        map: maplibre
+          ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+          : Boolean(view?.querySelector('.atlas-leaflet-map.leaflet-container')),
+        coastPaths: maplibre
+          ? referenceBoundaryIds.filter(id => map?.getLayer(id)).length
+          : document.querySelectorAll('.leaflet-atlas-reference-pane path').length,
+        filledLand: maplibre
+          ? referenceFillIds.every(id => map?.getLayer(id)) && Number(map?.getPaintProperty('guide-land-context', 'fill-opacity')) > .5
+          : [...document.querySelectorAll('.leaflet-atlas-reference-pane path')].some(path => { const style = getComputedStyle(path); return style.fill !== 'none' && Number.parseFloat(style.fillOpacity || '0') > .5; }),
+        referenceLayers: view?.dataset.mapReferenceLayers || '',
+        labels: [...document.querySelectorAll('.guide-map-label, .reference-map-label')].filter(node => !node.hidden).map(node => node.textContent.trim()),
+        external: performance.getEntriesByType('resource').map(item => item.name).filter(url => new URL(url).origin !== location.origin)
+      };
+    })()`);
     assert.equal(local.leaflet, '1.9.4');
     assert.equal(local.role, 'PRESENTATION_REFERENCE_GEOGRAPHY');
     assert.equal(local.version, '5.1.1');
     assert.deepEqual(new Set(local.layers), new Set(['western_context_110m', 'regional_50m', 'hormuz_10m']));
     assert.equal(local.map, true);
-    assert(local.coastPaths >= 4, 'Hormuz map lacks detailed local coast/country geometry');
+    assert(local.coastPaths >= 3, 'Hormuz map lacks the signed context/regional/local reference boundaries');
     assert.equal(local.filledLand, true, 'reference geography renders only outlines instead of visible land masses');
     assert.match(local.referenceLayers, /western_context_110m/, 'wide Hormuz context map does not include western land context');
     assert(local.labels.some(label => /Strait of Hormuz/.test(label)), 'Hormuz reference label is missing');
@@ -326,11 +346,21 @@ const PRESERVED_FACILITY_IDS = [
     for (const width of [320, 390, 768, 1440]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width < 768 });
       await setRoute(cdp, 'hormuz.overview');
-      const responsive = await cdp.eval(`(() => ({
-        overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-        mapOverflow: Math.max(0, document.querySelector('.atlas-leaflet-map').getBoundingClientRect().right - innerWidth),
-        controls44: [...document.querySelectorAll('.leaflet-control-zoom a, .map-route-button, .map-imagery-button')].every(node => node.getBoundingClientRect().height >= 44)
-      }))()`);
+      await waitFor(cdp, `(() => {
+        const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+        return view?.dataset.component === 'MapLibreView'
+          ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+          : Boolean(view?.querySelector('.leaflet-container'));
+      })()`);
+      const responsive = await cdp.eval(`(() => {
+        const mapViewport = document.querySelector('.atlas-maplibre-map, .atlas-leaflet-map');
+        const controls = [...document.querySelectorAll('.leaflet-control-zoom a, .visualization-mode-button, .map-route-button, .map-imagery-button')];
+        return {
+          overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+          mapOverflow: Math.max(0, mapViewport.getBoundingClientRect().right - innerWidth),
+          controls44: controls.length > 0 && controls.every(node => node.getBoundingClientRect().height >= 44)
+        };
+      })()`);
       assert(responsive.overflow <= 1, `${width}px viewport has page horizontal overflow: ${responsive.overflow}`);
       assert(responsive.mapOverflow <= 1, `${width}px map overflows its viewport: ${responsive.mapOverflow}`);
       assert.equal(responsive.controls44, true, `${width}px map control is below 44px`);
