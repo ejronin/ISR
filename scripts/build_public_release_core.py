@@ -26,7 +26,7 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "2.7-maplibre-representative-capability"
+GENERATOR_VERSION = "2.8-phase1-visualization-capabilities"
 REQUIRED_PILLOW_VERSION = "12.3.0"
 EVIDENCE_MEDIA_ROOT = "assets/evidence"
 SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
@@ -51,6 +51,8 @@ ASSET_SPECS = (
 )
 MAPLIBRE_VERSION = "6.11.2"
 MAPLIBRE_SOURCE_ROOT = f"vendor/maplibre/{MAPLIBRE_VERSION}"
+ECHARTS_VERSION = "6.1.0"
+ECHARTS_SOURCE_ROOT = f"vendor/echarts/{ECHARTS_VERSION}"
 
 FLAG_ASSET_SPECS = (
     ("ae", "United Arab Emirates"), ("au", "Australia"), ("bd", "Bangladesh"), ("bg", "Bulgaria"),
@@ -167,6 +169,16 @@ def materialize_maplibre_capability(root: Path) -> dict[str, dict[str, Any]]:
     )
     stylesheet["version"] = MAPLIBRE_VERSION
     return {"runtime": runtime, "shared": shared, "worker": worker, "stylesheet": stylesheet}
+
+
+def materialize_echarts_capability(root: Path) -> dict[str, dict[str, Any]]:
+    runtime = materialize_asset(
+        root, "echarts_runtime", "echarts-simple",
+        f"{ECHARTS_SOURCE_ROOT}/echarts.simple.min.js", "js"
+    )
+    runtime["version"] = ECHARTS_VERSION
+    runtime["profile"] = "simple"
+    return {"runtime": runtime}
 
 
 def validate_flag_svg(source_path: str, data: bytes) -> None:
@@ -427,6 +439,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     asset_records = [materialize_asset(root, *spec) for spec in ASSET_SPECS]
     assets_by_role = {asset["role"]: asset for asset in asset_records}
     maplibre = materialize_maplibre_capability(root)
+    echarts = materialize_echarts_capability(root)
     validate_document_shell(root, assets_by_role["bootstrap"])
 
     state_path = root / CURRENT_STATE_PATH
@@ -457,6 +470,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         maplibre["shared"],
         maplibre["worker"],
         maplibre["stylesheet"],
+        echarts["runtime"],
         *state_flags,
         *evidence_images,
     ]
@@ -504,6 +518,13 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
                     "stylesheet": maplibre["stylesheet"],
                     "loading": "lazy",
                     "fallback": "leaflet",
+                    "same_origin_only": True,
+                },
+                "echarts": {
+                    "version": ECHARTS_VERSION,
+                    "profile": "simple",
+                    "runtime": echarts["runtime"],
+                    "loading": "lazy",
                     "same_origin_only": True,
                 }
             },
