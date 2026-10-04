@@ -105,6 +105,7 @@ class PublicRuntimeInventoryTests(unittest.TestCase):
             "reader_support", "page_registry", "map_stylesheet", "stylesheet", "reader_stylesheet",
             "reference_geography", "entrypoint",
             "maplibre_runtime", "maplibre_shared", "maplibre_worker", "maplibre_stylesheet",
+            "echarts_runtime",
         }
         self.assertEqual({item["role"] for item in inventory["current_sources"]}, expected_roles)
         self.assertEqual(counts["current_sources"], len(expected_roles))

@@ -55,7 +55,13 @@ assert.match(ia, /opacity': 0\.12/);
 assert.match(ia, /prefers-reduced-motion: reduce/);
 assert.match(ia, /cameraModes: \['theater', 'gulf', 'hormuz'\]/);
 assert.match(ia, /data\.propagation_graph|propagation_graph/);
-assert(!/ECharts|echarts/i.test(builder), 'ECharts must not enter the representative runtime');
+assert.match(builder, /ECHARTS_VERSION = "6\.1\.0"/);
+assert.match(builder, /"echarts_runtime"/);
+assert.match(renderer, /loadECharts/);
+assert.match(renderer, /createEventDensity/);
+assert.match(renderer, /createCategoryBars/);
+assert.match(ia, /PROTECTED BASELINE/);
+assert.match(ia, /HIT ≠ DAMAGED ≠ DESTROYED ≠ INEFFECTIVE/);
 
 const csp = text('templates/public-index.html');
 assert.match(csp, /worker-src 'self'/);
@@ -73,5 +79,6 @@ console.log(JSON.stringify({
   maplibre_gzip_bytes: compressedBytes,
   visualization_bridge_gzip_bytes: bridgeCompressed,
   leaflet_fallback: true,
+  signed_echarts_capability: '6.1.0-simple',
   protected_echarts_replacement: false
 }));
