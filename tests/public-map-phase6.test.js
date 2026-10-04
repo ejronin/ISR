@@ -68,7 +68,7 @@ assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facili
 
 const releaseRoles = new Set(manifest.application.assets.map(asset => asset.role));
 const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'visualization_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
-const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet'];
+const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet', 'echarts_runtime'];
 for (const role of [...fixedRoles, ...capabilityRoles]) assert(releaseRoles.has(role), `required release role missing: ${role}`);
 assert([...releaseRoles].every(role => [...fixedRoles, ...capabilityRoles, 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
 const byRole = Object.fromEntries(manifest.application.assets.filter(asset => fixedRoles.includes(asset.role)).map(asset => [asset.role, asset]));
