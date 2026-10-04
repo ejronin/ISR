@@ -277,22 +277,46 @@ On factual/forensic pages, the selected item’s evidence control should sit in 
 
 ---
 
+### 6.7 Distinction grammar for Phase 1 analytical surfaces
+
+Phase 1 visualizations must preserve the following distinctions as separate visual states. The renderer may choose shape, border, pattern, lane, annotation position, and typographic emphasis, but it may not create a new factual category or substitute a presentation label for accepted wording.
+
+- **Claim vs established fact:** identity and status are separate channels. A claim remains visibly a claim until the accepted record gives it another state; the selected detail surface carries the exact accepted language and evidence control.
+- **Known vs unknown:** unknown/unresolved values remain explicit text states and may use neutral patterning. They never collapse to zero, an empty bar, or an omitted row.
+- **Physical damage vs operational effect:** render as independent labeled dimensions. A hit, visible damage, destruction, closure, degradation, and operational ineffectiveness are not visual synonyms.
+- **Proposal vs agreement:** negotiation graphics must carry the accepted proposal/condition/agreement status. A directional flow or chronological sequence does not visually upgrade a proposal into an agreement.
+- **Supported mechanism vs observed consequence vs potential/watch consequence:** these are different node/edge treatments in explanatory economic/sanctions flows. Potential/watch material may not be drawn as though already observed.
+- **Chronology vs causality:** temporal co-occurrence and event annotation use neutral time linkage. Use a causal arrow or causal connector only where the accepted record supports that causal relationship.
+
+Status remains actor-neutral. Flags/names identify parties; state treatments identify evidence/operational status.
+
+### 6.8 Coordinated selection and cross-highlighting
+
+Cross-view coordination is allowed only to clarify already-supported relationships:
+
+- a map selection may highlight the same accepted record, date, period, facility, actor, or explicitly related accepted object in another view;
+- date/event cross-highlighting between geography and a chart is a **temporal relationship**, not a causal claim, unless accepted evidence establishes causation;
+- selecting a country, metric, actor, or category may emphasize relevant marks but must not silently remove unrelated accepted facts;
+- if a selection actually filters the record set, the active date basis, units, category basis, and denominator/count basis must remain visible;
+- chart/map/network selection must keep the selected state legible without hover and retain adjacent EvidenceDrawer/source access;
+- linked views must clear/reset together through an obvious control; a reader must be able to return to the full accepted context.
+
 ## 7. Site-wide topology matrix
 
 | Page/state | Analytical archetype | Dominant object | Secondary object | Primary renderer | Interaction density |
 |---|---|---|---|---|---|
 | Overview | Current-state explainer | Authored theater map | current-state/development lanes | MapLibre + HTML/SVG | medium |
-| Who’s Involved | Geographic actor explorer | actor geography + selector | canonical directory/detail | MapLibre + HTML | medium |
-| Timeline | Temporal explorer | event-density/time navigator | selected-window map + events | ECharts + MapLibre | high |
+| Who’s Involved | Three-level actor explorer | supported state geography → accepted actor family → selected actor detail | canonical searchable actor index | MapLibre + HTML | medium |
+| Timeline | Temporal explorer | event-density/time navigator | selected-period summary + map + accepted chronology | ECharts + MapLibre | high |
 | All Events | Evidence chronology index | dense chronology | density strip/filtering | HTML + ECharts | medium |
-| Campaigns & Strikes | Campaign analysis | strike geography | activity time series + damage/effect lanes | MapLibre + ECharts | high |
+| Campaigns & Strikes | Campaign analysis | hierarchic strike/facility geography | activity time series + independent damage/effect lanes | MapLibre + ECharts | high |
 | Bases & Infrastructure | Facility status explorer | infrastructure map | status distribution + dossier | MapLibre + ECharts | high |
 | Air, Missiles & Drones | System/tempo analysis | comparable system time series/small multiples | system ledger + operational flow | ECharts + HTML/SVG | medium-high |
-| Casualties & Losses | Bilateral accounting | two-sided loss comparison | actor modules + ledger | ECharts + HTML | medium |
+| Casualties & Losses | Bilateral accounting | paired columns with shared category structure | accepted/claimed/unknown states + actor ledger | ECharts + HTML | medium |
 | Damage Images | Imagery/BDA review | selected imagery plate | facility map + filmstrip | HTML + MapLibre | medium |
-| Hormuz & Economy | Strategic-economic synthesis | layered Hormuz map | professional financial chart | MapLibre + ECharts | high |
+| Hormuz & Economy | Strategic-economic synthesis | layered Hormuz map | protected economic views + additive authorized analytical charting with coordinated highlighting | MapLibre + ECharts | high |
 | Shipping & Trade | Chokepoint/route analysis | continuous route map | transit/risk time series + alternatives | MapLibre + ECharts | high |
-| Oil & Economic Effects | Financial/economic analysis | selectable financial time series | transmission flow + metric summary | ECharts + HTML/SVG | high |
+| Oil & Economic Effects | Financial/economic analysis | protected charts plus authorized Trend / Compare / Event Context views | transmission flow separating mechanism / observed / potential | ECharts + HTML/SVG | high |
 | Sanctions & Impact | Financial-network analysis | money/network flow | named-node map + consequence chain | HTML/SVG/ELK + MapLibre | high |
 | Diplomacy & Outcomes | Multi-track diplomacy overview | track/status matrix | mediation geography + chronology | HTML/SVG + MapLibre | medium |
 | Current Hormuz Talks | Negotiation state | position/condition flow | talks chronology | HTML/SVG | medium |
@@ -304,7 +328,7 @@ On factual/forensic pages, the selected item’s evidence control should sit in 
 | Iran’s Position | Messaging/position record | issue-based position chronology | statement/evidence rail | HTML + ECharts only for temporal density | low-medium |
 | Claim Checks | Claim adjudication | claim → finding → evidence sequence | filters/status summary | HTML + ECharts summary only | medium |
 | Lie Ledger | Narrative-chain collection | case-chain previews | finding/filter rail | HTML/SVG | medium |
-| WOL | Relationship network | Cytoscape graph | detail rail/trace/receipts | Cytoscape | high |
+| WOL | Relationship network | Cytoscape graph with accepted-class node/edge grammar | detail rail/trace/receipts | Cytoscape | high |
 | Lie Ledger case dossier | Single forensic case | claim→finding→evidence→development | related material | HTML/SVG | medium |
 | WOL actor dossier | Actor/network dossier | selected network neighborhood | findings/chronology/receipts | Cytoscape + HTML | high |
 | Source Library | Source index | grouped dense directory | source detail | HTML | medium |
@@ -379,90 +403,102 @@ Produce desktop and mobile comps showing one actual current selected map record 
 **Route:** `start.actors` · `/home/actors/` · `ActorsPage`
 
 ### Analytical job
-Answer: **Who is involved, where are they, what role does each actor play, and how do I get to the accepted record about them?**
+Answer: **Who is involved, where can geography legitimately identify them, what accepted actor family/classification do they belong to, what role do they play, and how do I reach the accepted record about them?**
 
 ### Reader failure to prevent
-Do not make every actor look equivalent in role or involvement merely because every actor gets a card.
+Do not make every actor look equivalent in role or involvement merely because every actor is browsable. Do not manufacture map positions, alliances, or ideological blocs to make the explorer visually complete.
 
 ### Primary visual
-**Hybrid geographic actor selector.** Use MapLibre for state geography where coordinates/geography are supported; flags/labels identify actor identity. A canonical searchable actor list remains adjacent/available.
+**Three-level actor explorer:**
 
-### Secondary
-Selected actor detail: role, affiliations, relevant accepted actions, facilities/bases where already in the page/read model, diplomacy/loss links where already authorized.
+1. **Geography** — MapLibre state geography where the accepted data supports state/jurisdiction geography. Do not invent a geographic point for a non-state actor.
+2. **Actor families** — selector/filter using only actor classifications/groupings already present in the accepted read model.
+3. **Selected actor detail** — render only accepted categories actually populated for that actor.
+
+The canonical searchable actor index remains present as the comprehensive and accessible browse path.
+
+### Selected actor detail grammar
+Potential categories include role, accepted actions, facilities, diplomacy, losses, position, related claims, and evidence **only where the current read model supplies them for the selected actor**. Omit an unavailable category rather than rendering an invented empty fact state or filling it from another route.
 
 ### Desktop
-60% geography / 40% detail + canonical index. If geography cannot faithfully represent an actor (non-state/organization), keep it in the index and selected detail rather than inventing a fake map location.
+Use geography and actor discovery as the wide analytical field with a persistent selected-actor detail rail. Actor-family controls sit with the canonical index/search so a reader can move geography → accepted family → actor detail without losing the full directory.
 
 ### Interactions
-Select country/actor on map or list; both synchronize. Filter by accepted actor grouping only if such grouping already exists.
+Map and index selection synchronize for actors that have supported geography. Family filtering uses only accepted classifications. Selecting a non-state actor focuses the index/detail state without creating a map pin. Evidence access remains in the selected actor detail.
 
 ### Mobile
-List/search first, optional “view on map” switch. A novice must not have to manipulate a map to find an actor.
+Search/index first → accepted family filter where available → selected actor detail. “View on map” is optional and only enabled for actors with supported state geography. A novice must not manipulate a map to locate an actor.
 
 ### Platform
-MapLibre + HTML/CSS. Existing flags.
+MapLibre + HTML/CSS. Existing SVG flags identify actors; flags never encode status.
 
 ### Preserve
-Actor identities, group membership, roles, affiliations, existing flags, ordering/search semantics, evidence relationships.
+Actor identities, accepted classifications/group membership, roles, affiliations, existing flags, ordering/search semantics, populated category membership, and evidence relationships.
 
 ### Surface better
-Existing geography/facility relationships already available but currently detached from actor identity.
+Existing geography/facility relationships already available but currently detached from actor identity; sparse versus richly populated actor records without pretending they contain the same categories.
 
 ### Missing/dependency
-Do not draw alliance edges unless accepted relational data supports them.
+Do not draw alliance/relationship edges unless accepted relational data supports them. Do not geocode a non-state actor merely for presentation.
 
 ### Mockup instruction
-Show state actor + non-state actor examples to prove the design does not force everything onto the map.
-
----
+Show one state actor with supported geography, one non-state actor that remains index/detail-only, and one sparsely populated actor to prove the renderer omits unavailable categories rather than inventing them. The canonical searchable index must remain visibly usable.
 
 ## 8.3 War · Timeline
 **Route:** `timeline.war` · `/war/timeline/` · `TimelinePage`
 
 ### Analytical job
-Answer: **When did activity intensify or change, what happened in a selected period, and where did those events occur?**
+Answer: **When did recorded activity cluster or change, what accepted events fall inside a selected period, and where did those events occur?**
 
 ### Primary visual
-**ECharts event-density histogram/area navigator** over accepted chronology. This is a count of accepted events in the chosen time bin, not an intensity score.
+**ECharts event-density histogram/area navigator** over the accepted chronology. It is a deterministic count of accepted event records in the chosen time bin, **not an operational-intensity score**.
 
-Use daily bins where density permits; aggregate to weekly/monthly only by explicit deterministic count. Label the bin basis.
+Use daily bins where density permits; aggregate to weekly/monthly only by explicit deterministic count. The visible bin basis must stay labeled.
+
+### Selected Period Summary
+Every non-full-range selection exposes a compact summary immediately adjacent to the navigator:
+
+- exact selected start and end date;
+- accepted event count inside that window;
+- active accepted categories/topics represented by the current filter state;
+- explicit Reset / Full range control.
+
+The summary is a navigation/accounting aid. It may not characterize the selected period as more or less operationally intense merely because it contains more recorded events.
 
 ### Secondary
-- annotated chronology;
-- selected-window MapLibre map;
+- accepted annotated chronology;
+- selected-window MapLibre geography;
 - selected event detail/evidence.
 
 ### Desktop
-Full-width density navigator at top; below 55/45 chronology/map. Brush selection filters both.
+Full-width density navigator + Selected Period Summary at top; below, chronology remains the primary reading surface with the selected-window map as geographic context.
 
 ### Interactions
-Brush time window, topic/category filters already present, event select, evidence reveal. “Reset full conflict” is explicit.
+Brush time window, use already-authorized topic/category filters, select event, reveal evidence, reset full conflict. Brush/filter state updates the Selected Period Summary, chronology, and map together. Material annotations use existing accepted event language or an already-approved label; do not synthesize a new event interpretation.
 
 ### Mobile
-Compact horizontal density chart with draggable handles; event list dominates; map available as a selected-event/context panel rather than permanently competing for width.
+Compact horizontal density navigator with accessible range controls and Selected Period Summary directly below. Accepted chronology dominates. Geography opens/focuses for the selected event/window rather than permanently occupying half the screen.
 
 ### Platform
 ECharts + MapLibre + HTML.
 
 ### Color
-Use one neutral/cyan base series for event count. Category color only if categories are already stable and legible; do not use side/national colors.
+One neutral/cyan base series for recorded-event count. Category distinction only when accepted categories are stable and legible; never use national/side colors as status.
 
 ### Preserve
-Event membership/order, timestamps, classifications, filters, map coordinates, source links, pagination/selection semantics.
+Event membership/order, timestamps, accepted classifications, filters, map coordinates, source links, pagination/selection semantics, exact event wording, and evidence relationships.
 
 ### Surface better
-Tempo changes and clustering already implicit in chronology.
+Temporal clustering already implicit in the chronology, while keeping the underlying accepted event list primary.
 
 ### Missing/dependency
 No “operational intensity” index unless separately adjudicated. Event count ≠ operational importance.
 
 ### Risk
-Screenshot of a high-density bar can be misread as “most violent.” Label it “recorded events.”
+A high-density bar can be screenshotted as “most violent” or “most intense.” Keep “recorded events,” bin basis, selected date range, and count visible in the same analytical frame.
 
 ### Mockup instruction
-Show full-range state and a brushed 7–14 day state.
-
----
+Show both full-range and a brushed 7–14 day state. The brushed state must visibly include exact date range, accepted event count, active categories/topics, Reset / Full range, selected chronology, and focused geography.
 
 ## 8.4 War · All Events
 **Route:** `timeline.chronology` · `/war/events/` · `ChronologyPage`
@@ -509,42 +545,52 @@ Prioritize fast scan and receipts over decorative visualization.
 Answer: **Where and when were strikes recorded, what physical damage is accepted, and what operational effect is actually supported?**
 
 ### Primary
-**MapLibre strike geography** with selected facility/strike detail.
+**MapLibre strike/facility geography** using the authoritative existing points and coordinates.
+
+Map visual hierarchy is fixed:
+
+1. theater/campaign context;
+2. accepted facility/target locations;
+3. selected strike/facility;
+4. accepted physical-damage state;
+5. accepted operational-effect state.
+
+The last two are independent analytical states. Their visual treatment may be coordinated around the same selected facility, but one may not be inferred from the other.
 
 ### Co-primary
-**ECharts recorded-activity time series** using the existing accepted monthly recorded-event calculation. Use vertical bars for monthly counts with optional line only if another accepted compatible series exists.
+**ECharts recorded-activity time series** using the existing accepted monthly recorded-event calculation. Use vertical bars for monthly counts; add another series only if it is accepted, compatible, and clearly denominated.
 
 ### Secondary
-A deliberate **Damage vs Operational Effect** two-lane explanatory surface using exact accepted language.
+A deliberate **Physical Damage / Operational Effect** paired surface using exact accepted language and separate state labels/evidence paths.
 
 ### Desktop
-Top: activity chart 35% + key current explanation 65% if useful; dominant map below with detail rail; damage/effect lanes below.
+Recorded-activity context above or beside the map without displacing the map as the geographic analytical object. The selected facility/strike detail rail carries physical damage and operational effect as separately labeled fields. The paired explanatory surface reinforces the distinction below.
 
 ### Interactions
-Select time period → highlight corresponding accepted events; select map record → accepted damage/effect text and evidence. Never animate strike trajectories.
+Selecting a time period highlights corresponding accepted records and makes the active temporal basis/count denominator visible. Selecting a map record exposes its accepted damage text, operational-effect text, and evidence. Broad-zoom clustering is permitted for readability only if every cluster exposes its count and **the selected record can never disappear into a cluster**.
+
+Filtering may reduce visible records only through existing/authorized criteria; the active time window, category basis, and count denominator remain visible. Never animate strike trajectories.
 
 ### Mobile
-Time series first as context; map full-width; damage/effect sections sequential but visually paired.
+Activity chart as compact context → full-width map → selected record detail with separate Physical Damage and Operational Effect fields → paired explanatory sections. Clusters must expand/reveal exact underlying accepted records.
 
 ### Platform
 MapLibre + ECharts + HTML/CSS/SVG.
 
 ### Color
-Strike selection cyan. Damage severity only if existing status semantics support it. Operational effect has a separate labeled state system; never reuse physical-damage color as proxy.
+Selection cyan. Physical-damage state may use existing accepted status semantics. Operational effect uses a separately labeled treatment and may not inherit a physical-damage color by proxy.
 
 ### Preserve
-Strike records, dates, coordinates, facility links, monthly calculation, damage observations, operational-effect propositions, force movements, chronology, evidence.
+Strike records, dates, all existing map points/coordinates, facility links, monthly calculation, damage observations, operational-effect propositions, force movements, chronology, and evidence.
 
 ### Surface better
-The distinction between “hit/damaged” and “mission effect.”
+The evidentiary ladder that a casual reader often collapses. The design must not imply **hit = damaged = destroyed = operationally ineffective** unless the accepted record independently supports each step.
 
 ### Missing/dependency
-No inferred strike radius, accuracy cone, destroyed percentage, or cumulative campaign score.
+No inferred strike radius, accuracy cone, destroyed percentage, cumulative campaign score, or operational-effect promotion based only on imagery/damage.
 
 ### Mockup instruction
-The screenshot must make it impossible to confuse physical damage with operational effect.
-
----
+Show a selected facility/strike with all five map hierarchy levels legible, an active temporal filter with basis/denominator visible, and a Physical Damage / Operational Effect pair whose accepted states differ. The screenshot must make the false equivalence between hit, damage, destruction, and ineffectiveness visually impossible.
 
 ## 8.6 War · Bases & Infrastructure
 **Route:** `military.facilities` · `/war/facilities/` · `FacilitiesPage`
@@ -635,45 +681,53 @@ Show a supported time-series case and a sparse-data case so the renderer demonst
 **Route:** `military.losses` · `/war/losses/` · `LossesPage`
 
 ### Analytical job
-Answer: **What losses are accepted on each side, by actor and category, with claimed/verified/unknown distinctions intact?**
+Answer: **What casualty and materiel losses are in the accepted record for each existing side/actor grouping, by compatible category, while keeping verified, claimed-only, and unknown/unresolved states honest?**
 
 ### Primary
-**Two-sided analytical comparison**, not a scoreboard.
+**Paired analytical accounting columns with one shared category structure.** This is accounting, not a scoreboard.
 
-Left: U.S./coalition/aligned side.  
-Right: Iran/Iran-aligned side.
+Use the existing accepted side/group membership. Align categories across the center so like is compared with like. The center carries category/unit labels and shared basis—not a winner, ratio, or aggregate score.
 
-Within each side use aligned horizontal bars/small multiples for compatible loss categories. Unknown values remain text/pattern states, not zeros.
+Where the read model already supports the distinction, each quantity uses an explicit status treatment for:
+
+- accepted/verified quantity;
+- claimed-only quantity;
+- unknown/unresolved quantity;
+- direct evidence access.
+
+Unknown/unresolved is a labeled state, never an empty bar interpreted as zero.
 
 ### Secondary
-Actor-specific modules beneath each side showing categories actually present:
-personnel, aircraft, ships, vehicles, systems, other materiel, unknown/unresolved.
+Actor-specific modules beneath/within each side showing only categories actually present: personnel, aircraft, ships, vehicles, systems, other materiel, and unknown/unresolved as supported by the accepted record.
 
 ### Desktop
-Bilateral columns with shared category alignment. A center divider carries category labels, not a “winner.”
+Paired columns remain simultaneously visible with shared category alignment. Evidence/control detail appears at the row or selected-category level so the reader can inspect why a number/status is present.
 
 ### Interactions
-Actor/category filter; verified vs claimed view only if already supported; evidence reveal.
+Actor/category filter; accepted status view controls only where those distinctions already exist; selected category highlights the same category on both sides without adding unlike denominators. Evidence reveal stays tied to the selected quantity/record.
 
 ### Mobile
-Side selector at top; each side gets the same ordered category layout. Provide “compare” mode for one category at a time.
+Support both required reading modes:
+
+1. **Focused side view** — one existing side/group with the full shared category order;
+2. **One-category compare** — the same selected category shown side by side/stacked for both sides.
+
+Switching modes cannot change the denominator, status, or underlying record set silently.
 
 ### Platform
 ECharts + HTML/CSS.
 
 ### Color
-Do not color sides red/blue. Use neutral series with flags/labels. Verified/claimed/unknown status gets semantic treatment.
+Sides/actors are identified by names/flags/labels, not red-versus-blue. Accepted/verified, claimed-only, and unknown/unresolved states use the common status grammar and non-color cues.
 
 ### Preserve
-All casualty/material-loss records, IDs, side grouping, claimed vs verified separation, unknown quantity treatment, reconciliation logic, maps if presently authorized, evidence.
+All casualty/material-loss records, IDs, existing side/group membership, claimed vs verified separation, unknown quantity treatment, reconciliation logic, any authorized maps, source basis, and evidence.
 
 ### Avoid
-Totals that add incompatible categories, “kill ratio,” or inferred zeroes.
+Do not turn unknown into zero; add unlike denominators; produce kill ratios; sum incompatible categories into a headline total; or manufacture a composite win/loss score.
 
 ### Mockup instruction
-Show at least one unknown quantity and one claimed-vs-verified distinction.
-
----
+Show paired accounting with at least one accepted/verified quantity, one claimed-only quantity, and one unknown/unresolved quantity where currently supported. Include desktop paired columns, mobile focused-side state, and mobile one-category comparison with evidence access visible.
 
 ## 8.9 War · Damage Images
 **Route:** `military.imagery` · `/war/damage-images/` · `ImageryPage`
@@ -714,7 +768,7 @@ Demonstrate the treatment of an image whose observation is narrower than what a 
 **Route:** `hormuz.overview` · `/themes/hormuz/` · `HormuzOverviewPage`
 
 ### Analytical job
-Answer: **How does the Strait connect military control/access, shipping behavior, sanctions/financial pressure, and economic consequences right now?**
+Answer: **How does the Strait connect military control/access, shipping behavior, sanctions/financial pressure, and economic consequences in the accepted current record?**
 
 This is a flagship analytical composition, not a generic theme landing page.
 
@@ -732,44 +786,49 @@ One **layered MapLibre Hormuz analytical map**. Where supported by accepted data
 - U.S./Iran positions;
 - alternative routes.
 
-These are layers on one map, not repeated maps.
+These are layers on one authored map, not repeated maps. Existing point and route geometry remains authoritative.
 
 ### Primary visual B
-A serious **ECharts financial/economic time-series surface** for supported GCC/Iran metrics.
+A serious financial/economic analytical surface using **existing protected economic charts as required content** plus only separately authorized/additive ECharts views.
 
-Use selectable metric and country controls. Prefer:
-- line chart for continuous time series;
-- bars for discrete period comparison;
-- small multiples where units differ;
-- event annotations for accepted major events.
+For any additive ECharts view supported by accepted data:
+- line for a compatible continuous time series;
+- bars/dot plot for discrete same-unit comparison;
+- small multiples when units differ;
+- accepted event annotations for chronology/context.
 
-Do not use a dual axis unless the comparison is both necessary and clearly labeled. Do not normalize/index series unless the transformation is explicitly approved and labeled.
+Do not silently replace a protected economic chart. A proposed richer ECharts reproduction of a protected chart must be labeled a **separately approved parity-migration candidate** outside this facelift specification.
 
 ### Desktop
-55/45 map-chart split at top on ultrawide/desktop. Under it: “why it matters” and transmission/sanctions explanation using the mockup language; then child-theme links.
+Map and economic surface operate as co-primary objects on wide screens, with integrated legends and selected-state detail. Under them: accepted “why it matters” / transmission / sanctions explanation and child-theme navigation.
+
+### Coordinated cross-highlighting
+- Selecting an accepted geographic event/state may highlight the corresponding accepted date/event annotation on the economic surface when that temporal relationship is supported.
+- That highlight means **same accepted event/date context**, not causation, unless accepted evidence establishes causation.
+- Selecting a country/metric may emphasize relevant geographic context but may not silently hide unrelated accepted map facts.
+- The chart always keeps date basis, units, source basis, selected metric/country, and selected state visible.
+- Map and economic selections share an obvious reset to the full accepted context.
 
 ### Interactions
-Map layer toggles; country selector; metric selector; hover/click exact accepted observations; evidence reveal. Selection should not silently change the date basis.
+Map layer toggles; country/metric controls only where supported; exact accepted observation on selection; evidence reveal. Selection never silently changes the date basis or denominator.
 
 ### Mobile
-Segmented switch between “Map” and “Economy” as co-primary objects, each retaining its own legend and selected detail. Explanatory flow follows.
+Segmented switch between **Map** and **Economy** as co-primary surfaces. Each retains its own legend, selected-state summary, and evidence path. Cross-highlighted context is described textually when the paired surface is not visible. Explanatory flow follows.
 
 ### Platform
-MapLibre + ECharts + HTML/CSS/SVG.
+MapLibre + existing protected economic renderer(s) + additive ECharts where explicitly authorized + HTML/CSS/SVG.
 
 ### Color
-Routes/selection cyan. Degraded access amber, blocked/severe disruption red, still-usable green only where accepted. Country series use distinguishable line styles/markers and labels; do not map nation to good/bad semantics.
+Routes/selection cyan. Degraded access amber, blocked/severe disruption red, still-usable green only where accepted. Country series use labels/markers/line style; nation identity never maps to good/bad semantics.
 
 ### Preserve
-All accepted Hormuz assessments, shipping records, sanctions relationships, economic calculations, current source dates and evidence.
+All accepted Hormuz assessments, shipping records, sanctions relationships, **all existing protected economic charts/calculations/series**, map points, route geometry/IDs, source dates, and evidence.
 
 ### Data dependency
-If January 2026 history is not present, show the actual accepted temporal extent. Never fabricate a baseline.
+If a desired historical baseline is not present, show the actual accepted temporal extent. Cross-highlighting requires an accepted matching record/date/context; otherwise the views remain unlinked rather than implying a relationship.
 
 ### Mockup instruction
-This page must look like a professional strategic/economic terminal: one authored map, one credible financial chart, integrated explanation.
-
----
+Produce a flagship desktop and mobile state showing the layered Hormuz map, the required protected economic visualization, and—only if data supports it—an additive analytical ECharts view. Include one map→time-context cross-highlight and one country/metric→geographic emphasis state with date basis, units, source basis, selection, and reset visible. The reference must make clear that temporal coordination is not causal attribution.
 
 ## 8.11 Themes · Shipping & Trade
 **Route:** `hormuz.shipping` · `/themes/shipping/` · `ShippingPage`
@@ -812,46 +871,65 @@ Show one selected route and one accepted traffic observation with its date/sourc
 **Route:** `hormuz.economy` · `/themes/economy/` · `EconomyPage`
 
 ### Analytical job
-Answer: **What economic effects are actually observed, how have supported indicators moved, and through what mechanism does Hormuz/war pressure transmit into prices, FX, imports, and commerce?**
+Answer: **What economic effects are actually observed, how have supported indicators moved, what comparisons are valid, what accepted events provide chronological context, and through what supported mechanisms can Hormuz/war pressure transmit into prices, FX, imports, procurement, and commerce?**
 
-### Primary
-Professional **ECharts financial chart workbench**.
+### Protected baseline
+Existing protected economic charts/calculations/series remain present and functional. This facelift may reframe, annotate, or compose around them, but may not silently replace their renderer or semantics.
 
-Recommended modes:
-- metric selector;
-- country selector;
-- comparison mode only for same-unit compatible series;
-- individual-country focus;
-- event annotations;
-- visible data source/date basis.
+Where a richer ECharts treatment would materially improve the page, classify it as either:
+1. an **additive supporting visualization** built from accepted data; or
+2. a **separately approved parity-migration candidate** for later work.
 
-Prefer line/step charts for time series and bars for discrete comparisons. Use small multiples when units differ.
+### Authorized quantitative modes
+Where existing accepted data supports them, new/additive ECharts views use only these forms:
+
+**Trend**
+- one compatible metric over time;
+- actual accepted observations only;
+- visible missing intervals/gaps;
+- no interpolation or smoothing across missing data.
+
+**Compare**
+- same-period, same-unit, denominator-compatible comparison;
+- horizontal bar or dot plot where it communicates the comparison more clearly;
+- no false multi-axis equivalence and no normalization/indexing unless separately accepted and explicitly labeled.
+
+**Event Context**
+- accepted event annotations over an accepted time series;
+- chronology/context only;
+- no visual causal arrow or causal language unless the accepted record establishes causation.
+
+Do not use candlestick/OHLC styling without actual accepted OHLC data.
 
 ### Secondary
-HTML/SVG **transmission flow**:
-shipping/war pressure → insurance/routing/payment friction → FX/import/procurement effects → observed accepted consequences.
+HTML/SVG **economic transmission diagram** whose visual grammar distinguishes:
 
-Each node must use existing language or a faithful label derived from already-accepted categories, never a new causal finding.
+- **supported mechanism** — accepted pathway/relationship;
+- **observed consequence** — accepted consequence already observed;
+- **potential/watch consequence** — explicitly not yet observed/established as a current consequence.
+
+Use different border/connector/label treatments in addition to status color. Do not turn an ordered flow into a stronger causal finding than the accepted record supports.
 
 ### Desktop
-Chart 65%; selected metric/current reading rail 35%; transmission flow beneath; source/evidence access adjacent.
+Protected chart(s) remain in the primary analytical composition. Authorized Trend/Compare/Event Context views may sit beside/below them where they add a distinct analytical job. Selected metric/current reading detail and source/evidence access remain adjacent. Transmission flow follows as explanation, not as a second source of truth.
+
+### Interactions
+Metric/country selection only where supported; selected series retains units/date/source basis. Event annotation selection may focus the matching accepted chronology item. Compare mode refuses incompatible unit/period combinations rather than forcing a visual comparison.
 
 ### Mobile
-One metric/country at a time. Do not compress multiple axes. Flow becomes vertical.
+One metric/country/mode at a time; protected charts retain their required semantics; no compressed multi-axis view. Transmission flow becomes vertical while preserving the same mechanism/observed/potential distinctions.
 
 ### Platform
-ECharts + HTML/CSS/SVG; MapLibre only if a supported geographic economic relationship materially clarifies a specific section.
+Existing protected economic renderer(s) + additive ECharts where authorized + HTML/CSS/SVG. MapLibre only where a supported geographic economic relationship answers a real analytical question.
 
 ### Preserve
-Protected economic calculations, accepted observations/series, source dates, forecast/observed distinctions, evidence.
+Protected economic charts, calculations, accepted observations/series, source/date basis, forecast/observed distinctions, accepted annotations, and evidence.
 
 ### Avoid
-Smoothing, filled gaps, synthetic composite “economic pressure” index, unlabeled forecast continuation.
+Smoothing, filled gaps, invented baselines, synthetic composite “economic pressure” index, unlabeled forecast continuation, incompatible comparisons, candlestick/OHLC without OHLC data, or chronology rendered as causation.
 
 ### Mockup instruction
-Make this look like a credible financial analytical page rather than KPI tiles with a decorative sparkline.
-
----
+Show the protected chart treatment plus one supported additive mode (Trend, Compare, or Event Context) if current data supports it. Include a transmission-flow example in which supported mechanism, observed consequence, and potential/watch consequence are visually distinct. The result must read as a credible financial analytical page, not KPI tiles with decorative sparklines.
 
 ## 8.13 Themes · Sanctions & Impact
 **Route:** `hormuz.sanctions` · `/themes/sanctions/` · `SanctionsPage`
@@ -1231,39 +1309,66 @@ Use strong visual causality only where the record itself establishes it; otherwi
 **Route:** `evidence.web_of_lies` · `/intelligence/wol/` · `WebOfLiesPage`
 
 ### Analytical job
-Answer: **Who propagated which accepted claim relationship, how are nodes directly connected, and what is the accepted propagation trace?**
+Answer: **Who propagated which accepted claim relationship, how are accepted nodes directly connected, and what is the accepted directed propagation trace?**
 
 ### Primary
-Cytoscape network with three explicit modes:
+Cytoscape network with the existing explicit reader modes:
 - FULL NETWORK
 - DIRECT CONNECTIONS
 - TRACE PROPAGATION
 
-### Visual behavior
-Selected node 100% prominence; connected nodes high prominence; unrelated nodes ~10–15% opacity. Direction arrows remain readable. Trace animation only on accepted directed edges and disabled/replaced by static direction under reduced motion.
+### Accepted-semantic node grammar
+Build the visual node grammar **only from node classes/types already present in the accepted WOL model**:
+
+- shape may distinguish an existing node class;
+- icon may distinguish an existing node class where an approved icon exists;
+- border style/weight may distinguish an existing accepted node state/class;
+- actor/source identity remains textual and may use existing flags where already authorized.
+
+Do not create a new class merely because the graph would look cleaner.
+
+### Accepted-semantic edge grammar
+Edge treatment may distinguish only relationship classes already present in accepted WOL data:
+
+- accepted direction remains arrow direction;
+- existing relationship class may map to line pattern/weight/label;
+- selected/trace edges may receive presentation emphasis or reduced-motion-safe direction treatment;
+- layout proximity, crossing avoidance, or clustering never creates a relationship.
+
+### Forbidden encodings
+Never encode or infer:
+- credibility score;
+- ideological guilt;
+- “bad actor” status;
+- inferred relationship;
+- new narrative family/grouping;
+- guilt/importance by node size unless an already-accepted quantitative field explicitly defines that size.
+
+### Layout behavior
+Selected node 100% prominence; directly connected accepted nodes/edges high prominence; unrelated graph approximately 10–15% opacity. Direction arrows remain readable. Trace animation, when enabled, follows accepted directed edges only and is replaced by static direction under reduced motion.
+
+Layout clustering is presentation-only. If a grouping does not already exist in accepted data, spatial proximity/cluster hulls may not be labeled as a factual group.
 
 ### Secondary
-Detail rail with actor/claim identity, findings/receipts, direct relationships, and evidence.
+Detail rail with actor/claim identity, exact accepted findings/receipts, direct relationships, ordered trace equivalent, and evidence.
 
 ### Interaction
-Search/select node; switch mode; trace; fit/reset; evidence reveal. Graph wheel/pinch must not hijack page scroll unexpectedly.
+Search/select node; switch mode; trace; fit/reset; evidence reveal. Graph wheel/pinch must not hijack ordinary page scroll until the reader deliberately engages graph interaction.
 
 ### Mobile
-Selection-first. Direct connections and vertical accepted trace replace the full graph as the default comprehension mode. Full network remains optional.
+Selection-first. DIRECT CONNECTIONS plus a vertical accepted TRACE PROPAGATION representation is the default comprehension path. FULL NETWORK remains available, but it cannot be the only way to understand the selected record.
 
 ### Platform
-Cytoscape 3.34.0 + HTML/CSS/SVG. fCoSE only if it passes deterministic/readability gates already established.
+Cytoscape 3.34.0 + HTML/CSS/SVG. fCoSE only if it passes the established deterministic/readability/performance gates; ELK is not the full-network layout.
 
 ### Preserve
-Nodes, edges, directionality, receipts, Hall logic, claim trails, evidence.
+FULL NETWORK / DIRECT CONNECTIONS / TRACE PROPAGATION modes; every accepted WOL node; every accepted edge and its direction/class; receipts; findings; Hall logic; claim trails; ordering where protected; and evidence relationships.
 
 ### Color
-Node type may use restrained categorical distinction if already defined; status truth/falsity should not overwrite actor/type encoding.
+Use actor-neutral state semantics. Node/edge class distinction may use restrained categorical styling only when directly mapped from existing WOL semantics. Do not let truth/falsity/status color overwrite actor/type identity or imply a credibility scale.
 
 ### Mockup instruction
-Show all three modes plus a dense network case. The test is comprehension, not visual novelty.
-
----
+Show all three modes and a dense-network case. Include a visual legend that names only existing accepted node/edge classes, a selected node with detail/evidence, and a trace whose textual equivalent enumerates the same accepted directed edges. No new grouping, score, or inferred relationship may appear.
 
 ## 8.26 Intelligence · WOL actor dossier
 **State:** parameterized `WebOfLiesPage`
@@ -1556,6 +1661,22 @@ For every route/state the renderer must package:
 15. note explaining why this visual form is better than the rough PR #279 composition.
 
 Mockups must use representative **existing accepted language/data placeholders from the current page**, not invented political claims or synthetic findings. When exact content cannot safely be embedded in the reference, label the slot by existing field/category rather than fabricate copy.
+
+## 15.1 Phase 1 mockup acceptance matrix
+
+The seven Phase 1 mockups are not approved merely because they contain the named renderer. Each must prove the following reader contract before production implementation:
+
+| Phase 1 page | Mockup must prove | Must not imply |
+|---|---|---|
+| Hormuz & Economy | layered authoritative geography; protected economic visualization retained; coordinated map↔time/country context; visible date/unit/source/selection/reset | temporal correlation = causation; ECharts automatically replaces protected charts |
+| Oil & Economic Effects | protected chart treatment; valid Trend/Compare/Event Context mode where supported; mechanism vs observed vs potential/watch flow grammar | missing data interpolation; incompatible comparison; chronology = causality; OHLC without OHLC |
+| Campaigns & Strikes | five-level map hierarchy; selected record never hidden by clustering; visible filter basis/denominator; separate physical-damage and operational-effect state | hit = damaged = destroyed = operationally ineffective |
+| Casualties & Losses | paired accounting columns; shared categories; accepted/verified vs claimed-only vs unknown/unresolved where supported; evidence at quantity/category level; both mobile modes | scoreboard, kill ratio, unknown = zero, unlike totals |
+| Timeline | event-density navigator; Selected Period Summary with exact range/count/categories/reset; chronology primary on mobile | recorded-event density = operational-intensity score |
+| Web of Lies | FULL NETWORK / DIRECT CONNECTIONS / TRACE PROPAGATION; legend derived only from accepted node/edge classes; deterministic selection/trace; textual trace equivalent | credibility/ideology/guilt scoring, inferred edges or new groupings |
+| Who’s Involved | geography → accepted actor family → selected actor detail; canonical searchable index; non-state actor without fake map point; populated categories only | invented alliance/family/geography or equal-role implication |
+
+Across all seven: selected evidence access remains visible; status is not color-only; mobile recomposes rather than shrinks; any desired visual that needs a new relationship, new calculation, new geographic point, new WOL semantic, or protected-chart replacement is recorded as a dependency/conflict rather than implemented in the mockup.
 
 # 16. Renderer implementation instructions after mockup approval
 
