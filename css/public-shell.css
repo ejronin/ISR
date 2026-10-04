@@ -3976,7 +3976,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .visualization-mode-controls { order: -1; }
 .visualization-mode-button,
 .wol-mode-button {
-  min-height: 2.35rem;
+  min-height: 2.75rem;
   padding: .45rem .72rem;
   border: 1px solid var(--border-divider);
   border-radius: var(--radius-sm);
