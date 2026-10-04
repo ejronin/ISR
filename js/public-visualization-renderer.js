@@ -159,7 +159,9 @@
 
   function appendChartEquivalent(section, rows, options) {
     const details = append(section, 'details', 'visualization-text-equivalent');
-    details.dataset.phase1ChartEquivalent = options && options.key || 'chart-values';
+    const equivalentKey = options && options.key || 'chart-values';
+    details.dataset.phase1ChartEquivalent = equivalentKey;
+    details.dataset.phase5ChartEquivalent = equivalentKey;
     append(details, 'summary', '', options && options.valuesLabel || 'Numeric values for this chart');
     if (options && options.numericNote) append(details, 'p', '', options.numericNote);
     const table = append(details, 'table');
