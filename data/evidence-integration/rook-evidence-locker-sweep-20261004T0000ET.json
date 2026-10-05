@@ -1,0 +1,71 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-03T12:00:00-04:00",
+    "window_end": "2026-10-04T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-05T16:55:00-04:00",
+    "evidence_horizon_time": "2026-10-04T00:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAQ-VLCC-HORMUZ-TRANSIT-20261003",
+      "event_type": "IRAQ_STATE_TANKER_HORMUZ_TRANSIT",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-03T16:24:00-04:00",
+      "actor": "Iraq / Iraqi Oil Tanker Company",
+      "summary": "Iraq's state-owned Oil Tanker Company said it transported 2 million barrels of Iraqi crude aboard a VLCC through the Strait of Hormuz, its first such operation in decades. Reuters noted Iraq had previously secured Iranian permission for Iraqi oil tankers to transit the effectively closed strait.",
+      "sources": [
+        "https://www.reuters.com/business/energy/iraq-says-it-transported-2-million-barrels-crude-through-strait-hormuz-2026-10-03/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-RIAL-NEW-LOW-20261003",
+      "event_type": "IRAN_CURRENCY_NEW_LOW",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-03T15:42:00-04:00",
+      "actor": "Iran",
+      "summary": "Reuters reported Iran's rial around 2.688 million per U.S. dollar on the free market, versus 2.632 million the prior day, as state banks began selling up to $2 billion to support the currency. Reuters said the rial had lost more than half its value in a year and inflation exceeded 70%.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-rial-new-low-cenbank-sells-dollars-support-currency-2026-10-03/"
+      ]
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-IRAQ-HORMUZ-VLCC-TRANSIT-20261003",
+      "summary": "Iraq used a state-owned VLCC to move 2 million barrels through Hormuz, increasing SOMO's sale and destination flexibility while passage remained dependent on selective Iranian permission.",
+      "sources": [
+        "https://www.reuters.com/business/energy/iraq-says-it-transported-2-million-barrels-crude-through-strait-hormuz-2026-10-03/"
+      ]
+    },
+    {
+      "economic_id": "ECON-IRAN-RIAL-LOW-20261003",
+      "summary": "The rial fell to a new reported free-market low as the central bank deployed up to $2 billion in support; inflation remained above 70% in the cited Reuters report.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-rial-new-low-cenbank-sells-dollars-support-currency-2026-10-03/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "Iraq state-tanker Hormuz transit",
+      "Iran rial new low and central-bank intervention"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz settlement identified.",
+      "No qualified new IAEA implementation event identified.",
+      "No material Lebanon/Hezbollah disposition change identified."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
