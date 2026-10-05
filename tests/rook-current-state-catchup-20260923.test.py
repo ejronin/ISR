@@ -90,8 +90,13 @@ def main() -> int:
     ]
     assert "RELATION_UNRESOLVED" in positions["status"]
     contacts = dips["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert contacts["status"] == "Mediated talks continue; no agreement"
-    assert "talks were still indirect" in contacts["observed_state"]
+    sep23_contacts = next(
+        row["record"] for row in sep23_packet["entities"]
+        if row["entity_id"] == "DIP-US-IRAN-UNGA-CONTACTS-20260922"
+    )
+    assert sep23_contacts["status"] == "Mediated talks continue; no agreement"
+    assert "talks were still indirect" in sep23_contacts["observed_state"]
+    assert "no agreement" in contacts["status"].lower()
     assert dips["DIP-FRANCE-US-UNSC-HORMUZ-MISSION-20260922"]["record"]["status"].startswith("DRAFTING_REPORTED")
     assert dips["DIP-QATAR-GULF-SECURITY-FRAMEWORK-20260922"]["record"]["status"].endswith("NO_AGREEMENT")
     assert "NO_NEW_COMBINED_MILITARY_COMMITMENT" in dips["DIP-TUR-EGY-PAK-KSA-JOINT-STATEMENT-20260922"]["record"]["status"]
