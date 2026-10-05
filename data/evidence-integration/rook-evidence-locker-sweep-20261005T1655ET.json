@@ -1,0 +1,54 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-05T12:00:00-04:00",
+    "window_end": "2026-10-05T16:55:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-05T16:55:00-04:00",
+    "evidence_horizon_time": "2026-10-05T16:55:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-IRAN-FFI-SANCTIONS-ALERT-20261005",
+      "event_type": "US_IRAN_SECONDARY_SANCTIONS_ENFORCEMENT_ALERT",
+      "occurrence_time": "2026-10-05",
+      "public_available_time": "2026-10-05T16:25:00-04:00",
+      "actor": "United States Treasury / OFAC",
+      "summary": "The U.S. Treasury warned foreign financial institutions continuing transactions with sanctioned Iranian financial institutions that they could be targeted without advance notice and should terminate such activity. Treasury said potential measures include correspondent and payable-through account restrictions and enforcement exposure where Iran-related transactions cause U.S.-person sanctions violations.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-says-foreign-financial-institutions-doing-business-with-iran-may-be-2026-10-05/",
+        "https://ofac.treasury.gov/recent-actions/20261005"
+      ]
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-US-IRAN-FFI-ENFORCEMENT-ALERT-20261005",
+      "summary": "Treasury escalated the compliance warning to foreign financial institutions by stating sanctioned Iranian banking relationships could be targeted without advance notice, increasing correspondent-banking and dollar-clearing risk.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-says-foreign-financial-institutions-doing-business-with-iran-may-be-2026-10-05/",
+        "https://ofac.treasury.gov/recent-actions/20261005"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "U.S. Treasury/OFAC foreign-financial-institution sanctions alert"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new U.S.-Iran/Hormuz agreement identified through 16:55 ET.",
+      "No qualified new IAEA implementation event identified.",
+      "No additional material Lebanon/Hezbollah disposition change identified."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}

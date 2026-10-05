@@ -1,0 +1,28 @@
+{
+  "artifact_role": "ROOK_EVIDENCE_LOCKER_SOURCE_REGISTRY_DELTA",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "sweep_window": {
+    "start": "2026-10-02T00:00:00-04:00",
+    "end": "2026-10-02T12:00:00-04:00",
+    "timezone": "America/New_York"
+  },
+  "boundary_note": "Late-discovered source for an already-frozen ROOK sweep window. The original sweep is not rewritten; publication time remains October 2 and collection/discovery time remains October 5.",
+  "late_discovery_provenance": {
+    "discovered_at": "2026-10-05T17:12:00-04:00",
+    "frozen_sweep": "data/evidence-integration/rook-evidence-locker-sweep-20261002T1200ET.json",
+    "rule": "APPEND_SOURCE_LINEAGE_ONLY_DO_NOT_REWRITE_FROZEN_SWEEP",
+    "reason": "Fresh cross-lane verification identified a material G7 emergency-stock action published inside the frozen Oct. 2 00:00-12:00 ET evidence window."
+  },
+  "sources": [
+    {
+      "source_id": "SRC-87C3DDE22BC8",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/europe-discussing-plan-diesel-stock-releases-after-us-pressure-source-says-2026-10-02/",
+      "source_type": "independent_media",
+      "publication_time": "2026-10-02T08:21:00Z",
+      "actor_or_originator": "G7 / IEA-coordinated emergency petroleum stock release",
+      "note": "G7 countries agreed to a coordinated 100-million-barrel emergency release of diesel and crude oil, beginning immediately and running four months, while pledging to refrain from energy-product export restrictions among themselves."
+    }
+  ],
+  "source_count": 1
+}

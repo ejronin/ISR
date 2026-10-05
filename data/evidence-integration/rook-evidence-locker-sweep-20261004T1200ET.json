@@ -1,0 +1,86 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-04T00:00:00-04:00",
+    "window_end": "2026-10-04T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-05T16:55:00-04:00",
+    "evidence_horizon_time": "2026-10-04T12:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAN-HORMUZ-SEVEN-CONDITIONS-20261004",
+      "event_type": "IRAN_HORMUZ_REOPENING_POSITION",
+      "occurrence_time": "2026-10-04",
+      "public_available_time": "2026-10-04T03:59:00-04:00",
+      "actor": "Iran",
+      "summary": "Iranian parliament speaker Mohammad Baqer Qalibaf said Hormuz would not reopen until seven Iranian conditions tied to the June Islamabad Memorandum of Understanding were met. Iran's Foreign Ministry said Washington's response was relayed through mediators, additional points remained, and Tehran had not entered nuclear discussions with Washington.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-says-strait-hormuz-will-not-reopen-until-conditions-are-met-2026-10-04/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-COUNTEROFFENSIVE-LAUNCH-20261004",
+      "event_type": "YEMEN_GOVERNMENT_COUNTEROFFENSIVE_LAUNCHED",
+      "occurrence_time": "2026-10-04",
+      "public_available_time": "2026-10-04T08:14:00-04:00",
+      "actor": "Yemen internationally recognized government / Saudi Arabia / Houthis",
+      "summary": "Yemen's Saudi-backed internationally recognized government announced a major campaign to retake Houthi-held territory, moving the previously reported Saudi-backed offensive from planning to execution. The Houthis simultaneously claimed missile and drone attacks on Aramco sites in Riyadh and Khurais and major fires; Saudi Arabia had not confirmed those claimed impacts at the reporting cutoff.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-SAUDI-HOUTHI-OFFENSIVE-EXECUTION-20261004",
+      "updates_existing_ref": "SAUDI_HOUTHI_RED_SEA_CONFLICT",
+      "relationship": "REPORTED_PLANNING_ADVANCED_TO_PUBLICLY_ANNOUNCED_AND_ONGOING_OPERATION",
+      "summary": "The Saudi-backed Yemeni counteroffensive previously reported in planning was publicly announced as underway on October 4.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/"
+      ]
+    },
+    {
+      "update_id": "UPD-US-IRAN-HORMUZ-SEQUENCING-20261004",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_IRANIAN_POSITION_ON_US_RESPONSE_AND_REOPENING_SEQUENCE",
+      "summary": "Iran said the U.S. response had been relayed through mediators but additional points remained; Tehran tied Hormuz reopening to seven conditions based on the June Islamabad MoU and denied that nuclear discussions with Washington had begun.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-says-strait-hormuz-will-not-reopen-until-conditions-are-met-2026-10-04/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLAIM-HOUTHI-KHURAIS-RIYADH-ARAMCO-20261004",
+      "actor": "Houthis",
+      "claim": "Houthis said missiles and drones struck Aramco sites in Riyadh and Khurais and caused major fires.",
+      "status": "ACTOR_CLAIM; RIYADH_FIRE_PREVIOUSLY_OBSERVED; KHURAIS_AND_CLAIMED_DAMAGE_NOT_CONFIRMED_IN_THIS_SWEEP",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [],
+  "coverage": {
+    "material_results": [
+      "Iran Hormuz seven-condition position and mediator response",
+      "Yemen counteroffensive launch",
+      "Houthi Riyadh/Khurais attack claims"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new signed U.S.-Iran agreement identified.",
+      "No qualified new IAEA implementation event identified.",
+      "No material Lebanon/Hezbollah disposition change identified."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}

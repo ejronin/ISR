@@ -1,0 +1,117 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-05T00:00:00-04:00",
+    "window_end": "2026-10-05T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-05T16:55:00-04:00",
+    "evidence_horizon_time": "2026-10-05T12:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-YEMEN-BAB-EL-MANDEB-GAINS-20261005",
+      "event_type": "YEMEN_GOVERNMENT_BAB_EL_MANDEB_ADVANCE",
+      "occurrence_time": "2026-10-05",
+      "public_available_time": "2026-10-05T05:15:00-04:00",
+      "actor": "Yemen internationally recognized government / Houthis / Saudi Arabia",
+      "summary": "Saudi-backed Yemeni government forces said they retook most coastal areas around Bab el-Mandeb, reached the outskirts of Mocha and recaptured the Dhubab airstrip. Reuters could not independently verify the extent and the Houthis rejected the claims. Separate government sources reported Houthi gains near Taiz, with one source disputing that the road had been cut.",
+      "sources": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-MECCA-PACT-RAPID-DEPLOYMENT-20261005",
+      "event_type": "MECCA_DEFENCE_PACT_RAPID_DEPLOYMENT_AGREEMENT",
+      "occurrence_time": "2026-10-05",
+      "public_available_time": "2026-10-05T05:15:00-04:00",
+      "actor": "Saudi Arabia / Turkey / Pakistan",
+      "summary": "Saudi Arabia, Turkey and Pakistan said after an emergency Riyadh meeting that they agreed to rapidly deploy military forces and capabilities in Saudi Arabia under the Mecca Joint Defence Agreement.",
+      "sources": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-DISPLACEMENT-184K-20261005",
+      "event_type": "YEMEN_CONFLICT_DISPLACEMENT_UPDATE",
+      "occurrence_time": "2026-10-05",
+      "public_available_time": "2026-10-05T05:15:00-04:00",
+      "actor": "Yemen / UN migration agency",
+      "summary": "Reuters reported the UN migration agency said 184,000 people had been displaced since fighting in Yemen resumed.",
+      "sources": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-QATAR-LNG-HORMUZ-TRANSITS-20261005",
+      "event_type": "QATAR_LNG_HORMUZ_TRANSIT_RECOVERY",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-05T04:14:00-04:00",
+      "actor": "Qatar LNG shipping / commercial carriers",
+      "summary": "Kpler and LSEG ship-tracking data cited by Reuters showed four LNG vessels carrying Qatari cargoes reappeared outside the Strait of Hormuz around October 2-3 after transiting the waterway. Reuters noted that dark AIS transits remained common, so visible-vessel observations undercount some passage activity.",
+      "sources": [
+        "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-FLYDUBAI-FZ1073-PREHIRE-PLANNING-20261005",
+      "updates_existing_ref": "FLYDUBAI_FZ1073_SECURITY_INCIDENT_20260930",
+      "relationship": "LATER_SOURCE_REPORTING_ON_MOTIVE_AND_PREMEDITATION_WITH_EXTERNAL_DIRECTION_STILL_UNRESOLVED",
+      "summary": "Two Israeli officials with knowledge of the UAE probe told Reuters the co-pilot said he planned an attack before joining flydubai; a third source said he intended to crash FZ1073 into Ben-Gurion and had considered an earlier attack. UAE and Israeli authorities had not publicly confirmed those details, no formal charges had been announced, and no Iran or Houthi organizational direction was established.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/co-pilot-planned-flydubai-attack-before-hired-by-airline-two-israeli-officials-2026-10-05/"
+      ]
+    },
+    {
+      "update_id": "UPD-SAUDI-HOUTHI-BAB-EL-MANDEB-GAINS-20261005",
+      "updates_existing_ref": "SAUDI_HOUTHI_RED_SEA_CONFLICT",
+      "relationship": "COUNTEROFFENSIVE_REPORTED_TERRITORIAL_GAINS_WITH_INDEPENDENT_VERIFICATION_LIMITATION",
+      "summary": "Government forces reported major coastal gains around Bab el-Mandeb and toward Mocha with Saudi air support; Reuters could not independently verify the extent and Houthis denied the claims. Houthi gains near Taiz were also reported with conflicting detail.",
+      "sources": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
+    },
+    {
+      "update_id": "UPD-HORMUZ-QATAR-LNG-RECOVERY-20261005",
+      "updates_existing_ref": "HORMUZ_SHIPPING_RECOVERY",
+      "relationship": "ADDITIONAL_LNG_TRANSIT_RECOVERY_WITH_DARK_TRANSIT_LIMITATION",
+      "summary": "Additional Qatari LNG cargoes were observed completing Hormuz transits around October 2-3. The reporting strengthens the partial-recovery signal while preserving that AIS-dark transits limit visible-vessel counts and security risks remain.",
+      "sources": [
+        "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-QATAR-LNG-HORMUZ-RECOVERY-20261005",
+      "summary": "Four LNG vessels carrying Qatari cargoes were observed outside Hormuz after October 2-3 transits, extending the September LNG recovery signal while dark AIS transits and security risk continued.",
+      "sources": [
+        "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "Bab el-Mandeb government gains and Houthi counterclaims",
+      "Mecca pact rapid deployment agreement",
+      "Yemen displacement reaches 184,000",
+      "FZ1073 pre-hire planning reporting",
+      "Additional Qatari LNG Hormuz transits with AIS-dark limitation"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz settlement identified by noon ET.",
+      "No qualified new IAEA implementation event identified.",
+      "No material Lebanon/Hezbollah disposition change identified."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
