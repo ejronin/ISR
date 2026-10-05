@@ -67,14 +67,18 @@ assert.equal(locatedDamage.footprint, null, 'damage observation invented a footp
 assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facilityRecords).tier, 'D', 'unlocated forensic observation should remain evidence-only');
 
 const releaseRoles = new Set(manifest.application.assets.map(asset => asset.role));
-const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
-for (const role of fixedRoles) assert(releaseRoles.has(role), `required release role missing: ${role}`);
-assert([...releaseRoles].every(role => [...fixedRoles, 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
+const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'visualization_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet', 'echarts_runtime'];
+for (const role of [...fixedRoles, ...capabilityRoles]) assert(releaseRoles.has(role), `required release role missing: ${role}`);
+assert([...releaseRoles].every(role => [...fixedRoles, ...capabilityRoles, 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
 const byRole = Object.fromEntries(manifest.application.assets.filter(asset => fixedRoles.includes(asset.role)).map(asset => [asset.role, asset]));
 assert.equal(byRole.reader_support.source_path, 'src/public-reader-layer.js');
 assert.equal(byRole.reader_stylesheet.source_path, 'src/public-reader-layer.css');
 assert.equal(manifest.application.reference_geography, byRole.reference_geography.path);
-assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.graph_runtime.path, byRole.base_runtime.path, byRole.reader_support.path, byRole.page_registry.path]);
+assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.graph_runtime.path, byRole.base_runtime.path, byRole.visualization_runtime.path, byRole.reader_support.path, byRole.page_registry.path]);
+assert.equal(manifest.application.capabilities.maplibre.version, '6.11.2');
+assert.equal(manifest.application.capabilities.maplibre.fallback, 'leaflet');
+assert.equal(manifest.application.capabilities.maplibre.same_origin_only, true);
 assert.deepEqual(manifest.application.stylesheets, [byRole.map_stylesheet.path, byRole.stylesheet.path, byRole.reader_stylesheet.path]);
 assert.equal(manifest.application.stylesheet, byRole.stylesheet.path, 'reader CSS must augment rather than replace the primary shell stylesheet');
 

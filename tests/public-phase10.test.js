@@ -73,8 +73,9 @@ assert(source.includes("windowSelect.dataset.timelineScaleControl = 'window'"), 
 assert(source.includes("explorer.querySelector('[data-timeline-scale-control=\"window\"]')"), 'Phase 10 scale enhancement is not scoped to the timeline-scale control');
 assert(!source.includes(".timeline-controls select:last-of-type"), 'Phase 10 scale enhancement can corrupt a sibling filter select');
 assert(source.includes('not greater strategic importance'), 'timeline density lacks the non-importance guardrail');
-assert(source.includes("system.dataset.shippingMapSystem = 'chokepoint-network'"), 'Shipping lacks the two-scope map system');
-assert(source.includes("network.dataset.shippingMapView = 'network'"), 'Shipping network-consequences map is absent');
+assert(source.includes("system.dataset.shippingMapSystem = 'continuous-maplibre'"), 'Shipping lacks the approved continuous MapLibre map system');
+assert(source.includes("map.dataset.shippingMapView = 'continuous'"), 'Shipping continuous map view is absent');
+assert(source.includes("cameraModes: ['theater', 'gulf', 'hormuz']"), 'Shipping continuous map lacks Theater → Gulf → Hormuz camera modes');
 assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'loss summaries are not explicitly record-count-only');
 assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
 assert(source.includes("section.dataset.interpolation = 'recorded-snapshots-only'"), 'economy view does not constrain the chart to recorded snapshots');

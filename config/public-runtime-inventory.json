@@ -25,6 +25,10 @@
       "path": "js/public-ia.js"
     },
     {
+      "role": "visualization_runtime",
+      "path": "js/public-visualization-renderer.js"
+    },
+    {
       "role": "reader_support",
       "path": "src/public-reader-layer.js"
     },
@@ -51,6 +55,26 @@
     {
       "role": "entrypoint",
       "path": "js/public-app.js"
+    },
+    {
+      "role": "maplibre_runtime",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl.js"
+    },
+    {
+      "role": "maplibre_shared",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl-shared.js"
+    },
+    {
+      "role": "maplibre_worker",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl-worker.js"
+    },
+    {
+      "role": "maplibre_stylesheet",
+      "path": "vendor/maplibre/6.11.2/maplibre-gl.css"
+    },
+    {
+      "role": "echarts_runtime",
+      "path": "vendor/echarts/6.1.0/echarts.simple.min.js"
     }
   ],
   "current_shell_sources": [
@@ -77,6 +101,11 @@
       "service": "non-authoritative base rendering library",
       "path": "js/public-ia.js",
       "symbol": "PAGE_OWNERS"
+    },
+    {
+      "service": "representative visualization renderer and MapLibre capability loader",
+      "path": "js/public-visualization-renderer.js",
+      "symbol": "function create"
     },
     {
       "service": "non-authoritative reader support module module",
@@ -248,13 +277,15 @@
     "assets/flags/ye.svg",
     "vendor/cytoscape/LICENSE",
     "vendor/cytoscape/VERSION.json",
+    "vendor/echarts/6.1.0/LICENSE",
     "vendor/leaflet/LICENSE",
     "vendor/leaflet/VERSION.json",
     "vendor/leaflet/images/layers-2x.png",
     "vendor/leaflet/images/layers.png",
     "vendor/leaflet/images/marker-icon-2x.png",
     "vendor/leaflet/images/marker-icon.png",
-    "vendor/leaflet/images/marker-shadow.png"
+    "vendor/leaflet/images/marker-shadow.png",
+    "vendor/maplibre/6.11.2/LICENSE.txt"
   ],
   "repository_archive_roots": [
     "snapshots"

@@ -126,7 +126,7 @@ function assertRouteView(view, route, width) {
           skip.focus();
           skip.click();
           const majorSelectors = [
-            '[data-component="MapView"]', '.timeline-explorer', '.chronology-controls', '.chronology-list',
+            '[data-component="MapView"]', '[data-component="MapLibreView"]', '.timeline-explorer', '.chronology-controls', '.chronology-list',
             '.reader-ledger-controls', '.reader-lie-ledger', '[data-loss-side-group]', '[data-imagery-summary]'
           ].join(',');
           const viewportWidth = document.documentElement.clientWidth;
@@ -157,9 +157,9 @@ function assertRouteView(view, route, width) {
           const result = { timeline: false, map: false, filter: false, evidence: false, ledger: false, imagery: false, losses: false };
           const cluster = main.querySelector('.timeline-marker.cluster');
           if (cluster) { cluster.click(); result.timeline = Boolean(main.querySelector('.timeline-marker.event')); }
-          const map = main.querySelector('[data-component="MapView"] .leaflet-container');
+          const map = main.querySelector('[data-component="MapView"] .leaflet-container, [data-component="MapLibreView"] .atlas-maplibre-map');
           if (map) {
-            const zoom = main.querySelector('[data-component="MapView"] .leaflet-control-zoom-in');
+            const zoom = main.querySelector('[data-component="MapView"] .leaflet-control-zoom-in, [data-component="MapLibreView"] .maplibregl-ctrl-zoom-in');
             if (zoom) zoom.click();
             result.map = true;
           }
