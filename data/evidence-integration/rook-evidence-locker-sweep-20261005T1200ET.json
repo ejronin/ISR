@@ -42,6 +42,17 @@
       "sources": [
         "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
       ]
+    },
+    {
+      "event_id": "LOCKER-QATAR-LNG-HORMUZ-TRANSITS-20261005",
+      "event_type": "QATAR_LNG_HORMUZ_TRANSIT_RECOVERY",
+      "occurrence_time": "2026-10-03",
+      "public_available_time": "2026-10-05T04:14:00-04:00",
+      "actor": "Qatar LNG shipping / commercial carriers",
+      "summary": "Kpler and LSEG ship-tracking data cited by Reuters showed four LNG vessels carrying Qatari cargoes reappeared outside the Strait of Hormuz around October 2-3 after transiting the waterway. Reuters noted that dark AIS transits remained common, so visible-vessel observations undercount some passage activity.",
+      "sources": [
+        "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/"
+      ]
     }
   ],
   "existing_event_updates": [
@@ -62,16 +73,34 @@
       "sources": [
         "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
       ]
+    },
+    {
+      "update_id": "UPD-HORMUZ-QATAR-LNG-RECOVERY-20261005",
+      "updates_existing_ref": "HORMUZ_SHIPPING_RECOVERY",
+      "relationship": "ADDITIONAL_LNG_TRANSIT_RECOVERY_WITH_DARK_TRANSIT_LIMITATION",
+      "summary": "Additional Qatari LNG cargoes were observed completing Hormuz transits around October 2-3. The reporting strengthens the partial-recovery signal while preserving that AIS-dark transits limit visible-vessel counts and security risks remain.",
+      "sources": [
+        "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/"
+      ]
     }
   ],
   "claims_and_corrections": [],
-  "economic_energy_updates": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-QATAR-LNG-HORMUZ-RECOVERY-20261005",
+      "summary": "Four LNG vessels carrying Qatari cargoes were observed outside Hormuz after October 2-3 transits, extending the September LNG recovery signal while dark AIS transits and security risk continued.",
+      "sources": [
+        "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/"
+      ]
+    }
+  ],
   "coverage": {
     "material_results": [
       "Bab el-Mandeb government gains and Houthi counterclaims",
       "Mecca pact rapid deployment agreement",
       "Yemen displacement reaches 184,000",
-      "FZ1073 pre-hire planning reporting"
+      "FZ1073 pre-hire planning reporting",
+      "Additional Qatari LNG Hormuz transits with AIS-dark limitation"
     ],
     "checked_no_material_new_event_in_window": [
       "No final U.S.-Iran/Hormuz settlement identified by noon ET.",
