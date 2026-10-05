@@ -73,7 +73,7 @@ start_browser(){
   for candidate in "${browsers[@]}"; do
     browser_profile="$(mktemp -d /tmp/atlas-chrome-profile.XXXXXX)"
     profile_dirs+=("$browser_profile")
-    "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --no-default-browser-check \
+    "$candidate" --headless --no-sandbox --enable-unsafe-swiftshader --use-gl=swiftshader --disable-dev-shm-usage --no-first-run --no-default-browser-check \
       --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins='*' \
       --user-data-dir="$browser_profile" "${SITE_URL}#/start/overview" >/tmp/atlas-chrome.log 2>&1 &
     browser_pid=$!
@@ -108,6 +108,12 @@ node tests/browser-public-map-phase6.js
 node tests/browser-public-parity-batch3.js
 node tests/browser-public-loss-actor-batch2.js
 node tests/browser-public-responsive-phase9.js
+
+# Phase 9 performs another broad route/history interaction sweep. Restart the
+# browser after the preceding shared-session suites so renderer/browser resource
+# accumulation cannot masquerade as a route failure; Phase 9 still exercises
+# its own complete long-lived interaction flow in one fresh process.
+start_browser
 node tests/browser-public-phase9.js
 
 # The exhaustive audits are intentionally isolated from one another. The

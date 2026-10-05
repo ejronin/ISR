@@ -91,7 +91,8 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
       assert.equal(talks.ids.length, talks.wartimeCount + talks.historicalCount, `Talks grouping dropped an agreement at ${width}px`);
 
       await route(cdp, 'hormuz.shipping');
-      const shipping = await cdp.eval(`(() => { const choke=document.querySelector('[data-shipping-map-view="chokepoint"]'); const notice=choke?.querySelector('[data-state-notice="no-geolocated-records"]'); const summary=document.querySelector('[data-shipping-map-system] .meaning-first-summary')?.textContent||''; return { notice:Boolean(notice), message:notice?.querySelector('.state-notice-message')?.textContent||'', accounting:notice?.querySelector('.state-notice-accounting')?.textContent||'', summary }; })()`);
+      const shipping = await cdp.eval(`(() => { const system=document.querySelector('[data-shipping-map-system]'); const continuous=system?.querySelector('[data-shipping-map-view="continuous"]'); const notice=system?.querySelector('[data-state-notice="no-geolocated-records"]'); const summary=system?.querySelector('.meaning-first-summary')?.textContent||''; return { continuous:Boolean(continuous), notice:Boolean(notice), message:notice?.querySelector('.state-notice-message')?.textContent||'', accounting:notice?.querySelector('.state-notice-accounting')?.textContent||'', summary }; })()`);
+      assert.equal(shipping.continuous, true, `Shipping continuous map is missing at ${width}px`);
       assert(/strategic transport corridor/.test(shipping.summary), `Shipping does not lead with reader meaning at ${width}px`);
       if (shipping.notice) { assert(/geographic context/i.test(shipping.message), `Shipping zero state lacks meaning-first text at ${width}px`); assert(/: 0$/.test(shipping.accounting.trim()), `Shipping zero state lost exact accounting value at ${width}px`); }
 

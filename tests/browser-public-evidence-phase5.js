@@ -230,9 +230,9 @@ async function setRoute(cdp, routeKey) {
     for (const routeKey of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
       await setRoute(cdp, routeKey);
       const map = await cdp.eval(`(() => ({
-        maps: document.querySelectorAll('[data-component="MapView"] .leaflet-container').length,
-        textEquivalents: document.querySelectorAll('[data-component="MapView"] [data-phase5-map-equivalent]').length,
-        locations: document.querySelectorAll('[data-component="MapView"] [data-phase5-map-equivalent] li').length
+        maps: document.querySelectorAll('[data-component="MapView"] .leaflet-container, [data-component="MapLibreView"] .atlas-maplibre-map').length,
+        textEquivalents: document.querySelectorAll('[data-component="MapView"] [data-phase5-map-equivalent], [data-component="MapLibreView"] [data-phase5-map-equivalent]').length,
+        locations: document.querySelectorAll('[data-component="MapView"] [data-phase5-map-equivalent] li, [data-component="MapLibreView"] [data-phase5-map-equivalent] li').length
       }))()`);
       assert(map.maps >= 1, `expected contextual map on ${routeKey}`);
       assert(map.textEquivalents >= 1 && map.locations >= 1, `map evidence is not textually available on ${routeKey}`);

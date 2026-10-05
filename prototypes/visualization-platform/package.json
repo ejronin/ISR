@@ -1,0 +1,23 @@
+{
+  "name": "iran-war-guide-visualization-platform-prototype",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data": "python ../../scripts/build_current_release_state.py",
+    "verify": "node ./verify-inputs.mjs",
+    "dev": "vite --config vite.config.js --host 127.0.0.1",
+    "build": "npm run data && npm run verify && vite build --config vite.config.js",
+    "preview": "vite preview --config vite.config.js --host 127.0.0.1"
+  },
+  "dependencies": {
+    "cytoscape": "3.34.0",
+    "cytoscape-elk": "2.3.0",
+    "cytoscape-fcose": "2.2.0",
+    "echarts": "6.1.0",
+    "maplibre-gl": "6.11.2"
+  },
+  "devDependencies": {
+    "vite": "8.3.2"
+  }
+}

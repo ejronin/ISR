@@ -1,0 +1,337 @@
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+:root {
+  color-scheme: dark;
+  --canvas: #080d13;
+  --surface-1: #0c131a;
+  --surface-2: #111a23;
+  --surface-3: #17232e;
+  --border: #283744;
+  --border-strong: #355063;
+  --text: #f1f4f7;
+  --muted: #aab5bf;
+  --blue: #79b7df;
+  --blue-strong: #b9def5;
+  --amber: #e4c384;
+  --danger: #eea0a0;
+  --good: #8fd0b3;
+  --focus: #f4d785;
+  --reading: 72rem;
+  --analytical: 100rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button,
+select {
+  min-height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.35rem;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+button {
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--blue);
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+.viz-detail:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+button[aria-pressed="true"] {
+  border-color: var(--blue);
+  background: #163043;
+  color: var(--blue-strong);
+}
+
+.prototype-shell {
+  width: min(100% - 2rem, var(--analytical));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 5rem) 0 6rem;
+}
+
+.prototype-header {
+  max-width: var(--reading);
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+.prototype-kicker,
+.section-number {
+  margin: 0 0 0.7rem;
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.prototype-header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.prototype-lead {
+  max-width: 58rem;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.prototype-section {
+  container-type: inline-size;
+  padding: clamp(2.2rem, 5vw, 5rem) 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1rem;
+  max-width: var(--reading);
+  margin-bottom: 1.8rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  letter-spacing: -0.035em;
+}
+
+.section-heading p:not(.section-number) {
+  max-width: 54rem;
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.map-toolbar,
+.button-row,
+.segmented-control {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+}
+
+.map-canvas,
+.graph-canvas,
+.flow-canvas,
+.chart-canvas {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border);
+  background: #071018;
+}
+
+.map-canvas {
+  height: clamp(30rem, 65vh, 52rem);
+}
+
+.graph-canvas {
+  height: clamp(32rem, 65vh, 48rem);
+}
+
+.flow-canvas {
+  height: clamp(24rem, 50vh, 38rem);
+}
+
+.chart-canvas {
+  height: clamp(26rem, 52vh, 40rem);
+}
+
+.viz-status {
+  min-height: 1.5rem;
+  margin: 0.85rem 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.viz-detail {
+  min-height: 3rem;
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--blue);
+  background: var(--surface-1);
+  line-height: 1.55;
+}
+
+.viz-detail:empty {
+  display: none;
+}
+
+.viz-detail h3 {
+  margin: 0 0 0.4rem;
+}
+
+.viz-detail p {
+  margin: 0.35rem 0;
+}
+
+.text-equivalent {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.text-equivalent summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--blue-strong);
+  cursor: pointer;
+}
+
+.text-equivalent ol,
+.text-equivalent ul {
+  line-height: 1.6;
+}
+
+.wol-controls {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) minmax(0, 2fr);
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.wol-controls label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.wol-controls select {
+  width: 100%;
+  padding: 0.55rem;
+}
+
+.toggle-control {
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+  min-height: 44px;
+}
+
+.toggle-control input {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin-top: 1.3rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-1);
+}
+
+caption {
+  padding: 0.8rem 0;
+  text-align: left;
+  color: var(--muted);
+}
+
+th,
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  color: var(--blue-strong);
+  font-size: 0.83rem;
+}
+
+.maplibregl-ctrl-group {
+  background: var(--surface-1);
+}
+
+.maplibregl-ctrl-group button {
+  min-height: 29px;
+  background-color: var(--surface-1);
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(8, 13, 19, 0.85) !important;
+  color: var(--muted);
+}
+
+@container (max-width: 48rem) {
+  .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .section-number {
+    margin-bottom: 0;
+  }
+
+  .wol-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .map-canvas {
+    height: 30rem;
+  }
+
+  .graph-canvas {
+    height: 36rem;
+  }
+}
+
+@media (max-width: 42rem) {
+  .prototype-shell {
+    width: min(100% - 1rem, var(--analytical));
+  }
+
+  .prototype-section {
+    padding-block: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

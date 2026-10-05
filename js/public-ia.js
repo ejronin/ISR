@@ -1944,6 +1944,17 @@
     });
   }
 
+  function createRepresentativeMap(context, options) {
+    const renderer = root && root.AtlasVisualizationRenderer;
+    if (renderer && typeof renderer.create === 'function') {
+      const view = renderer.create(context, options || {});
+      if (view) return view;
+    }
+    const fallback = MapView.create(context, options || {});
+    fallback.dataset.mapRenderer = 'leaflet-fallback';
+    return fallback;
+  }
+
   function OverviewPage(context) {
     const frame = pageFrame(context, 'The conflict began with U.S. and Israeli strikes on Iran on February 28, 2026. Iran retaliated across the region, and the war developed into a sustained military, maritime, economic and diplomatic confrontation.');
     frame.article.classList.add('overview-page');
@@ -1992,7 +2003,7 @@
     if (firstWar) whatHappened.append(EvidenceDrawer.create(context, firstWar));
 
     const theaterRecords = mappedChronology(context.model.chronology, context.services.locationResolver).filter(item => { const point = pointFromRecord(item, context.services.locationResolver); return point && point.lat >= 8 && point.lat <= 42 && point.lon >= 28 && point.lon <= 70; });
-    const theaterMap = MapView.create(context, { title: 'Where the conflict extends', records: theaterRecords, fallbackViewport: [[11, 32], [40.5, 67.5]], maxZoom: 5, description: `This map shows ${theaterRecords.length.toLocaleString()} recorded events with source-supported locations across the Iran–Gulf–Levant–Red Sea theater. Multiple events at the same location may be grouped; records without reliable coordinates remain in the timeline.` });
+    const theaterMap = createRepresentativeMap(context, { typeLabel: 'THEATER MAP', cameraModes: ['theater'], title: 'Where the conflict extends', records: theaterRecords, fallbackViewport: [[11, 32], [40.5, 67.5]], maxZoom: 5, description: `This map shows ${theaterRecords.length.toLocaleString()} recorded events with source-supported locations across the Iran–Gulf–Levant–Red Sea theater. Multiple events at the same location may be grouped; records without reliable coordinates remain in the timeline.` });
     theaterMap.classList.add('overview-theater-map'); theaterMap.dataset.selectionRule = 'accepted-chronology-with-supported-coordinate-in-broad-theater'; frame.article.append(theaterMap);
 
     const developments = addSection(frame.article, 'Latest in the record');
@@ -2023,25 +2034,181 @@
 
   function ActorsPage(context) {
     const frame = pageFrame(context, 'People are shown with their recorded role and affiliation. Flags follow the affiliated state or state institution; non-state groups do not inherit the flag of the country where they operate.');
-    const modelDirectory = recordArray(modelData(context.model, 'current.actors')).map(item => item.record || item); const directory = sortActorDirectory(modelDirectory); const controls = append(frame.article, 'form', 'actor-controls'); controls.addEventListener('submit', event => event.preventDefault()); const searchLabel = append(controls, 'label', '', 'Search people and organizations'); const search = append(searchLabel, 'input'); search.type = 'search'; search.placeholder = 'Search by name, role or affiliation'; const resultCount = append(controls, 'p', 'filter-result-count'); resultCount.setAttribute('aria-live', 'polite');
-    const groups = [{ title: 'States and state institutions', test: actor => ['state', 'state-institution'].includes(actor.affiliation_type) && actor.entity_type !== 'person' }, { title: 'People', test: actor => actor.entity_type === 'person' }, { title: 'Armed groups', test: actor => actor.affiliation_type === 'non-state' }, { title: 'International and other organizations', test: actor => !['state', 'state-institution', 'non-state'].includes(actor.affiliation_type) && actor.entity_type !== 'person' }];
-    groups.forEach(group => { const records = directory.filter(group.test); if (!records.length) return; const section = addSection(frame.article, group.title); const list = append(section, 'div', 'actor-directory'); records.forEach(actor => { const card = append(list, 'article', 'actor-card'); card.dataset.actorId = actor.actor_id; card.dataset.actorSearch = JSON.stringify(actor).toLowerCase(); card.append(context.services.actorIdentity.create(context.documentObject, actor.actor_id, { subtitle: true })); }); });
-    const draw = () => { const query = search.value.trim().toLowerCase(); let visible = 0; frame.article.querySelectorAll('[data-actor-id]').forEach(card => { card.hidden = Boolean(query && !card.dataset.actorSearch.includes(query)); if (!card.hidden) visible += 1; }); resultCount.textContent = `${visible.toLocaleString()} of ${directory.length.toLocaleString()} actor identities shown`; }; search.addEventListener('input', draw); draw();
-    const note = append(frame.article, 'aside', 'scope-note'); append(note, 'strong', '', 'Identity boundary'); append(note, 'p', '', 'A role describes a person; affiliation determines actor identity. If the record does not establish an affiliation, Atlas shows the recorded name without guessing.'); renderRelatedLinks(frame.article, context); return frame.article;
+    const modelDirectory = recordArray(modelData(context.model, 'current.actors')).map(item => item.record || item);
+    const directory = sortActorDirectory(modelDirectory);
+    const groupDefinitions = [
+      { key: 'state', title: 'States and state institutions', test: actor => ['state', 'state-institution'].includes(actor.affiliation_type) && actor.entity_type !== 'person' },
+      { key: 'people', title: 'People', test: actor => actor.entity_type === 'person' },
+      { key: 'non-state', title: 'Armed groups', test: actor => actor.affiliation_type === 'non-state' },
+      { key: 'other', title: 'International and other organizations', test: actor => !['state', 'state-institution', 'non-state'].includes(actor.affiliation_type) && actor.entity_type !== 'person' }
+    ];
+
+    const explorer = addSection(frame.article, 'Actor discovery', 'content-section actor-explorer');
+    append(explorer, 'p', 'section-note', 'Geography is shown only for accepted state actors. Non-state actors remain in the canonical index and never receive an invented map point.');
+    const stateActors = directory.filter(actor => actor.affiliation_type === 'state' && actor.entity_type !== 'person');
+    const renderer = root && root.AtlasVisualizationRenderer;
+    if (renderer && typeof renderer.createRegionMap === 'function' && stateActors.length) {
+      explorer.append(renderer.createRegionMap(context, {
+        typeLabel: '1 · GEOGRAPHY',
+        title: 'State geography',
+        description: 'Selectable state geography uses the accepted actor identity and the signed reference geography. It does not place non-state actors on a map.',
+        regions: stateActors.map(actor => ({ actorId: actor.actor_id, name: actor.parent_state || actor.canonical_name }))
+      }));
+    }
+
+    const controls = append(explorer, 'form', 'actor-controls phase1-actor-controls');
+    controls.addEventListener('submit', event => event.preventDefault());
+    const searchLabel = append(controls, 'label', '', 'Search canonical index');
+    const search = append(searchLabel, 'input'); search.type = 'search'; search.placeholder = 'Search by name, role or affiliation';
+    const familyLabel = append(controls, 'label', '', 'Accepted family');
+    const family = append(familyLabel, 'select');
+    append(family, 'option', '', 'All actors').value = '';
+    groupDefinitions.forEach(group => { const option = append(family, 'option', '', group.title); option.value = group.key; });
+    const resultCount = append(controls, 'p', 'filter-result-count'); resultCount.setAttribute('aria-live', 'polite');
+
+    const detail = append(explorer, 'aside', 'actor-selected-detail');
+    append(detail, 'p', 'card-kicker', '3 · SELECTED ACTOR DETAIL');
+    const detailHost = append(detail, 'div', 'actor-selected-detail-host');
+    const renderDetail = actor => {
+      detailHost.replaceChildren();
+      if (!actor) {
+        append(detailHost, 'p', 'empty-state', 'Select an actor from the canonical index or supported state geography.');
+        return;
+      }
+      const heading = append(detailHost, 'h3', 'actor-section-heading');
+      heading.append(context.services.actorIdentity.create(context.documentObject, actor.actor_id, { subtitle: true }));
+      const facts = [];
+      if (actor.entity_type) facts.push(['Entity type', plainLabel(actor.entity_type)]);
+      if (actor.role) facts.push(['Role', publicNarrative(actor.role)]);
+      if (actor.affiliation_type) facts.push(['Affiliation type', plainLabel(actor.affiliation_type)]);
+      if (actor.parent_state) facts.push(['State affiliation', publicNarrative(actor.parent_state)]);
+      if (actor.subtitle) facts.push(['Recorded description', publicNarrative(actor.subtitle)]);
+      if (facts.length) addFactList(detailHost, facts);
+      if (sourceIdsFrom(actor).length) detailHost.append(EvidenceDrawer.create(context, actor));
+    };
+
+    const index = addSection(frame.article, 'Canonical actor index', 'content-section actor-index');
+    append(index, 'p', 'section-note', '2 · ACTOR FAMILIES · These are the accepted identity classifications already present in the public record.');
+    groupDefinitions.forEach(group => {
+      const records = directory.filter(group.test);
+      if (!records.length) return;
+      const section = addSection(index, group.title, 'actor-family-section');
+      section.dataset.actorFamily = group.key;
+      const list = append(section, 'div', 'actor-directory');
+      records.forEach(actor => {
+        const card = append(list, 'button', 'actor-card actor-card-button');
+        card.type = 'button';
+        card.dataset.actorId = actor.actor_id;
+        card.dataset.actorFamily = group.key;
+        card.dataset.actorSearch = JSON.stringify(actor).toLowerCase();
+        card.append(context.services.actorIdentity.create(context.documentObject, actor.actor_id, { subtitle: true }));
+        card.addEventListener('click', () => {
+          frame.article.querySelectorAll('[data-actor-id][aria-pressed]').forEach(node => node.setAttribute('aria-pressed', 'false'));
+          card.setAttribute('aria-pressed', 'true');
+          renderDetail(actor);
+          const map = explorer.querySelector('[data-component="RegionMapView"]');
+          if (map && typeof map._atlasFocusRegion === 'function' && map._atlasHasRegion(actor.actor_id)) map._atlasFocusRegion(actor.actor_id);
+        });
+        card.setAttribute('aria-pressed', 'false');
+      });
+    });
+
+    const draw = () => {
+      const query = search.value.trim().toLowerCase();
+      const selectedFamily = family.value;
+      let visible = 0;
+      frame.article.querySelectorAll('.actor-card[data-actor-id]').forEach(card => {
+        card.hidden = Boolean((query && !card.dataset.actorSearch.includes(query)) || (selectedFamily && card.dataset.actorFamily !== selectedFamily));
+        if (!card.hidden) visible += 1;
+      });
+      frame.article.querySelectorAll('.actor-family-section').forEach(section => {
+        section.hidden = section.querySelectorAll('.actor-card[data-actor-id]:not([hidden])').length === 0;
+      });
+      resultCount.textContent = `${visible.toLocaleString()} of ${directory.length.toLocaleString()} actor identities shown`;
+    };
+    search.addEventListener('input', draw);
+    family.addEventListener('change', draw);
+    explorer.addEventListener('guide:region-select', event => {
+      const actor = directory.find(item => item.actor_id === event.detail?.actorId);
+      if (!actor) return;
+      frame.article.querySelectorAll('[data-actor-id][aria-pressed]').forEach(node => node.setAttribute('aria-pressed', 'false'));
+      const card = frame.article.querySelector(`[data-actor-id="${actor.actor_id}"]`);
+      if (card) card.setAttribute('aria-pressed', 'true');
+      renderDetail(actor);
+    });
+    draw();
+    renderDetail(null);
+
+    const note = append(frame.article, 'aside', 'scope-note');
+    append(note, 'strong', '', 'Identity boundary');
+    append(note, 'p', '', 'A role describes a person; affiliation determines actor identity. If the record does not establish an affiliation, Atlas shows the recorded name without guessing.');
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
   }
 
   function TimelinePage(context) {
     const frame = pageFrame(context, `Explore the wartime record through selectable dates, events and map locations. All Events contains all ${formatNumber(context.model.counts.chronology_records)} records.`);
     const coverage = recordArray(modelData(context.model, 'gate3.daily_coverage')); const conflictStart = coverage[0] && coverage[0].date || '2026-02-28'; const conflictEnd = coverage[coverage.length - 1] && coverage[coverage.length - 1].date || String(context.model.release.current_osint_cutoff).slice(0, 10); const eventDate = item => String(item.timeline && item.timeline.date || item.event && item.event.event_date || ''); const wartime = context.model.chronology.filter(item => eventDate(item) >= conflictStart && eventDate(item) <= conflictEnd); const prewar = context.model.chronology.filter(item => eventDate(item) < conflictStart);
     const explorer = addSection(frame.article, 'Explore the war timeline', 'content-section timeline-explorer'); explorer.dataset.timelineController = 'current-state'; append(explorer, 'p', 'section-note', `${coverage.length.toLocaleString()} conflict days are represented from ${readableDate(conflictStart)} through ${readableDate(conflictEnd)}. At broad scale, markers group nearby dates; narrowing the window exposes individual events.`);
+    const dailyCounts = new Map();
+    wartime.forEach(item => { const date = eventDate(item); if (date) dailyCounts.set(date, (dailyCounts.get(date) || 0) + 1); });
+    const densityRows = Array.from(dailyCounts, ([label, value]) => ({ label, value }));
+    const visualizationRenderer = root && root.AtlasVisualizationRenderer;
+    const density = visualizationRenderer && typeof visualizationRenderer.createEventDensity === 'function'
+      ? visualizationRenderer.createEventDensity(context, {
+          typeLabel: 'RECORDED-EVENT DENSITY NAVIGATOR',
+          title: 'Accepted chronology density',
+          description: 'Deterministic accepted event counts by date. This is record density, not operational intensity.',
+          rows: densityRows,
+          key: 'timeline-accepted-record-density',
+          valuesLabel: 'Daily accepted-record counts',
+          tableCaption: 'Accepted chronology records by date',
+          categoryLabel: 'Date',
+          valueLabel: 'Accepted records',
+          numericNote: 'Counts reflect accepted chronology records. They do not measure strike volume, combat intensity, or military effectiveness.'
+        })
+      : null;
+    if (density) explorer.append(density);
     const controls = append(explorer, 'form', 'timeline-controls'); controls.addEventListener('submit', event => event.preventDefault()); const startLabel = append(controls, 'label', '', 'Window starts'); const startInput = append(startLabel, 'input'); startInput.type = 'date'; startInput.min = conflictStart; startInput.max = conflictEnd; const endLabel = append(controls, 'label', '', 'Window ends'); const endInput = append(endLabel, 'input'); endInput.type = 'date'; endInput.min = conflictStart; endInput.max = conflictEnd; const topicLabel = append(controls, 'label', '', 'Topic'); const topicSelect = append(topicLabel, 'select'); append(topicSelect, 'option', '', 'All topics').value = ''; ['Military', 'Hormuz', 'Economy', 'Diplomacy', 'Losses and damage', 'Wider record'].forEach(topic => { const option = append(topicSelect, 'option', '', topic); option.value = topic; }); const actorLabel = append(controls, 'label', '', 'Actor'); const actorSelect = append(actorLabel, 'select'); append(actorSelect, 'option', '', 'All actors').value = ''; Array.from(new Set(wartime.flatMap(eventActors))).sort().forEach(actor => { const option = append(actorSelect, 'option', '', context.services.actorIdentity.resolve(actor).label); option.value = actor; }); const windowLabel = append(controls, 'label', '', 'Timeline scale'); const windowSelect = append(windowLabel, 'select'); windowSelect.dataset.timelineScaleControl = 'window'; [['all', 'Full war'], ['60', '60 days'], ['30', '30 days'], ['7', '7 days']].forEach(([value, label]) => { const option = append(windowSelect, 'option', '', label); option.value = value; });
-    const navigation = append(explorer, 'div', 'timeline-navigation'); const previous = append(navigation, 'button', 'action', 'Previous window'); previous.type = 'button'; const next = append(navigation, 'button', 'action', 'Next window'); next.type = 'button'; const full = append(navigation, 'button', 'action', 'Show full war'); full.type = 'button'; const resultCount = append(navigation, 'span', 'filter-result-count'); resultCount.setAttribute('aria-live', 'polite'); const rail = append(explorer, 'div', 'timeline-marker-rail'); rail.setAttribute('aria-label', 'Selectable chronology markers'); rail.tabIndex = 0; const selection = append(explorer, 'div', 'timeline-selection'); const mapHost = append(explorer, 'div', 'timeline-map-host'); let selectedId = context.route.params.event || '';
+    const navigation = append(explorer, 'div', 'timeline-navigation'); const previous = append(navigation, 'button', 'action', 'Previous window'); previous.type = 'button'; const next = append(navigation, 'button', 'action', 'Next window'); next.type = 'button'; const full = append(navigation, 'button', 'action', 'Reset / full war'); full.type = 'button'; const resultCount = append(navigation, 'span', 'filter-result-count'); resultCount.setAttribute('aria-live', 'polite');
+    const periodSummary = append(explorer, 'section', 'timeline-period-summary');
+    append(periodSummary, 'p', 'card-kicker', 'SELECTED PERIOD SUMMARY');
+    const periodRange = append(periodSummary, 'strong', 'timeline-period-range');
+    const periodMeta = append(periodSummary, 'p', 'timeline-period-meta');
+    const rail = append(explorer, 'div', 'timeline-marker-rail'); rail.setAttribute('aria-label', 'Selectable chronology markers'); rail.tabIndex = 0; const selection = append(explorer, 'div', 'timeline-selection'); const mapHost = append(explorer, 'div', 'timeline-map-host'); let selectedId = context.route.params.event || '';
     const parseDay = value => new Date(`${value}T12:00:00Z`); const dayString = value => value.toISOString().slice(0, 10); const daysBetween = (left, right) => Math.round((parseDay(right) - parseDay(left)) / 86400000) + 1; const setWindow = (start, end) => { startInput.value = start < conflictStart ? conflictStart : start; endInput.value = end > conflictEnd ? conflictEnd : end; };
-    const replaceMap = records => { const previousMap = mapHost.querySelector('[data-component="MapView"]'); if (previousMap && previousMap._atlasMap && previousMap._atlasMap.remove) previousMap._atlasMap.remove(); mapHost.replaceChildren(); const mapped = mappedChronology(records, context.services.locationResolver); if (!mapped.length) { append(mapHost, 'p', 'empty-state', records.length === 1 ? 'This selected record has no source-supported map point. Its textual location remains in the record.' : 'No records in this view have source-supported map points.'); return; } mapHost.append(MapView.create(context, { title: records.length === 1 ? 'Selected event location' : 'Locations in the active timeline window', records: mapped, description: `${mapped.length.toLocaleString()} visible record${mapped.length === 1 ? '' : 's'} include source-supported geography.` })); };
+    const replaceMap = records => {
+      const previousMap = mapHost.querySelector('[data-component]');
+      const liveMap = previousMap && (previousMap._atlasMapLibre || previousMap._atlasMap);
+      if (liveMap && typeof liveMap.remove === 'function') try { liveMap.remove(); } catch (_) {}
+      mapHost.replaceChildren();
+      const mapped = mappedChronology(records, context.services.locationResolver);
+      if (!mapped.length) { append(mapHost, 'p', 'empty-state', records.length === 1 ? 'This selected record has no source-supported map point. Its textual location remains in the record.' : 'No records in this view have source-supported map points.'); return; }
+      mapHost.append(createRepresentativeMap(context, {
+        typeLabel: 'SELECTED-WINDOW GEOGRAPHY',
+        cameraModes: ['theater', 'gulf'],
+        title: records.length === 1 ? 'Selected event location' : 'Locations in the active timeline window',
+        records: mapped,
+        description: `${mapped.length.toLocaleString()} visible record${mapped.length === 1 ? '' : 's'} include source-supported geography. Geography follows the same selected chronology window.`
+      }));
+    };
     const selectEvent = item => { selectedId = item.event_id; selection.replaceChildren(); renderEventCard(selection, item, context, { detail: true, topic: eventTopic(item) }); replaceMap([item]); rail.querySelectorAll('[data-event-id]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.eventId === selectedId))); };
-    const draw = () => { if (!startInput.value || !endInput.value || startInput.value > endInput.value) setWindow(conflictStart, conflictEnd); const topic = topicSelect.value; const actor = actorSelect.value; const rows = wartime.filter(item => eventDate(item) >= startInput.value && eventDate(item) <= endInput.value).filter(item => !topic || eventTopic(item) === topic).filter(item => !actor || eventActors(item).includes(actor)); const span = daysBetween(startInput.value, endInput.value); const broad = span > 62; const groups = new Map(); rows.forEach(item => { const date = eventDate(item); const parsed = parseDay(date); const key = broad ? `${parsed.getUTCFullYear()}-${String(parsed.getUTCMonth() + 1).padStart(2, '0')}` : date; if (!groups.has(key)) groups.set(key, []); groups.get(key).push(item); }); rail.replaceChildren(); Array.from(groups.entries()).forEach(([key, items]) => { if (broad || items.length > 1 && span > 1) { const button = append(rail, 'button', 'timeline-marker cluster'); button.type = 'button'; const first = eventDate(items[0]); const last = eventDate(items[items.length - 1]); button.dataset.timelineCluster = key; button.textContent = broad ? `${readableDate(`${key}-01`).replace(/ 1,/, ',')} · ${items.length} events` : `${readableDate(key)} · ${items.length} events`; button.setAttribute('aria-label', `${items.length} events from ${readableDate(first)} through ${readableDate(last)}. Select to narrow this timeline window.`); button.addEventListener('click', () => { setWindow(first, last); windowSelect.value = String(Math.min(60, daysBetween(first, last))); draw(); }); } else { items.forEach(item => { const button = append(rail, 'button', 'timeline-marker event'); button.type = 'button'; button.dataset.eventId = item.event_id; button.setAttribute('aria-pressed', String(item.event_id === selectedId)); append(button, 'span', 'timeline-marker-date', readableDate(eventDate(item))); append(button, 'span', 'timeline-marker-title', publicNarrative(item.timeline && item.timeline.summary || item.event && item.event.summary, item.event_id)); button.addEventListener('click', () => selectEvent(item)); }); } }); resultCount.textContent = `${rows.length.toLocaleString()} wartime record${rows.length === 1 ? '' : 's'} in view`; if (!groups.size) append(rail, 'p', 'empty-state', 'No timeline records match this window and filter.'); const selected = rows.find(item => item.event_id === selectedId); if (selected) selectEvent(selected); else { selection.replaceChildren(); append(selection, 'p', 'empty-state', 'Select an event marker to inspect its evidence and map location.'); replaceMap(rows); } };
+    const draw = () => { if (!startInput.value || !endInput.value || startInput.value > endInput.value) setWindow(conflictStart, conflictEnd); const topic = topicSelect.value; const actor = actorSelect.value; const rows = wartime.filter(item => eventDate(item) >= startInput.value && eventDate(item) <= endInput.value).filter(item => !topic || eventTopic(item) === topic).filter(item => !actor || eventActors(item).includes(actor)); const span = daysBetween(startInput.value, endInput.value);
+      const activeTopics = topic ? [topic] : Array.from(new Set(rows.map(eventTopic))).sort();
+      periodRange.textContent = `${readableDate(startInput.value)} – ${readableDate(endInput.value)} · ${rows.length.toLocaleString()} accepted record${rows.length === 1 ? '' : 's'}`;
+      periodMeta.textContent = `Active topics: ${activeTopics.length ? activeTopics.join(' · ') : 'none in this selection'}${actor ? ` · Actor filter: ${context.services.actorIdentity.resolve(actor).label}` : ''}. Recorded-event count is not operational intensity.`;
+      if (density && typeof density._atlasSetRange === 'function') density._atlasSetRange(startInput.value, endInput.value);
+      const broad = span > 62; const groups = new Map(); rows.forEach(item => { const date = eventDate(item); const parsed = parseDay(date); const key = broad ? `${parsed.getUTCFullYear()}-${String(parsed.getUTCMonth() + 1).padStart(2, '0')}` : date; if (!groups.has(key)) groups.set(key, []); groups.get(key).push(item); }); rail.replaceChildren(); Array.from(groups.entries()).forEach(([key, items]) => { if (broad || items.length > 1 && span > 1) { const button = append(rail, 'button', 'timeline-marker cluster'); button.type = 'button'; const first = eventDate(items[0]); const last = eventDate(items[items.length - 1]); button.dataset.timelineCluster = key; button.textContent = broad ? `${readableDate(`${key}-01`).replace(/ 1,/, ',')} · ${items.length} events` : `${readableDate(key)} · ${items.length} events`; button.setAttribute('aria-label', `${items.length} events from ${readableDate(first)} through ${readableDate(last)}. Select to narrow this timeline window.`); button.addEventListener('click', () => { setWindow(first, last); windowSelect.value = String(Math.min(60, daysBetween(first, last))); draw(); }); } else { items.forEach(item => { const button = append(rail, 'button', 'timeline-marker event'); button.type = 'button'; button.dataset.eventId = item.event_id; button.setAttribute('aria-pressed', String(item.event_id === selectedId)); append(button, 'span', 'timeline-marker-date', readableDate(eventDate(item))); append(button, 'span', 'timeline-marker-title', publicNarrative(item.timeline && item.timeline.summary || item.event && item.event.summary, item.event_id)); button.addEventListener('click', () => selectEvent(item)); }); } }); resultCount.textContent = `${rows.length.toLocaleString()} wartime record${rows.length === 1 ? '' : 's'} in view`; if (!groups.size) append(rail, 'p', 'empty-state', 'No timeline records match this window and filter.'); const selected = rows.find(item => item.event_id === selectedId); if (selected) selectEvent(selected); else { selection.replaceChildren(); append(selection, 'p', 'empty-state', 'Select an event marker to inspect its evidence and map location.'); replaceMap(rows); } };
     const chooseScale = () => { if (windowSelect.value === 'all') setWindow(conflictStart, conflictEnd); else { const days = Number(windowSelect.value); const end = endInput.value || conflictEnd; const start = parseDay(end); start.setUTCDate(start.getUTCDate() - days + 1); setWindow(dayString(start), end); } draw(); };
     const shift = direction => { const span = daysBetween(startInput.value, endInput.value); const start = parseDay(startInput.value); const end = parseDay(endInput.value); start.setUTCDate(start.getUTCDate() + direction * span); end.setUTCDate(end.getUTCDate() + direction * span); if (dayString(start) < conflictStart) { setWindow(conflictStart, dayString(new Date(parseDay(conflictStart).getTime() + (span - 1) * 86400000))); } else if (dayString(end) > conflictEnd) { setWindow(dayString(new Date(parseDay(conflictEnd).getTime() - (span - 1) * 86400000)), conflictEnd); } else setWindow(dayString(start), dayString(end)); draw(); };
+    if (density) density.addEventListener('guide:chart-range', event => {
+      const start = event.detail && event.detail.startDate;
+      const end = event.detail && event.detail.endDate;
+      if (!start || !end) return;
+      setWindow(start, end);
+      windowSelect.value = 'all';
+      draw();
+    });
     setWindow(conflictStart, conflictEnd); [startInput, endInput].forEach(control => control.addEventListener('input', draw)); [topicSelect, actorSelect].forEach(control => control.addEventListener('change', draw)); windowSelect.addEventListener('change', chooseScale); previous.addEventListener('click', () => shift(-1)); next.addEventListener('click', () => shift(1)); full.addEventListener('click', () => { windowSelect.value = 'all'; setWindow(conflictStart, conflictEnd); draw(); }); draw();
     if (prewar.length) { const contextSection = append(frame.article, 'details', 'prewar-context'); contextSection.dataset.timelinePrewar = 'distinct'; append(contextSection, 'summary', '', `Prewar context (${prewar.length.toLocaleString()} records)`); append(contextSection, 'p', 'section-note', `These records explain causal or policy context before conflict Day 1, ${readableDate(conflictStart)}. They are not included in the ${coverage.length.toLocaleString()}-day war-duration count.`); const list = append(contextSection, 'div', 'record-list'); prewar.forEach(item => renderEventCard(list, item, context, { detail: true, topic: 'Prewar context' })); }
     renderRelatedLinks(frame.article, context); return frame.article;
@@ -2059,8 +2226,29 @@
   function CampaignsPage(context) {
     const frame = pageFrame(context, 'The campaign unfolded across a wide region. A launch, penetration, impact, physical damage, whether something stopped working, and the effect on war goals are separate questions.');
     const boundary = addSection(frame.article, 'From damage to war results'); append(boundary, 'p', 'phase10-guardrail', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.'); const framework = append(boundary, 'div', 'effect-framework-grid'); [['Physical damage', 'Visible or otherwise documented physical harm. Operating effect is shown separately.'], ['Asset lost', 'An individual asset is established destroyed, sunk, captured, abandoned, or otherwise unavailable. Broader force losses are shown separately.'], ['Subsystem damaged or lost', 'A component was damaged or lost. The status of the larger platform or system is shown separately.'], ['Function reduced', 'A specific operating function was reduced, interrupted, or unavailable. Physical damage is shown separately.'], ['Local effect', 'A demonstrated result at a specific site, unit, or limited area.'], ['Wider military effect', 'A documented effect on the broader campaign or theater.'], ['Effect on war goals', 'A documented effect on an actor’s ability to reach a stated war goal.']].forEach(([title, text]) => { const card = append(framework, 'article', 'effect-framework-card'); append(card, 'h3', '', title); append(card, 'p', '', text); }); append(boundary, 'p', 'section-note', 'This is not a severity ladder. Physical loss, operating effect and effect on war goals are separate findings. Atlas links them only when the evidence supports each step.');
-    const chronology = context.model.chronology.filter(item => /(STRIKE|ATTACK|MISSILE|DRONE|INTERCEPT|MILITARY_OPERATION|NAVAL)/.test(eventType(item))); const tempo = addSection(frame.article, 'Recorded military activity by month'); const months = new Map(); chronology.forEach(item => { const month = String(item.timeline && item.timeline.date || '').slice(0, 7); if (month) months.set(month, (months.get(month) || 0) + 1); }); addBarChart(tempo, Array.from(months, ([label, value]) => ({ label, value })), { label: 'Recorded military activity by month', note: 'Number of documented military events—not weapons fired. One record can describe a wave, and quieter dates may reflect gaps in available reporting.', key: 'campaign-tempo', valuesLabel: 'Recorded military-event counts', tableCaption: 'Recorded military events by month', categoryLabel: 'Period', valueLabel: 'Recorded events', numericNote: 'These are recorded military-event counts. They are not totals for weapons, successful hits, destruction, or the complete pace of fighting.' });
-    const strikes = recordArray(modelData(context.model, 'reconciliation.strikes')); frame.article.append(MapView.create(context, { title: 'Strike geography', records: strikes, description: `${strikes.length.toLocaleString()} documented strike locations are plotted. Location precision follows the source record.` }));
+    const chronology = context.model.chronology.filter(item => /(STRIKE|ATTACK|MISSILE|DRONE|INTERCEPT|MILITARY_OPERATION|NAVAL)/.test(eventType(item)));
+    const tempo = addSection(frame.article, 'Recorded military activity by month');
+    const months = new Map();
+    chronology.forEach(item => { const month = String(item.timeline && item.timeline.date || '').slice(0, 7); if (month) months.set(month, (months.get(month) || 0) + 1); });
+    const tempoRows = Array.from(months, ([label, value]) => ({ label, value }));
+    const chartRenderer = root && root.AtlasVisualizationRenderer;
+    if (chartRenderer && typeof chartRenderer.createCategoryBars === 'function') {
+      tempo.append(chartRenderer.createCategoryBars(context, {
+        typeLabel: 'RECORDED ACTIVITY · MONTHLY COUNT',
+        title: 'Accepted military-event records by month',
+        description: 'Recorded-event counts describe the accepted evidence record. They are not weapon totals or combat intensity.',
+        rows: tempoRows,
+        key: 'campaign-tempo',
+        valuesLabel: 'Recorded military-event counts',
+        tableCaption: 'Recorded military events by month',
+        categoryLabel: 'Period',
+        valueLabel: 'Recorded events',
+        numericNote: 'These are recorded military-event counts. They are not totals for weapons, successful hits, destruction, or the complete pace of fighting.'
+      }));
+    } else {
+      addBarChart(tempo, tempoRows, { label: 'Recorded military activity by month', note: 'Number of documented military events—not weapons fired. One record can describe a wave, and quieter dates may reflect gaps in available reporting.', key: 'campaign-tempo', valuesLabel: 'Recorded military-event counts', tableCaption: 'Recorded military events by month', categoryLabel: 'Period', valueLabel: 'Recorded events', numericNote: 'These are recorded military-event counts. They are not totals for weapons, successful hits, destruction, or the complete pace of fighting.' });
+    }
+    const strikes = recordArray(modelData(context.model, 'reconciliation.strikes')); frame.article.append(createRepresentativeMap(context, { typeLabel: 'STRIKE GEOGRAPHY', cameraModes: ['theater', 'gulf'], title: 'Strike geography', records: strikes, description: `${strikes.length.toLocaleString()} documented strike locations are plotted. Location precision follows the source record.` }));
     const coalitionIranStrikes = strikes.filter(strike => /USA|US_ISR_COMBINED/.test(String(strike.actor || '')) && strike.target_type !== 'maritime_blockade_strike' && Number(strike.lat) >= 25 && Number(strike.lat) <= 40 && Number(strike.lon) >= 44 && Number(strike.lon) <= 64); const effects = addSection(frame.article, 'U.S. / coalition attacks inside Iran: what the evidence establishes'); append(effects, 'p', 'section-note', 'The attack, the physical damage and what it changed are separate findings. An unknown later result stays unknown.'); const effectsList = append(effects, 'div', 'record-list two-column-list'); coalitionIranStrikes.forEach(strike => { const card = addProvenanceCard(effectsList, context, { kicker: `${readableDate(strike.event_date)} · ${plainLabel(strike.verification)}`, title: publicNarrative(strike.name, strike.id), text: publicNarrative(strike.target_type || strike.purpose, 'Attack occurrence recorded; the target finding remains bounded by the cited source.'), technicalId: strike.id, technicalIdLabel: 'Stable strike record ID', item: strike }); card.dataset.strikeEffectId = strike.id; appendActorIdentities(card, context, [strike.actor || 'Actor unresolved']); addFactList(card, [['Attack occurrence', publicNarrative(strike.target_type || strike.purpose, 'Recorded; detail unresolved')], ['Physical effect', publicNarrative(strike.impact_grade || strike.effect, 'Unresolved')], ['Operating result', publicNarrative(strike.operational_effect, 'Unresolved unless separately established by the evidence')]]); });
     const damageObservations = recordArray(modelData(context.model, 'forensic.damage_observations')); const physical = addSection(frame.article, 'What was physically damaged?'); append(physical, 'p', 'section-note', 'These records show physical damage. Operating effects are shown separately.'); const physicalList = append(physical, 'div', 'record-list two-column-list'); damageObservations.forEach(observation => { const card = addProvenanceCard(physicalList, context, { kicker: `${plainLabel(observation.damage_confidence)} evidence strength`, title: publicNarrative(observation.target, observation.observation_id), text: publicNarrative(observation.observation), meta: 'Operating effect is shown separately.', technicalId: observation.observation_id, technicalIdLabel: 'Stable damage record ID', item: { source_ids: asArray(observation.sources) } }); card.dataset.damageObservationId = observation.observation_id; });
     const audits = recordArray(modelData(context.model, 'forensic.facility_claim_audits')); const propositions = addSection(frame.article, 'What did the damage change?'); append(propositions, 'p', 'section-note', 'Each question keeps its own finding. A strike or damaged component does not automatically show that a platform or whole site stopped operating or was destroyed.'); const facilities = recordArray(modelData(context.model, 'ledger.facilities')); audits.forEach(audit => { const group = append(propositions, 'article', 'effect-proposition-group'); group.dataset.facilityAuditId = audit.facility_audit_id; append(group, 'h3', '', publicNarrative(audit.facility_name, audit.facility_id)); const list = append(group, 'div', 'record-list'); asArray(audit.propositions).forEach(proposition => addProvenanceCard(list, context, { kicker: `${plainLabel(proposition.axis, 'Evidence question')} · ${plainLabel(proposition.disposition)}`, title: publicNarrative(proposition.question), text: asArray(proposition.inference_basis).map(publicNarrative).join(' '), meta: `Evidence strength: ${plainLabel(proposition.analytic_confidence)}`, item: { source_ids: asArray(proposition.basis_sources) }, relatedRecords: [audit.facility_id] })); const facility = facilities.find(record => record.facility_id === audit.facility_id); if (facility) { const link = append(group, 'a', 'inline-route-link', `Open ${publicNarrative(facility.name, audit.facility_name)} in Bases & Infrastructure`); link.href = routeHref('military.facilities', { facility: audit.facility_id }); } });
@@ -2169,10 +2357,12 @@
       { title: 'The end state remains unresolved', text: 'Final authority, revenue, mine-clearing, inspection and permanent passage rules have not been settled. The record therefore shows a walk-back and concession, not total Iranian capitulation.', item: latestShipping[1] || {} }
     ]);
 
-    frame.article.append(MapView.create(context, {
+    frame.article.append(createRepresentativeMap(context, {
+      typeLabel: 'MAP + ECONOMY · AUTHORITATIVE MAP VIEW',
+      cameraModes: ['gulf', 'hormuz'],
       title: 'Hormuz and connected conflict locations',
       records: asArray(hormuz.current_board_delta),
-      description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks.'
+      description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks, and shared timing does not by itself establish causation.'
     }));
 
     const adaptation = addSection(frame.article, 'What prolonged disruption changed');
@@ -2208,7 +2398,7 @@
   }
 
   function EconomyPage(context) {
-    const frame = pageFrame(context, 'Economic effects extend beyond military spending. Oil flows, sanctions, insurance, infrastructure damage and growth forecasts are shown separately so unlike numbers are not mixed together.'); const economics = modelData(context.model, 'ledger.economics'); const currentEconomics = mergeCurrentRecords(economics, modelData(context.model, 'gate3.economics'), ['economic_id', 'id']); const china = modelData(context.model, 'analysis.china_oil_shift'); const oilRouteData = modelData(context.model, 'analysis.oil_routes'); const oilRoutes = asArray(oilRouteData.routes); frame.article.append(MapView.create(context, { title: 'Economic exposure and transport alternatives', routes: oilRoutes, maxZoom: 5, description: 'Maritime, pipeline and rail corridor records connect chokepoint exposure with transport alternatives. Geometry is schematic and does not state capacity, current movement, or exact alignment.' })); const forecast = addSection(frame.article, '2026 growth forecasts'); addBarChart(forecast, asArray(economics.forecast_context.rows).map(row => ({ label: row.country, value: row.delta, display: `${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} points` })), { label: 'Change in 2026 real GDP growth forecasts, percentage points', note: publicNarrative(economics.forecast_context.note) }); const comparison = addSection(frame.article, 'GCC and Iran: forecast changes'); append(comparison, 'p', 'section-note', `${publicNarrative(economics.forecast_context.metric)} These are forecasts, not realized GDP or a measure of military success. Pre-war and current forecasts are compared within the same series.`); const comparisonGrid = append(comparison, 'div', 'comparison-grid economic-comparison'); const forecastRows = asArray(economics.forecast_context.rows); const gccNames = new Set(['Saudi Arabia', 'Oman', 'United Arab Emirates', 'Bahrain', 'Kuwait', 'Qatar']); [['GCC states', forecastRows.filter(row => gccNames.has(row.country))], ['Iran', forecastRows.filter(row => row.country === 'Iran')]].forEach(([label, rows]) => { const column = append(comparisonGrid, 'section', 'comparison-column'); append(column, 'h3', '', label); rows.forEach(row => { const card = addProvenanceCard(column, context, { kicker: 'Forecast · percentage points', title: row.country, text: `Pre-war forecast: ${row.prewar.toFixed(1)}%. Current forecast: ${row.current.toFixed(1)}%. Change: ${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} percentage points.`, meta: 'Forecast comparison; not actual GDP output.', item: row }); card.dataset.economicComparisonCountry = row.country; appendActorIdentities(card, context, [row.country]); }); }); const current = addSection(frame.article, 'Recorded economic effects'); const list = append(current, 'div', 'record-list two-column-list'); currentEconomics.slice().reverse().forEach(record => addProvenanceCard(list, context, { kicker: readableDate(record.date), title: publicNarrative(record.topic), text: publicNarrative(record.finding), meta: publicNarrative(record.causation_note), item: record })); const trade = addSection(frame.article, 'China and trade adaptation'); append(trade, 'p', 'lead-copy', publicNarrative(china.assessment)); const tradeRoutes = append(trade, 'div', 'record-list'); asArray(china.routes).forEach(route => addProvenanceCard(tradeRoutes, context, { kicker: `${plainLabel(route.status)} · ${plainLabel(route.line_class)}`, title: publicNarrative(route.name), text: publicNarrative(route.flow_evidence), meta: publicNarrative(route.note), item: route })); const arcticLinks = asArray(china.linked_existing_routes); if (arcticLinks.length) { const arctic = append(trade, 'details', 'secondary-context arctic-context'); append(arctic, 'summary', '', 'Secondary context: Arctic / Northern Sea Route'); append(arctic, 'p', '', 'Russia’s Arctic oil route to China is relevant as alternative supply context. It is not evidence of Iranian wartime shipments or a measured replacement for lost Iranian volume.'); arcticLinks.forEach(route => { const card = addProvenanceCard(arctic, context, { kicker: 'Contextual link · not mapped', title: route.route_id, text: publicNarrative(route.note), item: route }); card.dataset.arcticRouteId = route.route_id; }); } const corridorIndex = addSection(frame.article, 'Strategic transport corridors'); append(corridorIndex, 'p', '', publicNarrative(oilRouteData.geometry_policy)); const corridorList = append(corridorIndex, 'div', 'record-list two-column-list'); oilRoutes.forEach(route => { const card = addProvenanceCard(corridorList, context, { kicker: `${plainLabel(route.mode)} · Schematic`, title: publicNarrative(route.name), text: publicNarrative(route.note), technicalId: route.id, technicalIdLabel: 'Stable corridor ID', item: route }); card.dataset.economyRouteId = route.id; }); const note = append(frame.article, 'aside', 'scope-note'); append(note, 'strong', '', 'What these numbers do not combine'); append(note, 'p', '', publicNarrative(economics.separation_rule)); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'Economic effects extend beyond military spending. Oil flows, sanctions, insurance, infrastructure damage and growth forecasts are shown separately so unlike numbers are not mixed together.'); const economics = modelData(context.model, 'ledger.economics'); const currentEconomics = mergeCurrentRecords(economics, modelData(context.model, 'gate3.economics'), ['economic_id', 'id']); const china = modelData(context.model, 'analysis.china_oil_shift'); const oilRouteData = modelData(context.model, 'analysis.oil_routes'); const oilRoutes = asArray(oilRouteData.routes); frame.article.append(createRepresentativeMap(context, { typeLabel: 'TRANSPORT CONTEXT · ACCEPTED ROUTES', cameraModes: ['theater', 'gulf'], title: 'Economic exposure and transport alternatives', routes: oilRoutes, maxZoom: 5, description: 'Maritime, pipeline and rail corridor records connect chokepoint exposure with transport alternatives. Geometry is schematic and does not state capacity, current movement, exact alignment, or causation.' })); const forecast = addSection(frame.article, '2026 growth forecasts'); addBarChart(forecast, asArray(economics.forecast_context.rows).map(row => ({ label: row.country, value: row.delta, display: `${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} points` })), { label: 'Change in 2026 real GDP growth forecasts, percentage points', note: publicNarrative(economics.forecast_context.note) }); const comparison = addSection(frame.article, 'GCC and Iran: forecast changes'); append(comparison, 'p', 'section-note', `${publicNarrative(economics.forecast_context.metric)} These are forecasts, not realized GDP or a measure of military success. Pre-war and current forecasts are compared within the same series.`); const comparisonGrid = append(comparison, 'div', 'comparison-grid economic-comparison'); const forecastRows = asArray(economics.forecast_context.rows); const gccNames = new Set(['Saudi Arabia', 'Oman', 'United Arab Emirates', 'Bahrain', 'Kuwait', 'Qatar']); [['GCC states', forecastRows.filter(row => gccNames.has(row.country))], ['Iran', forecastRows.filter(row => row.country === 'Iran')]].forEach(([label, rows]) => { const column = append(comparisonGrid, 'section', 'comparison-column'); append(column, 'h3', '', label); rows.forEach(row => { const card = addProvenanceCard(column, context, { kicker: 'Forecast · percentage points', title: row.country, text: `Pre-war forecast: ${row.prewar.toFixed(1)}%. Current forecast: ${row.current.toFixed(1)}%. Change: ${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} percentage points.`, meta: 'Forecast comparison; not actual GDP output.', item: row }); card.dataset.economicComparisonCountry = row.country; appendActorIdentities(card, context, [row.country]); }); }); const current = addSection(frame.article, 'Recorded economic effects'); const list = append(current, 'div', 'record-list two-column-list'); currentEconomics.slice().reverse().forEach(record => addProvenanceCard(list, context, { kicker: readableDate(record.date), title: publicNarrative(record.topic), text: publicNarrative(record.finding), meta: publicNarrative(record.causation_note), item: record })); const trade = addSection(frame.article, 'China and trade adaptation'); append(trade, 'p', 'lead-copy', publicNarrative(china.assessment)); const tradeRoutes = append(trade, 'div', 'record-list'); asArray(china.routes).forEach(route => addProvenanceCard(tradeRoutes, context, { kicker: `${plainLabel(route.status)} · ${plainLabel(route.line_class)}`, title: publicNarrative(route.name), text: publicNarrative(route.flow_evidence), meta: publicNarrative(route.note), item: route })); const arcticLinks = asArray(china.linked_existing_routes); if (arcticLinks.length) { const arctic = append(trade, 'details', 'secondary-context arctic-context'); append(arctic, 'summary', '', 'Secondary context: Arctic / Northern Sea Route'); append(arctic, 'p', '', 'Russia’s Arctic oil route to China is relevant as alternative supply context. It is not evidence of Iranian wartime shipments or a measured replacement for lost Iranian volume.'); arcticLinks.forEach(route => { const card = addProvenanceCard(arctic, context, { kicker: 'Contextual link · not mapped', title: route.route_id, text: publicNarrative(route.note), item: route }); card.dataset.arcticRouteId = route.route_id; }); } const corridorIndex = addSection(frame.article, 'Strategic transport corridors'); append(corridorIndex, 'p', '', publicNarrative(oilRouteData.geometry_policy)); const corridorList = append(corridorIndex, 'div', 'record-list two-column-list'); oilRoutes.forEach(route => { const card = addProvenanceCard(corridorList, context, { kicker: `${plainLabel(route.mode)} · Schematic`, title: publicNarrative(route.name), text: publicNarrative(route.note), technicalId: route.id, technicalIdLabel: 'Stable corridor ID', item: route }); card.dataset.economyRouteId = route.id; }); const note = append(frame.article, 'aside', 'scope-note'); append(note, 'strong', '', 'What these numbers do not combine'); append(note, 'p', '', publicNarrative(economics.separation_rule)); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
   function SanctionsPage(context) {
@@ -3215,7 +3405,18 @@
       append(item, 'small', '', note);
     });
 
-    append(graphSection, 'p', 'section-note wol-graph-tip', 'The whole network is an overview. Choose a person or outlet to make labels readable, isolate its connections, and bring the supporting receipts into focus.');
+    const semanticLegend = append(graphSection, 'div', 'wol-semantic-legend');
+    [
+      ['BULLSHITTER', 'Accepted WOL node class'],
+      ['MEGAPHONE', 'Accepted WOL node class'],
+      ['AMPLIFIES_BULLSHIT', 'Accepted directed relationship'],
+      ['SELF_AMPLIFICATION / EXTERNAL_AMPLIFICATION', 'Accepted amplification scope']
+    ].forEach(([term, meaning]) => {
+      const item = append(semanticLegend, 'span', 'wol-semantic-item');
+      append(item, 'strong', '', term);
+      append(item, 'small', '', meaning);
+    });
+    append(graphSection, 'p', 'section-note wol-graph-tip', 'The whole network is an overview. Choose a person or outlet to make labels readable, isolate its connections, and bring the supporting receipts into focus. Layout and proximity are presentation only; they do not create a relationship or grouping.');
     const graphControls = append(graphSection, 'div', 'wol-graph-controls');
     const pickerLabel = append(graphControls, 'label', '', 'Find a person or outlet');
     const picker = append(pickerLabel, 'select', 'wol-node-picker');
@@ -3227,6 +3428,23 @@
     const reset = append(graphControls, 'button', 'action wol-graph-reset', 'Clear selection');
     reset.type = 'button';
     reset.hidden = true;
+    const modeControls = append(graphSection, 'div', 'wol-mode-controls');
+    modeControls.setAttribute('role', 'group');
+    modeControls.setAttribute('aria-label', 'Network reader mode');
+    let applyGraphMode = () => {};
+    const modeButtons = new Map();
+    [['full', 'FULL NETWORK'], ['direct', 'DIRECT CONNECTIONS'], ['trace', 'TRACE PROPAGATION']].forEach(([mode, label]) => {
+      const button = append(modeControls, 'button', 'wol-mode-button', label);
+      button.type = 'button';
+      button.dataset.wolMode = mode;
+      button.addEventListener('click', () => applyGraphMode(mode));
+      modeButtons.set(mode, button);
+    });
+    const fitGraphButton = append(modeControls, 'button', 'wol-mode-button', 'FIT');
+    fitGraphButton.type = 'button';
+    const zoomGraphButton = append(modeControls, 'button', 'wol-mode-button', 'ZOOM');
+    zoomGraphButton.type = 'button';
+    zoomGraphButton.setAttribute('aria-pressed', 'false');
 
     const workspace = append(graphSection, 'div', 'wol-graph-workspace');
     const graphColumn = append(workspace, 'div', 'wol-graph-column');
@@ -3235,6 +3453,10 @@
     graphHost.setAttribute('aria-label', 'Interactive Web of Lies connection network');
     const graphStatus = append(graphColumn, 'p', 'section-note wol-graph-status');
     graphStatus.setAttribute('aria-live', 'polite');
+    const mobileTrace = append(graphColumn, 'div', 'wol-mobile-trace');
+    mobileTrace.hidden = true;
+    append(mobileTrace, 'h3', '', 'Propagation trace');
+    const mobileTraceList = append(mobileTrace, 'ol', 'wol-mobile-trace-list');
 
     const detailSection = append(workspace, 'aside', 'wol-node-detail');
     append(detailSection, 'h3', '', 'Selection details');
@@ -3381,7 +3603,23 @@
       ? context.route.params.source
       : '';
     let selectedEdgeId = '';
+    let graphMode = actorDossierRequested && selectedNodeId ? 'direct' : 'full';
     let cyGraph = null;
+    let traceFrame = null;
+    let graphZoomEnabled = false;
+    fitGraphButton.addEventListener('click', () => { if (cyGraph) cyGraph.fit(cyGraph.elements(), 48); });
+    zoomGraphButton.addEventListener('click', () => {
+      graphZoomEnabled = !graphZoomEnabled;
+      zoomGraphButton.setAttribute('aria-pressed', String(graphZoomEnabled));
+      zoomGraphButton.textContent = graphZoomEnabled ? 'ZOOM ON' : 'ZOOM';
+      if (cyGraph && typeof cyGraph.userZoomingEnabled === 'function') cyGraph.userZoomingEnabled(graphZoomEnabled);
+    });
+
+    const stopTraceMotion = () => {
+      if (traceFrame && root && typeof root.cancelAnimationFrame === 'function') root.cancelAnimationFrame(traceFrame);
+      traceFrame = null;
+    };
+    const setModePressed = () => modeButtons.forEach((button, mode) => button.setAttribute('aria-pressed', String(mode === graphMode)));
 
     const updateResetVisibility = () => {
       reset.hidden = !(selectedNodeId || selectedEdgeId);
@@ -3393,7 +3631,17 @@
 
     const focusGraph = (nodeId, edgeId) => {
       if (!cyGraph) return;
-      cyGraph.elements().removeClass('dimmed focused connected focused-link');
+      stopTraceMotion();
+      mobileTrace.hidden = true;
+      mobileTraceList.replaceChildren();
+      cyGraph.elements().removeClass('dimmed focused connected focused-link trace-edge');
+      const motionReduced = root && root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fit = (elements, padding) => {
+        if (!elements || !elements.length) return;
+        if (motionReduced) cyGraph.fit(elements, padding);
+        else cyGraph.animate({ fit: { eles: elements, padding }, duration: 220 });
+      };
+
       if (edgeId && graphEdgeById.has(edgeId)) {
         const edge = cyGraph.getElementById(edgeId);
         if (!edge || edge.empty()) return;
@@ -3402,7 +3650,7 @@
         cyGraph.elements().not(selection).addClass('dimmed');
         edge.addClass('connected focused-link');
         endpoints.addClass('connected');
-        cyGraph.animate({ fit: { eles: selection, padding: 110 }, duration: 220 });
+        fit(selection, 110);
         const record = graphEdgeById.get(edgeId);
         const source = graphNodeById.get(record.from_node_id);
         const target = graphNodeById.get(record.to_node_id);
@@ -3411,26 +3659,91 @@
           : `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${formatNumber(record.amplified_claim_count || 0)} documented claim${Number(record.amplified_claim_count || 0) === 1 ? '' : 's'} carried.`;
         return;
       }
+
       if (!nodeId || !graphNodeById.has(nodeId)) {
         cyGraph.fit(cyGraph.elements(), 48);
-        graphStatus.textContent = `Showing the full network: ${graphNodes.length} people/outlets and ${graphEdges.length} documented connections.`;
+        graphStatus.textContent = graphMode === 'full'
+          ? `Showing the full network: ${graphNodes.length} people/outlets and ${graphEdges.length} documented connections.`
+          : 'Choose a person or outlet to use this reader mode.';
+        graphHost.dataset.graphMode = graphMode;
         return;
       }
+
       const target = cyGraph.getElementById(nodeId);
       if (!target || target.empty()) return;
-      const neighborhood = target.closedNeighborhood();
-      cyGraph.elements().not(neighborhood).addClass('dimmed');
       target.addClass('focused');
-      target.neighborhood('node').addClass('connected');
-      target.connectedEdges().addClass('connected');
-      cyGraph.animate({
-        fit: { eles: neighborhood, padding: 84 },
-        duration: 220
-      });
-      const connections = adjacencyFor(nodeId).size;
-      graphStatus.textContent =
-        `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${connections} direct connection${connections === 1 ? '' : 's'}.`;
+
+      if (graphMode === 'trace') {
+        const visitedNodes = new Set([nodeId]);
+        const visitedEdges = new Set();
+        const queue = [nodeId];
+        while (queue.length) {
+          const sourceId = queue.shift();
+          graphEdges.filter(edge => edge.from_node_id === sourceId).forEach(edge => {
+            visitedEdges.add(edge.edge_id);
+            if (!visitedNodes.has(edge.to_node_id)) {
+              visitedNodes.add(edge.to_node_id);
+              queue.push(edge.to_node_id);
+            }
+          });
+        }
+        const nodeCollection = Array.from(visitedNodes).reduce((collection, id) => collection.union(cyGraph.getElementById(id)), cyGraph.collection());
+        const edgeCollection = Array.from(visitedEdges).reduce((collection, id) => collection.union(cyGraph.getElementById(id)), cyGraph.collection());
+        const trace = nodeCollection.union(edgeCollection);
+        cyGraph.elements().not(trace).addClass('dimmed');
+        nodeCollection.not(target).addClass('connected');
+        edgeCollection.addClass('connected trace-edge');
+        fit(trace, 92);
+        graphStatus.textContent = `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${visitedEdges.size} accepted directed propagation edge${visitedEdges.size === 1 ? '' : 's'} in this trace.`;
+        mobileTrace.hidden = false;
+        if (!visitedEdges.size) {
+          append(mobileTraceList, 'li', '', 'No downstream accepted propagation edge is recorded from this selection.');
+        } else {
+          Array.from(visitedEdges).map(id => graphEdgeById.get(id)).filter(Boolean).forEach(edge => {
+            const source = graphNodeById.get(edge.from_node_id);
+            const targetNode = graphNodeById.get(edge.to_node_id);
+            const item = append(mobileTraceList, 'li', 'wol-mobile-trace-step');
+            appendNodeIdentity(item, source || { display_name: edge.from_node_id }, 'span');
+            append(item, 'span', 'wol-mobile-trace-arrow', '→');
+            appendNodeIdentity(item, targetNode || { display_name: edge.to_node_id }, 'span');
+          });
+        }
+        if (!motionReduced && visitedEdges.size && root && typeof root.requestAnimationFrame === 'function') {
+          let offset = 0;
+          let previousStamp = 0;
+          const animateTrace = stamp => {
+            if (!cyGraph || !graphHost.isConnected || graphMode !== 'trace') { stopTraceMotion(); return; }
+            if (!previousStamp || stamp - previousStamp >= 120) {
+              offset = (offset + 1) % 18;
+              edgeCollection.style('line-dash-offset', offset);
+              previousStamp = stamp;
+            }
+            traceFrame = root.requestAnimationFrame(animateTrace);
+          };
+          traceFrame = root.requestAnimationFrame(animateTrace);
+        }
+      } else {
+        const neighborhood = target.closedNeighborhood();
+        cyGraph.elements().not(neighborhood).addClass('dimmed');
+        target.neighborhood('node').addClass('connected');
+        target.connectedEdges().addClass('connected');
+        if (graphMode === 'direct') fit(neighborhood, 84);
+        else cyGraph.fit(cyGraph.elements(), 48);
+        const connections = adjacencyFor(nodeId).size;
+        graphStatus.textContent = graphMode === 'direct'
+          ? `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${connections} direct connection${connections === 1 ? '' : 's'}.`
+          : `${nodeRoleLabel(graphNodeById.get(nodeId))} selected · direct relationships emphasized within the full network.`;
+      }
+      graphHost.dataset.graphMode = graphMode;
     };
+
+    applyGraphMode = mode => {
+      if (!['full', 'direct', 'trace'].includes(mode)) return;
+      graphMode = mode;
+      setModePressed();
+      focusGraph(selectedNodeId, selectedEdgeId);
+    };
+    setModePressed();
 
     const initializeGraph = () => {
       if (!graphNodes.length) {
@@ -3459,6 +3772,7 @@
         minZoom: 0.25,
         maxZoom: 2.6,
         wheelSensitivity: 0.22,
+        userZoomingEnabled: false,
         boxSelectionEnabled: false,
         autoungrabify: false,
         style: [
@@ -3578,18 +3892,27 @@
         layout: { name: 'preset' }
       });
 
+      const orderedBullshitters = graphNodes.filter(node => node.node_type === 'BULLSHITTER').map(node => node.node_id).sort();
+      const orderedMegaphones = graphNodes.filter(node => node.node_type === 'MEGAPHONE').map(node => node.node_id).sort();
+      const bullIndex = new Map(orderedBullshitters.map((id, index) => [id, index]));
+      const megaIndex = new Map(orderedMegaphones.map((id, index) => [id, index]));
       cyGraph.layout({
-        name: 'cose',
+        name: 'preset',
         animate: false,
         fit: true,
         padding: 28,
-        randomize: true,
-        componentSpacing: 42,
-        nodeRepulsion: 2800,
-        idealEdgeLength: 92,
-        edgeElasticity: 90,
-        gravity: 1.1,
-        numIter: 1400
+        positions: node => {
+          const id = node.id();
+          const type = node.data('node_type');
+          const index = type === 'BULLSHITTER' ? (bullIndex.get(id) || 0) : (megaIndex.get(id) || 0);
+          const perColumn = 10;
+          const column = Math.floor(index / perColumn);
+          const row = index % perColumn;
+          return {
+            x: type === 'BULLSHITTER' ? 140 + column * 230 : 610 + column * 210,
+            y: 90 + row * 86
+          };
+        }
       }).run();
 
       cyGraph.on('tap', 'node', event => {
@@ -3859,8 +4182,8 @@
   function SourcesDirectoryPage(context) {
     const frame = pageFrame(context, 'Browse the sources behind the current record by source type, origin and outlet. Search by outlet, title, topic or keyword.');
     const guide = addSection(frame.article, 'How source context works');
-    append(guide, 'p', '', 'Publisher type, ownership or affiliation, outlet ratings and Atlas’s findings about individual claims answer different questions. State media is a publisher type, not a truth verdict.');
-    append(guide, 'p', 'source-rating-note', 'Ratings describe the outlet, not whether a particular article or claim is true. Atlas checks individual claims against the evidence.');
+    append(guide, 'p', '', 'Publisher type, ownership or affiliation, outlet ratings and the Guide’s findings about individual claims answer different questions. State media is a publisher type, not a truth verdict.');
+    append(guide, 'p', 'source-rating-note', 'Ratings describe the outlet, not whether a particular article or claim is true. The Guide checks individual claims against the evidence.');
     const controls = append(frame.article, 'form', 'source-controls'); controls.addEventListener('submit', event => event.preventDefault());
     const label = append(controls, 'label', '', 'Search all sources'); const search = append(label, 'input'); search.type = 'search'; search.placeholder = 'Outlet, title, topic, or keyword';
     const count = append(controls, 'p', 'filter-result-count'); count.setAttribute('aria-live', 'polite');
@@ -3927,7 +4250,7 @@
   function SourcesPage(context) { return SourcesDirectoryPage(context); }
 
   function MethodPage(context) {
-    const frame = pageFrame(context, 'How Atlas turns reporting, official claims, imagery and later corrections into a public record, while keeping what is known separate from what is still open.'); const packageLineage = asArray(context.model.input_packages); const principles = addSection(frame.article, 'The rules in ordinary language'); const list = append(principles, 'ul', 'method-list'); ['Unknown ≠ zero. Unknown does not mean zero.', 'Claimed ≠ verified.', 'Reported ≠ established.', 'Unsupported ≠ false.', 'Disputed ≠ false.', 'False ≠ automatically knowingly deceptive.', 'What an organization knew is not automatically what one speaker knew.', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.', 'A launch establishes a launch. Penetration, impact and damage require their own evidence.', 'Later evidence stays later. Historical pages show only what was known at that time.', 'A later correction or stronger source does not make the event happen twice.', 'Outcome against a revised objective does not erase outcome against the original objective.', 'Uncertainty ends where the evidence ends it—and no earlier.', 'A source rating describes the outlet. It does not decide whether a particular claim is true.'].forEach(text => append(list, 'li', '', text)); const flow = addSection(frame.article, 'From summary to evidence'); addSequence(flow, context, [{ title: 'Read the conclusion', text: 'The page leads with the supported finding in ordinary language.' }, { title: 'Open the evidence', text: 'Open a drawer for source links and related timeline records.' }, { title: 'Check status and dispute separately', text: 'Support describes the evidence. Dispute describes who contests it. One does not substitute for the other.' }, { title: 'Follow corrections through time', text: 'New evidence can clarify the current record while the earlier claim, date and revision history remain preserved.' }]); const current = addSection(frame.article, 'Current record'); append(current, 'p', '', `The current record contains ${formatNumber(context.model.counts.chronology_records)} timeline records and ${formatNumber(context.model.counts.canonical_source_records)} source records from ${formatNumber(packageLineage.length)} evidence collections. Evidence is current through ${formatEvidenceClock(context.model.release.current_osint_cutoff)}. Historical pages use evidence available through ${formatEvidenceClock(context.model.release.gate2_evidence_cutoff)}.`); const history = addSection(frame.article, 'What was known then / what was learned later'); append(history, 'p', '', 'Historical views show what the evidence supported at that time. Later sources may strengthen or change the current record, but they are not inserted into earlier views. Preserving an older view does not mean Atlas still reaches the same conclusion today.'); const stable = append(history, 'aside', 'scope-note'); append(stable, 'strong', '', 'Later evidence on the same event'); append(stable, 'p', '', 'A later source may make an existing event clearer or stronger. It remains the same event rather than appearing as a second event.'); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'How the Guide turns reporting, official claims, imagery and later corrections into a public record, while keeping what is known separate from what is still open.'); const packageLineage = asArray(context.model.input_packages); const principles = addSection(frame.article, 'The rules in ordinary language'); const list = append(principles, 'ul', 'method-list'); ['Unknown ≠ zero. Unknown does not mean zero.', 'Claimed ≠ verified.', 'Reported ≠ established.', 'Unsupported ≠ false.', 'Disputed ≠ false.', 'False ≠ automatically knowingly deceptive.', 'What an organization knew is not automatically what one speaker knew.', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.', 'A launch establishes a launch. Penetration, impact and damage require their own evidence.', 'Later evidence stays later. Historical pages show only what was known at that time.', 'A later correction or stronger source does not make the event happen twice.', 'Outcome against a revised objective does not erase outcome against the original objective.', 'Uncertainty ends where the evidence ends it—and no earlier.', 'A source rating describes the outlet. It does not decide whether a particular claim is true.'].forEach(text => append(list, 'li', '', text)); const flow = addSection(frame.article, 'From summary to evidence'); addSequence(flow, context, [{ title: 'Read the conclusion', text: 'The page leads with the supported finding in ordinary language.' }, { title: 'Open the evidence', text: 'Open a drawer for source links and related timeline records.' }, { title: 'Check status and dispute separately', text: 'Support describes the evidence. Dispute describes who contests it. One does not substitute for the other.' }, { title: 'Follow corrections through time', text: 'New evidence can clarify the current record while the earlier claim, date and revision history remain preserved.' }]); const current = addSection(frame.article, 'Current record'); append(current, 'p', '', `The current record contains ${formatNumber(context.model.counts.chronology_records)} timeline records and ${formatNumber(context.model.counts.canonical_source_records)} source records from ${formatNumber(packageLineage.length)} evidence collections. Evidence is current through ${formatEvidenceClock(context.model.release.current_osint_cutoff)}. Historical pages use evidence available through ${formatEvidenceClock(context.model.release.gate2_evidence_cutoff)}.`); const history = addSection(frame.article, 'What was known then / what was learned later'); append(history, 'p', '', 'Historical views show what the evidence supported at that time. Later sources may strengthen or change the current record, but they are not inserted into earlier views. Preserving an older view does not mean the Guide still reaches the same conclusion today.'); const stable = append(history, 'aside', 'scope-note'); append(stable, 'strong', '', 'Later evidence on the same event'); append(stable, 'p', '', 'A later source may make an existing event clearer or stronger. It remains the same event rather than appearing as a second event.'); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
   function ArchivePage(context) {
@@ -4052,23 +4375,56 @@ function enhanceCampaignVisual(article, context) {
 
 function enhanceShippingVisual(article, context) {
   if (article.querySelector('[data-shipping-map-system]')) return;
-  const oil = modelData(context.model, 'analysis.oil_routes') || {}; const routes = asArray(oil.routes);
+  const oil = modelData(context.model, 'analysis.oil_routes') || {};
+  const routes = asArray(oil.routes);
   if (!routes.length) {
-    const warning = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Route data unavailable', message: 'Atlas cannot render the broader shipping network because no supported route geometry is present in the current public model.', accounting: 'No route geometry is inferred to fill this gap.' });
-    warning.dataset.shippingRouteDependency = 'missing'; visualSweepInsertAfterStatus(article, warning); return;
+    const warning = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Route data unavailable', message: 'The Guide cannot render the broader shipping network because no supported route geometry is present in the current public model.', accounting: 'No route geometry is inferred to fill this gap.' });
+    warning.dataset.shippingRouteDependency = 'missing';
+    visualSweepInsertAfterStatus(article, warning);
+    return;
   }
-  const shippingRecords = [...recordArray(modelData(context.model, 'ledger.shipping')), ...recordArray(modelData(context.model, 'gate3.shipping')), ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))];
-  const inHormuz = shippingRecords.filter(record => { const point = pointFromRecord(record, context.services.locationResolver); return point && point.lat >= 22.4 && point.lat <= 28.9 && point.lon >= 50.8 && point.lon <= 60.8; });
-  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero'); system.dataset.shippingMapSystem = 'chokepoint-network';
-  append(system, 'h2', '', 'From chokepoint to network consequences');
-  append(system, 'p', 'section-note meaning-first-summary', `${routes.length.toLocaleString()} strategic transport corridor${routes.length === 1 ? ' is' : 's are'} shown.`);
-  append(system, 'p', 'method-note', 'These are source-supported schematic routes, not precise vessel tracks, surveyed alignment, or targeting-quality geometry.');
-  const grid = append(system, 'div', 'shipping-map-grid');
-  const choke = MapView.create(context, { title: 'Hormuz chokepoint', records: inHormuz, viewportOverride: [[22.4, 50.8], [28.9, 60.8]], scope: 'hormuz-chokepoint', maxZoom: 7, contextNote: 'Country, coastline and named evidence locations provide orientation. Geographic precision remains bounded by the underlying record.', description: inHormuz.length ? `${inHormuz.length.toLocaleString()} geolocated shipping or commercial-loss record${inHormuz.length === 1 ? '' : 's'} are shown within the public Hormuz context window.` : 'This map provides geographic context for the Strait; current public shipping evidence in this view is primarily corridor- and reporting-based rather than point-mapped loss evidence.' });
-  choke.dataset.shippingMapView = 'chokepoint';
-  if (!inHormuz.length) choke.append(createStateNotice(context, { variant: 'no-geolocated-records', message: 'This map provides geographic context. Current public shipping evidence in this view is primarily corridor- and reporting-based rather than represented by mapped commercial-vessel loss records.', accounting: 'Mapped shipping or commercial-vessel loss records in this view: 0' }));
-  const network = MapView.create(context, { title: 'Network consequences', records: shippingRecords, routes, scope: 'route-network', maxZoom: 5, contextLabels: routeContextLabels(routes), contextNote: 'Named route nodes provide city, port and corridor context. Roads are not inferred where no deterministic road reference layer is packaged.', description: 'Broader maritime, pipeline and rail corridors show how pressure at Hormuz connects to Red Sea, Arabian Peninsula and Eurasian alternatives.' }); network.dataset.shippingMapView = 'network';
-  grid.append(choke, network); const oldMap = article.querySelector('.context-map'); if (oldMap && oldMap !== choke && oldMap !== network) { if (oldMap._atlasMap && oldMap._atlasMap.remove) oldMap._atlasMap.remove(); oldMap.remove(); }
+  const shippingRecords = [
+    ...recordArray(modelData(context.model, 'ledger.shipping')),
+    ...recordArray(modelData(context.model, 'gate3.shipping')),
+    ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))
+  ];
+  const inHormuz = shippingRecords.filter(record => {
+    const point = pointFromRecord(record, context.services.locationResolver);
+    return point && point.lat >= 22.4 && point.lat <= 28.9 && point.lon >= 50.8 && point.lon <= 60.8;
+  });
+  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero');
+  system.dataset.shippingMapSystem = 'continuous-maplibre';
+  append(system, 'h2', '', 'From theater to Hormuz');
+  append(system, 'p', 'section-note meaning-first-summary', 'Four strategic transport corridors are shown in one continuous map from the wider transport network to the Gulf and the Strait, without changing the accepted route geometry.');
+  append(system, 'p', 'method-note', 'These are source-supported schematic routes, not precise vessel tracks, surveyed alignment, or targeting-quality geometry. They are not live tracking or navigation data.');
+  const map = createRepresentativeMap(context, {
+    typeLabel: 'SHIPPING & TRADE MAP',
+    title: 'Shipping pressure and strategic bypass corridors',
+    records: shippingRecords,
+    routes,
+    scope: 'shipping-continuous',
+    maxZoom: 8,
+    cameraModes: ['theater', 'gulf', 'hormuz'],
+    contextLabels: routeContextLabels(routes),
+    contextNote: 'Named route nodes provide corridor context. No unrecorded route segment is inferred.',
+    description: 'Use Theater, Gulf, and Hormuz to move through the same accepted route and point dataset. Route IDs, geometry, semantics, and evidence relationships are unchanged.'
+  });
+  map.dataset.shippingMapView = 'continuous';
+  system.append(map);
+  if (!inHormuz.length) {
+    system.append(createStateNotice(context, {
+      variant: 'no-geolocated-records',
+      message: 'This map provides geographic context. Current public shipping evidence in this view is primarily corridor- and reporting-based rather than represented by mapped commercial-vessel loss records.',
+      accounting: 'Mapped shipping or commercial-vessel loss records in this view: 0'
+    }));
+  }
+  const oldMaps = Array.from(article.querySelectorAll(':scope > .context-map'));
+  oldMaps.forEach(oldMap => {
+    if (oldMap === map) return;
+    if (oldMap._atlasMap && oldMap._atlasMap.remove) oldMap._atlasMap.remove();
+    if (oldMap._atlasMapLibre && oldMap._atlasMapLibre.remove) oldMap._atlasMapLibre.remove();
+    oldMap.remove();
+  });
   visualSweepInsertAfterStatus(article, system);
 }
 

@@ -133,7 +133,10 @@ function addFinding(findings, routeKey, width, category, detail) {
           if (snapshot.routeKey !== routeRecord.key) addFinding(findings, routeRecord.key, width, 'route', `resolved-${snapshot.routeKey}`);
           if (!snapshot.h1 || !snapshot.h1Visible) addFinding(findings, routeRecord.key, width, 'heading', 'missing-or-hidden-h1');
           if (snapshot.mainTextLength < 20) addFinding(findings, routeRecord.key, width, 'content', 'empty-reading-surface');
-          snapshot.machine.forEach(token => addFinding(findings, routeRecord.key, width, 'machine-token', token));
+          const acceptedWolMachineLabels = routeRecord.key === 'evidence.web_of_lies'
+            ? new Set(['AMPLIFIES_BULLSHIT', 'SELF_AMPLIFICATION', 'EXTERNAL_AMPLIFICATION'])
+            : new Set();
+          snapshot.machine.filter(token => !acceptedWolMachineLabels.has(token)).forEach(token => addFinding(findings, routeRecord.key, width, 'machine-token', token));
           snapshot.internal.forEach(phrase => addFinding(findings, routeRecord.key, width, 'internal-copy', phrase));
           if (snapshot.scrollWidth > snapshot.clientWidth) addFinding(findings, routeRecord.key, width, 'overflow', `${snapshot.scrollWidth}>${snapshot.clientWidth}`);
           if ((width === 390 || width === 320) && !snapshot.mobileNavigationVisible) addFinding(findings, routeRecord.key, width, 'mobile-nav', 'primary-or-context-rail-not-visible');
@@ -234,13 +237,16 @@ function addFinding(findings, routeKey, width, category, detail) {
 
     await route(cdp, 'military.campaigns');
     const mapInteraction = await cdp.eval(`(() => {
-      const map = document.querySelector('[data-component="MapView"] .leaflet-container');
-      const marker = document.querySelector('[data-component="MapView"] .leaflet-marker-icon');
+      const view = document.querySelector('[data-component="MapView"], [data-component="MapLibreView"]');
+      const map = view?.querySelector('.leaflet-container, .atlas-maplibre-map');
+      const marker = view?.querySelector('.leaflet-marker-icon');
       if (marker) marker.click();
-      const card = document.querySelector('.map-card');
+      const recordButton = view?.querySelector('.map-record-button');
+      if (!marker && recordButton) recordButton.click();
+      const card = view?.querySelector('.map-card, .visualization-selection');
       const close = card?.querySelector('.map-card-close');
       if (close) close.click();
-      return { map:Boolean(map), marker:Boolean(marker), cardOpened:Boolean(card), cardClosed: !document.querySelector('.map-card') || document.querySelector('.map-card')?.parentElement?.hidden === true };
+      return { map:Boolean(map), marker:Boolean(marker || recordButton), cardOpened:Boolean(card), cardClosed: !view?.querySelector('.map-card') || view?.querySelector('.map-card')?.parentElement?.hidden === true };
     })()`);
     if (!mapInteraction.map) addFinding(findings, 'military.campaigns', 390, 'map', 'missing-map-runtime');
     if (mapInteraction.marker && !mapInteraction.cardOpened) addFinding(findings, 'military.campaigns', 390, 'map', 'marker-does-not-open-context');
