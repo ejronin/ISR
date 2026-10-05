@@ -49,13 +49,19 @@
       "update_id": "UPD-FLYDUBAI-FZ1073-PREHIRE-PLANNING-20261005",
       "updates_existing_ref": "FLYDUBAI_FZ1073_SECURITY_INCIDENT_20260930",
       "relationship": "LATER_SOURCE_REPORTING_ON_MOTIVE_AND_PREMEDITATION_WITH_EXTERNAL_DIRECTION_STILL_UNRESOLVED",
-      "summary": "Two Israeli officials with knowledge of the UAE probe told Reuters the co-pilot said he planned an attack before joining flydubai; a third source said he intended to crash FZ1073 into Ben-Gurion and had considered an earlier attack. UAE and Israeli authorities had not publicly confirmed those details, no formal charges had been announced, and no Iran or Houthi organizational direction was established."
+      "summary": "Two Israeli officials with knowledge of the UAE probe told Reuters the co-pilot said he planned an attack before joining flydubai; a third source said he intended to crash FZ1073 into Ben-Gurion and had considered an earlier attack. UAE and Israeli authorities had not publicly confirmed those details, no formal charges had been announced, and no Iran or Houthi organizational direction was established.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/co-pilot-planned-flydubai-attack-before-hired-by-airline-two-israeli-officials-2026-10-05/"
+      ]
     },
     {
       "update_id": "UPD-SAUDI-HOUTHI-BAB-EL-MANDEB-GAINS-20261005",
       "updates_existing_ref": "SAUDI_HOUTHI_RED_SEA_CONFLICT",
       "relationship": "COUNTEROFFENSIVE_REPORTED_TERRITORIAL_GAINS_WITH_INDEPENDENT_VERIFICATION_LIMITATION",
-      "summary": "Government forces reported major coastal gains around Bab el-Mandeb and toward Mocha with Saudi air support; Reuters could not independently verify the extent and Houthis denied the claims. Houthi gains near Taiz were also reported with conflicting detail."
+      "summary": "Government forces reported major coastal gains around Bab el-Mandeb and toward Mocha with Saudi air support; Reuters could not independently verify the extent and Houthis denied the claims. Houthi gains near Taiz were also reported with conflicting detail.",
+      "sources": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
     }
   ],
   "claims_and_corrections": [],
