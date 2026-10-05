@@ -1,0 +1,176 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_PROCESSING_REFERRAL",
+  "schema_version": "1.0",
+  "authority": "Evidence Integration upstream collection and analytic hypothesis preservation only; no Claims Forensics adjudication and no public finding",
+  "collection_time": "2026-10-05T18:11:00-04:00",
+  "timezone": "America/New_York",
+  "topic": "October 4 Mehrabad dark-transport cluster and possible extraction of IRGC personnel from Yemen",
+  "chain_id": "YEMEN_IRGC_TRANSPORT_EXTRACTION_HYPOTHESIS_20261004",
+  "parent_refs": [
+    "data/forensic-v1.3.2/yemen-mahan-chain.json",
+    "GAP-E1-IRGC-HOUTHI-COMMAND",
+    "REL-IRAN-HOUTHI-OPERATIONAL-SUPPORT-20260923",
+    "SAUDI_HOUTHI_RED_SEA_CONFLICT"
+  ],
+  "chain_rule": "Preserve observed aviation events, reported prior IRGC insertion, counteroffensive timing, hypotheses and alternatives as separate nodes. Sequence and temporal proximity do not establish common mission, origin, passenger identity or extraction.",
+  "event_chain": [
+    {
+      "node_id": "YEM-X01",
+      "event_time": "2026-07-13/2026-07-23",
+      "event": "Reuters reported from four sources that a July 13 Mahan Air flight diverted from Sanaa to Hodeidah carried 10-21 IRGC personnel, including commanders/advisers, plus missile/drone-related equipment. Iran and the Houthis denied military personnel or aid were aboard.",
+      "status": "MULTISOURCE_REUTERS_REPORT_WITH_OFFICIAL_DENIAL; already preserved in ATLAS Yemen/Mahan chain",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iran-flew-irgc-commanders-missile-gear-yemens-houthis-sources-say-2026-07-23/"
+      ]
+    },
+    {
+      "node_id": "YEM-X02",
+      "event_time": "2026-09-28",
+      "event": "Shin/FromIran recorded an IRIAF C-130 landing at Mehrabad, alongside an earlier unidentified Il-76 arrival.",
+      "status": "OSINT_OBSERVATION; establishes a recent ordinary IRIAF C-130 presence/arrival base rate at Mehrabad and is not evidence of Yemen linkage",
+      "source_urls": [
+        "https://sh1n.org/es/tweets/earlier-this-morning-an-unknown-il-76-landed-at-mehrabad-airport-too-tehran-tehran-2104481334512992667"
+      ]
+    },
+    {
+      "node_id": "YEM-X03",
+      "event_time": "2026-10-04T09:03:00Z",
+      "event": "Shin/FromIran reported a C-130 landing at Tehran Mehrabad with its transponder off.",
+      "status": "OBSERVED_ARRIVAL_ONLY; operator, tail number, origin, prior route, cargo and passengers not established",
+      "source_urls": [
+        "https://sh1n.org/tweets/c-130-with-its-transponder-off-landing-at-mehrabad-airport-in-tehran-at-12-33-tehran-time-2106720751726289102"
+      ]
+    },
+    {
+      "node_id": "YEM-X04",
+      "event_time": "2026-10-04T09:16:00Z",
+      "event": "Shin/FromIran reported a Mahan Air B747 descending toward Mehrabad with its transponder off 13 minutes after the reported C-130 arrival.",
+      "status": "OBSERVED_TEMPORAL_PROXIMITY_ONLY; no common mission, route, passenger or Yemen connection established",
+      "source_urls": [
+        "https://sh1n.org/tweets/update-2106800921363562738"
+      ]
+    },
+    {
+      "node_id": "YEM-X05",
+      "event_time": "2026-10-04T20:57:00Z",
+      "event": "Shin/FromIran later reported another unidentified aircraft with its transponder off circling in from the south before landing at Mehrabad.",
+      "status": "OBSERVED_ARRIVAL_DIRECTION_ONLY; aircraft identity, origin and relation to the earlier transports unresolved",
+      "source_urls": [
+        "https://sh1n.org/tweets/another-aircraft-with-its-transponder-off-circled-from-the-south-before-landing-mehrabad-2106851330388041763"
+      ]
+    },
+    {
+      "node_id": "YEM-X06",
+      "event_time": "2026-10-04",
+      "event": "Yemen's Saudi-backed internationally recognized government publicly announced a major campaign to retake Houthi-held territory, moving the previously reported offensive from planning to execution.",
+      "status": "REUTERS_CONFIRMED_PUBLIC_ANNOUNCEMENT",
+      "source_urls": [
+        "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/"
+      ]
+    },
+    {
+      "node_id": "YEM-X07",
+      "event_time": "2026-10-05",
+      "event": "Saudi-backed Yemeni government forces reported major gains around Bab el-Mandeb, Dhubab and toward Mocha. Reuters could not independently verify the full extent and Houthis rejected the claims.",
+      "status": "REPORTED_GOVERNMENT_GAINS_WITH_INDEPENDENT_VERIFICATION_LIMITATION",
+      "source_urls": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "HYP-IRGC-YEMEN-EXTRACTION-OCT4",
+      "proposition": "The October 4 C-130 arrival at Mehrabad may have been part of an operation extracting IRGC commanders/advisers from Yemen before or during the Saudi-backed Yemeni counteroffensive.",
+      "status_here": "PLAUSIBLE_UNRESOLVED_ANALYTIC_HYPOTHESIS; NOT AN ESTABLISHED EVENT",
+      "supporting_considerations": [
+        "ATLAS already preserves multisource reporting that IRGC commanders/advisers were flown into Houthi-controlled Yemen in July.",
+        "The unidentified C-130 arrived shortly before the Yemen counteroffensive was publicly announced as underway and before reported government gains accelerated.",
+        "Iran would have a rational force-protection incentive to reduce exposure of scarce experienced expeditionary personnel once the Saudi-backed operation and outside support became apparent."
+      ],
+      "evidence_against_or_limiting_weight": [
+        "No tail number, operator, departure airport, route, intermediate stop, manifest, passenger imagery or passenger-source reporting has been established for the October 4 C-130.",
+        "Mehrabad has recent documented IRIAF C-130 activity, creating a strong domestic logistics/base-rate alternative.",
+        "The Mahan B747 arrival 13 minutes later is only temporal proximity; no evidence establishes a shared mission.",
+        "The later aircraft arriving from the south is unidentified and may be unrelated.",
+        "No credible public source reviewed here says IRGC personnel were withdrawn from Yemen on October 4."
+      ],
+      "promotion_criteria": [
+        "Identify the October 4 C-130 airframe or operator and reconstruct a prior leg from Yemen or a plausible Yemen-linked staging point.",
+        "Obtain credible reporting, imagery or records placing IRGC Yemen personnel on the aircraft or documenting a contemporaneous withdrawal.",
+        "Establish a Hodeidah, Sanaa or Yemen-linked intermediate-airfield movement that can be temporally chained to the Mehrabad arrival."
+      ],
+      "disconfirmation_criteria": [
+        "Conclusive airframe/route evidence showing an unrelated domestic Iranian mission.",
+        "Credible passenger/cargo documentation establishing another mission.",
+        "Independent evidence placing the relevant IRGC Yemen command contingent in Yemen after the October 4 arrival window without a separate rotation explanation."
+      ]
+    },
+    {
+      "hypothesis_id": "ALT-DOMESTIC-IRIAF-LOGISTICS",
+      "proposition": "The October 4 C-130 was an ordinary or war-related domestic IRIAF logistics movement unrelated to Yemen.",
+      "status_here": "STRONG_BASE_RATE_ALTERNATIVE; UNRESOLVED",
+      "supporting_considerations": [
+        "IRIAF C-130 activity at Mehrabad was directly observed days earlier.",
+        "No origin or passenger evidence ties the October 4 aircraft to Yemen."
+      ]
+    }
+  ],
+  "evidence_links": [
+    {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/iran-flew-irgc-commanders-missile-gear-yemens-houthis-sources-say-2026-07-23/",
+      "relevance": "Prior reported IRGC commander/adviser insertion into Houthi-controlled Yemen and official denial."
+    },
+    {
+      "source": "Shin / FromIran",
+      "url": "https://sh1n.org/tweets/c-130-with-its-transponder-off-landing-at-mehrabad-airport-in-tehran-at-12-33-tehran-time-2106720751726289102",
+      "relevance": "October 4 C-130 Mehrabad arrival at 0903Z with transponder off."
+    },
+    {
+      "source": "Shin / FromIran",
+      "url": "https://sh1n.org/tweets/update-2106800921363562738",
+      "relevance": "October 4 Mahan Air B747 descent toward Mehrabad at 0916Z with transponder off."
+    },
+    {
+      "source": "Shin / FromIran",
+      "url": "https://sh1n.org/tweets/another-aircraft-with-its-transponder-off-circled-from-the-south-before-landing-mehrabad-2106851330388041763",
+      "relevance": "Later October 4 unidentified transponder-off aircraft arriving from the south."
+    },
+    {
+      "source": "Shin / FromIran",
+      "url": "https://sh1n.org/es/tweets/earlier-this-morning-an-unknown-il-76-landed-at-mehrabad-airport-too-tehran-tehran-2104481334512992667",
+      "relevance": "September 28 IRIAF C-130 arrival at Mehrabad, preserving the domestic/base-rate alternative."
+    },
+    {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/",
+      "relevance": "October 4 transition of the Saudi-backed Yemeni counteroffensive from planning to publicly announced execution."
+    },
+    {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/",
+      "relevance": "October 5 reported Bab el-Mandeb/Dhubab/Mocha gains with Reuters verification caveat and Houthi denial."
+    }
+  ],
+  "routing": {
+    "evidence_integration": "Preserve as a linked aviation/Yemen evidence chain and continue airframe, route, passenger and post-October-4 IRGC-presence collection. Do not promote extraction as fact without discriminating evidence.",
+    "claims_forensics": "No Lie Ledger proposition is created merely from this hypothesis. Consume only if a public actor makes a falsifiable claim about the aircraft, withdrawal, continued IRGC presence or Yemen direction; preserve exact wording and time.",
+    "lie_ledger": "OUT_OF_SCOPE_UNLESS_A_CLAIM_NODE_IS_LATER_CREATED_BY_CLAIMS_FORENSICS",
+    "web_of_lies": "NO_DOWNSTREAM_CULPABILITY_OR_NETWORK_INFERENCE_FROM_THIS_ARTIFACT",
+    "public_product": "No direct publication authority. If surfaced as an unresolved intelligence note, label origin/operator/passengers unknown and separate observed facts from analytic hypothesis."
+  },
+  "unresolved_questions": [
+    "What was the October 4 C-130 tail number and operator?",
+    "Where did it depart immediately before Mehrabad, and were there earlier legs through Hodeidah, Sanaa, southern Iran, Oman or another staging point?",
+    "Was the October 4 Mahan B747 movement operationally related to the C-130 or merely coincident?",
+    "Can satellite imagery, local imagery, Mode-S/MLAT archives or airfield observations identify relevant October 3-4 activity at Hodeidah, Sanaa, Bandar Abbas, Chabahar or other plausible staging locations?",
+    "Is there credible post-October-4 evidence placing the previously reported IRGC command/advisory contingent still in Yemen?"
+  ],
+  "limitations": [
+    "No proprietary ADS-B/Mode-S archive or commercial satellite terminal was available for this referral.",
+    "No origin, route, tail number or passenger identity is inferred from a transponder-off arrival alone.",
+    "Temporal proximity to the counteroffensive is evidentiary context, not proof of causation or mission.",
+    "The October 4 Mahan B747 and later unidentified aircraft are not treated as part of one operation absent independent linkage."
+  ]
+}
