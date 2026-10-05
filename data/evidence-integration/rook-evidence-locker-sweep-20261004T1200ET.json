@@ -38,13 +38,19 @@
       "update_id": "UPD-SAUDI-HOUTHI-OFFENSIVE-EXECUTION-20261004",
       "updates_existing_ref": "SAUDI_HOUTHI_RED_SEA_CONFLICT",
       "relationship": "REPORTED_PLANNING_ADVANCED_TO_PUBLICLY_ANNOUNCED_AND_ONGOING_OPERATION",
-      "summary": "The Saudi-backed Yemeni counteroffensive previously reported in planning was publicly announced as underway on October 4."
+      "summary": "The Saudi-backed Yemeni counteroffensive previously reported in planning was publicly announced as underway on October 4.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/"
+      ]
     },
     {
       "update_id": "UPD-US-IRAN-HORMUZ-SEQUENCING-20261004",
       "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
       "relationship": "LATER_IRANIAN_POSITION_ON_US_RESPONSE_AND_REOPENING_SEQUENCE",
-      "summary": "Iran said the U.S. response had been relayed through mediators but additional points remained; Tehran tied Hormuz reopening to seven conditions based on the June Islamabad MoU and denied that nuclear discussions with Washington had begun."
+      "summary": "Iran said the U.S. response had been relayed through mediators but additional points remained; Tehran tied Hormuz reopening to seven conditions based on the June Islamabad MoU and denied that nuclear discussions with Washington had begun.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-says-strait-hormuz-will-not-reopen-until-conditions-are-met-2026-10-04/"
+      ]
     }
   ],
   "claims_and_corrections": [
