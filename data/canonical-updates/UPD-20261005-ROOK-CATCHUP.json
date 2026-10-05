@@ -1,0 +1,488 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261005-ROOK-CATCHUP",
+  "known_at": "2026-10-05T18:12:00-04:00",
+  "evidence_cutoff": "2026-10-05T16:55:00-04:00",
+  "summary": "Consumes the qualified ROOK intake from Oct. 2 00:00 ET through Oct. 5 16:55 ET, including the append-only late-discovered Oct. 2 G7 reserve source. Updates current diplomacy, Hormuz shipping, Gulf energy and Iran economic state while preserving attribution and independent-verification limits. Claims Forensics/Lie Ledger adjudications are not changed.",
+  "sources": [
+    {
+      "source_id": "SRC-A2105A000001",
+      "url": "https://www.reuters.com/world/middle-east/yemen-carried-out-20-strikes-houthi-targets-taiz-province-spokesperson-says-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000002",
+      "url": "https://www.reuters.com/world/middle-east/record-numbers-going-hungry-yemen-amid-escalating-conflict-wfp-says-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000003",
+      "url": "https://www.reuters.com/world/italy-says-eu-naval-mission-red-sea-still-insufficient-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000004",
+      "url": "https://www.reuters.com/world/middle-east/pakistan-says-mecca-pact-members-hold-emergency-talks-engaging-houthis-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000005",
+      "url": "https://www.reuters.com/world/middle-east/us-issues-sanctions-against-hamas-financing-network-treasury-says-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000006",
+      "url": "https://www.reuters.com/business/energy/september-lng-shipments-through-hormuz-hit-highest-since-start-us-iran-war-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000007",
+      "url": "https://www.reuters.com/business/energy/opec-delays-oil-capacity-review-after-iran-war-disrupts-expansion-plans-sources-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000008",
+      "url": "https://www.reuters.com/world/asia-pacific/saudis-plan-assault-houthis-break-red-sea-chokehold-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000009",
+      "url": "https://www.reuters.com/business/energy/crude-oil-tanker-struck-by-unknown-projectile-off-oman-ukmto-says-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00000A",
+      "url": "https://www.reuters.com/world/middle-east/israeli-strike-kills-four-people-gaza-medics-say-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00000B",
+      "url": "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00000C",
+      "url": "https://www.reuters.com/world/portugal-prosecutors-probe-legality-us-use-lajes-base-iran-war-2026-10-03/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00000D",
+      "url": "https://www.reuters.com/business/aerospace-defense/flydubai-co-pilot-attacked-pilot-with-axe-attempted-terrorist-attack-uae-says-2026-10-03/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00000E",
+      "url": "https://www.reuters.com/world/uk/man-arrested-fairford-air-base-investigation-released-bail-2026-10-03/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00000F",
+      "url": "https://www.reuters.com/business/energy/iraq-says-it-transported-2-million-barrels-crude-through-strait-hormuz-2026-10-03/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000010",
+      "url": "https://www.reuters.com/world/middle-east/iranian-rial-new-low-cenbank-sells-dollars-support-currency-2026-10-03/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000011",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-strait-hormuz-will-not-reopen-until-conditions-are-met-2026-10-04/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000012",
+      "url": "https://www.reuters.com/world/asia-pacific/head-yemens-presidential-council-announces-military-operations-retake-territory-2026-10-04/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000013",
+      "url": "https://www.reuters.com/world/uk/us-removes-b-1-bombers-uk-base-amid-security-concerns-2026-10-04/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000014",
+      "url": "https://www.reuters.com/business/energy/middle-east-crude-oil-exports-exceed-pre-war-levels-tanker-attacks-increase-2026-10-05/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000015",
+      "url": "https://www.reuters.com/business/energy/saudi-arabia-unexpectedly-cuts-oil-prices-asia-2026-10-04/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000016",
+      "url": "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000017",
+      "url": "https://www.reuters.com/business/energy/more-qatari-lng-cargoes-transit-strait-hormuz-despite-ongoing-risks-2026-10-05/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000018",
+      "url": "https://www.reuters.com/world/asia-pacific/co-pilot-planned-flydubai-attack-before-hired-by-airline-two-israeli-officials-2026-10-05/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A000019",
+      "url": "https://www.reuters.com/world/middle-east/us-says-foreign-financial-institutions-doing-business-with-iran-may-be-2026-10-05/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    },
+    {
+      "source_id": "SRC-A2105A00001A",
+      "url": "https://ofac.treasury.gov/recent-actions/20261005",
+      "source_role": "Primary U.S. Treasury/OFAC source"
+    },
+    {
+      "source_id": "SRC-A2105A00001B",
+      "url": "https://www.reuters.com/business/energy/europe-discussing-plan-diesel-stock-releases-after-us-pressure-source-says-2026-10-02/",
+      "source_role": "Source preserved from accepted ROOK upstream intake"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "LOCKER-YEMEN-TAIZ-20-STRIKES-20261002",
+      "event_date": "2026-10-02",
+      "summary": "A Yemeni military spokesperson said government-aligned warplanes carried out 20 strikes over three hours on Houthi movements, personnel, vehicles and military equipment in Taiz province. Reuters reported the claim as part of the sharpest Saudi-Houthi escalation since the 2022 truce.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000001"
+      ],
+      "publication_time": "2026-10-02T02:21:00-04:00",
+      "upstream_event_type": "YEMEN_GOVERNMENT_AIRSTRIKES_ON_HOUTHI_TARGETS"
+    },
+    {
+      "event_id": "LOCKER-YEMEN-WFP-HUNGER-20261002",
+      "event_date": "2026-10-02",
+      "summary": "WFP said 74% of households in government-controlled areas it could access lacked sufficient food after renewed fighting displaced tens of thousands. WFP said it needed about $109 million within weeks to sustain assistance to newly displaced people and existing beneficiaries.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000002"
+      ],
+      "publication_time": "2026-10-02T06:26:00-04:00",
+      "upstream_event_type": "YEMEN_HUMANITARIAN_DETERIORATION"
+    },
+    {
+      "event_id": "LOCKER-EU-RED-SEA-ASPIDES-20261002",
+      "event_date": "2026-10-02",
+      "summary": "Italy's defence minister said current EU contributions to Operation Aspides remained insufficient to guarantee safe passage through the Red Sea and Bab el-Mandeb. Reuters reported diplomats saying six warships were deployed while EU officials had said more than ten would be needed.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000003"
+      ],
+      "publication_time": "2026-10-02T09:07:00-04:00",
+      "upstream_event_type": "EU_RED_SEA_NAVAL_MISSION_CAPACITY_WARNING"
+    },
+    {
+      "event_id": "LOCKER-MECCA-PACT-HOUTHI-EMERGENCY-TALKS-20261002",
+      "event_date": "2026-10-02",
+      "summary": "Pakistan's foreign minister said Saudi Arabia, Turkiye and Pakistan would hold an emergency Mecca Defence Pact meeting in Riyadh to discuss Iran's suggestion that the Houthis be engaged politically as an alternative to further military action.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000004"
+      ],
+      "publication_time": "2026-10-02T10:06:00-04:00",
+      "upstream_event_type": "MECCA_PACT_HOUTHI_POLICY_CONSULTATION"
+    },
+    {
+      "event_id": "LOCKER-US-HAMAS-FINANCE-SANCTIONS-20261002",
+      "event_date": "2026-10-02",
+      "summary": "The United States imposed additional sanctions on a Hamas financing network. Treasury said the network moved more than $2 million through charitable fronts and cryptocurrency channels.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000005"
+      ],
+      "publication_time": "2026-10-02T10:33:00-04:00",
+      "upstream_event_type": "US_HAMAS_FINANCING_SANCTIONS"
+    },
+    {
+      "event_id": "LOCKER-SAUDI-HOUTHI-OFFENSIVE-PLANNING-20261002",
+      "event_date": "2026-10-02",
+      "summary": "Reuters reported that Saudi Arabia was planning a Yemeni-led offensive against the Houthis, with options ranging from a focused coastal push around Bab el-Mandeb to broader synchronized operations. Sources said Saudi air support and U.S. intelligence were expected, while no launch date had been fixed.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000008"
+      ],
+      "publication_time": "2026-10-02T14:13:00-04:00",
+      "upstream_event_type": "REPORTED_SAUDI_BACKED_YEMEN_OFFENSIVE_PLANNING"
+    },
+    {
+      "event_id": "LOCKER-OMAN-TANKER-PROJECTILE-20261002",
+      "event_date": "2026-10-02",
+      "summary": "UKMTO said the master of a crude oil tanker reported the vessel was struck by an unknown projectile about four nautical miles east of Oman. All crew were reported safe and no environmental impact was reported; attacker and weapon type were unresolved.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000009"
+      ],
+      "publication_time": "2026-10-02T19:31:00-04:00",
+      "upstream_event_type": "MARITIME_PROJECTILE_INCIDENT_OFF_OMAN"
+    },
+    {
+      "event_id": "LOCKER-GAZA-STRIKE-FIVE-KILLED-20261003",
+      "event_date": "2026-10-03",
+      "summary": "Gaza health and civil-defence officials said an Israeli strike on a Gaza City apartment building killed at least five Palestinians, including four women. Israel separately said it carried out an overnight strike intended to kill Hamas political official Ali al-Amoudi, but it was not immediately clear whether that was the same strike.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A00000A"
+      ],
+      "publication_time": "2026-10-02T19:50:00-04:00",
+      "upstream_event_type": "GAZA_ISRAELI_AIRSTRIKE_CASUALTIES"
+    },
+    {
+      "event_id": "LOCKER-HOUTHI-RIYADH-ARAMCO-CLAIM-20261003",
+      "event_date": "2026-10-03",
+      "summary": "The Houthis said they targeted an Aramco facility in Riyadh with ballistic missiles and drones. A Reuters witness saw a large plume of smoke and fire near an Aramco facility, but Saudi authorities and Aramco had not confirmed the Houthi attribution or damage at the time of reporting.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A00000B"
+      ],
+      "publication_time": "2026-10-03T07:48:00-04:00",
+      "upstream_event_type": "HOUTHI_CLAIMED_ATTACK_ON_SAUDI_ENERGY_INFRASTRUCTURE"
+    },
+    {
+      "event_id": "LOCKER-PORTUGAL-LAJES-LEGAL-PROBE-20261003",
+      "event_date": "2026-10-03",
+      "summary": "Portuguese prosecutors opened an investigation into the legality of the government's authorization for U.S. use of Lajes Air Base during the Iran war after an opposition complaint. Portugal's foreign minister defended the authorization as lawful.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A00000C"
+      ],
+      "publication_time": "2026-10-03T09:10:00-04:00",
+      "upstream_event_type": "PORTUGAL_PROBE_US_LAJES_BASE_USE_IRAN_WAR"
+    },
+    {
+      "event_id": "LOCKER-IRAQ-VLCC-HORMUZ-TRANSIT-20261003",
+      "event_date": "2026-10-03",
+      "summary": "Iraq's state-owned Oil Tanker Company said it transported 2 million barrels of Iraqi crude aboard a VLCC through the Strait of Hormuz, its first such operation in decades. Reuters noted Iraq had previously secured Iranian permission for Iraqi oil tankers to transit the effectively closed strait.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A00000F"
+      ],
+      "publication_time": "2026-10-03T16:24:00-04:00",
+      "upstream_event_type": "IRAQ_STATE_TANKER_HORMUZ_TRANSIT"
+    },
+    {
+      "event_id": "LOCKER-IRAN-RIAL-NEW-LOW-20261003",
+      "event_date": "2026-10-03",
+      "summary": "Reuters reported Iran's rial around 2.688 million per U.S. dollar on the free market, versus 2.632 million the prior day, as state banks began selling up to $2 billion to support the currency. Reuters said the rial had lost more than half its value in a year and inflation exceeded 70%.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000010"
+      ],
+      "publication_time": "2026-10-03T15:42:00-04:00",
+      "upstream_event_type": "IRAN_CURRENCY_NEW_LOW"
+    },
+    {
+      "event_id": "LOCKER-IRAN-HORMUZ-SEVEN-CONDITIONS-20261004",
+      "event_date": "2026-10-04",
+      "summary": "Iranian parliament speaker Mohammad Baqer Qalibaf said Hormuz would not reopen until seven Iranian conditions tied to the June Islamabad Memorandum of Understanding were met. Iran's Foreign Ministry said Washington's response was relayed through mediators, additional points remained, and Tehran had not entered nuclear discussions with Washington.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000011"
+      ],
+      "publication_time": "2026-10-04T03:59:00-04:00",
+      "upstream_event_type": "IRAN_HORMUZ_REOPENING_POSITION"
+    },
+    {
+      "event_id": "LOCKER-YEMEN-COUNTEROFFENSIVE-LAUNCH-20261004",
+      "event_date": "2026-10-04",
+      "summary": "Yemen's Saudi-backed internationally recognized government announced a major campaign to retake Houthi-held territory, moving the previously reported Saudi-backed offensive from planning to execution. The Houthis simultaneously claimed missile and drone attacks on Aramco sites in Riyadh and Khurais and major fires; Saudi Arabia had not confirmed those claimed impacts at the reporting cutoff.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000012"
+      ],
+      "publication_time": "2026-10-04T08:14:00-04:00",
+      "upstream_event_type": "YEMEN_GOVERNMENT_COUNTEROFFENSIVE_LAUNCHED"
+    },
+    {
+      "event_id": "LOCKER-RAF-FAIRFORD-B1-REDEPLOYMENT-20261004",
+      "event_date": "2026-10-04",
+      "summary": "A Pentagon official confirmed that all U.S. B-1 bombers deployed to RAF Fairford had returned to their U.S. home stations. Later public U.S. explanations differed on linkage to the suspected Fairford plot; the bomber movement is established, while Iranian direction of the plot remains unresolved and Iran denies involvement.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000013"
+      ],
+      "publication_time": "2026-10-04T17:22:00-04:00",
+      "upstream_event_type": "US_B1_FAIRFORD_REDEPLOYMENT"
+    },
+    {
+      "event_id": "LOCKER-HORMUZ-LIPSI-PROJECTILE-20261004",
+      "event_date": "2026-10-04",
+      "summary": "Maritime-intelligence service Marisks told Reuters the Liberian-flagged Aframax tanker Lipsi was struck by an unknown projectile northeast of Jazirat Um Al Fayarin, Oman, damaging its engine room. Crew were reported safe. Attribution and weapon type were unresolved.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000014"
+      ],
+      "publication_time": "2026-10-04T21:09:00-04:00",
+      "upstream_event_type": "HORMUZ_TANKER_PROJECTILE_INCIDENT"
+    },
+    {
+      "event_id": "LOCKER-YEMEN-BAB-EL-MANDEB-GAINS-20261005",
+      "event_date": "2026-10-05",
+      "summary": "Saudi-backed Yemeni government forces said they retook most coastal areas around Bab el-Mandeb, reached the outskirts of Mocha and recaptured the Dhubab airstrip. Reuters could not independently verify the extent and the Houthis rejected the claims. Separate government sources reported Houthi gains near Taiz, with one source disputing that the road had been cut.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000016"
+      ],
+      "publication_time": "2026-10-05T05:15:00-04:00",
+      "upstream_event_type": "YEMEN_GOVERNMENT_BAB_EL_MANDEB_ADVANCE"
+    },
+    {
+      "event_id": "LOCKER-MECCA-PACT-RAPID-DEPLOYMENT-20261005",
+      "event_date": "2026-10-05",
+      "summary": "Saudi Arabia, Turkey and Pakistan said after an emergency Riyadh meeting that they agreed to rapidly deploy military forces and capabilities in Saudi Arabia under the Mecca Joint Defence Agreement.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000016"
+      ],
+      "publication_time": "2026-10-05T05:15:00-04:00",
+      "upstream_event_type": "MECCA_DEFENCE_PACT_RAPID_DEPLOYMENT_AGREEMENT"
+    },
+    {
+      "event_id": "LOCKER-YEMEN-DISPLACEMENT-184K-20261005",
+      "event_date": "2026-10-05",
+      "summary": "Reuters reported the UN migration agency said 184,000 people had been displaced since fighting in Yemen resumed.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000016"
+      ],
+      "publication_time": "2026-10-05T05:15:00-04:00",
+      "upstream_event_type": "YEMEN_CONFLICT_DISPLACEMENT_UPDATE"
+    },
+    {
+      "event_id": "LOCKER-QATAR-LNG-HORMUZ-TRANSITS-20261005",
+      "event_date": "2026-10-03",
+      "summary": "Kpler and LSEG ship-tracking data cited by Reuters showed four LNG vessels carrying Qatari cargoes reappeared outside the Strait of Hormuz around October 2-3 after transiting the waterway. Reuters noted that dark AIS transits remained common, so visible-vessel observations undercount some passage activity.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000017"
+      ],
+      "publication_time": "2026-10-05T04:14:00-04:00",
+      "upstream_event_type": "QATAR_LNG_HORMUZ_TRANSIT_RECOVERY"
+    },
+    {
+      "event_id": "LOCKER-US-IRAN-FFI-SANCTIONS-ALERT-20261005",
+      "event_date": "2026-10-05",
+      "summary": "The U.S. Treasury warned foreign financial institutions continuing transactions with sanctioned Iranian financial institutions that they could be targeted without advance notice and should terminate such activity. Treasury said potential measures include correspondent and payable-through account restrictions and enforcement exposure where Iran-related transactions cause U.S.-person sanctions violations.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A000019",
+        "SRC-A2105A00001A"
+      ],
+      "publication_time": "2026-10-05T16:25:00-04:00",
+      "upstream_event_type": "US_IRAN_SECONDARY_SANCTIONS_ENFORCEMENT_ALERT"
+    },
+    {
+      "event_id": "LOCKER-G7-EMERGENCY-STOCK-RELEASE-20261002",
+      "event_date": "2026-10-02",
+      "summary": "G7 countries agreed to a coordinated 100-million-barrel emergency release of diesel and crude oil, beginning immediately and running four months, while pledging to refrain from energy-product export restrictions among themselves.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2105A00001B"
+      ],
+      "publication_time": "2026-10-02T08:21:00Z",
+      "upstream_event_type": "G7_EMERGENCY_PETROLEUM_STOCK_RELEASE"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "Mediated contacts continue; no agreement",
+        "observed_state": "Iran said the U.S. response had been relayed through mediators but that additional points remained unresolved. On October 4, Qalibaf tied Hormuz reopening to seven Iranian conditions based on the June Islamabad memorandum, while Iran's Foreign Ministry said Tehran had not entered nuclear discussions with Washington. No accepted replacement U.S.-Iran settlement or Hormuz reopening agreement was established by the October 5 16:55 ET evidence cutoff.",
+        "knowledge_time": "2026-10-05T18:12:00-04:00",
+        "source_ids": [
+          "SRC-A2105A000011"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Traffic and exports have recovered substantially, but Hormuz remains selectively constrained and kinetically risky",
+        "observed_state": "Iraq moved 2 million barrels through Hormuz aboard a state-owned VLCC after obtaining Iranian permission. Reuters-cited Kpler and Vortexa data showed regional crude exports at or above pre-war levels on multiple September days, and additional Qatari LNG cargoes completed Hormuz transits around October 2-3. At the same time, at least seven tanker incidents were reported in the prior week and the Lipsi was struck by an unknown projectile on October 4. Recovery therefore does not equal normal, unrestricted or risk-free passage.",
+        "knowledge_time": "2026-10-05T18:12:00-04:00",
+        "source_ids": [
+          "SRC-A2105A00000F",
+          "SRC-A2105A000014",
+          "SRC-A2105A000017",
+          "SRC-A2105A000015"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-ENERGY-RECOVERY-20260930",
+      "mode": "update",
+      "record": {
+        "status": "Regional export volumes have recovered strongly, while war-risk costs and route constraints remain abnormal",
+        "observed_state": "Reuters-cited Kpler data put the seven-day moving average of regional crude exports at 18.3 million bpd on September 30, with Vortexa's 14-day average at 18.6 million bpd. Saudi Aramco cut November Arab Light pricing to Asia sharply, while Gulf-to-China VLCC charter costs remained extremely elevated. A coordinated G7 100-million-barrel emergency stock release added supply support. Physical export recovery is therefore stronger than normalization of transport cost, security or market conditions.",
+        "knowledge_time": "2026-10-05T18:12:00-04:00",
+        "source_ids": [
+          "SRC-A2105A00000F",
+          "SRC-A2105A000014",
+          "SRC-A2105A000017",
+          "SRC-A2105A000015"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAN-CIVILIAN-STRAIN-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Severe wartime strain persists; rial reached a new reported low and external financial pressure increased",
+        "observed_state": "Reuters reported the rial around 2.688 million per U.S. dollar on October 3, after losing more than half its value in a year, with inflation above 70% and the central bank selling up to $2 billion in support. On October 5, Treasury warned foreign financial institutions that continued transactions with sanctioned Iranian financial institutions could trigger U.S. measures without advance notice, increasing correspondent-banking and dollar-clearing risk.",
+        "knowledge_time": "2026-10-05T18:12:00-04:00",
+        "source_ids": [
+          "SRC-A2105A000010",
+          "SRC-A2105A000019",
+          "SRC-A2105A00001A"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261002T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261003T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261003T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261004T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261004T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261005T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261005T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261005T1655ET.json",
+      "data/evidence-integration/rook-source-registry-delta-20261002T1200ET-late-discovery-20261005.json"
+    ]
+  }
+}
