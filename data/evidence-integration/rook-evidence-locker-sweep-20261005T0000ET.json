@@ -1,0 +1,73 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-04T12:00:00-04:00",
+    "window_end": "2026-10-05T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-05T16:55:00-04:00",
+    "evidence_horizon_time": "2026-10-05T00:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-RAF-FAIRFORD-B1-REDEPLOYMENT-20261004",
+      "event_type": "US_B1_FAIRFORD_REDEPLOYMENT",
+      "occurrence_time": "2026-10-04",
+      "public_available_time": "2026-10-04T17:22:00-04:00",
+      "actor": "United States / United Kingdom",
+      "summary": "A Pentagon official confirmed that all U.S. B-1 bombers deployed to RAF Fairford had returned to their U.S. home stations. Later public U.S. explanations differed on linkage to the suspected Fairford plot; the bomber movement is established, while Iranian direction of the plot remains unresolved and Iran denies involvement.",
+      "sources": [
+        "https://www.reuters.com/world/uk/us-removes-b-1-bombers-uk-base-amid-security-concerns-2026-10-04/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-HORMUZ-LIPSI-PROJECTILE-20261004",
+      "event_type": "HORMUZ_TANKER_PROJECTILE_INCIDENT",
+      "occurrence_time": "2026-10-04",
+      "public_available_time": "2026-10-04T21:09:00-04:00",
+      "actor": "Unknown / Liberian-flagged tanker Lipsi",
+      "summary": "Maritime-intelligence service Marisks told Reuters the Liberian-flagged Aframax tanker Lipsi was struck by an unknown projectile northeast of Jazirat Um Al Fayarin, Oman, damaging its engine room. Crew were reported safe. Attribution and weapon type were unresolved.",
+      "sources": [
+        "https://www.reuters.com/business/energy/middle-east-crude-oil-exports-exceed-pre-war-levels-tanker-attacks-increase-2026-10-05/"
+      ]
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-MIDEAST-EXPORT-RECOVERY-RISK-20261004",
+      "summary": "Kpler data cited by Reuters put the seven-day moving average of regional crude exports at 18.3 million bpd on September 30 and showed volumes above pre-war levels on 14 September days; Vortexa's 14-day average reached 18.6 million bpd. The same reporting recorded at least seven tanker incidents in the prior week, so flow recovery and kinetic shipping risk were simultaneously high.",
+      "sources": [
+        "https://www.reuters.com/business/energy/middle-east-crude-oil-exports-exceed-pre-war-levels-tanker-attacks-increase-2026-10-05/"
+      ]
+    },
+    {
+      "economic_id": "ECON-SAUDI-ASIA-OSP-CUT-20261004",
+      "summary": "Saudi Aramco cut November Arab Light pricing to Asia to $5 per barrel below the Oman/Dubai average, the widest discount since June 2020, while VLCC Gulf-to-China charter costs cited by Reuters reached about $1.2 million per day.",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-arabia-unexpectedly-cuts-oil-prices-asia-2026-10-04/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "RAF Fairford B-1 redeployment",
+      "Lipsi tanker projectile incident",
+      "Middle East crude export recovery with increased attacks",
+      "Saudi Asia OSP cuts"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No final U.S.-Iran/Hormuz settlement identified.",
+      "No resolved RAF Fairford attribution.",
+      "No material Lebanon/Hezbollah disposition change identified."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
