@@ -160,7 +160,7 @@ assert.match(releaseCore, /src\/public-reader-registry\.js/);
 assert.match(releaseCore, /src\/public-reader-layer\.js/);
 assert.match(releaseCore, /reader_stylesheet/);
 assert.match(releaseCore, /src\/public-reader-layer\.css/);
-assert.match(releaseCore, /2\.7-maplibre-representative-capability/);
+assert.match(releaseCore, /2\.8-phase1-visualization-capabilities/);
 assert.match(releaseCore, /visualization_runtime/);
 assert.match(releaseCore, /MAPLIBRE_VERSION = "6\.11\.2"/);
 assert.match(releaseBuilder, /from build_public_release_core import \*/);

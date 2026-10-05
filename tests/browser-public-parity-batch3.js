@@ -240,15 +240,29 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(shipping.text, /remain separate from military equipment totals/i);
 
     await routeKey(cdp, 'hormuz.economy');
+    await waitFor(cdp, `(() => {
+      const owner = [...document.querySelectorAll('[data-component="MapView"], [data-component="MapLibreView"]')].find(candidate => candidate.querySelector('button[data-route-id]'));
+      if (!owner) return false;
+      return owner.dataset.component === 'MapLibreView'
+        ? owner.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(owner.querySelector('.leaflet-container'));
+    })()`);
     const economy = await cdp.eval(`(() => {
-      const maps = [...document.querySelectorAll('[data-component="MapView"]')];
+      const maps = [...document.querySelectorAll('[data-component="MapView"], [data-component="MapLibreView"]')];
       const routeOwners = maps.filter(candidate => candidate.querySelector('button[data-route-id]'));
       const map = routeOwners[0];
       const controls = map ? [...map.querySelectorAll('button[data-route-id]')] : [];
       const bounds = map ? JSON.parse(map.dataset.mapBounds) : null;
-      const fitted = map?._atlasMap?.getBounds();
+      const maplibre = map?.dataset.component === 'MapLibreView';
+      const fitted = maplibre ? map?._atlasMapLibre?.getBounds() : map?._atlasMap?.getBounds();
+      const inside = Boolean(fitted && bounds && (
+        maplibre
+          ? fitted.contains([bounds[0][1], bounds[0][0]]) && fitted.contains([bounds[1][1], bounds[1][0]])
+          : fitted.contains(bounds[0]) && fitted.contains(bounds[1])
+      ));
       return {
         routeOwnerCount: routeOwners.length,
+        renderer: map?.dataset.mapRenderer || '',
         mapRouteIds: controls.map(node => node.dataset.routeId),
         modes: [...new Set(controls.map(node => node.dataset.routeMode))].sort(),
         mapModes: map?.dataset.mapRouteModes || '',
@@ -259,11 +273,11 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
         countries: [...document.querySelectorAll('[data-economic-comparison-country]')].map(node => node.dataset.economicComparisonCountry),
         arctic: [...document.querySelectorAll('[data-arctic-route-id]')].map(node => node.dataset.arcticRouteId),
         arcticText: document.querySelector('.arctic-context')?.textContent || '',
-        inside: Boolean(fitted && bounds && fitted.contains(bounds[0]) && fitted.contains(bounds[1])),
+        inside,
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
-    assert.equal(economy.routeOwnerCount, 1, 'exactly one Economy MapView must own transport route controls');
+    assert.equal(economy.routeOwnerCount, 1, 'exactly one Economy map renderer must own transport route controls');
     assert.deepEqual(economy.mapRouteIds.sort(), routeIds.slice().sort());
     assert.deepEqual(economy.modes, ['maritime', 'pipeline', 'rail']);
     assert.equal(economy.mapModes, 'maritime,pipeline,rail');

@@ -31,3 +31,11 @@ The locally vendored BDA imagery symbol at `assets/icons/imagery.svg` is the Luc
 - License: ISC
 
 Copyright (c) 2026 Lucide Icons and Contributors. Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is granted, provided that the copyright notice and permission notice appear in all copies. The software is provided “as is” without warranty.
+
+
+## Apache ECharts
+
+- Component: Apache ECharts 6.1.0, simple distribution
+- Source: Apache ECharts project
+- License: Apache License 2.0
+- Runtime: vendored and content-addressed; loaded only through the signed visualization capability contract.

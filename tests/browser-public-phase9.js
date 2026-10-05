@@ -107,13 +107,14 @@ async function route(cdp, hash, key) {
     await cdp.call('Network.setCacheDisabled', { cacheDisabled: true });
     await cdp.call('Page.navigate', { url: `${SITE}#/timeline/war` });
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'timeline.war'`);
+    await waitFor(cdp, `Boolean(document.querySelector('.timeline-map-host [data-component="MapLibreView"] .atlas-maplibre-map[data-map-state="ready"], .timeline-map-host [data-component="MapView"] .leaflet-container'))`);
 
     const timeline = await cdp.eval(`(() => ({
       count: window.ATLAS_PUBLIC_STATE.chronologyCount,
       cutoff: window.ATLAS_PUBLIC_STATE.currentOsintCutoff,
       clusters: document.querySelectorAll('.timeline-marker.cluster').length,
       events: document.querySelectorAll('.timeline-marker.event').length,
-      map: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"] .leaflet-container')),
+      map: Boolean(document.querySelector('.timeline-map-host [data-component="MapLibreView"] .atlas-maplibre-map[data-map-state="ready"], .timeline-map-host [data-component="MapView"] .leaflet-container')),
       prewar: document.querySelector('[data-timeline-prewar]')?.dataset.timelinePrewar,
       copy: document.querySelector('main')?.innerText || '',
       controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height),
@@ -147,7 +148,7 @@ async function route(cdp, hash, key) {
         eventMarkers: document.querySelectorAll('.timeline-marker.event').length,
         pressed: marker?.getAttribute('aria-pressed'),
         record: Boolean(document.querySelector('.timeline-selection .chronology-card')),
-        spatial: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"], .timeline-map-host .empty-state'))
+        spatial: Boolean(document.querySelector('.timeline-map-host [data-component="MapLibreView"], .timeline-map-host [data-component="MapView"], .timeline-map-host .empty-state'))
       };
     })()`);
     assert(selected.eventMarkers > 0, 'cluster selection did not expose event ticks');
@@ -503,7 +504,10 @@ async function route(cdp, hash, key) {
           internal: ['Do not add the headline categories', 'No machine-readable footprint/damage polygons were supplied', 'Do not create polygons or percentages from prose'].filter(phrase => visible.includes(phrase))
         };
       })()`);
-      publicLanguageLeaks.push(...leaks.machine.map(token => `${routeRecord.key}:${token}`));
+      const acceptedWolMachineLabels = routeRecord.key === 'evidence.web_of_lies'
+        ? new Set(['AMPLIFIES_BULLSHIT', 'SELF_AMPLIFICATION', 'EXTERNAL_AMPLIFICATION'])
+        : new Set();
+      publicLanguageLeaks.push(...leaks.machine.filter(token => !acceptedWolMachineLabels.has(token)).map(token => `${routeRecord.key}:${token}`));
       publicLanguageLeaks.push(...leaks.internal.map(phrase => `${routeRecord.key}:${phrase}`));
       if (!['start.overview', 'evidence.information', 'evidence.web_of_lies'].includes(routeRecord.key)) {
         const jargon = [

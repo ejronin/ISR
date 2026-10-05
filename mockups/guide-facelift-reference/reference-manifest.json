@@ -1,0 +1,242 @@
+{
+  "base_checkpoint": "09fa1697936b0f232825dc9b1a15694fd31e5a9d",
+  "canonical_routes": 27,
+  "additional_parameterized_states": 2,
+  "desktop_references": 29,
+  "mobile_references": 21,
+  "production_changes": false,
+  "references": [
+    {
+      "key": "start.overview",
+      "path": "/",
+      "owner": "OverviewPage",
+      "desktop": "start-overview--desktop.svg",
+      "mobile": "start-overview--mobile.svg",
+      "platform": "MapLibre + HTML/CSS/SVG"
+    },
+    {
+      "key": "start.actors",
+      "path": "/home/actors/",
+      "owner": "ActorsPage",
+      "desktop": "start-actors--desktop.svg",
+      "mobile": null,
+      "platform": "HTML/CSS/SVG"
+    },
+    {
+      "key": "timeline.war",
+      "path": "/war/timeline/",
+      "owner": "TimelinePage",
+      "desktop": "timeline-war--desktop.svg",
+      "mobile": "timeline-war--mobile.svg",
+      "platform": "ECharts + MapLibre + HTML/CSS"
+    },
+    {
+      "key": "timeline.chronology",
+      "path": "/war/events/",
+      "owner": "ChronologyPage",
+      "desktop": "timeline-chronology--desktop.svg",
+      "mobile": "timeline-chronology--mobile.svg",
+      "platform": "ECharts + HTML/CSS"
+    },
+    {
+      "key": "military.campaigns",
+      "path": "/war/campaigns/",
+      "owner": "CampaignsPage",
+      "desktop": "military-campaigns--desktop.svg",
+      "mobile": "military-campaigns--mobile.svg",
+      "platform": "MapLibre + ECharts + HTML/CSS/SVG"
+    },
+    {
+      "key": "military.facilities",
+      "path": "/war/facilities/",
+      "owner": "FacilitiesPage",
+      "desktop": "military-facilities--desktop.svg",
+      "mobile": "military-facilities--mobile.svg",
+      "platform": "MapLibre + ECharts + HTML/CSS"
+    },
+    {
+      "key": "military.weapons",
+      "path": "/war/weapons/",
+      "owner": "WeaponsPage",
+      "desktop": "military-weapons--desktop.svg",
+      "mobile": "military-weapons--mobile.svg",
+      "platform": "ECharts + HTML/CSS/SVG"
+    },
+    {
+      "key": "military.losses",
+      "path": "/war/losses/",
+      "owner": "LossesPage",
+      "desktop": "military-losses--desktop.svg",
+      "mobile": "military-losses--mobile.svg",
+      "platform": "ECharts + HTML/CSS"
+    },
+    {
+      "key": "military.imagery",
+      "path": "/war/damage-images/",
+      "owner": "ImageryPage",
+      "desktop": "military-imagery--desktop.svg",
+      "mobile": "military-imagery--mobile.svg",
+      "platform": "MapLibre + HTML/CSS"
+    },
+    {
+      "key": "hormuz.overview",
+      "path": "/themes/hormuz/",
+      "owner": "HormuzOverviewPage",
+      "desktop": "hormuz-overview--desktop.svg",
+      "mobile": "hormuz-overview--mobile.svg",
+      "platform": "MapLibre + ECharts + HTML/CSS/SVG"
+    },
+    {
+      "key": "hormuz.shipping",
+      "path": "/themes/shipping/",
+      "owner": "ShippingPage",
+      "desktop": "hormuz-shipping--desktop.svg",
+      "mobile": "hormuz-shipping--mobile.svg",
+      "platform": "MapLibre + ECharts + HTML/CSS"
+    },
+    {
+      "key": "hormuz.economy",
+      "path": "/themes/economy/",
+      "owner": "EconomyPage",
+      "desktop": "hormuz-economy--desktop.svg",
+      "mobile": "hormuz-economy--mobile.svg",
+      "platform": "ECharts + MapLibre + HTML/CSS"
+    },
+    {
+      "key": "hormuz.sanctions",
+      "path": "/themes/sanctions/",
+      "owner": "SanctionsPage",
+      "desktop": "hormuz-sanctions--desktop.svg",
+      "mobile": "hormuz-sanctions--mobile.svg",
+      "platform": "MapLibre + ECharts + HTML/CSS/SVG + ELK where branching warrants"
+    },
+    {
+      "key": "hormuz.talks",
+      "path": "/diplomacy/hormuz/",
+      "owner": "HormuzNegotiationsPage",
+      "desktop": "hormuz-talks--desktop.svg",
+      "mobile": "hormuz-talks--mobile.svg",
+      "platform": "HTML/CSS/SVG + ECharts"
+    },
+    {
+      "key": "talks.overview",
+      "path": "/diplomacy/overview/",
+      "owner": "DiplomacyPage",
+      "desktop": "talks-overview--desktop.svg",
+      "mobile": "talks-overview--mobile.svg",
+      "platform": "MapLibre + ECharts + HTML/CSS"
+    },
+    {
+      "key": "talks.mou",
+      "path": "/diplomacy/june-mou/",
+      "owner": "MouPage",
+      "desktop": "talks-mou--desktop.svg",
+      "mobile": "talks-mou--mobile.svg",
+      "platform": "HTML/CSS/SVG + ECharts"
+    },
+    {
+      "key": "talks.nuclear",
+      "path": "/diplomacy/nuclear/",
+      "owner": "NuclearPage",
+      "desktop": "talks-nuclear--desktop.svg",
+      "mobile": null,
+      "platform": "ECharts + HTML/CSS/SVG"
+    },
+    {
+      "key": "talks.regional",
+      "path": "/diplomacy/regional/",
+      "owner": "RegionalDiplomacyPage",
+      "desktop": "talks-regional--desktop.svg",
+      "mobile": "talks-regional--mobile.svg",
+      "platform": "MapLibre + HTML/CSS/SVG"
+    },
+    {
+      "key": "objectives.outcomes",
+      "path": "/diplomacy/outcomes/",
+      "owner": "ObjectivesPage",
+      "desktop": "objectives-outcomes--desktop.svg",
+      "mobile": null,
+      "platform": "HTML/CSS/SVG + ECharts"
+    },
+    {
+      "key": "objectives.positions",
+      "path": "/diplomacy/positions/",
+      "owner": "PositionChangesPage",
+      "desktop": "objectives-positions--desktop.svg",
+      "mobile": null,
+      "platform": "ECharts + HTML/CSS/SVG"
+    },
+    {
+      "key": "objectives.iran",
+      "path": "/diplomacy/iran-position/",
+      "owner": "IranMessagingPage",
+      "desktop": "objectives-iran--desktop.svg",
+      "mobile": null,
+      "platform": "ECharts + HTML/CSS"
+    },
+    {
+      "key": "evidence.claims",
+      "path": "/intelligence/claims/",
+      "owner": "ClaimChecksPage",
+      "desktop": "evidence-claims--desktop.svg",
+      "mobile": "evidence-claims--mobile.svg",
+      "platform": "ECharts + HTML/CSS"
+    },
+    {
+      "key": "evidence.information",
+      "path": "/intelligence/lie-ledger/",
+      "owner": "InformationEnvironmentPage",
+      "desktop": "evidence-information--desktop.svg",
+      "mobile": "evidence-information--mobile.svg",
+      "platform": "HTML/CSS/SVG"
+    },
+    {
+      "key": "evidence.web_of_lies",
+      "path": "/intelligence/wol/",
+      "owner": "WebOfLiesPage",
+      "desktop": "evidence-web-of-lies--desktop.svg",
+      "mobile": "evidence-web-of-lies--mobile.svg",
+      "platform": "Cytoscape + HTML/CSS/SVG"
+    },
+    {
+      "key": "evidence.sources",
+      "path": "/sources/",
+      "owner": "SourcesPage",
+      "desktop": "evidence-sources--desktop.svg",
+      "mobile": null,
+      "platform": "HTML/CSS"
+    },
+    {
+      "key": "evidence.method",
+      "path": "/sources/methodology/",
+      "owner": "MethodPage",
+      "desktop": "evidence-method--desktop.svg",
+      "mobile": null,
+      "platform": "HTML/CSS/SVG"
+    },
+    {
+      "key": "evidence.archive",
+      "path": "/sources/archive/",
+      "owner": "ArchivePage",
+      "desktop": "evidence-archive--desktop.svg",
+      "mobile": null,
+      "platform": "ECharts + HTML/CSS"
+    },
+    {
+      "key": "evidence.information.case-dossier",
+      "path": "/intelligence/lie-ledger/?dossier=case",
+      "owner": "InformationEnvironmentPage",
+      "desktop": "evidence-information-case-dossier--desktop.svg",
+      "mobile": "evidence-information-case-dossier--mobile.svg",
+      "platform": "HTML/CSS/SVG"
+    },
+    {
+      "key": "evidence.web_of_lies.actor-dossier",
+      "path": "/intelligence/wol/?dossier=actor",
+      "owner": "WebOfLiesPage",
+      "desktop": "evidence-web-of-lies-actor-dossier--desktop.svg",
+      "mobile": "evidence-web-of-lies-actor-dossier--mobile.svg",
+      "platform": "Cytoscape + HTML/CSS/SVG"
+    }
+  ]
+}

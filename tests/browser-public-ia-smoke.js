@@ -307,11 +307,12 @@ async function loadDirectRoute(cdp, route) {
     assert(overview.metrics >= 4);
 
     await setRoute(cdp, ia.ROUTES.get('timeline.war'));
+    await waitFor(cdp, `Boolean(document.querySelector('.timeline-map-host [data-component="MapLibreView"] .atlas-maplibre-map[data-map-state="ready"], .timeline-map-host [data-component="MapView"] .leaflet-container'))`);
     const timeline = await cdp.eval(`(() => ({
       controller: document.querySelector('[data-timeline-controller]')?.dataset.timelineController,
       clusters: document.querySelectorAll('.timeline-marker.cluster').length,
       eventMarkers: document.querySelectorAll('.timeline-marker.event').length,
-      map: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"] .leaflet-container')),
+      map: Boolean(document.querySelector('.timeline-map-host [data-component="MapLibreView"] .atlas-maplibre-map[data-map-state="ready"], .timeline-map-host [data-component="MapView"] .leaflet-container')),
       controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height),
       prewar: document.querySelector('[data-timeline-prewar]')?.dataset.timelinePrewar,
       text: document.querySelector('main')?.innerText || ''
@@ -342,7 +343,7 @@ async function loadDirectRoute(cdp, route) {
       return {
         pressed: marker.getAttribute('aria-pressed'),
         card: Boolean(document.querySelector('.timeline-selection .chronology-card')),
-        spatial: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"], .timeline-map-host .empty-state'))
+        spatial: Boolean(document.querySelector('.timeline-map-host [data-component="MapLibreView"], .timeline-map-host [data-component="MapView"], .timeline-map-host .empty-state'))
       };
     })()`);
     assert.deepEqual(selectedTimeline, { pressed: 'true', card: true, spatial: true }, 'event selection must coordinate marker, record and spatial state');

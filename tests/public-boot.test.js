@@ -62,7 +62,13 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
     runtimeAssets: runtimes.map(runtime => ({ path: runtime.path, sha256: runtime.sha256 })),
     stylesheetAssets: stylesheets.map(style => ({ path: style.path, sha256: style.sha256 })),
     referenceGeography: { path: geography.path, sha256: geography.sha256 },
-    capabilities: { maplibre: { version: sourceManifest.application.capabilities.maplibre.version } },
+    capabilities: {
+      maplibre: { version: sourceManifest.application.capabilities.maplibre.version },
+      echarts: {
+        version: sourceManifest.application.capabilities.echarts.version,
+        profile: sourceManifest.application.capabilities.echarts.profile
+      }
+    },
     evidenceImages: [],
     entrypointSha256: entrypoint.sha256,
     stylesheetSha256: stylesheet.sha256
@@ -104,7 +110,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
   const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'visualization_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
-  const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet'];
+  const capabilityRoles = ['maplibre_runtime', 'maplibre_shared', 'maplibre_worker', 'maplibre_stylesheet', 'echarts_runtime'];
   [...fixedRoles, ...capabilityRoles].forEach(role => assert.equal(applicationAssets.filter(asset => asset.role === role).length, 1, `${role} must remain singular`));
   assert.equal(applicationAssets.filter(asset => asset.role === 'state_flag').length, manifest.application.state_flags.length);
   assert(manifest.application.state_flags.length >= 3, 'closed state-flag inventory must be present');
@@ -113,6 +119,11 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   assert.equal(manifest.application.capabilities.maplibre.loading, 'lazy');
   assert.equal(manifest.application.capabilities.maplibre.fallback, 'leaflet');
   assert.equal(manifest.application.capabilities.maplibre.same_origin_only, true);
+  assert.equal(manifest.application.capabilities.echarts.version, '6.1.0');
+  assert.equal(manifest.application.capabilities.echarts.profile, 'simple');
+  assert.equal(manifest.application.capabilities.echarts.loading, 'lazy');
+  assert.equal(manifest.application.capabilities.echarts.same_origin_only, true);
+  assert.equal(manifest.application.capabilities.echarts.runtime.role, 'echarts_runtime');
   const graphRuntime = app.assetForRole(manifest, 'graph_runtime');
   const baseRuntime = app.assetForRole(manifest, 'base_runtime');
   const visualizationRuntime = app.assetForRole(manifest, 'visualization_runtime');
