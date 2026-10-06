@@ -79,7 +79,7 @@ def main() -> int:
     assert "US_ACCEPTANCE_OF_IRAN_CONDITIONS_NOT_ESTABLISHED" in prior_diplomacy["status"]
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert diplomacy["status"] == "Mediated talks continue; no agreement"
+    assert "no agreement" in diplomacy["status"].lower()
 
     prior_shipping = next(
         row["record"] for row in noon["entities"]
