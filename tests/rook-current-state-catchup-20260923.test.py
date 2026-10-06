@@ -94,8 +94,8 @@ def main() -> int:
         row["record"] for row in sep23_packet["entities"]
         if row["entity_id"] == "DIP-US-IRAN-UNGA-CONTACTS-20260922"
     )
-    assert sep23_contacts["status"] == "Mediated talks continue; no agreement"
-    assert "talks were still indirect" in sep23_contacts["observed_state"]
+    assert sep23_contacts["status"] == "MEDIATED_ENGAGEMENT_CONFIRMED; INDIRECT_FORMAT_SUPPORTED_BY_LATEST_REUTERS_RECONSTRUCTION; COMPETING_PUBLIC_CHARACTERIZATION_PRESERVED; NO_AGREEMENT"
+    assert "indirect exchanges through mediators" in sep23_contacts["observed_state"]
     assert "no agreement" in contacts["status"].lower()
     assert dips["DIP-FRANCE-US-UNSC-HORMUZ-MISSION-20260922"]["record"]["status"].startswith("DRAFTING_REPORTED")
     assert dips["DIP-QATAR-GULF-SECURITY-FRAMEWORK-20260922"]["record"]["status"].endswith("NO_AGREEMENT")
