@@ -48,8 +48,8 @@ def main() -> int:
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
     assert "no agreement" in diplomacy["status"].lower()
-    assert "replacement agreement" in diplomacy["observed_state"]
-    assert "Hormuz reopening arrangement" in diplomacy["observed_state"]
+    assert "no accepted replacement" in diplomacy["observed_state"].lower()
+    assert "hormuz reopening agreement" in diplomacy["observed_state"].lower()
 
     assert packet["narrative_claims"] == []
     assert routing["referrals"] == []
