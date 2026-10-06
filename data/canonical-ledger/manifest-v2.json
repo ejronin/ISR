@@ -323,7 +323,7 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "evidence_cutoff": "2026-10-06T12:00:00-04:00",
       "known_at": "2026-10-06T12:11:00-04:00",
-      "lineage_sha256": "cd1c16998fc2cc57cc33ebd8e1e9229ce7dfc89f0d8c9ac4627f7ac272a3f39b",
+      "lineage_sha256": "76884c316c59af7b26bbabb2781822c98546df5cc6577bb80c48eb7785623b07",
       "packet_id": "UPD-20261006-ROOK-CURRENT",
       "path": "data/canonical-updates/UPD-20261006-ROOK-CURRENT.json",
       "previous_lineage_sha256": "20701181d848f4a0b854d22bd4773d5d2dc3ecf7e29dd666e897b19473332d47",
