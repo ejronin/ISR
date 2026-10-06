@@ -69,18 +69,28 @@ def main() -> int:
 
     losses = rows_by_id(state["entities"]["material_losses"])
     pipe = losses["MAT-SA-EASTWEST-PIPELINE-20260911"]["record"]
-    assert "PARTIALLY_RESTARTED_AT_REDUCED_RATE" in pipe["status"]
-    assert pipe["yanbu_status"].endswith("SPECIFIC_LOADING_NOT_OBSERVED_IN_REVIEWED_EVIDENCE")
-    assert "6_TO_8_WEEKS" in pipe["full_capacity_restoration_estimate"]
+    sep23_pipe = next(
+        row["record"] for row in sep23_packet["entities"]
+        if row["entity_id"] == "MAT-SA-EASTWEST-PIPELINE-20260911"
+    )
+    assert "PARTIALLY_RESTARTED_AT_REDUCED_RATE" in sep23_pipe["status"]
+    assert sep23_pipe["yanbu_status"].endswith("SPECIFIC_LOADING_NOT_OBSERVED_IN_REVIEWED_EVIDENCE")
+    assert "6_TO_8_WEEKS" in sep23_pipe["full_capacity_restoration_estimate"]
+    assert pipe["knowledge_time"] >= sep23_pipe["knowledge_time"]
 
     casualties = rows_by_id(state["entities"]["casualties"])
     yem = casualties["CAS-YEMEN-DISPLACEMENT-20260913"]["record"]
-    assert yem["reported_displaced_operator"] == "MORE_THAN"
-    assert yem["reported_displaced_approx"] == 130000
-    assert yem["reported_deaths"] == 674
-    assert yem["reported_injuries_approx"] == 3000
-    assert any(row.get("reported_displaced") == 114498 for row in yem["parallel_denominators"])
-    assert any(row.get("reported_displaced") == 129438 for row in yem["parallel_denominators"])
+    sep23_yem = next(
+        row["record"] for row in sep23_packet["entities"]
+        if row["entity_id"] == "CAS-YEMEN-DISPLACEMENT-20260913"
+    )
+    assert sep23_yem["reported_displaced_operator"] == "MORE_THAN"
+    assert sep23_yem["reported_displaced_approx"] == 130000
+    assert sep23_yem["reported_deaths"] == 674
+    assert sep23_yem["reported_injuries_approx"] == 3000
+    assert any(row.get("reported_displaced") == 114498 for row in sep23_yem["parallel_denominators"])
+    assert any(row.get("reported_displaced") == 129438 for row in sep23_yem["parallel_denominators"])
+    assert yem["knowledge_time"] >= sep23_yem["knowledge_time"]
 
     dips = rows_by_id(state["entities"]["diplomacy"])
     positions = dips["DIP-IRAN-US-SETTLEMENT-CONDITIONS-20260920"]["record"]
@@ -108,7 +118,12 @@ def main() -> int:
 
     movements = rows_by_id(state["entities"]["movements"])
     mov = movements["MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"]["record"]
-    assert "115_KM" in mov["status"]
+    sep23_mov = next(
+        row["record"] for row in sep23_packet["entities"]
+        if row["entity_id"] == "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"
+    )
+    assert "115_KM" in sep23_mov["status"]
+    assert mov["knowledge_time"] >= sep23_mov["knowledge_time"]
     relationships = rows_by_id(state["entities"]["relationships"])
     rel = relationships["REL-IRAN-HOUTHI-OPERATIONAL-SUPPORT-20260923"]["record"]
     assert rel["support_taxonomy"]["operation_specific_direction"].startswith("MULTI_SOURCE_REPORTING")
