@@ -613,7 +613,7 @@
   function publicSourceRole() {
     const value = firstString(...arguments);
     if (!value) return null;
-    if (/(^|[^\\w./-])ROOK([^\\w./-]|$)|\\bPR\\/CI\\b|canonical[_ -]?packet|upstream[_ -]?collection|internal[_ -]?adjudication/i.test(value)) return null;
+    if (/(^|[^\w./-])ROOK([^\w./-]|$)|\bPR\/CI\b|canonical[_ -]?packet|upstream[_ -]?collection|internal[_ -]?adjudication/i.test(value)) return null;
     return value;
   }
 
