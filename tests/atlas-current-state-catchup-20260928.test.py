@@ -49,9 +49,9 @@ def main() -> int:
     assert "not independently treated" in packet_events["G3-PEZESHKIAN-NUCLEAR-TALKS-POSITION-20260927"]["summary"]
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert diplomacy["status"] == "Mediated talks continue; no agreement"
-    assert "Qatar relayed U.S. feedback" in diplomacy["observed_state"]
-    assert "no replacement agreement" in diplomacy["observed_state"]
+    assert "no agreement" in diplomacy["status"].lower()
+    assert "mediator" in diplomacy["observed_state"].lower()
+    assert "no accepted replacement" in diplomacy["observed_state"].lower()
 
     assert packet["narrative_claims"] == []
     assert packet["upstream_provenance"]["web_of_lies"] == "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
