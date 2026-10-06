@@ -89,6 +89,22 @@ for (const [routeKey, contract] of Object.entries(boot.ROUTE_DATA_DEPENDENCIES))
 }
 
 {
+  const synthetic = { sources: { records: [{
+    source_id: 'SRC-INTERNAL-ROLE',
+    resolution: 'UNAMBIGUOUS',
+    record: {
+      title: 'Public source',
+      url: 'https://example.com/public-source',
+      source_role: 'Source preserved from accepted ROOK upstream intake'
+    },
+    variants: []
+  }] } };
+  const record = boot.createSourceResolver(synthetic).resolve('SRC-INTERNAL-ROLE').selected.record;
+  assert.equal(record.role, null, 'internal collection-lane provenance must not be rendered as public source metadata');
+  assert.equal(record.url, 'https://example.com/public-source');
+}
+
+{
   const locationResolver = boot.createLocationResolver(model);
   const event = model.chronology.find(item => (item.location_ids || []).some(id => {
     const value = locationResolver.resolve(id);

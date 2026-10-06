@@ -610,6 +610,13 @@
     }
   }
 
+  function publicSourceRole() {
+    const value = firstString(...arguments);
+    if (!value) return null;
+    if (/(^|[^\\w./-])ROOK([^\\w./-]|$)|\\bPR\\/CI\\b|canonical[_ -]?packet|upstream[_ -]?collection|internal[_ -]?adjudication/i.test(value)) return null;
+    return value;
+  }
+
   function sourceRecordView(record) {
     const value = record && typeof record === 'object' ? record : {};
     return Object.freeze({
@@ -618,7 +625,7 @@
       url: safeHttpUrl(firstString(value.url, value.link, value.source_url, value.uri)),
       publicationDate: firstString(value.publication_date, value.published_at, value.published, value.date, value.source_date),
       context: firstString(value.context, value.source_context, value.notes, value.note, value.evidence_context),
-      role: firstString(value.source_role, value.role, value.evidence_role, value.type),
+      role: publicSourceRole(value.source_role, value.role, value.evidence_role, value.type),
       supports: firstString(value.supports, value.proof_note, value.evidence_note),
       raw: value
     });
