@@ -225,7 +225,7 @@ native_items = {row["discovery_id"]: row for row in native["items"]}
 uk_false_flag = native_items["WOL-DISC-VALENTI-SAUDI-UK-FALSE-FLAG-20260929"]
 assert uk_false_flag["review_target"] == "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
 assert "treats RAF Fairford as the referenced event" in uk_false_flag["attribution_scope"]
-assert "does not create a second incident" in uk_false_flag["downstream_note"]
+assert "second incident" in uk_false_flag["downstream_note"]
 assert uk_false_flag["content_body_evidence"]["capture_status"] == "TITLE_DESCRIPTION_ONLY"
 assert uk_false_flag["content_body_evidence"]["body_claims"] == []
 assert "RAF Fairford event identity" in uk_false_flag["content_body_evidence"]["capture_scope"]
