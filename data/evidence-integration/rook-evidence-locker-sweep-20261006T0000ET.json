@@ -1,0 +1,53 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-05T16:55:00-04:00",
+    "window_end": "2026-10-06T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-06T12:11:00-04:00",
+    "evidence_horizon_time": "2026-10-06T00:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-GULF-OIL-FLOWS-SEPTEMBER-RECOVERY-20261006",
+      "event_type": "GULF_EXPORT_RECOVERY_IRAN_EXPORT_COLLAPSE",
+      "occurrence_time": "2026-09-30",
+      "public_available_time": "2026-10-05T23:03:52-04:00",
+      "actor": "Gulf producers / Iran",
+      "summary": "Reuters-cited Vortexa data showed September Gulf oil flows excluding Iran averaged 19.2 million bpd, about 81% of the pre-war rate. Crude and condensate flows recovered to 91% of pre-war levels while refined-fuel flows remained around 60%. Kpler data cited by Reuters showed Iran exported no crude in September.",
+      "sources": [
+        "https://www.reuters.com/business/energy/gulf-oil-flows-rise-average-81-pre-war-rate-september-data-shows-2026-10-06/"
+      ]
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-GULF-OIL-FLOWS-SEPTEMBER-RECOVERY-20261006",
+      "summary": "September data showed strong non-Iranian Gulf export recovery while Iranian crude exports fell to zero; refined-product flows remained materially below pre-war levels.",
+      "sources": [
+        "https://www.reuters.com/business/energy/gulf-oil-flows-rise-average-81-pre-war-rate-september-data-shows-2026-10-06/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "September Gulf oil-flow recovery and Iran zero-crude-export snapshot"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new signed U.S.-Iran/Hormuz agreement identified.",
+      "No qualified new IAEA implementation event identified.",
+      "No material Lebanon/Hezbollah disposition change identified.",
+      "No material new Gaza/Hamas development identified that changed the standing Iran-war state."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
