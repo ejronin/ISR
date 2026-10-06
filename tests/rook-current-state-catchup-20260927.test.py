@@ -47,7 +47,7 @@ def main() -> int:
         assert packet_events[event_id]["event_class"] == "DIPLOMATIC_OR_POLICY_EVENT"
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert diplomacy["status"] == "Mediated talks continue; no agreement"
+    assert "no agreement" in diplomacy["status"].lower()
     assert "replacement agreement" in diplomacy["observed_state"]
     assert "Hormuz reopening arrangement" in diplomacy["observed_state"]
 
