@@ -76,7 +76,20 @@ async function setRoute(cdp, route) {
 
 async function loadDirectRoute(cdp, route) {
   await cdp.call('Page.navigate', { url: new URL(ia.routeHref(route.key), SITE).href });
-  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+  try {
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+  } catch (error) {
+    const diagnostic = await cdp.eval(`(() => ({
+      hash: location.hash,
+      state: window.ATLAS_PUBLIC_STATE || null,
+      bootstrap: window.ATLAS_BOOTSTRAP_STATE || null,
+      rootStatus: document.getElementById('atlas-root')?.dataset?.status || null,
+      title: document.title,
+      h1: document.querySelector('main h1, .error-state h1')?.textContent?.trim() || null,
+      errorCode: document.querySelector('.error-code')?.textContent?.trim() || null
+    }))()`);
+    throw new Error(`${error.message}; route=${route.key}; diagnostic=${JSON.stringify(diagnostic)}`);
+  }
   return routeView(cdp);
 }
 
