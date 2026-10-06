@@ -1,0 +1,141 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-06T00:00:00-04:00",
+    "window_end": "2026-10-06T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-06T12:11:00-04:00",
+    "evidence_horizon_time": "2026-10-06T12:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-SA-EASTWEST-PIPELINE-THROUGHPUT-20261006",
+      "event_type": "SAUDI_EASTWEST_PIPELINE_OPERATIONAL_THROUGHPUT",
+      "occurrence_time": "2026-10-06",
+      "public_available_time": "2026-10-06T05:41:44-04:00",
+      "actor": "Saudi Arabia",
+      "summary": "Saudi Arabia's energy minister said 5.8 million barrels had been pumped through the East-West Pipeline by Tuesday morning. Reuters reported Riyadh had been using the route to reroute around 4 million bpd toward Yanbu.",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-energy-minister-says-oil-pumped-through-east-west-pipeline-reached-58-2026-10-06/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-CHINA-IRAN-OIL-SUBSTITUTION-20261006",
+      "event_type": "CHINA_SUBSTITUTES_AWAY_FROM_IRANIAN_CRUDE",
+      "occurrence_time": "2026-10-06",
+      "public_available_time": "2026-10-06T07:17:03-04:00",
+      "actor": "Chinese independent refiners",
+      "summary": "Reuters reported Chinese independent refiners bought at least 12 million barrels of Iraqi and Qatari crude for October-November delivery, with one trader estimating 15-20 million barrels, as Iranian supply dwindled. Kpler put Chinese Iranian-crude imports at 590,000 bpd in September and Iranian floating storage outside the blockade zone at about 45 million barrels.",
+      "sources": [
+        "https://www.reuters.com/business/energy/chinese-independent-refiners-boost-iraqi-oil-purchases-iranian-flows-fall-2026-10-06/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-RAF-FAIRFORD-LATER-EVIDENCE-20261006",
+      "event_type": "RAF_FAIRFORD_IRAN_LINKED_PLOT_LATER_EVIDENCE",
+      "occurrence_time": "2026-10-06",
+      "public_available_time": "2026-10-06T10:48:45-04:00",
+      "actor": "United Kingdom / United States / Iran",
+      "summary": "British police arrested another man in the RAF Fairford terrorism investigation. Two U.S. officials separately told Reuters that a suspected complex drone-attack plot involving Iran prompted removal of U.S. B-1 bombers from Fairford. Iran denied involvement; Iranian state direction remains unestablished.",
+      "sources": [
+        "https://www.reuters.com/world/uk/uk-police-make-further-arrest-relation-suspected-airbase-plot-2026-10-06/",
+        "https://www.reuters.com/world/uk/iran-drone-plot-fears-led-us-remove-bombers-uk-base-us-officials-say-2026-10-06/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-SAUDI-JAZAN-NAJRAN-AIRPORT-ATTACKS-20261005",
+      "event_type": "SAUDI_AIRPORT_ATTACKS_CONFIRMED",
+      "occurrence_time": "2026-10-05",
+      "public_available_time": "2026-10-06T10:30:00-04:00",
+      "actor": "Saudi Arabia",
+      "summary": "Saudi Arabia's aviation authority said Jazan and Najran airports were targeted in two attacks Monday evening, injuring three people and causing limited damage. The authority statement as reported did not by itself establish the attacker or weapon type.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-slip-traders-weigh-strong-mideast-exports-against-gulf-tensions-2026-10-06/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-OIL-PRICE-EASING-20261006",
+      "event_type": "OIL_PRICE_EASING_ON_SUPPLY_RECOVERY",
+      "occurrence_time": "2026-10-06",
+      "public_available_time": "2026-10-06T10:30:00-04:00",
+      "actor": "Global oil market",
+      "summary": "Brent traded at $98.48 and WTI at $88.01 around 10:30 a.m. EDT as stronger Middle Eastern exports and planned G7 emergency stock releases eased immediate crude-supply fears. Shipping and refined-product risks remained abnormal.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-slip-traders-weigh-strong-mideast-exports-against-gulf-tensions-2026-10-06/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-FAIRFORD-ATTRIBUTION-US-OFFICIALS-20261006",
+      "updates_existing_ref": "LOCKER-RAF-FAIRFORD-B1-REDEPLOYMENT-20261004",
+      "relationship": "LATER_US_OFFICIAL_REPORTING_STRENGTHENS_IRAN_LINKED_THREAT_ASSESSMENT_WITHOUT_ESTABLISHING_STATE_DIRECTION",
+      "summary": "Two U.S. officials told Reuters a suspected complex drone plot involving Iran prompted the Fairford B-1 removal; the investigation remains open and Iran denies involvement.",
+      "sources": [
+        "https://www.reuters.com/world/uk/iran-drone-plot-fears-led-us-remove-bombers-uk-base-us-officials-say-2026-10-06/",
+        "https://www.reuters.com/world/uk/uk-police-make-further-arrest-relation-suspected-airbase-plot-2026-10-06/"
+      ]
+    },
+    {
+      "update_id": "UPD-YEMEN-COASTAL-REVERSAL-20261006",
+      "updates_existing_ref": "SAUDI_HOUTHI_RED_SEA_CONFLICT",
+      "relationship": "LATER_EVIDENCE_MATERIALLY_REVERSES_PRIOR_HOUTHI_COASTAL_GAIN_WHILE_EXTENT_REMAINS_CONTESTED",
+      "summary": "Saudi-backed forces reported retaking most Bab el-Mandeb coastal positions and Mocha; Reuters could not independently verify the full extent and Houthis disputed the claims, while fighting near Taiz remained active.",
+      "sources": [
+        "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/"
+      ]
+    },
+    {
+      "update_id": "UPD-SA-EASTWEST-PIPELINE-THROUGHPUT-20261006",
+      "updates_existing_ref": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "relationship": "LATER_OPERATIONAL_EVIDENCE_MATERIALLY_NARROWS_THROUGHPUT_GAP",
+      "summary": "The East-West Pipeline is now supported as carrying material bypass volume, with roughly 4 million bpd rerouting reported and 5.8 million barrels pumped by Tuesday morning; full rated capacity remains unresolved.",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-energy-minister-says-oil-pumped-through-east-west-pipeline-reached-58-2026-10-06/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-IRAN-OIL-EXPORT-ISOLATION-20261006",
+      "summary": "Kpler data cited by Reuters showed zero Iranian crude exports in September while China reduced Iranian imports and independent refiners substituted Iraqi and Qatari barrels.",
+      "sources": [
+        "https://www.reuters.com/business/energy/gulf-oil-flows-rise-average-81-pre-war-rate-september-data-shows-2026-10-06/",
+        "https://www.reuters.com/business/energy/chinese-independent-refiners-boost-iraqi-oil-purchases-iranian-flows-fall-2026-10-06/"
+      ]
+    },
+    {
+      "economic_id": "ECON-SA-EASTWEST-BYPASS-20261006",
+      "summary": "Saudi Arabia's East-West Pipeline is again functioning as a material Hormuz bypass route, reducing the degree to which Iranian pressure can suppress Saudi crude exports.",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-energy-minister-says-oil-pumped-through-east-west-pipeline-reached-58-2026-10-06/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "Saudi East-West bypass throughput",
+      "China substitution away from Iranian crude",
+      "RAF Fairford later evidence and additional arrest",
+      "confirmed Jazan/Najran airport attacks",
+      "oil-price easing alongside strong regional exports",
+      "Yemen coastal reversal/displacement state requiring downstream current-state correction"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new signed U.S.-Iran/Hormuz agreement identified through the noon cutoff.",
+      "No qualified new IAEA implementation event identified.",
+      "No material Lebanon/Hezbollah disposition change identified.",
+      "No material new Gaza/Hamas development identified that changes the Iran-war current state.",
+      "No new verified Iranian nuclear concession identified."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
