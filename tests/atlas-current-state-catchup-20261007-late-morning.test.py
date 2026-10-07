@@ -23,7 +23,7 @@ def main() -> int:
     assert entry["sequence"] == 33
     assert entry["packet_id"] == "UPD-20261007-ROOK-LATE-MORNING"
     assert entry["sha256"] == "419ccd74651f0344cc5b8a8a1a9cae0fe6851a3c0ad4ac0db8c8b943a011209c"
-    assert entry["lineage_sha256"] == "77eaddd39d446c62a5ec08b9be8ba05d25c0236ec6ac6772bcb37d06d8d6d3ae"
+    assert entry["lineage_sha256"] == "5af5ad0abc072f2f966ed5bdd558902ec5b57a69a7d8847698a8ab74d6bab374"
     assert entry["evidence_cutoff"] == "2026-10-07T11:22:00-04:00"
     assert manifest["current_evidence_cutoff"] >= entry["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
