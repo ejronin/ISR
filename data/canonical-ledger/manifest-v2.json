@@ -361,7 +361,7 @@
       "evidence_cutoff": "2026-10-07T11:22:00-04:00",
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "previous_lineage_sha256": "98bbea2c9a436460380dc5662840abb1a568514786638628485b24796c46f9d8",
-      "lineage_sha256": "77eaddd39d446c62a5ec08b9be8ba05d25c0236ec6ac6772bcb37d06d8d6d3ae"
+      "lineage_sha256": "5af5ad0abc072f2f966ed5bdd558902ec5b57a69a7d8847698a8ab74d6bab374"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
