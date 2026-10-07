@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "APPROVED_SANCTIONS_FINANCIAL_NETWORK_ANALYSIS",
   "title": "Sanctions & Impact",
-  "as_of": "2026-10-02",
+  "as_of": "2026-10-06",
   "public_rule": "Understand the plumbing at analyst depth. Show the reader which valve got closed, what stopped flowing, what still flows around it, and why they should care.",
   "governing_rules": {
     "designation_is_not_damage": "A legal designation establishes that a restriction was imposed. It does not by itself prove that money stopped moving, trade stopped, or the target lost access to every workaround.",
@@ -255,9 +255,10 @@
       "lat": 35.9,
       "lon": 104.2,
       "precision": "Country-level jurisdiction marker",
-      "note": "China remains economically important to Iran; the map marks exposure and remaining trade capacity, not a claim that Chinese trade has stopped.",
+      "note": "China remains economically important to Iran, but current oil evidence shows material substitution rather than insulation from pressure: Chinese independent refiners increased Iraqi and Qatari purchases as Iranian crude availability fell. The map marks continuing commercial exposure, not a claim that all China-Iran trade stopped.",
       "source_ids": [
-        "SAN-REUTERS-20260903-PRESSURE"
+        "SAN-REUTERS-20260903-PRESSURE",
+        "SAN-REUTERS-20261006-CHINA-OIL"
       ]
     }
   ],
@@ -382,6 +383,20 @@
       "source_ids": [
         "SAN-TREASURY-20261001-INDUSTRY",
         "SAN-TREASURY-20261001-A7"
+      ]
+    },
+    {
+      "id": "san-20261005-ffi-alert",
+      "date": "2026-10-05",
+      "title": "Foreign financial institutions put on direct notice",
+      "targeted_node": "Foreign banks and U.S. correspondent / payable-through access",
+      "function": "Use foreign financial institutions and correspondent relationships to keep Iran-linked payments commercially usable.",
+      "legal_effect": "OFAC published a Notice to Foreign Financial Institutions Conducting Business with Iran and amended FAQ 156, warning that institutions continuing sanctionable Iran-related activity can face correspondent-account or payable-through restrictions after a Treasury finding.",
+      "observed_effect": "The October 5 action is an explicit enforcement-risk notice. It does not by itself establish that a specific foreign bank has already been sanctioned, lost correspondent access, or exited Iran-related business.",
+      "potential_effect": "Banks have a stronger incentive to terminate sanctionable Iran-linked relationships before a named enforcement action, increasing screening, settlement friction and counterparty pullback.",
+      "source_ids": [
+        "SAN-OFAC-20261005-FFI-ALERT",
+        "SAN-REUTERS-20261005-FFI-ALERT"
       ]
     }
   ],
@@ -618,6 +633,28 @@
       "url": "https://home.treasury.gov/news/press-releases/tg829",
       "source_role": "Primary sanctions implementation history",
       "context": "Treasury explains correspondent/payable-through-account consequences and how foreign institutions adjust behavior to protect access to the U.S. financial system."
+    },
+    "SAN-OFAC-20261005-FFI-ALERT": {
+      "publisher": "U.S. Department of the Treasury — OFAC",
+      "title": "Notice to Foreign Financial Institutions Conducting Business with Iran",
+      "date": "2026-10-05",
+      "url": "https://ofac.treasury.gov/recent-actions/20261005",
+      "source_role": "Primary official alert",
+      "context": "Establishes publication of the Iran-related foreign-financial-institution alert and amended FAQ 156. The notice describes sanctions risk and process; it is not evidence that every exposed bank has already been sanctioned."
+    },
+    "SAN-REUTERS-20261005-FFI-ALERT": {
+      "publisher": "Reuters",
+      "title": "US says foreign financial institutions doing business with Iran may be sanctioned without notice",
+      "date": "2026-10-05",
+      "url": "https://www.reuters.com/world/middle-east/us-says-foreign-financial-institutions-doing-business-with-iran-may-be-2026-10-05/",
+      "source_role": "Independent reporting on the October 5 OFAC alert"
+    },
+    "SAN-REUTERS-20261006-CHINA-OIL": {
+      "publisher": "Reuters",
+      "title": "Chinese independent refiners boost Iraqi oil purchases as Iranian flows fall",
+      "date": "2026-10-06",
+      "url": "https://www.reuters.com/business/energy/chinese-independent-refiners-boost-iraqi-oil-purchases-iranian-flows-fall-2026-10-06/",
+      "source_role": "Independent reporting on observed oil-market substitution"
     }
   }
 }
