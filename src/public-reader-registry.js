@@ -576,8 +576,9 @@
     const s=section(article,'What controls now?','The June MOU no longer controls either side. It remains the historical baseline for what each side previously accepted, obtained and failed to sustain, but it is not the current operating agreement.');routeLink(s,'hormuz.talks','See current Hormuz talks');routeLink(s,'talks.nuclear','See current nuclear talks');
   }
 
-  function nuclear(article) {
+  function nuclear(article, context) {
     const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The negotiating gap is explicit; no nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
+    const technical=section(article,'Current enrichment status','Reuters’ Oct. 7 IAEA-grounded review says Iran is not currently known to be enriching uranium. The IAEA believes a little more than 200 kg of uranium enriched up to 60% remains, primarily in the Isfahan tunnel complex with some also at Natanz. Inspectors have not returned to the bombed enrichment sites, Iran has not fully accounted for the surviving stock, and the status of the new Isfahan tunnel enrichment plant remains unknown. No current enrichment is known does not mean Iran is unable to restart.');
   }
 
   function regional(article, context) {
@@ -588,6 +589,8 @@
     evidence(current,context,{source_ids:['SRC-A2107B000002']},'Source behind this update');
     const support=section(article,'Iran–Hezbollah financial support','Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September for displaced Lebanese families. A Hezbollah official confirmed funds had been secured but did not identify the source; Iran did not acknowledge the transfer in the report. Intermediaries reportedly charged a 20% fee, showing the transfer channel was costly and constrained.');
     evidence(support,context,{source_ids:['SRC-A2107C000002']},'Source behind this update');
+    const greece=section(article,'Conditional Hormuz support','Greek Foreign Minister George Gerapetritis said Greece was willing to cooperate with the United States and offer maritime aid in the Strait of Hormuz if a viable peace process emerges. This is a conditional policy offer, not an operational deployment.');
+    evidence(greece,context,{source_ids:['SRC-A2107D000002']},'Source behind this update');
     const r=findSection(article,/14-state maritime support|roster/i);if(r)collapse(r,'Regional participation and roster detail');
   }
 

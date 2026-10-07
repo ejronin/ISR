@@ -362,11 +362,22 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "previous_lineage_sha256": "98bbea2c9a436460380dc5662840abb1a568514786638628485b24796c46f9d8",
       "lineage_sha256": "5af5ad0abc072f2f966ed5bdd558902ec5b57a69a7d8847698a8ab74d6bab374"
+    },
+    {
+      "sequence": 34,
+      "packet_id": "UPD-20261007-ROOK-AFTERNOON",
+      "path": "data/canonical-updates/UPD-20261007-ROOK-AFTERNOON.json",
+      "sha256": "c75207c95957a34ba6e7dd4e934534b39a522c96072ee8459a4fc9cdbc5a911a",
+      "known_at": "2026-10-07T14:03:00-04:00",
+      "evidence_cutoff": "2026-10-07T14:03:00-04:00",
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "previous_lineage_sha256": "5af5ad0abc072f2f966ed5bdd558902ec5b57a69a7d8847698a8ab74d6bab374",
+      "lineage_sha256": "89f6f8a3e9905b6b5f3551df58df34ba01f39c31770c7c228d1e4546a9fa0a5a"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-10-07T11:22:00-04:00",
+  "current_evidence_cutoff": "2026-10-07T14:03:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",

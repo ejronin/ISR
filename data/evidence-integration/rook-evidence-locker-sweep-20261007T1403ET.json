@@ -1,0 +1,58 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-07T11:22:00-04:00",
+    "window_end": "2026-10-07T14:03:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-07T14:03:00-04:00",
+    "evidence_horizon_time": "2026-10-07T14:03:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAN-ENRICHMENT-CURRENT-STATUS-20261007",
+      "event_type": "IRAN_ENRICHMENT_CURRENT_IAEA_STATUS",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T11:42:00-04:00",
+      "actor": "Iran / IAEA",
+      "summary": "Reuters summarized the current IAEA-grounded status of Iran's enrichment program: Iran is not currently known to be enriching uranium; the IAEA believes a little more than 200 kg of uranium enriched up to 60% remains, primarily in the Isfahan tunnel complex with some at Natanz; inspectors have not returned to the bombed enrichment sites; and the status of the new Isfahan tunnel enrichment plant remains unknown.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/status-irans-uranium-enrichment-programme-2026-10-07/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-GREECE-HORMUZ-MARITIME-AID-OFFER-20261007",
+      "event_type": "GREECE_CONDITIONAL_HORMUZ_MARITIME_AID_OFFER",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T05:04:00-04:00",
+      "actor": "Greece",
+      "summary": "Greek Foreign Minister George Gerapetritis said Greece was willing to cooperate with the United States and offer maritime aid in the Strait of Hormuz if a viable peace process emerges. This was discovered in the recovery sweep after the earlier cutoff; it is a conditional policy offer, not evidence that Greek forces have entered Hormuz operations.",
+      "sources": [
+        "https://www.reuters.com/world/europe/rubio-says-us-greece-jointly-combat-security-threats-2026-10-07/"
+      ]
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "coverage": {
+    "material_results": [
+      "Current IAEA-grounded Iran enrichment status",
+      "Late-discovered Greek conditional offer of Hormuz maritime assistance"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No signed U.S.-Iran settlement or Hormuz reopening agreement identified.",
+      "No later Hormuz shipping development superseded sequence 33.",
+      "No later Yemen battlefield development superseded the accepted 09:15 state.",
+      "No new material Lebanon/Hezbollah development superseded sequence 33.",
+      "No material Gaza/Hamas development identified that changes the Iran-war current state."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}

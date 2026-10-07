@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261007-ROOK-AFTERNOON",
+  "known_at": "2026-10-07T14:03:00-04:00",
+  "evidence_cutoff": "2026-10-07T14:03:00-04:00",
+  "summary": "Consumes the Oct. 7 11:22-to-14:03 ET recovery sweep after the scheduled noon collection failed to write its required artifact. It adds the current IAEA-grounded technical status of Iran's enrichment program and backfills Greece's conditional offer of Hormuz maritime assistance, while preserving uncertainty over surviving enriched material, bombed-site access and the Isfahan tunnel plant.",
+  "sources": [
+    {
+      "source_id": "SRC-A2107D000001",
+      "url": "https://www.reuters.com/world/middle-east/status-irans-uranium-enrichment-programme-2026-10-07/",
+      "source_role": "Reuters explainer summarizing current IAEA-grounded Iran enrichment status"
+    },
+    {
+      "source_id": "SRC-A2107D000002",
+      "url": "https://www.reuters.com/world/europe/rubio-says-us-greece-jointly-combat-security-threats-2026-10-07/",
+      "source_role": "Reuters reporting on Greek conditional offer of Hormuz maritime assistance"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "LOCKER-IRAN-ENRICHMENT-CURRENT-STATUS-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Reuters summarized the current IAEA-grounded status of Iran's enrichment program: Iran is not currently known to be enriching uranium; the IAEA believes a little more than 200 kg of uranium enriched up to 60% remains, primarily in the Isfahan tunnel complex with some at Natanz; inspectors have not returned to the bombed enrichment sites; and the status of the new Isfahan tunnel enrichment plant remains unknown.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107D000001"
+      ],
+      "publication_time": "2026-10-07T11:42:00-04:00",
+      "upstream_event_type": "IRAN_ENRICHMENT_CURRENT_IAEA_STATUS"
+    },
+    {
+      "event_id": "LOCKER-GREECE-HORMUZ-MARITIME-AID-OFFER-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Greek Foreign Minister George Gerapetritis said Greece was willing to cooperate with the United States and offer maritime aid in the Strait of Hormuz if a viable peace process emerges. The statement is a conditional policy offer, not evidence that Greek forces have entered Hormuz operations.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107D000002"
+      ],
+      "publication_time": "2026-10-07T05:04:00-04:00",
+      "upstream_event_type": "GREECE_CONDITIONAL_HORMUZ_MARITIME_AID_OFFER"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-NUCLEAR-TECHNICAL-STATUS-20261007",
+      "mode": "add",
+      "record": {
+        "status": "No current enrichment is known; significant 60%-enriched stock is believed to remain; inspector access and Isfahan plant status unresolved",
+        "observed_state": "Reuters' October 7 IAEA-grounded review says Iran is not currently known to be enriching uranium. IAEA chief Rafael Grossi said in March the agency believed a little more than 200 kg of uranium enriched up to 60% remained in the Isfahan tunnel complex, with some also at Natanz. Iran has not told the IAEA how much enriched uranium survived the attacks or where all of it is, inspectors have not returned to the bombed enrichment sites, and the status of the new Isfahan tunnel enrichment plant remains unknown.",
+        "adjudication": "CURRENT_TECHNICAL_STATUS_WITH_MAJOR_UNRESOLVED_INVENTORY_ACCESS_AND_FACILITY_GAPS; NO_CURRENT_ENRICHMENT_KNOWN_DOES_NOT_ESTABLISH_INABILITY_TO_RESTART",
+        "knowledge_time": "2026-10-07T14:03:00-04:00",
+        "source_ids": [
+          "SRC-A2107D000001"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-GREECE-HORMUZ-MARITIME-SUPPORT-20261007",
+      "mode": "add",
+      "record": {
+        "status": "Greece offers conditional Hormuz maritime assistance if a viable peace process emerges",
+        "observed_state": "Greek Foreign Minister George Gerapetritis said Greece was willing to cooperate with the United States and offer maritime aid in the Strait of Hormuz if there is a viable peace process. No Greek Hormuz deployment is established by the statement.",
+        "adjudication": "CONDITIONAL_POLICY_OFFER; NOT_AN_OPERATIONAL_DEPLOYMENT",
+        "knowledge_time": "2026-10-07T14:03:00-04:00",
+        "source_ids": [
+          "SRC-A2107D000002"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261007T1403ET.json"
+    ]
+  }
+}
