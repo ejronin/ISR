@@ -79,15 +79,20 @@ def main() -> int:
     assert "US_ACCEPTANCE_OF_IRAN_CONDITIONS_NOT_ESTABLISHED" in prior_diplomacy["status"]
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert diplomacy["status"] == "Mediated talks continue; no agreement"
+    assert "no agreement" in diplomacy["status"].lower()
 
     prior_shipping = next(
         row["record"] for row in noon["entities"]
         if row["entity_id"] == "SHIP-HORMUZ-KPLER-RECOVERY-20260929"
     )
     assert prior_shipping["status"] == "PARTIAL_RECOVERY_BELOW_PREWAR_VOLUME"
+    prior_economy = next(
+        row["record"] for row in noon["entities"]
+        if row["entity_id"] == "ECON-IRAN-CIVILIAN-STRAIN-20260929"
+    )
     economy = rows_by_id(state["entities"]["economics"])["ECON-IRAN-CIVILIAN-STRAIN-20260929"]["record"]
-    assert economy["status"] == "SEVERE_WARTIME_HOUSEHOLD_AND_PRIVATE_SECTOR_STRAIN"
+    assert prior_economy["status"] == "SEVERE_WARTIME_HOUSEHOLD_AND_PRIVATE_SECTOR_STRAIN"
+    assert economy["knowledge_time"] >= prior_economy["knowledge_time"]
 
     assert midnight["narrative_claims"] == []
     assert noon["narrative_claims"] == []

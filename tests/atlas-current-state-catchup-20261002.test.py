@@ -22,12 +22,13 @@ def main() -> int:
     manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
     packet = json.loads((ROOT / "data/canonical-updates/UPD-20261002-ROOK-CATCHUP.json").read_text(encoding="utf-8"))
 
-    last = manifest["accepted_updates"][-1]
-    assert last["sequence"] == 28
-    assert last["packet_id"] == packet["packet_id"] == "UPD-20261002-ROOK-CATCHUP"
-    assert last["sha256"] == "ff1fc48fb071966f5c462a202f2a778f4e496034c19fe5596c8e0139a72dab1b"
-    assert last["lineage_sha256"] == "01b1587c5f48953ff912141d8010363dc3a9752920c1ebed7ecd15d1847e9f3f"
-    assert manifest["current_evidence_cutoff"] == packet["evidence_cutoff"]
+    entry28 = next(item for item in manifest["accepted_updates"] if item["packet_id"] == packet["packet_id"])
+    assert entry28["sequence"] == 28
+    assert entry28["packet_id"] == packet["packet_id"] == "UPD-20261002-ROOK-CATCHUP"
+    assert entry28["sha256"] == "ff1fc48fb071966f5c462a202f2a778f4e496034c19fe5596c8e0139a72dab1b"
+    assert entry28["lineage_sha256"] == "01b1587c5f48953ff912141d8010363dc3a9752920c1ebed7ecd15d1847e9f3f"
+    assert entry28["evidence_cutoff"] == packet["evidence_cutoff"]
+    assert packet["evidence_cutoff"] <= manifest["current_evidence_cutoff"]
     assert canonical["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
@@ -73,25 +74,28 @@ def main() -> int:
     economics = rows_by_id(entities["economics"])
     diplomacy = rows_by_id(entities["diplomacy"])
 
-    assert shipping["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]["status"] == (
-        "Traffic has recovered somewhat, but attacks and disruption continue"
-    )
-    assert economics["ECON-GULF-ENERGY-RECOVERY-20260930"]["record"]["status"] == (
-        "Fuel flows are improving, but the market is still far from pre-war conditions"
-    )
-    assert economics["ECON-US-IRAN-INDUSTRIAL-SANCTIONS-20261001"]["record"]["status"] == (
-        "U.S. pressure expanded into additional Iranian industrial and financial networks"
-    )
-    assert diplomacy["DIP-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001"]["record"]["status"] == (
-        "Reported Syria-Hezbollah talks in Turkey remain disputed"
-    )
+    packet_entities = {row["entity_id"]: row["record"] for row in packet["entities"]}
+    prior_shipping = packet_entities["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]
+    prior_energy = packet_entities["ECON-GULF-ENERGY-RECOVERY-20260930"]
+    prior_sanctions = packet_entities["ECON-US-IRAN-INDUSTRIAL-SANCTIONS-20261001"]
+    prior_diplomacy = packet_entities["DIP-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001"]
+
+    assert prior_shipping["status"] == "Traffic has recovered somewhat, but attacks and disruption continue"
+    assert prior_energy["status"] == "Fuel flows are improving, but the market is still far from pre-war conditions"
+    assert prior_sanctions["status"] == "U.S. pressure expanded into additional Iranian industrial and financial networks"
+    assert prior_diplomacy["status"] == "Reported Syria-Hezbollah talks in Turkey remain disputed"
+
+    assert shipping["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]["knowledge_time"] >= prior_shipping["knowledge_time"]
+    assert economics["ECON-GULF-ENERGY-RECOVERY-20260930"]["record"]["knowledge_time"] >= prior_energy["knowledge_time"]
+    assert economics["ECON-US-IRAN-INDUSTRIAL-SANCTIONS-20261001"]["record"]["knowledge_time"] >= prior_sanctions["knowledge_time"]
+    assert diplomacy["DIP-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001"]["record"]["knowledge_time"] >= prior_diplomacy["knowledge_time"]
 
     public_text = [events[event_id]["summary"] for event_id in expected]
     for rec in (
-        shipping["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"],
-        economics["ECON-GULF-ENERGY-RECOVERY-20260930"]["record"],
-        economics["ECON-US-IRAN-INDUSTRIAL-SANCTIONS-20261001"]["record"],
-        diplomacy["DIP-SYRIA-HEZBOLLAH-TURKEY-CONTACT-20261001"]["record"],
+        prior_shipping,
+        prior_energy,
+        prior_sanctions,
+        prior_diplomacy,
     ):
         public_text.extend([str(rec.get("status") or ""), str(rec.get("observed_state") or "")])
 

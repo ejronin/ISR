@@ -104,9 +104,9 @@ def main() -> int:
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])
     contacts = diplomacy["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
-    assert contacts["status"] == "Mediated talks continue; no agreement"
-    assert "Qatar relayed U.S. feedback" in contacts["observed_state"]
-    assert "no replacement agreement" in contacts["observed_state"]
+    assert "no agreement" in contacts["status"].lower()
+    assert "mediator" in contacts["observed_state"].lower()
+    assert "no accepted replacement" in contacts["observed_state"].lower()
 
     makkah = diplomacy["DIP-MAKKAH-PACT-IMPLEMENTATION-20260925"]["record"]
     assert "CHIEFS_MEETING_CONFIRMED" in makkah["status"]

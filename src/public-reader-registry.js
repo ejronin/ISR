@@ -135,9 +135,9 @@
   const OBJECTIVES = [
     ['United States','Deny Iran a nuclear weapon','UNRESOLVED','No Iranian nuclear weapon is established, but no durable controlling nuclear settlement exists and the safeguards dispute has escalated.'],
     ['United States','Break offensive military power projection','PARTLY ACHIEVED','Iran suffered substantial losses and damage, but it continues missile and drone attacks and maritime coercion.'],
-    ['United States','Reduce Iran’s ability to arm and sustain proxies','PARTLY ACHIEVED','Some proxy and network losses are established. Houthi forces remain active and made major Sep. 10–11 territorial gains.'],
-    ['United States','Restore usable navigation through Hormuz','NOT ACHIEVED','Physical transit continues, but observable traffic remains severely depressed and no normalized navigation regime controls.'],
-    ['United States','Use economic isolation to narrow Tehran’s options','PARTLY ACHIEVED','Severe trade, export and financial pressure is established. Iran still trades and continues coercive action.'],
+    ['United States','Reduce Iran’s ability to arm and sustain proxies','PARTLY ACHIEVED','Some proxy and network losses are established. Houthi forces remain capable of attacks, but Saudi-backed forces report materially reversing the September west-coast gains around Bab el-Mandeb; the extent remains contested and fighting around Taiz continues.'],
+    ['United States','Restore usable navigation through Hormuz','NOT ACHIEVED','Gulf exports and physical transit have recovered substantially, but Hormuz remains selectively constrained and dangerous, tanker attacks continue, and no normalized navigation regime is established.'],
+    ['United States','Use economic isolation to narrow Tehran’s options','PARTLY ACHIEVED','Severe trade, export and financial pressure is established. Kpler data cited by Reuters showed zero Iranian crude exports in September, while Chinese independent refiners substituted Iraqi and Qatari barrels. Iran retains other trade and coercive capacity.'],
     ['Iran','War damages / reparations paid','NOT ACHIEVED','Payment is not established.'],
     ['Iran','Frozen / blocked Iranian assets returned','NOT ACHIEVED','Return of the demanded assets is not established.'],
     ['Iran','U.S. naval blockade terminated','NOT ACHIEVED','Termination of the demanded blockade is not established.'],
@@ -219,8 +219,8 @@
   }
 
   function overview(article, context) {
-    intro(article, 'Iran is in a very weak position compared with the position it said it would achieve. It is offering to reopen Hormuz and asking for the U.S. blockade and military pressure to end.');
-    const s=section(article,'Where does it stand now?', 'Iran started by talking about what everyone else would have to accept. Now Iran is negotiating over what it can get in return for reopening Hormuz and ending the pressure on itself.');
+    intro(article, 'Iran remains under severe military and economic pressure. Mediated contacts continue, but no agreement has been reached; Tehran ties reopening Hormuz to seven conditions while regional oil flows increasingly adapt around the disruption.');
+    const s=section(article,'Where does it stand now?', 'Iran still has the ability to impose risk and disruption, but it has not secured the regional order or Hormuz authority it demanded. The current contest is over the terms for reopening and pressure relief, while Gulf exports recover and Iran’s own crude exports remain severely constrained.');
     s.dataset.overviewCurrentPosition = 'accepted-evidence';
     add(s,'p','', "Iran hasn't capitulated. But its negotiating position increasingly looks like a country trying to get the best deal it can from a bad position, rather than a country deciding what the final deal will be. That's a long way from where Iran said this war was going.");
     const eventEvidence = (host, ids) => {
@@ -230,7 +230,7 @@
     const g=add(s,'div','record-list');
     const earlier=card(g,'What Iran said it would achieve','Iran talked about controlling Hormuz, deciding who could pass and charging ships for passage. It demanded that others accept its conditions before shipping and negotiations returned to normal.','ORIGINAL OBJECTIVE');
     eventEvidence(earlier, ['EV-20260805-001','EV-20260822-001','G3-IRAN-HORMUZ-RESTRICTED-ZONE-20260907','G3-IRAN-HORMUZ-SEQUENCING-20260920']);
-    const offer=card(g,'What Iran is asking for now','Iran has offered to reopen Hormuz in return for relief from the U.S. blockade and military pressure. Its foreign minister publicly presented a seven-day plan. Trump rejected that proposal on September 26. Iran continued talks with Oman about navigation and practical solutions; no agreement has been reached.','CURRENT RESULT');
+    const offer=card(g,'What Iran is asking for now','Trump rejected Iran’s September 26 reopening proposal. Mediated contacts continued afterward, and Iran now says the U.S. response has been relayed through mediators while additional points remain unresolved. Qalibaf has tied reopening Hormuz to seven Iranian conditions based on the June Islamabad memorandum. No agreement has been reached.','CURRENT RESULT');
     eventEvidence(offer, ['G3-IRAN-HORMUZ-REOPENING-OFFER-20260922','G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926','G3-OMAN-IRAN-HORMUZ-MEETING-20260926']);
     const result=card(g,'Iran has not made others accept its terms','Iran has not established the permanent control over Hormuz it sought or forced the United States to accept its terms. Gulf states have not accepted Iranian control of regional shipping. Saudi Arabia is publicly calling for the prewar system to return, without Iranian fees or tolls. Iran is asking for the pressure against it to end.','WHY THIS FALLS SHORT');
     eventEvidence(result, ['G3-ARAB-LEAGUE-HORMUZ-POSITION-20260908','G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926']);
@@ -239,9 +239,9 @@
     // Keep the existing domain evidence and navigation, with present-condition copy.
     const summaries = {
       military: 'U.S. and coalition forces retained the strike advantage. Iran has not forced the broad U.S. withdrawal from the region it demanded.',
-      hormuz: 'Iran has not established permanent control of Hormuz. Its reopening offer has not become an agreement, and Saudi Arabia rejects fees or tolls.',
-      economy: 'Iran faces a sharp fall in crude exports and growing pressure on foreign currency and imports. It is seeking an end to the blockade.',
-      diplomacy: 'The June MOU is no longer in force. Trump rejected Iran’s latest reopening proposal on September 26, while Iranian and Omani ministers continued talks.'
+      hormuz: 'Iran has not established permanent control of Hormuz. Gulf exports have recovered substantially, but the strait remains selectively constrained and dangerous and no reopening agreement is in force.',
+      economy: 'Iran faces severe currency, sanctions and export pressure. Kpler data cited by Reuters showed zero Iranian crude exports in September while Chinese refiners substituted Iraqi and Qatari barrels.',
+      diplomacy: 'The June MOU is no longer in force. Mediated U.S.-Iran contacts continue, but additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.'
     };
     article.querySelectorAll('[data-orientation-domain]').forEach(c => {
       const p=c.querySelector(':scope > p:not(.card-kicker):not(.record-status)');
@@ -306,8 +306,8 @@
     const summary=section(article,'Current campaign results','Recent fighting changed infrastructure and geography, while several attribution and operating-status questions remain open.');
     addClass(summary,'guide-summary-strip');
     const g=add(summary,'div','orientation-grid');
-    card(g,'Saudi energy route hit','The Sep. 11 Iraqi-origin attack damaged the East-West pipeline. Later reporting puts it mostly out of service for roughly three to five weeks; the responsible group and ordering authority remain unresolved.','EFFECT ESTABLISHED');
-    card(g,'Houthi west-coast gains','Greater and Lesser Hanish and Perim/Mayun improve the Houthi position around Bab el-Mandeb. They do not establish total control of commercial passage.','TERRITORIAL GAIN');
+    card(g,'Saudi East-West pipeline','The Sep. 11 attack damaged three pumping stations. The line has since restarted and is carrying material bypass volume: Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, while Reuters reported roughly 4 million bpd was being rerouted toward Yanbu. Full 7 million bpd capacity is not established.','DAMAGED / OPERATING');
+    card(g,'Bab el-Mandeb coast','Saudi-backed Yemeni forces report retaking most coastal areas around Bab el-Mandeb, reaching Mocha and recovering the Dhubab airstrip. Reuters could not independently verify the full extent, the Houthis dispute the claimed losses, and fighting around Taiz continues.','COUNTEROFFENSIVE / CONTESTED');
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
     routeLink(summary,'military.facilities','See authoritative facility status');
 
@@ -483,13 +483,13 @@
 
   function shipping(article, context) {
     addClass(article, 'guide-migrated-page guide-shipping-page');
-    intro(article,'Hormuz traffic remains severely depressed, but physical closure is not established. Bab el-Mandeb traffic continued near its recent observable average despite Houthi territorial gains.');
+    intro(article,'Gulf export flows have recovered substantially, but Hormuz is not normalized. Selective passage constraints, tanker attacks, dark transits and extreme transport risk remain, while Saudi-backed forces report reversing much of the September Houthi coastal advance near Bab el-Mandeb.');
 
     const summary=section(article,'Current maritime picture','Tracked traffic, physical passage and commercial or legal acceptance are separate facts.');
     addClass(summary,'guide-summary-strip');
     const g=add(summary,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
-    const h=card(g,'Hormuz: severely depressed','Reuters preliminary tracking counted four commodity vessels exiting and ten entering the Gulf over the weekend. AIS-dark vessels are outside these tracked counts. The evidence does not show a complete physical closure.','PRELIMINARY OBSERVATION');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-HORMUZ-TRAFFIC-20260914'));
-    const b=card(g,'Bab el-Mandeb: general traffic continues','Reuters counted 24 transits Saturday and 27 Sunday, approximately in line with the recent 10-day average. Houthi territorial gains do not establish general closure.','OBSERVED TRAFFIC');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
+    const h=card(g,'Hormuz: recovery without normalization','September Gulf oil flows excluding Iran averaged about 81% of pre-war levels, with crude and condensate around 91%. That export recovery is not the same as normal unrestricted Hormuz traffic: selective constraints, tanker incidents and abnormal risk remain.','RECOVERING / STILL CONSTRAINED');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-HORMUZ-KPLER-RECOVERY-20260929'));
+    const b=card(g,'Bab el-Mandeb: battlefield control shifted','Saudi-backed forces report retaking most coastal areas around the strait and reaching Mocha, but Reuters could not independently verify the full extent and the Houthis dispute the losses. The battlefield change does not by itself establish closure of general commercial passage.','COUNTEROFFENSIVE / CONTESTED');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
     const a=card(g,'Iran’s 77-vessel list','Iran announced possible fines, detention or confiscation and warned maritime service providers. External legal recognition, enforceability and insurer/P&I/classification-society compliance are not established.','IRANIAN ANNOUNCEMENT');evidence(a,context,rows.find(r=>r.shipping_id==='SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'));
 
     const method=findSection(article,/^How to read the traffic observations$/i);
@@ -521,10 +521,10 @@
     const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
     const p=card(g,'Iran’s own figure','President Masoud Pezeshkian acknowledged sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage comes from the Iranian president and is not an independently audited figure.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
     const er=records(context.model,'gate3.economics');
-    const o=card(g,'Oil market','Reuters reported Brent at $109.29/bbl and WTI at $104.26/bbl at 10:15 a.m. EDT Sep. 14, both up more than 4%. This is a dated snapshot.','SEP. 14');evidence(o,context,er.find(r=>r.economic_id==='ECON-OIL-MARKET-OPEN-20260914'));
-    const f=card(g,'Freight and crude logistics','Reuters reported tighter sour-crude expectations, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. The reporting showed disruption and higher costs, not a stop to all Saudi deliveries.','SOURCE-REPORTED');evidence(f,context,er.find(r=>r.economic_id==='ECON-ASIA-REFINERS-20260914'));
-    card(g,'Saudi East-West pipeline','Later reporting says the line is expected to remain mostly out of service for roughly three to five weeks. Yanbu inventories and delivery timing are therefore material.','DAMAGED / MOSTLY OUT OF SERVICE');
-    card(g,'Announced bank sanction','As of Sep. 14 at 12:01 p.m. ET, the announced U.S. sanction on a large bank had not been enacted. Treasury/OFAC had not publicly named the bank.','NOT ENACTED');
+    const o=card(g,'Oil market','By the Oct. 6 noon evidence cutoff, stronger Middle Eastern exports and planned emergency stock releases had eased immediate crude-supply fears. Brent was near $98.48 and WTI near $88.01 in the accepted intraday snapshot; this did not mean refined-product or shipping conditions had normalized.','OCT. 6');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
+    const f=card(g,'Exports and logistics','Regional crude exports have recovered strongly, but freight, tanker security and refined-product conditions remain abnormal. Recovery in barrels moved is not the same as normalization of transport cost or risk.','RECOVERING / ABNORMAL');evidence(f,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
+    card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
+    const fin=card(g,'Financial pressure','On Oct. 5, Treasury warned foreign financial institutions that continued transactions with sanctioned Iranian financial institutions could trigger U.S. measures without advance notice.','ENFORCEMENT PRESSURE');evidence(fin,context,{source_ids:['SRC-A2105A000019','SRC-A2105A00001A']});
     const forecast=findSection(article,/^2026 growth forecasts$|economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);
     if(forecast){
       forecast.dataset.protectedEconomicChart='retained';
@@ -555,16 +555,16 @@
   }
 
   function hormuzTalks(article) {
-    intro(article,'Oman publicly confirmed the planned Gulf-Iran Hormuz meeting and then postponed it. No signed reopening agreement or agreed sovereignty, route or fee terms resulted from that meeting.');
-    const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='Iran moved from claiming it would control and manage the Strait to a shared negotiating process with Oman and Gulf states. The confirmed meeting was postponed; substantive route, fee, sovereignty and reopening terms remain unresolved.';
-    if(s)add(s,'p','scope-note','A Gulf official reported Saudi amendments. Saudi Arabia has not published a public document with the full details.');
+    intro(article,'Mediator exchanges continue, but there is still no signed U.S.-Iran agreement or Hormuz reopening arrangement. Iran says the U.S. response was relayed through mediators and that additional points remain unresolved.');
+    const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='Iran now ties reopening Hormuz to seven conditions based on the June Islamabad memorandum. Tehran says the U.S. response has been relayed through mediators, but additional points remain unresolved. No replacement agreement or reopening arrangement is in force.';
+    if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said Tehran had not entered nuclear discussions with Washington. Negotiating positions remain positions until an agreement is actually accepted.');
   }
 
   function diplomacy(article) {
     intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Negotiating claims do not become agreements by repetition.');
-    const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Oman confirmed the planned Gulf-Iran Hormuz meeting and then postponed it; no signed reopening arrangement replaced the MOU.';
-    const s=section(article,'Latest diplomatic changes','The latest record distinguishes completed meetings from scheduled or postponed ones.'),g=add(s,'div','orientation-grid');
-    card(g,'Hormuz meeting','Oman confirmed the planned meeting existed and then announced its postponement. Substantive terms remain unresolved.','CONFIRMED / POSTPONED');
+    const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
+    const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
+    card(g,'U.S.–Iran / Hormuz contacts','Iran says the U.S. response was relayed through mediators, but additional points remain unresolved. Qalibaf tied reopening to seven Iranian conditions. No replacement agreement is in force.','MEDIATED / NO AGREEMENT');
     card(g,'U.S.–Saudi defense diplomacy','Crown Prince Mohammed bin Salman met CENTCOM commander Adm. Brad Cooper in Jeddah on Sep. 14.','MEETING HELD');
     card(g,'Eslami / IAEA conference','A UN sanctions travel exemption for Mohammad Eslami was not approved after a U.S. objection. This is not a new general sanctions package.','EXEMPTION NOT APPROVED');
     card(g,'Israel–Lebanon talks','A U.S. official said Israel and Lebanon are expected to meet in Rome in October. That is an expected negotiation, not a completed meeting.','EXPECTED');
