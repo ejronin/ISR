@@ -1,0 +1,75 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-07T09:15:00-04:00",
+    "window_end": "2026-10-07T11:22:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-07T11:22:00-04:00",
+    "evidence_horizon_time": "2026-10-07T11:22:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-HORMUZ-WEEKLY-TANKER-ATTACK-HIGH-20261007",
+      "event_type": "HORMUZ_WEEKLY_TANKER_ATTACK_COUNT_WAR_HIGH",
+      "occurrence_time": "2026-10-05",
+      "public_available_time": "2026-10-07T10:24:00-04:00",
+      "actor": "Unknown attackers / IRGC harassment activity reported separately",
+      "summary": "Reuters reported maritime-security sources counted at least 12 attacks on oil, LNG and LPG tankers around Hormuz during September 28-October 5, the highest weekly attack count since the war began. IMO data showed nine incidents for the same week. JMIC separately said attacks, attempted attacks and IRGC harassment activity including drone overflights, surveillance and VHF hailing had persisted. Attribution for individual attacks remains incident-specific and unresolved unless separately established.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/attacks-tankers-hormuz-hit-highest-any-week-since-start-iran-war-sources-say-2026-10-07/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-HEZBOLLAH-200M-AID-20261007",
+      "event_type": "REPORTED_IRAN_HEZBOLLAH_200M_DISPLACEMENT_AID_TRANSFER",
+      "occurrence_time": "2026-09",
+      "public_available_time": "2026-10-07T10:22:00-04:00",
+      "actor": "Iran / Hezbollah",
+      "summary": "Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September to support Lebanese families displaced by the war. The sources said intermediaries charged a 20% fee because of transfer risk. A Hezbollah official confirmed an amount had been secured but did not identify the source; Iran did not respond to Reuters' request for comment. The accepted record preserves the transfer as Reuters source reporting rather than an Iranian government acknowledgement.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/lebanons-hezbollah-gets-200-million-iran-help-displaced-sources-say-2026-10-07/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-SECURITY-RISK-WEEKLY-HIGH-20261007",
+      "updates_existing_ref": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "relationship": "LATER_EVIDENCE_STRENGTHENS_NON_NORMALIZATION_AND_SECURITY_RISK_FINDING",
+      "summary": "At least 12 tanker attacks were reported by maritime-security sources in the week ending October 5, the highest weekly count since the war began, while IMO recorded nine incidents. Strong Gulf export recovery therefore continues alongside unusually high kinetic and harassment risk.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/attacks-tankers-hormuz-hit-highest-any-week-since-start-iran-war-sources-say-2026-10-07/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-IRAN-HEZBOLLAH-AID-TRANSFER-20261007",
+      "summary": "Reuters source reporting says Iran transferred $200 million to Hezbollah for displaced Lebanese families despite tightened sanctions and financial-channel pressure; intermediaries reportedly charged a 20% fee.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/lebanons-hezbollah-gets-200-million-iran-help-displaced-sources-say-2026-10-07/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "Hormuz tanker attacks reached the highest weekly count of the war in the week ending October 5",
+      "Reuters reported a $200 million Iranian transfer to Hezbollah for displaced Lebanese families"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No signed U.S.-Iran settlement or Hormuz reopening agreement identified after the 09:15 ET cutoff.",
+      "No new accepted IAEA implementation agreement identified after the 09:15 ET cutoff.",
+      "No later Yemen battlefield development found that superseded the 09:15 ET accepted state.",
+      "No material new Gaza/Hamas development identified that changes the Iran-war current state."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
