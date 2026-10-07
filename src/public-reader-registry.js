@@ -579,7 +579,6 @@
   function nuclear(article, context) {
     const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The negotiating gap is explicit; no nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
     const technical=section(article,'Current enrichment status','Reuters’ Oct. 7 IAEA-grounded review says Iran is not currently known to be enriching uranium. The IAEA believes a little more than 200 kg of uranium enriched up to 60% remains, primarily in the Isfahan tunnel complex with some also at Natanz. Inspectors have not returned to the bombed enrichment sites, Iran has not fully accounted for the surviving stock, and the status of the new Isfahan tunnel enrichment plant remains unknown. No current enrichment is known does not mean Iran is unable to restart.');
-    evidence(technical,context,{source_ids:['SRC-A2107D000001']},'Source behind this technical status');
   }
 
   function regional(article, context) {
