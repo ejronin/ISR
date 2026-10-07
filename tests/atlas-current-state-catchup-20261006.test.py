@@ -17,12 +17,13 @@ def rows_by_id(rows):
 def main() -> int:
     state = builder.build_state(ROOT)
     manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
-    latest = manifest["accepted_updates"][-1]
+    accepted = {entry["packet_id"]: entry for entry in manifest["accepted_updates"]}
+    entry = accepted["UPD-20261006-ROOK-CURRENT"]
     packet = json.loads((ROOT / "data/canonical-updates/UPD-20261006-ROOK-CURRENT.json").read_text(encoding="utf-8"))
-    assert latest["packet_id"] == packet["packet_id"]
-    assert latest["sequence"] == len(manifest["accepted_updates"])
-    assert manifest["current_evidence_cutoff"] == latest["evidence_cutoff"]
-    assert latest["evidence_cutoff"] == packet["evidence_cutoff"]
+    assert entry["packet_id"] == packet["packet_id"]
+    assert entry["sequence"] == 30
+    assert entry["evidence_cutoff"] == packet["evidence_cutoff"]
+    assert manifest["current_evidence_cutoff"] >= entry["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
     assert packet["status"] == "ACCEPTED"
     assert packet["narrative_claims"] == []
@@ -67,7 +68,13 @@ def main() -> int:
     movements = rows_by_id(state["entities"]["movements"])
     coast = movements["MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"]["record"]
     assert "MATERIALLY_REVERSED" in coast["status"]
-    assert "EXTENT_CONTESTED" in coast["status"]
+    sep6_coast = next(
+        entity["record"]
+        for entity in packet["entities"]
+        if entity["entity_id"] == "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"
+    )
+    assert "EXTENT_CONTESTED" in sep6_coast["status"]
+    assert "TAIZ_FRONT_REMAINS_ACTIVE" in sep6_coast["status"]
 
     casualties = rows_by_id(state["entities"]["casualties"])
     yemen = casualties["CAS-YEMEN-DISPLACEMENT-20260913"]["record"]

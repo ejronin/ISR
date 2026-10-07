@@ -1,0 +1,124 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261007-ROOK-MIDNIGHT",
+  "known_at": "2026-10-07T00:10:00-04:00",
+  "evidence_cutoff": "2026-10-07T00:00:00-04:00",
+  "summary": "Consumes the Oct. 6 noon-to-midnight ROOK sweep. It updates U.S.-Iran diplomacy with the U.S. enrichment condition and identified negotiating counterparts, preserves uncertainty over Iranian decision authority, records continued Yemen counteroffensive fighting alongside active Houthi long-range strike capability, records Reuters-verified battlefield-abuse footage and the Giants Brigade investigation without making a legal finding, and advances the Oct. 6 energy snapshot to the closing settlement.",
+  "sources": [
+    {
+      "source_id": "SRC-A2107A000001",
+      "url": "https://www.reuters.com/world/middle-east/yemeni-government-fighters-recorded-driving-vehicles-over-houthi-opponents-2026-10-06/",
+      "source_role": "Reuters verified-video reporting on Yemen fighting and Giants Brigade investigation"
+    },
+    {
+      "source_id": "SRC-A2107A000002",
+      "url": "https://www.reuters.com/world/interview-us-vice-president-vance-says-iran-must-cut-enrichment-end-war-2026-10-06/",
+      "source_role": "Reuters interview reporting on U.S.-Iran negotiation conditions and counterpart authority"
+    },
+    {
+      "source_id": "SRC-A2107A000003",
+      "url": "https://www.reuters.com/world/us/transcript-us-vice-president-vance-interview-alaska-2026-10-06/",
+      "source_role": "Reuters interview transcript preserving Vance statements on negotiations, enrichment and Hormuz"
+    },
+    {
+      "source_id": "SRC-A2107A000004",
+      "url": "https://www.reuters.com/world/middle-east/houthis-launch-missiles-yemens-aden-airport-fighting-intensifies-2026-10-07/",
+      "source_role": "Reuters reporting on Aden airport attack and Saudi missile interceptions"
+    },
+    {
+      "source_id": "SRC-A2107A000005",
+      "url": "https://www.reuters.com/business/energy/oil-prices-slip-traders-weigh-strong-mideast-exports-against-gulf-tensions-2026-10-06/",
+      "source_role": "Reuters October 6 oil settlement and regional export reporting"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "LOCKER-YEMEN-GIANTS-ABUSE-VIDEO-20261006",
+      "event_date": "2026-10-06",
+      "summary": "Reuters-verified video showed armored vehicles from Yemeni government forces striking and running over Houthi fighters near Bab el-Mandeb, including unarmed men. The Giants Brigade said it opened an investigation. The Houthis called the footage evidence of war crimes. The accepted record establishes the footage and investigation but does not make a legal adjudication.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107A000001"
+      ],
+      "publication_time": "2026-10-06T14:02:00-04:00",
+      "upstream_event_type": "YEMEN_GOVERNMENT_BATTLEFIELD_ABUSE_VIDEO_AND_INVESTIGATION"
+    },
+    {
+      "event_id": "LOCKER-US-IRAN-VANCE-NUCLEAR-CONDITION-20261006",
+      "event_date": "2026-10-06",
+      "summary": "Vice President JD Vance told Reuters that an agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity. He said Washington was negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials, while remaining uncertain how much decision authority they held inside Iran.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107A000002",
+        "SRC-A2107A000003"
+      ],
+      "publication_time": "2026-10-06T18:40:00-04:00",
+      "upstream_event_type": "US_STATES_ENRICHMENT_REDUCTION_CONDITION_FOR_WAR_END"
+    },
+    {
+      "event_id": "LOCKER-HOUTHI-ADEN-AIRPORT-ATTACK-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Yemen's Transport Ministry said the Houthis attacked Aden International Airport with ballistic missiles and explosive-laden drones. A missile landed near the runway before a Cairo flight was due to land, forcing diversion to Jeddah. The Saudi-led coalition separately reported intercepting Houthi ballistic missiles north of Riyadh and toward Khamis Mushait.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107A000004"
+      ],
+      "publication_time": "2026-10-06T21:21:00-04:00",
+      "upstream_event_type": "HOUTHI_ADEN_AIRPORT_MISSILE_DRONE_ATTACK"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "Mediated U.S.-Iran contacts continue; Washington states an enrichment-reduction condition; no agreement",
+        "observed_state": "Vice President JD Vance said the United States is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other Iranian political officials. He said any agreement ending the war would require a meaningful reduction in Iran's enrichment capacity and concrete Iranian action rather than promises. Vance also said Washington is uncertain how decisions are made inside Iran and how much authority the political negotiators hold. This clarifies the U.S. negotiating condition and counterparts, but it does not establish a signed settlement, Iranian acceptance of the enrichment condition, or a Hormuz reopening agreement.",
+        "knowledge_time": "2026-10-07T00:10:00-04:00",
+        "source_ids": [
+          "SRC-A2107A000002",
+          "SRC-A2107A000003"
+        ]
+      }
+    },
+    {
+      "entity_type": "movement",
+      "entity_id": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "mode": "update",
+      "record": {
+        "current_through": "2026-10-07",
+        "status": "SEPTEMBER_HOUTHI_RED_SEA_COAST_ADVANCE_MATERIALLY_REVERSED_NEAR_BAB_EL_MANDEB; GOVERNMENT_GAINS_STILL_CONTESTED; HOUTHI_LONG_RANGE_STRIKE_CAPABILITY_REMAINS_ACTIVE",
+        "observed_state": "Saudi-backed government forces continued trying to consolidate the coastal counteroffensive around Bab el-Mandeb while Reuters said the full extent of gains remained independently unverified and the Houthis disputed losing ground. Fighting also continued near Taiz. During the same period, Yemen's Transport Ministry reported a Houthi ballistic-missile and drone attack on Aden International Airport, while the Saudi-led coalition reported intercepting Houthi ballistic missiles north of Riyadh and toward Khamis Mushait. The coastal reversal therefore does not mean the Houthis have lost their ability to conduct long-range attacks.",
+        "knowledge_time": "2026-10-07T00:10:00-04:00",
+        "source_ids": [
+          "SRC-A2107A000001",
+          "SRC-A2107A000004"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-ENERGY-RECOVERY-20260930",
+      "mode": "update",
+      "record": {
+        "status": "Regional crude supply has largely recovered, but logistics, refined-product tightness and war-risk pricing remain abnormal",
+        "observed_state": "Middle Eastern crude exports remained strong and Saudi bypass throughput improved, but the October 6 market close still carried a substantial war-risk premium. Brent settled at $100.58 per barrel and WTI at $89.44 as traders balanced export recovery and emergency stock releases against Saudi-Houthi escalation and other supply risks. The closing prices supersede the earlier October 6 intraday snapshot without changing the finding that crude-flow recovery is stronger than transport and refining normalization.",
+        "knowledge_time": "2026-10-07T00:10:00-04:00",
+        "source_ids": [
+          "SRC-A2107A000005"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261007T0000ET.json"
+    ]
+  }
+}

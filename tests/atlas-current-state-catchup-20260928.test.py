@@ -50,8 +50,14 @@ def main() -> int:
 
     diplomacy = rows_by_id(state["entities"]["diplomacy"])["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]
     assert "no agreement" in diplomacy["status"].lower()
-    assert "mediator" in diplomacy["observed_state"].lower()
-    assert "no accepted replacement" in diplomacy["observed_state"].lower()
+    sep28_diplomacy = next(
+        entity["record"]
+        for entity in packet["entities"]
+        if entity["entity_id"] == "DIP-US-IRAN-UNGA-CONTACTS-20260922"
+    )
+    assert "AMENDED_SEVEN_DAY_PROPOSAL_IN_SHUTTLE_DISCUSSION_SEP28" in sep28_diplomacy["status"]
+    assert "qatari mediators" in sep28_diplomacy["observed_state"].lower()
+    assert "no replacement u.s.-iran agreement" in sep28_diplomacy["observed_state"].lower()
 
     assert packet["narrative_claims"] == []
     assert packet["upstream_provenance"]["web_of_lies"] == "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
