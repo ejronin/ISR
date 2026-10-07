@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "title": "China crude sourcing shift — Iran dependence to substitute suppliers",
-  "as_of": "2026-08-25",
+  "as_of": "2026-10-06",
   "geometry_policy": "All route geometry is schematic and uses broad public corridor nodes. It is not live AIS, an exact tanker track, a surveyed pipeline alignment, or targeting-quality data.",
-  "assessment": "China remained Iran's largest oil buyer, but the 2026 war, renewed U.S. blockade and sanctions pressure sharply reduced Iranian crude availability. Chinese refiners compensated with more Russian crude and, when available, non-sanctioned Gulf barrels. The map separates the legacy/degraded Iran lane from substitute lanes rather than implying China fully stopped buying Iranian oil.",
+  "assessment": "China remains Iran's largest oil customer in the broader wartime period, but by September the Iranian crude lane had become severely constrained. Kpler data cited by Reuters showed Iran exported no crude in September, Chinese imports of Iranian crude fell to about 590,000 bpd, and Chinese independent refiners responded by buying substantial Iraqi and Qatari replacement barrels. The map therefore shows a degraded Iran lane alongside expanding substitute supply, without implying that all China-Iran energy trade has ended.",
   "linked_existing_routes": [
     {
       "route_id": "ARCTIC-RU-CN-OIL",
@@ -15,26 +15,88 @@
       "id": "IRAN-CN-SHADOW-CRUDE",
       "name": "Iran → China sanctioned crude chain",
       "line_class": "degraded_legacy",
-      "status": "MAJOR PREWAR / SPRING 2026 · SHARPLY DEGRADED JUL–AUG 2026",
-      "shift_role": "FROM — Iranian crude dependence reduced, not eliminated",
-      "flow_evidence": "Reuters/Kpler reported China intake of Iranian oil at about 534,000 bpd so far in August, down from 823,000 bpd in July and well below the roughly 1.58 million bpd peak earlier in 2026. No visible Iranian supertanker crossing of Hormuz had been recorded after the renewed July 13 blockade, subject to AIS-dark caveats.",
+      "status": "MAJOR PREWAR / SPRING 2026 · SEVERELY CONSTRAINED BY SEP–OCT 2026",
+      "shift_role": "FROM — Iranian crude availability sharply reduced, not assumed permanently eliminated",
+      "flow_evidence": "Reuters reported on October 6 that Kpler data showed Iran exported no crude in September, while China's imports of Iranian crude fell to about 590,000 bpd, the lowest since January 2023. Iranian floating crude storage outside the blockade zone was reported near 45 million barrels, down from about 100 million in late July. These measures describe a severely constrained supply lane, not proof that every Iran-to-China transaction stopped.",
       "note": "Schematic public trade chain: Iran's Kharg export system through Hormuz, onward across the Indian Ocean and Southeast Asian transfer/relabeling geography, then to China's eastern refining/import system. Reuters documented Iranian cargoes reaching the Singapore Strait / eastern Johor OPL and described Iranian crude frequently being relabeled as Malaysian or Indonesian before reaching Chinese buyers. This is not a claim that every cargo used every node.",
       "segments": [
         {
           "name": "Iran-to-China common maritime corridor",
-          "coords": [[29.25,50.32],[26.56,56.25],[20.0,64.0],[11.0,77.0],[4.5,98.0],[1.45,104.0],[23.0,119.0],[36.10,120.40]]
+          "coords": [
+            [
+              29.25,
+              50.32
+            ],
+            [
+              26.56,
+              56.25
+            ],
+            [
+              20,
+              64
+            ],
+            [
+              11,
+              77
+            ],
+            [
+              4.5,
+              98
+            ],
+            [
+              1.45,
+              104
+            ],
+            [
+              23,
+              119
+            ],
+            [
+              36.1,
+              120.4
+            ]
+          ]
         }
       ],
       "nodes": [
-        ["Kharg Island export system",29.25,50.32],
-        ["Strait of Hormuz",26.56,56.25],
-        ["Singapore Strait / eastern Johor transfer area",1.45,104.0],
-        ["Shandong independent-refinery / import region",36.10,120.40]
+        [
+          "Kharg Island export system",
+          29.25,
+          50.32
+        ],
+        [
+          "Strait of Hormuz",
+          26.56,
+          56.25
+        ],
+        [
+          "Singapore Strait / eastern Johor transfer area",
+          1.45,
+          104
+        ],
+        [
+          "Shandong independent-refinery / import region",
+          36.1,
+          120.4
+        ]
       ],
       "sources": [
-        ["Reuters — China Iranian-oil buying spotlight, Aug. 24, 2026","https://www.reuters.com/business/energy/looming-us-sanctions-iran-put-china-oil-buying-spotlight-2026-08-24/"],
-        ["Reuters — Iranian oil at sea as teapots shift to rival Middle East supplies, July 10, 2026","https://www.reuters.com/business/energy/iran-oil-stuck-sea-surges-chinas-teapots-turn-rival-middle-east-supplies-traders-2026-07-10/"],
-        ["Reuters — Kharg Island is Iran's key oil-export hub, March 14, 2026","https://www.reuters.com/business/energy/kharg-island-struck-by-us-is-key-hub-iran-oil-exports-2026-03-14/"]
+        [
+          "Reuters — Chinese refiners substitute Iraqi/Qatari barrels as Iranian flows fall, Oct. 6, 2026",
+          "https://www.reuters.com/business/energy/chinese-independent-refiners-boost-iraqi-oil-purchases-iranian-flows-fall-2026-10-06/"
+        ],
+        [
+          "Reuters — China Iranian-oil buying spotlight, Aug. 24, 2026",
+          "https://www.reuters.com/business/energy/looming-us-sanctions-iran-put-china-oil-buying-spotlight-2026-08-24/"
+        ],
+        [
+          "Reuters — Iranian oil at sea as teapots shift to rival Middle East supplies, July 10, 2026",
+          "https://www.reuters.com/business/energy/iran-oil-stuck-sea-surges-chinas-teapots-turn-rival-middle-east-supplies-traders-2026-07-10/"
+        ],
+        [
+          "Reuters — Kharg Island is Iran's key oil-export hub, March 14, 2026",
+          "https://www.reuters.com/business/energy/kharg-island-struck-by-us-is-key-hub-iran-oil-exports-2026-03-14/"
+        ]
       ]
     },
     {
@@ -48,42 +110,175 @@
       "segments": [
         {
           "name": "ESPO Far East to China",
-          "coords": [[42.73,133.02],[39.0,133.0],[34.5,129.5],[34.5,125.0],[36.10,120.40]]
+          "coords": [
+            [
+              42.73,
+              133.02
+            ],
+            [
+              39,
+              133
+            ],
+            [
+              34.5,
+              129.5
+            ],
+            [
+              34.5,
+              125
+            ],
+            [
+              36.1,
+              120.4
+            ]
+          ]
         }
       ],
       "nodes": [
-        ["Kozmino / ESPO export system",42.73,133.02],
-        ["Shandong / eastern China import-refining region",36.10,120.40]
+        [
+          "Kozmino / ESPO export system",
+          42.73,
+          133.02
+        ],
+        [
+          "Shandong / eastern China import-refining region",
+          36.1,
+          120.4
+        ]
       ],
       "sources": [
-        ["Reuters — China boosts Russian crude imports, Aug. 20, 2026","https://www.reuters.com/commentary/reuters-open-interest/china-boosts-imports-russian-crude-stymieing-indias-refiners-2026-08-20/"],
-        ["Reuters — Sinopec steps up Russian ESPO purchases, Aug. 6, 2026","https://www.reuters.com/business/energy/sinopec-steps-up-russian-oil-imports-offset-mideast-supply-cuts-traders-tracker-2026-08-06/"]
+        [
+          "Reuters — China boosts Russian crude imports, Aug. 20, 2026",
+          "https://www.reuters.com/commentary/reuters-open-interest/china-boosts-imports-russian-crude-stymieing-indias-refiners-2026-08-20/"
+        ],
+        [
+          "Reuters — Sinopec steps up Russian ESPO purchases, Aug. 6, 2026",
+          "https://www.reuters.com/business/energy/sinopec-steps-up-russian-oil-imports-offset-mideast-supply-cuts-traders-tracker-2026-08-06/"
+        ]
       ]
     },
     {
       "id": "GULF-CN-NONSANCTIONED-SUBSTITUTES",
       "name": "Iraq / UAE / Qatar → China substitute crude",
       "line_class": "hormuz_exposed_substitute",
-      "status": "NON-SANCTIONED SUBSTITUTE PURCHASES · JULY 2026 · STILL HORMUZ-EXPOSED",
-      "shift_role": "TO — Shandong teapots diversified into rival Gulf barrels",
-      "flow_evidence": "Reuters reported Shandong independent refiners buying roughly 16–20.5 million barrels from Qatar, Iraq and the UAE in recent weeks, their largest non-Iranian Middle East purchases since the conflict began.",
+      "status": "NON-SANCTIONED SUBSTITUTE PURCHASES · RENEWED OCTOBER 2026",
+      "shift_role": "TO — Chinese independent refiners increasingly substitute Iraqi and Qatari barrels as Iranian supply tightens",
+      "flow_evidence": "Reuters reported October 6 that Chinese independent refiners bought at least 12 million barrels of Iraqi and Qatari crude for October-November delivery, while one trader estimated 15-20 million barrels. This extends the substitution pattern seen earlier in the war. Most Gulf substitute barrels remain exposed to Hormuz transit risk.",
       "note": "Three schematic Gulf-origin branches converge on the common Hormuz-to-Asia corridor. This captures supplier substitution while preserving the important constraint that most of these substitute barrels still depended on the same chokepoint. It does not represent exact terminal-to-terminal tanker tracks.",
       "segments": [
-        {"name":"Iraq Gulf export branch","coords":[[29.68,48.82],[26.56,56.25]]},
-        {"name":"UAE Gulf export branch","coords":[[24.20,52.60],[26.56,56.25]]},
-        {"name":"Qatar Gulf export branch","coords":[[24.99,51.57],[26.56,56.25]]},
-        {"name":"Common Hormuz-to-China corridor","coords":[[26.56,56.25],[20.0,64.0],[11.0,77.0],[4.5,98.0],[1.45,104.0],[23.0,119.0],[36.10,120.40]]}
+        {
+          "name": "Iraq Gulf export branch",
+          "coords": [
+            [
+              29.68,
+              48.82
+            ],
+            [
+              26.56,
+              56.25
+            ]
+          ]
+        },
+        {
+          "name": "UAE Gulf export branch",
+          "coords": [
+            [
+              24.2,
+              52.6
+            ],
+            [
+              26.56,
+              56.25
+            ]
+          ]
+        },
+        {
+          "name": "Qatar Gulf export branch",
+          "coords": [
+            [
+              24.99,
+              51.57
+            ],
+            [
+              26.56,
+              56.25
+            ]
+          ]
+        },
+        {
+          "name": "Common Hormuz-to-China corridor",
+          "coords": [
+            [
+              26.56,
+              56.25
+            ],
+            [
+              20,
+              64
+            ],
+            [
+              11,
+              77
+            ],
+            [
+              4.5,
+              98
+            ],
+            [
+              1.45,
+              104
+            ],
+            [
+              23,
+              119
+            ],
+            [
+              36.1,
+              120.4
+            ]
+          ]
+        }
       ],
       "nodes": [
-        ["Iraq Gulf export system (coarse)",29.68,48.82],
-        ["UAE Gulf export system (coarse)",24.20,52.60],
-        ["Qatar Gulf export system (coarse)",24.99,51.57],
-        ["Strait of Hormuz",26.56,56.25],
-        ["Shandong independent-refinery / import region",36.10,120.40]
+        [
+          "Iraq Gulf export system (coarse)",
+          29.68,
+          48.82
+        ],
+        [
+          "UAE Gulf export system (coarse)",
+          24.2,
+          52.6
+        ],
+        [
+          "Qatar Gulf export system (coarse)",
+          24.99,
+          51.57
+        ],
+        [
+          "Strait of Hormuz",
+          26.56,
+          56.25
+        ],
+        [
+          "Shandong independent-refinery / import region",
+          36.1,
+          120.4
+        ]
       ],
       "sources": [
-        ["Reuters — Chinese teapots turn to Iraq/UAE/Qatar supplies, July 10, 2026","https://www.reuters.com/business/energy/iran-oil-stuck-sea-surges-chinas-teapots-turn-rival-middle-east-supplies-traders-2026-07-10/"],
-        ["Reuters — Iranian offers to China fall as blockade bites, Aug. 21, 2026","https://www.reuters.com/business/energy/iranian-oil-offers-chinese-buyers-fall-us-blockade-bites-sources-say-2026-08-21/"]
+        [
+          "Reuters — Chinese refiners boost Iraqi/Qatari purchases as Iranian flows fall, Oct. 6, 2026",
+          "https://www.reuters.com/business/energy/chinese-independent-refiners-boost-iraqi-oil-purchases-iranian-flows-fall-2026-10-06/"
+        ],
+        [
+          "Reuters — Chinese teapots turn to Iraq/UAE/Qatar supplies, July 10, 2026",
+          "https://www.reuters.com/business/energy/iran-oil-stuck-sea-surges-chinas-teapots-turn-rival-middle-east-supplies-traders-2026-07-10/"
+        ],
+        [
+          "Reuters — Iranian offers to China fall as blockade bites, Aug. 21, 2026",
+          "https://www.reuters.com/business/energy/iranian-oil-offers-chinese-buyers-fall-us-blockade-bites-sources-say-2026-08-21/"
+        ]
       ]
     }
   ]
