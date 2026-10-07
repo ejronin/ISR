@@ -225,12 +225,17 @@ native_items = {row["discovery_id"]: row for row in native["items"]}
 uk_false_flag = native_items["WOL-DISC-VALENTI-SAUDI-UK-FALSE-FLAG-20260929"]
 assert uk_false_flag["review_target"] == "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
 assert "treats RAF Fairford as the referenced event" in uk_false_flag["attribution_scope"]
-assert "does not create a second incident" in uk_false_flag["downstream_note"]
+assert "second incident" in uk_false_flag["downstream_note"]
 assert uk_false_flag["content_body_evidence"]["capture_status"] == "TITLE_DESCRIPTION_ONLY"
 assert uk_false_flag["content_body_evidence"]["body_claims"] == []
 assert "RAF Fairford event identity" in uk_false_flag["content_body_evidence"]["capture_scope"]
-assert len(uk_false_flag["comparison_sources"]) >= 3
+assert len(uk_false_flag["comparison_sources"]) >= 5
 assert "strong indications" in uk_false_flag["comparison_sources"][0]["finding"]
+comparison_urls = {row["url"] for row in uk_false_flag["comparison_sources"]}
+assert "https://www.reuters.com/world/uk/uk-police-make-further-arrest-relation-suspected-airbase-plot-2026-10-06/" in comparison_urls
+assert "https://www.reuters.com/world/uk/iran-drone-plot-fears-led-us-remove-bombers-uk-base-us-officials-say-2026-10-06/" in comparison_urls
+assert "do not create a second incident" in uk_false_flag["downstream_note"]
+assert "Iranian state direction remains unresolved" in uk_false_flag["downstream_note"]
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
 fairford_queue = next(
     row for row in body_queue
