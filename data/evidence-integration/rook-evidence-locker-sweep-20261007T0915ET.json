@@ -1,0 +1,167 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "window_start": "2026-10-07T00:00:00-04:00",
+    "window_end": "2026-10-07T09:15:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-10-07T09:15:00-04:00",
+    "evidence_horizon_time": "2026-10-07T09:15:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAQ-DINAR-DEVALUATION-20261007",
+      "event_type": "IRAQ_DINAR_DEVALUATION_WAR_OIL_REVENUE_SHOCK",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T04:24:00-04:00",
+      "actor": "Iraq",
+      "summary": "Iraq approved a new exchange-rate structure setting the dinar at 1,520 per U.S. dollar, about 14.5% below the previous official rate. Reuters reported the move as a fiscal response to war-disrupted oil exports and revenue.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iraq-devalues-dinar-1520-per-us-dollar-state-news-agency-says-2026-10-07/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-TURKEY-SAUDI-DEFENSIVE-SUPPORT-20261007",
+      "event_type": "TURKEY_DEFENSIVE_TECHNICAL_SUPPORT_TO_SAUDI_ARABIA",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T07:04:56-04:00",
+      "actor": "Turkey / Saudi Arabia",
+      "summary": "Officials told Reuters that Turkey was providing Saudi Arabia mainly defensive and technical support against the Houthis, including military equipment, intelligence sharing, air-defense-related assistance, drone operators, logistics and planning support. Turkey's parliament had not yet ratified the Mecca pact.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/turkey-sending-technical-defensive-support-saudi-arabia-help-fight-houthis-2026-10-07/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-DISPLACEMENT-OVER-200K-20261007",
+      "event_type": "YEMEN_DISPLACEMENT_EXCEEDS_200000",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T07:28:54-04:00",
+      "actor": "International Organization for Migration / Yemen",
+      "summary": "IOM said more than 200,000 people had been displaced since renewed fighting began, with more than 3,700 also fleeing by sea to Djibouti.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/more-than-200000-people-displaced-since-fighting-yemen-began-says-un-agency-2026-10-07/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-US-NUCLEAR-DEMANDS-AT-ODDS-20261007",
+      "event_type": "IRAN_SAYS_US_NUCLEAR_IDEAS_CONFLICT_WITH_TEHRAN_DEMANDS",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T08:00:00-04:00",
+      "actor": "Iran / United States",
+      "summary": "A senior Iranian official told Reuters that Washington's nuclear requests and ideas were at odds with Tehran's demands when asked about Vice President JD Vance's enrichment-reduction condition. The statement shows continuing disagreement, not the end of negotiations.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-rise-storms-air-strikes-threaten-supply-2026-10-07/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRGC-ADVISER-HORMUZ-ROUTE-CLOSURE-THREAT-20261007",
+      "event_type": "IRGC_ADVISER_THREATENS_ADDITIONAL_HORMUZ_ROUTE_CLOSURES",
+      "occurrence_time": "2026-10-07",
+      "public_available_time": "2026-10-07T09:02:57-04:00",
+      "actor": "IRGC adviser Mohammadreza Naqdi",
+      "summary": "Naqdi told Fars that Iran would soon close what he called illegal southern routes near Oman and claimed full Iranian control of Hormuz. The statements are actor claims; independent evidence of those additional routes being closed was not established at the cutoff.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-official-says-illegal-routes-strait-hormuz-soon-be-blocked-2026-10-07/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-YEMEN-MOCHA-ADVANCE-CORRECTION-20261007",
+      "updates_existing_ref": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "relationship": "LATER_REPORTING_NARROWS_PRIOR_GOVERNMENT_ADVANCE_CLAIM",
+      "summary": "Reuters reported that the Yemeni government's Monday claim that forces had reached Mocha was premature according to military officials on the ground and analysts. Fighting remained concentrated in Dhubab and the strategic hills east of the coastal plain.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/houthis-launch-missiles-yemens-aden-airport-fighting-intensifies-2026-10-07/"
+      ]
+    },
+    {
+      "update_id": "UPD-US-IRAN-NUCLEAR-GAP-20261007",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_IRANIAN_RESPONSE_CONFIRMS_SUBSTANTIVE_NEGOTIATING_GAP_WITHOUT_ENDING_CONTACTS",
+      "summary": "A senior Iranian official said U.S. nuclear requests and ideas conflicted with Tehran's demands after Vance stated the U.S. enrichment-reduction condition. No agreement was announced.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-rise-storms-air-strikes-threaten-supply-2026-10-07/"
+      ]
+    },
+    {
+      "update_id": "UPD-HORMUZ-ROUTE-CLOSURE-THREAT-20261007",
+      "updates_existing_ref": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "relationship": "NEW_IRANIAN_ENFORCEMENT_THREAT_DOES_NOT_ESTABLISH_PHYSICAL_CLOSURE",
+      "summary": "An IRGC adviser threatened to close additional Omani-side routes he called illegal and claimed full control of the strait. These are attributed statements; independent closure evidence was not established.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-official-says-illegal-routes-strait-hormuz-soon-be-blocked-2026-10-07/"
+      ]
+    },
+    {
+      "update_id": "UPD-MECCA-TURKEY-SUPPORT-20261007",
+      "updates_existing_ref": "LOCKER-MECCA-PACT-RAPID-DEPLOYMENT-20261005",
+      "relationship": "ANNOUNCED_SUPPORT_MOVES_TO_OBSERVED_DEFENSIVE_TECHNICAL_ASSISTANCE_WITH_TURKISH_RATIFICATION_STILL_PENDING",
+      "summary": "Turkey is already providing Saudi Arabia defensive and technical support, while officials said much of it remains bilateral because Turkey's parliament has not yet ratified the Mecca pact.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/turkey-sending-technical-defensive-support-saudi-arabia-help-fight-houthis-2026-10-07/"
+      ]
+    },
+    {
+      "update_id": "UPD-YEMEN-DISPLACEMENT-OVER-200K-20261007",
+      "updates_existing_ref": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "relationship": "LATER_IOM_SERIES_SUPERSEDES_PRIOR_184K_SNAPSHOT",
+      "summary": "IOM raised the displacement estimate from the prior 184,000 snapshot to more than 200,000 and reported more than 3,700 people fleeing by sea to Djibouti.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/more-than-200000-people-displaced-since-fighting-yemen-began-says-un-agency-2026-10-07/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLAIM-IRGC-HORMUZ-FULL-CONTROL-20261007",
+      "claimant": "Mohammadreza Naqdi / IRGC adviser",
+      "claim": "Iran has full control of Hormuz, the strait is closed, and additional southern routes near Oman will soon be closed.",
+      "handling": "ATTRIBUTED_ACTOR_CLAIM_NOT_PROMOTED_TO_OBSERVED_PHYSICAL_CLOSURE",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-official-says-illegal-routes-strait-hormuz-soon-be-blocked-2026-10-07/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-IRAQ-DINAR-DEVALUATION-20261007",
+      "summary": "Iraq devalued the dinar about 14.5% against the prior official rate as war disruption cut oil-export revenue.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iraq-devalues-dinar-1520-per-us-dollar-state-news-agency-says-2026-10-07/"
+      ]
+    },
+    {
+      "economic_id": "ECON-OIL-INTRADAY-20261007",
+      "summary": "At 12:00 GMT Brent was about $101.33 and WTI about $89.83. Reuters said markets still doubted the durability of recent Middle East supply gains while Houthi attacks and a U.S. Gulf storm added risk.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-rise-storms-air-strikes-threaten-supply-2026-10-07/"
+      ]
+    }
+  ],
+  "coverage": {
+    "material_results": [
+      "IRGC adviser threat to close additional Hormuz routes near Oman",
+      "Iranian response showing continued nuclear negotiating gap",
+      "Turkish defensive and technical support to Saudi Arabia",
+      "Yemen displacement above 200,000",
+      "Mocha advance claim narrowed as premature",
+      "Iraq dinar devaluation tied to war-disrupted oil revenue",
+      "October 7 oil-market risk snapshot"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No signed U.S.-Iran settlement or Hormuz reopening agreement identified through 09:15 ET.",
+      "No accepted Iranian nuclear concession identified.",
+      "No material Lebanon/Hezbollah disposition change identified.",
+      "No material Gaza/Hamas development identified that changes the Iran-war current state.",
+      "No completed IEA emergency-stock decision identified by the cutoff."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true
+  }
+}
