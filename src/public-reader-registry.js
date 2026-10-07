@@ -307,7 +307,7 @@
     addClass(summary,'guide-summary-strip');
     const g=add(summary,'div','orientation-grid');
     card(g,'Saudi East-West pipeline','The Sep. 11 attack damaged three pumping stations. The line has since restarted and is carrying material bypass volume: Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, while Reuters reported roughly 4 million bpd was being rerouted toward Yanbu. Full 7 million bpd capacity is not established.','DAMAGED / OPERATING');
-    card(g,'Bab el-Mandeb coast','Saudi-backed Yemeni forces report retaking most coastal areas around Bab el-Mandeb, reaching Mocha and recovering the Dhubab airstrip. Reuters could not independently verify the full extent, the Houthis dispute the claimed losses, and fighting around Taiz continues.','COUNTEROFFENSIVE / CONTESTED');
+    card(g,'Bab el-Mandeb coast','Saudi-backed Yemeni forces report retaking most coastal areas around Bab el-Mandeb, but Reuters could not independently verify the full extent and the Houthis dispute the claimed losses. Fighting around Taiz continues, and the Houthis retained long-range strike capability, including an Oct. 7 attack on Aden airport and missiles Saudi Arabia said it intercepted toward Riyadh and Khamis Mushait.','COUNTEROFFENSIVE / CONTESTED');
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
     routeLink(summary,'military.facilities','See authoritative facility status');
 
@@ -521,7 +521,7 @@
     const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
     const p=card(g,'Iran’s own figure','President Masoud Pezeshkian acknowledged sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage comes from the Iranian president and is not an independently audited figure.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
     const er=records(context.model,'gate3.economics');
-    const o=card(g,'Oil market','By the Oct. 6 noon evidence cutoff, stronger Middle Eastern exports and planned emergency stock releases had eased immediate crude-supply fears. Brent was near $98.48 and WTI near $88.01 in the accepted intraday snapshot; this did not mean refined-product or shipping conditions had normalized.','OCT. 6');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
+    const o=card(g,'Oil market','Brent settled Oct. 6 at $100.58 and WTI at $89.44. Strong Middle Eastern exports and emergency stock releases limited crude-supply pressure, but Saudi-Houthi escalation, shipping risk and refined-product tightness kept a substantial war-risk premium in the market.','OCT. 6 CLOSE');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
     const f=card(g,'Exports and logistics','Regional crude exports have recovered strongly, but freight, tanker security and refined-product conditions remain abnormal. Recovery in barrels moved is not the same as normalization of transport cost or risk.','RECOVERING / ABNORMAL');evidence(f,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
     card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
     const fin=card(g,'Financial pressure','On Oct. 5, Treasury warned foreign financial institutions that continued transactions with sanctioned Iranian financial institutions could trigger U.S. measures without advance notice.','ENFORCEMENT PRESSURE');evidence(fin,context,{source_ids:['SRC-A2105A000019','SRC-A2105A00001A']});
@@ -557,14 +557,14 @@
   function hormuzTalks(article) {
     intro(article,'Mediator exchanges continue, but there is still no signed U.S.-Iran agreement or Hormuz reopening arrangement. Iran says the U.S. response was relayed through mediators and that additional points remain unresolved.');
     const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='Iran now ties reopening Hormuz to seven conditions based on the June Islamabad memorandum. Tehran says the U.S. response has been relayed through mediators, but additional points remain unresolved. No replacement agreement or reopening arrangement is in force.';
-    if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said Tehran had not entered nuclear discussions with Washington. Negotiating positions remain positions until an agreement is actually accepted.');
+    if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said on Oct. 4 that Tehran had not entered nuclear discussions with Washington. On Oct. 6, Vice President JD Vance said the U.S. was negotiating with President Masoud Pezeshkian and Foreign Minister Abbas Araqchi and would require a meaningful reduction in enrichment capacity for an agreement. The public descriptions differ; no agreement is in force.');
   }
 
   function diplomacy(article) {
     intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Negotiating claims do not become agreements by repetition.');
     const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
     const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
-    card(g,'U.S.–Iran / Hormuz contacts','Iran says the U.S. response was relayed through mediators, but additional points remain unresolved. Qalibaf tied reopening to seven Iranian conditions. No replacement agreement is in force.','MEDIATED / NO AGREEMENT');
+    card(g,'U.S.–Iran / Hormuz contacts','Vice President JD Vance said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other Iranian political officials, but is uncertain how much decision authority they hold. He said an agreement would require a meaningful reduction in enrichment capacity. Iran had publicly described the channel differently. No replacement agreement is in force.','CONTACTS / NO AGREEMENT');
     card(g,'U.S.–Saudi defense diplomacy','Crown Prince Mohammed bin Salman met CENTCOM commander Adm. Brad Cooper in Jeddah on Sep. 14.','MEETING HELD');
     card(g,'Eslami / IAEA conference','A UN sanctions travel exemption for Mohammad Eslami was not approved after a U.S. objection. This is not a new general sanctions package.','EXEMPTION NOT APPROVED');
     card(g,'Israel–Lebanon talks','A U.S. official said Israel and Lebanon are expected to meet in Rome in October. That is an expected negotiation, not a completed meeting.','EXPECTED');
@@ -576,7 +576,7 @@
   }
 
   function nuclear(article) {
-    const s=section(article,'Latest nuclear-diplomacy development','Mohammad Eslami was prevented from attending the IAEA General Conference after the UN sanctions travel-exemption process did not produce approval following a U.S. objection. This is not a new general sanctions package.');routeLink(s,'talks.overview','See wider diplomacy');
+    const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials, while Washington remains uncertain how decisions are made inside Iran. Iran had said on Oct. 4 that it had not entered nuclear discussions with Washington. No nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
   }
 
   function regional(article) {
