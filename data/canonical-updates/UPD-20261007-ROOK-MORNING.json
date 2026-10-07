@@ -1,0 +1,201 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261007-ROOK-MORNING",
+  "known_at": "2026-10-07T09:15:00-04:00",
+  "evidence_cutoff": "2026-10-07T09:15:00-04:00",
+  "summary": "Consumes the Oct. 7 midnight-to-09:15 ET catch-up. It records Iran's renewed threat to close what an IRGC adviser called illegal Hormuz routes near Oman while preserving that as an actor claim rather than an observed closure; records Turkish defensive and technical support to Saudi Arabia; raises the Yemen displacement series above 200,000; corrects the earlier Mocha advance as premature and keeps the Bab el-Mandeb front contested; records a senior Iranian official saying U.S. nuclear ideas conflict with Tehran's demands; records Iraq's war-driven dinar devaluation; and advances the current oil-market snapshot while preserving abnormal war-risk conditions.",
+  "sources": [
+    {
+      "source_id": "SRC-A2107B000001",
+      "url": "https://www.reuters.com/world/middle-east/iraq-devalues-dinar-1520-per-us-dollar-state-news-agency-says-2026-10-07/",
+      "source_role": "Reuters reporting on Iraq dinar devaluation and war-disrupted oil revenue"
+    },
+    {
+      "source_id": "SRC-A2107B000002",
+      "url": "https://www.reuters.com/world/asia-pacific/turkey-sending-technical-defensive-support-saudi-arabia-help-fight-houthis-2026-10-07/",
+      "source_role": "Reuters reporting on Turkish defensive and technical support to Saudi Arabia"
+    },
+    {
+      "source_id": "SRC-A2107B000003",
+      "url": "https://www.reuters.com/world/middle-east/more-than-200000-people-displaced-since-fighting-yemen-began-says-un-agency-2026-10-07/",
+      "source_role": "Reuters reporting of IOM Yemen displacement data"
+    },
+    {
+      "source_id": "SRC-A2107B000004",
+      "url": "https://www.reuters.com/world/middle-east/iranian-official-says-illegal-routes-strait-hormuz-soon-be-blocked-2026-10-07/",
+      "source_role": "Reuters reporting of IRGC-adviser Hormuz route-closure threat and attributed control claims"
+    },
+    {
+      "source_id": "SRC-A2107B000005",
+      "url": "https://www.reuters.com/business/energy/oil-prices-rise-storms-air-strikes-threaten-supply-2026-10-07/",
+      "source_role": "Reuters October 7 oil-market update and senior-Iranian-official response on U.S. nuclear demands"
+    },
+    {
+      "source_id": "SRC-A2107B000006",
+      "url": "https://www.reuters.com/world/middle-east/houthis-launch-missiles-yemens-aden-airport-fighting-intensifies-2026-10-07/",
+      "source_role": "Reuters updated Yemen front reporting clarifying Mocha claim and Bab el-Mandeb fighting"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "LOCKER-IRAQ-DINAR-DEVALUATION-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Iraq's cabinet approved a new exchange-rate structure setting the dinar at 1,520 per U.S. dollar, about 14.5% below the previous official rate. Reuters reported the devaluation as a fiscal response to war-disrupted oil exports and revenue; Iraq's oil exports were around 2.34 million bpd in August versus more than 3.6 million bpd before the war.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107B000001"
+      ],
+      "publication_time": "2026-10-07T04:24:00-04:00",
+      "upstream_event_type": "IRAQ_DINAR_DEVALUATION_WAR_OIL_REVENUE_SHOCK"
+    },
+    {
+      "event_id": "LOCKER-TURKEY-SAUDI-DEFENSIVE-SUPPORT-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Turkish and U.S. officials told Reuters that Turkey was providing Saudi Arabia mainly defensive and technical support against the Houthis, including military equipment, intelligence sharing, air-defense-related assistance, drone operators, logistics and planning support. Turkey's parliament had not yet ratified the Mecca Joint Defence Agreement, so officials described much of the current support as bilateral.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107B000002"
+      ],
+      "publication_time": "2026-10-07T07:04:56-04:00",
+      "upstream_event_type": "TURKEY_DEFENSIVE_TECHNICAL_SUPPORT_TO_SAUDI_ARABIA"
+    },
+    {
+      "event_id": "LOCKER-YEMEN-DISPLACEMENT-OVER-200K-20261007",
+      "event_date": "2026-10-07",
+      "summary": "The International Organization for Migration said more than 200,000 people had been displaced since renewed fighting in Yemen began, up from 76,000 in mid-September. IOM said more than 3,700 people had also fled by sea to Djibouti.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107B000003"
+      ],
+      "publication_time": "2026-10-07T07:28:54-04:00",
+      "upstream_event_type": "YEMEN_DISPLACEMENT_EXCEEDS_200000"
+    },
+    {
+      "event_id": "LOCKER-IRAN-US-NUCLEAR-DEMANDS-AT-ODDS-20261007",
+      "event_date": "2026-10-07",
+      "summary": "A senior Iranian official told Reuters that Washington's requests and ideas concerning Iran's nuclear program were at odds with Tehran's demands, when asked about Vice President JD Vance's statement that Iran must meaningfully reduce enrichment capacity to end the war. The statement shows continuing disagreement; it does not establish that negotiations ended.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107B000005"
+      ],
+      "publication_time": "2026-10-07T08:00:00-04:00",
+      "upstream_event_type": "IRAN_SAYS_US_NUCLEAR_IDEAS_CONFLICT_WITH_TEHRAN_DEMANDS"
+    },
+    {
+      "event_id": "LOCKER-IRGC-ADVISER-HORMUZ-ROUTE-CLOSURE-THREAT-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Mohammadreza Naqdi, an adviser to the IRGC commander, told Fars that Iran would soon close what he called illegal transit routes along the southern side of Hormuz near Oman. He also claimed Iran had full control of the strait and that it remained closed until Iranian demands were met. Reuters separately noted strong September Gulf crude-flow recovery. The closure and control assertions remain attributed claims unless independently observed.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107B000004"
+      ],
+      "publication_time": "2026-10-07T09:02:57-04:00",
+      "upstream_event_type": "IRGC_ADVISER_THREATENS_ADDITIONAL_HORMUZ_ROUTE_CLOSURES"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "Mediated U.S.-Iran contacts continue; U.S. enrichment condition and Iranian disagreement are explicit; no agreement",
+        "observed_state": "Vice President JD Vance said a war-ending agreement requires a meaningful reduction in Iranian enrichment capacity. On October 7, a senior Iranian official told Reuters that Washington's nuclear requests and ideas were at odds with Tehran's demands. The exchange clarifies a substantive negotiating gap. It does not establish that contacts ended, that Iran accepted the U.S. condition, or that a Hormuz reopening agreement exists.",
+        "knowledge_time": "2026-10-07T09:15:00-04:00",
+        "source_ids": [
+          "SRC-A2107A000002",
+          "SRC-A2107A000003",
+          "SRC-A2107B000005"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Gulf export recovery remains substantial, but Hormuz is not normalized and Iran is threatening additional route restrictions",
+        "observed_state": "September Gulf crude flows recovered strongly despite persistent attacks, dark transits and logistical constraints. On October 7, IRGC adviser Mohammadreza Naqdi said Iran would soon close what it calls illegal southern routes near Oman and claimed full Iranian control of the strait. Those statements are actor claims and do not by themselves establish that the routes have been closed. Normal unrestricted passage remains unestablished.",
+        "knowledge_time": "2026-10-07T09:15:00-04:00",
+        "source_ids": [
+          "SRC-A2106A000001",
+          "SRC-A2106A000002",
+          "SRC-A2107B000004"
+        ]
+      }
+    },
+    {
+      "entity_type": "movement",
+      "entity_id": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "mode": "update",
+      "record": {
+        "current_through": "2026-10-07",
+        "status": "SAUDI_BACKED_COUNTEROFFENSIVE_ACTIVE_NEAR_BAB_EL_MANDEB; MOCHA_ADVANCE_CLAIM_PREMATURE; FRONT_REMAINS_CONTESTED; HOUTHI_LONG_RANGE_STRIKE_CAPABILITY_REMAINS_ACTIVE",
+        "observed_state": "Reuters reported that the Yemeni government's Monday claim that its forces had reached Mocha was premature according to military officials on the ground and analysts. Fighting remained concentrated in Dhubab and the strategic hills east of the coastal plain, with Houthis claiming they had repelled attacks. The coastal counteroffensive is therefore active but not established as having secured Mocha. Houthi missile and drone attacks on Aden and Saudi targets continue to show long-range strike capability.",
+        "knowledge_time": "2026-10-07T09:15:00-04:00",
+        "source_ids": [
+          "SRC-A2107A000004",
+          "SRC-A2107B000006"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-10-07T09:15:00-04:00",
+        "reported_displaced_approx": 200000,
+        "reported_displaced_operator": "MORE_THAN",
+        "period_end": "2026-10-07",
+        "confidence": "HIGH_FOR_SOURCE_BOUNDED_IOM_SERIES",
+        "note": "IOM said more than 200,000 people had been displaced since the renewed fighting began, with more than 3,700 also fleeing by sea to Djibouti. Earlier displacement figures remain prior source/timebox observations and are not added together.",
+        "source_ids": [
+          "SRC-A2107B000003"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-ENERGY-RECOVERY-20260930",
+      "mode": "update",
+      "record": {
+        "status": "Regional crude supply has largely recovered, but war-risk pricing, logistics and refined-product tightness remain abnormal",
+        "observed_state": "At 12:00 GMT on October 7, Brent was about $101.33 per barrel and WTI about $89.83. Reuters reported that investors remained uncertain whether recent Middle East supply and export gains were sustainable, while Houthi attacks and a U.S. Gulf storm added supply risk. The price snapshot reinforces that crude-flow recovery has not normalized transport, refining or war-risk conditions.",
+        "knowledge_time": "2026-10-07T09:15:00-04:00",
+        "source_ids": [
+          "SRC-A2107B000005"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAQ-DINAR-DEVALUATION-20261007",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-IRAQ-DINAR-DEVALUATION-20261007",
+        "date": "2026-10-07",
+        "metric": "Iraq war-related dinar devaluation and oil-revenue shock",
+        "status": "Iraq devalued the dinar as war disruption reduced oil-export revenue",
+        "observed_state": "Iraq approved a new rate of 1,520 dinars per U.S. dollar, about a 14.5% devaluation from the previous official rate. Reuters reported the move as a fiscal response to disrupted oil exports and shrinking dollar oil revenue; August exports were around 2.34 million bpd versus more than 3.6 million bpd before the war.",
+        "adjudication": "OBSERVED_POLICY_RESPONSE_TO_WAR_RELATED_EXPORT_REVENUE_SHOCK; DOES_NOT_ESTABLISH_LONG_TERM_MACROECONOMIC_OUTCOME",
+        "knowledge_time": "2026-10-07T09:15:00-04:00",
+        "source_ids": [
+          "SRC-A2107B000001"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261007T0915ET.json"
+    ]
+  }
+}

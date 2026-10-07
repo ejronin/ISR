@@ -1,0 +1,230 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261006-ROOK-CURRENT",
+  "known_at": "2026-10-06T12:11:00-04:00",
+  "evidence_cutoff": "2026-10-06T12:00:00-04:00",
+  "summary": "Consumes the recovered midnight and noon ROOK sweeps after the Oct. 5 16:55 ET boundary. Advances current state for Hormuz/Gulf export recovery, Iran crude-export isolation, Chinese substitution, Saudi bypass capacity, Yemen coastal disposition and displacement, confirmed Saudi airport attacks, and later RAF Fairford evidence while preserving unresolved attribution and claim-domain boundaries.",
+  "sources": [
+    {
+      "source_id": "SRC-A2106A000001",
+      "url": "https://www.reuters.com/business/energy/gulf-oil-flows-rise-average-81-pre-war-rate-september-data-shows-2026-10-06/",
+      "source_role": "Reuters current-state energy/shipping reporting"
+    },
+    {
+      "source_id": "SRC-A2106A000002",
+      "url": "https://www.reuters.com/business/energy/saudi-energy-minister-says-oil-pumped-through-east-west-pipeline-reached-58-2026-10-06/",
+      "source_role": "Reuters current-state Saudi energy reporting"
+    },
+    {
+      "source_id": "SRC-A2106A000003",
+      "url": "https://www.reuters.com/business/energy/chinese-independent-refiners-boost-iraqi-oil-purchases-iranian-flows-fall-2026-10-06/",
+      "source_role": "Reuters current-state China/Iran crude-market reporting"
+    },
+    {
+      "source_id": "SRC-A2106A000004",
+      "url": "https://www.reuters.com/world/uk/uk-police-make-further-arrest-relation-suspected-airbase-plot-2026-10-06/",
+      "source_role": "Reuters current-state RAF Fairford investigation reporting"
+    },
+    {
+      "source_id": "SRC-A2106A000005",
+      "url": "https://www.reuters.com/world/uk/iran-drone-plot-fears-led-us-remove-bombers-uk-base-us-officials-say-2026-10-06/",
+      "source_role": "Reuters later-evidence reporting citing U.S. officials on RAF Fairford force-protection decision"
+    },
+    {
+      "source_id": "SRC-A2106A000006",
+      "url": "https://www.reuters.com/business/energy/oil-prices-slip-traders-weigh-strong-mideast-exports-against-gulf-tensions-2026-10-06/",
+      "source_role": "Reuters oil-market and Saudi airport attack reporting"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "LOCKER-GULF-OIL-FLOWS-SEPTEMBER-RECOVERY-20261006",
+      "event_date": "2026-09-30",
+      "summary": "Reuters-cited Vortexa data showed September Gulf oil flows excluding Iran averaged 19.2 million barrels per day, about 81% of the pre-war rate. Crude and condensate flows recovered to 91% of pre-war levels while refined-fuel flows remained around 60%. Kpler data cited by Reuters showed Iran exported no crude in September.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2106A000001"
+      ],
+      "publication_time": "2026-10-05T23:03:52-04:00",
+      "upstream_event_type": "GULF_EXPORT_RECOVERY_IRAN_EXPORT_COLLAPSE"
+    },
+    {
+      "event_id": "LOCKER-SA-EASTWEST-PIPELINE-THROUGHPUT-20261006",
+      "event_date": "2026-10-06",
+      "summary": "Saudi Energy Minister Prince Abdulaziz bin Salman said 5.8 million barrels had been pumped through the East-West Pipeline by Tuesday morning. Reuters reported Saudi Arabia had been using the route to reroute around 4 million barrels per day toward Yanbu, while full restoration of the pipeline's maximum capacity was not established by this reporting.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2106A000002"
+      ],
+      "publication_time": "2026-10-06T05:41:44-04:00",
+      "upstream_event_type": "SAUDI_EASTWEST_PIPELINE_OPERATIONAL_THROUGHPUT"
+    },
+    {
+      "event_id": "LOCKER-CHINA-IRAN-OIL-SUBSTITUTION-20261006",
+      "event_date": "2026-10-06",
+      "summary": "Reuters reported Chinese independent refiners bought at least 12 million barrels of Iraqi and Qatari crude for October-November delivery, with one trader estimating 15-20 million barrels, as Iranian supply dwindled. Kpler put Chinese Iranian-crude imports at 590,000 bpd in September, the lowest since January 2023, and Iranian floating crude storage outside the blockade zone at about 45 million barrels versus about 100 million in late July.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2106A000003"
+      ],
+      "publication_time": "2026-10-06T07:17:03-04:00",
+      "upstream_event_type": "CHINA_SUBSTITUTES_AWAY_FROM_IRANIAN_CRUDE"
+    },
+    {
+      "event_id": "LOCKER-RAF-FAIRFORD-LATER-EVIDENCE-20261006",
+      "event_date": "2026-10-06",
+      "summary": "British police arrested another man in the RAF Fairford terrorism investigation. Separately, two U.S. officials told Reuters that a suspected complex drone-attack plot involving Iran prompted removal of U.S. B-1 bombers from Fairford. Iran denied involvement. The later reporting strengthens the Iran-linked threat assessment but does not independently establish Iranian state direction.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2106A000004",
+        "SRC-A2106A000005"
+      ],
+      "publication_time": "2026-10-06T10:48:45-04:00",
+      "upstream_event_type": "RAF_FAIRFORD_IRAN_LINKED_PLOT_LATER_EVIDENCE"
+    },
+    {
+      "event_id": "LOCKER-SAUDI-JAZAN-NAJRAN-AIRPORT-ATTACKS-20261005",
+      "event_date": "2026-10-05",
+      "summary": "Saudi Arabia's aviation authority said Jazan and Najran airports were targeted in two attacks Monday evening, injuring three people and causing limited damage. Reuters reported the attacks amid escalating Saudi-Houthi hostilities; the cited Saudi statement did not by itself establish the attacker or weapon type.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2106A000006"
+      ],
+      "publication_time": "2026-10-06T10:30:00-04:00",
+      "upstream_event_type": "SAUDI_AIRPORT_ATTACKS_CONFIRMED"
+    },
+    {
+      "event_id": "LOCKER-OIL-PRICE-EASING-20261006",
+      "event_date": "2026-10-06",
+      "summary": "Brent traded at $98.48 per barrel and WTI at $88.01 around 10:30 a.m. EDT as stronger Middle Eastern exports and planned G7 emergency stock releases eased immediate crude-supply fears. The market remained exposed to shipping, refined-product and regional-security risks.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2106A000006"
+      ],
+      "publication_time": "2026-10-06T10:30:00-04:00",
+      "upstream_event_type": "OIL_PRICE_EASING_ON_SUPPLY_RECOVERY"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Gulf export recovery is strong, but Hormuz remains selectively constrained and dangerous",
+        "observed_state": "September Gulf oil flows excluding Iran averaged 19.2 million bpd, about 81% of pre-war levels, while crude and condensate recovered to 91%. Kpler data cited by Reuters showed Iran exported no crude in September. Saudi Arabia also restored meaningful East-West bypass throughput. These gains show that regional producers are increasingly adapting around Iranian pressure, but dark transits, tanker attacks and abnormal freight/security conditions mean normal unrestricted passage is not established.",
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "source_ids": [
+          "SRC-A2106A000001",
+          "SRC-A2106A000002"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-ENERGY-RECOVERY-20260930",
+      "mode": "update",
+      "record": {
+        "status": "Regional crude supply has largely recovered; refined-product and logistics conditions remain abnormal",
+        "observed_state": "Vortexa put September Gulf oil flows excluding Iran at 19.2 million bpd, 81% of pre-war levels, with crude and condensate at 91% but refined fuels at about 60%. Saudi Arabia's export recovery and East-West bypass capacity materially reduced immediate crude-supply pressure. By 10:30 a.m. EDT October 6, Brent was near $98.48 and WTI near $88.01, while shipping costs and refined-product shortages remained significant.",
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "source_ids": [
+          "SRC-A2106A000001",
+          "SRC-A2106A000002",
+          "SRC-A2106A000006"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAN-OIL-EXPORT-ISOLATION-20261006",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-IRAN-OIL-EXPORT-ISOLATION-20261006",
+        "date": "2026-10-06",
+        "metric": "Iran crude-export isolation and Chinese substitution",
+        "status": "Iranian crude exports are severely constrained while Chinese independent refiners substitute non-Iranian barrels",
+        "observed_state": "Kpler data cited by Reuters showed Iran exported no crude in September, the first zero-export month in Kpler's series since 2013. China's imports of Iranian crude fell to about 590,000 bpd, the lowest since January 2023, and Iranian floating storage outside the blockade zone fell to about 45 million barrels from about 100 million in late July. Chinese independent refiners bought at least 12 million barrels of Iraqi and Qatari crude for October-November delivery, with one trader estimating 15-20 million barrels.",
+        "adjudication": "OBSERVED_MARKET_SUBSTITUTION_AND_EXPORT_CONSTRAINT; DOES_NOT_BY_ITSELF_ESTABLISH_CHINESE_STATE_POLICY_OR_LONG_TERM_ABANDONMENT_OF_IRAN",
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "source_ids": [
+          "SRC-A2106A000003",
+          "SRC-A2106A000001"
+        ]
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "status": "THREE_PUMPING_STATIONS_DAMAGED; PIPELINE_RESTARTED_AND_CARRYING_MATERIAL_BYPASS_VOLUME; FULL_7M_BPD_CAPACITY_NOT_ESTABLISHED",
+        "disposition": "The East-West Pipeline has moved beyond the earlier reduced-rate restart state. Saudi Arabia's energy minister said 5.8 million barrels had been pumped through the line by Tuesday morning, and Reuters reported Riyadh had been using the route to reroute around 4 million bpd toward Yanbu. The earlier damage to three pumping stations remains part of the record; full restoration to maximum rated capacity is not established by the October 6 reporting.",
+        "yanbu_status": "ACTIVE_BYPASS_EXPORT_ROUTE; MATERIAL_THROUGHPUT_SUPPORTED",
+        "source_ids": [
+          "SRC-A2106A000002"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-SAUDI-EASTWEST-EXACT-BDA",
+      "mode": "update",
+      "record": {
+        "known_at": "2026-10-06T12:11:00-04:00",
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "status": "MATERIALLY_NARROWED; PIPELINE_ACTIVE_AND_APPROX_4M_BPD_BYPASS_USE_REPORTED; FULL_RATED_CAPACITY_AND_FINAL_REPAIR_STATE_UNRESOLVED",
+        "topic": "Exact East-West pipeline repair status, sustained throughput and full-capacity restoration",
+        "evidence": "October 6 reporting supports active material use of the pipeline, including an official statement that 5.8 million barrels had been pumped by Tuesday morning and Reuters context that roughly 4 million bpd was being rerouted through it. The record still does not establish restoration to the full rated 7 million bpd capacity or final repair completion.",
+        "source_ids": [
+          "SRC-A2106A000002"
+        ]
+      }
+    },
+    {
+      "entity_type": "movement",
+      "entity_id": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "mode": "update",
+      "record": {
+        "current_through": "2026-10-06",
+        "status": "SEPTEMBER_HOUTHI_RED_SEA_COAST_ADVANCE_MATERIALLY_REVERSED_BY_SAUDI_BACKED_COUNTEROFFENSIVE; BAB_EL_MANDEB_COAST_AND_MOCHA_REPORTED_RETAKEN_BY_GOVERNMENT; EXTENT_CONTESTED; TAIZ_FRONT_REMAINS_ACTIVE",
+        "observed_state": "Saudi-backed Yemeni government forces reported retaking most coastal areas around Bab el-Mandeb, reaching and then claiming Mocha, and recovering the Dhubab airstrip during the October 4-5 counteroffensive. Reuters could not independently verify the full extent and the Houthis rejected the government's account. Houthi gains near Taiz were also reported, so the coastal reversal does not establish theater-wide Houthi collapse.",
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "source_ids": [
+          "SRC-A2105A000016"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-10-06T12:11:00-04:00",
+        "reported_displaced_approx": 184000,
+        "reported_displaced_operator": "APPROX",
+        "period_end": "2026-10-05",
+        "confidence": "HIGH_FOR_SOURCE_BOUNDED_UN_MIGRATION_AGENCY_SERIES",
+        "note": "Reuters reported the UN migration agency said 184,000 people had been displaced since fighting resumed. Earlier September denominators remain preserved as prior source/timebox observations and are not added together.",
+        "source_ids": [
+          "SRC-A2105A000016"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261006T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261006T1200ET.json"
+    ]
+  }
+}

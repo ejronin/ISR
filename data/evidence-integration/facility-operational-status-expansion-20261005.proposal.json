@@ -1,0 +1,60 @@
+{
+  "artifact_role": "EVIDENCE_REVIEW_PROPOSAL",
+  "status": "ADJUDICATED_SUPERSEDED_BY_ACCEPTED_REVIEW",
+  "created_date": "2026-10-05",
+  "adjudicated_date": "2026-10-07",
+  "superseded_by": "data/evidence-integration/facility-operational-status-adjudication-20261007.json",
+  "purpose": "Historical proposal record for the Phase 2 four-state facility operational-status map. Candidate GREEN classifications were reviewed under the owner's strict evidence rule and were not promoted unless affirmative evidence supported the public state.",
+  "requested_public_states": {
+    "RED": "Inoperable base (whole)",
+    "YELLOW": "Damaged; parts inoperable",
+    "BLUE": "Damaged; operable",
+    "GREEN": "Untouched"
+  },
+  "controlling_rules": [
+    "Absence of a damage record alone is not sufficient for GREEN.",
+    "GREEN requires an affirmative untouched finding plus operational continuity; NO_REPORTED_DAMAGE_FOUND is insufficient by itself.",
+    "Presence, continued use of some functions, or absence of a shutdown report is not sufficient for BLUE.",
+    "YELLOW requires verified physical damage plus an explicitly destroyed or inoperable represented component; do not infer whole-base shutdown.",
+    "RED requires the represented tracked facility/node itself to be destroyed or not operating.",
+    "Administrative withdrawal, closure, transfer, or drawdown is not a combat-damage color state."
+  ],
+  "original_green_candidates": [
+    {
+      "proposed_facility_id": "US-INCIRLIK",
+      "name": "Incirlik Air Base",
+      "original_proposed_state": "GREEN",
+      "adjudicated_disposition": "UNCLASSIFIED_NOT_GREEN",
+      "reason": "Accepted evidence establishes operational continuity, but the damage predicate is only NO_REPORTED_DAMAGE_FOUND. The accepted March 13 event records a missile interception near Incirlik with intended target unresolved. The owner's GREEN standard forbids converting absence of verified damage into an affirmative untouched finding."
+    },
+    {
+      "proposed_facility_id": "US-CAMP-LEMONNIER",
+      "name": "Camp Lemonnier",
+      "original_proposed_state": "GREEN",
+      "adjudicated_disposition": "UNCLASSIFIED_NOT_PROMOTED",
+      "reason": "The site is not present in the accepted tracked facility dataset and the proposal-only external links are not registered accepted source records. Separate evidence integration would be required before any public state is assigned."
+    },
+    {
+      "proposed_facility_id": "US-NSA-SOUDA-BAY",
+      "name": "Naval Support Activity Souda Bay",
+      "original_proposed_state": "GREEN",
+      "adjudicated_disposition": "UNCLASSIFIED_NOT_PROMOTED",
+      "reason": "The site is not present in the accepted tracked facility dataset and the proposal-only external links are not registered accepted source records. Separate evidence integration would be required before any public state is assigned."
+    }
+  ],
+  "broader_adjudication_summary": {
+    "RED": [
+      "US-SHUAIBA-TOC"
+    ],
+    "YELLOW": [
+      "US-NSA-BHR",
+      "US-ALUDEID",
+      "US-ARIFJAN"
+    ],
+    "BLUE": [],
+    "GREEN": [],
+    "unclassified_tracked_count": 15
+  },
+  "raf_akrotiri_disposition": "NOT_PROMOTED. RAF Akrotiri is not a tracked facility record in data/facilities.json. The accepted reconciliation record describes the March 1 Akrotiri missile item as CONTESTED_NOT_PINNED with conflicting UK/Cyprus accounts, so the proposal's stronger damage assertion is not adopted.",
+  "handoff": "Renderer must consume only the classified records in the accepted adjudication file and leave every unclassified facility neutral. No renderer inference is authorized."
+}

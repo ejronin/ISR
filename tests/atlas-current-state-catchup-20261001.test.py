@@ -74,7 +74,7 @@ def main() -> int:
     shipping = rows_by_id(entities["shipping"])
     economics = rows_by_id(entities["economics"])
 
-    assert diplomacy["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]["status"] == "Mediated talks continue; no agreement"
+    assert "no agreement" in diplomacy["DIP-US-IRAN-UNGA-CONTACTS-20260922"]["record"]["status"].lower()
     assert diplomacy["DIP-SAUDI-REGIONAL-SECURITY-20260930"]["record"]["status"] == "Saudi Arabia continues diplomacy while emphasizing collective Gulf security"
     prior_shipping = next(
         row["record"] for row in packet["entities"]

@@ -125,6 +125,7 @@ jobs:
           python tests/atlas-current-state-catchup-20260929.test.py
           python tests/atlas-current-state-catchup-20261001.test.py
           python tests/atlas-current-state-catchup-20261002.test.py
+          python tests/atlas-current-state-catchup-20261006.test.py
           python tests/current-release-state-orchestration.test.py
           python scripts/validate_gate3_final.py
           python scripts/validate_lie_ledger_v2.py
