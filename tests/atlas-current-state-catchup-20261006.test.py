@@ -68,7 +68,13 @@ def main() -> int:
     movements = rows_by_id(state["entities"]["movements"])
     coast = movements["MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"]["record"]
     assert "MATERIALLY_REVERSED" in coast["status"]
-    assert "EXTENT_CONTESTED" in coast["status"]
+    sep6_coast = next(
+        entity["record"]
+        for entity in packet["entities"]
+        if entity["entity_id"] == "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"
+    )
+    assert "EXTENT_CONTESTED" in sep6_coast["status"]
+    assert "TAIZ_FRONT_REMAINS_ACTIVE" in sep6_coast["status"]
 
     casualties = rows_by_id(state["entities"]["casualties"])
     yemen = casualties["CAS-YEMEN-DISPLACEMENT-20260913"]["record"]
