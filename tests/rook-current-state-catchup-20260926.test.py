@@ -110,8 +110,9 @@ def main() -> int:
         for entity in packet["entities"]
         if entity["entity_id"] == "DIP-US-IRAN-UNGA-CONTACTS-20260922"
     )
-    assert "mediator" in sep26_contacts["observed_state"].lower()
-    assert "no accepted replacement" in sep26_contacts["observed_state"].lower()
+    assert "mediated/indirect-contact reconstruction" in sep26_contacts["observed_state"].lower()
+    assert "NO_ACCEPTED_SETTLEMENT" in sep26_contacts["status"]
+    assert "does not establish that all diplomatic channels ended" in sep26_contacts["observed_state"].lower()
 
     makkah = diplomacy["DIP-MAKKAH-PACT-IMPLEMENTATION-20260925"]["record"]
     assert "CHIEFS_MEETING_CONFIRMED" in makkah["status"]
