@@ -506,9 +506,10 @@
   }
 
   function pointKind(record) {
+    if (record && record.facility_id) return 'facility';
     const material = String([
       record && record.target_type, record && record.event_type, record && record.category,
-      record && record.accounting_category, record && record.shipping_id, record && record.facility_id
+      record && record.accounting_category, record && record.shipping_id
     ].filter(Boolean).join(' ')).toUpperCase();
     if (/SHIP|MARITIME|VESSEL|HORMUZ|PORT/.test(material)) return 'shipping';
     if (/FACIL|LOSS|DAMAGE|INFRASTRUCTURE/.test(material)) return 'facility';
@@ -646,7 +647,7 @@
     const definitions = {
       military: { shape: 'diamond', fill: '#eea0a0' },
       shipping: { shape: 'circle', fill: '#79b7df' },
-      facility: { shape: 'square', fill: '#e4c384' }
+      facility: { shape: 'square', fill: '#7d8993' }
     };
     Object.entries(definitions).forEach(([name, definition]) => {
       if (map.hasImage(name)) return;
@@ -744,10 +745,10 @@
       paint: {
         'circle-radius': 9,
         'circle-color': ['match', ['get', 'operationalStatus'],
-          'inoperable', '#d94b4b',
-          'partial', '#e3bf4f',
-          'damaged-operable', '#4f9ed8',
-          'untouched', '#56a86c',
+          'RED', '#d94b4b',
+          'YELLOW', '#e3bf4f',
+          'BLUE', '#4f9ed8',
+          'GREEN', '#56a86c',
           '#7d8993'
         ],
         'circle-stroke-color': '#080d13',
@@ -846,8 +847,16 @@
     } else {
       const physical = item && (item.physical_damage || item.impact_grade || item.damage_state || item.damage);
       const operational = item && (item.operational_effect || item.operating_result || item.operational_status);
-      if (physical || operational) {
+      const acceptedState = String(item && item._visualOperationalStatus || '').toUpperCase();
+      const acceptedLabel = {
+        RED: 'Inoperable base (whole)',
+        YELLOW: 'Damaged; parts inoperable',
+        BLUE: 'Damaged; operable',
+        GREEN: 'Untouched'
+      }[acceptedState] || '';
+      if (physical || operational || acceptedLabel) {
         const facts = append(article, 'dl', 'visualization-distinction-facts');
+        if (acceptedLabel) { append(facts, 'dt', '', 'Operational map state'); append(facts, 'dd', '', acceptedLabel); }
         if (physical) { append(facts, 'dt', '', 'Physical damage'); append(facts, 'dd', '', String(physical)); }
         if (operational) { append(facts, 'dt', '', 'Operational effect'); append(facts, 'dd', '', String(operational)); }
         append(article, 'p', 'map-card-meta', 'Physical damage and operational effect are separate.');
@@ -1022,6 +1031,16 @@
     };
     section.dataset.mapSelectableRecords = String(recordIndexByKey.size);
     const points = pointsGeoJSON(records, ia, context, relatedRecords, overlayRecords);
+    const facilityPointFeatures = points.features.filter(feature => feature.properties && feature.properties.kind === 'facility');
+    const facilityStateCounts = ['RED', 'YELLOW', 'BLUE', 'GREEN'].reduce((result, state) => {
+      result[state] = facilityPointFeatures.filter(feature => feature.properties.operationalStatus === state).length;
+      return result;
+    }, {});
+    section.dataset.facilityOperationalRed = String(facilityStateCounts.RED);
+    section.dataset.facilityOperationalYellow = String(facilityStateCounts.YELLOW);
+    section.dataset.facilityOperationalBlue = String(facilityStateCounts.BLUE);
+    section.dataset.facilityOperationalGreen = String(facilityStateCounts.GREEN);
+    section.dataset.facilityOperationalUnclassified = String(facilityPointFeatures.filter(feature => !feature.properties.operationalStatus).length);
     const routeData = routesGeoJSON(routes, ia);
     const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
     const fallbackLatLon = options && (options.viewportOverride || options.fallbackViewport) || [[8, 28], [42, 70]];

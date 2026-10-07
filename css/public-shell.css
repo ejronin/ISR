@@ -4573,7 +4573,8 @@ tbody tr:last-child td { border-bottom: 0; }
   border: 1px solid rgb(255 255 255 / 35%);
   border-radius: 999px;
 }
-.facility-operational-swatch[data-facility-operational-status="inoperable"] { background: #d94b4b; }
-.facility-operational-swatch[data-facility-operational-status="partial"] { background: #e3bf4f; }
-.facility-operational-swatch[data-facility-operational-status="damaged-operable"] { background: #4f9ed8; }
-.facility-operational-swatch[data-facility-operational-status="untouched"] { background: #56a86c; }
+.facility-operational-swatch[data-facility-operational-status="RED"] { background: #d94b4b; }
+.facility-operational-swatch[data-facility-operational-status="YELLOW"] { background: #e3bf4f; }
+.facility-operational-swatch[data-facility-operational-status="BLUE"] { background: #4f9ed8; }
+.facility-operational-swatch[data-facility-operational-status="GREEN"] { background: #56a86c; }
+.facility-operational-unclassified-note { margin: .45rem 0 0; color: var(--atlas-text-muted, #9fb0bd); font-size: .88rem; }
