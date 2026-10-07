@@ -26,7 +26,8 @@ def main() -> int:
     assert latest["sha256"] == "a6aac7fef371fcf3d7e83024909b54dd025e0f896fea632ba1343d1e9f2fc654"
     assert latest["previous_lineage_sha256"] == "ad955ae44da69fb9281b2703d689f5dab29f6a9195a0bf1aa9c58cdf6eb55f52"
     assert latest["lineage_sha256"] == "b27465aba974042a3047ee3eb62d39e6a46c706d19ae0126065f357315ecf90f"
-    assert manifest["current_evidence_cutoff"] == "2026-10-07T09:15:00-04:00"
+    assert latest["evidence_cutoff"] == packet["evidence_cutoff"]
+    assert manifest["current_evidence_cutoff"] == latest["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
     assert packet["status"] == "ACCEPTED"
     assert packet["narrative_claims"] == []
