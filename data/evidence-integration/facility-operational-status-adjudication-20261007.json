@@ -1,0 +1,199 @@
+{
+  "artifact_role": "EVIDENCE_LANE_FACILITY_OPERATIONAL_STATUS_ADJUDICATION",
+  "status": "ADJUDICATED_ACCEPTED_FOR_RENDERER_CONSUMPTION_AFTER_MERGE",
+  "adjudicated_date": "2026-10-07",
+  "repository": "ejronin/ISR",
+  "scope": {
+    "tracked_facility_authority": "data/facilities.json",
+    "formal_facility_predicates": "data/evidence-integration/public-product-factual-predicates-20260911.json",
+    "supporting_material_losses": "data/integration-v1.2/material-losses.json",
+    "supporting_integrated_facilities": "data/integration-v1.2/facilities.json",
+    "reconciliation_events": "data/wiki-map-reconciliation-20260826/events.json",
+    "later_update_review": "Current accepted evidence/canonical update paths were checked during the 2026-10-07 review. No later accepted facility-status predicate was located that supersedes the rulings below."
+  },
+  "public_state_definitions": {
+    "RED": "Inoperable base (whole). Apply only when the represented tracked facility/node itself is established destroyed or not operating.",
+    "YELLOW": "Damaged; parts inoperable. Apply only when physical damage is established and at least one represented component is explicitly destroyed or inoperable; do not infer whole-facility shutdown.",
+    "BLUE": "Damaged; operable. Requires physical damage plus affirmative evidence that the represented facility is operating at facility scope; presence or absence of shutdown reporting is insufficient.",
+    "GREEN": "Untouched. Requires affirmative evidence sufficient to establish no strike/damage through the relevant conflict period plus operational continuity; absence of a damage report alone is insufficient."
+  },
+  "temporal_rule": "States below are the last verified evidence-supported condition and remain qualified by their stated effective/verification dates. The adjudication does not infer repair, reconstitution, continued shutdown, or continued degradation beyond accepted evidence.",
+  "classified": [
+    {
+      "facility_id": "US-SHUAIBA-TOC",
+      "facility": "Port Shuaiba U.S. tactical operations center",
+      "public_operational_state": "RED",
+      "effective_date": "2026-03-01",
+      "confidence": "HIGH",
+      "basis": "The represented tracked entity is the tactical operations center/outpost itself, and the accepted predicate classifies that specific node as DESTROYED. This ruling does not extend to Camp Arifjan or the wider regional network.",
+      "accepted_record_refs": [
+        "data/facilities.json#US-SHUAIBA-TOC",
+        "data/evidence-integration/public-product-factual-predicates-20260911.json#US-SHUAIBA-TOC",
+        "data/wiki-map-reconciliation-20260826/events.json#WIKI-20260301-SHUAIBA"
+      ],
+      "source_ids": [
+        "SRC-AE2215AEF832"
+      ],
+      "qualification": "RED is scoped only to the tracked Shuaiba TOC/outpost, not Port Shuaiba as a whole and not Camp Arifjan."
+    },
+    {
+      "facility_id": "US-NSA-BHR",
+      "facility": "Naval Support Activity Bahrain / Fifth Fleet HQ area",
+      "public_operational_state": "YELLOW",
+      "effective_date": "2026-03-01",
+      "latest_reviewed_condition_date": "2026-08-14",
+      "confidence": "HIGH",
+      "basis": "Verified physical damage includes two radomes reported destroyed and a SATCOM dish hit; the Fifth Fleet headquarters function was relocated to MacDill. The accepted record explicitly rejects whole-installation cessation.",
+      "accepted_record_refs": [
+        "data/facilities.json#US-NSA-BHR",
+        "data/integration-v1.2/material-losses.json#MAT-USA-NSA-BHR-RADOMES",
+        "data/evidence-integration/public-product-factual-predicates-20260911.json#US-NSA-BHR"
+      ],
+      "source_ids": [
+        "SRC-551A9C2DB97C",
+        "SRC-B6B934C693E0"
+      ],
+      "qualification": "YELLOW reflects confirmed destroyed/inoperable subcomponents and relocated HQ function; it does not imply the entire installation is inoperable."
+    },
+    {
+      "facility_id": "US-ALUDEID",
+      "facility": "Al Udeid Air Base",
+      "public_operational_state": "YELLOW",
+      "effective_date_range": "2026-02-28/2026-03-14",
+      "last_confirmed_degraded_date": "2026-06-05",
+      "confidence": "HIGH",
+      "basis": "Multiple missile strikes severely damaged the Combined Air Operations Center and the accepted record says the CAOC was rendered inoperable. The same record explicitly states that whole-base incapacity is not established.",
+      "accepted_record_refs": [
+        "data/facilities.json#US-ALUDEID",
+        "data/integration-v1.2/facilities.json#US-ALUDEID",
+        "data/integration-v1.2/material-losses.json#MAT-USA-ALUDEID-CAOC-2026",
+        "data/evidence-integration/public-product-factual-predicates-20260911.json#US-ALUDEID"
+      ],
+      "source_ids": [
+        "SRC-7538CF574DDF",
+        "SRC-3826CE7F7FBB",
+        "SRC-551A9C2DB97C"
+      ],
+      "qualification": "YELLOW is scoped to confirmed inoperable CAOC/subfacility effects. It is not a finding that Al Udeid as a whole stopped operating."
+    },
+    {
+      "facility_id": "US-ARIFJAN",
+      "facility": "Camp Arifjan",
+      "public_operational_state": "YELLOW",
+      "effective_date": "2026-03-01",
+      "latest_reviewed_condition_date": "2026-08-14",
+      "confidence": "HIGH",
+      "basis": "Accepted material-loss evidence states that Camp Arifjan communications equipment was destroyed and a radome was damaged or destroyed. Later troop presence is not upgraded to a BLUE whole-facility operating finding.",
+      "accepted_record_refs": [
+        "data/facilities.json#US-ARIFJAN",
+        "data/integration-v1.2/material-losses.json#MAT-USA-ARIFJAN-COMMS",
+        "data/evidence-integration/public-product-factual-predicates-20260911.json#US-ARIFJAN"
+      ],
+      "source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "qualification": "YELLOW reflects confirmed destroyed communications equipment. Whole-site operating status remains unresolved."
+    }
+  ],
+  "state_counts": {
+    "RED": 1,
+    "YELLOW": 3,
+    "BLUE": 0,
+    "GREEN": 0,
+    "UNCLASSIFIED_TRACKED": 15
+  },
+  "unclassified_tracked": [
+    {
+      "facility_id": "US-ALISALEM",
+      "reason": "Verified localized damage is established, but the accepted predicate does not affirm a current inoperable component at the required scope or affirmative whole-base operation."
+    },
+    {
+      "facility_id": "US-BUEHRING",
+      "reason": "Power-plant and other damage is verified, but current component inoperability and whole-site operation are not affirmatively established."
+    },
+    {
+      "facility_id": "US-CAMPDOHA",
+      "reason": "Iranian damage claim is not independently corroborated; presence does not establish operation and no damage state is established."
+    },
+    {
+      "facility_id": "US-BUBIYAN",
+      "reason": "Reported relocated position; attack/damage claim and operational effect remain unresolved."
+    },
+    {
+      "facility_id": "US-ALDHAFRA",
+      "reason": "Physical damage is verified, but accepted predicates explicitly say continued presence and lack of a shutdown report do not establish operation; no accepted current inoperable-component predicate is present."
+    },
+    {
+      "facility_id": "US-JEBELALI",
+      "reason": "Port-area damage/fire is established, but U.S.-specific asset loss and whole access-site operational effect remain unresolved."
+    },
+    {
+      "facility_id": "US-ERBIL",
+      "reason": "Damage is verified, but later posture is governed by a separate drawdown; current combat-damage operating state is not cleanly established."
+    },
+    {
+      "facility_id": "US-AINASAD",
+      "reason": "U.S. forces withdrew before the war baseline. This is an administrative/withdrawn state, not one of the four combat-damage states."
+    },
+    {
+      "facility_id": "US-PRINCESULTAN",
+      "reason": "Aircraft/base damage and later U.S. presence are established, but the accepted predicate explicitly does not upgrade presence to whole-base operation and does not establish a current inoperable facility component."
+    },
+    {
+      "facility_id": "US-MUWAFFAQ",
+      "reason": "THAAD/aircraft damage is established, but exact BDA and whole-base operational effect remain unresolved; do not infer partial inoperability beyond the accepted record."
+    },
+    {
+      "facility_id": "US-INCIRLIK",
+      "reason": "Operational continuity is established, but the damage predicate is only NO_REPORTED_DAMAGE_FOUND. GREEN requires an affirmative untouched finding, and an accepted March 13 interception near Incirlik has an unresolved intended target. Do not convert absence of verified damage into GREEN.",
+      "accepted_record_refs": [
+        "data/evidence-integration/public-product-factual-predicates-20260911.json#US-INCIRLIK",
+        "data/wiki-map-reconciliation-20260826/events.json#WIKI-20260313-INCIRLIK"
+      ],
+      "source_ids": [
+        "SRC-97B3782FD3F8"
+      ]
+    },
+    {
+      "facility_id": "US-ISA",
+      "reason": "Patriot/base damage is established, but whole-site operating effect and a specifically inoperable current component are not affirmatively established."
+    },
+    {
+      "facility_id": "US-RMELAN",
+      "reason": "Drawdown/current-presence uncertainty is the controlling state. No verified war damage is not an affirmative GREEN finding."
+    },
+    {
+      "facility_id": "US-QASRAK",
+      "reason": "Withdrawal began before/early in the war period. This is a drawdown state, not a four-color combat-damage state."
+    },
+    {
+      "facility_id": "US-TANF",
+      "reason": "U.S. withdrawal completed before the war. This is a withdrawn state, not a four-color combat-damage state."
+    }
+  ],
+  "proposal_only_not_promoted": [
+    {
+      "proposed_facility_id": "US-CAMP-LEMONNIER",
+      "facility": "Camp Lemonnier",
+      "disposition": "UNCLASSIFIED_NOT_PROMOTED",
+      "reason": "Not present in the accepted tracked facility dataset, and the proposal's AFP/DVIDS/Stars and Stripes links are not registered as accepted source records in the current source registry. They cannot support GREEN without separate evidence integration and adjudication."
+    },
+    {
+      "proposed_facility_id": "US-NSA-SOUDA-BAY",
+      "facility": "Naval Support Activity Souda Bay",
+      "disposition": "UNCLASSIFIED_NOT_PROMOTED",
+      "reason": "Not present in the accepted tracked facility dataset, and the proposal's CNIC/DVIDS/CENTCOM links are not registered as accepted source records in the current source registry. They cannot support GREEN without separate evidence integration and adjudication."
+    }
+  ],
+  "raf_akrotiri_note": "Do not promote RAF Akrotiri from this proposal. It is not a tracked facility record in data/facilities.json, and the accepted reconciliation record currently says the March 1 Akrotiri missile item is CONTESTED_NOT_PINNED with conflicting UK/Cyprus accounts. The proposal's stronger damage assertion is therefore not adopted here.",
+  "renderer_handoff": {
+    "accepted_field": "public_operational_state",
+    "rule": "Renderer may color only records in classified. All unclassified tracked facilities must remain neutral/unclassified; do not synthesize BLUE or GREEN from presence, no-shutdown wording, or absence of damage reporting.",
+    "legend": {
+      "RED": "Inoperable base (whole)",
+      "YELLOW": "Damaged; parts inoperable",
+      "BLUE": "Damaged; operable",
+      "GREEN": "Untouched"
+    }
+  }
+}
