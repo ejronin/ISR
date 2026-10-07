@@ -64,6 +64,30 @@ assert(source.includes("notice.dataset.stateNotice = variant"), 'State Notice co
 assert(source.includes("variant: 'no-geolocated-records'"), 'Shipping zero geography does not use the semantic State Notice');
 assert(source.includes("variant: 'dependency-unavailable'"), 'dependency unavailable State Notice is not used');
 
+for (const phrase of [
+  'SPARSE ACCEPTED POINTS',
+  'Tier ${item.tier}',
+  'Precise image footprint unavailable',
+  'no map overlay is created',
+  'support a geographic overlay'
+]) assert(!source.includes(phrase), `reader-facing implementation notation leaked into public IA: ${phrase}`);
+for (const phrase of [
+  'Imagery and source links',
+  'no established date',
+  'The terms are being negotiated.',
+  'Inoperable base (whole)',
+  'Damaged; parts inoperable',
+  'Damaged; operable',
+  'Untouched',
+  'Open the Lie Ledger'
+]) assert(source.includes(phrase), `missing owner-required reader contract: ${phrase}`);
+assert(source.includes('const mappedFacilities = facilities;'), 'facility map is no longer held behind evidence-authority status adjudication');
+assert(!source.includes('function facilityMapStatus('), 'facility colors are being inferred inside the renderer instead of supplied by evidence authority');
+assert(!source.includes('Imagery is overlaid only when the evidence record supplies reliable geolocation'), 'imagery route leaked implementation/geometry language back into reader copy');
+assert(!source.includes("plainLabel(item.record.candidate_confidence"), 'imagery route exposes geometry-pipeline candidate confidence as public evidence status');
+assert(source.includes('Mapped locations show where imagery or damage-review records are tied to a confirmed site.'), 'imagery map lacks plain reader location/source explanation');
+assert(css.includes('grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr))'), 'diplomacy track timeline lost its desktop horizontal step layout');
+
 const retirementNote = read('docs/PRIVILEGED_NARRATIVE_RETIREMENT_2026-09-10.md');
 for (const eventId of [
   'G3-US-IRAN-TANKERS-20260908',

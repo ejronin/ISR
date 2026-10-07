@@ -41,7 +41,7 @@
     { key: 'hormuz.sanctions', primary: 'themes', slug: 'sanctions', path: "/themes/sanctions/", navOrder: 4, modelPage: 'hormuz_economy', label: "Sanctions & Economy", title: "Sanctions & Impact", owner: 'SanctionsPage', dataKeys: ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.shipping', 'hormuz.talks'] },
     { key: 'hormuz.talks', primary: 'diplomacy', slug: 'talks', path: "/diplomacy/hormuz/", navOrder: 2, modelPage: 'hormuz_economy', label: "Current Hormuz Talks", title: "Current Hormuz Talks", owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping', 'hormuz.sanctions'] },
 
-    { key: 'talks.overview', primary: 'diplomacy', slug: 'overview', path: "/diplomacy/overview/", navOrder: 1, modelPage: 'diplomacy_mou', label: "Overview", title: "Diplomacy & Outcomes", owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
+    { key: 'talks.overview', primary: 'diplomacy', slug: 'overview', path: "/diplomacy/overview/", navOrder: 1, modelPage: 'diplomacy_mou', label: "Overview", title: "Diplomacy & Outcomes", owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy', 'current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
     { key: 'talks.mou', primary: 'diplomacy', slug: 'june-mou', path: "/diplomacy/june-mou/", navOrder: 3, modelPage: 'diplomacy_mou', label: "June MOU", title: "June MOU", owner: 'MouPage', dataKeys: ['analysis.hormuz', 'analysis.endgame_public_view'], related: ['hormuz.talks', 'talks.nuclear', 'objectives.outcomes'] },
     { key: 'talks.nuclear', primary: 'diplomacy', slug: 'nuclear', path: "/diplomacy/nuclear/", navOrder: 4, modelPage: 'diplomacy_mou', label: "Nuclear Talks", title: "Nuclear Talks", owner: 'NuclearPage', dataKeys: ['analysis.iran_messaging', 'analysis.endgame_public_view'], related: ['talks.overview', 'talks.mou', 'objectives.positions'] },
     { key: 'talks.regional', primary: 'diplomacy', slug: 'regional', path: "/diplomacy/regional/", navOrder: 5, modelPage: 'diplomacy_mou', label: "Regional Diplomacy", title: "Regional Diplomacy", owner: 'RegionalDiplomacyPage', dataKeys: ['ledger.agreements', 'gate3.agreements'], related: ['talks.overview', 'hormuz.talks', 'start.actors'] },
@@ -392,10 +392,10 @@
     const raw = String(value).replace(/\uFFFD/g, '—').trim();
     if (!raw) return fallback;
     return raw
-      .replace(/No machine-readable footprint\/damage polygons were supplied\. Do not create polygons or percentages from prose\./gi, 'The evidence record does not include a precise imagery footprint or damage polygon, so no polygon or damage percentage is inferred.')
-      .replace(/the integration package does not contain machine-readable imagery\/footprints/gi, 'the evidence record does not include a precise imagery footprint')
-      .replace(/no machine-readable damage footprint supplied/gi, 'the record does not supply a precise damage footprint')
-      .replace(/no machine-readable footprint\/damage polygon supplied/gi, 'no precise imagery footprint or damage polygon is available')
+      .replace(/No machine-readable footprint\/damage polygons were supplied\. Do not create polygons or percentages from prose\./gi, 'Source reporting describes visible damage. Use the linked source material for the imagery.')
+      .replace(/the integration package does not contain machine-readable imagery\/footprints/gi, 'the source imagery is not included here')
+      .replace(/no machine-readable damage footprint supplied/gi, 'the source imagery is not included here')
+      .replace(/no machine-readable footprint\/damage polygon supplied/gi, 'the source imagery is not included here')
       .replace(/>=\s*(\d[\d,.]*)/g, 'at least $1')
       .replace(/>\s*(\d[\d,.]*)/g, 'more than $1')
       .replace(MACHINE_TOKEN_PATTERN, token => DISPLAY_TERMS[token] || machineTokenLabel(token))
@@ -1431,7 +1431,7 @@
           marker.on('click', () => {
             if (count === 1) {
               const item = group.items[0];
-              const imageryMeta = item.imagery ? 'Precise image footprint unavailable; the imagery card is anchored to the supported location.' : `${group.point.precision}.`;
+              const imageryMeta = item.imagery ? 'Source imagery is linked in the record.' : `${group.point.precision}.`;
               renderEvidenceCard(item.record, { kicker: item.imagery ? 'Location-linked imagery' : 'Mapped evidence', title: item.point.label, meta: imageryMeta, evidenceRecord: item.record });
               return;
             }
@@ -1557,7 +1557,7 @@
           const button = append(imageryControls, 'button', 'map-imagery-button', [date, owner, imageryType, mapTitle(item.evidenceRecord, item.point && item.point.label)].filter(Boolean).join(' · '));
           button.type = 'button';
           button.addEventListener('click', () => {
-            const meta = item.tier === 'A' ? 'Reliable image bounds support a geographic overlay.' : item.tier === 'B' ? 'A reliable footprint is shown without manufacturing an image rectangle.' : item.tier === 'C' ? 'Precise image footprint unavailable; the card is anchored to the supported location.' : 'Reliable geolocation unavailable; no map overlay is created.';
+            const meta = item.tier === 'A' ? 'Image location confirmed.' : item.tier === 'B' ? 'Mapped site footprint confirmed.' : item.tier === 'C' ? 'Location confirmed; source material is linked in the record.' : 'Source material is linked in the record; no confirmed map location is shown.';
             renderEvidenceCard(item.evidenceRecord, { kicker: item.tier === 'D' ? imageryType : `${imageryType} · geographically linked`, title: item.point && item.point.label, meta, evidenceRecord: item.evidenceRecord });
             const layer = imageryLayers.get(item); if (layer && layer.setOpacity) layer.setOpacity(.72);
           });
@@ -1581,7 +1581,7 @@
       groups.forEach(group => append(list, 'li', '', `${group.point.label} · ${group.point.precision} · ${group.items.length} record${group.items.length === 1 ? '' : 's'}`));
       routes.forEach(route => append(list, 'li', '', `${publicNarrative(route.name)} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'schematic reference route' : plainLabel(routeAuthority(route))} · ${publicNarrative(route.note)}`));
       imagery.forEach(item => {
-        const placement = item.tier === 'A' ? 'georeferenced image overlay' : item.tier === 'B' ? 'recorded image footprint' : item.tier === 'C' ? 'location-linked imagery card; precise footprint unavailable' : 'evidence card only; reliable geolocation unavailable';
+        const placement = item.tier === 'A' ? 'image shown at confirmed map location' : item.tier === 'B' ? 'mapped site footprint' : item.tier === 'C' ? 'record shown at confirmed map location' : 'source record only; no confirmed map location';
         append(list, 'li', '', `${item.evidenceRecord.observation_id ? 'Physical damage observation' : publicNarrative(item.record.imagery_type, 'Imagery evidence')} · ${mapTitle(item.evidenceRecord, item.point && item.point.label)} · ${placement}${item.point ? ` · ${item.point.label} · ${item.point.precision}` : ''}`);
       });
       return section;
@@ -2256,13 +2256,28 @@
     const examples = addSection(frame.article, 'Representative campaign developments'); const eventList = append(examples, 'div', 'record-list'); chronology.slice(-8).reverse().forEach(item => renderEventCard(eventList, item, context, { topic: eventTopic(item), detail: true })); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
+  function appendFacilityStatusLegend(host) {
+    const legend = append(host, 'div', 'facility-operational-legend');
+    [
+      ['inoperable', 'Inoperable base (whole)'],
+      ['partial', 'Damaged; parts inoperable'],
+      ['damaged-operable', 'Damaged; operable'],
+      ['untouched', 'Untouched']
+    ].forEach(([key, label]) => {
+      const item = append(legend, 'span', 'facility-operational-legend-item');
+      const swatch = append(item, 'i', 'facility-operational-swatch'); swatch.dataset.facilityOperationalStatus = key;
+      append(item, 'span', '', label);
+    });
+    return legend;
+  }
+
   function FacilitiesPage(context) {
-    const frame = pageFrame(context, 'For each base or facility, Atlas separates physical damage from whether it kept operating or later recovered.'); const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']); const claimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits')); frame.article.append(MapView.create(context, { title: 'Facilities in the current record', records: facilities, description: `${facilities.length.toLocaleString()} facility records include geographic context. Map markers show the facility’s general location, not the exact point of impact.` })); const section = addSection(frame.article, 'Facility status'); const list = append(section, 'div', 'record-list'); facilities.forEach(facility => { const status = plainLabel(firstText(facility.current_status, facility.operational_effect_status, facility.damage_evidence_status), 'Current status unresolved'); const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id); const sourceContext = facilitySourceContext(facility); const card = addProvenanceCard(list, context, { kicker: [facility.country || facility.host, status].filter(Boolean).join(' · '), title: publicNarrative(facility.name, facility.facility_id), text: publicNarrative(facility.assessment || facility.note, 'The facility remains in the record; no broader operating result is added without evidence.'), item: { source_ids: sourceContext.sourceIds }, localSources: sourceContext.localSources }); card.dataset.facilityId = facility.facility_id; appendActorIdentities(card, context, [facilityActor(facility) || 'Actor unresolved']); const facts = append(card, 'dl', 'fact-list'); const addFact = (term, values) => { const readable = (Array.isArray(values) ? values : [values]).filter(Boolean).map(value => typeof value === 'string' ? publicNarrative(value, '') : publicNarrative(value && (value.detail || value.assessment || value.note), '')).filter(Boolean); if (!readable.length) return; append(facts, 'dt', '', term); append(facts, 'dd', '', readable.slice(0, 2).join(' ')); }; addFact('Physical damage', asArray(facility.verified_physical_damage).length ? facility.verified_physical_damage : [...asArray(facility.critical_assets_reported), ...asArray(facility.noncritical_or_soft_assets_reported)]); addFact('Operating effect', asArray(facility.verified_functional_effect).length ? facility.verified_functional_effect : facility.effect); addFact('Continued operation', asArray(facility.continued_operation_evidence).length ? facility.continued_operation_evidence : firstText(facility.continuity, facility.current_presence_status)); facilityAudits.forEach(audit => appendFacilityAudit(card, context, audit)); }); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'For each base or facility, Atlas separates physical damage from whether it kept operating or later recovered.'); const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']); const mappedFacilities = facilities; const claimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits')); frame.article.append(createRepresentativeMap(context, { typeLabel: 'BASES & INFRASTRUCTURE · ACCEPTED FACILITY GEOGRAPHY', cameraModes: ['theater', 'gulf'], title: 'Facilities in the current record', records: mappedFacilities, description: `${facilities.length.toLocaleString()} facility records include geographic context. Map markers show the facility’s general location, not the exact point of impact.` })); appendFacilityStatusLegend(frame.article); const chartRenderer = root && root.AtlasVisualizationRenderer; if (chartRenderer && typeof chartRenderer.createCategoryBars === 'function') { const coverageRows = [ ['Physical damage recorded', facilities.filter(item => asArray(item.verified_physical_damage).length).length], ['Functional effect recorded', facilities.filter(item => asArray(item.verified_functional_effect).length).length], ['Continued-operation evidence', facilities.filter(item => asArray(item.continued_operation_evidence).length).length], ['Repair/reconstitution evidence', facilities.filter(item => asArray(item.repair_evidence).length || asArray(item.reconstitution_evidence).length).length] ].map(([label, value]) => ({ label, value })); const coverage = addSection(frame.article, 'Accepted facility evidence coverage'); append(coverage, 'p', 'section-note', 'These counts overlap. They show which accepted facility records contain each evidence dimension; they are not mutually exclusive status buckets and do not convert damage into operational effect.'); coverage.append(chartRenderer.createCategoryBars(context, { typeLabel: 'FACILITY RECORD COVERAGE', title: 'Evidence dimensions present in accepted facility records', description: 'Overlapping record coverage only; not a damage score or mission-kill count.', rows: coverageRows, key: 'facility-evidence-coverage', valuesLabel: 'Facility records by evidence dimension', tableCaption: 'Facility records containing each accepted evidence dimension', categoryLabel: 'Evidence dimension', valueLabel: 'Facility records', numericNote: 'A facility can appear in more than one row. Physical damage and operational effect remain separate.' })); } const section = addSection(frame.article, 'Facility status'); const list = append(section, 'div', 'record-list'); facilities.forEach(facility => { const status = plainLabel(firstText(facility.current_status, facility.operational_effect_status, facility.damage_evidence_status), 'Current status unresolved'); const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id); const sourceContext = facilitySourceContext(facility); const card = addProvenanceCard(list, context, { kicker: [facility.country || facility.host, status].filter(Boolean).join(' · '), title: publicNarrative(facility.name, facility.facility_id), text: publicNarrative(facility.assessment || facility.note, 'The facility remains in the record; no broader operating result is added without evidence.'), item: { source_ids: sourceContext.sourceIds }, localSources: sourceContext.localSources }); card.dataset.facilityId = facility.facility_id; appendActorIdentities(card, context, [facilityActor(facility) || 'Actor unresolved']); const facts = append(card, 'dl', 'fact-list'); const addFact = (term, values) => { const readable = (Array.isArray(values) ? values : [values]).filter(Boolean).map(value => typeof value === 'string' ? publicNarrative(value, '') : publicNarrative(value && (value.detail || value.assessment || value.note), '')).filter(Boolean); if (!readable.length) return; append(facts, 'dt', '', term); append(facts, 'dd', '', readable.slice(0, 2).join(' ')); }; addFact('Physical damage', asArray(facility.verified_physical_damage).length ? facility.verified_physical_damage : [...asArray(facility.critical_assets_reported), ...asArray(facility.noncritical_or_soft_assets_reported)]); addFact('Operating effect', asArray(facility.verified_functional_effect).length ? facility.verified_functional_effect : facility.effect); addFact('Continued operation', asArray(facility.continued_operation_evidence).length ? facility.continued_operation_evidence : firstText(facility.continuity, facility.current_presence_status)); facilityAudits.forEach(audit => appendFacilityAudit(card, context, audit)); }); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
   function WeaponsPage(context) {
     const frame = pageFrame(context, 'Weapons fired, weapons that reached a target, and equipment destroyed are different counts. This page keeps them separate.');
-    const expenditure = recordArray(modelData(context.model, 'ledger.munitions_expenditure')); const attrition = modelData(context.model, 'ledger.attrition_series'); const materialLosses = recordArray(modelData(context.model, 'current.material_losses')); const assetDisplay = modelData(context.model, 'analysis.asset_display'); const envelopes = modelData(context.model, 'forensic.loss_envelopes'); const rule = addSection(frame.article, 'What the counts mean'); append(rule, 'p', 'lead-copy', publicNarrative(modelData(context.model, 'ledger.munitions_expenditure').rule)); const sides = addSection(frame.article, 'Weapons used'); const columns = append(sides, 'div', 'comparison-grid'); ['U.S./COALITION', 'IRAN/ALIGNED'].forEach(side => { const column = append(columns, 'section', 'comparison-column'); const heading = append(column, 'h3', 'actor-section-heading'); heading.append(context.services.actorIdentity.create(context.documentObject, side === 'U.S./COALITION' ? 'United States' : 'Iran')); append(heading, 'span', '', side === 'U.S./COALITION' ? ' / coalition' : ' / aligned'); expenditure.filter(record => record.side === side).forEach(record => { const card = addProvenanceCard(column, context, { kicker: `${readableDate(record.period_end || record.event_date)} · ${plainLabel(record.evidence_type)}`, title: `${formatQuantity(record)} ${publicNarrative(record.munition)}`, text: publicNarrative(record.note), meta: record.cost_low ? `Recorded cost basis: $${(Number(record.cost_low) / 1e9).toFixed(2)} billion` : plainLabel(record.cost_status, 'No compatible price basis recorded'), item: record }); card.dataset.expenditureId = record.expenditure_id; appendActorIdentities(card, context, [record.actor || record.side]); }); });
+    const expenditure = recordArray(modelData(context.model, 'ledger.munitions_expenditure')); const attrition = modelData(context.model, 'ledger.attrition_series'); const chartRenderer = root && root.AtlasVisualizationRenderer; const materialLosses = recordArray(modelData(context.model, 'current.material_losses')); const assetDisplay = modelData(context.model, 'analysis.asset_display'); const envelopes = modelData(context.model, 'forensic.loss_envelopes'); const rule = addSection(frame.article, 'What the counts mean'); append(rule, 'p', 'lead-copy', publicNarrative(modelData(context.model, 'ledger.munitions_expenditure').rule)); const quantitative = addSection(frame.article, 'Supported expenditure series'); append(quantitative, 'p', 'section-note', 'Only compatible accepted series are connected. Event-level launches, cumulative snapshots, interceptions, impacts and losses are not merged into one denominator.'); const usSeries = asArray(attrition.series && attrition.series.us_coalition_munitions_expenditure).filter(point => /tomahawk/i.test(String(point.munition || ''))).map(point => ({ label: point.date, value: point.value, display: `${point.qualifier === '>' ? 'More than ' : ''}${formatNumber(point.value)} ${publicNarrative(point.munition)}` })); if (chartRenderer && typeof chartRenderer.createTimeSeries === 'function' && usSeries.length > 1) quantitative.append(chartRenderer.createTimeSeries(context, { typeLabel: 'COMPATIBLE CUMULATIVE SERIES', title: 'Reported U.S. Tomahawk expenditure lower bound', description: 'Later cumulative reporting supersedes earlier cumulative reporting; the values are not added together.', rows: usSeries, axisName: 'Tomahawks', seriesName: 'Reported cumulative lower bound', key: 'weapons-us-tomahawk-series', valuesLabel: 'Accepted Tomahawk cumulative observations', tableCaption: 'Accepted U.S. Tomahawk cumulative observations', categoryLabel: 'Date', valueLabel: 'Reported cumulative count', numericNote: 'This line is limited to the compatible Tomahawk cumulative series and does not include unrelated strike-munition aggregates.' })); const iranOpening = asArray(attrition.series && attrition.series.iran_aligned_munitions_expenditure).filter(point => point.date === '2026-03-04').map(point => ({ label: publicNarrative(point.munition, 'munition'), value: point.value, display: `${point.qualifier === '>' ? 'More than ' : ''}${formatNumber(point.value)}` })); if (chartRenderer && typeof chartRenderer.createCategoryBars === 'function' && iranOpening.length) quantitative.append(chartRenderer.createCategoryBars(context, { typeLabel: 'OPENING CUMULATIVE LOWER BOUNDS', title: 'Iranian opening expenditure snapshots', description: 'Same accepted cutoff; separate munition families. These bars are not interception or impact counts.', rows: iranOpening, key: 'weapons-iran-opening-snapshot', valuesLabel: 'Accepted opening expenditure lower bounds', tableCaption: 'Iranian opening expenditure lower bounds by munition family', categoryLabel: 'Munition family', valueLabel: 'Reported lower bound', numericNote: 'Launch expenditure is not the same as interception, impact, target hit or destruction.' })); const sides = addSection(frame.article, 'Weapons used'); const columns = append(sides, 'div', 'comparison-grid'); ['U.S./COALITION', 'IRAN/ALIGNED'].forEach(side => { const column = append(columns, 'section', 'comparison-column'); const heading = append(column, 'h3', 'actor-section-heading'); heading.append(context.services.actorIdentity.create(context.documentObject, side === 'U.S./COALITION' ? 'United States' : 'Iran')); append(heading, 'span', '', side === 'U.S./COALITION' ? ' / coalition' : ' / aligned'); expenditure.filter(record => record.side === side).forEach(record => { const card = addProvenanceCard(column, context, { kicker: `${readableDate(record.period_end || record.event_date)} · ${plainLabel(record.evidence_type)}`, title: `${formatQuantity(record)} ${publicNarrative(record.munition)}`, text: publicNarrative(record.note), meta: record.cost_low ? `Recorded cost basis: $${(Number(record.cost_low) / 1e9).toFixed(2)} billion` : plainLabel(record.cost_status, 'No compatible price basis recorded'), item: record }); card.dataset.expenditureId = record.expenditure_id; appendActorIdentities(card, context, [record.actor || record.side]); }); });
     const series = addSection(frame.article, 'Reported totals over time'); append(series, 'p', 'section-note', 'These are reported cumulative totals or incident figures. Overlapping periods and later replacement figures are not added together.'); const seriesGrid = append(series, 'div', 'record-list two-column-list'); Object.entries(attrition.series || {}).filter(([key]) => key.includes('munitions_expenditure')).forEach(([key, points]) => { asArray(points).forEach(point => { const card = addProvenanceCard(seriesGrid, context, { kicker: `${readableDate(point.date)} · ${plainLabel(point.value_type, 'Recorded series value')}`, title: `${point.qualifier === '>' ? 'More than ' : ''}${formatNumber(point.value)} ${publicNarrative(point.munition, 'munitions')}`, text: publicNarrative(point.note, 'A launch or expenditure value does not establish interception, impact, target hit or destruction.'), meta: `Record: ${plainLabel(key)}`, item: point }); appendActorIdentities(card, context, [key.startsWith('iran_') ? 'Iran' : 'United States']); }); });
     const approvedMetrics = addSection(frame.article, 'Missile and launcher estimates'); append(approvedMetrics, 'p', 'section-note', 'These categories keep their evidence labels. “Neutralized” does not mean destroyed, and estimated inventory loss is not a confirmed physical-loss count.'); const metricGrid = append(approvedMetrics, 'div', 'record-list two-column-list'); asArray(assetDisplay.iran && assetDisplay.iran.headline_categories).filter(item => ['launchers', 'missile_inventory'].includes(item.id)).forEach(item => { const card = addProvenanceCard(metricGrid, context, { kicker: plainLabel(item.public_status), title: `${item.headline} · ${item.label}`, text: publicNarrative(item.note || item.scope), meta: `${publicNarrative(item.subheadline)} · ${publicNarrative(item.scope)}`, item }); card.dataset.weaponMetricId = item.id; appendActorIdentities(card, context, ['Iran']); if (item.components) addFactList(card, item.components.map(([label, value]) => [label, formatNumber(value)])); }); const missileEnvelope = asArray(envelopes.categories).find(item => item.category === 'MISSILE_UAS_INVENTORY'); if (missileEnvelope) { const range = missileEnvelope.cost_model_range_usd || {}; addProvenanceCard(metricGrid, context, { kicker: 'Estimated range · not a confirmed inventory count', title: `${formatUsd(range.low)} – ${formatUsd(range.high)}`, text: 'Estimated value range for missile/UAS inventory. It remains an estimate and is not added to launch counts.', meta: `Middle estimate: ${formatUsd(range.central)}`, item: { source_ids: asArray(missileEnvelope.envelopes).flatMap(sourceIdsFrom) } }); }
     const linked = materialLosses.filter(record => record.side !== 'CIVILIAN/COMMERCIAL' && /(air|aircraft|helicopter|missile|drone|uas|launcher|radar|patriot|thaad)/i.test(`${record.item || ''} ${record.service || ''}`)); const durable = addSection(frame.article, 'Related equipment losses'); append(durable, 'p', 'section-note', `${linked.length.toLocaleString()} loss records are linked by the recorded item or service. They remain separate from weapons used.`); const durableList = append(durable, 'div', 'record-list two-column-list'); linked.forEach(record => { const card = addLossCard(durableList, context, record); card.dataset.weaponLossId = record.loss_id; });
@@ -2290,8 +2305,173 @@
   }
 
   function ImageryPage(context) {
-    const frame = pageFrame(context, 'Imagery shows visible physical change. Whether a facility stopped operating is shown separately. Each entry keeps its facility, source, location precision and stated limits.'); const overlays = recordArray(modelData(context.model, 'ledger.bda_overlays')); const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']); const damageObservations = recordArray(modelData(context.model, 'forensic.damage_observations')); const facilityClaimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits')); const currentImagery = context.model.chronology.filter(record => imageryPayloads(record).length); const imageryRecords = [...overlays, ...damageObservations, ...currentImagery]; frame.article.append(MapView.create(context, { title: 'Locations with imagery or damage-review records', records: imageryRecords, relatedRecords: facilities, description: 'Imagery is overlaid only when the evidence record supplies reliable geolocation. Otherwise it remains a footprint, location-linked card or evidence-only record.' })); const section = addSection(frame.article, 'Imagery review'); append(section, 'p', 'section-note', 'An attack record establishes an event. A physical damage observation records what imagery or reporting shows. Operating effect requires separate evidence and is not inferred from visible damage alone.'); const descriptors = imageryRecords.flatMap(record => imageryPayloads(record)).map(payload => imageryDescriptor(payload, context.services.locationResolver, facilities)); const list = append(section, 'div', 'imagery-summary-list'); descriptors.forEach(item => { const tierText = { A: 'Reliable image bounds support a geographic overlay.', B: 'A reliable footprint is shown; the image is not stretched into a false rectangle.', C: 'The target area is supported, but a precise image footprint is unavailable.', D: 'Reliable geolocation is unavailable; this item remains an evidence card only.' }[item.tier]; const observation = Boolean(item.evidenceRecord.observation_id); const owner = imageryActor(item, facilities); const details = append(list, 'details', 'imagery-summary-row'); details.dataset.imagerySummary = item.evidenceRecord.observation_id || item.record.overlay_id || mapTitle(item.evidenceRecord); const summary = append(details, 'summary', 'imagery-summary'); summary.append(context.services.actorIdentity.create(context.documentObject, owner || 'Actor unresolved')); const summaryText = append(summary, 'span', 'imagery-summary-copy'); append(summaryText, 'strong', '', mapTitle(item.evidenceRecord, item.point && item.point.label)); append(summaryText, 'small', '', `${plainLabel(item.evidenceRecord.damage_confidence || item.record.candidate_confidence || item.record.evidence_status, 'Evidence status recorded')} · ${tierText}`); const detailBody = append(details, 'div', 'imagery-detail-body'); const card = addProvenanceCard(detailBody, context, { kicker: observation ? `Physical damage observation · ${plainLabel(item.evidenceRecord.damage_confidence, 'Evidence status recorded')}` : publicNarrative(item.record.imagery_type, plainLabel(item.record.candidate_confidence || item.record.evidence_status, 'Imagery evidence')), title: mapTitle(item.evidenceRecord, item.point && item.point.label), text: publicNarrative(item.evidenceRecord.observation || item.record.limitations || item.evidenceRecord.event && item.evidenceRecord.event.summary, tierText), meta: observation ? `${tierText} Location certainty: ${plainLabel(item.evidenceRecord.location_confidence, 'Unresolved')}. Operating effect is shown separately.` : tierText, item: evidenceEnvelope(item.evidenceRecord) }); appendActorIdentities(card, context, [owner || 'Actor unresolved']); if (observation) card.dataset.damageObservationId = item.evidenceRecord.observation_id; });
-    const audits = addSection(frame.article, 'What claims about these facilities hold up?'); append(audits, 'p', 'section-note', 'These records test specific facility claims against the available observations. Confirmation of damage does not automatically confirm a mission kill, destroyed platform or whole-site shutdown.'); const auditList = append(audits, 'div', 'record-list two-column-list'); facilityClaimAudits.forEach(audit => { const facility = facilities.find(record => record.facility_id === audit.facility_id); const card = addProvenanceCard(auditList, context, { kicker: 'Claim review linked to a facility record', title: publicNarrative(audit.facility_name, audit.facility_id), text: facility ? `Related facility: ${publicNarrative(facility.name, facility.facility_id)}. Open the review to see what is confirmed, misleading, unsubstantiated or unresolved.` : 'The related facility identity is unresolved in the current public model.' }); card.dataset.facilityAuditId = audit.facility_audit_id; card.dataset.facilityId = audit.facility_id; appendFacilityAudit(card, context, audit); const facilityLink = append(card, 'a', 'inline-route-link', 'Open related facility record'); facilityLink.href = routeHref('military.facilities', { facility: audit.facility_id }); }); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'Imagery shows visible physical change. Whether a facility stopped operating is shown separately. Each entry keeps its facility, source, location precision and stated limits.');
+    const overlays = recordArray(modelData(context.model, 'ledger.bda_overlays'));
+    const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']);
+    const damageObservations = recordArray(modelData(context.model, 'forensic.damage_observations'));
+    const facilityClaimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits'));
+    const currentImagery = context.model.chronology.filter(record => imageryPayloads(record).length);
+    const imageryRecords = [...overlays, ...damageObservations, ...currentImagery];
+    const descriptors = imageryRecords.flatMap(record => imageryPayloads(record)).map(payload => imageryDescriptor(payload, context.services.locationResolver, facilities));
+
+    let mapView = null;
+    if (descriptors.length) {
+      const selected = addSection(frame.article, 'Selected imagery', 'content-section imagery-selected-section');
+      append(selected, 'p', 'section-note', 'An attack record establishes an event. A physical damage observation records what imagery or reporting shows. Operating effect requires separate evidence and is not inferred from visible damage alone.');
+      const workspace = append(selected, 'div', 'imagery-review-workspace');
+      const plate = append(workspace, 'figure', 'imagery-selected-plate');
+      const detail = append(workspace, 'div', 'imagery-selected-detail');
+      const filmstrip = append(selected, 'div', 'imagery-filmstrip');
+      filmstrip.setAttribute('role', 'list');
+      const buttons = [];
+
+      const tierTextFor = item => ({
+        A: 'Image location confirmed.',
+        B: 'Mapped site footprint confirmed.',
+        C: 'Location confirmed; source material is linked in the record.',
+        D: 'Source material is linked in the record; no confirmed image location is shown.'
+      }[item.tier] || 'Imagery evidence remains bounded by the accepted record.');
+
+      const renderSelected = index => {
+        const item = descriptors[index];
+        if (!item) return;
+        plate.replaceChildren();
+        detail.replaceChildren();
+        selected.dataset.selectedImageryIndex = String(index);
+        selected.dataset.selectedImageryTier = item.tier;
+        const title = mapTitle(item.evidenceRecord, item.point && item.point.label);
+        const owner = imageryActor(item, facilities);
+        if (item.imageUrl) {
+          const image = append(plate, 'img', 'imagery-selected-image');
+          image.src = item.imageUrl;
+          image.alt = `Imagery evidence for ${title}`;
+          image.loading = 'eager';
+        } else {
+          plate.hidden = true;
+        }
+        if (item.imageUrl) {
+          plate.hidden = false;
+          append(plate, 'figcaption', '', tierTextFor(item));
+        }
+        const observation = Boolean(item.evidenceRecord.observation_id);
+        const card = addProvenanceCard(detail, context, {
+          kicker: observation
+            ? `Physical damage observation · ${plainLabel(item.evidenceRecord.damage_confidence, 'Evidence status recorded')}`
+            : publicNarrative(item.record.imagery_type, 'Imagery evidence'),
+          title,
+          text: publicNarrative(item.evidenceRecord.observation || item.record.limitations || item.evidenceRecord.event && item.evidenceRecord.event.summary, tierTextFor(item)),
+          meta: observation
+            ? `${tierTextFor(item)} Location certainty: ${plainLabel(item.evidenceRecord.location_confidence, 'Unresolved')}. Operating effect is shown separately.`
+            : tierTextFor(item),
+          item: evidenceEnvelope(item.evidenceRecord)
+        });
+        appendActorIdentities(card, context, [owner || 'Actor unresolved']);
+        if (!item.imageUrl) {
+          const sourceLinks = card.querySelector('details.evidence-drawer');
+          if (sourceLinks) {
+            sourceLinks.open = true;
+            const summary = sourceLinks.querySelector(':scope > summary');
+            if (summary) summary.textContent = 'Imagery and source links';
+          }
+        }
+        if (observation) card.dataset.damageObservationId = item.evidenceRecord.observation_id;
+        buttons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+        if (mapView && typeof mapView._atlasFocusRecord === 'function') mapView._atlasFocusRecord(item.evidenceRecord);
+      };
+
+      descriptors.forEach((item, index) => {
+        const button = append(filmstrip, 'button', 'imagery-filmstrip-button');
+        button.type = 'button';
+        button.setAttribute('role', 'listitem');
+        button.setAttribute('aria-pressed', 'false');
+        button.dataset.imageryTier = item.tier;
+        const owner = imageryActor(item, facilities);
+        append(button, 'span', 'card-kicker', publicNarrative(item.record.imagery_type, item.evidenceRecord.observation_id ? 'Physical damage observation' : 'Imagery evidence'));
+        append(button, 'strong', '', mapTitle(item.evidenceRecord, item.point && item.point.label));
+        const readerForm = item.imageUrl ? 'Image available' : item.tier === 'B' ? 'Mapped footprint' : item.point ? 'Location confirmed' : 'Source links';
+        append(button, 'small', '', [owner, readerForm].filter(Boolean).join(' · '));
+        button.addEventListener('click', () => renderSelected(index));
+        buttons.push(button);
+      });
+
+      const initialIndex = Math.max(0, descriptors.findIndex(item => item.imageUrl));
+      renderSelected(initialIndex);
+    }
+
+    mapView = createRepresentativeMap(context, {
+      typeLabel: 'DAMAGE IMAGERY · LOCATION CONTEXT',
+      cameraModes: ['theater', 'gulf'],
+      title: 'Locations with imagery or damage-review records',
+      records: imageryRecords,
+      relatedRecords: facilities,
+      imagery: true,
+      description: 'Mapped locations show where imagery or damage-review records are tied to a confirmed site. Records without a confirmed map location remain available through their source links.'
+    });
+    frame.article.append(mapView);
+
+    const section = addSection(frame.article, 'Imagery review');
+    append(section, 'p', 'section-note', 'An attack record establishes an event. A physical damage observation records what imagery or reporting shows. Operating effect requires separate evidence and is not inferred from visible damage alone.');
+    const list = append(section, 'div', 'imagery-summary-list');
+    descriptors.forEach(item => {
+      const tierText = {
+        A: 'Image location confirmed.',
+        B: 'Mapped site footprint confirmed.',
+        C: 'Location confirmed; source material is linked in the record.',
+        D: 'Source material is linked in the record; no confirmed image location is shown.'
+      }[item.tier];
+      const observation = Boolean(item.evidenceRecord.observation_id);
+      const owner = imageryActor(item, facilities);
+      const details = append(list, 'details', 'imagery-summary-row');
+      details.dataset.imagerySummary = item.evidenceRecord.observation_id || item.record.overlay_id || mapTitle(item.evidenceRecord);
+      const summary = append(details, 'summary', 'imagery-summary');
+      summary.append(context.services.actorIdentity.create(context.documentObject, owner || 'Actor unresolved'));
+      const summaryText = append(summary, 'span', 'imagery-summary-copy');
+      append(summaryText, 'strong', '', mapTitle(item.evidenceRecord, item.point && item.point.label));
+      append(summaryText, 'small', '', observation ? `${plainLabel(item.evidenceRecord.damage_confidence, 'Evidence status recorded')} · ${tierText}` : tierText);
+      const detailBody = append(details, 'div', 'imagery-detail-body');
+      const card = addProvenanceCard(detailBody, context, {
+        kicker: observation
+          ? `Physical damage observation · ${plainLabel(item.evidenceRecord.damage_confidence, 'Evidence status recorded')}`
+          : publicNarrative(item.record.imagery_type, 'Imagery evidence'),
+        title: mapTitle(item.evidenceRecord, item.point && item.point.label),
+        text: publicNarrative(item.evidenceRecord.observation || item.record.limitations || item.evidenceRecord.event && item.evidenceRecord.event.summary, tierText),
+        meta: observation
+          ? `${tierText} Location certainty: ${plainLabel(item.evidenceRecord.location_confidence, 'Unresolved')}. Operating effect is shown separately.`
+          : tierText,
+        item: evidenceEnvelope(item.evidenceRecord)
+      });
+      appendActorIdentities(card, context, [owner || 'Actor unresolved']);
+      if (!item.imageUrl) {
+        const sourceLinks = card.querySelector('details.evidence-drawer');
+        if (sourceLinks) {
+          sourceLinks.open = true;
+          const summary = sourceLinks.querySelector(':scope > summary');
+          if (summary) summary.textContent = 'Imagery and source links';
+        }
+      }
+      if (observation) card.dataset.damageObservationId = item.evidenceRecord.observation_id;
+    });
+
+    const audits = addSection(frame.article, 'What claims about these facilities hold up?');
+    append(audits, 'p', 'section-note', 'These records test specific facility claims against the available observations. Confirmation of damage does not automatically confirm a mission kill, destroyed platform or whole-site shutdown.');
+    const auditList = append(audits, 'div', 'record-list two-column-list');
+    facilityClaimAudits.forEach(audit => {
+      const facility = facilities.find(record => record.facility_id === audit.facility_id);
+      const card = addProvenanceCard(auditList, context, {
+        kicker: 'Claim review linked to a facility record',
+        title: publicNarrative(audit.facility_name, audit.facility_id),
+        text: facility
+          ? `Related facility: ${publicNarrative(facility.name, facility.facility_id)}. Open the review to see what is confirmed, misleading, unsubstantiated or unresolved.`
+          : 'The related facility identity is unresolved in the current public model.'
+      });
+      card.dataset.facilityAuditId = audit.facility_audit_id;
+      card.dataset.facilityId = audit.facility_id;
+      appendFacilityAudit(card, context, audit);
+      const facilityLink = append(card, 'a', 'inline-route-link', 'Open related facility record');
+      facilityLink.href = routeHref('military.facilities', { facility: audit.facility_id });
+    });
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
   }
 
   function HormuzOverviewPage(context) {
@@ -2394,7 +2574,7 @@
   }
 
   function ShippingPage(context) {
-    const frame = pageFrame(context, 'Commercial traffic never fit a simple open-or-closed label. This record separates observed vessel counts, physical passage, permission, insurance and normal commercial traffic.'); const shipping = mergeCurrentRecords(modelData(context.model, 'ledger.shipping'), modelData(context.model, 'gate3.shipping'), ['shipping_id', 'id']); const hormuz = modelData(context.model, 'analysis.hormuz'); const routeRecords = asArray(modelData(context.model, 'analysis.oil_routes').routes); const materialLosses = recordArray(modelData(context.model, 'current.material_losses')); const shippingMapRecords = asArray(hormuz.current_board_delta).filter(record => /SHIPPING|HORMUZ|IRAN OIL EXPORTS/i.test(String(record.category || ''))); frame.article.append(MapView.create(context, { title: 'Shipping pressure and strategic bypass corridors', records: shippingMapRecords, routes: routeRecords, maxZoom: 5, description: 'The map shows Red Sea/Suez maritime context, the Saudi East–West pipeline, and China/Russia–Iran rail routes from the existing corridor records. Every line is simplified. It is not live tracking and is not precise enough for navigation or targeting.' })); const reading = addSection(frame.article, 'How to read the traffic observations'); append(reading, 'p', 'lead-copy', 'AIS-visible counts are useful observations, not a complete count. AIS-off vessels are outside those visible counts, providers count different vessel categories, and a single successful transit does not show that normal commercial traffic has returned.'); const observations = addSection(frame.article, 'Observed shipping record'); const list = append(observations, 'div', 'record-list'); shipping.slice().sort((a, b) => String(a.date || '').localeCompare(String(b.date || ''))).forEach(record => addProvenanceCard(list, context, { kicker: readableDate(record.date), title: `${publicNarrative(record.metric)}: ${String(record.value)}`, text: publicNarrative(record.notes), meta: record.baseline ? `Comparison basis: ${publicNarrative(record.baseline)}` : '', item: record })); const routes = addSection(frame.article, 'Alternative routes and trade changes'); append(routes, 'p', '', publicNarrative(modelData(context.model, 'analysis.oil_routes').geometry_policy, 'Route geometry is schematic and describes transport corridors, not live vessel tracks.')); const routeList = append(routes, 'div', 'record-list two-column-list'); routeRecords.forEach(route => { const card = addProvenanceCard(routeList, context, { kicker: `${plainLabel(route.mode, 'Transport mode')} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route')}`, title: publicNarrative(route.name), text: publicNarrative(route.note), technicalId: route.id, technicalIdLabel: 'Stable corridor ID', item: route }); card.dataset.routeId = route.id; card.dataset.routeMode = String(route.mode || '').toLowerCase(); }); const merchantLosses = materialLosses.filter(record => record.side === 'CIVILIAN/COMMERCIAL' || String(record.side || '').includes('COMMERCIAL')); const merchant = addSection(frame.article, 'Merchant-vessel losses'); append(merchant, 'p', 'section-note', `${merchantLosses.length.toLocaleString()} commercial-vessel records remain separate from military equipment totals.`); const merchantDetails = append(merchant, 'details', 'merchant-loss-details'); append(merchantDetails, 'summary', '', `Browse ${merchantLosses.length.toLocaleString()} merchant-vessel records`); const merchantList = append(merchantDetails, 'div', 'record-list two-column-list'); merchantLosses.forEach(record => addLossCard(merchantList, context, record)); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'Commercial traffic never fit a simple open-or-closed label. This record separates observed vessel counts, physical passage, permission, insurance and normal commercial traffic.'); const shipping = mergeCurrentRecords(modelData(context.model, 'ledger.shipping'), modelData(context.model, 'gate3.shipping'), ['shipping_id', 'id']); const hormuz = modelData(context.model, 'analysis.hormuz'); const routeRecords = asArray(modelData(context.model, 'analysis.oil_routes').routes); const materialLosses = recordArray(modelData(context.model, 'current.material_losses')); const shippingMapRecords = asArray(hormuz.current_board_delta).filter(record => /SHIPPING|HORMUZ|IRAN OIL EXPORTS/i.test(String(record.category || ''))); frame.article.append(createRepresentativeMap(context, { typeLabel: 'SHIPPING & TRADE · ACCEPTED ROUTES', cameraModes: ['theater', 'gulf', 'hormuz'], title: 'Shipping pressure and strategic bypass corridors', records: shippingMapRecords, routes: routeRecords, maxZoom: 5, description: 'The map shows Red Sea/Suez maritime context, the Saudi East–West pipeline, and China/Russia–Iran rail routes from the existing corridor records. Every line is simplified. It is not live tracking and is not precise enough for navigation or targeting.' })); const renderer = root && root.AtlasVisualizationRenderer; const numericShipping = shipping.filter(record => record.date && typeof record.value === 'number').map(record => ({ label: record.date, value: record.value, display: `${record.value} · ${publicNarrative(record.metric)}` })); const undatedShipping = shipping.filter(record => !record.date); if (renderer && typeof renderer.createTimeSeries === 'function' && numericShipping.length) { const trend = addSection(frame.article, 'Reported traffic observations'); append(trend, 'p', 'section-note', 'These are dated traffic observations from the accepted record. Counts from different sources may cover different kinds of vessels, so they are shown as individual observations rather than a continuous trend.'); if (undatedShipping.length) append(trend, 'p', 'section-note', `${undatedShipping.length.toLocaleString()} shipping observation${undatedShipping.length === 1 ? '' : 's'} in the record ${undatedShipping.length === 1 ? 'has' : 'have'} no established date, so ${undatedShipping.length === 1 ? 'it is' : 'they are'} shown in the record list below and not plotted on this date axis.`); trend.append(renderer.createTimeSeries(context, { typeLabel: 'DATED TRAFFIC OBSERVATIONS', title: 'Reported traffic observations by date', description: 'Each point is a dated reported count. Because the reports do not always count the same kinds of vessels, the points are not joined into a single trend line.', rows: numericShipping, pointsOnly: true, axisName: 'reported count', key: 'shipping-numeric-observations', valuesLabel: 'Reported traffic observations', tableCaption: 'Reported traffic observations by date', categoryLabel: 'Date', valueLabel: 'Reported count', numericNote: 'These are reported observations, not continuous tracking. Different reports may count different kinds of vessels.' })); } const reading = addSection(frame.article, 'How to read the traffic observations'); append(reading, 'p', 'lead-copy', 'AIS-visible counts are useful observations, not a complete count. AIS-off vessels are outside those visible counts, providers count different vessel categories, and a single successful transit does not show that normal commercial traffic has returned.'); const observations = addSection(frame.article, 'Observed shipping record'); const list = append(observations, 'div', 'record-list'); shipping.slice().sort((a, b) => String(a.date || '').localeCompare(String(b.date || ''))).forEach(record => addProvenanceCard(list, context, { kicker: readableDate(record.date), title: `${publicNarrative(record.metric)}: ${String(record.value)}`, text: publicNarrative(record.notes), meta: record.baseline ? `Comparison basis: ${publicNarrative(record.baseline)}` : '', item: record })); const routes = addSection(frame.article, 'Alternative routes and trade changes'); append(routes, 'p', '', publicNarrative(modelData(context.model, 'analysis.oil_routes').geometry_policy, 'Route geometry is schematic and describes transport corridors, not live vessel tracks.')); const routeList = append(routes, 'div', 'record-list two-column-list'); routeRecords.forEach(route => { const card = addProvenanceCard(routeList, context, { kicker: `${plainLabel(route.mode, 'Transport mode')} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route')}`, title: publicNarrative(route.name), text: publicNarrative(route.note), technicalId: route.id, technicalIdLabel: 'Stable corridor ID', item: route }); card.dataset.routeId = route.id; card.dataset.routeMode = String(route.mode || '').toLowerCase(); }); const merchantLosses = materialLosses.filter(record => record.side === 'CIVILIAN/COMMERCIAL' || String(record.side || '').includes('COMMERCIAL')); const merchant = addSection(frame.article, 'Merchant-vessel losses'); append(merchant, 'p', 'section-note', `${merchantLosses.length.toLocaleString()} commercial-vessel records remain separate from military equipment totals.`); const merchantDetails = append(merchant, 'details', 'merchant-loss-details'); append(merchantDetails, 'summary', '', `Browse ${merchantLosses.length.toLocaleString()} merchant-vessel records`); const merchantList = append(merchantDetails, 'div', 'record-list two-column-list'); merchantLosses.forEach(record => addLossCard(merchantList, context, record)); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
   function EconomyPage(context) {
@@ -2476,7 +2656,9 @@
       if (sourceIdsFrom(item).length) card.append(EvidenceDrawer.create(context, sourceEnvelope(item), { localSources }));
     });
 
-    frame.article.append(MapView.create(context, {
+    frame.article.append(createRepresentativeMap(context, {
+      typeLabel: 'SANCTIONS & IMPACT · NAMED-NODE GEOGRAPHY',
+      cameraModes: ['theater', 'gulf'],
       title: 'Where named financial and commercial nodes sit',
       records: asArray(network.map_nodes),
       localSources,
@@ -2633,12 +2815,14 @@
   }
 
   function HormuzNegotiationsPage(context) {
-    const frame = pageFrame(context, 'Current talks concern passage, mine-clearing, inspections, fees and future administration. A shared negotiating process is not the same as a final agreement.'); const hormuz = modelData(context.model, 'analysis.hormuz'); const tracks = asArray(hormuz.mou_position_tracks).filter(track => /Hormuz/i.test(track.topic || '')); const statement = addSection(frame.article, 'What is being negotiated now', 'content-section lead-story'); append(statement, 'p', 'lead-copy', 'Iran originally said it would control and manage the Strait. It is now negotiating a shared arrangement with Oman and other Gulf states. That is a step backward from its original claim. The final terms are still being negotiated.'); const issues = addSection(frame.article, 'Issue by issue'); const list = append(issues, 'div', 'record-list'); tracks.forEach(track => addProvenanceCard(list, context, { kicker: plainLabel(track.current_status), title: publicNarrative(track.topic), text: publicNarrative(track.analysis), meta: `Evidence strength: ${plainLabel(track.confidence)}`, item: track, localSources: localSourceMap(hormuz) })); const currentEvents = context.model.chronology.filter(item => /(HORMUZ|QATAR_TEHRAN_MEDIATION|MARITIME|MINE_CLEAR)/.test(eventType(item))).slice(-8).reverse(); const updates = addSection(frame.article, 'Latest negotiation and implementation record'); const eventList = append(updates, 'div', 'record-list'); currentEvents.forEach(item => renderEventCard(eventList, item, context, { detail: true, topic: eventTopic(item) })); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'Current talks concern passage, mine-clearing, inspections, fees and future administration. The terms are being negotiated.'); const hormuz = modelData(context.model, 'analysis.hormuz'); const tracks = asArray(hormuz.mou_position_tracks).filter(track => /Hormuz/i.test(track.topic || '')); const answer = addSection(frame.article, 'Is there an agreement?', 'content-section negotiation-answer'); append(answer, 'p', 'status-banner negotiation-answer-status', 'The terms are being negotiated.'); const lanes = addSection(frame.article, 'Party positions by issue', 'content-section negotiation-position-lanes'); const laneControls = append(lanes, 'form', 'negotiation-issue-controls'); laneControls.addEventListener('submit', event => event.preventDefault()); const issueLabel = append(laneControls, 'label', '', 'Issue'); const issueSelect = append(issueLabel, 'select'); tracks.forEach((track, index) => { const option = append(issueSelect, 'option', '', publicNarrative(track.topic)); option.value = String(index); }); const laneHost = append(lanes, 'div', 'negotiation-lane-grid'); const renderLane = index => { const track = tracks[index]; laneHost.replaceChildren(); if (!track) return; [['Iran position', track.iran_max], ['U.S. position', track.us_max], ['Accepted track state', track.current_status]].forEach(([label, value]) => { const card = append(laneHost, 'article', 'negotiation-lane'); append(card, 'p', 'card-kicker', label); append(card, 'p', '', publicNarrative(value, 'No separate position recorded.')); }); const baseline = append(laneHost, 'article', 'negotiation-lane negotiation-lane-baseline'); append(baseline, 'p', 'card-kicker', 'Recorded framework / analysis'); append(baseline, 'p', '', publicNarrative(track.mou, 'No framework text recorded for this issue.')); append(baseline, 'small', '', publicNarrative(track.analysis, '')); if (sourceIdsFrom(track).length) baseline.append(EvidenceDrawer.create(context, track, { localSources: localSourceMap(hormuz) })); }; issueSelect.addEventListener('change', () => renderLane(Number(issueSelect.value))); renderLane(0); const statement = addSection(frame.article, 'What is being negotiated now', 'content-section lead-story'); append(statement, 'p', 'lead-copy', 'Iran originally said it would control and manage the Strait. It is now negotiating a shared arrangement with Oman and other Gulf states. That is a step backward from its original claim. The final terms are still being negotiated.'); const issues = addSection(frame.article, 'Issue by issue'); const list = append(issues, 'div', 'record-list'); tracks.forEach(track => addProvenanceCard(list, context, { kicker: plainLabel(track.current_status), title: publicNarrative(track.topic), text: publicNarrative(track.analysis), meta: `Evidence strength: ${plainLabel(track.confidence)}`, item: track, localSources: localSourceMap(hormuz) })); const currentEvents = context.model.chronology.filter(item => /(HORMUZ|QATAR_TEHRAN_MEDIATION|MARITIME|MINE_CLEAR)/.test(eventType(item))).slice(-8).reverse(); const updates = addSection(frame.article, 'Latest negotiation and implementation record'); const eventList = append(updates, 'div', 'record-list'); currentEvents.forEach(item => renderEventCard(eventList, item, context, { detail: true, topic: eventTopic(item) })); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
   function DiplomacyPage(context) {
-    const frame = pageFrame(context, 'The record moves from proposals to ceasefires, interim agreements, implementation, breakdown and renewed mediation. Those states are not interchangeable.');
+    const frame = pageFrame(context, 'The record moves from proposals to ceasefires, interim agreements, implementation, breakdown and renewed mediation.');
     const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']);
+    const hormuzAnalysis = modelData(context.model, 'analysis.hormuz');
+    const hormuzLocalSources = localSourceMap(hormuzAnalysis);
     const current = addSection(frame.article, 'Current diplomatic state', 'content-section lead-story'); current.dataset.diplomaticState = 'current';
     append(current, 'p', 'lead-copy', 'The June MOU no longer controls either side, but negotiations continue. Current talks involve Hormuz passage and administration, nuclear questions and regional de-escalation. Diplomatic contact does not itself establish agreement or concession.');
     const currentLinks = append(current, 'div', 'record-actions diplomatic-current-links');
@@ -2654,6 +2838,120 @@
     };
     const isWartime = agreement => String(agreement.signed_or_formalized_date || agreement.origin_date || '') >= '2026-02-28';
     const wartimeAgreements = agreements.filter(isWartime); const earlierAgreements = agreements.filter(agreement => !isWartime(agreement));
+    const matrix = addSection(frame.article, 'Diplomatic track status', 'content-section diplomacy-status-matrix');
+    append(matrix, 'p', 'section-note', 'Current status and latest accepted milestone for each diplomatic track.');
+    const table = append(matrix, 'table', 'diplomacy-track-table');
+    const thead = append(table, 'thead'); const hr = append(thead, 'tr');
+    ['Track', 'Parties', 'Mediator / host', 'Accepted status', 'Latest accepted milestone'].forEach(label => { const th = append(hr, 'th', '', label); th.scope = 'col'; });
+    const tbody = append(table, 'tbody');
+    const acceptedChronology = recordArray(modelData(context.model, 'current.chronology'));
+    wartimeAgreements.forEach(agreement => {
+      const tr = append(tbody, 'tr'); tr.dataset.diplomaticStatus = String(agreement.status || '').toLowerCase();
+      const track = append(tr, 'th', '', publicNarrative(agreement.name, agreement.agreement_id)); track.scope = 'row';
+      append(tr, 'td', '', asArray(agreement.parties).map(name => context.services.actorIdentity.resolve(name).label).join(' · ') || 'Parties not recorded');
+      append(tr, 'td', '', publicNarrative(agreement.host_or_mediator, 'Not separately recorded'));
+      append(tr, 'td', '', plainLabel(agreement.status, 'Status recorded'));
+      append(tr, 'td', '', readableDate(agreement.signed_or_formalized_date || agreement.origin_date));
+      const detailRow = append(tbody, 'tr', 'diplomacy-track-detail-row');
+      detailRow.dataset.diplomacyTrackId = String(agreement.agreement_id || '');
+      const detailCell = append(detailRow, 'td'); detailCell.colSpan = 5;
+      const disclosure = append(detailCell, 'details', 'diplomacy-track-disclosure');
+      append(disclosure, 'summary', '', 'Show track timeline');
+      const relatedIds = new Set(asArray(agreement.relevant_drawdown_or_event_refs).map(String));
+      const milestones = acceptedChronology.filter(item => relatedIds.has(String(item.event_id || item.id || '')));
+      const steps = [];
+      const isJuneMou = agreement.agreement_id === 'AGR-US-IRN-14POINT-MOU-2026';
+      if (isJuneMou) {
+        const mainSequence = asArray(hormuzAnalysis.sequence).filter(item => item.track === 'MAIN');
+        const june17 = mainSequence.find(item => item.date === '2026-06-17');
+        const june25 = mainSequence.find(item => item.date === '2026-06-25');
+        const july07 = mainSequence.find(item => item.date === '2026-07-07');
+        const paragraphFive = asArray(hormuzAnalysis.mou_position_tracks).find(item => String(item.clause) === '5B')
+          || asArray(hormuzAnalysis.mou_position_tracks).find(item => String(item.clause).startsWith('5'));
+        const breach = hormuzAnalysis.mou_breach_assessment || {};
+        if (june17) steps.push({
+          date: june17.date,
+          title: publicNarrative(june17.title, agreement.name),
+          text: publicNarrative(june17.result || june17.washington_response || agreement.what_it_proves, ''),
+          item: june17,
+          localSources: hormuzLocalSources
+        });
+        else if (agreement.origin_date || agreement.signed_or_formalized_date) steps.push({
+          date: agreement.signed_or_formalized_date || agreement.origin_date,
+          title: publicNarrative(agreement.name, agreement.agreement_id),
+          text: publicNarrative(agreement.what_it_proves || agreement.current_assessment, plainLabel(agreement.status)),
+          item: agreement,
+          relatedRecords: agreement.relevant_drawdown_or_event_refs
+        });
+        if (june25) steps.push({
+          date: june25.date,
+          title: publicNarrative(june25.title, 'Commercial-vessel attack'),
+          text: publicNarrative(june25.result || june25.iran_move, ''),
+          item: june25,
+          localSources: hormuzLocalSources
+        });
+        if (breach.tehran_claimed_trigger) steps.push({
+          date: june25 && june25.date || '2026-06-25',
+          title: 'Iran’s stated route-authority claim',
+          text: publicNarrative(breach.tehran_claimed_trigger, ''),
+          item: { sources: asArray(breach.sources) },
+          localSources: hormuzLocalSources
+        });
+        if (paragraphFive) steps.push({
+          date: agreement.signed_or_formalized_date || agreement.origin_date,
+          title: 'Paragraph 5 — safe passage and future administration',
+          text: publicNarrative(paragraphFive.mou, ''),
+          item: paragraphFive,
+          localSources: hormuzLocalSources
+        });
+        if (july07) steps.push({
+          date: july07.date,
+          title: publicNarrative(july07.title, 'Practical collapse of the June MOU'),
+          text: publicNarrative(july07.result || july07.washington_response, ''),
+          item: july07,
+          localSources: hormuzLocalSources
+        });
+      } else {
+        if (agreement.origin_date || agreement.signed_or_formalized_date) steps.push({
+          date: agreement.signed_or_formalized_date || agreement.origin_date,
+          title: publicNarrative(agreement.name, agreement.agreement_id),
+          text: publicNarrative(agreement.what_it_proves || agreement.current_assessment, plainLabel(agreement.status)),
+          item: agreement,
+          relatedRecords: agreement.relevant_drawdown_or_event_refs
+        });
+        milestones.forEach(item => steps.push({
+          date: item.timeline && item.timeline.date || item.event && item.event.event_date || item.date,
+          title: publicNarrative(item.event && item.event.summary || item.summary, 'Accepted milestone'),
+          text: publicNarrative(item.event && item.event.observed_fact || item.observed_fact || eventTopic(item), ''),
+          item
+        }));
+      }
+      if (steps.length) addSequence(disclosure, context, steps, { className: 'story-sequence diplomacy-track-sequence' });
+      else append(disclosure, 'p', 'section-note', 'No additional dated milestones are linked to this track in the accepted record.');
+      if (isJuneMou) {
+        const links = append(disclosure, 'div', 'record-actions');
+        const mou = append(links, 'a', 'inline-route-link', 'Open the June MOU record'); mou.href = routeHref('talks.mou');
+        const ledger = append(links, 'a', 'inline-route-link', 'Open the Lie Ledger'); ledger.href = routeHref('evidence.information');
+      }
+    });
+    const regionRenderer = root && root.AtlasVisualizationRenderer;
+    if (regionRenderer && typeof regionRenderer.createRegionMap === 'function') {
+      const states = [];
+      const seenStates = new Set();
+      wartimeAgreements.flatMap(agreement => asArray(agreement.parties)).forEach(name => {
+        const identity = context.services.actorIdentity.resolve(name);
+        const stateName = identity.parentState || identity.canonicalName || name;
+        if (!stateName || seenStates.has(stateName)) return;
+        seenStates.add(stateName);
+        states.push({ actorId: identity.actorId || stateName, name: stateName });
+      });
+      if (states.length) frame.article.append(regionRenderer.createRegionMap(context, {
+        typeLabel: 'DIPLOMACY · ACCEPTED PARTICIPANT GEOGRAPHY',
+        title: 'States participating in accepted wartime diplomatic tracks',
+        description: 'Highlighted state geography shows accepted participation only. Proximity does not imply alliance, mediation, agreement, or common position.',
+        regions: states
+      }));
+    }
     const wartime = addSection(frame.article, 'Wartime agreements and negotiations'); wartime.dataset.agreementGroup = 'wartime';
     append(wartime, 'p', 'section-note', `${wartimeAgreements.length.toLocaleString()} wartime agreement, framework or proposal record${wartimeAgreements.length === 1 ? '' : 's'} are grouped here by relevance to the conflict, not treated as interchangeable legal states.`);
     const wartimeList = append(wartime, 'div', 'record-list agreement-directory'); wartimeAgreements.forEach(agreement => renderAgreement(wartimeList, agreement));
@@ -2677,7 +2975,179 @@
   }
 
   function RegionalDiplomacyPage(context) {
-    const frame = pageFrame(context, 'Regional states added mediation and security arrangements during the conflict. Each arrangement is shown with its parties and earlier context. The fact that one event followed another does not prove the war caused it.'); const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']); const alignment = agreements.find(agreement => agreement.agreement_id === 'AGR-SAUDI-MARITIME-COALITION-2026'); const participants = asArray(alignment && alignment.parties).map(name => ({ name, identity: context.services.actorIdentity.resolve(name) })); const alignmentSection = addSection(frame.article, '14-state maritime support', 'content-section alignment-section'); append(alignmentSection, 'p', 'section-note', alignment ? publicNarrative(alignment.what_it_proves) : 'The alignment record is unavailable.'); if (alignment) { alignmentSection.append(MapView.create(context, { title: 'Participant-state geographic spread', countryNames: participants.map(item => item.identity.parentState || item.identity.canonicalName), maxZoom: 4, fallbackViewport: [[-2, 5], [42, 95]], description: 'Highlighted country geography represents states listed in the joint support/alignment record. It does not identify capitals, headquarters, command nodes, deployments, or operating areas.' })); const roster = append(alignmentSection, 'div', 'alignment-roster'); participants.forEach(item => { const card = append(roster, 'article', 'alignment-participant'); card.dataset.alignmentActorId = item.identity.actorId || ''; card.append(context.services.actorIdentity.create(context.documentObject, item.name, { subtitle: true })); }); alignmentSection.append(EvidenceDrawer.create(context, alignment, { relatedRecords: alignment.relevant_drawdown_or_event_refs })); const boundary = append(alignmentSection, 'aside', 'scope-note'); append(boundary, 'strong', '', 'What participation does not show'); append(boundary, 'p', '', publicNarrative(alignment.what_it_does_not_prove)); } const section = addSection(frame.article, 'Regional agreements and arrangements'); const list = append(section, 'div', 'record-list'); agreements.forEach(agreement => addProvenanceCard(list, context, { kicker: `${readableDate(agreement.signed_or_formalized_date || agreement.origin_date)} · ${plainLabel(agreement.status)}`, title: publicNarrative(agreement.name), text: publicNarrative(agreement.what_it_proves || agreement.current_assessment), meta: publicNarrative(agreement.what_it_does_not_prove), item: agreement, relatedRecords: agreement.relevant_drawdown_or_event_refs })); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'Regional states added mediation and security arrangements during the conflict. Each arrangement is shown with its parties and earlier context. The fact that one event followed another does not prove the war caused it.');
+    const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']);
+    const alignment = agreements.find(agreement => agreement.agreement_id === 'AGR-SAUDI-MARITIME-COALITION-2026');
+    const participants = asArray(alignment && alignment.parties).map(name => ({ name, identity: context.services.actorIdentity.resolve(name) }));
+    const regionRenderer = root && root.AtlasVisualizationRenderer;
+
+    const stateName = name => {
+      const identity = context.services.actorIdentity.resolve(name);
+      return identity.parentState || identity.canonicalName || name;
+    };
+    const allStateRows = [];
+    const allStateSeen = new Set();
+    agreements.flatMap(agreement => asArray(agreement.parties)).forEach(name => {
+      const identity = context.services.actorIdentity.resolve(name);
+      const resolvedName = identity.parentState || identity.canonicalName || name;
+      if (!resolvedName || allStateSeen.has(resolvedName)) return;
+      allStateSeen.add(resolvedName);
+      allStateRows.push({ actorId: identity.actorId || resolvedName, name: resolvedName });
+    });
+    ['United States', 'Saudi Arabia'].forEach(name => {
+      const identity = context.services.actorIdentity.resolve(name);
+      const resolvedName = identity.parentState || identity.canonicalName || name;
+      if (!resolvedName || allStateSeen.has(resolvedName)) return;
+      allStateSeen.add(resolvedName);
+      allStateRows.push({ actorId: identity.actorId || resolvedName, name: resolvedName });
+    });
+
+    const relationships = [];
+    const addRelationship = (agreement, from, to, relationClass, suffix) => {
+      if (!agreement) return;
+      relationships.push({
+        relationshipId: `${agreement.agreement_id}-${suffix}`,
+        from: stateName(from),
+        to: stateName(to),
+        relationClass,
+        sourceType: agreement.agreement_type,
+        label: publicNarrative(agreement.name, agreement.agreement_id),
+        status: plainLabel(agreement.status),
+        source_ids: sourceIdsFrom(agreement)
+      });
+    };
+
+    const iranMou = agreements.find(agreement => agreement.agreement_id === 'AGR-US-IRN-14POINT-MOU-2026');
+    addRelationship(iranMou, 'United States', 'Iran', 'agreement', 'US-IRAN');
+
+    const lebanonFramework = agreements.find(agreement => agreement.agreement_id === 'AGR-ISR-LBN-FRAMEWORK-2026');
+    addRelationship(lebanonFramework, 'Israel', 'Lebanon', 'mediation', 'ISR-LBN');
+
+    if (alignment) {
+      asArray(alignment.parties).filter(name => stateName(name) !== stateName('Saudi Arabia')).forEach((name, index) => {
+        addRelationship(alignment, 'Saudi Arabia', name, 'proposal', `SAU-SUPPORT-${index + 1}`);
+      });
+    }
+
+    const mecca = agreements.find(agreement => agreement.agreement_id === 'AGR-MECCA-JOINT-DEFENSE-2026');
+    ['Türkiye', 'Pakistan'].forEach((name, index) => addRelationship(mecca, 'Saudi Arabia', name, 'agreement', `MECCA-${index + 1}`));
+
+    let regionalMap = null;
+    if (regionRenderer && typeof regionRenderer.createRegionMap === 'function' && allStateRows.length) {
+      regionalMap = regionRenderer.createRegionMap(context, {
+        typeLabel: 'REGIONAL DIPLOMACY · ACCEPTED RELATIONSHIPS',
+        title: 'Regional diplomatic participation',
+        description: 'Highlighted states appear as accepted parties in the agreement ledger. Relationship lines appear only where the accepted record identifies an agreement, mediation role, or supported proposal; proximity alone never creates a relationship.',
+        regions: allStateRows,
+        relationships
+      });
+      const actorControls = append(frame.article, 'form', 'regional-actor-controls');
+      actorControls.addEventListener('submit', event => event.preventDefault());
+      const actorLabel = append(actorControls, 'label', 'visualization-select-control');
+      append(actorLabel, 'span', '', 'State');
+      const actorSelect = append(actorLabel, 'select');
+      append(actorSelect, 'option', '', 'All accepted states').value = '';
+      allStateRows.slice().sort((a, b) => String(a.name).localeCompare(String(b.name))).forEach(row => {
+        const option = append(actorSelect, 'option', '', String(row.name));
+        option.value = String(row.actorId || '');
+      });
+      actorSelect.addEventListener('change', () => {
+        if (actorSelect.value && regionalMap && typeof regionalMap._atlasFocusRegion === 'function') regionalMap._atlasFocusRegion(actorSelect.value);
+        else if (!actorSelect.value && regionalMap && typeof regionalMap._atlasMapLibre !== 'undefined') regionalMap.querySelector('.visualization-mode-button')?.click();
+      });
+      const actorRoster = append(frame.article, 'div', 'regional-actor-roster');
+      allStateRows.slice().sort((a, b) => String(a.name).localeCompare(String(b.name))).forEach(row => {
+        const actor = append(actorRoster, 'button', 'regional-actor-identity');
+        actor.type = 'button';
+        actor.dataset.regionalActorId = String(row.actorId || '');
+        actor.append(context.services.actorIdentity.create(context.documentObject, row.actorId || row.name));
+        actor.addEventListener('click', () => {
+          actorSelect.value = String(row.actorId || '');
+          actorSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+      const relationshipLegend = append(frame.article, 'div', 'visualization-legend regional-relationship-legend');
+      relationshipLegend.setAttribute('aria-label', 'Regional relationship legend');
+      [
+        ['agreement', '━━', 'Accepted agreement / framework'],
+        ['mediation', '┄┄', 'Accepted mediation / broker role'],
+        ['proposal', '┈┈', 'Accepted proposal / support record']
+      ].forEach(([kind, mark, label]) => {
+        if (!relationships.some(item => item.relationClass === kind)) return;
+        const legendItem = append(relationshipLegend, 'span', 'visualization-legend-item');
+        legendItem.dataset.relationshipClass = kind;
+        append(legendItem, 'b', '', mark);
+        append(legendItem, 'span', '', label);
+      });
+      frame.article.append(regionalMap);
+    }
+
+    const alignmentSection = addSection(frame.article, '14-state maritime support', 'content-section alignment-section');
+    append(alignmentSection, 'p', 'section-note', alignment ? publicNarrative(alignment.what_it_proves) : 'The alignment record is unavailable.');
+    if (alignment) {
+      append(alignmentSection, 'p', 'map-context-note', 'Participant-state geography does not identify capitals, headquarters, command nodes, deployments, or operating areas.');
+      const roster = append(alignmentSection, 'div', 'alignment-roster');
+      participants.forEach(item => {
+        const card = append(roster, 'article', 'alignment-participant');
+        card.dataset.alignmentActorId = item.identity.actorId || '';
+        card.append(context.services.actorIdentity.create(context.documentObject, item.name, { subtitle: true }));
+      });
+      alignmentSection.append(EvidenceDrawer.create(context, alignment, { relatedRecords: alignment.relevant_drawdown_or_event_refs }));
+      const boundary = append(alignmentSection, 'aside', 'scope-note');
+      append(boundary, 'strong', '', 'What participation does not show');
+      append(boundary, 'p', '', publicNarrative(alignment.what_it_does_not_prove));
+    }
+
+    const chronology = addSection(frame.article, 'Regional agreement chronology', 'content-section regional-diplomacy-chronology');
+    const datedAgreements = agreements
+      .filter(agreement => agreement.signed_or_formalized_date || agreement.origin_date)
+      .slice()
+      .sort((a, b) => String(a.signed_or_formalized_date || a.origin_date).localeCompare(String(b.signed_or_formalized_date || b.origin_date)));
+    addSequence(chronology, context, datedAgreements.map(agreement => ({
+      date: agreement.signed_or_formalized_date || agreement.origin_date,
+      title: publicNarrative(agreement.name, agreement.agreement_id),
+      text: `${plainLabel(agreement.status)} · ${asArray(agreement.parties).map(name => context.services.actorIdentity.resolve(name).label).join(' · ')}`,
+      item: agreement,
+      relatedRecords: agreement.relevant_drawdown_or_event_refs
+    })), { className: 'story-sequence regional-diplomacy-sequence' });
+
+    const section = addSection(frame.article, 'Regional agreements and arrangements');
+    const controls = append(section, 'form', 'regional-relationship-controls');
+    controls.addEventListener('submit', event => event.preventDefault());
+    const typeLabel = append(controls, 'label', '', 'Relationship type');
+    const typeSelect = append(typeLabel, 'select');
+    append(typeSelect, 'option', '', 'All accepted relationship types').value = '';
+    Array.from(new Set(agreements.map(agreement => String(agreement.agreement_type || '')).filter(Boolean))).sort().forEach(type => {
+      const option = append(typeSelect, 'option', '', plainLabel(type));
+      option.value = type;
+    });
+    const count = append(controls, 'span', 'filter-result-count');
+    count.setAttribute('aria-live', 'polite');
+    const list = append(section, 'div', 'record-list');
+    agreements.forEach(agreement => {
+      const card = addProvenanceCard(list, context, {
+        kicker: `${readableDate(agreement.signed_or_formalized_date || agreement.origin_date)} · ${plainLabel(agreement.status)}`,
+        title: publicNarrative(agreement.name),
+        text: publicNarrative(agreement.what_it_proves || agreement.current_assessment),
+        meta: publicNarrative(agreement.what_it_does_not_prove),
+        item: agreement,
+        relatedRecords: agreement.relevant_drawdown_or_event_refs
+      });
+      card.dataset.regionalRelationshipType = String(agreement.agreement_type || '');
+    });
+    const filter = () => {
+      let visible = 0;
+      list.querySelectorAll('[data-regional-relationship-type]').forEach(card => {
+        card.hidden = Boolean(typeSelect.value && card.dataset.regionalRelationshipType !== typeSelect.value);
+        if (!card.hidden) visible += 1;
+      });
+      count.textContent = `${visible.toLocaleString()} of ${agreements.length.toLocaleString()} accepted records shown`;
+      if (regionalMap && typeof regionalMap._atlasSetRelationshipType === 'function') regionalMap._atlasSetRelationshipType(typeSelect.value);
+    };
+    typeSelect.addEventListener('change', filter);
+    filter();
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
   }
 
   function ObjectivesPage(context) {

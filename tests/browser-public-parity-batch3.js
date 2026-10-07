@@ -228,9 +228,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(shipping.legend, /Maritime · schematic/);
     assert.match(shipping.legend, /Pipeline · schematic/);
     assert.match(shipping.legend, /Rail · schematic/);
-    assert.match(shipping.mapText, /not live vessel tracking/i);
-    assert.match(shipping.mapText, /not a surveyed pipeline alignment|pipeline lines are not surveyed alignments/i);
-    assert.match(shipping.mapText, /not exact rail alignment|rail lines are not exact track alignments/i);
+    assert.match(shipping.mapText, /routes are schematic/i);
+    assert.match(shipping.mapText, /not live tracking/i);
+    assert.match(shipping.mapText, /not.*exact surveyed alignments/i);
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
     assert(shipping.merchantLinks.every(link => link.startsWith('#/war/losses/?loss=')));
@@ -295,25 +295,33 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(economy.arcticText, /not evidence of Iranian wartime shipments or a measured replacement for lost Iranian volume/i);
 
     await routeKey(cdp, 'talks.regional');
+    await waitFor(cdp, `document.querySelector('[data-component="RegionMapView"] .atlas-maplibre-map')?.dataset.mapState === 'ready'`);
     const alignment = await cdp.eval(`(() => {
-      const map = document.querySelector('[data-component="MapView"]');
-      const bounds = JSON.parse(map.dataset.mapBounds);
+      const map = document.querySelector('[data-component="RegionMapView"]');
+      const actorSelect = document.querySelector('.regional-actor-controls select');
       return {
+        renderer: map?.dataset.mapRenderer || '',
         actors: [...document.querySelectorAll('[data-alignment-actor-id]')].map(node => node.dataset.alignmentActorId),
-        countries: map.dataset.mapCountries.split(','),
-        bounds,
-        fitted: [[map._atlasMap.getBounds().getSouth(), map._atlasMap.getBounds().getWest()], [map._atlasMap.getBounds().getNorth(), map._atlasMap.getBounds().getEast()]],
-        equivalentStates: map.querySelectorAll('[data-phase5-map-equivalent] li').length,
-        inside: map._atlasMap.getBounds().contains(bounds[0]) && map._atlasMap.getBounds().contains(bounds[1]),
+        countries: (map?.dataset.mapCountries || '').split(',').filter(Boolean),
+        relationshipCount: Number(map?.dataset.relationshipCount || 0),
+        relationshipClasses: (map?.dataset.relationshipClasses || '').split(',').filter(Boolean),
+        relationshipTypes: (map?.dataset.relationshipTypes || '').split(',').filter(Boolean),
+        equivalentRows: map?.querySelectorAll('[data-phase5-map-equivalent] li').length || 0,
+        actorSelector: Boolean(actorSelect && actorSelect.options.length > 1),
         unsignedFlags: [...document.querySelectorAll('.alignment-participant img.actor-flag')].filter(node => !/state-flag-[a-z]{2}\.[a-f0-9]{64}\.svg$/.test(new URL(node.src).pathname)).length,
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
     const alignmentIds = ['ACT-SAUDI-ARABIA','ACT-BAHRAIN','ACT-KUWAIT','ACT-QATAR','ACT-JORDAN','ACT-YEMEN-PLC','ACT-EGYPT','ACT-SUDAN','ACT-DJIBOUTI','ACT-SOMALIA','ACT-NIGERIA','ACT-TURKIYE','ACT-PAKISTAN','ACT-BANGLADESH'];
+    assert.equal(alignment.renderer, 'maplibre-gl-js');
     assert.deepEqual(alignment.actors.sort(), alignmentIds.slice().sort());
-    assert.equal(alignment.countries.length, 14);
-    assert(alignment.equivalentStates >= 14);
-    assert.equal(alignment.inside, true, `participant-state geography does not fit its map: ${JSON.stringify(alignment)}`);
+    assert(alignment.countries.length >= 14, 'regional diplomacy map lost accepted participant-state geography');
+    assert(alignment.equivalentRows >= alignment.countries.length, 'regional diplomacy text equivalent does not cover mapped states');
+    assert(alignment.relationshipCount >= 5, 'regional diplomacy map lacks accepted relationship lines');
+    assert.deepEqual(alignment.relationshipClasses.sort(), ['agreement','mediation','proposal']);
+    assert(alignment.relationshipTypes.includes('TRILATERAL_MEDIATED_SECURITY_FRAMEWORK'));
+    assert(alignment.relationshipTypes.includes('TRILATERAL_MUTUAL_DEFENSE'));
+    assert.equal(alignment.actorSelector, true, 'regional diplomacy lacks the approved actor selector');
     assert.equal(alignment.unsignedFlags, 0);
     assert.match(alignment.text, /does not identify capitals, headquarters, command nodes, deployments, or operating areas/i);
     assert(!/founding signator/i.test(alignment.text));

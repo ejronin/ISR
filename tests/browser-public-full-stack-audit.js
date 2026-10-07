@@ -212,16 +212,26 @@ function addFinding(findings, routeKey, width, category, detail) {
     if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'reader-evidence-drawer-not-discoverable-or-openable');
 
     await route(cdp, 'military.imagery');
+    await waitFor(cdp, `(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      return view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+    })()`);
     const imagery = await cdp.eval(`(() => {
       const row = document.querySelector('[data-imagery-summary]');
       const summary = row?.querySelector(':scope > summary');
       if (summary) summary.focus();
       const focusable = !summary || document.activeElement === summary;
       if (summary) summary.click();
-      return { row: Boolean(row), focusable, open: Boolean(row?.open), map: Boolean(document.querySelector('[data-component="MapView"] .leaflet-container')) };
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      const map = view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+      return { row: Boolean(row), focusable, open: Boolean(row?.open), map: Boolean(map), mapRenderer: view?.dataset.mapRenderer || '' };
     })()`);
     if (!imagery.row || !imagery.focusable || !imagery.open) addFinding(findings, 'military.imagery', 390, 'disclosure', 'imagery-not-focusable-or-openable');
-    if (!imagery.map) addFinding(findings, 'military.imagery', 390, 'map', 'missing-map-runtime');
+    if (!imagery.map) addFinding(findings, 'military.imagery', 390, 'map', `missing-map-runtime-${imagery.mapRenderer || 'unknown'}`);
 
     await route(cdp, 'military.losses');
     const losses = await cdp.eval(`(() => {

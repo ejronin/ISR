@@ -53,7 +53,7 @@
     const base = windowObject && windowObject.location && windowObject.location.href || root.location && root.location.href;
     const url = new URL('./' + path, base);
     const origin = windowObject && windowObject.location && windowObject.location.origin || root.location && root.location.origin;
-    if (url.origin !== origin) throw new Error('Visualization capability escaped same-origin policy.');
+    if (url.origin !== origin) throw new Error('Visualization asset failed same-origin policy.');
     return url;
   }
 
@@ -69,7 +69,7 @@
       link.crossOrigin = 'anonymous';
       link.dataset.guideMaplibreStyle = asset.sha256;
       link.onload = () => resolve(link);
-      link.onerror = () => reject(new Error('MapLibre stylesheet failed integrity loading.'));
+      link.onerror = () => reject(new Error('MapLibre stylesheet load failed.'));
       documentObject.head.append(link);
     });
   }
@@ -88,7 +88,7 @@
 
   async function verifyTextAsset(asset, windowObject) {
     const response = await (windowObject.fetch || root.fetch)(sameOriginUrl(asset.path, windowObject).href, { cache: 'no-store', credentials: 'same-origin' });
-    if (!response || !response.ok) throw new Error('A signed visualization capability asset could not be loaded.');
+    if (!response || !response.ok) throw new Error('Signed visualization asset load failed.');
     const text = (await response.text()).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
     const bytes = new TextEncoder().encode(text);
     const digest = await (windowObject.crypto || root.crypto).subtle.digest('SHA-256', bytes);
@@ -108,10 +108,10 @@
       const workerUrl = sameOriginUrl(cap.worker.path, windowObject);
       await verifyTextAsset(cap.worker, windowObject);
       const testCanvas = documentObject.createElement('canvas');
-      if (!testCanvas.getContext('webgl2')) throw new Error('WebGL2 is unavailable; using Leaflet fallback.');
+      if (!testCanvas.getContext('webgl2')) throw new Error('WebGL2 unavailable; using Leaflet.');
       const maplibregl = await import(runtimeUrl.href);
       if (!maplibregl || typeof maplibregl.Map !== 'function' || typeof maplibregl.setWorkerUrl !== 'function') {
-        throw new Error('MapLibre module did not expose the required API.');
+        throw new Error('MapLibre API unavailable.');
       }
       maplibregl.setWorkerUrl(workerUrl.href);
       return Object.freeze({ maplibregl, cap, workerUrl: workerUrl.href });
@@ -148,7 +148,7 @@
           script.addEventListener('error', () => reject(new Error('ECharts runtime failed integrity loading.')), { once: true });
         });
       }
-      if (!root.echarts || typeof root.echarts.init !== 'function') throw new Error('ECharts runtime did not expose the required API.');
+      if (!root.echarts || typeof root.echarts.init !== 'function') throw new Error('ECharts API unavailable.');
       return Object.freeze({ echarts: root.echarts, cap });
     })().catch(error => {
       echartsCapabilityPromise = null;
@@ -198,16 +198,35 @@
     return { section, host, status };
   }
 
+  async function initEChart(context, section, host) {
+    const capability = await loadECharts(context.documentObject, context.windowObject || root);
+    if (!section.isConnected) return null;
+    const chart = capability.echarts.init(host, null, { renderer: 'svg' });
+    section._atlasChart = chart;
+    return chart;
+  }
+
+  function chartReady(section, status) {
+    status.remove();
+    section.dataset.chartState = 'ready';
+    section.dispatchEvent(new CustomEvent('guide:visualization-ready', { bubbles: true, detail: { renderer: 'echarts', version: ECHARTS_VERSION } }));
+  }
+
+  function chartFallback(section, status, error, message) {
+    if (!section.isConnected) return;
+    status.textContent = message;
+    section.dataset.chartState = 'fallback';
+    section.dataset.echartsFailure = String(error && error.message || 'ECharts unavailable');
+  }
+
   function createCategoryBars(context, options) {
     const rows = asArray(options && options.rows).filter(row => row && Number.isFinite(Number(row.value)));
     const frame = chartFrame(context, rows, options || {}, 'guide-category-bars');
     const { section, host, status } = frame;
     Promise.resolve().then(async () => {
       try {
-        const capability = await loadECharts(context.documentObject, context.windowObject || root);
-        if (!section.isConnected) return;
-        const chart = capability.echarts.init(host, null, { renderer: 'svg' });
-        section._atlasChart = chart;
+        const chart = await initEChart(context, section, host);
+        if (!chart) return;
         chart.setOption({
           animation: !reducedMotion(context.windowObject || root),
           backgroundColor: 'transparent',
@@ -232,14 +251,62 @@
             label: { show: true, position: 'right', color: '#f1f4f7' }
           }]
         });
-        status.remove();
-        section.dataset.chartState = 'ready';
-        section.dispatchEvent(new CustomEvent('guide:visualization-ready', { bubbles: true, detail: { renderer: 'echarts', version: ECHARTS_VERSION } }));
+        chartReady(section, status);
       } catch (error) {
-        if (!section.isConnected) return;
-        status.textContent = 'Interactive chart unavailable; numeric values remain available below.';
-        section.dataset.chartState = 'fallback';
-        section.dataset.echartsFailure = String(error && error.message || 'ECharts unavailable');
+        chartFallback(section, status, error, 'Chart unavailable; numeric values remain below.');
+      }
+    });
+    return section;
+  }
+
+
+  function createTimeSeries(context, options) {
+    const rows = asArray(options && options.rows)
+      .filter(row => row && row.label && Number.isFinite(Number(row.value)))
+      .slice()
+      .sort((a, b) => String(a.label).localeCompare(String(b.label)));
+    const frame = chartFrame(context, rows, options || {}, 'guide-time-series');
+    const { section, host, status } = frame;
+    Promise.resolve().then(async () => {
+      try {
+        const chart = await initEChart(context, section, host);
+        if (!chart) return;
+        const pointsOnly = Boolean(options && options.pointsOnly);
+        chart.setOption({
+          animation: !reducedMotion(context.windowObject || root),
+          backgroundColor: 'transparent',
+          grid: { left: 48, right: 20, top: 20, bottom: 46, containLabel: true },
+          xAxis: {
+            type: 'category',
+            data: rows.map(row => String(row.label)),
+            boundaryGap: pointsOnly,
+            axisLabel: { color: '#aab5bf', hideOverlap: true },
+            axisLine: { lineStyle: { color: '#355063' } }
+          },
+          yAxis: {
+            type: 'value',
+            minInterval: Number(options && options.minInterval || 1),
+            name: String(options && options.axisName || ''),
+            nameTextStyle: { color: '#aab5bf' },
+            axisLabel: { color: '#aab5bf' },
+            splitLine: { lineStyle: { color: '#202d38' } }
+          },
+          series: [{
+            type: 'line',
+            name: String(options && options.seriesName || options && options.title || 'Reported values'),
+            data: rows.map(row => Number(row.value)),
+            connectNulls: false,
+            showSymbol: true,
+            symbolSize: 9,
+            lineStyle: { width: pointsOnly ? 0 : 2, color: '#79b7df' },
+            itemStyle: { color: '#79b7df' },
+            label: { show: Boolean(options && options.showLabels), position: 'top', color: '#f1f4f7' }
+          }]
+        });
+        section.dataset.seriesMode = pointsOnly ? 'accepted-points' : 'accepted-line';
+        chartReady(section, status);
+      } catch (error) {
+        chartFallback(section, status, error, 'Chart unavailable; reported observations remain below.');
       }
     });
     return section;
@@ -278,10 +345,8 @@
     section._atlasSetRange = applyRange;
     Promise.resolve().then(async () => {
       try {
-        const capability = await loadECharts(context.documentObject, context.windowObject || root);
-        if (!section.isConnected) return;
-        chart = capability.echarts.init(host, null, { renderer: 'svg' });
-        section._atlasChart = chart;
+        chart = await initEChart(context, section, host);
+        if (!chart) return;
         chart.setOption({
           animation: !reducedMotion(context.windowObject || root),
           backgroundColor: 'transparent',
@@ -296,7 +361,7 @@
           yAxis: {
             type: 'value',
             minInterval: 1,
-            name: 'accepted records',
+            name: 'records',
             nameTextStyle: { color: '#aab5bf' },
             axisLabel: { color: '#aab5bf' },
             splitLine: { lineStyle: { color: '#202d38' } }
@@ -307,7 +372,7 @@
           ],
           series: [{
             type: 'bar',
-            name: 'Accepted records',
+            name: 'Records',
             data: rows.map(row => Number(row.value)),
             barMaxWidth: 12,
             itemStyle: { color: '#79b7df' }
@@ -331,14 +396,9 @@
           }));
         });
         if (pendingRange) applyRange(pendingRange[0], pendingRange[1]);
-        status.remove();
-        section.dataset.chartState = 'ready';
-        section.dispatchEvent(new CustomEvent('guide:visualization-ready', { bubbles: true, detail: { renderer: 'echarts', version: ECHARTS_VERSION } }));
+        chartReady(section, status);
       } catch (error) {
-        if (!section.isConnected) return;
-        status.textContent = 'Interactive density navigator unavailable; daily accepted-record counts remain available below.';
-        section.dataset.chartState = 'fallback';
-        section.dataset.echartsFailure = String(error && error.message || 'ECharts unavailable');
+        chartFallback(section, status, error, 'Chart unavailable; daily record counts remain below.');
       }
     });
     return section;
@@ -367,7 +427,8 @@
   function recordTitle(record) {
     return String(record && (
       record.display_name || record.name || record.title || record.target || record.facility_name ||
-      record.location_name || record.event_id || record.id || record.shipping_id || record.loss_id
+      record.location_name || record.event_id || record.observation_id || record.overlay_id ||
+      record.id || record.shipping_id || record.loss_id
     ) || 'Mapped record');
   }
 
@@ -376,7 +437,7 @@
     return String(record && (
       record.summary || record.observation || record.note || record.assessment || record.purpose ||
       record.operational_effect || record.effect || event.observed_fact || event.summary
-    ) || 'This location is supplied by the accepted public record.');
+    ) || 'This location comes from the accepted record.');
   }
 
   function recordKeys(record) {
@@ -389,6 +450,61 @@
     ].filter(Boolean).map(String));
   }
 
+  function imageryPayloads(record) {
+    if (!record || typeof record !== 'object') return [];
+    const nested = record.imagery || record.bda || record.event && (record.event.imagery || record.event.bda);
+    if (nested) return asArray(Array.isArray(nested) ? nested : [nested])
+      .filter(value => value && typeof value === 'object')
+      .map(value => ({ ...value, evidence_record: record }));
+    const imageryShape = record.damage_imagery_source_ids || record.image_url || record.thumbnail_url ||
+      record.image_bounds || record.georeferenced_bounds || record.footprint || record.corners ||
+      record.imagery_type || record.observation_id && record.observation;
+    return imageryShape ? [record] : [];
+  }
+
+  function imageryDescriptors(records, ia, context, relatedRecords) {
+    return asArray(records).flatMap(record => imageryPayloads(record).map(payload =>
+      ia.MapView.imageryDescriptor(payload, context.services.locationResolver, asArray(relatedRecords))
+    ));
+  }
+
+  function imageryControlLabel(item) {
+    const record = item && item.record || {};
+    const evidence = item && item.evidenceRecord || {};
+    const nested = evidence.event && typeof evidence.event === 'object' ? evidence.event : {};
+    const date = String(
+      record.capture_date || record.publication_date || record.imagery_date || record.date ||
+      evidence.imagery_date || evidence.date || evidence.event_date || nested.event_date || ''
+    ).trim();
+    const kind = evidence.observation_id
+      ? 'Physical damage observation'
+      : String(record.imagery_type || evidence.imagery_type || 'Imagery evidence');
+    return [date, kind, recordTitle(evidence)].filter(Boolean).join(' · ');
+  }
+
+  function imageryAreaGeoJSON(imagery) {
+    const features = [];
+    asArray(imagery).forEach((item, index) => {
+      let ring = null;
+      if (item && item.tier === 'A' && item.bounds) {
+        const south = Number(item.bounds[0][0]), west = Number(item.bounds[0][1]);
+        const north = Number(item.bounds[1][0]), east = Number(item.bounds[1][1]);
+        ring = [[west, north], [east, north], [east, south], [west, south], [west, north]];
+      } else if (item && item.tier === 'B' && item.footprint) {
+        ring = item.footprint.map(point => [Number(point[1]), Number(point[0])]);
+        if (ring.length && (ring[0][0] !== ring[ring.length - 1][0] || ring[0][1] !== ring[ring.length - 1][1])) ring.push(ring[0].slice());
+      }
+      if (!ring || ring.length < 4) return;
+      features.push({
+        type: 'Feature',
+        id: index,
+        geometry: { type: 'Polygon', coordinates: [ring] },
+        properties: { imageryIndex: index, tier: item.tier }
+      });
+    });
+    return { type: 'FeatureCollection', features };
+  }
+
   function pointKind(record) {
     const material = String([
       record && record.target_type, record && record.event_type, record && record.category,
@@ -399,10 +515,11 @@
     return 'military';
   }
 
-  function pointsGeoJSON(records, ia, context) {
+  function pointsGeoJSON(records, ia, context, relatedRecords, excludedRecords) {
     const features = [];
     asArray(records).forEach((record, index) => {
-      const point = ia.MapView.pointFromRecord(record, context.services.locationResolver, asArray(context.relatedRecords));
+      if (excludedRecords && excludedRecords.has(record)) return;
+      const point = ia.MapView.pointFromRecord(record, context.services.locationResolver, asArray(relatedRecords));
       if (!point || !Number.isFinite(Number(point.lat)) || !Number.isFinite(Number(point.lon))) return;
       features.push({
         type: 'Feature',
@@ -411,7 +528,8 @@
         properties: {
           recordIndex: index,
           title: recordTitle(record),
-          kind: pointKind(record)
+          kind: pointKind(record),
+          operationalStatus: String(record && record._visualOperationalStatus || '')
         }
       });
     });
@@ -442,10 +560,10 @@
     return { records, collection: { type: 'FeatureCollection', features } };
   }
 
-  function derivedBounds(points, routes, ia, fallback) {
+  function derivedBounds(points, routes, ia, fallback, imagery) {
     const dummyPoints = points.features.map(feature => ({ point: { lat: feature.geometry.coordinates[1], lon: feature.geometry.coordinates[0] } }));
     const routeRecords = routes.records;
-    const viewport = ia.MapView.deriveMapViewport(dummyPoints, routeRecords, [], [], fallback || [[8, 28], [42, 70]]);
+    const viewport = ia.MapView.deriveMapViewport(dummyPoints, routeRecords, asArray(imagery), [], fallback || [[8, 28], [42, 70]]);
     const bounds = viewport && viewport.bounds || fallback || [[8, 28], [42, 70]];
     return [[Number(bounds[0][1]), Number(bounds[0][0])], [Number(bounds[1][1]), Number(bounds[1][0])]];
   }
@@ -619,6 +737,25 @@
 
   function addPointLayers(map) {
     map.addLayer({
+      id: 'guide-facility-operational-status',
+      type: 'circle',
+      source: 'guide-points',
+      filter: ['!=', ['get', 'operationalStatus'], ''],
+      paint: {
+        'circle-radius': 9,
+        'circle-color': ['match', ['get', 'operationalStatus'],
+          'inoperable', '#d94b4b',
+          'partial', '#e3bf4f',
+          'damaged-operable', '#4f9ed8',
+          'untouched', '#56a86c',
+          '#7d8993'
+        ],
+        'circle-stroke-color': '#080d13',
+        'circle-stroke-width': 2,
+        'circle-opacity': 0.96
+      }
+    });
+    map.addLayer({
       id: 'guide-point-ring', type: 'circle', source: 'guide-points',
       filter: ['==', ['get', 'recordIndex'], -1],
       paint: { 'circle-radius': 12, 'circle-color': '#080d13', 'circle-stroke-color': '#f1f4f7', 'circle-stroke-width': 2.5, 'circle-opacity': 0.9 }
@@ -627,6 +764,51 @@
       id: 'guide-points', type: 'symbol', source: 'guide-points',
       layout: { 'icon-image': ['get', 'kind'], 'icon-size': 0.72, 'icon-allow-overlap': false }
     });
+  }
+
+  function addImageryLayers(map, imagery) {
+    const areas = imageryAreaGeoJSON(imagery);
+    asArray(imagery).forEach((item, index) => {
+      if (!item || item.tier !== 'A' || !item.imageUrl || !item.bounds) return;
+      const south = Number(item.bounds[0][0]), west = Number(item.bounds[0][1]);
+      const north = Number(item.bounds[1][0]), east = Number(item.bounds[1][1]);
+      const sourceId = `guide-imagery-image-${index}`;
+      const layerId = `guide-imagery-raster-${index}`;
+      map.addSource(sourceId, {
+        type: 'image',
+        url: item.imageUrl,
+        coordinates: [[west, north], [east, north], [east, south], [west, south]]
+      });
+      map.addLayer({
+        id: layerId,
+        type: 'raster',
+        source: sourceId,
+        paint: { 'raster-opacity': 0.56 }
+      });
+    });
+    if (areas.features.length) {
+      map.addSource('guide-imagery-areas', { type: 'geojson', data: areas });
+      map.addLayer({
+        id: 'guide-imagery-areas',
+        type: 'fill',
+        source: 'guide-imagery-areas',
+        paint: {
+          'fill-color': ['match', ['get', 'tier'], 'B', '#e4c384', '#79b7df'],
+          'fill-opacity': ['match', ['get', 'tier'], 'B', 0.18, 0.05]
+        }
+      });
+      map.addLayer({
+        id: 'guide-imagery-outlines',
+        type: 'line',
+        source: 'guide-imagery-areas',
+        paint: {
+          'line-color': ['match', ['get', 'tier'], 'B', '#e4c384', '#b9def5'],
+          'line-width': 2,
+          'line-opacity': 0.9
+        }
+      });
+    }
+    return areas;
   }
 
   function evidenceDrawer(context, item, ia, options) {
@@ -647,15 +829,15 @@
       : 'Selected location');
     append(article, 'h3', '', type === 'route' ? String(item.name || item.id || item.route_id || 'Route') : recordTitle(item));
     append(article, 'p', '', type === 'route'
-      ? String(item.note || item.description || 'The accepted route geometry is shown without adding inferred segments.')
+      ? String(item.note || item.description || 'Only accepted route geometry is shown.')
       : recordSummary(item));
     if (type === 'route') {
       const mode = String(item.mode || '').toLowerCase();
       append(article, 'p', 'map-card-meta', mode === 'maritime'
         ? 'Schematic · not live vessel tracking.'
         : mode === 'pipeline'
-          ? 'Schematic · not a surveyed pipeline alignment or targeting-quality geometry.'
-          : 'Schematic · not exact rail alignment, live movement, or targeting-quality geometry.');
+          ? 'Schematic pipeline route; not targeting data.'
+          : 'Schematic rail route; not live movement or targeting data.');
       const meta = append(article, 'p', 'record-status', [item.mode, item.authority_class].filter(Boolean).join(' · '));
       if (!meta.textContent) meta.remove();
       const sources = routeSources(item);
@@ -668,7 +850,7 @@
         const facts = append(article, 'dl', 'visualization-distinction-facts');
         if (physical) { append(facts, 'dt', '', 'Physical damage'); append(facts, 'dd', '', String(physical)); }
         if (operational) { append(facts, 'dt', '', 'Operational effect'); append(facts, 'dd', '', String(operational)); }
-        append(article, 'p', 'map-card-meta', 'Physical damage and operational effect are separate evidentiary dimensions.');
+        append(article, 'p', 'map-card-meta', 'Physical damage and operational effect are separate.');
       }
       const drawer = evidenceDrawer(context, item, ia);
       if (drawer) article.append(drawer);
@@ -745,20 +927,20 @@
     if (modes.has('maritime')) entries.push(['━', 'Maritime · schematic']);
     if (modes.has('pipeline')) entries.push(['┄', 'Pipeline · schematic']);
     if (modes.has('rail')) entries.push(['┈', 'Rail · schematic']);
-    if (!modes.size) entries.push(['━', 'Accepted route']);
+    if (!modes.size) entries.push(['━', 'Route']);
     entries.forEach(([mark, label]) => {
       const item = append(legend, 'span', 'visualization-legend-item');
       append(item, 'b', '', mark); append(item, 'span', '', label);
     });
   }
 
-  function appendTextEquivalent(section, context, records, routes, ia) {
+  function appendTextEquivalent(section, context, records, routes, ia, relatedRecords, imagery) {
     const equivalent = append(section, 'details');
     equivalent.dataset.phase5MapEquivalent = 'locations';
     equivalent.dataset.phase6MapEquivalent = 'geography';
     const mapped = [];
     asArray(records).forEach(record => {
-      const point = ia.MapView.pointFromRecord(record, context.services.locationResolver, asArray(context.relatedRecords));
+      const point = ia.MapView.pointFromRecord(record, context.services.locationResolver, asArray(relatedRecords));
       if (point && Number.isFinite(Number(point.lat)) && Number.isFinite(Number(point.lon))) mapped.push({ record, point });
     });
     append(equivalent, 'summary', '', `Text equivalent for this map (${mapped.length} locations)`);
@@ -766,7 +948,17 @@
     mapped.forEach(item => append(list, 'li', '', `${String(item.point.label || recordTitle(item.record))} · ${String(item.point.precision || 'recorded location')} · ${recordTitle(item.record)}`));
     asArray(routes).forEach(route => {
       const authority = String(route.authority_class || '').replaceAll('_', ' ').toLowerCase();
-      append(list, 'li', '', `${String(route.name || route.id || route.route_id || 'Route')} · ${authority || 'accepted route'} · ${String(route.note || route.description || '')}`.trim());
+      append(list, 'li', '', `${String(route.name || route.id || route.route_id || 'Route')} · ${authority || 'route'} · ${String(route.note || route.description || '')}`.trim());
+    });
+    asArray(imagery).forEach(item => {
+      const placement = item.tier === 'A'
+        ? 'image available at mapped location'
+        : item.tier === 'B'
+          ? 'mapped site footprint'
+          : item.tier === 'C'
+            ? 'location confirmed; source links available'
+            : 'source links available; location not confirmed';
+      append(list, 'li', '', `${item.evidenceRecord && item.evidenceRecord.observation_id ? 'Physical damage observation' : String(item.record && item.record.imagery_type || 'Imagery evidence')} · ${recordTitle(item.evidenceRecord)} · ${placement}${item.point ? ` · ${item.point.label} · ${item.point.precision}` : ''}`);
     });
     return equivalent;
   }
@@ -807,11 +999,15 @@
     selection.setAttribute('aria-live', 'polite');
     const records = asArray(options && options.records);
     const routes = asArray(options && options.routes);
+    const relatedRecords = asArray(options && options.relatedRecords);
+    const imagery = options && options.imagery ? imageryDescriptors(records, ia, context, relatedRecords) : [];
+    const overlayRecords = new Set(imagery.filter(item => item.tier === 'A' || item.tier === 'B').map(item => item.evidenceRecord));
     createLegend(section, routes);
     const recordIndexByKey = new Map();
     records.forEach((record, index) => recordKeys(record).forEach(key => recordIndexByKey.set(key, index)));
     let focusRecordByIndex = null;
     let pendingFocusKey = '';
+    let pendingFocusIndex = -1;
     section._atlasHasRecord = value => {
       const keys = typeof value === 'string' ? [value] : recordKeys(value);
       return keys.some(key => recordIndexByKey.has(String(key)));
@@ -825,21 +1021,44 @@
       return true;
     };
     section.dataset.mapSelectableRecords = String(recordIndexByKey.size);
-    const points = pointsGeoJSON(records, ia, context);
+    const points = pointsGeoJSON(records, ia, context, relatedRecords, overlayRecords);
     const routeData = routesGeoJSON(routes, ia);
     const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
     const fallbackLatLon = options && (options.viewportOverride || options.fallbackViewport) || [[8, 28], [42, 70]];
-    const theaterBounds = derivedBounds(points, routeData, ia, fallbackLatLon);
+    const theaterBounds = derivedBounds(points, routeData, ia, fallbackLatLon, imagery);
     const publicBounds = [[theaterBounds[0][1], theaterBounds[0][0]], [theaterBounds[1][1], theaterBounds[1][0]]];
     section.dataset.mapExtentSource = points.features.length || routeData.collection.features.length ? 'visible-records' : 'deterministic-fallback';
     section.dataset.mapBounds = JSON.stringify(publicBounds);
     section.dataset.mapRouteModes = unique(routes.map(route => String(route.mode || '').toLowerCase())).sort().join(',');
     section.dataset.mapRouteCount = String(routeData.collection.features.length);
     section.dataset.mapPointCount = String(points.features.length);
-    appendTextEquivalent(section, context, records, routes, ia);
+    section.dataset.mapImageryOverlayCount = String(imagery.filter(item => item.tier === 'A').length);
+    section.dataset.mapImageryFootprintCount = String(imagery.filter(item => item.tier === 'B').length);
+    section.dataset.mapImageryLocationCount = String(imagery.filter(item => item.tier === 'C').length);
+    appendTextEquivalent(section, context, records, routes, ia, relatedRecords, imagery);
     addRouteSelectionControls(section, routeData.records, selection, context, ia);
-    if (routes.length) append(section, 'p', 'map-mode-boundary', 'Strategic corridor diagrams are schematic: maritime lines are not live vessel tracking, pipeline lines are not surveyed alignments, and rail lines are not exact track alignments or live movements.');
-    append(section, 'small', 'map-caveat', 'Locations follow the evidence record · routes are schematic · not live tracking, surveyed alignment, targeting, or navigation data');
+    if (imagery.length) {
+      const imageryControls = append(section, 'div', 'map-imagery-controls');
+      append(imageryControls, 'p', 'map-control-label', imagery.length > 1 ? 'Imagery and damage records shown' : 'Imagery or damage record');
+      imagery.forEach(item => {
+        const index = records.indexOf(item.evidenceRecord);
+        const button = append(imageryControls, 'button', 'map-imagery-button', imageryControlLabel(item));
+        button.type = 'button';
+        const stableKey = recordKeys(item.evidenceRecord)[0];
+        if (stableKey) button.dataset.imageryRecordId = stableKey;
+        button.dataset.imageryTier = item.tier;
+        button.addEventListener('click', () => {
+          if (!focusRecordByIndex) {
+            pendingFocusIndex = index;
+            renderSelection(selection, context, ia, item.evidenceRecord, 'record');
+            return;
+          }
+          focusRecordByIndex(index);
+        });
+      });
+    }
+    if (routes.length) append(section, 'p', 'map-mode-boundary', 'Routes are schematic, not live tracking or exact surveyed alignments.');
+    append(section, 'small', 'map-caveat', 'Locations follow the record · routes are schematic, not live tracking or navigation data');
 
     Promise.resolve().then(async () => {
       try {
@@ -870,6 +1089,7 @@
           map.addSource('guide-points', { type: 'geojson', data: points });
           addReferenceLayers(map);
           if (routeData.collection.features.length) addRouteLayers(map);
+          if (imagery.length) addImageryLayers(map, imagery);
           if (points.features.length) { addMarkerImages(map, documentObject); addPointLayers(map); }
           section._atlasMapLibreLabels = addProgressiveLabels(map, capability.maplibregl, documentObject, geography, options && options.contextLabels);
 
@@ -881,20 +1101,31 @@
             if (map.getLayer('guide-route-selected')) map.setFilter('guide-route-selected', ['==', ['get', 'routeId'], '__none__']);
             if (map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], -1]);
           };
+          const clearReadableSelection = () => {
+            clearSelections();
+            renderSelection(selection, context, ia, null, '');
+            section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'reset', record: null } }));
+          };
+          section.addEventListener('keydown', event => {
+            if (event.key !== 'Escape' || selection.hidden) return;
+            event.preventDefault();
+            clearReadableSelection();
+          });
           focusRecordByIndex = index => {
             if (!Number.isInteger(index) || index < 0 || index >= records.length) return;
             const feature = points.features.find(candidate => Number(candidate.properties.recordIndex) === index);
-            if (!feature) return;
             clearSelections();
-            map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], index]);
+            if (feature && map.getLayer('guide-point-ring')) map.setFilter('guide-point-ring', ['==', ['get', 'recordIndex'], index]);
             renderSelection(selection, context, ia, records[index], 'record');
             section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'record', recordIndex: index, record: records[index] } }));
-            map.easeTo({ center: feature.geometry.coordinates, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
-            viewport.focus();
+            if (feature) map.easeTo({ center: feature.geometry.coordinates, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
           };
           if (pendingFocusKey && recordIndexByKey.has(pendingFocusKey)) {
             focusRecordByIndex(recordIndexByKey.get(pendingFocusKey));
             pendingFocusKey = '';
+          } else if (pendingFocusIndex >= 0) {
+            focusRecordByIndex(pendingFocusIndex);
+            pendingFocusIndex = -1;
           }
           if (routeData.records.length) {
             map.on('click', 'guide-routes', event => {
@@ -909,6 +1140,18 @@
             map.on('mouseenter', 'guide-routes', () => { map.getCanvas().style.cursor = 'pointer'; });
             map.on('mouseleave', 'guide-routes', () => { map.getCanvas().style.cursor = ''; });
           }
+          if (imageryAreaGeoJSON(imagery).features.length) {
+            map.on('click', 'guide-imagery-areas', event => {
+              const feature = event.features && event.features[0];
+              if (!feature) return;
+              const item = imagery[Number(feature.properties.imageryIndex)];
+              if (!item) return;
+              const index = records.indexOf(item.evidenceRecord);
+              focusRecordByIndex(index);
+            });
+            map.on('mouseenter', 'guide-imagery-areas', () => { map.getCanvas().style.cursor = 'pointer'; });
+            map.on('mouseleave', 'guide-imagery-areas', () => { map.getCanvas().style.cursor = ''; });
+          }
           if (points.features.length) {
             map.on('click', 'guide-points', event => {
               const feature = event.features && event.features[0];
@@ -921,17 +1164,13 @@
             map.on('mouseleave', 'guide-points', () => { map.getCanvas().style.cursor = ''; });
           }
           section._atlasReset = () => {
-            clearSelections();
-            renderSelection(selection, context, ia, null, '');
+            clearReadableSelection();
             map.fitBounds(theaterBounds, { padding: 48, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
-            section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'reset', record: null } }));
           };
           map.on('click', event => {
-            const features = map.queryRenderedFeatures(event.point, { layers: ['guide-points', 'guide-routes'].filter(id => map.getLayer(id)) });
+            const features = map.queryRenderedFeatures(event.point, { layers: ['guide-points', 'guide-routes', 'guide-imagery-areas'].filter(id => map.getLayer(id)) });
             if (features.length) return;
-            clearSelections();
-            renderSelection(selection, context, ia, null, '');
-            section.dispatchEvent(new CustomEvent('guide:map-selection', { bubbles: true, detail: { type: 'reset', record: null } }));
+            clearReadableSelection();
           });
 
           status.remove();
@@ -972,6 +1211,38 @@
     return [west, south, east, north].every(Number.isFinite) ? [[west, south], [east, north]] : null;
   }
 
+  function relationshipGeoJSON(relationships, resolved) {
+    const byName = new Map(resolved.map(row => [normalizedGeographyName(row.region && row.region.name), row]));
+    const accepted = [];
+    const features = [];
+    asArray(relationships).forEach((relationship, index) => {
+      const fromRow = byName.get(normalizedGeographyName(relationship && relationship.from));
+      const toRow = byName.get(normalizedGeographyName(relationship && relationship.to));
+      if (!fromRow || !toRow) return;
+      const from = geometryCenter(fromRow.feature);
+      const to = geometryCenter(toRow.feature);
+      if (!from || !to) return;
+      const recordIndex = accepted.length;
+      accepted.push(relationship);
+      features.push({
+        type: 'Feature',
+        id: index,
+        geometry: { type: 'LineString', coordinates: [from, to] },
+        properties: {
+          recordIndex,
+          relationshipId: String(relationship.relationshipId || relationship.id || `REL-${index + 1}`),
+          relationClass: String(relationship.relationClass || 'agreement'),
+          sourceType: String(relationship.sourceType || relationship.type || ''),
+          label: String(relationship.label || 'Relationship'),
+          from: String(relationship.from || ''),
+          to: String(relationship.to || ''),
+          status: String(relationship.status || '')
+        }
+      });
+    });
+    return { records: accepted, collection: { type: 'FeatureCollection', features } };
+  }
+
   function createRegionMap(context, options) {
     const documentObject = context.documentObject;
     const section = element(documentObject, 'section', 'context-map guide-visualization guide-region-map');
@@ -985,6 +1256,7 @@
 
     const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
     const regions = asArray(options && options.regions);
+    const relationships = asArray(options && options.relationships);
     const regionalFeatures = asArray(geography && geography.features).filter(feature => feature && feature.properties && feature.properties.layer === 'regional_50m');
     const featureByName = new Map(regionalFeatures.map(feature => [normalizedGeographyName(feature.properties.name), feature]));
     const resolved = regions.map(region => {
@@ -1002,11 +1274,16 @@
         }
       };
     }).filter(Boolean);
+    const relationshipData = relationshipGeoJSON(relationships, resolved);
+    section.dataset.relationshipCount = String(relationshipData.collection.features.length);
+    section.dataset.relationshipTypes = Array.from(new Set(relationshipData.records.map(item => String(item.sourceType || item.type || '')).filter(Boolean))).sort().join(',');
+    section.dataset.relationshipClasses = Array.from(new Set(relationshipData.records.map(item => String(item.relationClass || 'agreement')))).sort().join(',');
+    section.dataset.mapCountries = resolved.map(row => String(row.region.name || '')).filter(Boolean).join(',');
 
     const shell = append(section, 'div', 'visualization-shell');
     const viewport = append(shell, 'div', 'atlas-maplibre-map');
     viewport.setAttribute('role', 'region');
-    viewport.setAttribute('aria-label', options && options.ariaLabel || 'Selectable accepted state geography');
+    viewport.setAttribute('aria-label', options && options.ariaLabel || 'Selectable state geography');
     viewport.tabIndex = 0;
     const status = append(viewport, 'div', 'visualization-local-state', 'Preparing state geography…');
     status.setAttribute('role', 'status');
@@ -1018,22 +1295,29 @@
     reset.type = 'button';
 
     const equivalent = append(section, 'details', 'visualization-text-equivalent');
+    equivalent.dataset.phase5MapEquivalent = 'locations';
+    equivalent.dataset.phase6MapEquivalent = 'geography';
     append(equivalent, 'summary', '', `Text equivalent for mapped state actors (${resolved.length})`);
     const list = append(equivalent, 'ul');
     resolved.forEach(({ region }) => append(list, 'li', '', String(region.name)));
+    relationshipData.records.forEach(relationship => append(list, 'li', '', `${String(relationship.label || 'Relationship')} · ${String(relationship.from || '')} → ${String(relationship.to || '')} · ${String(relationship.status || relationship.sourceType || '')}`.trim()));
     const unmatched = regions.filter(region => !resolved.some(row => row.region.actorId === region.actorId));
-    if (unmatched.length) append(equivalent, 'p', 'section-note', `${unmatched.length} accepted state actor${unmatched.length === 1 ? '' : 's'} remain in the canonical index because the signed regional reference layer does not contain an exact matching state geometry.`);
+    if (unmatched.length) append(equivalent, 'p', 'section-note', `${unmatched.length} state${unmatched.length === 1 ? '' : 's'} ${unmatched.length === 1 ? 'is' : 'are'} listed but not shown because this map has no matching state shape.`);
 
     const resolvedById = new Map(resolved.map(row => [String(row.region.actorId), row]));
     let focusRegion = actorId => {
       section.dataset.pendingRegion = String(actorId || '');
     };
+    let setRelationshipType = type => {
+      section.dataset.pendingRelationshipType = String(type || '');
+    };
     section._atlasHasRegion = actorId => resolvedById.has(String(actorId || ''));
     section._atlasFocusRegion = actorId => focusRegion(String(actorId || ''));
+    section._atlasSetRelationshipType = type => setRelationshipType(String(type || ''));
 
     Promise.resolve().then(async () => {
       try {
-        if (!geography || !resolved.length) throw new Error('No exact accepted state geography is available for this actor set.');
+        if (!geography || !resolved.length) throw new Error('No accepted state geography is available for this actor set.');
         const capability = await loadMapLibre(documentObject, context.windowObject || root);
         if (!section.isConnected) return;
         const map = new capability.maplibregl.Map({
@@ -1077,12 +1361,37 @@
             filter: ['==', ['get', 'actorId'], '__none__'],
             paint: { 'line-color': '#f1f4f7', 'line-width': 4, 'line-opacity': 1 }
           });
+          if (relationshipData.collection.features.length) {
+            map.addSource('guide-regional-relationships', { type: 'geojson', data: relationshipData.collection });
+            map.addLayer({
+              id: 'guide-regional-relationships',
+              type: 'line',
+              source: 'guide-regional-relationships',
+              paint: {
+                'line-color': ['match', ['get', 'relationClass'], 'mediation', '#e4c384', 'proposal', '#aab5bf', '#79b7df'],
+                'line-width': ['match', ['get', 'relationClass'], 'agreement', 3.1, 'mediation', 2.5, 2.1],
+                'line-opacity': 0.94,
+                'line-dasharray': ['match', ['get', 'relationClass'], 'mediation', ['literal', [4, 2]], 'proposal', ['literal', [1, 2]], ['literal', [1, 0]]]
+              }
+            });
+            map.addLayer({
+              id: 'guide-regional-relationship-selected',
+              type: 'line',
+              source: 'guide-regional-relationships',
+              filter: ['==', ['get', 'relationshipId'], '__none__'],
+              paint: { 'line-color': '#f1f4f7', 'line-width': 5, 'line-opacity': 1 }
+            });
+          }
 
           const bounds = featureCoordinateBounds(resolved.map(row => row.feature));
-          if (bounds) map.fitBounds(bounds, { padding: 42, duration: 0 });
+          if (bounds) {
+            section.dataset.mapBounds = JSON.stringify([[bounds[0][1], bounds[0][0]], [bounds[1][1], bounds[1][0]]]);
+            map.fitBounds(bounds, { padding: 42, duration: 0 });
+          }
 
           const clear = () => {
             if (map.getLayer('guide-actor-region-selected')) map.setFilter('guide-actor-region-selected', ['==', ['get', 'actorId'], '__none__']);
+            if (map.getLayer('guide-regional-relationship-selected')) map.setFilter('guide-regional-relationship-selected', ['==', ['get', 'relationshipId'], '__none__']);
             selection.hidden = true;
             selection.replaceChildren();
           };
@@ -1090,17 +1399,27 @@
             const row = resolvedById.get(String(actorId || ''));
             if (!row) return;
             map.setFilter('guide-actor-region-selected', ['==', ['get', 'actorId'], String(actorId)]);
+            if (map.getLayer('guide-regional-relationship-selected')) map.setFilter('guide-regional-relationship-selected', ['==', ['get', 'relationshipId'], '__none__']);
             selection.replaceChildren();
             selection.hidden = false;
             const card = append(selection, 'article', 'visualization-selection');
-            append(card, 'p', 'card-kicker', 'ACCEPTED STATE ACTOR');
+            append(card, 'p', 'card-kicker', 'STATE');
             append(card, 'h3', '', String(row.region.name));
-            append(card, 'p', '', 'The shaded area is the accepted state geography from the signed reference layer. It is not a point location for a person, unit, or non-state group.');
+            append(card, 'p', '', 'Shading shows state geography, not a person, unit, or group location.');
             const rowBounds = featureCoordinateBounds([row.feature]);
             if (rowBounds) map.fitBounds(rowBounds, { padding: 54, maxZoom: 5, duration: reducedMotion(context.windowObject || root) ? 0 : 320 });
             section.dispatchEvent(new CustomEvent('guide:region-select', { bubbles: true, detail: { actorId: String(actorId) } }));
           };
           section._atlasFocusRegion = actorId => focusRegion(String(actorId || ''));
+          setRelationshipType = type => {
+            const value = String(type || '');
+            section.dataset.relationshipFilter = value;
+            if (!map.getLayer('guide-regional-relationships')) return;
+            const filter = value ? ['==', ['get', 'sourceType'], value] : null;
+            map.setFilter('guide-regional-relationships', filter);
+            if (map.getLayer('guide-regional-relationship-selected')) map.setFilter('guide-regional-relationship-selected', ['==', ['get', 'relationshipId'], '__none__']);
+          };
+          section._atlasSetRelationshipType = type => setRelationshipType(String(type || ''));
           reset.addEventListener('click', () => {
             clear();
             if (bounds) map.fitBounds(bounds, { padding: 42, duration: reducedMotion(context.windowObject || root) ? 0 : 260 });
@@ -1111,18 +1430,43 @@
           });
           map.on('mouseenter', 'guide-actor-regions', () => { map.getCanvas().style.cursor = 'pointer'; });
           map.on('mouseleave', 'guide-actor-regions', () => { map.getCanvas().style.cursor = ''; });
+          if (map.getLayer('guide-regional-relationships')) {
+            map.on('click', 'guide-regional-relationships', event => {
+              const feature = event.features && event.features[0];
+              if (!feature) return;
+              const relationship = relationshipData.records[Number(feature.properties.recordIndex)];
+              if (!relationship) return;
+              map.setFilter('guide-regional-relationship-selected', ['==', ['get', 'relationshipId'], String(feature.properties.relationshipId || '')]);
+              map.setFilter('guide-actor-region-selected', ['==', ['get', 'actorId'], '__none__']);
+              selection.replaceChildren();
+              selection.hidden = false;
+              const card = append(selection, 'article', 'visualization-selection');
+              append(card, 'p', 'card-kicker', String(relationship.relationClass || 'agreement').toUpperCase());
+              append(card, 'h3', '', String(relationship.label || 'Relationship'));
+              append(card, 'p', '', `${String(relationship.from || '')} → ${String(relationship.to || '')}`);
+              if (relationship.status) append(card, 'p', 'record-status', String(relationship.status));
+              const drawer = evidenceDrawer(context, relationship, root.AtlasPublicIA);
+              if (drawer && asArray(relationship.source_ids).length) card.append(drawer);
+              section.dispatchEvent(new CustomEvent('guide:relationship-select', { bubbles: true, detail: { relationship } }));
+            });
+            map.on('mouseenter', 'guide-regional-relationships', () => { map.getCanvas().style.cursor = 'pointer'; });
+            map.on('mouseleave', 'guide-regional-relationships', () => { map.getCanvas().style.cursor = ''; });
+          }
           map.on('click', event => {
-            const features = map.queryRenderedFeatures(event.point, { layers: ['guide-actor-regions'] });
+            const layers = ['guide-actor-regions', 'guide-regional-relationships'].filter(id => map.getLayer(id));
+            const features = map.queryRenderedFeatures(event.point, { layers });
             if (!features.length) clear();
           });
           status.remove();
           viewport.dataset.mapState = 'ready';
+          const pendingType = section.dataset.pendingRelationshipType;
+          if (pendingType) setRelationshipType(pendingType);
           const pending = section.dataset.pendingRegion;
           if (pending && resolvedById.has(pending)) focusRegion(pending);
         });
       } catch (error) {
         if (!section.isConnected) return;
-        status.textContent = 'Interactive state geography unavailable; the canonical actor index remains available below.';
+        status.textContent = 'Map unavailable; the actor list remains below.';
         section.dataset.mapState = 'fallback';
         section.dataset.maplibreFailure = String(error && error.message || 'MapLibre unavailable');
       }
@@ -1136,6 +1480,7 @@
     create,
     createRegionMap,
     createCategoryBars,
+    createTimeSeries,
     createEventDensity,
     loadMapLibre,
     loadECharts

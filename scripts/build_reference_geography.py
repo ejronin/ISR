@@ -43,7 +43,7 @@ REGIONAL_COUNTRIES = {
 }
 HORMUZ_COUNTRIES = {"Bahrain", "Iran", "Oman", "Qatar", "Saudi Arabia", "United Arab Emirates"}
 REGIONAL_BBOX = [2.0, -2.0, 110.0, 57.0]
-WESTERN_CONTEXT_BBOX = [-90.0, -5.0, 15.0, 65.0]
+WESTERN_CONTEXT_BBOX = [-90.0, -5.0, 110.0, 65.0]
 REFERENCE_BBOX = [-90.0, -5.0, 110.0, 65.0]
 HORMUZ_BBOX = [50.8, 22.4, 60.8, 28.9]
 REFERENCE_LABELS = [
@@ -157,7 +157,7 @@ def rounded_ring(ring: list[list[float]], digits: int = 4) -> list[list[float]]:
     return output if len(output) >= 4 else []
 
 
-def ecmascript_round(value: float, digits: int = 5) -> float:
+def ecmascript_round(value: float, digits: int = 4) -> float:
     """Match Math.round(value * 10**digits) / 10**digits for generated context land."""
     factor = 10 ** digits
     return math.floor(value * factor + 0.5) / factor

@@ -2,7 +2,7 @@
 
 Current public maps use checked-in, deterministic Natural Earth version 5.1.1 reference geography. Natural Earth data is public domain.
 
-- `western_context_110m` supplies lightweight filled land west to the U.S. East Coast for wide connected-conflict maps at 1:110m.
+- `western_context_110m` supplies lightweight continuous filled land across the full wide-map reference extent, from the U.S. East Coast through the Iran/Asia theater, at 1:110m. Higher-resolution regional layers overlay it where available.
 - `regional_50m` contains the countries needed for the Gulf, Iran, Iraq, Red Sea, and nearby context at 1:50m.
 - `hormuz_10m` is clipped to the Strait of Hormuz and adjacent Gulf/Gulf of Oman coast at 1:10m.
 - The build strips analytical and demographic attributes. It retains only country name, ISO identifier, source scale, and presentation-layer identity.

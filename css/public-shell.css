@@ -4179,3 +4179,401 @@ tbody tr:last-child td { border-bottom: 0; }
     animation-duration: 0s !important;
   }
 }
+
+
+/* Phase 2 composition and spacing review — issue #283 */
+.visualization-shell:has(.visualization-selection-rail:not([hidden])) {
+  grid-template-columns: minmax(0, 1.75fr) minmax(24rem, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.visualization-selection-rail {
+  min-width: 24rem;
+  max-height: none;
+  overflow: visible;
+  padding-inline-start: clamp(1rem, 1.5vw, 1.35rem);
+}
+.visualization-selection-rail .evidence-layer-list,
+.visualization-selection-rail .evidence-role-definitions {
+  grid-template-columns: minmax(7rem, 8rem) minmax(0, 1fr);
+}
+.visualization-selection-rail .evidence-layer-list dd,
+.visualization-selection-rail .evidence-role-definitions dd,
+.visualization-selection-rail .evidence-drawer-body,
+.visualization-selection-rail .source-link-list {
+  min-width: 0;
+}
+.diplomacy-track-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.diplomacy-track-table th,
+.diplomacy-track-table td {
+  padding: .7rem .75rem;
+  border-top: 1px solid var(--border-subtle);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+.diplomacy-track-table thead th {
+  color: var(--text-secondary);
+  font-size: .72rem;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+.diplomacy-track-table tbody th {
+  min-width: 12rem;
+  color: var(--text-primary);
+}
+.regional-relationship-controls,
+.negotiation-issue-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: end;
+  margin: .8rem 0 1rem;
+}
+.regional-relationship-controls label,
+.negotiation-issue-controls label {
+  display: grid;
+  min-width: min(100%, 20rem);
+  gap: .35rem;
+  color: var(--text-secondary);
+  font-size: .76rem;
+  font-weight: 700;
+}
+.regional-relationship-controls select,
+.negotiation-issue-controls select {
+  min-height: 2.75rem;
+  padding: .55rem .65rem;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+  color: var(--text-primary);
+}
+.negotiation-answer {
+  border-left: 4px solid var(--atlas-warning, #e9bf69);
+}
+.negotiation-answer-status {
+  color: var(--atlas-warning, #e9bf69) !important;
+  background: rgb(233 191 105 / 8%);
+  border-left-color: var(--atlas-warning, #e9bf69);
+}
+.negotiation-lane-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+}
+.negotiation-lane {
+  min-width: 0;
+  padding: .9rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+}
+.negotiation-lane p { line-height: 1.55; }
+.negotiation-lane-baseline { grid-column: 1 / -1; }
+.negotiation-lane-baseline small {
+  display: block;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 1180px) {
+  .visualization-shell:has(.visualization-selection-rail:not([hidden])) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .visualization-selection-rail {
+    min-width: 0;
+    padding-inline-start: 0;
+    padding-top: var(--space-4);
+    border-inline-start: 0;
+    border-top: 1px solid var(--border-divider);
+  }
+}
+
+@media (max-width: 760px) {
+  .diplomacy-track-table,
+  .diplomacy-track-table tbody,
+  .diplomacy-track-table tr,
+  .diplomacy-track-table th,
+  .diplomacy-track-table td {
+    display: block;
+    width: 100%;
+  }
+  .diplomacy-track-table thead { display: none; }
+  .diplomacy-track-table tr {
+    padding: .75rem 0;
+    border-top: 1px solid var(--border-divider);
+  }
+  .diplomacy-track-table th,
+  .diplomacy-track-table td {
+    padding: .25rem 0;
+    border: 0;
+  }
+  .negotiation-lane-grid { grid-template-columns: minmax(0, 1fr); }
+  .negotiation-lane-baseline { grid-column: auto; }
+}
+
+
+/* Phase 2 analytical workspaces: imagery review + regional diplomacy */
+.imagery-selected-section {
+  display: grid;
+  gap: var(--space-4);
+}
+.imagery-review-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(20rem, .8fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
+}
+.imagery-selected-plate {
+  display: grid;
+  min-width: 0;
+  min-height: 24rem;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+}
+.imagery-selected-image {
+  display: block;
+  width: 100%;
+  max-height: 44rem;
+  object-fit: contain;
+  background: var(--canvas);
+}
+.imagery-preview-unavailable {
+  display: grid;
+  min-height: 22rem;
+  place-content: center;
+  gap: .55rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  color: var(--text-secondary);
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgb(121 183 223 / 6%), transparent 55%),
+    var(--surface-1);
+}
+.imagery-preview-unavailable strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+.imagery-preview-unavailable p {
+  max-width: 48ch;
+  margin: 0;
+  line-height: 1.55;
+}
+.imagery-selected-plate figcaption {
+  padding: .7rem .85rem;
+  border-top: 1px solid var(--border-divider);
+  color: var(--text-secondary);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+.imagery-selected-detail {
+  min-width: 0;
+}
+.imagery-selected-detail > .record-card {
+  margin: 0;
+}
+.imagery-filmstrip {
+  display: flex;
+  gap: .6rem;
+  overflow-x: auto;
+  padding: .15rem .05rem .55rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+.imagery-filmstrip-button {
+  display: grid;
+  flex: 0 0 min(20rem, 78vw);
+  min-height: 7rem;
+  align-content: start;
+  gap: .25rem;
+  padding: .75rem .8rem;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+.imagery-filmstrip-button:hover {
+  border-color: var(--border-strong);
+}
+.imagery-filmstrip-button[aria-pressed="true"] {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgb(121 183 223 / 16%);
+}
+.imagery-filmstrip-button:focus-visible {
+  outline: 3px solid var(--accent-blue-strong);
+  outline-offset: 2px;
+}
+.imagery-filmstrip-button .card-kicker {
+  margin: 0 !important;
+}
+.imagery-filmstrip-button strong {
+  line-height: 1.35;
+}
+.imagery-filmstrip-button small {
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+.visualization-select-control {
+  display: grid;
+  min-width: min(18rem, 100%);
+  gap: .3rem;
+  color: var(--text-secondary);
+  font-size: .72rem;
+  font-weight: 720;
+}
+.visualization-select-control select {
+  min-height: 2.75rem;
+  padding: .45rem .65rem;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+  color: var(--text-primary);
+}
+.regional-relationship-legend [data-relationship-class="agreement"] b {
+  letter-spacing: -.08em;
+}
+.regional-relationship-legend [data-relationship-class="mediation"] b,
+.regional-relationship-legend [data-relationship-class="proposal"] b {
+  letter-spacing: .08em;
+}
+
+@media (max-width: 980px) {
+  .imagery-review-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .imagery-selected-plate {
+    min-height: 18rem;
+    margin-inline: calc(-1 * var(--guide-edge));
+    border-inline: 0;
+    border-radius: 0;
+  }
+  .imagery-preview-unavailable {
+    min-height: 18rem;
+  }
+  .imagery-filmstrip {
+    margin-inline: calc(-1 * var(--guide-edge));
+    padding-inline: var(--guide-edge);
+  }
+}
+
+
+/* Phase 2 owner review — preserve one-map analytical canvases */
+.guide-region-map > .visualization-shell,
+.guide-maplibre-view > .visualization-shell {
+  min-width: 0;
+}
+.guide-region-map .atlas-maplibre-map,
+.guide-maplibre-view .atlas-maplibre-map {
+  width: 100%;
+  min-width: 0;
+}
+.imagery-selected-plate[hidden] {
+  display: none !important;
+}
+
+
+/* Diplomacy track timeline disclosure */
+.diplomacy-track-detail-row > td {
+  padding: 0 0 .8rem;
+  border-top: 0;
+}
+.diplomacy-track-disclosure {
+  margin: 0 .75rem;
+  padding: .65rem .8rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.diplomacy-track-disclosure > summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.diplomacy-track-sequence {
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  align-items: stretch;
+  margin-top: .85rem;
+}
+.diplomacy-track-sequence .story-step {
+  grid-template-columns: 1fr;
+  align-content: start;
+}
+@media (max-width: 760px) {
+  .diplomacy-track-detail-row {
+    padding-top: 0 !important;
+  }
+  .diplomacy-track-detail-row > td {
+    padding-bottom: .85rem;
+  }
+  .diplomacy-track-disclosure {
+    margin: 0;
+  }
+  .diplomacy-track-sequence {
+    grid-template-columns: 1fr;
+  }
+  .diplomacy-track-sequence .story-step {
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+  }
+}
+
+
+/* Regional diplomacy actor/flag roster */
+.regional-actor-roster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: .7rem 0;
+}
+.regional-actor-identity {
+  min-width: 0;
+  padding: .45rem .6rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+}
+.regional-actor-identity:hover {
+  border-color: var(--border-strong);
+}
+.regional-actor-identity:focus-visible {
+  outline: 3px solid var(--accent-blue-strong);
+  outline-offset: 2px;
+}
+
+
+/* Facility operational-state legend requested in Phase 2 owner review */
+.facility-operational-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem .9rem;
+  margin: .7rem 0 1rem;
+}
+.facility-operational-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  color: var(--text-secondary);
+  font-size: .78rem;
+}
+.facility-operational-swatch {
+  width: .72rem;
+  height: .72rem;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 999px;
+}
+.facility-operational-swatch[data-facility-operational-status="inoperable"] { background: #d94b4b; }
+.facility-operational-swatch[data-facility-operational-status="partial"] { background: #e3bf4f; }
+.facility-operational-swatch[data-facility-operational-status="damaged-operable"] { background: #4f9ed8; }
+.facility-operational-swatch[data-facility-operational-status="untouched"] { background: #56a86c; }

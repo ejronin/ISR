@@ -61,7 +61,7 @@
     'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics']),
     'hormuz.sanctions': freezeContract('hormuz_economy', ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology']),
     'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'analysis.hormuz']),
-    'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy']),
+    'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy', 'current.chronology', 'analysis.hormuz']),
     'talks.mou': freezeContract('diplomacy_mou', ['analysis.hormuz', 'analysis.endgame_public_view']),
     'talks.nuclear': freezeContract('diplomacy_mou', ['analysis.iran_messaging', 'analysis.endgame_public_view']),
     'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements', 'gate3.agreements']),

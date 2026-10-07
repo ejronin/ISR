@@ -186,19 +186,21 @@ async function route(cdp, hash, key) {
       open: document.querySelectorAll('[data-imagery-summary][open]').length,
       identities: document.querySelectorAll('[data-imagery-summary] > summary [data-actor-name]').length,
       unresolvedDates: [...document.querySelectorAll('[data-map-imagery-control]')].filter(node => /Date unresolved/i.test(node.innerText)).length,
-      map: Boolean(document.querySelector('[data-component="MapView"] .leaflet-container'))
+      map: Boolean(document.querySelector('[data-component="MapLibreView"] .atlas-maplibre-map, [data-component="MapView"] .leaflet-container')),
+      mapRenderer: document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]')?.dataset.mapRenderer || ''
     }))()`);
     assert(imagery.summaries > 0 && imagery.open === 0, 'imagery evidence is not progressively disclosed');
     assert.equal(imagery.identities, imagery.summaries, 'imagery summaries lack actor identity context');
     assert.equal(imagery.unresolvedDates, 0, 'undated imagery controls expose repetitive unresolved-date text');
-    assert.equal(imagery.map, true);
+    assert.equal(imagery.map, true, 'imagery route lacks its contextual map surface');
+    assert(['maplibre-gl-js', 'leaflet'].includes(imagery.mapRenderer), 'imagery map renderer is neither approved MapLibre nor retained Leaflet fallback');
     const imageryDetail = await cdp.eval(`(() => {
       const row = document.querySelector('[data-imagery-summary]');
       row.open = true;
       return row.innerText;
     })()`);
-    assert(!/Do not create polygons|machine-readable footprint/i.test(imageryDetail), 'imagery detail exposes implementation-style instructions');
-    assert.match(imageryDetail, /no polygon or damage percentage is inferred|no precise imagery footprint/i);
+    assert(!/Do not create polygons|machine-readable footprint|no precise imagery footprint|no polygon or damage percentage is inferred/i.test(imageryDetail), 'imagery detail exposes implementation-style instructions');
+    assert.match(imageryDetail, /source material is linked in the record|linked source material for the imagery/i);
 
     await route(cdp, '#/evidence/information', 'evidence.information');
     const ledger = await cdp.eval(`(() => {
