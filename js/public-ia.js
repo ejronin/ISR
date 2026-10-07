@@ -30,7 +30,7 @@
     { key: 'timeline.chronology', primary: 'war', slug: 'chronology', path: "/war/events/", navOrder: 2, modelPage: 'timeline', label: "All Events", title: "All Events", owner: 'ChronologyPage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
 
     { key: 'military.campaigns', primary: 'war', slug: 'campaigns', path: "/war/campaigns/", navOrder: 3, modelPage: 'military_record', label: "Campaigns & Strikes", title: "Campaigns & Strikes", owner: 'CampaignsPage', dataKeys: ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities', 'gate3.movements'], related: ['timeline.chronology', 'military.facilities', 'military.imagery'] },
-    { key: 'military.facilities', primary: 'war', slug: 'facilities', path: "/war/facilities/", navOrder: 4, modelPage: 'military_record', label: "Bases & Infrastructure", title: "Bases & Infrastructure", owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'forensic.facility_claim_audits', 'gate3.facilities'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
+    { key: 'military.facilities', primary: 'war', slug: 'facilities', path: "/war/facilities/", navOrder: 4, modelPage: 'military_record', label: "Bases & Infrastructure", title: "Bases & Infrastructure", owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'forensic.facility_claim_audits', 'gate3.facilities', 'analysis.facility_operational_status'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
     { key: 'military.weapons', primary: 'war', slug: 'weapons', path: "/war/weapons/", navOrder: 5, modelPage: 'military_record', label: "Air, Missiles & Drones", title: "Air, Missiles & Drones", owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation'], related: ['military.campaigns', 'military.losses'] },
     { key: 'military.losses', primary: 'war', slug: 'losses', path: "/war/losses/", navOrder: 6, modelPage: 'military_record', label: "Casualties & Losses", title: "Casualties & Losses", owner: 'LossesPage', dataKeys: ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties'], related: ['military.weapons', 'evidence.method'] },
     { key: 'military.imagery', primary: 'war', slug: 'imagery', path: "/war/damage-images/", navOrder: 7, modelPage: 'military_record', label: "Damage Images", title: "Damage Images", owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
@@ -210,6 +210,7 @@
     'forensic.claim_evolution': 'Claim evolution',
     'analysis.casualty_corrections': 'Current casualty display',
     'analysis.asset_display': 'Iranian asset display',
+    'analysis.facility_operational_status': 'Accepted facility operational states',
     'analysis.hormuz': 'Hormuz record',
     'analysis.oil_routes': 'Oil-route record',
     'analysis.sanctions_network': 'Sanctions financial network',
@@ -2256,23 +2257,127 @@
     const examples = addSection(frame.article, 'Representative campaign developments'); const eventList = append(examples, 'div', 'record-list'); chronology.slice(-8).reverse().forEach(item => renderEventCard(eventList, item, context, { topic: eventTopic(item), detail: true })); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
+  const FACILITY_OPERATIONAL_STATE_LABELS = Object.freeze({
+    RED: 'Inoperable base (whole)',
+    YELLOW: 'Damaged; parts inoperable',
+    BLUE: 'Damaged; operable',
+    GREEN: 'Untouched'
+  });
+
+  function facilityOperationalAdjudication(model) {
+    const payload = modelData(model, 'analysis.facility_operational_status') || {};
+    const classified = asArray(payload.classified);
+    const unclassified = asArray(payload.unclassified_tracked);
+    const classifiedById = new Map(classified.map(item => [String(item && item.facility_id || ''), item]).filter(([id]) => id));
+    const unclassifiedById = new Map(unclassified.map(item => [String(item && item.facility_id || ''), item]).filter(([id]) => id));
+    return { payload, classified, unclassified, classifiedById, unclassifiedById };
+  }
+
+  function acceptedFacilityOperationalState(item) {
+    const state = String(item && item.public_operational_state || '').toUpperCase();
+    return Object.prototype.hasOwnProperty.call(FACILITY_OPERATIONAL_STATE_LABELS, state) ? state : '';
+  }
+
   function appendFacilityStatusLegend(host) {
     const legend = append(host, 'div', 'facility-operational-legend');
+    legend.dataset.facilityStatusAuthority = 'analysis.facility_operational_status';
     [
-      ['inoperable', 'Inoperable base (whole)'],
-      ['partial', 'Damaged; parts inoperable'],
-      ['damaged-operable', 'Damaged; operable'],
-      ['untouched', 'Untouched']
+      ['RED', FACILITY_OPERATIONAL_STATE_LABELS.RED],
+      ['YELLOW', FACILITY_OPERATIONAL_STATE_LABELS.YELLOW],
+      ['BLUE', FACILITY_OPERATIONAL_STATE_LABELS.BLUE],
+      ['GREEN', FACILITY_OPERATIONAL_STATE_LABELS.GREEN]
     ].forEach(([key, label]) => {
       const item = append(legend, 'span', 'facility-operational-legend-item');
       const swatch = append(item, 'i', 'facility-operational-swatch'); swatch.dataset.facilityOperationalStatus = key;
       append(item, 'span', '', label);
     });
+    append(host, 'p', 'facility-operational-unclassified-note', 'Gray facility markers are unclassified. No color is assigned without an accepted facility operational-state finding.');
     return legend;
   }
 
   function FacilitiesPage(context) {
-    const frame = pageFrame(context, 'For each base or facility, Atlas separates physical damage from whether it kept operating or later recovered.'); const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']); const mappedFacilities = facilities; const claimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits')); frame.article.append(createRepresentativeMap(context, { typeLabel: 'BASES & INFRASTRUCTURE · ACCEPTED FACILITY GEOGRAPHY', cameraModes: ['theater', 'gulf'], title: 'Facilities in the current record', records: mappedFacilities, description: `${facilities.length.toLocaleString()} facility records include geographic context. Map markers show the facility’s general location, not the exact point of impact.` })); appendFacilityStatusLegend(frame.article); const chartRenderer = root && root.AtlasVisualizationRenderer; if (chartRenderer && typeof chartRenderer.createCategoryBars === 'function') { const coverageRows = [ ['Physical damage recorded', facilities.filter(item => asArray(item.verified_physical_damage).length).length], ['Functional effect recorded', facilities.filter(item => asArray(item.verified_functional_effect).length).length], ['Continued-operation evidence', facilities.filter(item => asArray(item.continued_operation_evidence).length).length], ['Repair/reconstitution evidence', facilities.filter(item => asArray(item.repair_evidence).length || asArray(item.reconstitution_evidence).length).length] ].map(([label, value]) => ({ label, value })); const coverage = addSection(frame.article, 'Accepted facility evidence coverage'); append(coverage, 'p', 'section-note', 'These counts overlap. They show which accepted facility records contain each evidence dimension; they are not mutually exclusive status buckets and do not convert damage into operational effect.'); coverage.append(chartRenderer.createCategoryBars(context, { typeLabel: 'FACILITY RECORD COVERAGE', title: 'Evidence dimensions present in accepted facility records', description: 'Overlapping record coverage only; not a damage score or mission-kill count.', rows: coverageRows, key: 'facility-evidence-coverage', valuesLabel: 'Facility records by evidence dimension', tableCaption: 'Facility records containing each accepted evidence dimension', categoryLabel: 'Evidence dimension', valueLabel: 'Facility records', numericNote: 'A facility can appear in more than one row. Physical damage and operational effect remain separate.' })); } const section = addSection(frame.article, 'Facility status'); const list = append(section, 'div', 'record-list'); facilities.forEach(facility => { const status = plainLabel(firstText(facility.current_status, facility.operational_effect_status, facility.damage_evidence_status), 'Current status unresolved'); const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id); const sourceContext = facilitySourceContext(facility); const card = addProvenanceCard(list, context, { kicker: [facility.country || facility.host, status].filter(Boolean).join(' · '), title: publicNarrative(facility.name, facility.facility_id), text: publicNarrative(facility.assessment || facility.note, 'The facility remains in the record; no broader operating result is added without evidence.'), item: { source_ids: sourceContext.sourceIds }, localSources: sourceContext.localSources }); card.dataset.facilityId = facility.facility_id; appendActorIdentities(card, context, [facilityActor(facility) || 'Actor unresolved']); const facts = append(card, 'dl', 'fact-list'); const addFact = (term, values) => { const readable = (Array.isArray(values) ? values : [values]).filter(Boolean).map(value => typeof value === 'string' ? publicNarrative(value, '') : publicNarrative(value && (value.detail || value.assessment || value.note), '')).filter(Boolean); if (!readable.length) return; append(facts, 'dt', '', term); append(facts, 'dd', '', readable.slice(0, 2).join(' ')); }; addFact('Physical damage', asArray(facility.verified_physical_damage).length ? facility.verified_physical_damage : [...asArray(facility.critical_assets_reported), ...asArray(facility.noncritical_or_soft_assets_reported)]); addFact('Operating effect', asArray(facility.verified_functional_effect).length ? facility.verified_functional_effect : facility.effect); addFact('Continued operation', asArray(facility.continued_operation_evidence).length ? facility.continued_operation_evidence : firstText(facility.continuity, facility.current_presence_status)); facilityAudits.forEach(audit => appendFacilityAudit(card, context, audit)); }); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'For each base or facility, Atlas separates physical damage from whether it kept operating or later recovered.');
+    const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']);
+    const adjudication = facilityOperationalAdjudication(context.model);
+    const mappedFacilities = facilities.map(facility => {
+      const accepted = adjudication.classifiedById.get(String(facility.facility_id || facility.id || ''));
+      return { ...facility, _visualOperationalStatus: acceptedFacilityOperationalState(accepted) };
+    });
+    const classifiedMappedIds = new Set(mappedFacilities.filter(item => item._visualOperationalStatus).map(item => String(item.facility_id || item.id || '')));
+    const unclassifiedCount = facilities.filter(item => !classifiedMappedIds.has(String(item.facility_id || item.id || ''))).length;
+    const claimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits'));
+    frame.article.append(createRepresentativeMap(context, {
+      typeLabel: 'BASES & INFRASTRUCTURE · ACCEPTED FACILITY GEOGRAPHY',
+      cameraModes: ['theater', 'gulf'],
+      title: 'Facilities in the current record',
+      records: mappedFacilities,
+      description: `${adjudication.classified.length.toLocaleString()} facilities have an accepted operational-state color; ${unclassifiedCount.toLocaleString()} tracked facilities remain neutral and unclassified. Map markers show the facility’s general location, not the exact point of impact.`
+    }));
+    appendFacilityStatusLegend(frame.article);
+
+    const chartRenderer = root && root.AtlasVisualizationRenderer;
+    if (chartRenderer && typeof chartRenderer.createCategoryBars === 'function') {
+      const coverageRows = [
+        ['Physical damage recorded', facilities.filter(item => asArray(item.verified_physical_damage).length).length],
+        ['Functional effect recorded', facilities.filter(item => asArray(item.verified_functional_effect).length).length],
+        ['Continued-operation evidence', facilities.filter(item => asArray(item.continued_operation_evidence).length).length],
+        ['Repair/reconstitution evidence', facilities.filter(item => asArray(item.repair_evidence).length || asArray(item.reconstitution_evidence).length).length]
+      ].map(([label, value]) => ({ label, value }));
+      const coverage = addSection(frame.article, 'Accepted facility evidence coverage');
+      append(coverage, 'p', 'section-note', 'These counts overlap. They show which accepted facility records contain each evidence dimension; they are not mutually exclusive status buckets and do not convert damage into operational effect.');
+      coverage.append(chartRenderer.createCategoryBars(context, {
+        typeLabel: 'FACILITY RECORD COVERAGE',
+        title: 'Evidence dimensions present in accepted facility records',
+        description: 'Overlapping record coverage only; not a damage score or mission-kill count.',
+        rows: coverageRows,
+        key: 'facility-evidence-coverage',
+        valuesLabel: 'Facility records by evidence dimension',
+        tableCaption: 'Facility records containing each accepted evidence dimension',
+        categoryLabel: 'Evidence dimension',
+        valueLabel: 'Facility records',
+        numericNote: 'A facility can appear in more than one row. Physical damage and operational effect remain separate.'
+      }));
+    }
+
+    const section = addSection(frame.article, 'Facility status');
+    const list = append(section, 'div', 'record-list');
+    facilities.forEach(facility => {
+      const id = String(facility.facility_id || facility.id || '');
+      const accepted = adjudication.classifiedById.get(id);
+      const unresolved = adjudication.unclassifiedById.get(id);
+      const publicState = acceptedFacilityOperationalState(accepted);
+      const mapState = publicState ? FACILITY_OPERATIONAL_STATE_LABELS[publicState] : 'Unclassified';
+      const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id);
+      const sourceContext = facilitySourceContext(facility);
+      const adjudicationSources = asArray(accepted && accepted.source_ids).concat(asArray(unresolved && unresolved.source_ids));
+      const allSourceIds = [...new Set([...sourceContext.sourceIds, ...adjudicationSources])];
+      const card = addProvenanceCard(list, context, {
+        kicker: [facility.country || facility.host, `Operational map state: ${mapState}`].filter(Boolean).join(' · '),
+        title: publicNarrative(facility.name, facility.facility_id),
+        text: publicNarrative(facility.assessment || facility.note, 'The facility remains in the record; no broader operating result is added without evidence.'),
+        item: { source_ids: allSourceIds },
+        localSources: sourceContext.localSources
+      });
+      card.dataset.facilityId = facility.facility_id;
+      card.dataset.facilityOperationalStatus = publicState || 'UNCLASSIFIED';
+      appendActorIdentities(card, context, [facilityActor(facility) || 'Actor unresolved']);
+      const facts = append(card, 'dl', 'fact-list');
+      const addFact = (term, values) => {
+        const readable = (Array.isArray(values) ? values : [values]).filter(Boolean).map(value => typeof value === 'string' ? publicNarrative(value, '') : publicNarrative(value && (value.detail || value.assessment || value.note), '')).filter(Boolean);
+        if (!readable.length) return;
+        append(facts, 'dt', '', term);
+        append(facts, 'dd', '', readable.slice(0, 2).join(' '));
+      };
+      addFact('Operational map state', mapState);
+      if (accepted && accepted.basis) addFact('Why this map state is supported', accepted.basis);
+      else if (unresolved && unresolved.reason) addFact('Why this facility remains unclassified', unresolved.reason);
+      addFact('Physical damage', asArray(facility.verified_physical_damage).length ? facility.verified_physical_damage : [...asArray(facility.critical_assets_reported), ...asArray(facility.noncritical_or_soft_assets_reported)]);
+      addFact('Operating effect', asArray(facility.verified_functional_effect).length ? facility.verified_functional_effect : facility.effect);
+      addFact('Continued operation', asArray(facility.continued_operation_evidence).length ? facility.continued_operation_evidence : firstText(facility.continuity, facility.current_presence_status));
+      facilityAudits.forEach(audit => appendFacilityAudit(card, context, audit));
+    });
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
   }
 
   function WeaponsPage(context) {
