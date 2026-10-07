@@ -9,6 +9,10 @@ const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 const source = read('js/public-ia.js');
 const appSource = read('js/public-app.js');
 const css = read('css/public-shell.css');
+const readerLayerSource = read('src/public-reader-layer.js');
+const readerRegistrySource = read('src/public-reader-registry.js');
+const readModelRegistry = JSON.parse(read('data/public-read-model-registry.json'));
+const facilityOperationalAdjudication = JSON.parse(read('data/evidence-integration/facility-operational-status-adjudication-20261007.json'));
 const releaseBuilder = read('scripts/build_public_release.py');
 const releaseCore = read('scripts/build_public_release_core.py');
 const retirementScript = path.join(root, 'scripts', 'retire_privileged_narrative_runtime.py');
@@ -81,8 +85,22 @@ for (const phrase of [
   'Untouched',
   'Open the Lie Ledger'
 ]) assert(source.includes(phrase), `missing owner-required reader contract: ${phrase}`);
-assert(source.includes('const mappedFacilities = facilities;'), 'facility map is no longer held behind evidence-authority status adjudication');
+assert(source.includes("modelData(model, 'analysis.facility_operational_status')"), 'facility map does not consume the accepted operational-status adjudication');
+assert(source.includes("_visualOperationalStatus: acceptedFacilityOperationalState(accepted)"), 'facility map does not pass accepted states directly to the renderer');
 assert(!source.includes('function facilityMapStatus('), 'facility colors are being inferred inside the renderer instead of supplied by evidence authority');
+assert(!readerLayerSource.includes('positiveDamage'), 'reader support still infers facility state from damage/presence text');
+assert(!readerRegistrySource.includes("'US-INCIRLIK':['operating'"), 'reader registry still hard-codes the superseded Incirlik operating bucket');
+assert(appSource.includes("'analysis.facility_operational_status'"), 'facility route does not authorize the accepted adjudication dataset');
+const facilityDatasetSpec = readModelRegistry.datasets.find(item => item.key === 'analysis.facility_operational_status');
+assert(facilityDatasetSpec && facilityDatasetSpec.path === 'data/evidence-integration/facility-operational-status-adjudication-20261007.json', 'public read model does not embed the accepted facility adjudication');
+assert(readModelRegistry.page_data.military_record.includes('analysis.facility_operational_status'), 'military reader page does not receive the accepted facility adjudication');
+assert.deepEqual(
+  facilityOperationalAdjudication.classified.map(item => [item.facility_id, item.public_operational_state]),
+  [['US-SHUAIBA-TOC','RED'],['US-NSA-BHR','YELLOW'],['US-ALUDEID','YELLOW'],['US-ARIFJAN','YELLOW']],
+  'accepted facility classifications changed'
+);
+assert.equal(facilityOperationalAdjudication.classified.some(item => item.public_operational_state === 'BLUE'), false, 'BLUE facility was manufactured without accepted evidence');
+assert.equal(facilityOperationalAdjudication.classified.some(item => item.public_operational_state === 'GREEN'), false, 'GREEN facility was manufactured without accepted evidence');
 assert(!source.includes('Imagery is overlaid only when the evidence record supplies reliable geolocation'), 'imagery route leaked implementation/geometry language back into reader copy');
 assert(!source.includes("plainLabel(item.record.candidate_confidence"), 'imagery route exposes geometry-pipeline candidate confidence as public evidence status');
 assert(source.includes('Mapped locations show where imagery or damage-review records are tied to a confirmed site.'), 'imagery map lacks plain reader location/source explanation');

@@ -28,6 +28,7 @@ const POLISH_FOCUS = [
 ];
 const MAP_FOCUS = [
   { routeKey: 'military.campaigns', label: 'campaign-maplibre', selector: '[data-visual-sweep-hero="campaign"] .atlas-maplibre-map', renderer: 'maplibre' },
+  { routeKey: 'military.facilities', label: 'facility-operational-maplibre', selector: '[data-component="MapLibreView"] .atlas-maplibre-map', renderer: 'maplibre' },
   { routeKey: 'hormuz.shipping', label: 'shipping-continuous-maplibre', selector: '[data-shipping-map-view="continuous"] .atlas-maplibre-map', renderer: 'maplibre' },
   { routeKey: 'hormuz.economy', label: 'economy-network', selector: '.context-map .atlas-maplibre-map', renderer: 'maplibre' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-network', selector: '.visual-route-hormuz-sanctions [data-component="MapLibreView"] .atlas-maplibre-map', renderer: 'maplibre' }
@@ -262,7 +263,12 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
             labels: target.querySelectorAll(labelSelector).length,
             visibleLabels: labelNodes.length,
             scope: map?.dataset.mapScope || '',
-            bounds: map?.dataset.mapBounds || ''
+            bounds: map?.dataset.mapBounds || '',
+            facilityRed: Number(map?.dataset.facilityOperationalRed || 0),
+            facilityYellow: Number(map?.dataset.facilityOperationalYellow || 0),
+            facilityBlue: Number(map?.dataset.facilityOperationalBlue || 0),
+            facilityGreen: Number(map?.dataset.facilityOperationalGreen || 0),
+            facilityUnclassified: Number(map?.dataset.facilityOperationalUnclassified || 0)
           };
         })()`);
         assert(reviewState.width > 0 && reviewState.height > 0, `${focus.label} map has no rendered area at ${width}px`);
@@ -273,6 +279,13 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
         if (focus.label === 'shipping-continuous-maplibre') {
           assert(reviewState.routePaths > 0, `${focus.label} has no accepted route geometry at ${width}px`);
           assert(reviewState.routeControls > 0 && reviewState.routeModes, `${focus.label} lacks route controls or route-mode metadata at ${width}px`);
+        }
+        if (focus.label === 'facility-operational-maplibre') {
+          assert.equal(reviewState.facilityRed, 1, `facility map RED count changed at ${width}px`);
+          assert.equal(reviewState.facilityYellow, 3, `facility map YELLOW count changed at ${width}px`);
+          assert.equal(reviewState.facilityBlue, 0, `facility map manufactured BLUE at ${width}px`);
+          assert.equal(reviewState.facilityGreen, 0, `facility map manufactured GREEN at ${width}px`);
+          assert(reviewState.facilityUnclassified >= 15, `facility map lost neutral/unclassified facilities at ${width}px`);
         }
         await sleep(180);
         await captureElement(cdp, focus.selector, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`, 1100);
