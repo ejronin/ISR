@@ -239,9 +239,9 @@
     // Keep the existing domain evidence and navigation, with present-condition copy.
     const summaries = {
       military: 'U.S. and coalition forces retained the strike advantage. Iran has not forced the broad U.S. withdrawal from the region it demanded.',
-      hormuz: 'Iran has not established permanent control of Hormuz. Gulf exports have recovered substantially, but the strait remains selectively constrained and dangerous and no reopening agreement is in force.',
+      hormuz: 'Iran has not established permanent control of Hormuz. Gulf exports have recovered substantially, but the strait remains selectively constrained and dangerous. An IRGC adviser is now threatening additional southern-route closures near Oman; that remains a threat, not proof those routes are closed.',
       economy: 'Iran faces severe currency, sanctions and export pressure. Kpler data cited by Reuters showed zero Iranian crude exports in September while Chinese refiners substituted Iraqi and Qatari barrels.',
-      diplomacy: 'The June MOU is no longer in force. Mediated U.S.-Iran contacts continue, but additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.'
+      diplomacy: 'The June MOU is no longer in force. Mediated U.S.-Iran contacts continue, but Washington’s enrichment condition and Tehran’s rejection of those nuclear ideas expose a substantive gap. No signed Hormuz reopening arrangement has replaced it.'
     };
     article.querySelectorAll('[data-orientation-domain]').forEach(c => {
       const p=c.querySelector(':scope > p:not(.card-kicker):not(.record-status)');
@@ -307,7 +307,7 @@
     addClass(summary,'guide-summary-strip');
     const g=add(summary,'div','orientation-grid');
     card(g,'Saudi East-West pipeline','The Sep. 11 attack damaged three pumping stations. The line has since restarted and is carrying material bypass volume: Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, while Reuters reported roughly 4 million bpd was being rerouted toward Yanbu. Full 7 million bpd capacity is not established.','DAMAGED / OPERATING');
-    card(g,'Bab el-Mandeb coast','Saudi-backed Yemeni forces report retaking most coastal areas around Bab el-Mandeb, but Reuters could not independently verify the full extent and the Houthis dispute the claimed losses. Fighting around Taiz continues, and the Houthis retained long-range strike capability, including an Oct. 7 attack on Aden airport and missiles Saudi Arabia said it intercepted toward Riyadh and Khamis Mushait.','COUNTEROFFENSIVE / CONTESTED');
+    card(g,'Bab el-Mandeb coast','Saudi-backed Yemeni forces remain on the offensive around Dhubab and the hills east of the coastal plain, but Reuters reported that the earlier claim of reaching Mocha was premature. The Houthis dispute the government gains and retain long-range strike capability, including the Oct. 7 attack on Aden airport and missiles Saudi Arabia said it intercepted toward Riyadh and Khamis Mushait.','COUNTEROFFENSIVE / CONTESTED');
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
     routeLink(summary,'military.facilities','See authoritative facility status');
 
@@ -489,7 +489,7 @@
     addClass(summary,'guide-summary-strip');
     const g=add(summary,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
     const h=card(g,'Hormuz: recovery without normalization','September Gulf oil flows excluding Iran averaged about 81% of pre-war levels, with crude and condensate around 91%. That export recovery is not the same as normal unrestricted Hormuz traffic: selective constraints, tanker incidents and abnormal risk remain.','RECOVERING / STILL CONSTRAINED');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-HORMUZ-KPLER-RECOVERY-20260929'));
-    const b=card(g,'Bab el-Mandeb: battlefield control shifted','Saudi-backed forces report retaking most coastal areas around the strait and reaching Mocha, but Reuters could not independently verify the full extent and the Houthis dispute the losses. The battlefield change does not by itself establish closure of general commercial passage.','COUNTEROFFENSIVE / CONTESTED');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
+    const b=card(g,'Bab el-Mandeb: battlefield control contested','Saudi-backed forces remain on the offensive around Dhubab and the hills east of the coastal plain, but Reuters reported that the earlier claim of reaching Mocha was premature. The Houthis dispute government gains and continue long-range attacks. The battlefield change does not by itself establish closure of general commercial passage.','COUNTEROFFENSIVE / CONTESTED');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
     const a=card(g,'Iran’s 77-vessel list','Iran announced possible fines, detention or confiscation and warned maritime service providers. External legal recognition, enforceability and insurer/P&I/classification-society compliance are not established.','IRANIAN ANNOUNCEMENT');evidence(a,context,rows.find(r=>r.shipping_id==='SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'));
 
     const method=findSection(article,/^How to read the traffic observations$/i);
@@ -521,10 +521,10 @@
     const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
     const p=card(g,'Iran’s own figure','President Masoud Pezeshkian acknowledged sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage comes from the Iranian president and is not an independently audited figure.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
     const er=records(context.model,'gate3.economics');
-    const o=card(g,'Oil market','Brent settled Oct. 6 at $100.58 and WTI at $89.44. Strong Middle Eastern exports and emergency stock releases limited crude-supply pressure, but Saudi-Houthi escalation, shipping risk and refined-product tightness kept a substantial war-risk premium in the market.','OCT. 6 CLOSE');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
+    const o=card(g,'Oil market','At 12:00 GMT on Oct. 7, Brent was about $101.33 and WTI about $89.83. Strong Middle Eastern exports continued to limit crude-supply pressure, but Houthi attacks, shipping risk, refined-product tightness and weather-related supply risk kept war-risk conditions abnormal.','OCT. 7');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
     const f=card(g,'Exports and logistics','Regional crude exports have recovered strongly, but freight, tanker security and refined-product conditions remain abnormal. Recovery in barrels moved is not the same as normalization of transport cost or risk.','RECOVERING / ABNORMAL');evidence(f,context,er.find(r=>r.economic_id==='ECON-GULF-ENERGY-RECOVERY-20260930'));
     card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
-    const fin=card(g,'Financial pressure','On Oct. 5, Treasury warned foreign financial institutions that continued transactions with sanctioned Iranian financial institutions could trigger U.S. measures without advance notice.','ENFORCEMENT PRESSURE');evidence(fin,context,{source_ids:['SRC-A2105A000019','SRC-A2105A00001A']});
+    const fin=card(g,'Financial pressure','On Oct. 5, Treasury warned foreign financial institutions that continued transactions with sanctioned Iranian financial institutions could trigger U.S. measures without advance notice. Iraq also devalued the dinar on Oct. 7 as war disruption reduced oil-export revenue, showing the regional fiscal spillover is not confined to Iran.','ENFORCEMENT / REGIONAL SPILLOVER');evidence(fin,context,{source_ids:['SRC-A2105A000019','SRC-A2105A00001A','SRC-A2107B000001']});
     const forecast=findSection(article,/^2026 growth forecasts$|economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);
     if(forecast){
       forecast.dataset.protectedEconomicChart='retained';
@@ -557,14 +557,14 @@
   function hormuzTalks(article) {
     intro(article,'Mediator exchanges continue, but there is still no signed U.S.-Iran agreement or Hormuz reopening arrangement. Iran says the U.S. response was relayed through mediators and that additional points remain unresolved.');
     const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='Iran now ties reopening Hormuz to seven conditions based on the June Islamabad memorandum. Tehran says the U.S. response has been relayed through mediators, but additional points remain unresolved. No replacement agreement or reopening arrangement is in force.';
-    if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said on Oct. 4 that Tehran had not entered nuclear discussions with Washington. On Oct. 6, Vice President JD Vance said the U.S. was negotiating with President Masoud Pezeshkian and Foreign Minister Abbas Araqchi and would require a meaningful reduction in enrichment capacity for an agreement. The public descriptions differ; no agreement is in force.');
+    if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said on Oct. 4 that Tehran had not entered nuclear discussions with Washington. On Oct. 6, Vice President JD Vance said the U.S. was negotiating with President Masoud Pezeshkian and Foreign Minister Abbas Araqchi and would require a meaningful reduction in enrichment capacity for an agreement. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The public descriptions differ and the substantive gap is explicit; no agreement is in force.');
   }
 
   function diplomacy(article) {
     intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Negotiating claims do not become agreements by repetition.');
     const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
     const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
-    card(g,'U.S.–Iran / Hormuz contacts','Vice President JD Vance said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other Iranian political officials, but is uncertain how much decision authority they hold. He said an agreement would require a meaningful reduction in enrichment capacity. Iran had publicly described the channel differently. No replacement agreement is in force.','CONTACTS / NO AGREEMENT');
+    card(g,'U.S.–Iran / Hormuz contacts','Vice President JD Vance said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other Iranian political officials and would require a meaningful reduction in enrichment capacity. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. Contacts continue, but the substantive gap is explicit and no replacement agreement is in force.','CONTACTS / NO AGREEMENT');
     card(g,'U.S.–Saudi defense diplomacy','Crown Prince Mohammed bin Salman met CENTCOM commander Adm. Brad Cooper in Jeddah on Sep. 14.','MEETING HELD');
     card(g,'Eslami / IAEA conference','A UN sanctions travel exemption for Mohammad Eslami was not approved after a U.S. objection. This is not a new general sanctions package.','EXEMPTION NOT APPROVED');
     card(g,'Israel–Lebanon talks','A U.S. official said Israel and Lebanon are expected to meet in Rome in October. That is an expected negotiation, not a completed meeting.','EXPECTED');
@@ -576,13 +576,15 @@
   }
 
   function nuclear(article) {
-    const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials, while Washington remains uncertain how decisions are made inside Iran. Iran had said on Oct. 4 that it had not entered nuclear discussions with Washington. No nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
+    const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The negotiating gap is explicit; no nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
   }
 
-  function regional(article) {
+  function regional(article, context) {
     intro(article,'Regional diplomacy is easiest to read through what actually changed—meetings held, proposals made, alignments tested and arrangements accepted or rejected. Participant lists and evidence about why those changes happened come afterward.');
     const introBlock=article.querySelector('.page-intro');
     if(introBlock)add(introBlock,'p','scope-note','The participant-state map identifies supporting states only; it does not identify capitals, headquarters, command nodes, deployments, or operating areas.');
+    const current=section(article,'Latest regional alignment','Turkey is now providing Saudi Arabia defensive and technical support against the Houthis, including equipment, intelligence sharing, air-defense-related assistance, drone operators, logistics and planning support. Turkish parliamentary ratification of the Mecca Joint Defence Agreement is still pending, so officials described much of the present support as bilateral.');
+    evidence(current,context,{source_ids:['SRC-A2107B000002']},'Source behind this update');
     const r=findSection(article,/14-state maritime support|roster/i);if(r)collapse(r,'Regional participation and roster detail');
   }
 
@@ -775,7 +777,7 @@
     if(k==='start.overview')overview(article,context); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
     if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
     if(k==='hormuz.overview')hormuzOverview(article,context); if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
-    if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
+    if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article,context);
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
     connectMappedCards(article,k);

@@ -17,14 +17,13 @@ def rows_by_id(rows):
 def main() -> int:
     state = builder.build_state(ROOT)
     manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
-    latest = manifest["accepted_updates"][-1]
     packet = json.loads((ROOT / "data/canonical-updates/UPD-20261007-ROOK-MIDNIGHT.json").read_text(encoding="utf-8"))
+    entry = next(item for item in manifest["accepted_updates"] if item["packet_id"] == packet["packet_id"])
 
-    assert latest["sequence"] == 31
-    assert latest["packet_id"] == "UPD-20261007-ROOK-MIDNIGHT"
-    assert latest["packet_id"] == packet["packet_id"]
-    assert latest["evidence_cutoff"] == "2026-10-07T00:00:00-04:00"
-    assert manifest["current_evidence_cutoff"] == latest["evidence_cutoff"]
+    assert entry["sequence"] == 31
+    assert entry["packet_id"] == "UPD-20261007-ROOK-MIDNIGHT"
+    assert entry["evidence_cutoff"] == "2026-10-07T00:00:00-04:00"
+    assert manifest["current_evidence_cutoff"] >= entry["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
     assert packet["status"] == "ACCEPTED"
     assert packet["narrative_claims"] == []

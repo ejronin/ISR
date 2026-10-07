@@ -43,43 +43,40 @@ def main() -> int:
     ):
         assert event_id in events
 
-    shipping = rows_by_id(state["entities"]["shipping"])
-    hormuz = shipping["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]["record"]
+    packet_entities = {entity["entity_id"]: entity["record"] for entity in packet["entities"]}
+
+    hormuz = packet_entities["SHIP-HORMUZ-KPLER-RECOVERY-20260929"]
     assert "recovery is strong" in hormuz["status"].lower()
     assert "normal unrestricted passage is not established" in hormuz["observed_state"].lower()
 
-    economics = rows_by_id(state["entities"]["economics"])
-    gulf = economics["ECON-GULF-ENERGY-RECOVERY-20260930"]["record"]
+    gulf = packet_entities["ECON-GULF-ENERGY-RECOVERY-20260930"]
     assert "largely recovered" in gulf["status"].lower()
-    iran = economics["ECON-IRAN-OIL-EXPORT-ISOLATION-20261006"]["record"]
+    iran = packet_entities["ECON-IRAN-OIL-EXPORT-ISOLATION-20261006"]
     assert "zero" in iran["observed_state"].lower()
     assert "does_not_by_itself_establish_chinese_state_policy" in iran["adjudication"].lower()
 
-    losses = rows_by_id(state["entities"]["material_losses"])
-    pipeline = losses["MAT-SA-EASTWEST-PIPELINE-20260911"]["record"]
+    pipeline = packet_entities["MAT-SA-EASTWEST-PIPELINE-20260911"]
     assert "CARRYING_MATERIAL_BYPASS_VOLUME" in pipeline["status"]
     assert "FULL_7M_BPD_CAPACITY_NOT_ESTABLISHED" in pipeline["status"]
 
-    gaps = rows_by_id(state["entities"]["gaps"])
-    pipeline_gap = gaps["GAP-E2-SAUDI-EASTWEST-EXACT-BDA"]["record"]
+    pipeline_gap = packet_entities["GAP-E2-SAUDI-EASTWEST-EXACT-BDA"]
     assert "MATERIALLY_NARROWED" in pipeline_gap["status"]
     assert "FULL_RATED_CAPACITY" in pipeline_gap["status"]
 
-    movements = rows_by_id(state["entities"]["movements"])
-    coast = movements["MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"]["record"]
+    coast = packet_entities["MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"]
     assert "MATERIALLY_REVERSED" in coast["status"]
-    sep6_coast = next(
-        entity["record"]
-        for entity in packet["entities"]
-        if entity["entity_id"] == "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910"
-    )
-    assert "EXTENT_CONTESTED" in sep6_coast["status"]
-    assert "TAIZ_FRONT_REMAINS_ACTIVE" in sep6_coast["status"]
+    assert "EXTENT_CONTESTED" in coast["status"]
+    assert "TAIZ_FRONT_REMAINS_ACTIVE" in coast["status"]
 
-    casualties = rows_by_id(state["entities"]["casualties"])
-    yemen = casualties["CAS-YEMEN-DISPLACEMENT-20260913"]["record"]
+    yemen = packet_entities["CAS-YEMEN-DISPLACEMENT-20260913"]
     assert yemen["reported_displaced_approx"] == 184000
     assert yemen["period_end"] == "2026-10-05"
+
+    # Later accepted packets may advance these mutable current entities; the Oct. 6
+    # regression locks the accepted packet itself, not a forever-current value.
+    assert "SHIP-HORMUZ-KPLER-RECOVERY-20260929" in rows_by_id(state["entities"]["shipping"])
+    assert "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910" in rows_by_id(state["entities"]["movements"])
+    assert "CAS-YEMEN-DISPLACEMENT-20260913" in rows_by_id(state["entities"]["casualties"])
 
     print("atlas-current-state-catchup-20261006: PASS")
     return 0
