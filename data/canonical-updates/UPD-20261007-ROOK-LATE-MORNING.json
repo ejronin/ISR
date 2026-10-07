@@ -1,0 +1,86 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261007-ROOK-LATE-MORNING",
+  "known_at": "2026-10-07T11:22:00-04:00",
+  "evidence_cutoff": "2026-10-07T11:22:00-04:00",
+  "summary": "Consumes the Oct. 7 09:15-to-11:22 ET catch-up. It strengthens the Hormuz non-normalization finding with the highest weekly tanker-attack count reported since the war began and adds Reuters source reporting that Iran transferred $200 million to Hezbollah for displaced Lebanese families despite tightened sanctions and costly transfer channels.",
+  "sources": [
+    {
+      "source_id": "SRC-A2107C000001",
+      "url": "https://www.reuters.com/world/middle-east/attacks-tankers-hormuz-hit-highest-any-week-since-start-iran-war-sources-say-2026-10-07/",
+      "source_role": "Reuters reporting on maritime-security and IMO Hormuz incident counts"
+    },
+    {
+      "source_id": "SRC-A2107C000002",
+      "url": "https://www.reuters.com/world/middle-east/lebanons-hezbollah-gets-200-million-iran-help-displaced-sources-say-2026-10-07/",
+      "source_role": "Reuters source reporting on Iranian funding transferred to Hezbollah for displaced families"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "LOCKER-HORMUZ-WEEKLY-TANKER-ATTACK-HIGH-20261007",
+      "event_date": "2026-10-05",
+      "summary": "Reuters reported maritime-security sources counted at least 12 attacks on oil, LNG and LPG tankers around Hormuz during September 28-October 5, the highest weekly attack count since the war began. IMO data showed nine incidents for the same week. JMIC separately said attacks, attempted attacks and IRGC harassment activity including drone overflights, surveillance and VHF hailing had persisted. Attribution for individual attacks remains incident-specific and unresolved unless separately established.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107C000001"
+      ],
+      "publication_time": "2026-10-07T10:24:00-04:00",
+      "upstream_event_type": "HORMUZ_WEEKLY_TANKER_ATTACK_COUNT_WAR_HIGH"
+    },
+    {
+      "event_id": "LOCKER-IRAN-HEZBOLLAH-200M-AID-20261007",
+      "event_date": "2026-10-07",
+      "summary": "Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September to support Lebanese families displaced by the war. The sources said intermediaries charged a 20% fee because of transfer risk. A Hezbollah official confirmed an amount had been secured but did not identify the source; Iran did not respond to Reuters' request for comment. The record therefore preserves the transfer as Reuters source reporting rather than an Iranian government acknowledgement.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "source_ids": [
+        "SRC-A2107C000002"
+      ],
+      "publication_time": "2026-10-07T10:22:00-04:00",
+      "upstream_event_type": "REPORTED_IRAN_HEZBOLLAH_200M_DISPLACEMENT_AID_TRANSFER"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-KPLER-RECOVERY-20260929",
+      "mode": "update",
+      "record": {
+        "status": "Gulf export recovery remains substantial, but Hormuz is not normalized; tanker attacks reached the highest weekly count of the war",
+        "observed_state": "September Gulf crude flows recovered strongly, but maritime-security sources counted at least 12 attacks on oil, LNG and LPG tankers around Hormuz in the week of September 28-October 5, the highest weekly count since the war began; IMO data recorded nine incidents for the same period. JMIC separately reported persistent attacks, attempted attacks and IRGC harassment activity. Iran is also threatening additional route restrictions. Strong export recovery therefore coexists with unusually high kinetic and harassment risk, and normal unrestricted passage remains unestablished.",
+        "knowledge_time": "2026-10-07T11:22:00-04:00",
+        "source_ids": [
+          "SRC-A2106A000001",
+          "SRC-A2107B000004",
+          "SRC-A2107C000001"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAN-HEZBOLLAH-AID-TRANSFER-20261007",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-IRAN-HEZBOLLAH-AID-TRANSFER-20261007",
+        "date": "2026-10-07",
+        "metric": "Reported Iran-to-Hezbollah financial support under wartime sanctions pressure",
+        "status": "Reuters source reporting supports a $200 million Iranian transfer to Hezbollah despite costly and constrained transfer channels",
+        "observed_state": "Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September for Lebanese families displaced by the war. Intermediaries reportedly charged a 20% fee because of the risk. A Hezbollah official confirmed that an amount had been secured but did not identify the source, and Iran did not acknowledge the transfer in the Reuters report.",
+        "adjudication": "REUTERS_SOURCE_REPORTED_TRANSFER_WITH_HEZBOLLAH_PARTIAL_CONFIRMATION_OF_FUNDS_SECURED; IRANIAN_GOVERNMENT_ACKNOWLEDGEMENT_NOT_ESTABLISHED; DOES_NOT_ESTABLISH_TOTAL_CURRENT_IRAN_TO_HEZBOLLAH_FUNDING",
+        "knowledge_time": "2026-10-07T11:22:00-04:00",
+        "source_ids": [
+          "SRC-A2107C000002"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261007T1122ET.json"
+    ]
+  }
+}
