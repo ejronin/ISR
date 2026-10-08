@@ -282,8 +282,15 @@ function addFinding(findings, routeKey, width, category, detail) {
     await route(cdp, 'evidence.method');
     await cdp.eval(`history.back(); true`);
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.sources'`);
+    await sleep(180);
     const afterHistory = await cdp.eval(`location.hash`);
-    if (afterHistory !== beforeHistory) addFinding(findings, 'evidence.sources', 390, 'history', `${beforeHistory}->${afterHistory}`);
+    const beforeRoute = ia.parseRoute(beforeHistory);
+    const afterRoute = ia.parseRoute(afterHistory);
+    if (afterRoute.key !== beforeRoute.key) addFinding(findings, 'evidence.sources', 390, 'history', `${beforeHistory}->${afterHistory}`);
+    const validSourceSections = new Set(ia.pageSectionsFor('evidence.sources').map(section => section.id));
+    if (afterRoute.params?.section && !validSourceSections.has(afterRoute.params.section)) {
+      addFinding(findings, 'evidence.sources', 390, 'history-section', afterRoute.params.section);
+    }
 
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
