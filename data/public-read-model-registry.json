@@ -228,6 +228,11 @@
       "role": "APPROVED_FORENSIC_DATA"
     },
     {
+      "key": "analysis.facility_operational_status",
+      "path": "data/evidence-integration/facility-operational-status-adjudication-20261007.json",
+      "role": "ACCEPTED_EVIDENCE_ADJUDICATION"
+    },
+    {
       "key": "analysis.asset_display",
       "path": "data/asset-display-v1.3.3.json",
       "role": "APPROVED_ANALYTICAL_DATA"
@@ -661,6 +666,7 @@
       "forensic.aviation_reconciliation",
       "forensic.pilot_rescue_timeline",
       "forensic.facility_claim_audits",
+      "analysis.facility_operational_status",
       "forensic.damage_observations",
       "analysis.asset_display",
       "analysis.casualty_corrections"

@@ -101,36 +101,22 @@
     const d = base.EvidenceDrawer.create(context, { source_ids: ids }, { localSources }); const summary = d.querySelector('summary'); if (summary) summary.textContent = label; host.append(d);
   }
 
-  const FACILITY = Object.freeze({
-    'US-ALUDEID':['damaged_not_operating','Combined Air Operations Center','The CAOC was reported inoperable and campaign command shifted to Shaw. A shutdown of the whole base is not established.'],
-    'FAC-UAE-BARAKAH':['unknown','Plant/system','A generator was hit and one reactor shut down automatically. Current restart status and operation of the whole plant remain unresolved.'],
-    'FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT':['damaged_operating','Airport','Terminal damage and disruption were established while Terminal 4 flight activity continued.'],
-    'FAC-IRN-KHONDAB-HEAVY-WATER':['damaged_not_operating','Facility','The IAEA reported severe damage and that the facility was no longer operational; repair or restart remains unresolved.'],
-    'FAC-QAT-LNG-SYSTEM':['damaged_operating','Qatar LNG system','The wider LNG system continued operating while two of 14 LNG trains and a GTL facility remained unavailable.'],
-    'US-NSA-BHR':['administrative','Fifth Fleet headquarters function','The headquarters function relocated to MacDill after extensive damage; this does not establish cessation of every local NSA Bahrain function.'],
-    'US-ARIFJAN':['unknown','Facility','Damage was confirmed and U.S. troops were later reported present. Their presence does not show whether the facility was operating.'],
-    'US-ALISALEM':['unknown','Facility','Substantial localized damage was confirmed; current whole-base operating status is not established.'],
-    'US-BUEHRING':['unknown','Facility','Power-plant and other damage was confirmed; current whole-site operating status is not established.'],
-    'US-SHUAIBA-TOC':['destroyed','U.S. tactical operations center / outpost','The specific TOC was destroyed. This does not establish destruction of Camp Arifjan or the wider regional network.'],
-    'US-CAMPDOHA':['unknown','Position','A U.S. troop position was reported, while the Iranian damage claim was not independently confirmed; operating effect remains unknown.'],
-    'US-BUBIYAN':['unknown','Position','A relocated U.S. position was reported. Permanence and operating effect are not established.'],
-    'US-ALDHAFRA':['unknown','Facility','Damage and continued U.S. presence are established. Presence and the lack of a shutdown report do not show full operation.'],
-    'US-JEBELALI':['unknown','Access site','Port-area damage and fire were established. No whole-access-site shutdown or isolated destroyed U.S. naval asset is established.'],
-    'US-ERBIL':['administrative','Drawdown state','Damage was reported while the broader U.S. Iraq drawdown was underway; this is not a stable permanent-base operating state.'],
-    'US-AINASAD':['administrative','Drawdown state','U.S. forces fully withdrew by Jan. 17, 2026; it was not an active U.S. base for the war baseline.'],
-    'US-PRINCESULTAN':['unknown','Facility','Aircraft/base damage and later U.S. presence were reported. Current whole-base operating status is not established.'],
-    'US-MUWAFFAQ':['unknown','Facility','Earlier THAAD damage and Sep. 8 aircraft damage are established. Exact damage details and whole-base operating effect remain unresolved.'],
-    'US-INCIRLIK':['operating','Facility','U.S. wing activity is documented, and no damage report was found in the reviewed sources.'],
-    'US-ISA':['unknown','Facility','Patriot/base damage was established; current whole-site operating status is not established.'],
-    'US-RMELAN':['administrative','Drawdown state','Later current presence was not refreshed after drawdown reporting; stale presence is not current operation.'],
-    'US-QASRAK':['administrative','Drawdown state','Withdrawal began during the February drawdown; a current operating U.S. presence is not established.'],
-    'US-TANF':['administrative','Drawdown state','U.S. withdrawal was completed Feb. 12, 2026; no later re-entry evidence establishes an active garrison.']
+  const FACILITY_PUBLIC_STATE = Object.freeze({
+    RED: ['Inoperable base (whole)', 'facility-red'],
+    YELLOW: ['Damaged; parts inoperable', 'facility-yellow'],
+    BLUE: ['Damaged; operable', 'facility-blue'],
+    GREEN: ['Untouched', 'facility-green'],
+    UNCLASSIFIED: ['Unclassified', 'facility-unclassified']
   });
-  const FSTAT = {
-    destroyed:['Destroyed','destroyed'], damaged_not_operating:['Damaged — not operating','damaged-inoperable'],
-    damaged_operating:['Damaged — operating','damaged-operational'], operating:['Operating','operational'],
-    unknown:['Effect / operating status unknown','unknown'], administrative:['Withdrawn / closed / transferred','administrative']
-  };
+
+  function facilityAdjudication(context) {
+    const payload = modelData(context.model, 'analysis.facility_operational_status') || {};
+    const classified = Array.isArray(payload.classified) ? payload.classified : [];
+    const unclassified = Array.isArray(payload.unclassified_tracked) ? payload.unclassified_tracked : [];
+    const classifiedById = new Map(classified.map(item => [txt(item && item.facility_id), item]).filter(([id]) => id));
+    const unclassifiedById = new Map(unclassified.map(item => [txt(item && item.facility_id), item]).filter(([id]) => id));
+    return { payload, classifiedById, unclassifiedById };
+  }
 
   const OBJECTIVES = [
     ['United States','Deny Iran a nuclear weapon','UNRESOLVED','No Iranian nuclear weapon is established, but no durable controlling nuclear settlement exists and the safeguards dispute has escalated.'],
@@ -355,20 +341,42 @@
   }
 
   function facilities(article, context) {
-    intro(article,'This is the authoritative reader view of current facility state. Damage, operating status and administrative withdrawal are distinct; continued presence is not proof that a facility is operating.');
+    intro(article,'This is the authoritative reader view of current facility state. The four public colors come only from the accepted facility adjudication; all other tracked facilities remain neutral and unclassified.');
     article.querySelector('[data-reader-facility-dashboard]')?.remove();
     const all=[...records(context.model,'ledger.facilities'),...records(context.model,'gate3.facilities')], map=new Map();
     all.forEach(r=>{const id=r.facility_id||r.id||r.name;if(id)map.set(id,{...(map.get(id)||{}),...r,facility_id:id});});
-    const s=node(article.ownerDocument,'section','content-section reader-facility-dashboard'); s.dataset.readerFacilityDashboard='evidence-predicates';
-    add(s,'h2','','Current facility status'); add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. That is the number shown here; it does not represent every facility in the theater.`);
-    const order=['destroyed','damaged_not_operating','damaged_operating','operating','unknown','administrative'], groups=new Map(order.map(k=>[k,[]]));
-    map.forEach((r,id)=>{const p=FACILITY[id]||['unknown','Facility','The current record does not support a more specific operating-status label.']; groups.get(p[0]).push([id,r,p]);});
-    const active=order.slice(0,5).reduce((n,k)=>n+groups.get(k).length,0), bar=add(s,'div','reader-facility-status-bar');
-    bar.setAttribute('role','img'); bar.setAttribute('aria-label',order.slice(0,5).map(k=>`${FSTAT[k][0]}: ${groups.get(k).length}`).join('; '));
-    order.slice(0,5).forEach(k=>{const n=groups.get(k).length;if(!n)return;const z=add(bar,'span',`reader-facility-segment ${FSTAT[k][1]}`);z.style.width=`${active?n/active*100:0}%`;z.title=`${FSTAT[k][0]}: ${n}`;});
+    const accepted=facilityAdjudication(context);
+    const stateFor=id=>{
+      const row=accepted.classifiedById.get(id);
+      const state=txt(row&&row.public_operational_state).toUpperCase();
+      return Object.prototype.hasOwnProperty.call(FACILITY_PUBLIC_STATE,state)&&state!=='UNCLASSIFIED'?state:'UNCLASSIFIED';
+    };
+    const s=node(article.ownerDocument,'section','content-section reader-facility-dashboard');
+    s.dataset.readerFacilityDashboard='accepted-four-state-adjudication';
+    s.dataset.facilityStatusAuthority='analysis.facility_operational_status';
+    add(s,'h2','','Current facility status');
+    add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. Only facilities with an accepted four-state finding receive red, yellow, blue or green; every other tracked facility remains unclassified.`);
+    const order=['RED','YELLOW','BLUE','GREEN','UNCLASSIFIED'], groups=new Map(order.map(k=>[k,[]]));
+    map.forEach((r,id)=>groups.get(stateFor(id)).push([id,r]));
+    const bar=add(s,'div','reader-facility-status-bar');
+    bar.setAttribute('role','img');
+    bar.setAttribute('aria-label',order.map(k=>`${FACILITY_PUBLIC_STATE[k][0]}: ${groups.get(k).length}`).join('; '));
+    order.forEach(k=>{const n=groups.get(k).length;if(!n)return;const z=add(bar,'span',`reader-facility-segment ${FACILITY_PUBLIC_STATE[k][1]}`);z.style.width=`${map.size?n/map.size*100:0}%`;z.title=`${FACILITY_PUBLIC_STATE[k][0]}: ${n}`;});
+    const legend=add(s,'div','reader-status-legend');
+    order.forEach(k=>{const item=add(legend,'span',`reader-status-key ${FACILITY_PUBLIC_STATE[k][1]}`);add(item,'strong','',String(groups.get(k).length));item.append(article.ownerDocument.createTextNode(` ${FACILITY_PUBLIC_STATE[k][0]}`));});
     const panels=add(s,'div','reader-facility-panels');
-    order.forEach(k=>{const rows=groups.get(k);if(!rows.length)return;const d=add(panels,'details',`reader-facility-drawer ${FSTAT[k][1]}`);add(d,'summary','',`${FSTAT[k][0]} (${rows.length})`);const list=add(d,'div','reader-facility-list');
-      rows.sort((a,b)=>txt(a[1].name||a[0]).localeCompare(txt(b[1].name||b[0]))).forEach(([id,r,p])=>{const c=add(list,'article','reader-facility-card');c.dataset.facilityId=id;add(c,'h4','',txt(r.name||r.facility_name||id));add(c,'p','card-kicker',`What this status covers: ${p[1]}`);const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Evidence through ${dates.at(-1)}`);add(c,'strong','','Current status');add(c,'p','',p[2]);evidence(c,context,r,'Why this status is supported');});});
+    order.forEach(k=>{const rows=groups.get(k);if(!rows.length)return;const d=add(panels,'details',`reader-facility-drawer ${FACILITY_PUBLIC_STATE[k][1]}`);add(d,'summary','',`${FACILITY_PUBLIC_STATE[k][0]} (${rows.length})`);const list=add(d,'div','reader-facility-list');
+      rows.sort((a,b)=>txt(a[1].name||a[0]).localeCompare(txt(b[1].name||b[0]))).forEach(([id,r])=>{
+        const classified=accepted.classifiedById.get(id), unresolved=accepted.unclassifiedById.get(id);
+        const c=add(list,'article','reader-facility-card');c.dataset.facilityId=id;c.dataset.facilityOperationalStatus=k;
+        add(c,'h4','',txt(r.name||r.facility_name||id));
+        add(c,'p','card-kicker',`Operational map state: ${FACILITY_PUBLIC_STATE[k][0]}`);
+        const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Evidence through ${dates.at(-1)}`);
+        const basis=txt(classified&&classified.basis||unresolved&&unresolved.reason||'No accepted four-state classification is available for this facility.');
+        add(c,'strong','',k==='UNCLASSIFIED'?'Why this remains unclassified':'Why this status is supported');add(c,'p','',basis);
+        evidence(c,context,{...r,source_ids:[...new Set([...(r.source_ids||[]),...(classified&&classified.source_ids||[]),...(unresolved&&unresolved.source_ids||[])])]},'Evidence and sources');
+      });
+    });
     const m=article.querySelector(':scope > .context-map'); if(m) article.insertBefore(s,m); else article.querySelector('.page-intro')?.after(s);
     const full=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility assessments$/i); if(full) collapse(full,`Browse full facility records (${map.size})`);
   }

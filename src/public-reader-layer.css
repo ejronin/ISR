@@ -104,16 +104,21 @@
   min-width: 2px;
 }
 
-.reader-status-segment.destroyed,
-.reader-status-key.destroyed::before { background: #d94b4b; }
-.reader-status-segment.damaged-inoperable,
-.reader-status-key.damaged-inoperable::before { background: #e59a3b; }
-.reader-status-segment.damaged-operational,
-.reader-status-key.damaged-operational::before { background: #9fcb72; }
-.reader-status-segment.operational,
-.reader-status-key.operational::before { background: #4ba66a; }
-.reader-status-segment.unknown,
-.reader-status-key.unknown::before { background: #778390; }
+.reader-status-segment.facility-red,
+.reader-facility-segment.facility-red,
+.reader-status-key.facility-red::before { background: #d94b4b; }
+.reader-status-segment.facility-yellow,
+.reader-facility-segment.facility-yellow,
+.reader-status-key.facility-yellow::before { background: #e3bf4f; }
+.reader-status-segment.facility-blue,
+.reader-facility-segment.facility-blue,
+.reader-status-key.facility-blue::before { background: #4f9ed8; }
+.reader-status-segment.facility-green,
+.reader-facility-segment.facility-green,
+.reader-status-key.facility-green::before { background: #56a86c; }
+.reader-status-segment.facility-unclassified,
+.reader-facility-segment.facility-unclassified,
+.reader-status-key.facility-unclassified::before { background: #778390; }
 
 .reader-status-legend {
   display: flex;
@@ -127,6 +132,7 @@
   display: inline-flex;
   align-items: center;
   gap: .35rem;
+  white-space: nowrap;
 }
 
 .reader-status-key::before {
@@ -165,7 +171,7 @@
   margin: 0 0 .25rem;
 }
 
-.reader-facility-drawer.administrative {
+.reader-facility-drawer.facility-unclassified {
   opacity: .9;
 }
 
