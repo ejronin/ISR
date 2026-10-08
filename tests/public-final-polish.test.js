@@ -126,6 +126,7 @@ assert(css.includes('outline: 2px solid var(--atlas-focus-ring)'), 'editorial H1
 assert(css.includes('min-height: 2.75rem'), 'touch-target floor is absent');
 assert(readerLayerSource.includes("facility status must not be inferred") || !readerLayerSource.includes('positiveDamage'), 'reader layer reintroduced inferred facility status');
 assert(read('src/public-reader-layer.css').includes('white-space: nowrap'), 'facility status legend may split counts or labels at narrow widths');
+assert(read('src/public-reader-layer.css').includes('@media (max-width: 480px)') && read('src/public-reader-layer.css').includes('.reader-status-legend {\n    grid-template-columns: 1fr;'), 'facility status legend must stack to one column on narrow mobile widths');
 assert(read('js/public-visualization-renderer.js').includes("'YELLOW', 12"), 'facility status markers no longer preserve close red/yellow readability without moving coordinates');
 assert(!css.includes('font-size: .58rem'), 'final polish still depends on sub-readable .58rem mobile type');
 

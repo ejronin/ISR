@@ -431,6 +431,9 @@
 }
 
 @media (max-width: 480px) {
+  .reader-status-legend {
+    grid-template-columns: 1fr;
+  }
   .reader-ledger-card-head {
     grid-template-columns: 1fr;
   }
