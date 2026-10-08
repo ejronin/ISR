@@ -468,12 +468,15 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
     await route(cdp, 'evidence.web_of_lies');
     await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
     const wolActorId = await cdp.eval(`(() => {
+      const awardee = document.querySelector('.wol-awardee-button[data-source-id]')?.dataset.sourceId;
+      if (awardee) return awardee;
       const picker = document.querySelector('.wol-node-picker');
-      return ([...picker.options].find(option => option.value && option.textContent.includes('💩')) || [...picker.options].find(option => option.value))?.value || '';
+      return [...(picker?.options || [])].find(option => option.value)?.value || '';
     })()`);
     assert(wolActorId, 'No WOL actor is available for dossier review');
-    await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: '__ACTOR__' }).replace('__ACTOR__', wolActorId))};true`);
-    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.web_of_lies' && document.querySelector('.public-page')?.dataset?.dossierSource === ${JSON.stringify(wolActorId)} || Boolean(document.querySelector('.wol-node-detail[data-guide-section="current-record"]'))`);
+    const wolDossierHash = ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: wolActorId });
+    await cdp.call('Page.navigate', { url: `${SITE}${wolDossierHash}` });
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.web_of_lies' && document.querySelector('.guide-wol-dossier')?.dataset?.dossierSource === ${JSON.stringify(wolActorId)}`, 30000);
     await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
     await cdp.eval(`(() => {
       document.querySelector('[data-wol-mode="full"]')?.click();
