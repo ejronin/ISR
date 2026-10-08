@@ -299,39 +299,27 @@
   }
 
   const FACILITY_STATUS = Object.freeze({
-    destroyed: { label: 'Destroyed', className: 'destroyed' },
-    damaged_inoperable: { label: 'Damaged — inoperable', className: 'damaged-inoperable' },
-    damaged_operational: { label: 'Damaged — operating', className: 'damaged-operational' },
-    operational: { label: 'Operating', className: 'operational' },
-    unknown: { label: 'Unknown', className: 'unknown' },
-    administrative: { label: 'Closed / withdrawn / transferred', className: 'administrative' }
+    RED: { label: 'Inoperable base (whole)', className: 'facility-red' },
+    YELLOW: { label: 'Damaged; parts inoperable', className: 'facility-yellow' },
+    BLUE: { label: 'Damaged; operable', className: 'facility-blue' },
+    GREEN: { label: 'Untouched', className: 'facility-green' },
+    UNCLASSIFIED: { label: 'Unclassified', className: 'facility-unclassified' }
   });
 
-  function facilityStatus(record) {
-    const presence = text(record && (record.current_status || record.current_presence_status)).toUpperCase();
-    const damage = text(record && record.damage_evidence_status).toUpperCase();
-    const effect = text(record && record.operational_effect_status).toUpperCase();
-    const continuity = cleanPublicText(record && record.continuity).toUpperCase();
-    const facilityClass = text(record && record.facility_class).toUpperCase();
-    const type = text(record && record.type).toUpperCase();
-    const adminText = `${presence} ${effect}`;
-    const negativeDamage = /(^|[^A-Z0-9])(?:NO_VERIFIED_DAMAGE|NO_CONFIRMED_DAMAGE|UNVERIFIED_DAMAGE|UNCONFIRMED_DAMAGE)(?=$|[^A-Z0-9])/.test(damage);
-    const positiveDamage = !negativeDamage && /(^|[^A-Z0-9])(?:VERIFIED_DAMAGE|CONFIRMED_DAMAGE)(?=$|[^A-Z0-9])/.test(damage);
-    if (/\b(WITHDRAWN|CLOSED|TRANSFERRED|DRAWDOWN|DEACTIVATED|VACATED|NOT ACTIVE)\b/.test(adminText) && !/DESTROYED/.test(adminText)) return 'administrative';
-    if (/\b(WHOLE_SITE_DESTROYED|FACILITY_DESTROYED|BASE_DESTROYED)\b/.test(effect)) return 'destroyed';
-    if (/^DESTROYED\b/.test(presence) || (/\bDESTROYED\b/.test(presence) && /OUTPOST|SITE|CENTER|CENTRE|FACILITY/.test(facilityClass + ' ' + type))) return 'destroyed';
-    if (/\b(WHOLE_SITE_INOPERABLE|FACILITY_INOPERABLE|BASE_INOPERABLE|MISSION_KILL)\b/.test(effect)) return 'damaged_inoperable';
-    if (/SUBFACILITY_INOPERABLE/.test(effect)) {
-      if (/OUTPOST|SUBFACILITY|OPERATIONS_CENTER|OPERATIONS CENTRE|TOC/.test(`${facilityClass} ${type} ${presence}`)) return 'damaged_inoperable';
-      return 'damaged_operational';
-    }
-    if (positiveDamage) {
-      if (/NO_WHOLE_SITE_SHUTDOWN|OPERAT|PRESENCE|REOPEN|CONTINU/.test(`${effect} ${presence} ${continuity}`)) return 'damaged_operational';
-      return 'damaged_operational';
-    }
-    if (/OPERATIONAL|OPERATING|PRESENCE ESTABLISHED|TROOP POSITION REPORTED|ACTIVE/.test(`${presence} ${effect} ${continuity}`) && !/UNVERIFIED.*DAMAGE/.test(damage)) return 'operational';
-    if (/DAMAGE_CLAIM_UNVERIFIED|UNVERIFIED|UNKNOWN|UNRESOLVED/.test(`${damage} ${effect} ${presence}`)) return 'unknown';
-    return 'unknown';
+  function facilityAdjudication(context) {
+    const payload = base.modelData(context.model, 'analysis.facility_operational_status') || {};
+    const classifiedById = new Map(asArray(payload.classified).map(item => [
+      text(item && item.facility_id),
+      text(item && item.public_operational_state).toUpperCase()
+    ]).filter(([id, state]) => id && Object.prototype.hasOwnProperty.call(FACILITY_STATUS, state) && state !== 'UNCLASSIFIED'));
+    const unclassifiedById = new Map(asArray(payload.unclassified_tracked).map(item => [text(item && item.facility_id), item]).filter(([id]) => id));
+    return { payload, classifiedById, unclassifiedById };
+  }
+
+  function facilityStatus(record, acceptedStateById) {
+    const id = text(record && (record.facility_id || record.id || record.name));
+    const state = acceptedStateById instanceof Map ? text(acceptedStateById.get(id)).toUpperCase() : '';
+    return Object.prototype.hasOwnProperty.call(FACILITY_STATUS, state) && state !== 'UNCLASSIFIED' ? state : 'UNCLASSIFIED';
   }
 
   function facilityDate(record) {
@@ -358,36 +346,38 @@
 
   function buildFacilityDashboard(article, context) {
     if (article.querySelector('[data-reader-facility-dashboard]')) return;
-    const records = mergeFacilities(context);
-    if (!records.length) return;
+    const facilityRecords = mergeFacilities(context);
+    if (!facilityRecords.length) return;
+    const accepted = facilityAdjudication(context);
     const documentObject = article.ownerDocument;
     const dashboard = el(documentObject, 'section', 'content-section reader-facility-dashboard');
     dashboard.dataset.readerFacilityDashboard = VERSION;
+    dashboard.dataset.facilityStatusAuthority = 'analysis.facility_operational_status';
     append(dashboard, 'h2', '', 'Facility status by actor');
-    append(dashboard, 'p', 'section-note', 'The bar gives the current facility-level picture. Open a status to see the facilities and the evidence behind each result. Damage to one subfacility is not treated as loss of an entire base unless the evidence supports that conclusion.');
+    append(dashboard, 'p', 'section-note', 'Only accepted four-state facility findings receive a status color. Facilities without an accepted four-state finding remain unclassified and neutral.');
     const groups = new Map();
-    records.forEach(record => {
+    facilityRecords.forEach(record => {
       const actor = normalizeActor(record);
       if (!groups.has(actor)) groups.set(actor, []);
       groups.get(actor).push(record);
     });
-    const order = ['Iran', 'United States', 'Saudi Arabia', 'Yemen / Houthis', 'Israel', 'Qatar', 'Bahrain', 'Kuwait', 'Jordan', 'Oman'];
+    const actorOrder = ['Iran', 'United States', 'Saudi Arabia', 'Yemen / Houthis', 'Israel', 'Qatar', 'Bahrain', 'Kuwait', 'Jordan', 'Oman'];
     const sortedGroups = [...groups.entries()].sort(([a], [b]) => {
-      const ai = order.indexOf(a); const bi = order.indexOf(b);
+      const ai = actorOrder.indexOf(a); const bi = actorOrder.indexOf(b);
       if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
       return a.localeCompare(b);
     });
+    const statusOrder = ['RED', 'YELLOW', 'BLUE', 'GREEN', 'UNCLASSIFIED'];
     sortedGroups.forEach(([actor, facilities]) => {
       const panel = append(dashboard, 'section', 'reader-facility-actor');
       append(panel, 'h3', '', actor);
-      const buckets = new Map(Object.keys(FACILITY_STATUS).map(key => [key, []]));
-      facilities.forEach(record => buckets.get(facilityStatus(record)).push(record));
-      const operationalKeys = ['destroyed', 'damaged_inoperable', 'damaged_operational', 'operational', 'unknown'];
-      const denominator = operationalKeys.reduce((sum, key) => sum + buckets.get(key).length, 0);
+      const buckets = new Map(statusOrder.map(key => [key, []]));
+      facilities.forEach(record => buckets.get(facilityStatus(record, accepted.classifiedById)).push(record));
+      const denominator = facilities.length;
       const bar = append(panel, 'div', 'reader-status-bar');
       bar.setAttribute('role', 'img');
-      bar.setAttribute('aria-label', operationalKeys.map(key => `${FACILITY_STATUS[key].label}: ${buckets.get(key).length}`).join('; '));
-      operationalKeys.forEach(key => {
+      bar.setAttribute('aria-label', statusOrder.map(key => `${FACILITY_STATUS[key].label}: ${buckets.get(key).length}`).join('; '));
+      statusOrder.forEach(key => {
         const count = buckets.get(key).length;
         if (!count) return;
         const segment = append(bar, 'span', `reader-status-segment ${FACILITY_STATUS[key].className}`);
@@ -395,36 +385,34 @@
         segment.title = `${FACILITY_STATUS[key].label}: ${count}`;
       });
       const legend = append(panel, 'div', 'reader-status-legend');
-      operationalKeys.forEach(key => {
-        const count = buckets.get(key).length;
+      statusOrder.forEach(key => {
         const item = append(legend, 'span', `reader-status-key ${FACILITY_STATUS[key].className}`);
-        append(item, 'strong', '', String(count));
+        append(item, 'strong', '', String(buckets.get(key).length));
         item.append(documentObject.createTextNode(` ${FACILITY_STATUS[key].label}`));
       });
-      operationalKeys.forEach(key => {
+      statusOrder.forEach(key => {
         const rows = buckets.get(key);
         if (!rows.length) return;
         const details = append(panel, 'details', `reader-facility-drawer ${FACILITY_STATUS[key].className}`);
         append(details, 'summary', '', `${FACILITY_STATUS[key].label} (${rows.length})`);
         const list = append(details, 'div', 'reader-facility-list');
         rows.sort((a, b) => text(a.name).localeCompare(text(b.name))).forEach(record => {
+          const id = text(record.facility_id || record.id || record.name);
+          const classified = asArray(accepted.payload.classified).find(item => text(item && item.facility_id) === id);
+          const unresolved = accepted.unclassifiedById.get(id);
           const card = append(list, 'article', 'reader-facility-card');
+          card.dataset.facilityId = id;
+          card.dataset.facilityOperationalStatus = key;
           append(card, 'h4', '', cleanPublicText(record.name || record.facility_id || record.id));
+          append(card, 'p', 'card-kicker', `Operational map state: ${FACILITY_STATUS[key].label}`);
           const date = facilityDate(record);
           if (date) append(card, 'p', 'card-kicker', `Evidence through ${date}`);
-          const effect = cleanPublicText(record.assessment || record.effect || record.note || record.continuity || 'No broader effect is stated beyond the recorded status.');
-          if (effect) append(card, 'p', '', effect);
-          addEvidence(card, context, [record], 'Damage evidence');
+          const finding = cleanPublicText(classified && classified.basis || unresolved && unresolved.reason || 'No accepted four-state classification is available for this facility.');
+          if (finding) append(card, 'p', '', finding);
+          const evidenceRecord = { ...record, source_ids: [...new Set([...asArray(record.source_ids), ...asArray(classified && classified.source_ids), ...asArray(unresolved && unresolved.source_ids)])] };
+          addEvidence(card, context, [evidenceRecord], key === 'UNCLASSIFIED' ? 'Evidence and qualification' : 'Why this status is supported');
         });
       });
-      const admin = buckets.get('administrative');
-      if (admin.length) {
-        const details = append(panel, 'details', 'reader-facility-drawer administrative');
-        append(details, 'summary', '', `${FACILITY_STATUS.administrative.label} (${admin.length})`);
-        append(details, 'p', 'section-note', 'These records are not included in the current operating-status totals. Closure, transfer or withdrawal is not physical destruction.');
-        const list = append(details, 'ul', 'reader-constituent-list');
-        admin.forEach(record => append(list, 'li', '', cleanPublicText(record.name || record.facility_id || record.id)));
-      }
     });
     const map = article.querySelector(':scope > .context-map, :scope > section .context-map');
     if (map && map.parentElement === article) article.insertBefore(dashboard, map);
@@ -433,7 +421,7 @@
     const old = findSection(article, 'Facility assessments');
     if (old) {
       const details = el(documentObject, 'details', 'secondary-context reader-full-facility-records');
-      append(details, 'summary', '', `Browse full facility records (${records.length})`);
+      append(details, 'summary', '', `Browse full facility records (${facilityRecords.length})`);
       [...old.children].forEach(child => { if (child.tagName !== 'H2') details.append(child); });
       old.replaceWith(details);
     }

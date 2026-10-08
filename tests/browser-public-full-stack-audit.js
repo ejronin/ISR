@@ -212,16 +212,26 @@ function addFinding(findings, routeKey, width, category, detail) {
     if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'reader-evidence-drawer-not-discoverable-or-openable');
 
     await route(cdp, 'military.imagery');
+    await waitFor(cdp, `(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      return view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+    })()`);
     const imagery = await cdp.eval(`(() => {
       const row = document.querySelector('[data-imagery-summary]');
       const summary = row?.querySelector(':scope > summary');
       if (summary) summary.focus();
       const focusable = !summary || document.activeElement === summary;
       if (summary) summary.click();
-      return { row: Boolean(row), focusable, open: Boolean(row?.open), map: Boolean(document.querySelector('[data-component="MapView"] .leaflet-container')) };
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      const map = view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+      return { row: Boolean(row), focusable, open: Boolean(row?.open), map: Boolean(map), mapRenderer: view?.dataset.mapRenderer || '' };
     })()`);
     if (!imagery.row || !imagery.focusable || !imagery.open) addFinding(findings, 'military.imagery', 390, 'disclosure', 'imagery-not-focusable-or-openable');
-    if (!imagery.map) addFinding(findings, 'military.imagery', 390, 'map', 'missing-map-runtime');
+    if (!imagery.map) addFinding(findings, 'military.imagery', 390, 'map', `missing-map-runtime-${imagery.mapRenderer || 'unknown'}`);
 
     await route(cdp, 'military.losses');
     const losses = await cdp.eval(`(() => {
@@ -272,8 +282,15 @@ function addFinding(findings, routeKey, width, category, detail) {
     await route(cdp, 'evidence.method');
     await cdp.eval(`history.back(); true`);
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.sources'`);
+    await sleep(180);
     const afterHistory = await cdp.eval(`location.hash`);
-    if (afterHistory !== beforeHistory) addFinding(findings, 'evidence.sources', 390, 'history', `${beforeHistory}->${afterHistory}`);
+    const beforeRoute = ia.parseRoute(beforeHistory);
+    const afterRoute = ia.parseRoute(afterHistory);
+    if (afterRoute.key !== beforeRoute.key) addFinding(findings, 'evidence.sources', 390, 'history', `${beforeHistory}->${afterHistory}`);
+    const validSourceSections = new Set(ia.pageSectionsFor('evidence.sources').map(section => section.id));
+    if (afterRoute.params?.section && !validSourceSections.has(afterRoute.params.section)) {
+      addFinding(findings, 'evidence.sources', 390, 'history-section', afterRoute.params.section);
+    }
 
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 

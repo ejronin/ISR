@@ -159,22 +159,35 @@ const PRESERVED_FACILITY_IDS = [
     assert.match(facilityParity.page, /Map markers show the facility’s general location, not the exact point of impact/i);
 
     await setRoute(cdp, 'military.imagery');
-    const baselineBda = await cdp.eval(`(() => ({
-      buttons: document.querySelectorAll('.map-imagery-button').length,
-      overlays: document.querySelectorAll('img.leaflet-image-layer').length,
-      points: document.querySelectorAll('.evidence-map-marker').length,
-      damageObservationIds: [...document.querySelectorAll('[data-damage-observation-id]')].map(node => node.dataset.damageObservationId),
-      facilityAuditCards: document.querySelectorAll('article[data-facility-audit-id]').length,
-      facilityAuditDetails: document.querySelectorAll('article[data-facility-audit-id] .facility-claim-audit').length,
-      evidenceLinks: [...document.querySelectorAll('[data-damage-observation-id] .evidence-drawer a, article[data-facility-audit-id] .evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
-      auditText: [...document.querySelectorAll('article[data-facility-audit-id] .facility-claim-audit')].map(node => node.textContent || '').join(' '),
-      text: document.querySelector('[data-phase6-map-equivalent]')?.innerText || '',
-      page: document.querySelector('main')?.innerText || ''
-    }))()`);
+    await waitFor(cdp, `(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      return view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
+    })()`);
+    const baselineBda = await cdp.eval(`(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      const maplibre = view?.dataset.component === 'MapLibreView';
+      return {
+        renderer: view?.dataset.mapRenderer || '',
+        buttons: document.querySelectorAll('.map-imagery-button').length,
+        overlays: maplibre ? Number(view?.dataset.mapImageryOverlayCount || 0) : document.querySelectorAll('img.leaflet-image-layer').length,
+        footprints: maplibre ? Number(view?.dataset.mapImageryFootprintCount || 0) : document.querySelectorAll('.leaflet-atlas-imagery-pane path').length,
+        points: maplibre ? Number(view?.dataset.mapPointCount || 0) : document.querySelectorAll('.evidence-map-marker').length,
+        damageObservationIds: [...document.querySelectorAll('[data-damage-observation-id]')].map(node => node.dataset.damageObservationId),
+        facilityAuditCards: document.querySelectorAll('article[data-facility-audit-id]').length,
+        facilityAuditDetails: document.querySelectorAll('article[data-facility-audit-id] .facility-claim-audit').length,
+        evidenceLinks: [...document.querySelectorAll('[data-damage-observation-id] .evidence-drawer a, article[data-facility-audit-id] .evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
+        auditText: [...document.querySelectorAll('article[data-facility-audit-id] .facility-claim-audit')].map(node => node.textContent || '').join(' '),
+        text: document.querySelector('[data-phase6-map-equivalent]')?.innerText || '',
+        page: document.querySelector('main')?.innerText || ''
+      };
+    })()`);
     assert(baselineBda.buttons >= 1, 'baseline BDA records lack a keyboard imagery selector');
     assert.equal(baselineBda.overlays, 0, 'approximate baseline imagery was stretched into an unsupported image overlay');
     assert(baselineBda.points >= 1, 'location-linked baseline imagery lacks canonical markers');
-    assert.match(baselineBda.page, /precise image footprint is unavailable/i);
+    assert.match(baselineBda.page, /source material is linked in the record/i);
+    assert.doesNotMatch(baselineBda.page, /precise image footprint|Tier [A-D]|georeferenced image overlay/i);
     assert.equal(new Set(baselineBda.damageObservationIds).size, 9, 'forensic damage observations are not publicly reachable');
     assert.equal(baselineBda.facilityAuditCards, 4, 'facility claim audits lack a visible imagery consumer');
     assert.equal(baselineBda.facilityAuditDetails, 4, 'facility claim-audit propositions are not exposed');
@@ -274,14 +287,16 @@ const PRESERVED_FACILITY_IDS = [
             revealed
           };
         }
+        const mapView = host.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+        const maplibre = mapView?.dataset.component === 'MapLibreView';
         const result = {
           text: host.innerText,
           allText: host.textContent,
           html: host.innerHTML,
           sourceIds: sourceCards.map(node => node.dataset.sourceId),
           sourcePath,
-          overlays: host.querySelectorAll('img.leaflet-image-layer').length,
-          footprints: host.querySelectorAll('.leaflet-atlas-imagery-pane path').length,
+          overlays: maplibre ? Number(mapView?.dataset.mapImageryOverlayCount || 0) : host.querySelectorAll('img.leaflet-image-layer').length,
+          footprints: maplibre ? Number(mapView?.dataset.mapImageryFootprintCount || 0) : host.querySelectorAll('.leaflet-atlas-imagery-pane path').length,
           imageryButtons: [...host.querySelectorAll('.map-imagery-button')].map(button => button.textContent),
           equivalent: host.querySelector('[data-phase6-map-equivalent]')?.textContent || '',
           drawers: host.querySelectorAll('details[data-component="SharedEvidenceDrawer"]').length
@@ -301,7 +316,8 @@ const PRESERVED_FACILITY_IDS = [
     assert.match(propagation.imagery.text, /Future general-area imagery fixture/);
     assert.match(propagation.imagery.equivalent, /Future supported Bandar Abbas general area/);
     assert.match(propagation.imagery.equivalent, /General Area/i);
-    assert.match(propagation.imagery.equivalent, /precise footprint unavailable/i);
+    assert.match(propagation.imagery.equivalent, /location confirmed; source links available/i);
+    assert.doesNotMatch(propagation.imagery.equivalent, /precise footprint unavailable|Tier [A-D]|georeferenced image overlay/i);
     assert.equal(propagation.generalTier, 'C', 'future general-area imagery did not remain Tier C');
     assert.equal(propagation.generalBounds, null, 'future general-area imagery invented rectangular bounds');
     assert.equal(propagation.generalFootprint, null, 'future general-area imagery invented a footprint');
@@ -330,17 +346,41 @@ const PRESERVED_FACILITY_IDS = [
     assert.match(propagation.retrofitSources.allText, /Updated retrofit source metadata/);
 
     await setRoute(cdp, 'military.imagery');
-    const keyboard = await cdp.eval(`(() => {
-      const marker = document.querySelector('.evidence-map-marker[tabindex="0"], .leaflet-marker-icon[tabindex="0"]');
-      marker?.focus(); marker?.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }));
-      const opened = !document.querySelector('.map-selection-card')?.hidden;
-      const map = document.querySelector('.atlas-leaflet-map');
-      map?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-      return { marker: Boolean(marker), focused: document.activeElement === marker, opened, closed: document.querySelector('.map-selection-card')?.hidden };
+    await waitFor(cdp, `(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      return view?.dataset.component === 'MapLibreView'
+        ? view.querySelector('.atlas-maplibre-map')?.dataset.mapState === 'ready'
+        : Boolean(view?.querySelector('.leaflet-container'));
     })()`);
-    assert.equal(keyboard.marker, true, 'map marker is not keyboard focusable');
-    assert.equal(keyboard.focused, true, 'map marker did not receive keyboard focus');
-    assert.equal(keyboard.opened, true, 'marker activation did not open a readable card');
+    const keyboard = await cdp.eval(`(() => {
+      const view = document.querySelector('[data-component="MapLibreView"], [data-component="MapView"]');
+      const maplibre = view?.dataset.component === 'MapLibreView';
+      if (maplibre) {
+        const button = view.querySelector('.map-imagery-button');
+        button?.focus();
+        button?.click();
+        const opened = !view.querySelector('.map-selection-card')?.hidden;
+        button?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+        return {
+          renderer: 'maplibre',
+          control: Boolean(button),
+          nativeButton: button?.tagName === 'BUTTON',
+          focused: document.activeElement === button,
+          opened,
+          closed: view.querySelector('.map-selection-card')?.hidden
+        };
+      }
+      const marker = view?.querySelector('.evidence-map-marker[tabindex="0"], .leaflet-marker-icon[tabindex="0"]');
+      marker?.focus(); marker?.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }));
+      const opened = !view?.querySelector('.map-selection-card')?.hidden;
+      const map = view?.querySelector('.atlas-leaflet-map');
+      map?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      return { renderer: 'leaflet', control: Boolean(marker), nativeButton: false, focused: document.activeElement === marker, opened, closed: view?.querySelector('.map-selection-card')?.hidden };
+    })()`);
+    assert.equal(keyboard.control, true, 'imagery map lacks a keyboard selection control');
+    if (keyboard.renderer === 'maplibre') assert.equal(keyboard.nativeButton, true, 'MapLibre imagery selection is not a native keyboard button');
+    assert.equal(keyboard.focused, true, 'imagery selection control did not receive keyboard focus');
+    assert.equal(keyboard.opened, true, 'imagery selection did not open a readable card');
     assert.equal(keyboard.closed, true, 'Escape did not close the map card');
 
     for (const width of [320, 390, 768, 1440]) {

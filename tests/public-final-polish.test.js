@@ -9,6 +9,10 @@ const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 const source = read('js/public-ia.js');
 const appSource = read('js/public-app.js');
 const css = read('css/public-shell.css');
+const readerLayerSource = read('src/public-reader-layer.js');
+const readerRegistrySource = read('src/public-reader-registry.js');
+const readModelRegistry = JSON.parse(read('data/public-read-model-registry.json'));
+const facilityOperationalAdjudication = JSON.parse(read('data/evidence-integration/facility-operational-status-adjudication-20261007.json'));
 const releaseBuilder = read('scripts/build_public_release.py');
 const releaseCore = read('scripts/build_public_release_core.py');
 const retirementScript = path.join(root, 'scripts', 'retire_privileged_narrative_runtime.py');
@@ -64,6 +68,44 @@ assert(source.includes("notice.dataset.stateNotice = variant"), 'State Notice co
 assert(source.includes("variant: 'no-geolocated-records'"), 'Shipping zero geography does not use the semantic State Notice');
 assert(source.includes("variant: 'dependency-unavailable'"), 'dependency unavailable State Notice is not used');
 
+for (const phrase of [
+  'SPARSE ACCEPTED POINTS',
+  'Tier ${item.tier}',
+  'Precise image footprint unavailable',
+  'no map overlay is created',
+  'support a geographic overlay'
+]) assert(!source.includes(phrase), `reader-facing implementation notation leaked into public IA: ${phrase}`);
+for (const phrase of [
+  'Imagery and source links',
+  'no established date',
+  'The terms are being negotiated.',
+  'Inoperable base (whole)',
+  'Damaged; parts inoperable',
+  'Damaged; operable',
+  'Untouched',
+  'Open the Lie Ledger'
+]) assert(source.includes(phrase), `missing owner-required reader contract: ${phrase}`);
+assert(source.includes("modelData(model, 'analysis.facility_operational_status')"), 'facility map does not consume the accepted operational-status adjudication');
+assert(source.includes("_visualOperationalStatus: acceptedFacilityOperationalState(accepted)"), 'facility map does not pass accepted states directly to the renderer');
+assert(!source.includes('function facilityMapStatus('), 'facility colors are being inferred inside the renderer instead of supplied by evidence authority');
+assert(!readerLayerSource.includes('positiveDamage'), 'reader support still infers facility state from damage/presence text');
+assert(!readerRegistrySource.includes("'US-INCIRLIK':['operating'"), 'reader registry still hard-codes the superseded Incirlik operating bucket');
+assert(appSource.includes("'analysis.facility_operational_status'"), 'facility route does not authorize the accepted adjudication dataset');
+const facilityDatasetSpec = readModelRegistry.datasets.find(item => item.key === 'analysis.facility_operational_status');
+assert(facilityDatasetSpec && facilityDatasetSpec.path === 'data/evidence-integration/facility-operational-status-adjudication-20261007.json', 'public read model does not embed the accepted facility adjudication');
+assert(readModelRegistry.page_data.military_record.includes('analysis.facility_operational_status'), 'military reader page does not receive the accepted facility adjudication');
+assert.deepEqual(
+  facilityOperationalAdjudication.classified.map(item => [item.facility_id, item.public_operational_state]),
+  [['US-SHUAIBA-TOC','RED'],['US-NSA-BHR','YELLOW'],['US-ALUDEID','YELLOW'],['US-ARIFJAN','YELLOW']],
+  'accepted facility classifications changed'
+);
+assert.equal(facilityOperationalAdjudication.classified.some(item => item.public_operational_state === 'BLUE'), false, 'BLUE facility was manufactured without accepted evidence');
+assert.equal(facilityOperationalAdjudication.classified.some(item => item.public_operational_state === 'GREEN'), false, 'GREEN facility was manufactured without accepted evidence');
+assert(!source.includes('Imagery is overlaid only when the evidence record supplies reliable geolocation'), 'imagery route leaked implementation/geometry language back into reader copy');
+assert(!source.includes("plainLabel(item.record.candidate_confidence"), 'imagery route exposes geometry-pipeline candidate confidence as public evidence status');
+assert(source.includes('Mapped locations show where imagery or damage-review records are tied to a confirmed site.'), 'imagery map lacks plain reader location/source explanation');
+assert(css.includes('grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr))'), 'diplomacy track timeline lost its desktop horizontal step layout');
+
 const retirementNote = read('docs/PRIVILEGED_NARRATIVE_RETIREMENT_2026-09-10.md');
 for (const eventId of [
   'G3-US-IRAN-TANKERS-20260908',
@@ -82,6 +124,10 @@ for (const phrase of [
 ]) assert(css.includes(phrase), `missing final-polish CSS contract: ${phrase}`);
 assert(css.includes('outline: 2px solid var(--atlas-focus-ring)'), 'editorial H1 keyboard focus is not preserved');
 assert(css.includes('min-height: 2.75rem'), 'touch-target floor is absent');
+assert(readerLayerSource.includes("facility status must not be inferred") || !readerLayerSource.includes('positiveDamage'), 'reader layer reintroduced inferred facility status');
+assert(read('src/public-reader-layer.css').includes('white-space: nowrap'), 'facility status legend may split counts or labels at narrow widths');
+assert(read('src/public-reader-layer.css').includes('@media (max-width: 480px)') && read('src/public-reader-layer.css').includes('.reader-status-legend {\n    grid-template-columns: 1fr;'), 'facility status legend must stack to one column on narrow mobile widths');
+assert(read('js/public-visualization-renderer.js').includes("'YELLOW', 12"), 'facility status markers no longer preserve close red/yellow readability without moving coordinates');
 assert(!css.includes('font-size: .58rem'), 'final polish still depends on sub-readable .58rem mobile type');
 
 console.log('public final polish: PASS - current-state hierarchy, semantic state notices, Talks grouping, direct neutral entrypoint source, single-pass reader asset graph and shared interaction/readability contracts verified');

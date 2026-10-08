@@ -59,64 +59,31 @@ assert.equal(
 );
 assert.equal(reader.readerIntentReviewNote({ publication_status: 'PUBLIC_READY' }), '');
 
-const status = record => reader.readerFacilityStatus(record);
+const acceptedFacilityStates = new Map([
+  ['US-SHUAIBA-TOC', 'RED'],
+  ['US-NSA-BHR', 'YELLOW'],
+  ['US-ALUDEID', 'YELLOW'],
+  ['US-ARIFJAN', 'YELLOW']
+]);
+const status = record => reader.readerFacilityStatus(record, acceptedFacilityStates);
 
+assert.equal(status({ facility_id: 'US-SHUAIBA-TOC', current_presence_status: 'Destroyed' }), 'RED');
+assert.equal(status({ facility_id: 'US-NSA-BHR', operational_effect_status: 'HQ_FUNCTION_RELOCATED' }), 'YELLOW');
+assert.equal(status({ facility_id: 'US-ALUDEID', operational_effect_status: 'SUBFACILITY_INOPERABLE' }), 'YELLOW');
+assert.equal(status({ facility_id: 'US-ARIFJAN', current_presence_status: 'U.S. troops present' }), 'YELLOW');
 assert.equal(status({
-  facility_class: 'OUTPOST',
-  current_presence_status: 'Destroyed in March strike; not treated as an intact working facility afterward without later evidence.',
-  damage_evidence_status: 'VERIFIED_DAMAGE',
-  operational_effect_status: 'SUBFACILITY_INOPERABLE'
-}), 'destroyed', 'an explicitly destroyed outpost must remain destroyed');
-
+  facility_id: 'US-INCIRLIK',
+  current_presence_status: 'Operational and active.',
+  damage_evidence_status: 'NO_REPORTED_DAMAGE_FOUND',
+  operational_effect_status: 'OPERATIONAL'
+}), 'UNCLASSIFIED', 'operational continuity plus absence of reported damage must not manufacture GREEN');
 assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'U.S. presence established in 2026.',
-  damage_evidence_status: 'VERIFIED_DAMAGE',
-  operational_effect_status: 'SUBFACILITY_INOPERABLE',
-  continuity: 'The evidence establishes loss of a named command subfacility, not loss of the entire air base.'
-}), 'damaged_operational', 'subfacility loss must not become whole-base inoperability');
-
-assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'Facility remains damaged.',
+  facility_id: 'UNLISTED-FACILITY',
+  current_presence_status: 'Destroyed',
   damage_evidence_status: 'VERIFIED_DAMAGE',
   operational_effect_status: 'WHOLE_SITE_INOPERABLE'
-}), 'damaged_inoperable');
-
-assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'Withdrawn and closed after transfer.',
-  damage_evidence_status: 'NO_VERIFIED_DAMAGE',
-  operational_effect_status: 'NOT ACTIVE'
-}), 'administrative', 'withdrawal/closure must not be counted as destruction');
-
-assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'Operational and active.',
-  damage_evidence_status: '',
-  operational_effect_status: 'OPERATIONAL'
-}), 'operational');
-
-assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'Operational and active.',
-  damage_evidence_status: 'NO_VERIFIED_DAMAGE',
-  operational_effect_status: 'OPERATIONAL'
-}), 'operational', 'NO_VERIFIED_DAMAGE must not collide with VERIFIED_DAMAGE');
-
-assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'Status unresolved.',
-  damage_evidence_status: 'NO_VERIFIED_DAMAGE',
-  operational_effect_status: 'UNKNOWN'
-}), 'unknown', 'absence of verified damage must not manufacture a damaged classification');
-
-assert.equal(status({
-  facility_class: 'BASE',
-  current_presence_status: 'Operational status unclear.',
-  damage_evidence_status: 'UNVERIFIED_DAMAGE',
-  operational_effect_status: 'UNKNOWN'
-}), 'unknown', 'UNVERIFIED_DAMAGE must not collide with VERIFIED_DAMAGE');
+}), 'UNCLASSIFIED', 'facility record text must not manufacture a RED classification');
+assert.equal(reader.readerFacilityStatus({ facility_id: 'US-SHUAIBA-TOC' }), 'UNCLASSIFIED', 'accepted lookup is required for any colored state');
 
 const readerSource = fs.readFileSync(path.join(root, 'src/public-reader-layer.js'), 'utf8');
 const readerCss = fs.readFileSync(path.join(root, 'src/public-reader-layer.css'), 'utf8');
@@ -144,7 +111,7 @@ assert.match(readerSource, /actionRow\.append\(traceLink\)/);
 assert.match(readerCss, /grid-template-columns:\s*minmax\(0,\s*1fr\)\s*auto/);
 assert.match(readerCss, /\.reader-ledger-card-head\s*>\s*\.reader-wol-trace[\s\S]*grid-row:\s*2/);
 assert.match(readerCss, /\.reader-ledger-card-head\s*>\s*\.reader-claim-status[\s\S]*grid-row:\s*2/);
-assert.match(readerSource, /const positiveDamage = !negativeDamage/);
+assert.doesNotMatch(readerSource, /positiveDamage|negativeDamage|NO_WHOLE_SITE_SHUTDOWN\|OPERAT\|PRESENCE\|REOPEN\|CONTINU/, 'facility status must not be inferred from damage, presence, or continuity text');
 assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*none/i, 'internal fields must be removed structurally, not hidden by CSS');
 
 assert.doesNotMatch(readerSource, /function\s+mount\s*\(/, 'reader support must not own a mount lifecycle');
