@@ -44,6 +44,10 @@ const PHASE1_VISUAL_FOCUS = [
   { routeKey: 'evidence.web_of_lies', label: 'wol-network', selector: '.wol-graph-column', state: 'wol' }
 ];
 const PHASE2_VISUAL_FOCUS = [
+  { routeKey: 'hormuz.economy', label: 'economy-protected-baseline', selector: '.guide-protected-economic-chart', state: 'chart' },
+  { routeKey: 'hormuz.economy', label: 'economy-mode-controls', selector: '.economic-mode-controls', state: 'static' },
+  { routeKey: 'hormuz.sanctions', label: 'sanctions-money-flow', selector: '.sanctions-plumbing', state: 'static' },
+  { routeKey: 'hormuz.sanctions', label: 'sanctions-transmission-chain', selector: '.sanctions-cascade', state: 'static' },
   { routeKey: 'hormuz.shipping', label: 'shipping-observation-chart', selector: '.guide-time-series', state: 'chart' },
   { routeKey: 'military.facilities', label: 'facility-map', selector: '[data-component="MapLibreView"]', state: 'map' },
   { routeKey: 'military.facilities', label: 'facility-operational-legend', selector: '.facility-operational-legend', state: 'static' },
