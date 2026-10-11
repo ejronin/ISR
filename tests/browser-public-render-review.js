@@ -45,6 +45,7 @@ const PHASE1_VISUAL_FOCUS = [
 ];
 const PHASE2_VISUAL_FOCUS = [
   { routeKey: 'hormuz.economy', label: 'economy-protected-baseline', selector: '[data-protected-economic-chart="retained"]', state: 'static' },
+  { routeKey: 'hormuz.economy', label: 'economy-forecast-revisions', selector: '[data-forecast-revision-chart="accepted-ledger"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-mode-controls', selector: '.economic-mode-controls', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-money-flow', selector: '.sanctions-plumbing', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-transmission-chain', selector: '.sanctions-cascade', state: 'static' },
