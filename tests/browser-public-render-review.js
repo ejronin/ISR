@@ -44,6 +44,7 @@ const PHASE1_VISUAL_FOCUS = [
   { routeKey: 'evidence.web_of_lies', label: 'wol-network', selector: '.wol-graph-column', state: 'wol' }
 ];
 const PHASE2_VISUAL_FOCUS = [
+  { routeKey: 'hormuz.overview', label: 'hormuz-economy-context', selector: '[data-hormuz-economic-context="accepted-record-only"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-protected-baseline', selector: '[data-protected-economic-chart="retained"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-forecast-revisions', selector: '[data-forecast-revision-chart="accepted-ledger"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-mode-controls', selector: '.economic-mode-controls', state: 'static' },
@@ -393,6 +394,16 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           } : null;
         })()`);
         assert(state && state.width > 0 && state.height > 0, `${focus.label} has no rendered Phase 2 review area at ${width}px`);
+        if (focus.label === 'hormuz-economy-context') {
+          const state=await cdp.eval(`(() => {
+            const root=document.querySelector('[data-hormuz-economic-context="accepted-record-only"]');
+            return {rows:root?.querySelectorAll('.hormuz-forecast-table tr').length,
+              reset:Boolean(root?.querySelector('button')),
+              note:root?.textContent.includes('not a claim of economic causation') || false};
+          })()`);
+          assert.equal(state.rows,8,'Hormuz contextual economic table should contain header plus seven accepted forecast economies');
+          assert(state.reset && state.note,'map-economic coordination needs reset and noncausal time-basis note');
+        }
         if (focus.label === 'economic-transmission-visual') {
           const states=await cdp.eval(`(() => {
             const root=document.querySelector('.economic-transmission-visual');
