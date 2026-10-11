@@ -49,6 +49,7 @@ const PHASE2_VISUAL_FOCUS = [
   { routeKey: 'hormuz.economy', label: 'economy-forecast-revisions', selector: '[data-forecast-revision-chart="accepted-ledger"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-mode-controls', selector: '.economic-mode-controls', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economic-transmission-visual', selector: '.economic-transmission-visual', state: 'static' },
+  { routeKey: 'hormuz.sanctions', label: 'sanctions-route-breakdown', selector: '.sanctions-route-breakdown', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-money-flow', selector: '.sanctions-plumbing', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-route-inspector', selector: '.sanctions-selected-route', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-transmission-chain', selector: '.sanctions-cascade', state: 'static' },
@@ -439,6 +440,36 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           })()`);
           assert.equal(parity.count, 7, 'forecast revisions must contain seven accepted economies');
           assert(parity.revisions.every(r => r.labelled && r.text?.includes('%') && r.delta?.includes(' pp')), 'every forecast revision needs sources, units and accessible text');
+        }
+        if (focus.label === 'economy-forecast-revisions') {
+          const sourceLayout = await cdp.eval(`(() => {
+            const row=document.querySelector('.economic-forecast-revision .forecast-revision-row');
+            const drawer=row?.querySelector('.evidence-drawer');
+            if(!row || !drawer) return null;
+            drawer.open=true;
+            const rowWidth=row.getBoundingClientRect().width;
+            const sourceWidth=drawer.getBoundingClientRect().width;
+            const text=drawer.querySelector('summary')?.textContent||'';
+            return {rowWidth,sourceWidth,text};
+          })()`);
+          assert(sourceLayout && sourceLayout.sourceWidth > sourceLayout.rowWidth * .74,
+            'Expanded finance source drawer must span the row, not collapse into a narrow right-hand gutter');
+          assert(sourceLayout.text.includes('Forecast sources'),'Expanded financial source disclosure must remain accessible');
+        }
+        if (focus.label === 'sanctions-route-breakdown') {
+          const matrix = await cdp.eval(`(() => {
+            const root=document.querySelector('.sanctions-route-breakdown');
+            const profiles=[...root.querySelectorAll('.sanctions-route-profile')];
+            for(const profile of profiles) profile.open=true;
+            return {count:profiles.length, dated:root.querySelectorAll('.sanctions-route-case-date').length,
+              drawerCount:root.querySelectorAll('.sanctions-route-case .evidence-drawer').length,
+              states:profiles.map(x=>x.querySelector('.sanctions-route-state')?.textContent),
+              boundary:root.textContent.includes('not assertions of a common payment chain')};
+          })()`);
+          assert.equal(matrix.count,6,'sanctions breakdown must cover all six supported route types');
+          assert(matrix.dated>=6,'sanctions breakdown must show accepted dated enforcement examples');
+          assert(matrix.drawerCount>=6,'sanctions route examples must preserve direct source drawer access');
+          assert(matrix.states.every(Boolean) && matrix.boundary,'sanctions route states and noncausal boundary must survive');
         }
         if (focus.label === 'sanctions-money-flow') {
           const interaction = await cdp.eval(`(() => {
