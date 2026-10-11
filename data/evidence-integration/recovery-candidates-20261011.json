@@ -239,6 +239,54 @@
       "url": "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions",
       "result": "Lists 2026-10-08 Iran-related designations and license action; source supports designation-date continuity.",
       "classification": "CONFIRMED_OFFICIAL_ACTION"
+    },
+    {
+      "date": "2026-10-08",
+      "authority": "U.S. Department of the Treasury",
+      "source": "https://home.treasury.gov/news/press-releases/sb0653",
+      "classification": "PRIMARY_DOCUMENT_REVIEWED",
+      "observation": "Treasury announced sanctions action against 17 shadow fleet vessels under EO 13902; distinct from the action, its 'neutralizes vast majority' description is an agency effectiveness claim and not independently established operational cessation.",
+      "named_examples": [
+        {
+          "name": "PARITOSH",
+          "imo": "9383352"
+        },
+        {
+          "name": "BITU",
+          "imo": "9531765"
+        },
+        {
+          "name": "STARWAY",
+          "imo": "9273246"
+        },
+        {
+          "name": "GAS LUCKY",
+          "imo": "9177557"
+        },
+        {
+          "name": "NOBLE SEA",
+          "imo": "9343118"
+        },
+        {
+          "name": "SHENZHEN",
+          "imo": "9276561"
+        },
+        {
+          "name": "EXFLAME",
+          "imo": "9294678"
+        }
+      ],
+      "delistings": [
+        {
+          "name": "HAKUNA MATATA",
+          "imo": "9354167"
+        },
+        {
+          "name": "PINOCCHIO",
+          "imo": "9400112"
+        }
+      ],
+      "method": "Seven examples only; do not infer completeness of vessel list. Two delistings are NOT additions."
     }
   ],
   "critical_backfill_boundary": "This file is a source-lead register only. Never mark October 7–11 sweeps as COMPLETE without exhaustive recorded coverage and ROOK validation. Candidate facts require Evidence Integration adjudication before inclusion in release data."
