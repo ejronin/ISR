@@ -1,0 +1,180 @@
+{
+  "schema": "visual_ia_market_research_candidate_v1",
+  "canonical_status": "EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL",
+  "as_of": "2026-10-11",
+  "metric": "Europe Brent crude oil spot price FOB",
+  "unit": "USD/barrel",
+  "publisher": "U.S. Energy Information Administration",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/RBRTED.htm",
+  "release_date": "2026-10-07",
+  "frequency": "Weekly selected Friday observations, Apr. 2 Thursday in holiday week, plus Oct. 5–6 daily readings. This is a SAMPLE of actual EIA spot observations, NOT a complete daily series or futures settlement prices.",
+  "observation_basis": "observed spot price",
+  "observations": [
+    {
+      "date": "2026-01-09",
+      "value": 65.11
+    },
+    {
+      "date": "2026-01-16",
+      "value": 66.97
+    },
+    {
+      "date": "2026-01-23",
+      "value": 68.16
+    },
+    {
+      "date": "2026-01-30",
+      "value": 72.25
+    },
+    {
+      "date": "2026-02-06",
+      "value": 70.45
+    },
+    {
+      "date": "2026-02-13",
+      "value": 69.96
+    },
+    {
+      "date": "2026-02-20",
+      "value": 72.75
+    },
+    {
+      "date": "2026-02-27",
+      "value": 71.32
+    },
+    {
+      "date": "2026-03-06",
+      "value": 95.74
+    },
+    {
+      "date": "2026-03-13",
+      "value": 103.23
+    },
+    {
+      "date": "2026-03-20",
+      "value": 118.42
+    },
+    {
+      "date": "2026-03-27",
+      "value": 121.47
+    },
+    {
+      "date": "2026-04-02",
+      "value": 127.61
+    },
+    {
+      "date": "2026-04-10",
+      "value": 119.07
+    },
+    {
+      "date": "2026-04-17",
+      "value": 98.63
+    },
+    {
+      "date": "2026-04-24",
+      "value": 111.86
+    },
+    {
+      "date": "2026-05-01",
+      "value": 118.26
+    },
+    {
+      "date": "2026-05-08",
+      "value": 103.48
+    },
+    {
+      "date": "2026-05-15",
+      "value": 113.96
+    },
+    {
+      "date": "2026-05-22",
+      "value": 106.9
+    },
+    {
+      "date": "2026-05-29",
+      "value": 92.88
+    },
+    {
+      "date": "2026-06-05",
+      "value": 97.29
+    },
+    {
+      "date": "2026-06-12",
+      "value": 88.64
+    },
+    {
+      "date": "2026-06-19",
+      "value": 80.46
+    },
+    {
+      "date": "2026-06-26",
+      "value": 70.16
+    },
+    {
+      "date": "2026-07-03",
+      "value": 68.68
+    },
+    {
+      "date": "2026-07-10",
+      "value": 74.34
+    },
+    {
+      "date": "2026-07-17",
+      "value": 85.01
+    },
+    {
+      "date": "2026-07-24",
+      "value": 100.31
+    },
+    {
+      "date": "2026-07-31",
+      "value": 96.95
+    },
+    {
+      "date": "2026-08-07",
+      "value": 87.62
+    },
+    {
+      "date": "2026-08-14",
+      "value": 92.02
+    },
+    {
+      "date": "2026-08-21",
+      "value": 96.92
+    },
+    {
+      "date": "2026-08-28",
+      "value": 89.75
+    },
+    {
+      "date": "2026-09-04",
+      "value": 102.24
+    },
+    {
+      "date": "2026-09-11",
+      "value": 118.06
+    },
+    {
+      "date": "2026-09-18",
+      "value": 119.66
+    },
+    {
+      "date": "2026-09-25",
+      "value": 116.01
+    },
+    {
+      "date": "2026-10-02",
+      "value": 135.51
+    },
+    {
+      "date": "2026-10-05",
+      "value": 125.51
+    },
+    {
+      "date": "2026-10-06",
+      "value": 125.44
+    }
+  ],
+  "comparability": "DO NOT mix with Reuters ICE Brent futures settlements, WTI, GDP forecasts, or hypothetical model projection. Excluded days are unsampled, not zero; connecting a sparse sample cannot establish intraperiod prices.",
+  "notes": "Numbers transcribed from the EIA official published tabulation of weeks Jan 5 through Oct 9, 2026. Price observations beyond Oct 6 were not published in the cited Oct 7 release."
+}
