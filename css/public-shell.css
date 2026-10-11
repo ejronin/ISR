@@ -4607,3 +4607,18 @@ tbody tr:last-child td { border-bottom: 0; }
 .sanctions-selected-route{border:1px solid var(--border-color,#cbd5df);border-left:4px solid #1678bd;border-radius:.45rem;padding:.85rem 1rem;margin:1rem 0;background:var(--surface,#fff)}
 .sanctions-selected-route p{margin:.35rem 0 0;line-height:1.45}
 @media(prefers-reduced-motion:reduce){.sanctions-node[data-sanctions-node-id]{transition:none}}
+
+/* Visual IA completion: real selectable economic analyses and epistemically distinct flow. */
+.economic-analytic-selector{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem}
+.economic-analytic-selector .economic-mode-note,.economic-analytic-selector .economic-mode-unavailable{flex-basis:100%;margin:.2rem 0;line-height:1.45}
+.economic-analytic-selector .economic-mode-unavailable{font-size:.8rem;color:var(--muted,#93a5b5)}
+.economic-analytic-selector .visualization-mode-button[aria-pressed=true]{outline:2px solid #4aaad1;outline-offset:1px;background:rgba(52,152,205,.18)}
+.economic-transmission-visual{margin-block:1.3rem}
+.economic-transmission-lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.economic-transmission-lane{border:1px solid var(--border-divider,#445468);border-radius:.5rem;padding:1rem;min-width:0}
+.economic-transmission-lane h3{margin:.3rem 0;font-size:1rem}
+.economic-transmission-lane p{line-height:1.48}
+.economic-mechanism{border-top:4px solid #4aaad1}
+.economic-observed{border-top:4px solid #3da678}
+.economic-watch{border-top:4px dashed #c59c41;border-style:dashed}
+@media(max-width:768px){.economic-transmission-lanes{grid-template-columns:1fr}.economic-transmission-lane{padding:.8rem}}
