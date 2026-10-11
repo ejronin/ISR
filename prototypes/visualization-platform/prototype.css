@@ -335,3 +335,13 @@ th {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Source-verified Brent research visualization. Markers remain outside plotted market labels. */
+.market-toolbar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-bottom:.8rem}
+.market-toolbar span{font-size:.85rem;color:var(--muted)}
+.market-marker-rail{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.45rem;margin:1rem 0}
+.market-event-button{min-height:0;padding:.65rem .85rem;text-align:left;font-size:.82rem;line-height:1.45}
+.market-election-reference{grid-column:1/-1;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem;padding:.8rem 0}
+#market-selected-event{overflow-wrap:anywhere}
+#market-observations-chart{height:clamp(22rem,48vw,36rem)}
+@media(max-width:480px){#market-observations-chart{height:25rem}.market-marker-rail{grid-template-columns:minmax(0,1fr)}}
