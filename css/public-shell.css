@@ -4622,3 +4622,6 @@ tbody tr:last-child td { border-bottom: 0; }
 .economic-observed{border-top:4px solid #3da678}
 .economic-watch{border-top:4px dashed #c59c41;border-style:dashed}
 @media(max-width:768px){.economic-transmission-lanes{grid-template-columns:1fr}.economic-transmission-lane{padding:.8rem}}
+
+/* Authored economic view selection must override broad section layout rules. */
+[data-protected-economic-chart][hidden],[data-forecast-revision-chart][hidden],#economic-view-2[hidden],#economic-view-3[hidden]{display:none!important}
