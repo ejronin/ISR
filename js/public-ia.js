@@ -2661,19 +2661,19 @@
     const resetEconomic = append(economicContext, 'button', 'visualization-mode-button', 'Reset event context');
     resetEconomic.type = 'button';
     const contextTable = append(economicContext, 'details', 'hormuz-economic-forecast-context');
-    append(contextTable, 'summary', '', '2026 growth forecasts · separate forecast basis');
-    const forecastContext = modelData(context.model, 'ledger.economics')?.forecast_context;
-    append(contextTable, 'p', 'section-note', 'Forecast snapshots for 2026, not an event-dated economic series. Individual map events do not explain these revisions on their own.');
+    append(contextTable, 'summary', '', 'Accepted Hormuz economic indicators · separate date bases');
+    append(contextTable, 'p', 'section-note', 'These are the existing authorized Hormuz indicator readings, each with its own underlying period and denominator. Selecting a map event does not alter, date-match, or attribute causation to any indicator.');
     const comparisonTable = append(contextTable, 'table', 'hormuz-forecast-table');
     const headings = append(comparisonTable, 'tr');
-    ['Economy','Prewar forecast (%)','Current forecast (%)','Revision (percentage points)'].forEach(x => append(headings,'th','',x));
-    asArray(forecastContext?.rows).forEach(row => {
+    ['Existing indicator','Accepted reading','Basis and limitations'].forEach(x => append(headings,'th','',x));
+    asArray(reality.metrics).forEach(row => {
       const tr = append(comparisonTable,'tr');
-      append(tr,'th','',row.country);
-      append(tr,'td','',String(row.prewar));
-      append(tr,'td','',String(row.current));
-      append(tr,'td','',String(row.delta));
+      append(tr,'th','',publicNarrative(row.label));
+      append(tr,'td','',String(row.value));
+      append(tr,'td','',publicNarrative(row.note));
     });
+    const detailEconomy = append(contextTable,'a','inline-route-link','Open forecast-revision comparison and its original source records');
+    detailEconomy.href=routeHref('hormuz.economy');
     const clearEconomicContext = () => {
       dateText.textContent='NO MAP EVENT SELECTED';
       titleText.textContent='Choose a documented map event';
