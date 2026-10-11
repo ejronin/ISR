@@ -58,3 +58,13 @@ GitHub PR history checked at this audit shows the latest **merged Evidence Integ
 - **Evidence acceptance:** unchanged. As of this inspection, Evidence Integration latest accepted cutoff was Oct. 7, 2026 14:03 ET. Recovery candidate PR #297 is unaccepted and shall not be injected into renderer copy as if canonical.
 
 **Decision:** automated qualification and screenshot-capture gate **PASS** on `edfda1d`; approved design parity and permission to replace the protected chart **NOT YET ESTABLISHED**. No merge/deployment attested by this inspection.
+
+## October 11 — implementation and responsive-capture closeout
+
+- **New financial analytical object:** seven accepted `ledger.economics.forecast_context.rows` rendered as a same-metric prewar→current dumbbell chart with signed percentage-point revisions, correct zero scale, explicit forecast-vs-observation labels, and source drawers. The protected growth chart remains unchanged as a baseline.
+- **New sanctions interaction:** six accepted intermediary/alternative nodes can be selected by pointer and keyboard. The selected route panel reports the original status/explanation; it explicitly rejects interpreting heightened risk as verified transaction stoppage. The established money-flow, consequence-chain, named-node geography and legal-versus-behavioral grammar remain.
+- **Responsive tests:** six-width browser captures include the actual added forecast chart and selected sanctions inspector. Tests assert seven source-backed country rows and working six-node selection, not screenshot existence alone.
+- **First review artifact:** run `38167180799`, head `1e2c386d88b50c182d7f31603e1631da208ae9fd`, passed; artifact `11712643253`. The original screenshot inspection revealed excessive source-disclosure height, zero-axis-label placement error and fixed skip-link screenshot intrusion. Follow-up commits compacted layout, set exactly matching row/axis widths and mask offscreen skip chrome only during screenshot capture.
+- **Release gate:** require final exact-head successful CI, inspect updated 1440/390/320 captures and maintain evidence scope; no post-Oct. 7 unaccepted upstream source may be inserted via presentation code. Do not substitute earlier CI head for final release head.
+
+**Scope distinction:** an additive source-bound financial chart and interactive sanctions-flow inspector are implemented; a future wholesale ECharts migration/replacement of the protected economic calculation/renderer is neither implied nor authorized.
