@@ -2642,13 +2642,56 @@
       { title: 'The end state remains unresolved', text: 'Final authority, revenue, mine-clearing, inspection and permanent passage rules have not been settled. The record therefore shows a walk-back and concession, not total Iranian capitulation.', item: latestShipping[1] || {} }
     ]);
 
-    frame.article.append(createRepresentativeMap(context, {
+    const contextMap = createRepresentativeMap(context, {
       typeLabel: 'MAP + ECONOMY · AUTHORITATIVE MAP VIEW',
       cameraModes: ['gulf', 'hormuz'],
       title: 'Hormuz and connected conflict locations',
       records: asArray(hormuz.current_board_delta),
       description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks, and shared timing does not by itself establish causation.'
-    }));
+    });
+    frame.article.append(contextMap);
+    const economicContext = addSection(frame.article, 'Map selection and economic date context');
+    economicContext.dataset.hormuzEconomicContext = 'accepted-record-only';
+    append(economicContext, 'p', 'section-note', 'Select a documented point on the map. Its event date is shown beside the separately sourced 2026 growth-forecast comparison; matching placement is chronological context, not a claim of economic causation.');
+    const selectedEvent = append(economicContext, 'div', 'hormuz-economic-selected-event');
+    selectedEvent.setAttribute('aria-live', 'polite');
+    const dateText = append(selectedEvent, 'p', 'card-kicker', 'NO MAP EVENT SELECTED');
+    const titleText = append(selectedEvent, 'strong', '', 'Choose a documented map event');
+    const effectText = append(selectedEvent, 'p', '', 'Selection does not alter accepted economic values.');
+    const resetEconomic = append(economicContext, 'button', 'visualization-mode-button', 'Reset event context');
+    resetEconomic.type = 'button';
+    const contextTable = append(economicContext, 'details', 'hormuz-economic-forecast-context');
+    append(contextTable, 'summary', '', '2026 growth forecasts · separate forecast basis');
+    const forecastContext = modelData(context.model, 'ledger.economics')?.forecast_context;
+    append(contextTable, 'p', 'section-note', 'Forecast snapshots for 2026, not an event-dated economic series. Individual map events do not explain these revisions on their own.');
+    const comparisonTable = append(contextTable, 'table', 'hormuz-forecast-table');
+    const headings = append(comparisonTable, 'tr');
+    ['Economy','Prewar forecast (%)','Current forecast (%)','Revision (percentage points)'].forEach(x => append(headings,'th','',x));
+    asArray(forecastContext?.rows).forEach(row => {
+      const tr = append(comparisonTable,'tr');
+      append(tr,'th','',row.country);
+      append(tr,'td','',String(row.prewar));
+      append(tr,'td','',String(row.current));
+      append(tr,'td','',String(row.delta));
+    });
+    const clearEconomicContext = () => {
+      dateText.textContent='NO MAP EVENT SELECTED';
+      titleText.textContent='Choose a documented map event';
+      effectText.textContent='Selection does not alter accepted economic values.';
+      selectedEvent.dataset.selected = 'false';
+    };
+    contextMap.addEventListener('guide:map-selection',event => {
+      const item=event.detail && event.detail.type==='record' ? event.detail.record : null;
+      if (!item) {clearEconomicContext();return;}
+      dateText.textContent='ACCEPTED EVENT DATE · '+String(item.date || 'Date not established');
+      titleText.textContent=publicNarrative(item.title);
+      effectText.textContent=publicNarrative(item.effect || '')+' Chronological context only; no quantified GDP effect attributed.';
+      selectedEvent.dataset.selected='true';
+    });
+    resetEconomic.addEventListener('click',()=>{
+      contextMap.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+      clearEconomicContext();
+    });
 
     const adaptation = addSection(frame.article, 'What prolonged disruption changed');
     const cards = append(adaptation, 'div', 'record-list two-column-list');
