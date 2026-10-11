@@ -44,7 +44,7 @@ async function initMarketObservationPrototype() {
     grid:{top:34,bottom:55,left:75,right:28},
     aria:{enabled:true,description:'Observed EIA Europe Brent spot prices, 2026, sampled weekly. Dashed vertical marks indicate dated sanctions actions only; they do not measure or imply price effects.'},
     tooltip:{trigger:'axis',axisPointer:{type:'line'},valueFormatter:v=>'$'+Number(v).toFixed(2)+' per barrel'},
-    xAxis:{type:'time',min:'2026-01-01',max:'2026-11-03',
+    xAxis:{type:'time',min:'2026-01-01',max:'2026-11-15',
       axisLabel:{color:'#b6cbd9'},axisLine:{lineStyle:{color:'#4d6175'}},splitLine:{show:false}},
     yAxis:{type:'value',scale:true,name:'Europe Brent spot · USD/bbl',
       nameTextStyle:{color:'#b6cbd9'},axisLabel:{color:'#b6cbd9',formatter:v=>'$'+Math.round(v)},
@@ -53,11 +53,15 @@ async function initMarketObservationPrototype() {
       showSymbol:true,connectNulls:false,data:observations.map(row=>[row.date,row.value]),
       lineStyle:{width:2,color:'#87d2e8'},itemStyle:{color:'#b9e6f6'},
       markLine:{silent:true,animation:false,symbol:'none',
-        data:markersVisible?actions.map((a,i)=>({
-          xAxis:a.date,name:a.title,label:{show:false},
-          lineStyle:{color:i===selectedIndex?'#f2cf73':'#b88b5d',
-            opacity:i===selectedIndex?1:.45,width:i===selectedIndex?2:1,type:'dashed'}
-        })):[]
+        data:[
+          ...(markersVisible?actions.map((a,i)=>({
+            xAxis:a.date,name:a.title,label:{show:false},
+            lineStyle:{color:i===selectedIndex?'#f2cf73':'#b88b5d',
+              opacity:i===selectedIndex?1:.45,width:i===selectedIndex?2:1,type:'dashed'}
+          })):[]),
+          {xAxis:'2026-11-03',name:'Election date (calendar reference only)',label:{show:false},
+            lineStyle:{color:'#f2cf73',type:'solid',width:2,opacity:.9}}
+        ]
       }
     }]
   },{notMerge:true});
