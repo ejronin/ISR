@@ -87,6 +87,27 @@
       "source": "https://www.reuters.com/world/middle-east/houthi-strikes-riyadh-airport-killed-three-saudis-war-escalates-2026-10-09/",
       "verification": "PUBLIC_SEARCH_CONFIRMED",
       "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters Gulf bourse close: Saudi benchmark -1.6%, Abu Dhabi -1.6%, Dubai -1.7%, Qatar -2.2%; separately reported tanker casualty near Qatar and two-month-low Strait traffic; incident attribution unresolved.",
+      "source": "https://www.reuters.com/world/middle-east/gulf-stocks-retreat-hormuz-tanker-attacks-hit-wartime-high-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "AP reports Lebanese drone strike injured six, vessel struck by projectile off UAE with unknown perpetrator, and an unverified IRGC claim against a gas carrier. Separate incidents, observation vs actor claim.",
+      "source": "https://apnews.com/article/4aba968d517041a89ae2284f0e00bd87",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-10",
+      "subject": "Reuters original Saturday Riyadh airport casualty count: 12 killed, 309 injured; subsequent reporting revises death tally to 13. Preserve initial publication and subsequent change.",
+      "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     }
   ],
   "next": [
@@ -95,7 +116,7 @@
     "Check exact source publication times and existing-event IDs",
     "Only then produce validated ROOK sweep artifacts and promote via Evidence Integration"
   ],
-  "source_audit": "Live source search confirms October 9 Riyadh event and October 11 Sunday follow-up, plus October 11 Hormuz/Rezaei, CENTCOM cargo-vessel and stock-market Reuters articles. Other lead URLs are not yet directly verified; do not promote them.",
+  "source_audit": "Live source search confirms October 9 Riyadh event and October 11 Sunday follow-up, plus October 11 Hormuz/Rezaei, CENTCOM cargo-vessel and stock-market Reuters articles. Other lead URLs are not yet directly verified; do not promote them. Added independently discovered October 8 Gulf-equity Reuters report, October 9 AP multitheater reporting, and October 10 Riyadh casualty report; their source links are search confirmed. Full window sweeps not asserted.",
   "recovery_windows": [
     {
       "start": "2026-10-07T14:03:00-04:00",
