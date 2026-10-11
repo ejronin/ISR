@@ -91,9 +91,33 @@
       </details>
     </section>
 
-    <section class="prototype-section" aria-labelledby="chart-title">
+    <section class="prototype-section" aria-labelledby="brent-title">
       <div class="section-heading">
         <p class="section-number">04</p>
+        <div>
+          <h2 id="brent-title">Observed Brent spot prices · 2026</h2>
+          <p>Actual EIA Europe Brent FOB observations (USD per barrel), sampled weekly with the latest published October readings. Sanctions dates share the calendar axis; GDP forecasts do not.</p>
+        </div>
+      </div>
+      <div class="market-toolbar" role="group" aria-label="Market chart presentation">
+        <button type="button" id="market-markers-toggle" aria-pressed="true">Sanctions markers on</button>
+        <span id="market-price-basis">Spot price observations · not Brent futures settlements</span>
+      </div>
+      <div id="market-observations-chart" class="chart-canvas" role="img" aria-label="Observed EIA Brent spot prices and separately dated sanction event markers"></div>
+      <p id="market-status" class="viz-status" role="status" aria-live="polite">Loading source-verified price observations…</p>
+      <div id="market-selected-event" class="viz-detail" aria-live="polite">Choose a sanctions date below to inspect the accepted source-linked action; the marker does not attribute a price move to that action.</div>
+      <div id="market-sanction-markers" class="market-marker-rail" aria-label="Dated sanctions markers"></div>
+      <details class="text-equivalent">
+        <summary>Actual observations and EIA citation</summary>
+        <p>These are dated sampled EIA spot readings; unreported intermediate days are not modeled or fabricated. Sampled values must not be interpreted as a complete daily close, forward forecast or financial performance attributable solely to sanctions.</p>
+        <p><a href="https://www.eia.gov/dnav/pet/hist/RBRTED.htm" target="_blank" rel="noreferrer">U.S. Energy Information Administration · Europe Brent Spot Price FOB</a></p>
+        <div class="table-scroll"><table><caption>Source-backed sampled market observations</caption><thead><tr><th>Date</th><th>Spot USD/bbl</th></tr></thead><tbody id="market-observations-table"></tbody></table></div>
+      </details>
+    </section>
+
+    <section class="prototype-section" aria-labelledby="chart-title">
+      <div class="section-heading">
+        <p class="section-number">05</p>
         <div>
           <h2 id="chart-title">Quantitative chart platform</h2>
           <p>Apache ECharts over the stored 2026 GDP forecast-delta values. This is a renderer proof only; the protected production economic charts remain unchanged.</p>
