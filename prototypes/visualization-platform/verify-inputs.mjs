@@ -13,12 +13,13 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-const [geography, routeData, sanctions, economics, currentState] = await Promise.all([
+const [geography, routeData, sanctions, economics, currentState, marketResearch] = await Promise.all([
   readJson('assets/geography/atlas-reference-geography.geojson'),
   readJson('data/oil-routes-r1.json'),
   readJson('data/sanctions-financial-network-v1.json'),
   readJson('data/integration-v1.2/economics.json'),
-  readJson('data/public-current-state.json')
+  readJson('data/public-current-state.json'),
+  readJson('data/research/eia-brent-spot-2026-visual-candidate.json')
 ]);
 
 assert(geography.artifact_role === 'PRESENTATION_REFERENCE_GEOGRAPHY', 'Reference geography role changed.');
@@ -50,6 +51,21 @@ for (const row of forecastRows) {
   assert(Math.abs(arithmeticDelta - Number(row.delta)) < 1e-9, 'Stored delta no longer matches the accepted row values: ' + row.country);
 }
 
+assert(marketResearch.canonical_status === 'EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL','Unreviewed market candidate is being misrepresented as accepted evidence.');
+assert(marketResearch.publisher === 'U.S. Energy Information Administration','Unqualified market publisher.');
+assert(marketResearch.metric === 'Europe Brent crude oil spot price FOB','Market metric must be EIA spot Brent, not futures.');
+const marketObservations = marketResearch.observations || [];
+assert(marketObservations.length === 41,'Market research sample cardinality drift.');
+for (let i=0;i<marketObservations.length;i++) {
+  const row=marketObservations[i];
+  assert(/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date) && Number.isFinite(row.value) && row.value>0,'Invalid market observation.');
+  if (i) assert(marketObservations[i-1].date < row.date,'Unsorted or repeated EIA observation date.');
+}
+assert(marketObservations[0].date === '2026-01-09' && marketObservations.at(-1).date === '2026-10-06','Unexpected observed market date range.');
+assert(marketObservations.find(x=>x.date==='2026-02-27')?.value === 71.32,'EIA prewar market checkpoint mismatch.');
+assert(marketObservations.find(x=>x.date==='2026-10-02')?.value === 135.51,'EIA October observed market checkpoint mismatch.');
+assert((sanctions.wartime_actions||[]).filter(x=>x.date&&x.title).length>=8,'Missing accepted sanctions marker events.');
+
 assert(currentState.artifact_role === 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL', 'Generated public-current-state role changed.');
 const wolPayload = currentState?.datasets?.['analysis.web_of_lies']?.payload;
 const graph = wolPayload?.propagation_graph;
@@ -65,6 +81,8 @@ console.log(JSON.stringify({
   sanctions_map_nodes: sanctions.map_nodes.length,
   sanctions_cascade_steps: sanctions.cascade.length,
   economic_rows: forecastRows.length,
+  eia_market_samples: marketObservations.length,
+  market_source_status: marketResearch.canonical_status,
   wol_nodes: graphNodes.length,
   wol_edges: graphEdges.length
 }, null, 2));

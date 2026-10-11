@@ -12,7 +12,8 @@ const prototypeDataFiles = [
   'data/oil-routes-r1.json',
   'data/sanctions-financial-network-v1.json',
   'data/integration-v1.2/economics.json',
-  'data/public-current-state.json'
+  'data/public-current-state.json',
+  'data/research/eia-brent-spot-2026-visual-candidate.json'
 ];
 
 function copyCurrentGuideInputs() {
@@ -49,7 +50,7 @@ export default defineConfig({
     outDir: outputRoot,
     emptyOutDir: true,
     rollupOptions: {
-      input: path.resolve(here, 'index.html')
+      input: { full: path.resolve(here, 'index.html'), market: path.resolve(here, 'market-preview.html') }
     }
   }
 });

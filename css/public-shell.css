@@ -4636,3 +4636,37 @@ tbody tr:last-child td { border-bottom: 0; }
 @media(max-width:390px){.hormuz-forecast-table{min-width:30rem;font-size:.78rem}}
 .sanctions-selected-evidence{margin-top:.75rem}
 .sanctions-selected-evidence p{line-height:1.5}
+
+/* Phase 3 visual-IA defect: expanded financial sources must never occupy
+   a 5th-column sliver. Open disclosures span the complete country row. */
+.economic-forecast-revision .forecast-revision-row:has(.evidence-drawer[open]){grid-template-rows:auto auto}
+.economic-forecast-revision .forecast-revision-row .evidence-drawer[open]{grid-column:1 / -1!important;grid-row:2!important;width:100%;min-width:0;margin:.55rem 0 .25rem;max-width:none}
+.economic-forecast-revision .forecast-revision-row .evidence-drawer[open] *{overflow-wrap:break-word;word-break:normal;min-width:0}
+.economic-forecast-revision .forecast-revision-row .evidence-drawer[open] summary{width:100%;white-space:normal}
+@media(max-width:768px){.economic-forecast-revision .forecast-revision-row:has(.evidence-drawer[open]){grid-template-rows:repeat(3,auto) auto}.economic-forecast-revision .forecast-revision-row .evidence-drawer[open]{grid-column:1 / -1!important;grid-row:4!important}}
+
+/* Detailed, evidence-led sanctions route breakdown: primary analytical object. */
+.sanctions-route-breakdown{margin-block:1.35rem}
+.sanctions-route-matrix{display:grid;gap:.7rem}
+.sanctions-route-profile{border:1px solid var(--border-color,#33495b);border-radius:.5rem;overflow:hidden;min-width:0}
+.sanctions-route-profile-summary{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:.95rem 1rem;cursor:pointer;font-weight:700}
+.sanctions-route-profile-summary strong{font-size:.97rem}
+.sanctions-route-profile-summary::marker{color:var(--text-muted,#9db2c4)}
+.sanctions-route-profile[open]>.sanctions-route-profile-summary{border-bottom:1px solid var(--border-color,#33495b);background:rgba(99,142,168,.08)}
+.sanctions-route-state{display:inline-flex;align-items:center;min-height:1.6rem;padding:.2rem .5rem;border:1px solid currentColor;border-radius:20px;font-size:.72rem;text-transform:uppercase;letter-spacing:.03em}
+.sanctions-route-state[data-sanctions-state=degraded]{color:#d9a44c}
+.sanctions-route-state[data-sanctions-state=usable]{color:#77c7a4}
+.sanctions-route-state[data-sanctions-state=high-risk]{color:#e08e8e}
+.sanctions-route-state[data-sanctions-state=blocked]{color:#e86c76}
+.sanctions-route-profile-content{padding:1rem;min-width:0}
+.sanctions-route-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+.sanctions-route-field{border:1px solid var(--border-color,#33495b);border-radius:.4rem;padding:.85rem;min-width:0}
+.sanctions-route-field h3,.sanctions-route-chronology h3{font-size:.88rem;margin:0 0 .45rem}
+.sanctions-route-field p,.sanctions-route-case p{line-height:1.5;margin:.4rem 0}
+.sanctions-route-chronology{margin-top:1rem}
+.sanctions-route-case{position:relative;padding:.8rem 1rem;border-left:3px solid #5286a7;margin:.75rem 0;min-width:0;background:rgba(92,138,173,.06)}
+.sanctions-route-case h4{font-size:.95rem;margin:.4rem 0;line-height:1.35}
+.sanctions-route-case-date{font-variant-numeric:tabular-nums;font-size:.75rem;color:var(--text-muted,#acc0d0)}
+.sanctions-route-case .evidence-drawer{width:100%;min-width:0;max-width:100%;overflow-wrap:break-word}
+.sanctions-route-case .evidence-drawer[open]{margin-top:.65rem}
+@media(max-width:800px){.sanctions-route-overview{grid-template-columns:1fr}.sanctions-route-profile-content{padding:.7rem}.sanctions-route-profile-summary{padding:.8rem}}
