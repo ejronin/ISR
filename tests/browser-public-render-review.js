@@ -422,6 +422,9 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           assert(interaction.live.includes('Recorded state:'), 'sanctions selection must expose the accepted node state');
         }
         if (focus.state === 'map') assert.equal(state.renderer, 'maplibre-gl-js', `${focus.label} is not using the approved MapLibre renderer at ${width}px`);
+        // Other keyboard tests may leave the global Skip to content link focused.
+        // Blur it before the visual capture without disabling the real skip-link UX.
+        await cdp.eval(`(() => { document.activeElement?.blur?.(); return true; })()`);
         await sleep(180);
         await captureElement(cdp, focus.selector, `phase2visual-${String(width).padStart(4, '0')}-${focus.label}.png`, width <= 390 ? 1900 : 1500);
         phase2VisualCaptures += 1;
