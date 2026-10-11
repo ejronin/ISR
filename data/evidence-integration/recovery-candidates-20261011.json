@@ -130,6 +130,14 @@
       "source": "https://apnews.com/article/a5f40b5e0ab08ae8128db5ed749114d8",
       "verification": "PUBLIC_SEARCH_CONFIRMED",
       "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "IOM reports a migrant boat capsized October 8–9 in waters near Djibouti en route to Yemen, with at least 139 fatalities and 84 missing as reported October 11. A humanitarian migration tragedy, not an armed attack; conflict-related causal attribution is not established.",
+      "source": "https://www.reuters.com/world/africa/109-migrants-including-15-children-dead-after-boat-djibouti-yemen-capsizes-un-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED",
+      "check": "Check IOM latest figures, vessel/incident identity, original release, and whether incident meets Atlas Iran-war scope; preserve separately from Yemen war casualties."
     }
   ],
   "next": [
@@ -192,6 +200,21 @@
       "source_url": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/",
       "public_available_time": "2026-10-11T06:23:29-04:00",
       "basis": "Reuters surfaced source article timestamp 2026-10-11 10:23:29 UTC; report covers Saturday attack and Sunday subsequent attack; keep event times separate."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/us-imposes-fresh-iran-related-sanctions-2026-10-08/",
+      "public_available_time": "2026-10-08T12:58:49-04:00",
+      "basis": "Reuters indexed original article UTC timestamp 2026-10-08 16:58:49; post-noon ET source availability despite October 8 occurrence."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "public_available_time": "2026-10-08T09:17:47-04:00",
+      "basis": "Reuters indexed original article UTC timestamp 2026-10-08 13:17:47; belongs before October 8 noon ET collection boundary."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "public_available_time": "2026-10-10T10:13:07-04:00",
+      "basis": "Reuters indexed original article UTC timestamp 2026-10-10 14:13:07; original toll 12 killed/309 wounded, later superseded."
     }
   ],
   "primary_source_corroboration": [
