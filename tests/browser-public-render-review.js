@@ -390,6 +390,36 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           } : null;
         })()`);
         assert(state && state.width > 0 && state.height > 0, `${focus.label} has no rendered Phase 2 review area at ${width}px`);
+        if (focus.label === 'economy-forecast-revisions') {
+          const parity = await cdp.eval(`(() => {
+            const root = document.querySelector('[data-forecast-revision-chart="accepted-ledger"]');
+            const rows = [...root.querySelectorAll('.forecast-revision-row')];
+            return { count: rows.length, revisions: rows.map(row => ({
+              country: row.dataset.country,
+              text: row.querySelector('.forecast-revision-values')?.textContent,
+              delta: row.querySelector('.forecast-revision-delta')?.textContent,
+              labelled: Boolean(row.querySelector('[role="img"]')?.getAttribute('aria-label'))
+            })) };
+          })()`);
+          assert.equal(parity.count, 7, 'forecast revisions must contain seven accepted economies');
+          assert(parity.revisions.every(r => r.labelled && r.text?.includes('%') && r.delta?.includes(' pp')), 'every forecast revision needs sources, units and accessible text');
+        }
+        if (focus.label === 'sanctions-money-flow') {
+          const interaction = await cdp.eval(`(() => {
+            const root=document.querySelector('.sanctions-plumbing');
+            const nodes=[...root.querySelectorAll('[data-sanctions-node-id]')];
+            const first=nodes[0];
+            first?.click();
+            return { count:nodes.length, group:root.getAttribute('role'),
+              selected:first?.dataset.selected, pressed:first?.getAttribute('aria-pressed'),
+              live:document.querySelector('.sanctions-selected-route')?.textContent || '' };
+          })()`);
+          assert.equal(interaction.count, 6, 'sanctions network must have four intermediary and two alternative selectable nodes');
+          assert.equal(interaction.group, 'group', 'interactive sanctions network must not be a non-interactive image');
+          assert.equal(interaction.selected, 'true', 'sanctions node selection must update selected state');
+          assert.equal(interaction.pressed, 'true', 'sanctions selection must expose accessible pressed state');
+          assert(interaction.live.includes('Recorded state:'), 'sanctions selection must expose the accepted node state');
+        }
         if (focus.state === 'map') assert.equal(state.renderer, 'maplibre-gl-js', `${focus.label} is not using the approved MapLibre renderer at ${width}px`);
         await sleep(180);
         await captureElement(cdp, focus.selector, `phase2visual-${String(width).padStart(4, '0')}-${focus.label}.png`, width <= 390 ? 1900 : 1500);
