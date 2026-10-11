@@ -4578,3 +4578,32 @@ tbody tr:last-child td { border-bottom: 0; }
 .facility-operational-swatch[data-facility-operational-status="BLUE"] { background: #4f9ed8; }
 .facility-operational-swatch[data-facility-operational-status="GREEN"] { background: #56a86c; }
 .facility-operational-unclassified-note { margin: .45rem 0 0; color: var(--atlas-text-muted, #9fb0bd); font-size: .88rem; }
+
+/* Phase 3: source-bound forecast-revision financial analysis. */
+.economic-forecast-revision{margin-block:1.4rem}
+.forecast-scope-note{max-width:85ch;color:var(--text-muted,#536476);font-size:.92rem}
+.forecast-revision-legend{display:flex;flex-wrap:wrap;gap:.65rem 1.2rem;font-size:.85rem;margin:.9rem 0}
+.forecast-legend-before,.forecast-legend-after,.forecast-legend-zero{white-space:nowrap}
+.forecast-revision-plot{display:grid;gap:.35rem;min-width:0}
+.forecast-revision-axis{display:grid;grid-template-columns:minmax(7rem,1fr) minmax(10rem,4fr) 8rem 4.5rem 8rem;gap:.65rem;font-size:.75rem;opacity:.85;font-variant-numeric:tabular-nums}.forecast-revision-axis-track{grid-column:2;position:relative;height:1.35rem}.forecast-revision-axis-track span{position:absolute;white-space:nowrap;top:0}.forecast-revision-axis-min{left:0}.forecast-revision-axis-zero{left:var(--zero-position);transform:translateX(-50%)}.forecast-revision-axis-max{right:0}
+.forecast-revision-row{display:grid;grid-template-columns:minmax(7rem,1fr) minmax(10rem,4fr) 8rem 4.5rem 8rem;gap:.65rem;align-items:center;padding:.45rem .25rem;border-top:1px solid var(--border-color,#d6dce5);font-variant-numeric:tabular-nums;min-width:0}
+.forecast-revision-country{font-size:.87rem}
+.forecast-revision-scale{position:relative;height:2.2rem;min-width:0;border-radius:.2rem;background:linear-gradient(to bottom,transparent 49%,rgba(105,127,150,.23) 50%,transparent 51%)}
+.forecast-revision-zero{position:absolute;top:0;bottom:0;width:1px;border-left:1px dashed #8291a2}
+.forecast-revision-connector{position:absolute;top:calc(50% - 2px);height:4px;background:#8d99aa;border-radius:3px}
+.forecast-revision-point{position:absolute;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);border:3px solid #266a91;border-radius:50%;background:var(--surface,#fff);z-index:2}
+.forecast-revision-point-after{background:#266a91;border-color:#266a91;box-shadow:0 0 0 2px var(--surface,#fff)}
+.forecast-revision-values,.forecast-revision-delta{font-size:.85rem;white-space:nowrap}
+.forecast-revision-delta{font-weight:700;text-align:right}
+.economic-forecast-revision .evidence-drawer{grid-column:5;grid-row:1;margin:0;min-width:0;font-size:.72rem}.economic-forecast-revision .evidence-drawer summary{white-space:normal}
+@media(max-width:768px){.forecast-revision-axis{display:block}.forecast-revision-axis-track{width:100%}.forecast-revision-row{grid-template-columns:minmax(0,1fr) auto;gap:.4rem}.forecast-revision-country{grid-column:1}.forecast-revision-delta{grid-column:2;grid-row:1}.forecast-revision-scale{grid-column:1/-1;grid-row:2}.forecast-revision-values{grid-column:1;grid-row:3}.economic-forecast-revision .evidence-drawer{grid-column:2;grid-row:3;font-size:.72rem}.economic-forecast-revision{padding-inline:.5rem}}
+@media(prefers-reduced-motion:reduce){.forecast-revision-point,.forecast-revision-connector{transition:none}}
+
+/* Phase 3 selectable sanctions-route inspector. Legal exposure is not an observed stoppage. */
+.sanctions-node[data-sanctions-node-id]{cursor:pointer;transition:outline-color .12s ease,box-shadow .12s ease}
+.sanctions-node[data-sanctions-node-id]:hover{box-shadow:0 0 0 2px rgba(44,116,167,.26)}
+.sanctions-node[data-sanctions-node-id]:focus-visible{outline:3px solid #1678bd;outline-offset:3px}
+.sanctions-node[data-sanctions-node-id][data-selected="true"]{outline:3px solid #1678bd;outline-offset:2px;box-shadow:0 0 0 5px rgba(27,110,166,.12)}
+.sanctions-selected-route{border:1px solid var(--border-color,#cbd5df);border-left:4px solid #1678bd;border-radius:.45rem;padding:.85rem 1rem;margin:1rem 0;background:var(--surface,#fff)}
+.sanctions-selected-route p{margin:.35rem 0 0;line-height:1.45}
+@media(prefers-reduced-motion:reduce){.sanctions-node[data-sanctions-node-id]{transition:none}}

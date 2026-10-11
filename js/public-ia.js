@@ -2793,8 +2793,39 @@
     const plumbingSection = addSection(frame.article, 'How the money moved');
     append(plumbingSection, 'p', 'section-note', 'This is a functional model of the payment and trade network. It shows why hitting an intermediary can affect several downstream routes without pretending that every route is physically blocked.');
     const plumbing = append(plumbingSection, 'div', 'sanctions-plumbing');
-    plumbing.setAttribute('role', 'img');
-    plumbing.setAttribute('aria-label', 'Iran-linked revenue and state finance feed through traders, exchange houses, shipping and insurance, and foreign banks, with digital-asset and local-currency alternatives remaining available at higher risk or friction.');
+    plumbing.setAttribute('role', 'group');
+    plumbing.setAttribute('aria-label', 'Explore Iran-linked revenue, finance, intermediary and alternative settlement routes. Select a node to inspect its accepted status and stated role.');
+    plumbing.dataset.sanctionsInteractive = 'true';
+    const selectedRoute = append(plumbingSection, 'aside', 'sanctions-selected-route');
+    selectedRoute.setAttribute('aria-live', 'polite');
+    append(selectedRoute, 'strong', 'sanctions-selected-title', 'Explore a financial route');
+    append(selectedRoute, 'p', 'sanctions-selected-description', 'Select an intermediary or alternative below. Legal exposure and observed commercial effects remain distinct; an unselected route is not assumed blocked.');
+    const setSelected = (node, item) => {
+      for (const other of plumbing.querySelectorAll('[data-sanctions-node-id]')) {
+        other.dataset.selected = other === node ? 'true' : 'false';
+        other.setAttribute('aria-pressed', other === node ? 'true' : 'false');
+      }
+      selectedRoute.querySelector('.sanctions-selected-title').textContent = publicNarrative(item.label);
+      selectedRoute.querySelector('.sanctions-selected-description').textContent =
+        'Recorded state: ' + publicNarrative(item.state || 'not classified') + '. ' +
+        publicNarrative(item.explanation || item.sublabel || '') +
+        ' This state is not proof of a specific transaction being stopped.';
+    };
+    const enableSelection = (node, item) => {
+      node.dataset.sanctionsNodeId = item.id;
+      node.dataset.selected = 'false';
+      node.setAttribute('role', 'button');
+      node.setAttribute('tabindex', '0');
+      node.setAttribute('aria-pressed', 'false');
+      node.setAttribute('aria-label', 'Inspect ' + publicNarrative(item.label) + ' financial route');
+      node.addEventListener('click', () => setSelected(node, item));
+      node.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setSelected(node, item);
+        }
+      });
+    };
 
     const sourceRow = append(plumbing, 'div', 'sanctions-plumbing-row sanctions-plumbing-sources');
     asArray(network.plumbing && network.plumbing.sources).forEach(item => {
@@ -2812,6 +2843,7 @@
       node.dataset.sanctionsState = item.state || 'unknown';
       append(node, 'strong', '', publicNarrative(item.label));
       append(node, 'p', '', publicNarrative(item.explanation));
+      enableSelection(node, item);
     });
     const altRow = append(plumbing, 'div', 'sanctions-plumbing-row sanctions-plumbing-alternatives');
     asArray(network.plumbing && network.plumbing.alternatives).forEach(item => {
@@ -2820,6 +2852,7 @@
       append(node, 'strong', '', publicNarrative(item.label));
       if (item.sublabel) append(node, 'small', '', publicNarrative(item.sublabel));
       append(node, 'p', '', publicNarrative(item.explanation));
+      enableSelection(node, item);
     });
 
     const legend = append(plumbingSection, 'div', 'sanctions-state-legend');

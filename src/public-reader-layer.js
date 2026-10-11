@@ -924,7 +924,10 @@
 
   function dedupeEconomy(article) {
     const forecast = findSection(article, '2026 growth forecasts');
-    if (forecast && article.querySelector('[data-economic-viz]')) forecast.remove();
+    // Preserve the original forecast/economic baseline until an independently
+    // qualified replacement has achieved data, method and responsive parity.
+    // An additional [data-economic-viz] is not evidence of replacement parity.
+    if (forecast) forecast.dataset.retainedForecastBaseline = 'true';
     const corridors = findSection(article, 'Strategic transport corridors');
     if (corridors) {
       const replacement = el(article.ownerDocument, 'section', 'content-section reader-crosslink-section');
