@@ -193,5 +193,22 @@
       "public_available_time": "2026-10-11T06:23:29-04:00",
       "basis": "Reuters surfaced source article timestamp 2026-10-11 10:23:29 UTC; report covers Saturday attack and Sunday subsequent attack; keep event times separate."
     }
+  ],
+  "primary_source_corroboration": [
+    {
+      "date": "2026-10-08",
+      "authority": "U.S. Department of the Treasury/OFAC",
+      "url": "https://home.treasury.gov/news/press-releases/sb0653",
+      "result": "Official October 8 designation action lists 17 targeted vessels and also two distinct de-listings (HAKUNA MATATA, PINOCCHIO). Do not report all named vessels as additions or infer physical interdiction.",
+      "classification": "CONFIRMED_OFFICIAL_ACTION",
+      "followup": "Keep Treasury's assertions of operational neutralization separate from legal designation facts; source 17 individual IMO identifiers from original document."
+    },
+    {
+      "date": "2026-10-08",
+      "authority": "OFAC Iran sanctions program recent-actions listing",
+      "url": "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions",
+      "result": "Lists 2026-10-08 Iran-related designations and license action; source supports designation-date continuity.",
+      "classification": "CONFIRMED_OFFICIAL_ACTION"
+    }
   ]
 }
