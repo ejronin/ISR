@@ -108,6 +108,28 @@
       "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
       "verification": "PUBLIC_SEARCH_CONFIRMED",
       "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "U.S. Treasury imposed new Iran-related shadow fleet sanctions covering named networks and 17 vessels according to Reuters. Legal designations are established by official sanctions notice; no automatic proof vessels ceased operation or revenues stopped.",
+      "source": "https://www.reuters.com/world/middle-east/us-imposes-fresh-iran-related-sanctions-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED",
+      "check": "Obtain OFAC official release and SDN designation list; resolve identity and effective date per vessel."
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters tanker risk account details Iranian threats to close routes and reported projectile strike on chemical tanker Acers near Qatar; preserve threats separately from independently documented strike and perpetrators.",
+      "source": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-10",
+      "subject": "AP reports 22 crew rescued from burning tanker off UAE, suspected contact with a mine; cause and responsibility not established in same report; avoid merging with independent tanker attacks until vessel IDs reconciled.",
+      "source": "https://apnews.com/article/a5f40b5e0ab08ae8128db5ed749114d8",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     }
   ],
   "next": [
