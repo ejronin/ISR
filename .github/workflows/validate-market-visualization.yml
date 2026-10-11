@@ -37,3 +37,11 @@ jobs:
           test -s prototypes/visualization-platform/dist/prototypes/visualization-platform/index.html
           test -s prototypes/visualization-platform/dist/data/research/eia-brent-spot-2026-visual-candidate.json
           grep -q 'EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL' prototypes/visualization-platform/dist/data/research/eia-brent-spot-2026-visual-candidate.json
+
+      - name: Upload financial chart preview for visual inspection
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: real-market-visual-qa
+          path: prototypes/visualization-platform/dist/
+          if-no-files-found: error
+          retention-days: 4
