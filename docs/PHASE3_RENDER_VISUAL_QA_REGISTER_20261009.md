@@ -25,3 +25,23 @@ Use the existing `tests/browser-public-render-review.js` suite with widths `1920
 4. Existing protected economic chart must remain available until independently qualified replacement receives approval.
 5. WOL/Lie Ledger evidence and adjudication content is read-only.
 6. No merge or deployment until exact-head automated and responsive-render verification and user review.
+
+
+## October 11 continuation — exact-head qualification and evidence acceptance boundary
+
+**Phase 3 head at audit:** `10e8b5161dc1d7e52f06c99b8d83fab3b2dbdddc` (PR #295, open/draft; not merged).
+**Recorded first exact-head run:** `37931760337` — **FAIL** at screenshot review. All earlier cited reader/IA/Phase 5/Phase 6/Batch 3/full-stack gates passed; this is not a release pass.
+
+### Reproduced stop
+
+`tests/browser-public-render-review.js` waits for `.guide-protected-economic-chart` on `hormuz.economy` and times out. The class is only installed when `economy()` finds an existing forecast section by heading via `findSection()`; it must not be manufactured or a non-chart substituted simply to satisfy the screenshot target.
+
+**Next technical action:** inspect the actual staged `hormuz.economy` section headings and route DOM at 1440/390, establish whether the protected forecast section is missing, renamed, reparented, or delayed, and repair the smallest valid cause. Confirm the captured element contains the unchanged accepted chart and that `chartState` readiness assertions apply to the actual chart element, not an unmarked outer section. Re-run exact-head qualification before visual approval.
+
+### Scheduled Atlas / ROOK evidence reconciliation gate
+
+GitHub PR history checked at this audit shows the latest **merged Evidence Integration** intake is PR #294, accepting sequence 34 through **2026-10-07 14:03 ET**. Relevant already-merged intake includes #291–#294 and analysis refresh #290. These contain the Oct. 7 nuclear/IAEA status, maritime attack counts, Iran–Hezbollah transfer with attribution limits, Iraq devaluation, Turkey/Saudi support, oil-price snapshot and China substitution/OFAC context. The present `economy()` source already shows some of those Oct. 7 accepted facts; this source inspection alone does not certify visual/public state parity.
+
+**Outstanding acceptance gap:** any scheduled sweeps after Oct. 7 14:03 ET require discovery and origin-to-consumption reconciliation before declaring the current Atlas state complete. No post-cutoff sweep should be backdated, invented, or promoted through the renderer. Evidence Integration must accept/qualify such data in canonical state first; Phase 3 must regenerate against that accepted release and check source/date/amount/denominator/attribution on economy and sanctions surfaces. If no post-cutoff sweeps are found, mark **COLLECTION/INGESTION STATUS UNVERIFIED**, not `NO EVENTS`.
+
+**Merge gate:** blocked pending valid visual captures, accepted evidence-horizon reconciliation, current-release parity, responsive review, exact-head PASS, and visual approval.
