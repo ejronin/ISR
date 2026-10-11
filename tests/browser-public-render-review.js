@@ -443,6 +443,15 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           assert.equal(interaction.selected, 'true', 'sanctions node selection must update selected state');
           assert.equal(interaction.pressed, 'true', 'sanctions selection must expose accessible pressed state');
           assert(interaction.live.includes('Recorded state:'), 'sanctions selection must expose the accepted node state');
+          const evidenceBoundary=await cdp.eval(`(() => {
+            const root=document.querySelector('.sanctions-plumbing');
+            const foreign=root?.querySelector('[data-sanctions-node-id="foreign-bank"]');
+            foreign?.click();
+            const details=document.querySelector('.sanctions-selected-evidence');
+            return {text:details?.textContent || '', sources:details?.querySelectorAll('details').length || 0};
+          })()`);
+          assert(evidenceBoundary.text.includes('Named geographic example') && evidenceBoundary.text.includes('not this generic route'), 'named sanctions example must explicitly disclaim a one-to-one route');
+          assert(evidenceBoundary.sources >= 1, 'named sanctions example must provide accepted evidence access');
         }
         if (focus.state === 'map') assert.equal(state.renderer, 'maplibre-gl-js', `${focus.label} is not using the approved MapLibre renderer at ${width}px`);
         // Other keyboard tests may leave the global Skip to content link focused.
