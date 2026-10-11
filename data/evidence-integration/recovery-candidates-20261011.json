@@ -1,0 +1,49 @@
+{
+  "role": "RECOVERY_SOURCE_LEADS_UNADJUDICATED",
+  "accepted_cutoff": "2026-10-07T14:03:00-04:00",
+  "coverage": "partial; missing scheduled windows still require full reconstruction",
+  "canonical_mutation": false,
+  "leads": [
+    {
+      "date": "2026-10-09",
+      "subject": "Proposed Iraq-Syria Hormuz-bypass pipeline and U.S. envoy ethics questions; disputed interpretation",
+      "source": "https://www.reuters.com/world/us/trump-envoy-kept-financial-ties-firm-behind-15-billion-hormuz-bypass-oil-2026-10-09/"
+    },
+    {
+      "date": "2026-10-10",
+      "subject": "Riyadh airport mass-casualty event; initial toll 12, 309 injured; later updates must supersede",
+      "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "Revised toll 13 and a distinct Sunday airport incident; preserve chronological distinction and attribution uncertainty",
+      "source": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "Rezaei calls U.S. Hormuz response insufficient; Iranian assertions not U.S.-confirmed concessions",
+      "source": "https://www.reuters.com/world/middle-east/iran-says-us-response-its-proposal-reopen-hormuz-was-insufficient-2026-10-11/"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "U.S. blockade incident involving civilian cargo vessel; U.S. military account requires verification",
+      "source": "https://www.reuters.com/world/us-military-says-it-disabled-cargo-vessel-trying-run-iran-blockade-2026-10-11/"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "Gulf market snapshot; Saudi TASI -0.2%, Qatar -1.5%; attribution separate from prices",
+      "source": "https://www.reuters.com/world/middle-east/saudi-stocks-slide-after-attack-riyadh-airport-2026-10-11/"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "World Bank talks to 30-40 countries on possible crisis aid; talks not disbursements",
+      "source": "https://www.reuters.com/business/finance/world-bank-talks-with-dozens-countries-about-crisis-aid-banga-says-2026-10-11/"
+    }
+  ],
+  "next": [
+    "Collect and account for each 12-hour window",
+    "Find and validate existing artifacts, including external scheduler failures",
+    "Check exact source publication times and existing-event IDs",
+    "Only then produce validated ROOK sweep artifacts and promote via Evidence Integration"
+  ]
+}
