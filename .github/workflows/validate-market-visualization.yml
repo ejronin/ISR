@@ -35,6 +35,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s prototypes/visualization-platform/dist/prototypes/visualization-platform/index.html
+          test -s prototypes/visualization-platform/dist/prototypes/visualization-platform/market-preview.html
           test -s prototypes/visualization-platform/dist/data/research/eia-brent-spot-2026-visual-candidate.json
           grep -q 'EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL' prototypes/visualization-platform/dist/data/research/eia-brent-spot-2026-visual-candidate.json
 
