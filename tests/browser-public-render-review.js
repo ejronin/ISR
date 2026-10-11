@@ -401,7 +401,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
               reset:Boolean(root?.querySelector('button')),
               note:root?.textContent.includes('not a claim of economic causation') || false};
           })()`);
-          assert.equal(state.rows,8,'Hormuz contextual economic table should contain header plus seven accepted forecast economies');
+          assert.equal(state.rows,5,'Hormuz contextual table should contain header plus four authorized indicator readings');
           assert(state.reset && state.note,'map-economic coordination needs reset and noncausal time-basis note');
         }
         if (focus.label === 'economic-transmission-visual') {
