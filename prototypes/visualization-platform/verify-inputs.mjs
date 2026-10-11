@@ -65,7 +65,8 @@ assert(marketObservations[0].date === '2026-01-09' && marketObservations.at(-1).
 assert(marketObservations.find(x=>x.date==='2026-02-27')?.value === 71.32,'EIA prewar market checkpoint mismatch.');
 assert(marketObservations.find(x=>x.date==='2026-10-02')?.value === 135.51,'EIA October observed market checkpoint mismatch.');
 assert((sanctions.wartime_actions||[]).filter(x=>x.date&&x.title).length>=8,'Missing accepted sanctions marker events.');
-\nassert(currentState.artifact_role === 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL', 'Generated public-current-state role changed.');
+
+assert(currentState.artifact_role === 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL', 'Generated public-current-state role changed.');
 const wolPayload = currentState?.datasets?.['analysis.web_of_lies']?.payload;
 const graph = wolPayload?.propagation_graph;
 const graphNodes = Array.isArray(graph?.nodes) ? graph.nodes : [];
