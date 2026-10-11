@@ -460,7 +460,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           const matrix = await cdp.eval(`(() => {
             const root=document.querySelector('.sanctions-route-breakdown');
             const profiles=[...root.querySelectorAll('.sanctions-route-profile')];
-            for(const profile of profiles) profile.open=true;
+            profiles.forEach((profile,i)=>{ profile.open = i===0; });
             return {count:profiles.length, dated:root.querySelectorAll('.sanctions-route-case-date').length,
               drawerCount:root.querySelectorAll('.sanctions-route-case .evidence-drawer').length,
               states:profiles.map(x=>x.querySelector('.sanctions-route-state')?.textContent),
