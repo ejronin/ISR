@@ -962,12 +962,12 @@ async function initMarketObservationPrototype() {
   const sourceBody = document.getElementById('market-observations-table');
   const toggle = document.getElementById('market-markers-toggle');
   const observations = Array.isArray(dataset.observations) ? dataset.observations : [];
-  if (observations.length < 30 || observations.some(x => !/^2026-\\d\\d-\\d\\d$/.test(x.date) || !Number.isFinite(x.value)))
+  if (observations.length < 30 || observations.some(x => !/^2026-[0-9]{2}-[0-9]{2}$/.test(x.date) || !Number.isFinite(x.value)))
     throw new Error('Market chart refuses absent or invalid published EIA observations.');
   if (observations.some((row, i) => i && row.date <= observations[i - 1].date))
     throw new Error('Published financial observations must be chronological and unique.');
   const actions = (Array.isArray(network.wartime_actions) ? network.wartime_actions : [])
-    .filter(x => /^2026-\\d\\d-\\d\\d$/.test(x.date) && x.title)
+    .filter(x => /^2026-[0-9]{2}-[0-9]{2}$/.test(x.date) && x.title)
     .slice().sort((a,b) => a.date.localeCompare(b.date));
   observations.forEach(x => {
     const tr = document.createElement('tr');
@@ -1026,7 +1026,55 @@ await Promise.all([
 ]);
 +Number(value).toFixed(2)+' /bbl'},
     xAxis: {type:'time',min:'2026-01-01',max:'2026-11-03',axisLabel:{color:'#b6cbd9'},axisLine:{lineStyle:{color:'#475d6f'}},splitLine:{show:false}},
-    yAxis: {type:'value',name:'Brent spot · USD/bbl',nameTextStyle:{color:'#b6cbd9'},scale:true,axisLabel:{color:'#b6cbd9',formatter:'${value}'},splitLine:{lineStyle:{color:'rgba(190,207,220,.14)'}}},
+    yAxis: {type:'value',name:'Brent spot · USD/bbl',nameTextStyle:{color:'#b6cbd9'},scale:true,axisLabel:{color:'#b6cbd9',formatter:value=>',splitLine:{lineStyle:{color:'rgba(190,207,220,.14)'}}},
+    series: [{name:'EIA spot observation',type:'line',smooth:false,showSymbol:true,symbolSize:5,connectNulls:false,
+      lineStyle:{width:2,color:'#87d2e8'},itemStyle:{color:'#b7ebff'},
+      data:observations.map(x=>[x.date,x.value]),
+      markLine:{silent:true,animation:false,symbol:'none',data:markerItems()}
+    }]
+  }, {notMerge:true});
+  actions.forEach((action,i) => {
+    const b = document.createElement('button'); b.type='button'; b.className='market-event-button';
+    b.textContent = action.date + ' · ' + action.title;
+    b.setAttribute('aria-pressed','false');
+    b.addEventListener('click', () => {
+      selectedId = i;
+      for(const other of markerRail.querySelectorAll('button')) other.setAttribute('aria-pressed',String(other===b));
+      detail.replaceChildren();
+      const head=document.createElement('strong');head.textContent=action.date+' · '+action.title;
+      const body=document.createElement('p');body.textContent='Documented action: '+String(action.targeted_node||'Target details available in the accepted sanctions record')+'. '+String(action.observed_effect||'The dated legal action does not establish an observed spot-price reaction.');
+      const small=document.createElement('p');small.textContent='Accepted sanctions source IDs: '+(action.source_ids||[]).join(', ')+'. Calendar placement does not establish causation or a daily price on this date.';
+      detail.append(head,body,small);
+      render();
+    });
+    markerRail.append(b);
+  });
+  const election=document.createElement('p'); election.className='market-election-reference';
+  election.textContent='Nov. 3: U.S. midterm election (calendar reference; no price observation or projection is plotted after the last published EIA value).';
+  markerRail.append(election);
+  toggle.addEventListener('click',()=>{showMarkers=!showMarkers;toggle.setAttribute('aria-pressed',String(showMarkers));toggle.textContent=showMarkers?'Sanctions markers on':'Sanctions markers off';render();});
+  render();
+  new ResizeObserver(()=>chart.resize()).observe(host);
+  status.textContent=observations.length+' EIA observed spot-price samples, '+actions.length+' separately accepted sanctions dates. Last market observation: '+observations[observations.length-1].date+'. GDP forecast snapshots remain a separate static chart below. Research candidate: NOT accepted canonical economics.';
+}
+
+async function runPrototype(name, initializer, statusId) {
+  try {
+    await initializer();
+  } catch (error) {
+    const status = document.getElementById(statusId);
+    status.textContent = name + ' prototype failed: ' + (error && error.message ? error.message : String(error));
+    console.error(name + ' prototype failed', error);
+  }
+}
+
+await Promise.all([
+  runPrototype('Map', initMapPrototype, 'map-status'),
+  runPrototype('WOL', initWolPrototype, 'wol-status'),
+  runPrototype('Directed flow', initFlowPrototype, 'flow-status'),
+  runPrototype('Chart', initChartPrototype, 'chart-status')
+]);
++Math.round(value)},splitLine:{lineStyle:{color:'rgba(190,207,220,.14)'}}},
     series: [{name:'EIA spot observation',type:'line',smooth:false,showSymbol:true,symbolSize:5,connectNulls:false,
       lineStyle:{width:2,color:'#87d2e8'},itemStyle:{color:'#b7ebff'},
       data:observations.map(x=>[x.date,x.value]),
