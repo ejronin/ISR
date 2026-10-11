@@ -47,6 +47,7 @@ const PHASE2_VISUAL_FOCUS = [
   { routeKey: 'hormuz.economy', label: 'economy-protected-baseline', selector: '[data-protected-economic-chart="retained"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-forecast-revisions', selector: '[data-forecast-revision-chart="accepted-ledger"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-mode-controls', selector: '.economic-mode-controls', state: 'static' },
+  { routeKey: 'hormuz.economy', label: 'economic-transmission-visual', selector: '.economic-transmission-visual', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-money-flow', selector: '.sanctions-plumbing', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-route-inspector', selector: '.sanctions-selected-route', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-transmission-chain', selector: '.sanctions-cascade', state: 'static' },
@@ -249,6 +250,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
       for (const focus of MAP_FOCUS) {
         await route(cdp, focus.routeKey);
         const selector = JSON.stringify(focus.selector);
+        if (focus.label === 'economy-protected-baseline') await cdp.eval(`(() => { [...document.querySelectorAll('.economic-mode-controls button')].find(x=>x.textContent.includes('PROTECTED BASELINE'))?.click(); return true; })()`);
         await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
         if (focus.renderer === 'maplibre') await waitFor(cdp, `document.querySelector(${selector})?.dataset.mapState === 'ready'`);
         const reviewState = await cdp.eval(`(() => {
@@ -391,6 +393,27 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           } : null;
         })()`);
         assert(state && state.width > 0 && state.height > 0, `${focus.label} has no rendered Phase 2 review area at ${width}px`);
+        if (focus.label === 'economic-transmission-visual') {
+          const states=await cdp.eval(`(() => {
+            const root=document.querySelector('.economic-transmission-visual');
+            return {lanes:root?.querySelectorAll('.economic-transmission-lane').length,
+              mechanism:Boolean(root?.querySelector('.economic-mechanism')),
+              observed:Boolean(root?.querySelector('.economic-observed')),
+              watch:Boolean(root?.querySelector('.economic-watch'))};
+          })()`);
+          assert.equal(states.lanes,3,'economy transmission needs three separate evidence-class lanes');
+          assert(states.mechanism && states.observed && states.watch,'transmission distinction missing');
+        }
+        if (focus.label === 'economy-mode-controls') {
+          const state=await cdp.eval(`(() => {
+            const root=document.querySelector('.economic-mode-controls');
+            const buttons=[...root.querySelectorAll('button')];
+            const active=buttons.filter(x=>x.getAttribute('aria-pressed')==='true');
+            return {count:buttons.length,active:active.length,unavailable:root.textContent.includes('TREND unavailable'),
+             realSelector:buttons.every(x=>x.hasAttribute('aria-controls'))};
+          })()`);
+          assert(state.count>=2 && state.active===1 && state.unavailable && state.realSelector,'economic modes must be selectable with explicit unavailable series');
+        }
         if (focus.label === 'economy-forecast-revisions') {
           const parity = await cdp.eval(`(() => {
             const root = document.querySelector('[data-forecast-revision-chart="accepted-ledger"]');
