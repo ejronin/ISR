@@ -45,3 +45,16 @@ GitHub PR history checked at this audit shows the latest **merged Evidence Integ
 **Outstanding acceptance gap:** any scheduled sweeps after Oct. 7 14:03 ET require discovery and origin-to-consumption reconciliation before declaring the current Atlas state complete. No post-cutoff sweep should be backdated, invented, or promoted through the renderer. Evidence Integration must accept/qualify such data in canonical state first; Phase 3 must regenerate against that accepted release and check source/date/amount/denominator/attribution on economy and sanctions surfaces. If no post-cutoff sweeps are found, mark **COLLECTION/INGESTION STATUS UNVERIFIED**, not `NO EVENTS`.
 
 **Merge gate:** blocked pending valid visual captures, accepted evidence-horizon reconciliation, current-release parity, responsive review, exact-head PASS, and visual approval.
+
+## October 11 six-width artifact inspection (head `edfda1dd82b77470fa79efce141426e8e741ac21`)
+
+- **Exact-SHA CI:** GitHub Actions run `38165361256` completed **SUCCESS**, both `exact-SHA qualification / qualify exact SHA` and `validate` jobs.
+- **Screenshot artifact:** `public-render-review-edfda1dd82b77470fa79efce141426e8e741ac21`, artifact ID `11711479725`, SHA256 `2c6a278d276fd84d4b7a91f514509628f209617dbfc29dae767f58b6050e5f45`.
+- **Manual visual inspection:** inspected the four Phase 3 focus captures—protected economy baseline, analytical mode controls, sanctions money-flow and sanctions cascade—at 1920, 1440, 1024, 768, 390 and 320 px (24 captures from the 404-image CI artifact).
+- **VIS-301:** **Capture confirmed, preservation confirmed.** The original growth-forecast bars and associated values appear at all six widths; narrow layouts remain vertically readable. This does **not** qualify an ECharts histogram replacement, altered quantitative schema or methodology.
+- **VIS-302:** **Capture confirmed; mockup parity not yet signed off.** The sanctions flow changes from multi-column at desktop to a vertical, narrow stack at 768/390/320. Cascade cards likewise stack at narrow widths. No numeric or relationship changes approved. The very tall, narrow 320px flow merits in-product usability review for interaction/scroll fatigue rather than an assumption of correctness from screenshot creation.
+- **VIS-303:** **Six-width technical coverage achieved.** Screenshot existence plus manual inspection is not production and approved-mockup visual equality. Explicit side-by-side review is still required before Phase 3 sign-off.
+- **VIS-304:** **Still open for migration.** Protected baseline remains; supplemental histogram requires its own independent quantitative and semantic parity qualification.
+- **Evidence acceptance:** unchanged. As of this inspection, Evidence Integration latest accepted cutoff was Oct. 7, 2026 14:03 ET. Recovery candidate PR #297 is unaccepted and shall not be injected into renderer copy as if canonical.
+
+**Decision:** automated qualification and screenshot-capture gate **PASS** on `edfda1d`; approved design parity and permission to replace the protected chart **NOT YET ESTABLISHED**. No merge/deployment attested by this inspection.
