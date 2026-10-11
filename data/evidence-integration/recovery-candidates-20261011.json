@@ -7,57 +7,86 @@
     {
       "date": "2026-10-08",
       "subject": "Reuters reports Riyadh and Abha airport attacks with three killed earlier in week; damaged parked Saudia aircraft and verified smoke footage. Distinguish different events and contemporaneous casualty counts.",
-      "source": "https://www.reuters.com/world/asia-pacific/syria-considers-help-yemen-war-after-saudi-airports-come-under-houthi-fire-2026-10-08/"
+      "source": "https://www.reuters.com/world/asia-pacific/syria-considers-help-yemen-war-after-saudi-airports-come-under-houthi-fire-2026-10-08/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-08",
       "subject": "Reuters reports tanker attack risk, Iranian threats to unauthorized Hormuz routes and contemporaneous maritime disruptions; actor threats and independent incidents must not be conflated.",
-      "source": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/"
+      "source": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-08",
       "subject": "Reuters reports Brent settlement $104.28 and WTI $91.49; oil-price spike had both war-risk and hurricane supply components, not single-cause attribution.",
-      "source": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/"
+      "source": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-09",
       "subject": "EASA widens Saudi airspace risk advisory after attacks; distinguish civil aviation alert and airline suspension from aircraft losses.",
-      "source": "https://www.reuters.com/world/middle-east/eu-aviation-agency-widens-saudi-airspace-alert-citing-growing-risk-houthi-2026-10-09/"
+      "source": "https://www.reuters.com/world/middle-east/eu-aviation-agency-widens-saudi-airspace-alert-citing-growing-risk-houthi-2026-10-09/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-09",
       "subject": "Proposed Iraq-Syria Hormuz-bypass pipeline and U.S. envoy ethics questions; disputed interpretation",
-      "source": "https://www.reuters.com/world/us/trump-envoy-kept-financial-ties-firm-behind-15-billion-hormuz-bypass-oil-2026-10-09/"
+      "source": "https://www.reuters.com/world/us/trump-envoy-kept-financial-ties-firm-behind-15-billion-hormuz-bypass-oil-2026-10-09/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-10",
       "subject": "Riyadh airport mass-casualty event; initial toll 12, 309 injured; later updates must supersede",
-      "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/"
+      "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-11",
       "subject": "Revised toll 13 and a distinct Sunday airport incident; preserve chronological distinction and attribution uncertainty",
-      "source": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/"
+      "source": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-11",
       "subject": "Rezaei calls U.S. Hormuz response insufficient; Iranian assertions not U.S.-confirmed concessions",
-      "source": "https://www.reuters.com/world/middle-east/iran-says-us-response-its-proposal-reopen-hormuz-was-insufficient-2026-10-11/"
+      "source": "https://www.reuters.com/world/middle-east/iran-says-us-response-its-proposal-reopen-hormuz-was-insufficient-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-11",
       "subject": "U.S. blockade incident involving civilian cargo vessel; U.S. military account requires verification",
-      "source": "https://www.reuters.com/world/us-military-says-it-disabled-cargo-vessel-trying-run-iran-blockade-2026-10-11/"
+      "source": "https://www.reuters.com/world/us-military-says-it-disabled-cargo-vessel-trying-run-iran-blockade-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-11",
       "subject": "Gulf market snapshot; Saudi TASI -0.2%, Qatar -1.5%; attribution separate from prices",
-      "source": "https://www.reuters.com/world/middle-east/saudi-stocks-slide-after-attack-riyadh-airport-2026-10-11/"
+      "source": "https://www.reuters.com/world/middle-east/saudi-stocks-slide-after-attack-riyadh-airport-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     },
     {
       "date": "2026-10-11",
       "subject": "World Bank talks to 30-40 countries on possible crisis aid; talks not disbursements",
-      "source": "https://www.reuters.com/business/finance/world-bank-talks-with-dozens-countries-about-crisis-aid-banga-says-2026-10-11/"
+      "source": "https://www.reuters.com/business/finance/world-bank-talks-with-dozens-countries-about-crisis-aid-banga-says-2026-10-11/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "Thursday Riyadh airport attacks: Saudi authorities reported three killed; a Saudia Airlines aircraft was damaged; Houthi claims and Saudi coalition response reported. Distinct from October 10 Saturday mass-casualty attack.",
+      "source": "https://www.reuters.com/world/middle-east/houthi-strikes-riyadh-airport-killed-three-saudis-war-escalates-2026-10-09/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     }
   ],
   "next": [
@@ -65,5 +94,6 @@
     "Find and validate existing artifacts, including external scheduler failures",
     "Check exact source publication times and existing-event IDs",
     "Only then produce validated ROOK sweep artifacts and promote via Evidence Integration"
-  ]
+  ],
+  "source_audit": "Live source search confirms October 9 Riyadh event and October 11 Sunday follow-up, plus October 11 Hormuz/Rezaei, CENTCOM cargo-vessel and stock-market Reuters articles. Other lead URLs are not yet directly verified; do not promote them."
 }
