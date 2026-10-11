@@ -5,6 +5,26 @@
   "canonical_mutation": false,
   "leads": [
     {
+      "date": "2026-10-08",
+      "subject": "Reuters reports Riyadh and Abha airport attacks with three killed earlier in week; damaged parked Saudia aircraft and verified smoke footage. Distinguish different events and contemporaneous casualty counts.",
+      "source": "https://www.reuters.com/world/asia-pacific/syria-considers-help-yemen-war-after-saudi-airports-come-under-houthi-fire-2026-10-08/"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters reports tanker attack risk, Iranian threats to unauthorized Hormuz routes and contemporaneous maritime disruptions; actor threats and independent incidents must not be conflated.",
+      "source": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters reports Brent settlement $104.28 and WTI $91.49; oil-price spike had both war-risk and hurricane supply components, not single-cause attribution.",
+      "source": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "EASA widens Saudi airspace risk advisory after attacks; distinguish civil aviation alert and airline suspension from aircraft losses.",
+      "source": "https://www.reuters.com/world/middle-east/eu-aviation-agency-widens-saudi-airspace-alert-citing-growing-risk-houthi-2026-10-09/"
+    },
+    {
       "date": "2026-10-09",
       "subject": "Proposed Iraq-Syria Hormuz-bypass pipeline and U.S. envoy ethics questions; disputed interpretation",
       "source": "https://www.reuters.com/world/us/trump-envoy-kept-financial-ties-firm-behind-15-billion-hormuz-bypass-oil-2026-10-09/"
