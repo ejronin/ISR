@@ -2642,13 +2642,56 @@
       { title: 'The end state remains unresolved', text: 'Final authority, revenue, mine-clearing, inspection and permanent passage rules have not been settled. The record therefore shows a walk-back and concession, not total Iranian capitulation.', item: latestShipping[1] || {} }
     ]);
 
-    frame.article.append(createRepresentativeMap(context, {
+    const contextMap = createRepresentativeMap(context, {
       typeLabel: 'MAP + ECONOMY · AUTHORITATIVE MAP VIEW',
       cameraModes: ['gulf', 'hormuz'],
       title: 'Hormuz and connected conflict locations',
       records: asArray(hormuz.current_board_delta),
       description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks, and shared timing does not by itself establish causation.'
-    }));
+    });
+    frame.article.append(contextMap);
+    const economicContext = addSection(frame.article, 'Map selection and economic date context');
+    economicContext.dataset.hormuzEconomicContext = 'accepted-record-only';
+    append(economicContext, 'p', 'section-note', 'Select a documented point on the map. Its event date is shown beside the separately sourced 2026 growth-forecast comparison; matching placement is chronological context, not a claim of economic causation.');
+    const selectedEvent = append(economicContext, 'div', 'hormuz-economic-selected-event');
+    selectedEvent.setAttribute('aria-live', 'polite');
+    const dateText = append(selectedEvent, 'p', 'card-kicker', 'NO MAP EVENT SELECTED');
+    const titleText = append(selectedEvent, 'strong', '', 'Choose a documented map event');
+    const effectText = append(selectedEvent, 'p', '', 'Selection does not alter accepted economic values.');
+    const resetEconomic = append(economicContext, 'button', 'visualization-mode-button', 'Reset event context');
+    resetEconomic.type = 'button';
+    const contextTable = append(economicContext, 'details', 'hormuz-economic-forecast-context');
+    append(contextTable, 'summary', '', 'Accepted Hormuz economic indicators · separate date bases');
+    append(contextTable, 'p', 'section-note', 'These are the existing authorized Hormuz indicator readings, each with its own underlying period and denominator. Selecting a map event does not alter, date-match, or attribute causation to any indicator.');
+    const comparisonTable = append(contextTable, 'table', 'hormuz-forecast-table');
+    const headings = append(comparisonTable, 'tr');
+    ['Existing indicator','Accepted reading','Basis and limitations'].forEach(x => append(headings,'th','',x));
+    asArray(reality.metrics).forEach(row => {
+      const tr = append(comparisonTable,'tr');
+      append(tr,'th','',publicNarrative(row.label));
+      append(tr,'td','',String(row.value));
+      append(tr,'td','',publicNarrative(row.note));
+    });
+    const detailEconomy = append(contextTable,'a','inline-route-link','Open forecast-revision comparison and its original source records');
+    detailEconomy.href=routeHref('hormuz.economy');
+    const clearEconomicContext = () => {
+      dateText.textContent='NO MAP EVENT SELECTED';
+      titleText.textContent='Choose a documented map event';
+      effectText.textContent='Selection does not alter accepted economic values.';
+      selectedEvent.dataset.selected = 'false';
+    };
+    contextMap.addEventListener('guide:map-selection',event => {
+      const item=event.detail && event.detail.type==='record' ? event.detail.record : null;
+      if (!item) {clearEconomicContext();return;}
+      dateText.textContent='ACCEPTED EVENT DATE · '+String(item.date || 'Date not established');
+      titleText.textContent=publicNarrative(item.title);
+      effectText.textContent=publicNarrative(item.effect || '')+' Chronological context only; no quantified GDP effect attributed.';
+      selectedEvent.dataset.selected='true';
+    });
+    resetEconomic.addEventListener('click',()=>{
+      contextMap.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+      clearEconomicContext();
+    });
 
     const adaptation = addSection(frame.article, 'What prolonged disruption changed');
     const cards = append(adaptation, 'div', 'record-list two-column-list');
@@ -2800,6 +2843,7 @@
     selectedRoute.setAttribute('aria-live', 'polite');
     append(selectedRoute, 'strong', 'sanctions-selected-title', 'Explore a financial route');
     append(selectedRoute, 'p', 'sanctions-selected-description', 'Select an intermediary or alternative below. Legal exposure and observed commercial effects remain distinct; an unselected route is not assumed blocked.');
+    const relatedNamedExample = append(selectedRoute, 'div', 'sanctions-selected-evidence');
     const setSelected = (node, item) => {
       for (const other of plumbing.querySelectorAll('[data-sanctions-node-id]')) {
         other.dataset.selected = other === node ? 'true' : 'false';
@@ -2810,6 +2854,20 @@
         'Recorded state: ' + publicNarrative(item.state || 'not classified') + '. ' +
         publicNarrative(item.explanation || item.sublabel || '') +
         ' This state is not proof of a specific transaction being stopped.';
+      // Generic plumbing categories are NOT the identities of named geographic entities.
+      // Only show a mapped case as an illustrative named example when the approved
+      // record explicitly identifies that kind of institution; never imply an edge.
+      relatedNamedExample.replaceChildren();
+      const relatedId = item.id === 'foreign-bank' ? 'node-russia' : null;
+      const namedExample = relatedId && asArray(network.map_nodes).find(record => record.id === relatedId);
+      if (namedExample) {
+        append(relatedNamedExample, 'strong', '', 'Named geographic example (not this generic route)');
+        append(relatedNamedExample, 'p', '', publicNarrative(namedExample.name) + ': ' + publicNarrative(namedExample.note));
+        append(relatedNamedExample, 'p', 'scope-note', 'This accepted geographic example illustrates a related institution type; it does not establish that the generic selected pathway ran through the same entity.');
+        if (sourceIdsFrom(namedExample).length) relatedNamedExample.append(EvidenceDrawer.create(context, sourceEnvelope(namedExample), { localSources }));
+      } else {
+        append(relatedNamedExample, 'p', 'scope-note', 'No one-to-one named geographic entity or transaction-level source is established for this generic pathway. See named-node geography and wartime actions for independently documented cases.');
+      }
     };
     const enableSelection = (node, item) => {
       node.dataset.sanctionsNodeId = item.id;

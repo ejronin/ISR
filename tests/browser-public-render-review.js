@@ -44,9 +44,11 @@ const PHASE1_VISUAL_FOCUS = [
   { routeKey: 'evidence.web_of_lies', label: 'wol-network', selector: '.wol-graph-column', state: 'wol' }
 ];
 const PHASE2_VISUAL_FOCUS = [
+  { routeKey: 'hormuz.overview', label: 'hormuz-economy-context', selector: '[data-hormuz-economic-context="accepted-record-only"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-protected-baseline', selector: '[data-protected-economic-chart="retained"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-forecast-revisions', selector: '[data-forecast-revision-chart="accepted-ledger"]', state: 'static' },
   { routeKey: 'hormuz.economy', label: 'economy-mode-controls', selector: '.economic-mode-controls', state: 'static' },
+  { routeKey: 'hormuz.economy', label: 'economic-transmission-visual', selector: '.economic-transmission-visual', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-money-flow', selector: '.sanctions-plumbing', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-route-inspector', selector: '.sanctions-selected-route', state: 'static' },
   { routeKey: 'hormuz.sanctions', label: 'sanctions-transmission-chain', selector: '.sanctions-cascade', state: 'static' },
@@ -249,6 +251,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
       for (const focus of MAP_FOCUS) {
         await route(cdp, focus.routeKey);
         const selector = JSON.stringify(focus.selector);
+        if (focus.label === 'economy-protected-baseline') await cdp.eval(`(() => { [...document.querySelectorAll('.economic-mode-controls button')].find(x=>x.textContent.includes('PROTECTED BASELINE'))?.click(); return true; })()`);
         await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
         if (focus.renderer === 'maplibre') await waitFor(cdp, `document.querySelector(${selector})?.dataset.mapState === 'ready'`);
         const reviewState = await cdp.eval(`(() => {
@@ -391,6 +394,38 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           } : null;
         })()`);
         assert(state && state.width > 0 && state.height > 0, `${focus.label} has no rendered Phase 2 review area at ${width}px`);
+        if (focus.label === 'hormuz-economy-context') {
+          const state=await cdp.eval(`(() => {
+            const root=document.querySelector('[data-hormuz-economic-context="accepted-record-only"]');
+            return {rows:root?.querySelectorAll('.hormuz-forecast-table tr').length,
+              reset:Boolean(root?.querySelector('button')),
+              note:root?.textContent.includes('not a claim of economic causation') || false};
+          })()`);
+          assert.equal(state.rows,5,'Hormuz contextual table should contain header plus four authorized indicator readings');
+          assert(state.reset && state.note,'map-economic coordination needs reset and noncausal time-basis note');
+        }
+        if (focus.label === 'economic-transmission-visual') {
+          const states=await cdp.eval(`(() => {
+            const root=document.querySelector('.economic-transmission-visual');
+            return {lanes:root?.querySelectorAll('.economic-transmission-lane').length,
+              mechanism:Boolean(root?.querySelector('.economic-mechanism')),
+              observed:Boolean(root?.querySelector('.economic-observed')),
+              watch:Boolean(root?.querySelector('.economic-watch'))};
+          })()`);
+          assert.equal(states.lanes,3,'economy transmission needs three separate evidence-class lanes');
+          assert(states.mechanism && states.observed && states.watch,'transmission distinction missing');
+        }
+        if (focus.label === 'economy-mode-controls') {
+          const state=await cdp.eval(`(() => {
+            const root=document.querySelector('.economic-mode-controls');
+            const buttons=[...root.querySelectorAll('button')];
+            const active=buttons.filter(x=>x.getAttribute('aria-pressed')==='true');
+            return {count:buttons.length,active:active.length,unavailable:root.textContent.includes('TREND unavailable'),
+             realSelector:buttons.every(x=>x.hasAttribute('aria-controls')),
+             preserved:document.querySelector('[data-protected-economic-chart="retained"]')?.getBoundingClientRect().height > 0};
+          })()`);
+          assert(state.count>=2 && state.active===1 && state.unavailable && state.realSelector && state.preserved,'economic modes must preserve baseline and mark real selected/unavailable views');
+        }
         if (focus.label === 'economy-forecast-revisions') {
           const parity = await cdp.eval(`(() => {
             const root = document.querySelector('[data-forecast-revision-chart="accepted-ledger"]');
@@ -420,6 +455,15 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           assert.equal(interaction.selected, 'true', 'sanctions node selection must update selected state');
           assert.equal(interaction.pressed, 'true', 'sanctions selection must expose accessible pressed state');
           assert(interaction.live.includes('Recorded state:'), 'sanctions selection must expose the accepted node state');
+          const evidenceBoundary=await cdp.eval(`(() => {
+            const root=document.querySelector('.sanctions-plumbing');
+            const foreign=root?.querySelector('[data-sanctions-node-id="foreign-bank"]');
+            foreign?.click();
+            const details=document.querySelector('.sanctions-selected-evidence');
+            return {text:details?.textContent || '', sources:details?.querySelectorAll('details').length || 0};
+          })()`);
+          assert(evidenceBoundary.text.includes('Named geographic example') && evidenceBoundary.text.includes('not this generic route'), 'named sanctions example must explicitly disclaim a one-to-one route');
+          assert(evidenceBoundary.sources >= 1, 'named sanctions example must provide accepted evidence access');
         }
         if (focus.state === 'map') assert.equal(state.renderer, 'maplibre-gl-js', `${focus.label} is not using the approved MapLibre renderer at ${width}px`);
         // Other keyboard tests may leave the global Skip to content link focused.
