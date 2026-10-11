@@ -605,6 +605,7 @@
     modes.setAttribute('role','group');
     modes.setAttribute('aria-label','Select an available economic analytical view');
     const modeHeading=add(modes,'p','economic-mode-note','Choose a supported view. Forecast snapshots are comparisons, not dated economic observations.');
+    add(modes,'p','scope-note economic-forecast-scope-always-visible','These are forecasts, not realized GDP or a measure of military success.');
     // Protected original forecast chart is required content, not an optional
     // analytical mode. Keep it rendered while switching additive analyses.
     if (forecast) {
