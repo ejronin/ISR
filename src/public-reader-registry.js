@@ -601,24 +601,60 @@
     const compare=findSection(article,/^GCC and Iran: forecast changes$/i);
     const events=findSection(article,/^Recorded economic effects$/i);
     const modes=article.ownerDocument.createElement('div');
-    modes.className='economic-mode-controls visualization-mode-controls';
+    modes.className='economic-mode-controls visualization-mode-controls economic-analytic-selector';
     modes.setAttribute('role','group');
-    modes.setAttribute('aria-label','Economic analytical views supported by the accepted read model');
-    const mode=(label,target)=>{
-      const button=add(modes,'button','visualization-mode-button',label);
-      button.type='button';
-      button.addEventListener('click',()=>target?.scrollIntoView?.({behavior:'smooth',block:'start'}));
-      return button;
+    modes.setAttribute('aria-label','Select an available economic analytical view');
+    const modeHeading=add(modes,'p','economic-mode-note','Choose a supported view. Forecast snapshots are comparisons, not dated economic observations.');
+    const viewItems=[
+      { label:'FORECAST REVISIONS',target:revision,kind:'compare' },
+      { label:'PROTECTED BASELINE',target:forecast,kind:'baseline' },
+      { label:'COMPARE · DETAIL',target:compare,kind:'compare' },
+      { label:'EVENT RECORD',target:events,kind:'chronology' }
+    ].filter(item=>item.target);
+    const selected=(item)=>{
+      viewItems.forEach(({target,button})=>{
+        const active=target===item.target;
+        target.hidden=!active;
+        if(button) {button.setAttribute('aria-pressed',String(active)); button.classList.toggle('is-active',active);}
+      });
+      modeHeading.textContent=item.kind==='chronology'
+        ? 'Event records provide chronology only; they do not establish an overlay or a causal effect on GDP forecasts.'
+        : item.kind==='compare'
+        ? 'Comparable 2026 growth forecast snapshots. Revisions are percentage points, not realized output.'
+        : 'Original economic calculations and renderer are retained without alteration.';
     };
-    if(revision)mode('FORECAST REVISIONS',revision);
-    mode('PROTECTED BASELINE',forecast);
-    if(compare)mode('COMPARE',compare);
-    if(events)mode('EVENT CONTEXT',events);
+    viewItems.forEach((item,i)=>{
+      const button=add(modes,'button','visualization-mode-button',item.label);
+      button.type='button';
+      button.setAttribute('aria-controls',item.target.id || (item.target.id='economic-view-'+i));
+      button.setAttribute('aria-pressed','false');
+      button.addEventListener('click',()=>selected(item));
+      item.button=button;
+    });
+    const unavailable=add(modes,'p','economic-mode-unavailable',
+      'TREND unavailable: no accepted dated, same-metric observation series is established here. EVENT CONTEXT overlay unavailable: recorded events cannot be plotted as GDP forecast causation.');
     const introNode=article.querySelector('.page-intro');
     if(introNode)introNode.after(modes);else article.prepend(modes);
-    const grammar=add(article,'aside','scope-note economic-causality-boundary');
-    add(grammar,'strong','','Transmission grammar boundary');
-    add(grammar,'p','','Observed findings and their existing causation notes remain separate. This read model does not authorize a synthetic mechanism → consequence chain, so none is inferred. Chronology is not causality; gaps remain gaps.');
+    if(viewItems.length)selected(viewItems[0]);
+    const transmission=add(article,'section','content-section economic-transmission-visual');
+    add(transmission,'h2','','Economic transmission: what is known, and what is only possible');
+    add(transmission,'p','section-note','These are distinct evidence classes, not a proven three-step causal sequence. No connecting arrow is implied.');
+    const lanes=add(transmission,'div','economic-transmission-lanes');
+    const pathway=add(lanes,'article','economic-transmission-lane economic-mechanism');
+    add(pathway,'p','card-kicker','SUPPORTED MECHANISM');
+    add(pathway,'h3','','Banking and counterparty exposure');
+    add(pathway,'p','','U.S. sanctions rules create potential financial-access and compliance consequences for foreign institutions dealing with sanctioned Iranian financial institutions.');
+    evidence(pathway,context,{source_ids:['SRC-A2105A000019','SRC-A2105A00001A']});
+    const observed=add(lanes,'article','economic-transmission-lane economic-observed');
+    add(observed,'p','card-kicker','REPORTED OBSERVATION · NOT SOLE-CAUSE ATTRIBUTION');
+    add(observed,'h3','','Iranian-reported trade decline');
+    add(observed,'p','','President Pezeshkian reported foreign trade down roughly 35% and attributed difficulties to both sanctions and wartime effects. The figure is not independently audited and does not isolate sanctions as the cause.');
+    evidence(observed,context,{source_ids:['SRC-F550DDD51246','SRC-5D32C7182EFF']});
+    const potential=add(lanes,'article','economic-transmission-lane economic-watch');
+    add(potential,'p','card-kicker','POTENTIAL / WATCH · NOT AN OBSERVED RESULT');
+    add(potential,'h3','','Further counterparty withdrawal');
+    add(potential,'p','','Additional banks or shippers could withdraw from Iran-linked transactions if risks rise. This is a scenario to watch, not evidence that any particular route has stopped.');
+    add(transmission,'p','scope-note','Context relationship only: the presence of a legal mechanism and a reported trade decline does not prove one caused the other.');
   }
 
   function hormuzTalks(article) {
