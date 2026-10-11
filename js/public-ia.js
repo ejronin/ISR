@@ -2800,6 +2800,7 @@
     selectedRoute.setAttribute('aria-live', 'polite');
     append(selectedRoute, 'strong', 'sanctions-selected-title', 'Explore a financial route');
     append(selectedRoute, 'p', 'sanctions-selected-description', 'Select an intermediary or alternative below. Legal exposure and observed commercial effects remain distinct; an unselected route is not assumed blocked.');
+    const relatedNamedExample = append(selectedRoute, 'div', 'sanctions-selected-evidence');
     const setSelected = (node, item) => {
       for (const other of plumbing.querySelectorAll('[data-sanctions-node-id]')) {
         other.dataset.selected = other === node ? 'true' : 'false';
@@ -2810,6 +2811,20 @@
         'Recorded state: ' + publicNarrative(item.state || 'not classified') + '. ' +
         publicNarrative(item.explanation || item.sublabel || '') +
         ' This state is not proof of a specific transaction being stopped.';
+      // Generic plumbing categories are NOT the identities of named geographic entities.
+      // Only show a mapped case as an illustrative named example when the approved
+      // record explicitly identifies that kind of institution; never imply an edge.
+      relatedNamedExample.replaceChildren();
+      const relatedId = item.id === 'foreign-bank' ? 'node-russia' : null;
+      const namedExample = relatedId && asArray(network.map_nodes).find(record => record.id === relatedId);
+      if (namedExample) {
+        append(relatedNamedExample, 'strong', '', 'Named geographic example (not this generic route)');
+        append(relatedNamedExample, 'p', '', publicNarrative(namedExample.name) + ': ' + publicNarrative(namedExample.note));
+        append(relatedNamedExample, 'p', 'scope-note', 'This accepted geographic example illustrates a related institution type; it does not establish that the generic selected pathway ran through the same entity.');
+        if (sourceIdsFrom(namedExample).length) relatedNamedExample.append(EvidenceDrawer.create(context, sourceEnvelope(namedExample), { localSources }));
+      } else {
+        append(relatedNamedExample, 'p', 'scope-note', 'No one-to-one named geographic entity or transaction-level source is established for this generic pathway. See named-node geography and wartime actions for independently documented cases.');
+      }
     };
     const enableSelection = (node, item) => {
       node.dataset.sanctionsNodeId = item.id;
