@@ -58,7 +58,7 @@ const marketObservations = marketResearch.observations || [];
 assert(marketObservations.length === 41,'Market research sample cardinality drift.');
 for (let i=0;i<marketObservations.length;i++) {
   const row=marketObservations[i];
-  assert(/^2026-\\d{2}-\\d{2}$/.test(row.date) && Number.isFinite(row.value) && row.value>0,'Invalid market observation.');
+  assert(/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date) && Number.isFinite(row.value) && row.value>0,'Invalid market observation.');
   if (i) assert(marketObservations[i-1].date < row.date,'Unsorted or repeated EIA observation date.');
 }
 assert(marketObservations[0].date === '2026-01-09' && marketObservations.at(-1).date === '2026-10-06','Unexpected observed market date range.');
