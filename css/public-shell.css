@@ -4598,3 +4598,12 @@ tbody tr:last-child td { border-bottom: 0; }
 .economic-forecast-revision .evidence-drawer{grid-column:1/-1}
 @media(max-width:768px){.forecast-revision-axis{padding-left:0;padding-right:0}.forecast-revision-row{grid-template-columns:minmax(0,1fr) auto;gap:.4rem}.forecast-revision-country{grid-column:1}.forecast-revision-delta{grid-column:2;grid-row:1}.forecast-revision-scale{grid-column:1/-1;grid-row:2}.forecast-revision-values{grid-column:1/-1;grid-row:3}.economic-forecast-revision{padding-inline:.5rem}}
 @media(prefers-reduced-motion:reduce){.forecast-revision-point,.forecast-revision-connector{transition:none}}
+
+/* Phase 3 selectable sanctions-route inspector. Legal exposure is not an observed stoppage. */
+.sanctions-node[data-sanctions-node-id]{cursor:pointer;transition:outline-color .12s ease,box-shadow .12s ease}
+.sanctions-node[data-sanctions-node-id]:hover{box-shadow:0 0 0 2px rgba(44,116,167,.26)}
+.sanctions-node[data-sanctions-node-id]:focus-visible{outline:3px solid #1678bd;outline-offset:3px}
+.sanctions-node[data-sanctions-node-id][data-selected="true"]{outline:3px solid #1678bd;outline-offset:2px;box-shadow:0 0 0 5px rgba(27,110,166,.12)}
+.sanctions-selected-route{border:1px solid var(--border-color,#cbd5df);border-left:4px solid #1678bd;border-radius:.45rem;padding:.85rem 1rem;margin:1rem 0;background:var(--surface,#fff)}
+.sanctions-selected-route p{margin:.35rem 0 0;line-height:1.45}
+@media(prefers-reduced-motion:reduce){.sanctions-node[data-sanctions-node-id]{transition:none}}
