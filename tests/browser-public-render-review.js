@@ -421,9 +421,10 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
             const buttons=[...root.querySelectorAll('button')];
             const active=buttons.filter(x=>x.getAttribute('aria-pressed')==='true');
             return {count:buttons.length,active:active.length,unavailable:root.textContent.includes('TREND unavailable'),
-             realSelector:buttons.every(x=>x.hasAttribute('aria-controls'))};
+             realSelector:buttons.every(x=>x.hasAttribute('aria-controls')),
+             preserved:document.querySelector('[data-protected-economic-chart="retained"]')?.getBoundingClientRect().height > 0};
           })()`);
-          assert(state.count>=2 && state.active===1 && state.unavailable && state.realSelector,'economic modes must be selectable with explicit unavailable series');
+          assert(state.count>=2 && state.active===1 && state.unavailable && state.realSelector && state.preserved,'economic modes must preserve baseline and mark real selected/unavailable views');
         }
         if (focus.label === 'economy-forecast-revisions') {
           const parity = await cdp.eval(`(() => {
