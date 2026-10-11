@@ -159,5 +159,17 @@
       "status": "PARTIAL_LEADS_ONLY"
     }
   ],
-  "intake_gate": "A dated publication lead does not prove a specific 12-hour collection window was swept. Original publication timestamp and first-public-available time required before assigning events to window; these are not completed sweep artifacts."
+  "intake_gate": "A dated publication lead does not prove a specific 12-hour collection window was swept. Original publication timestamp and first-public-available time required before assigning events to window; these are not completed sweep artifacts.",
+  "verified_publication_clocks": [
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/houthi-strikes-riyadh-airport-killed-three-saudis-war-escalates-2026-10-09/",
+      "public_available_time": "2026-10-09T05:18:24-04:00",
+      "basis": "Reuters surfaced source article timestamp 2026-10-09 09:18:24 UTC; Thursday attack occurred October 8; this reporting belongs to the October 9 noon collection cutoff."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/",
+      "public_available_time": "2026-10-11T06:23:29-04:00",
+      "basis": "Reuters surfaced source article timestamp 2026-10-11 10:23:29 UTC; report covers Saturday attack and Sunday subsequent attack; keep event times separate."
+    }
+  ]
 }
