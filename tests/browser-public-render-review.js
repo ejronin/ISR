@@ -353,7 +353,8 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
     await resetReviewPage(cdp);
 
     let phase2VisualCaptures = 0;
-    for (const width of [1440, 390]) {
+    // Phase 3 acceptance requires desktop/tablet/mobile breakpoints, including narrow mobile.
+    for (const width of [1920, 1440, 1024, 768, 390, 320]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
       for (const focus of PHASE2_VISUAL_FOCUS) {
         await route(cdp, focus.routeKey);
