@@ -524,6 +524,60 @@
     [methodDetails,observed,routeMap,alternatives,merchant].filter(Boolean).forEach(sectionNode=>{anchor.after(sectionNode);anchor=sectionNode;});
   }
 
+  // The only quantitative inputs for this candidate are the approved ledger forecast rows.
+  // Revision segments connect two forecast snapshots; they are NOT observations over time.
+  function forecastRevisionChart(article, context) {
+    const ledger = modelData(context.model, 'ledger.economics');
+    const forecast = ledger?.forecast_context;
+    const rows = Array.isArray(forecast?.rows) ? forecast.rows : [];
+    if (!rows.length || rows.some(r => !r.country || !Number.isFinite(r.prewar) || !Number.isFinite(r.current) || !Number.isFinite(r.delta))) return null;
+    if (rows.some(r => Math.abs((r.current - r.prewar) - r.delta) > 1e-7)) return null;
+    const host = section(article, '2026 growth forecast revisions',
+      'Compare two estimates for the same 2026 real-GDP growth measure. Each line connects the prewar forecast to the current forecast; it does not represent a time series, realized GDP or financial loss.');
+    host.classList.add('economic-forecast-revision');
+    host.dataset.forecastRevisionChart = 'accepted-ledger';
+    const note = add(host, 'p', 'forecast-scope-note',
+      'Units: annual real GDP growth forecast (%). Revision: percentage points. Gulf values: Reuters poll estimates; Iran: IMF WEO estimates. Forecast vintages differ by provider.');
+    const legend = add(host, 'div', 'forecast-revision-legend');
+    add(legend, 'span', 'forecast-legend-before', '◯ Prewar estimate');
+    add(legend, 'span', 'forecast-legend-after', '● Current estimate');
+    add(legend, 'span', 'forecast-legend-zero', '│ Zero growth');
+    const chart = add(host, 'div', 'forecast-revision-plot');
+    chart.setAttribute('role', 'group');
+    chart.setAttribute('aria-label', 'Country-by-country GDP growth forecast revisions');
+    const min = Math.min(-10, ...rows.map(r => Math.min(r.prewar,r.current)));
+    const max = Math.max(6, ...rows.map(r => Math.max(r.prewar,r.current)));
+    const percent = n => ((n - min) / (max - min) * 100).toFixed(4) + '%';
+    const signed = n => (n > 0 ? '+' : '') + n.toFixed(1);
+    const axis = add(chart, 'div', 'forecast-revision-axis');
+    add(axis, 'span', '', min.toFixed(0) + '%');
+    add(axis, 'span', '', '0%');
+    add(axis, 'span', '', max.toFixed(0) + '%');
+    for (const row of rows) {
+      const line = add(chart, 'div', 'forecast-revision-row');
+      line.dataset.country = row.country;
+      const country = add(line, 'strong', 'forecast-revision-country', row.country);
+      const graph = add(line, 'div', 'forecast-revision-scale');
+      graph.setAttribute('role','img');
+      graph.setAttribute('aria-label', row.country + ': prewar ' + signed(row.prewar) + ' percent, current ' + signed(row.current) + ' percent, revision ' + signed(row.delta) + ' percentage points');
+      const zero = add(graph, 'span', 'forecast-revision-zero');
+      zero.style.left = percent(0);
+      const track = add(graph, 'span', 'forecast-revision-connector');
+      track.style.left = percent(Math.min(row.prewar, row.current));
+      track.style.width = ((Math.abs(row.current - row.prewar)) / (max - min) * 100).toFixed(4) + '%';
+      const before = add(graph, 'span', 'forecast-revision-point forecast-revision-point-before');
+      before.style.left = percent(row.prewar);
+      const after = add(graph, 'span', 'forecast-revision-point forecast-revision-point-after');
+      after.style.left = percent(row.current);
+      const values = add(line, 'span', 'forecast-revision-values', signed(row.prewar) + '% → ' + signed(row.current) + '%');
+      add(line, 'span', 'forecast-revision-delta', signed(row.delta) + ' pp');
+      country.tabIndex = 0;
+      evidence(line, context, row, 'Forecast sources');
+    }
+    add(host, 'p', 'scope-note', forecast.note || 'Forecasts are not observed GDP output or direct war costs.');
+    return host;
+  }
+
   function economy(article, context) {
     intro(article,'Iran and the Gulf are under severe wartime economic pressure. The current picture comes from sanctions, trade and oil-flow evidence, damaged energy infrastructure, freight costs and shipping disruption—not one forecast chart.');
     const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
@@ -541,6 +595,7 @@
       const badge=add(forecast,'p','card-kicker protected-chart-badge','PROTECTED BASELINE · existing calculation / series retained');
       forecast.insertBefore(badge,forecast.firstChild);
     }
+    const revision = forecastRevisionChart(article, context);
     const compare=findSection(article,/^GCC and Iran: forecast changes$/i);
     const events=findSection(article,/^Recorded economic effects$/i);
     const modes=article.ownerDocument.createElement('div');
@@ -553,6 +608,7 @@
       button.addEventListener('click',()=>target?.scrollIntoView?.({behavior:'smooth',block:'start'}));
       return button;
     };
+    if(revision)mode('FORECAST REVISIONS',revision);
     mode('PROTECTED BASELINE',forecast);
     if(compare)mode('COMPARE',compare);
     if(events)mode('EVENT CONTEXT',events);
