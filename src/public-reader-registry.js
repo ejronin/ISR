@@ -605,9 +605,20 @@
     modes.setAttribute('role','group');
     modes.setAttribute('aria-label','Select an available economic analytical view');
     const modeHeading=add(modes,'p','economic-mode-note','Choose a supported view. Forecast snapshots are comparisons, not dated economic observations.');
+    // Protected original forecast chart is required content, not an optional
+    // analytical mode. Keep it rendered while switching additive analyses.
+    if (forecast) {
+      forecast.hidden=false;
+      if (!forecast.id) forecast.id='economic-protected-baseline';
+      const baselineLink=add(modes,'a','inline-route-link economic-baseline-link','Original protected forecast chart ↓');
+      baselineLink.href='#'+forecast.id;
+      baselineLink.addEventListener('click',event=>{
+        event.preventDefault();
+        forecast.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    }
     const viewItems=[
       { label:'FORECAST REVISIONS',target:revision,kind:'compare' },
-      { label:'PROTECTED BASELINE',target:forecast,kind:'baseline' },
       { label:'COMPARE · DETAIL',target:compare,kind:'compare' },
       { label:'EVENT RECORD',target:events,kind:'chronology' }
     ].filter(item=>item.target);
