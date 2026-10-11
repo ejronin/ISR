@@ -138,6 +138,13 @@
       "verification": "PUBLIC_SEARCH_CONFIRMED",
       "canonical_status": "NOT_ACCEPTED",
       "check": "Check IOM latest figures, vessel/incident identity, original release, and whether incident meets Atlas Iran-war scope; preserve separately from Yemen war casualties."
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Lufthansa Group and several Indian airlines suspended Riyadh flights after Houthi threats and airport attacks. Cancellations and operational suspension should be distinguished from aircraft damage and an official airport closure.",
+      "source": "https://www.reuters.com/world/middle-east/lufthansa-air-india-suspend-flights-riyadh-after-houthi-attacks-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
     }
   ],
   "next": [
@@ -233,5 +240,6 @@
       "result": "Lists 2026-10-08 Iran-related designations and license action; source supports designation-date continuity.",
       "classification": "CONFIRMED_OFFICIAL_ACTION"
     }
-  ]
+  ],
+  "critical_backfill_boundary": "This file is a source-lead register only. Never mark October 7–11 sweeps as COMPLETE without exhaustive recorded coverage and ROOK validation. Candidate facts require Evidence Integration adjudication before inclusion in release data."
 }
