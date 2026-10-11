@@ -550,9 +550,11 @@
     const percent = n => ((n - min) / (max - min) * 100).toFixed(4) + '%';
     const signed = n => (n > 0 ? '+' : '') + n.toFixed(1);
     const axis = add(chart, 'div', 'forecast-revision-axis');
-    add(axis, 'span', '', min.toFixed(0) + '%');
-    add(axis, 'span', '', '0%');
-    add(axis, 'span', '', max.toFixed(0) + '%');
+    const axisTrack = add(axis, 'div', 'forecast-revision-axis-track');
+    axisTrack.style.setProperty('--zero-position', percent(0));
+    add(axisTrack, 'span', 'forecast-revision-axis-min', min.toFixed(0) + '%');
+    add(axisTrack, 'span', 'forecast-revision-axis-zero', '0%');
+    add(axisTrack, 'span', 'forecast-revision-axis-max', max.toFixed(0) + '%');
     for (const row of rows) {
       const line = add(chart, 'div', 'forecast-revision-row');
       line.dataset.country = row.country;
