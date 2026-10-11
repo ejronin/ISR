@@ -50,7 +50,7 @@ export default defineConfig({
     outDir: outputRoot,
     emptyOutDir: true,
     rollupOptions: {
-      input: path.resolve(here, 'index.html')
+      input: { full: path.resolve(here, 'index.html'), market: path.resolve(here, 'market-preview.html') }
     }
   }
 });
