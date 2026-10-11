@@ -2833,6 +2833,60 @@
     append(behavior, 'strong', '', 'Legal reach is not the same as behavioral reach.');
     append(behavior, 'p', '', publicNarrative(network.governing_rules && network.governing_rules.legal_reach_is_not_behavioral_reach));
 
+    // Visual IA: an evidence-led sanctions breakdown, not category-box art.
+    // Associated actions are illustrative matches on approved target categories,
+    // never transaction-level joins, inferred closures or new factual adjudications.
+    const routeBreakdown = addSection(frame.article, 'Which routes were pressured — and what is established');
+    routeBreakdown.classList.add('sanctions-route-breakdown');
+    append(routeBreakdown,'p','section-note','Expand a route to see its function, accepted status, dated legal actions, separately reported consequences, remaining workarounds and original evidence. Category relationships are contextual: they do not prove one named transaction flowed through that pathway.');
+    const routeMatrix = append(routeBreakdown,'div','sanctions-route-matrix');
+    const pathwayRules = {
+      'foreign-bank': /foreign bank|foreign financial|correspondent|banking access/i,
+      'exchange-house': /exchange house|currency facilit|shadow-currency/i,
+      'shipping-insurance': /maritime|insurance|transport/i,
+      'trader-front': /front compan|shell.company|procurement|financial.network facilitator/i,
+      'crypto': /digital.asset|crypto/i,
+      'local-currency': /local.currency|barter|non.dollar settlement/i
+    };
+    const routeModels = [...asArray(network.plumbing?.intermediaries),...asArray(network.plumbing?.alternatives)];
+    routeModels.forEach((item,index)=>{
+      const profile=append(routeMatrix,'details','sanctions-route-profile');
+      profile.dataset.sanctionsRouteId=item.id;
+      if(index===0) profile.open=true;
+      const head=append(profile,'summary','sanctions-route-profile-summary');
+      append(head,'strong','',publicNarrative(item.label));
+      const status=append(head,'span','sanctions-route-state',plainLabel(item.state||'unknown'));
+      status.dataset.sanctionsState=item.state||'unknown';
+      const content=append(profile,'div','sanctions-route-profile-content');
+      const summary=append(content,'div','sanctions-route-overview');
+      const role=append(summary,'section','sanctions-route-field');
+      append(role,'h3','','What this route does');
+      append(role,'p','',publicNarrative(item.explanation));
+      const consequence=append(summary,'section','sanctions-route-field');
+      append(consequence,'h3','','What is established');
+      append(consequence,'p','','The accepted route model classifies this pathway as '+plainLabel(item.state||'unknown')+'. This describes legal/commercial exposure or remaining usability; it is not a measured transaction-loss count.');
+      const residual=append(summary,'section','sanctions-route-field');
+      append(residual,'h3','','Remaining access / limits');
+      append(residual,'p','',item.id==='local-currency'
+        ? 'Non-dollar settlement remains a possible workaround, but its use does not remove compliance, shipping or counterparty risks.'
+        : item.id==='crypto'
+        ? 'Digital settlement remains technically possible; targeted exchanges and facilitators face increased screening and sanctions risk.'
+        : 'A designation or warning does not demonstrate that every other institution, shipper or settlement route has stopped. Remaining throughput is not quantified in this record.');
+      const actions=asArray(network.wartime_actions).filter(action=>pathwayRules[item.id]?.test(String(action.targeted_node||'')));
+      const chronology=append(content,'div','sanctions-route-chronology');
+      append(chronology,'h3','','Dated enforcement and observed consequences');
+      if(!actions.length)append(chronology,'p','scope-note','No named legal action is established as a direct match for this generic pathway. Status is a model-level assessment, not a named-case finding.');
+      for(const action of actions){
+        const caseCard=append(chronology,'article','sanctions-route-case');
+        append(caseCard,'time','sanctions-route-case-date',String(action.date||'Date not recorded'));
+        append(caseCard,'h4','',publicNarrative(action.title));
+        append(caseCard,'p','', 'Targeted: '+publicNarrative(action.targeted_node));
+        append(caseCard,'p','', 'Recorded outcome / limitation: '+publicNarrative(action.observed_effect));
+        if(sourceIdsFrom(action).length)caseCard.append(EvidenceDrawer.create(context,sourceEnvelope(action),{localSources}));
+      }
+      append(content,'p','scope-note','These are explicitly category-related accepted examples, not assertions of a common payment chain. A sanctioned actor, commercial pullback and quantified economic impact are different findings.');
+    });
+
     const plumbingSection = addSection(frame.article, 'How the money moved');
     append(plumbingSection, 'p', 'section-note', 'This is a functional model of the payment and trade network. It shows why hitting an intermediary can affect several downstream routes without pretending that every route is physically blocked.');
     const plumbing = append(plumbingSection, 'div', 'sanctions-plumbing');
