@@ -426,7 +426,11 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
         // Blur it before the visual capture without disabling the real skip-link UX.
         await cdp.eval(`(() => { document.activeElement?.blur?.(); return true; })()`);
         await sleep(180);
+        // CDP element-clips can expose a fixed skip link even when translated offscreen.
+        // Mask that chrome ONLY for artifact capture; restore immediately after.
+        await cdp.eval(`(() => { const skip=document.querySelector('.skip-link'); if(skip) skip.style.visibility='hidden'; return true; })()`);
         await captureElement(cdp, focus.selector, `phase2visual-${String(width).padStart(4, '0')}-${focus.label}.png`, width <= 390 ? 1900 : 1500);
+        await cdp.eval(`(() => { const skip=document.querySelector('.skip-link'); if(skip) skip.style.removeProperty('visibility'); return true; })()`);
         phase2VisualCaptures += 1;
       }
     }
