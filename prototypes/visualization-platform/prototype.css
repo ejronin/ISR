@@ -352,3 +352,9 @@ th {
 .market-projection-key span{color:var(--muted)}
 .market-projection-key a{color:#abd8f0;text-decoration:underline}
 @media(max-width:480px){.market-projection-key{display:block}.market-projection-key strong,.market-projection-key span,.market-projection-key a{display:block;margin-bottom:.4rem}}
+
+.market-marker-disclosure{border-top:1px solid var(--border);margin-top:.9rem;padding-top:.65rem}
+.market-marker-disclosure>summary{padding:.7rem .35rem;cursor:pointer;font-weight:700;color:var(--blue-strong);line-height:1.4}
+.market-marker-disclosure>summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.market-marker-disclosure:not([open]){margin-bottom:1rem}
+@media(max-width:699px){.market-marker-rail{grid-template-columns:1fr;gap:.4rem}.market-marker-disclosure>summary{font-size:.83rem}}
