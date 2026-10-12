@@ -116,12 +116,29 @@ async function buildStaticForecastReference() {
   const ledger=await fetchJson('/data/integration-v1.2/economics.json');
   const rows=ledger?.forecast_context?.rows||[];
   const tbody=document.getElementById('market-static-forecast-table');
+  const mobile=document.createElement('div');mobile.className='market-gdp-mobile-cards';
+  mobile.setAttribute('aria-label','Seven accepted 2026 GDP forecast comparisons');
+  const tableWrap=tbody.closest('.table-scroll');
+  tableWrap.dataset.marketForecastTable='desktop';
+  tableWrap.after(mobile);
   for(const row of rows){
     const tr=document.createElement('tr');
     for(const val of [row.country,row.prewar.toFixed(1)+'%',row.current.toFixed(1)+'%',(row.delta>0?'+':'')+row.delta.toFixed(1)+' pp']){
       const td=document.createElement('td');td.textContent=val;tr.append(td);
     }
     tbody.append(tr);
+    const card=document.createElement('article');card.className='market-gdp-mobile-card';
+    const name=document.createElement('h3');name.textContent=row.country;card.append(name);
+    const metrics=document.createElement('dl');metrics.className='market-gdp-mobile-metrics';
+    for(const [label,value] of [
+      ['Prewar forecast',row.prewar.toFixed(1)+'%'],
+      ['Current forecast',row.current.toFixed(1)+'%'],
+      ['Revision',(row.delta>0?'+':'')+row.delta.toFixed(1)+' pp']
+    ]){
+      const part=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');
+      dt.textContent=label;dd.textContent=value;part.append(dt,dd);metrics.append(part);
+    }
+    card.append(metrics);mobile.append(card);
   }
 }
 await Promise.all([initMarketObservationPrototype(),buildStaticForecastReference()]);
