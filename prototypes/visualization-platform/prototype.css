@@ -345,3 +345,10 @@ th {
 #market-selected-event{overflow-wrap:anywhere}
 #market-observations-chart{height:clamp(22rem,48vw,36rem)}
 @media(max-width:480px){#market-observations-chart{height:25rem}.market-marker-rail{grid-template-columns:minmax(0,1fr)}}
+
+/* Primary-sourced quarter-average outlook is distinct from sampled spot observations. */
+.market-projection-key{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1.15rem;border-left:4px dashed #a7cbac;border-radius:.2rem;padding:.8rem 1rem;margin:.8rem 0;background:rgba(143,196,163,.08);line-height:1.45}
+.market-projection-key strong{color:#c8e0cc;font-size:.95rem}
+.market-projection-key span{color:var(--muted)}
+.market-projection-key a{color:#abd8f0;text-decoration:underline}
+@media(max-width:480px){.market-projection-key{display:block}.market-projection-key strong,.market-projection-key span,.market-projection-key a{display:block;margin-bottom:.4rem}}
