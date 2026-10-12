@@ -19,6 +19,8 @@ async function initMarketObservationPrototype() {
   const status=document.getElementById('market-status');
   const selectedDetail=document.getElementById('market-selected-event');
   const markerRail=document.getElementById('market-sanction-markers');
+  const markerDisclosure=document.getElementById('market-actions-disclosure');
+  if(markerDisclosure)markerDisclosure.open=matchMedia('(min-width: 700px)').matches;
   const table=document.getElementById('market-observations-table');
   const toggle=document.getElementById('market-markers-toggle');
   const observations=Array.isArray(dataset.observations)?dataset.observations:[];
