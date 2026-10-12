@@ -15,7 +15,9 @@
 <div class="market-projection-key" data-market-projection="EIA-Q4-2026-AVERAGE"><strong>Static projection: $105/b · EIA Q4 2026 average forecast</strong> <span>Dashed green segment covers the quarterly forecast period. It is <em>not a daily price path</em>, November 3 price prediction, or observed settlement.</span> <a href="https://www.eia.gov/outlooks/steo/report/global_oil.php">EIA October 6 STEO source</a></div>
       <p id="market-status" class="viz-status" role="status" aria-live="polite"></p>
 <div id="market-selected-event" class="viz-detail" aria-live="polite">Choose a sanctions action in the list to inspect the accepted event. Its calendar marker does not imply an oil-price effect.</div>
-<div id="market-sanction-markers" class="market-marker-rail" aria-label="Sanctions action annotations"></div>
+<details class="market-marker-disclosure" id="market-actions-disclosure"><summary>Sanctions calendar · 10 documented actions (select to inspect)</summary>
+      <div id="market-sanction-markers" class="market-marker-rail" aria-label="Sanctions action annotations"></div>
+      </details>
 <details class="text-equivalent"><summary>Spot-price observation table and official source</summary><p><a href="https://www.eia.gov/dnav/pet/hist/RBRTED.htm">EIA: Europe Brent spot price FOB</a>. These are selected published observations, not a full daily market file.</p><div class="table-scroll"><table><caption>Actually observed sampled Brent spot prices</caption><thead><tr><th>Date</th><th>USD/bbl</th></tr></thead><tbody id="market-observations-table"></tbody></table></div></details>
 </section>
 <section class="prototype-section" aria-labelledby="static-forecast" style="padding-top:1.5rem">
