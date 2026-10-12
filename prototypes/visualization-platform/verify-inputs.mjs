@@ -61,6 +61,12 @@ for (let i=0;i<marketObservations.length;i++) {
   assert(/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date) && Number.isFinite(row.value) && row.value>0,'Invalid market observation.');
   if (i) assert(marketObservations[i-1].date < row.date,'Unsorted or repeated EIA observation date.');
 }
+const q4=marketResearch.forecast_reference;
+assert(q4 && q4.type==='EIA_STEO_PROJECTED_QUARTER_AVERAGE_NOT_DAILY_PRICE', 'Q4 projected average must never be a daily price path.');
+assert(q4.value===105 && q4.unit==='USD/barrel' && q4.period==='2026-Q4', 'EIA Q4 spot forecast $105/b basis mismatch.');
+assert(q4.forecast_vintage==='2026-10-06' && q4.source_url==='https://www.eia.gov/outlooks/steo/report/global_oil.php', 'EIA primary forecast provenance mismatch.');
+assert(q4.canonical_status===marketResearch.canonical_status, 'Research-only market data and forecast must stay noncanonical.');
+assert(q4.period_start==='2026-10-01' && q4.period_end==='2026-12-31', 'Incorrect 4Q26 static reference period.');
 assert(marketObservations[0].date === '2026-01-09' && marketObservations.at(-1).date === '2026-10-06','Unexpected observed market date range.');
 assert(marketObservations.find(x=>x.date==='2026-02-27')?.value === 71.32,'EIA prewar market checkpoint mismatch.');
 assert(marketObservations.find(x=>x.date==='2026-10-02')?.value === 135.51,'EIA October observed market checkpoint mismatch.');
