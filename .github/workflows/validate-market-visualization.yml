@@ -53,7 +53,7 @@ jobs:
             --user-data-dir="$PROFILE" http://127.0.0.1:4173/prototypes/visualization-platform/market-preview.html \
             >/tmp/market-qa-browser.log 2>&1 &
           BROWSER=$!
-          trap 'kill "$BROWSER" "$SERVER" 2>/dev/null || true; rm -rf "$PROFILE"' EXIT
+          trap 'kill "$BROWSER" "$SERVER" 2>/dev/null || true' EXIT
           MARKET_SHOTS=market-qa-screens node prototypes/visualization-platform/market-screenshot.cjs
       - name: Upload rendered market chart screenshots
         if: always()
