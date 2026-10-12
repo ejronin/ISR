@@ -176,5 +176,21 @@
     }
   ],
   "comparability": "DO NOT mix with Reuters ICE Brent futures settlements, WTI, GDP forecasts, or hypothetical model projection. Excluded days are unsampled, not zero; connecting a sparse sample cannot establish intraperiod prices.",
-  "notes": "Numbers transcribed from the EIA official published tabulation of weeks Jan 5 through Oct 9, 2026. Price observations beyond Oct 6 were not published in the cited Oct 7 release."
+  "notes": "Numbers transcribed from the EIA official published tabulation of weeks Jan 5 through Oct 9, 2026. Price observations beyond Oct 6 were not published in the cited Oct 7 release.",
+  "forecast_reference": {
+    "metric": "Europe Brent spot price FOB",
+    "type": "EIA_STEO_PROJECTED_QUARTER_AVERAGE_NOT_DAILY_PRICE",
+    "period": "2026-Q4",
+    "period_start": "2026-10-01",
+    "period_end": "2026-12-31",
+    "value": 105,
+    "unit": "USD/barrel",
+    "publisher": "U.S. Energy Information Administration",
+    "forecast_vintage": "2026-10-06",
+    "forecast_completed": "2026-10-01",
+    "source_url": "https://www.eia.gov/outlooks/steo/report/global_oil.php",
+    "forecast_statement": "Q4 2026 Brent spot-price average forecast $105/b, up $14/b from September outlook.",
+    "display_boundary": "Dashed horizontal Q4 reference is a forecast for the period AVERAGE, NOT a predicted daily price, observation, static forward curve, closing price, or a projection through election day.",
+    "canonical_status": "EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL"
+  }
 }

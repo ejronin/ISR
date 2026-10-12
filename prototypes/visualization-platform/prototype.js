@@ -960,12 +960,19 @@ async function initMarketObservationPrototype() {
   const status=document.getElementById('market-status');
   const selectedDetail=document.getElementById('market-selected-event');
   const markerRail=document.getElementById('market-sanction-markers');
+  const markerDisclosure=document.getElementById('market-actions-disclosure');
+  if(markerDisclosure)markerDisclosure.open=matchMedia('(min-width: 700px)').matches;
   const table=document.getElementById('market-observations-table');
   const toggle=document.getElementById('market-markers-toggle');
   const observations=Array.isArray(dataset.observations)?dataset.observations:[];
   const actions=(Array.isArray(network.wartime_actions)?network.wartime_actions:[])
     .filter(row=>/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date)&&row.title)
     .slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const projection=dataset.forecast_reference;
+  if(projection?.canonical_status!=='EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL' ||
+     projection?.type!=='EIA_STEO_PROJECTED_QUARTER_AVERAGE_NOT_DAILY_PRICE' ||
+     projection?.period!=='2026-Q4' || projection?.value!==105)
+    throw new Error('Missing qualified EIA Q4 forecast-average research reference.');
   if(observations.length!==41 || observations.some((row,i)=>
     !/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date) || !Number.isFinite(row.value) ||
     row.value<=0 || (i>0 && observations[i-1].date>=row.date)))
@@ -985,7 +992,7 @@ async function initMarketObservationPrototype() {
     grid:{top:34,bottom:55,left:75,right:28},
     aria:{enabled:true,description:'Observed EIA Europe Brent spot prices, 2026, sampled weekly. Dashed vertical marks indicate dated sanctions actions only; they do not measure or imply price effects.'},
     tooltip:{trigger:'axis',axisPointer:{type:'line'},valueFormatter:v=>'$'+Number(v).toFixed(2)+' per barrel'},
-    xAxis:{type:'time',min:'2026-01-01',max:'2026-11-15',
+    xAxis:{type:'time',min:'2026-01-01',max:'2027-01-02',
       axisLabel:{color:'#b6cbd9'},axisLine:{lineStyle:{color:'#4d6175'}},splitLine:{show:false}},
     yAxis:{type:'value',scale:true,name:'Europe Brent spot · USD/bbl',
       nameTextStyle:{color:'#b6cbd9'},axisLabel:{color:'#b6cbd9',formatter:v=>'$'+Math.round(v)},
@@ -1001,7 +1008,12 @@ async function initMarketObservationPrototype() {
               opacity:i===selectedIndex?1:.45,width:i===selectedIndex?2:1,type:'dashed'}
           })):[]),
           {xAxis:'2026-11-03',name:'Election date (calendar reference only)',label:{show:false},
-            lineStyle:{color:'#f2cf73',type:'solid',width:2,opacity:.9}}
+            lineStyle:{color:'#f2cf73',type:'solid',width:2,opacity:.9}},
+          [
+            {coord:['2026-10-01',projection.value],name:'EIA Q4 2026 average forecast $105/b — not projected daily prices',label:{show:false},
+              lineStyle:{color:'#a7cbac',type:'dashed',width:3,opacity:.9}},
+            {coord:['2026-12-31',projection.value],label:{show:false}}
+          ]
         ]
       }
     }]
@@ -1037,7 +1049,7 @@ async function initMarketObservationPrototype() {
   });
   render();
   new ResizeObserver(()=>marketChart.resize()).observe(chartHost);
-  status.textContent=observations.length+' EIA observed Brent spot samples; '+actions.length+' accepted sanctions-event dates; source through '+observations.at(-1).date+'. The static 2026 GDP forecast comparison follows separately below. External market observations are research-only, not canonical evidence.';
+  status.textContent=observations.length+' EIA observed Brent spot samples through '+observations.at(-1).date+'; '+actions.length+' accepted sanctions dates. Dashed $105/b Q4 reference is the EIA October 6 forecast QUARTERLY AVERAGE, not a predicted daily price or observed settlement. The existing 2026 GDP comparison is separate. Research-only; not canonical evidence.';
 }
 
 async function runPrototype(name, initializer, statusId) {

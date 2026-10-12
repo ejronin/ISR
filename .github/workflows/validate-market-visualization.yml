@@ -39,6 +39,31 @@ jobs:
           test -s prototypes/visualization-platform/dist/data/research/eia-brent-spot-2026-visual-candidate.json
           grep -q 'EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL' prototypes/visualization-platform/dist/data/research/eia-brent-spot-2026-visual-candidate.json
 
+      - name: Browser screenshot and market source-interaction QA at desktop/mobile widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v chromium || command -v google-chrome-stable || command -v google-chrome)"
+          mkdir -p market-qa-screens
+          python -m http.server 4173 --bind 127.0.0.1 --directory prototypes/visualization-platform/dist >/tmp/market-qa-http.log 2>&1 &
+          SERVER=$!
+          PROFILE="$(mktemp -d)"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check \
+            --remote-debugging-address=127.0.0.1 --remote-debugging-port=9223 --remote-allow-origins='*' \
+            --user-data-dir="$PROFILE" http://127.0.0.1:4173/prototypes/visualization-platform/market-preview.html \
+            >/tmp/market-qa-browser.log 2>&1 &
+          BROWSER=$!
+          trap 'kill "$BROWSER" "$SERVER" 2>/dev/null || true' EXIT
+          MARKET_SHOTS=market-qa-screens node prototypes/visualization-platform/market-screenshot.cjs
+      - name: Upload rendered market chart screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: real-market-desktop-mobile-screens
+          path: market-qa-screens/
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Upload financial chart preview for visual inspection
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
