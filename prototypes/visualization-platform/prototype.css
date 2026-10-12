@@ -358,3 +358,15 @@ th {
 .market-marker-disclosure>summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .market-marker-disclosure:not([open]){margin-bottom:1rem}
 @media(max-width:699px){.market-marker-rail{grid-template-columns:1fr;gap:.4rem}.market-marker-disclosure>summary{font-size:.83rem}}
+
+.market-gdp-mobile-cards{display:none}
+@media(max-width:599px){
+  [data-market-forecast-table="desktop"]{display:none}
+  .market-gdp-mobile-cards{display:grid;gap:.55rem;margin-top:1rem}
+  .market-gdp-mobile-card{border:1px solid var(--border);border-radius:.4rem;padding:.75rem;background:var(--surface-1)}
+  .market-gdp-mobile-card h3{font-size:.95rem;margin:0 0 .65rem}
+  .market-gdp-mobile-metrics{display:grid;gap:.4rem;margin:0}
+  .market-gdp-mobile-metrics>div{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;border-top:1px solid var(--border);padding-top:.35rem}
+  .market-gdp-mobile-metrics dt{color:var(--muted);font-size:.76rem}
+  .market-gdp-mobile-metrics dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+}
