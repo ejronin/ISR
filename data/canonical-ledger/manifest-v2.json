@@ -373,11 +373,22 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "previous_lineage_sha256": "5af5ad0abc072f2f966ed5bdd558902ec5b57a69a7d8847698a8ab74d6bab374",
       "lineage_sha256": "89f6f8a3e9905b6b5f3551df58df34ba01f39c31770c7c228d1e4546a9fa0a5a"
+    },
+    {
+      "sequence": 35,
+      "packet_id": "UPD-20261012-RETROSPECTIVE-EVIDENCE-CATCHUP",
+      "path": "data/canonical-updates/UPD-20261012-RETROSPECTIVE-EVIDENCE-CATCHUP.json",
+      "sha256": "55d89d51f5e0710b3ea189dab0e9cee1b319669e439931327a67843940a29c9c",
+      "known_at": "2026-10-12T23:22:00-04:00",
+      "evidence_cutoff": "2026-10-12T23:00:00-04:00",
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "previous_lineage_sha256": "89f6f8a3e9905b6b5f3551df58df34ba01f39c31770c7c228d1e4546a9fa0a5a",
+      "lineage_sha256": "e9a935ff54efc4c2e865839b321ded8edf7d5669d667199e7f2dae7df21c8328"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-10-07T14:03:00-04:00",
+  "current_evidence_cutoff": "2026-10-12T23:00:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
