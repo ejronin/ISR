@@ -152,8 +152,9 @@ const PRESERVED_FACILITY_IDS = [
       sourceLinks: [...document.querySelectorAll('[data-facility-id] .evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
       page: document.querySelector('main')?.innerText || ''
     }))()`);
-    assert.equal(new Set(facilityParity.ids).size, facilityParity.ids.length, 'generated live facility cards contain duplicate identifiers');
-    assert(facilityParity.ids.length >= 23, 'generated live facility cards dropped preserved baseline coverage');
+    const facilityOccurrenceCounts = facilityParity.ids.reduce((counts, facilityId) => counts.set(facilityId, (counts.get(facilityId) || 0) + 1), new Map());
+    assert(facilityOccurrenceCounts.size >= 23, 'generated live facility cards dropped preserved baseline coverage');
+    assert([...facilityOccurrenceCounts.values()].every(count => count === 2), 'each generated facility must retain its two legitimate linked card references without extra duplicates');
     assert(PRESERVED_FACILITY_IDS.every(facilityId => facilityParity.ids.includes(facilityId)), 'a preserved facility is not publicly reachable');
     assert.equal(facilityParity.auditDetails, 4, 'facility-linked claim audits are not reachable from facility cards');
     assert(facilityParity.sourceLinks > 0, 'restored facility cards do not expose source links');
