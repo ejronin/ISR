@@ -1,0 +1,153 @@
+{
+  "artifact_role": "ROOK_SOURCE_REFERRAL_NONCANONICAL",
+  "authority": "ROOK_UPSTREAM_COLLECTION_REFERRAL_ONLY",
+  "as_of": "2026-10-12T22:52:00-04:00",
+  "basis": "User-supplied unattributed social-media post, unverified attached JPEG, and independently located public reporting.",
+  "noncanonical": true,
+  "completion": {
+    "full_noon_midnight_sweep": false,
+    "accepted_evidence_state_changed": false,
+    "claim_truth_knowledge_adjudication_performed": false,
+    "public_build_changed": false,
+    "clock_note": "This is retrospective discovery as of October 12; not a reconstructed contemporaneous October 8-12 scheduled collection window."
+  },
+  "source_artifact": {
+    "type": "USER_SUPPLIED_SOCIAL_MEDIA_QUOTE_AND_PHOTO",
+    "original_post_permalink": null,
+    "author_identity": "NOT_ESTABLISHED",
+    "original_post_time": "NOT_ESTABLISHED",
+    "capture_time": "NOT_ESTABLISHED",
+    "first_seen_by_referral": "2026-10-12T22:52:00-04:00",
+    "image": {
+      "medium": "JPEG",
+      "pixel_width": 1123,
+      "pixel_height": 1486,
+      "sha256": "16647e951de93ea7ad5241737995b949ec07e9509a51c57d3d151ed112517c7f",
+      "standalone_file_published_in_repo": false,
+      "embedded_exif_fields": 0,
+      "original_image_source": "NOT_ESTABLISHED",
+      "ship_identity": "NOT_ESTABLISHED",
+      "geographic_location": "NOT_ESTABLISHED",
+      "event_date": "NOT_ESTABLISHED",
+      "photographer_ship_on_fire": "UNVERIFIED",
+      "ai_generated_or_manipulated": "UNDETERMINED",
+      "caution": "Metadata absence neither proves fabrication nor authenticates photograph. Real tanker incidents elsewhere do not authenticate this particular image."
+    }
+  },
+  "claims_forensics_handoff": {
+    "routing": "POTENTIAL_SOURCE_ORIGIN_CLAIMS_NOT_ADJUDICATED",
+    "source_fidelity_gate": "No externally retrievable original post or author attribution yet. Do not publish claimant identity, assign knowledge/lie, or count an independent public chain without original provenance.",
+    "atomic_claims": [
+      {
+        "quoted_text": "The photo was taken yesterday...from a ship...on fire",
+        "proposition": "Photograph capture date, location, ship status",
+        "disposition": "UNVERIFIED_PROVENANCE",
+        "next": "Original permalink, reverse-source identification, vessel/incident match, file history."
+      },
+      {
+        "quoted_text": "After systematically destroying every single base in those same countries",
+        "proposition": "Categorical destruction of U.S. bases at Gulf facilities",
+        "disposition": "REQUIRES_CLAIMS_ADJUDICATION; PUBLIC_COUNTEREVIDENCE_EXISTS",
+        "next": "Map exact scope of 'those countries' and distinguish individual damaged components, base function and whole-installation destruction."
+      },
+      {
+        "quoted_text": "The GCC countries are going to get systematically wiped out",
+        "proposition": "Prospective collapse of GCC countries",
+        "disposition": "FORECAST_NOT_ESTABLISHED_AS_FACT",
+        "next": "Freeze publication date, end-state and deadline if original source recovered."
+      },
+      {
+        "quoted_text": "This coming year will see famine like the world has never seen",
+        "proposition": "Unprecedented famine in the coming year",
+        "disposition": "FORECAST_UNVERIFIED",
+        "next": "Specify baseline, relevant population metric, time horizon, attribution and falsifier."
+      },
+      {
+        "quoted_text": "Saudi DOES NOT [have water sources] ... 35 million people with no water?",
+        "proposition": "Categorical absence of Saudi non-desalinated water; population-wide water loss scenario",
+        "disposition": "CONTAINS_BROAD_OVERSTATEMENT_AND_CONDITIONAL_FORECAST",
+        "next": "Get Saudi primary water-supply breakdown and separate groundwater, storage, networks, urban desalination dependency and attack intent."
+      },
+      {
+        "quoted_text": "What backs our currency?",
+        "proposition": "Rhetorical question, possibly implies petroleum backing",
+        "disposition": "NOT_A_STATED_OIL_BACKING_PROPOSITION",
+        "next": "Do not attribute a petrodollar-backed-currency assertion unless he expressly states it."
+      },
+      {
+        "quoted_text": "The most dramatic [El Nino] in over a century",
+        "proposition": "Ranking of current El Nino by named intensity metric and historical reference",
+        "disposition": "NEEDS_METRIC_AND_PRIMARY_SOURCE",
+        "next": "NOAA/WMO records and forward outlook; do not conflate El Nino risk with famine certainty."
+      },
+      {
+        "quoted_text": "[My sources] called this every single step of the way",
+        "proposition": "Claimed prospective predictive track record",
+        "disposition": "UNTESTABLE_WITHOUT_PRE-EVENT_ARCHIVE",
+        "next": "Obtain timestamped forecasts, falsifiers, outcomes and missed predictions."
+      }
+    ]
+  },
+  "independent_context_leads": [
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/attacks-tankers-hormuz-hit-highest-any-week-since-start-iran-war-sources-say-2026-10-07/",
+      "public_report_date": "2026-10-07",
+      "observation": "At least 12 reported maritime incidents September 28–October 5, comprising attacks, attempts and harassment; IMO independently registered nine as of source report.",
+      "caveat": "Neither tally equals 12 tankers destroyed; reconcile incident IDs, source methodology and publication clocks.",
+      "accepted_status": "CANDIDATE_NOT_PROMOTED"
+    },
+    {
+      "source_url": "https://www.reuters.com/business/energy/hormuz-transits-lowest-over-two-months-after-attacks-data-shows-2026-10-08/",
+      "public_report_date": "2026-10-08",
+      "observation": "Kpler reported daily strait transit and crude movement sharply reduced; roughly 10.1 million bpd through the strait, about 74% of pre-war, with alternative route volumes partly offsetting.",
+      "caveat": "Different denominators and geographies; no inference of unimpeded shipping or total collapse.",
+      "accepted_status": "CANDIDATE_NOT_PROMOTED"
+    },
+    {
+      "source_url": "https://www.reuters.com/business/energy/gulf-oil-flows-rise-average-81-pre-war-rate-september-data-shows-2026-10-06/",
+      "public_report_date": "2026-10-06",
+      "observation": "Vortexa September Gulf oil flows excluding Iran averaged approximately 81% of prewar rate; crude/condensate 91%; refined fuels about 60%.",
+      "caveat": "September baseline is not October 12 operating-state evidence; requires refreshed time series.",
+      "accepted_status": "CANDIDATE_NOT_PROMOTED"
+    },
+    {
+      "source_url": "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+      "public_report_date": "2026-05-07",
+      "observation": "Satellite-image investigation verified damaged or destroyed 217 structures and 11 pieces of equipment at 15 U.S. sites using images reviewed through April 14.",
+      "caveat": "Site damage does not establish all bases destroyed or all functions shut down; no October current readiness inference.",
+      "accepted_status": "HISTORIC_CONTEXT_DEDUP_REQUIRED"
+    },
+    {
+      "source_url": "https://apnews.com/article/a5f40b5e0ab08ae8128db5ed749114d8",
+      "public_report_date": "2026-10-10",
+      "observation": "UAE rescue of 22 seafarers from burning tanker; AP reports suspected mine involvement.",
+      "caveat": "Do not conflate with asserted photo or resolve mine-versus-drone attribution from this one source.",
+      "accepted_status": "CANDIDATE_NOT_PROMOTED"
+    },
+    {
+      "source_url": "https://www.reuters.com/world/asia-pacific/dollar-stays-near-18-month-high-mideast-conflict-inflation-data-focus-2026-10-12/",
+      "public_report_date": "2026-10-12",
+      "observation": "Reuters reported U.S. dollar near 18-month high amidst regional tensions and inflation focus.",
+      "caveat": "Current exchange-rate observation neither proves long-run currency immunity nor petroleum commodity backing; do not conflate market signal with causation.",
+      "accepted_status": "CANDIDATE_NOT_PROMOTED"
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/saudi-shares-fall-after-second-airport-attack-gulf-trade-stays-cautious-2026-10-12/",
+      "public_report_date": "2026-10-12",
+      "observation": "Reuters reports continuing Riyadh airport disruption and mixed regional equity response following Houthi attacks.",
+      "caveat": "Source-reported damage, closure, and actor attribution must be reconciled with separate October 8, 10 and 11 airport incidents.",
+      "accepted_status": "CANDIDATE_NOT_PROMOTED"
+    }
+  ],
+  "downstream": {
+    "evidence_issue": "https://github.com/ejronin/ISR/issues/296",
+    "claims_governance": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "dependencies": [
+      "Reconcile existing event and source IDs against 2026-10-07 accepted sequence 34 and draft PR 297.",
+      "Acquire an independently retrievable social post and original image before naming claimant or admitting to public Lie Ledger.",
+      "Preserve separate physical incident, claim, forecast, and economic denominator classes.",
+      "Do not claim a completed missed scheduler sweep or a new canonical accepted cutoff.",
+      "Only Evidence Integration may promote war-event facts; only Claims Forensics adjudicates claim truth/knowledge; release verifies deployed SHA."
+    ]
+  }
+}
