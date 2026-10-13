@@ -1,0 +1,647 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261012-RETROSPECTIVE-EVIDENCE-CATCHUP",
+  "known_at": "2026-10-12T23:22:00-04:00",
+  "evidence_cutoff": "2026-10-12T23:00:00-04:00",
+  "summary": "Retrospective, independently source-linked October 8-12 catch-up. Integrates verified Gulf maritime incidents and crew rescue/missing statuses, Oct 8 US shadow-fleet designation action, Saudi airport attacks with initial-to-revised fatality chronology and closure, US blockade strike, Iran negotiating statements, Lebanon EU mission/explosive seizure developments, UK Fairford assessment, and selected energy/aviation observations. Preserves gaps in paused noon/midnight ROOK sweeps; not a claim those windows were fully collected. All incident identities, actor claims, casualties and market denominators remain separate.",
+  "sources": [
+    {
+      "source_id": "SRC-00DE17228059",
+      "url": "https://home.treasury.gov/news/press-releases/sb0653",
+      "source_role": "US Treasury primary release, Oct 8 legal vessel sanctions and separately disclosed delistings"
+    },
+    {
+      "source_id": "SRC-A67B898D534E",
+      "url": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "source_role": "Reuters Oct 8 shipping conditions and Iran-linked threats, source-reported not physical control proof"
+    },
+    {
+      "source_id": "SRC-312F4071659D",
+      "url": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
+      "source_role": "Reuters Oct 8 Brent/WTI futures settlement, shipping threat and hurricane supply disruption"
+    },
+    {
+      "source_id": "SRC-7A4A989D3789",
+      "url": "https://www.reuters.com/world/middle-east/houthi-strikes-riyadh-airport-killed-three-saudis-war-escalates-2026-10-09/",
+      "source_role": "Reuters Oct 9 additional Riyadh attack fatalities and commercial aircraft damage"
+    },
+    {
+      "source_id": "SRC-18FCE053089B",
+      "url": "https://apnews.com/article/5226e214e7c50ceff68915379ec3a714",
+      "source_role": "AP Oct 9 Saudi airport attacks: distinct fatalities, aircraft, response"
+    },
+    {
+      "source_id": "SRC-F9C756229544",
+      "url": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "source_role": "Reuters original Oct 10 12 dead/309 wounded Riyadh report, subsequently revised"
+    },
+    {
+      "source_id": "SRC-3D85FC8E7463",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/",
+      "source_role": "Reuters Oct 11 updated 13-death Oct 10 toll and distinct new Oct 11 airport attack"
+    },
+    {
+      "source_id": "SRC-E046BB411354",
+      "url": "https://www.reuters.com/world/middle-east/skies-over-saudi-capital-riyadh-largely-empty-after-deadly-houthi-strikes-2026-10-12/",
+      "source_role": "Reuters Oct 12 Saudi civil aviation operational/closure, Oct 17 NOTAM and airline cancellations"
+    },
+    {
+      "source_id": "SRC-3C36713F2EBF",
+      "url": "https://www.reuters.com/world/middle-east/saudi-arabia-faces-new-missile-drone-fire-after-major-attacks-airports-2026-10-12/",
+      "source_role": "Reuters Oct 12 Saudi/Houthi attack and Iran mediation offer, UAE collective security statements"
+    },
+    {
+      "source_id": "SRC-87C5196D9CE1",
+      "url": "https://apnews.com/article/40c6ab822df376688ce1a0955a044488",
+      "source_role": "AP Oct 12 investigation into Saudi air defense failure; methods still preliminary"
+    },
+    {
+      "source_id": "SRC-2BF59BD134C1",
+      "url": "https://www.reuters.com/world/asia-pacific/turkey-pakistan-egypt-saudi-arabia-condemn-houthi-attacks-riyadh-airport-2026-10-12/",
+      "source_role": "Reuters Oct 12 Turkey Pakistan Egypt Saudi joint condemnation and Turkish support limits"
+    },
+    {
+      "source_id": "SRC-B2144A1F9652",
+      "url": "https://www.reuters.com/world/middle-east/airlines-cancel-flights-saudi-arabia-after-riyadh-airport-attacks-2026-10-12/",
+      "source_role": "Reuters airline-by-airline suspension and planned route change after Saudi airport attacks"
+    },
+    {
+      "source_id": "SRC-F3EFEBF0635D",
+      "url": "https://www.reuters.com/world/middle-east/all-22-indian-crew-rescued-safe-after-incident-off-uae-coast-consulate-says-2026-10-11/",
+      "source_role": "Reuters Indian consulate confirms all 22 crew of GEM No.2 rescued; cause not established"
+    },
+    {
+      "source_id": "SRC-F1C7505D35AC",
+      "url": "https://www.arabnews.com/middle-east/oil-tanker-struck-by-projectile-off-uae-coast-amid-surge-in-attacks-3005496",
+      "source_role": "Reuters syndication Oct 9 UKMTO projectile off UAE, shipping-source identification of GEM No.2"
+    },
+    {
+      "source_id": "SRC-6CA612908A3B",
+      "url": "https://newsonair.gov.in/two-tankers-attacked-near-strait-of-hormuz-and-oman-two-indian-seafarers-missing/",
+      "source_role": "India public broadcaster Oct 12 Indian government reports Petro Dolphin and Valthera separately"
+    },
+    {
+      "source_id": "SRC-DDB6C2017085",
+      "url": "https://www.reuters.com/world/us-military-says-it-disabled-cargo-vessel-trying-run-iran-blockade-2026-10-11/",
+      "source_role": "Reuters Oct 10/11 CENTCOM Ocean Molica/Arika Sun strike and crew-safety military claims"
+    },
+    {
+      "source_id": "SRC-8C89D901E1BA",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-us-response-its-proposal-reopen-hormuz-was-insufficient-2026-10-11/",
+      "source_role": "Reuters Oct 11 Rezaei says US response insufficient, official attribution and US nonresponse"
+    },
+    {
+      "source_id": "SRC-263AE9A1D700",
+      "url": "https://www.consilium.europa.eu/en/policies/lebanon/",
+      "source_role": "Council of the EU primary confirmation of new Lebanon advisory support mission Oct 12"
+    },
+    {
+      "source_id": "SRC-4136D1077963",
+      "url": "https://www.reuters.com/world/middle-east/eu-establishes-new-lebanon-support-mission-2026-10-12/",
+      "source_role": "Reuters Oct 12 EU Lebanon mission establishment distinct from later operational deployment"
+    },
+    {
+      "source_id": "SRC-A808DD1C9E24",
+      "url": "https://apnews.com/article/f36ef1b24e3b505136d76e4fdfdcdcb6",
+      "source_role": "AP Oct 12 Lebanese explosives-truck investigation and separate border cache"
+    },
+    {
+      "source_id": "SRC-4DCE3CC9CBB2",
+      "url": "https://www.reuters.com/world/uk/uk-pm-burnham-says-irans-irgc-likely-behind-raf-fairford-incident-2026-10-12/",
+      "source_role": "Reuters Oct 12 UK official Iran/IRGC attribution assessment on Sept 27 Fairford allegation, Iranian denial"
+    },
+    {
+      "source_id": "SRC-0C63C184D737",
+      "url": "https://www.reuters.com/world/middle-east/likely-unexploded-ordnance-kills-teenager-northern-israel-2026-10-12/",
+      "source_role": "Reuters Oct 12 school-trip unexploded ordnance death/injuries, historical origin suspected"
+    },
+    {
+      "source_id": "SRC-DAAD878194AE",
+      "url": "https://www.reuters.com/business/energy/soaring-freight-rates-threaten-asias-appetite-us-crude-2026-10-09/",
+      "source_role": "Reuters Oct 9 US-to-Asia VLCC freight and economics of alternative oil sourcing"
+    },
+    {
+      "source_id": "SRC-8C7165D13200",
+      "url": "https://www.reuters.com/business/energy/gulf-oil-flows-rise-average-81-pre-war-rate-september-data-shows-2026-10-06/",
+      "source_role": "Reuters earlier September Vortexa baseline, not valid October current throughput"
+    },
+    {
+      "source_id": "SRC-B0D23F146437",
+      "url": "https://www.reuters.com/world/africa/109-migrants-including-15-children-dead-after-boat-djibouti-yemen-capsizes-un-2026-10-11/",
+      "source_role": "Reuters Oct 11 IOM migration tragedy; no causal attribution to Iran war established"
+    },
+    {
+      "source_id": "SRC-F1CC424A8CB5",
+      "url": "https://www.reuters.com/world/middle-east/saudi-warning-system-stayed-silent-before-deadly-airport-attacks-2026-10-12/",
+      "source_role": "Reuters late Oct 12 report public-warning gap, motive unresolved"
+    },
+    {
+      "source_id": "SRC-35290D936476",
+      "url": "https://www.reuters.com/world/middle-east/iranian-flights-cancelled-new-us-d-day-sanctions-take-effect-saudis-say-they-2026-09-24/",
+      "source_role": "Reuters historical September aviation sanctions; background only, no October new event"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261008-OFAC-IRAN-SHADOW-FLEET-17",
+      "event_date": "2026-10-08",
+      "summary": "US Treasury designated 17 named shadow-fleet vessels and related networks, a documented legal sanctions action. Two separate vessel removals from sanction lists are not new designations. Treasury's claim that it neutralized most remaining fleet activity is an institutional effectiveness assertion, not proof that vessels stopped operating.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-00DE17228059"
+      ]
+    },
+    {
+      "event_id": "EVT-20261008-HORMUZ-NEW-ROUTE-THREATS",
+      "event_date": "2026-10-08",
+      "summary": "Reuters reported Iranian warnings to regional governments that newly opened oil export routes could be treated as hostile. The reported leadership/IRGC agreement to enforce this posture is source-attributed. Threatening routes is not independent proof of closing them, and the reported fall in vessel traffic is not a claim of every transit stopping.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-A67B898D534E"
+      ]
+    },
+    {
+      "event_id": "EVT-20261008-BRENT-WTI-OIL-PRICE-HURRICANE",
+      "event_date": "2026-10-08",
+      "summary": "October 8 Brent crude FUTURES settled at USD 104.28/bbl and WTI FUTURES at USD 91.49/bbl. Reuters associated the rise with Middle East supply risk AND Hurricane Isaias disruption, including about 1.3 million bpd of US Gulf production shut in. These are futures settlement prices, not EIA physical Brent spot observations.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-312F4071659D"
+      ]
+    },
+    {
+      "event_id": "EVT-20261008-RIYADH-AIRPORT-REPEATED-ATTACK",
+      "event_date": "2026-10-08",
+      "summary": "Saudi authorities reported a separate Thursday Houthi-claimed Riyadh airport assault causing three Saudi deaths including a Saudia pilot and damage to a commercial aircraft. This follows, and is not the same event as, earlier Oct 6-7 Riyadh/Abha casualty reporting or the later mass-casualty Oct 10 attack.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-7A4A989D3789",
+        "SRC-18FCE053089B"
+      ],
+      "reported_actor": "Houthi claim; Saudi reporting",
+      "attribution": "HOUTHI_CLAIM_WITH_SAUDI_OFFICIAL_REPORT"
+    },
+    {
+      "event_id": "EVT-20261008-SAUDI-DEFENSIVE-OPTIONS-FRANCE-SYRIA",
+      "event_date": "2026-10-08",
+      "summary": "Reuters reported France and Saudi Arabia discussing French military options to protect Yanbu, and Syria considering possible assistance to Saudi Arabia against the Houthis. These were proposals/studies, not confirmed French or Syrian offensive deployments.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-312F4071659D"
+      ]
+    },
+    {
+      "event_id": "EVT-20261009-UAE-GEM-NO2-PROJECTILE-INCIDENT",
+      "event_date": "2026-10-09",
+      "summary": "UKMTO reported a vessel hit by an unidentified projectile off the UAE, with a reported fire. Two shipping sources identified the vessel as the Panama-flagged tanker GEM No.2. UAE coastguard response was on Oct 10 and India's consulate confirmed all 22 Indian crew rescued by Oct 11. Treat the strike, rescue and later identity clarification as one vessel-incident chain; perpetrator not established.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-F1C7505D35AC",
+        "SRC-F3EFEBF0635D"
+      ],
+      "attribution": "UNKNOWN; UKMTO projectile, vessel name separately source-reported",
+      "later_rescue_report_date": "2026-10-11"
+    },
+    {
+      "event_id": "EVT-20261009-TRANSATLANTIC-CRUDE-FREIGHT-SPIKE",
+      "event_date": "2026-10-09",
+      "summary": "Reuters reported exceptionally high VLCC charter costs for US Gulf-to-China crude, including an estimated USD 80 million for a 2-million-barrel voyage. This freight-market observation does not quantify all Middle East tanker traffic or establish complete loss of Gulf exports.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-DAAD878194AE"
+      ]
+    },
+    {
+      "event_id": "EVT-20261010-RIYADH-AIRPORT-MASS-CASUALTY",
+      "event_date": "2026-10-10",
+      "summary": "Riyadh's King Khalid airport was struck in a Houthi-claimed missile/drone attack. Saudi authorities initially reported 12 dead and 309 injured; later Oct 11-12 reporting increased fatalities to 13 while injuries remained more than 300. The earlier 12-death publication remains a historical report, not a second incident or an additional 12 fatalities.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-F9C756229544",
+        "SRC-3D85FC8E7463",
+        "SRC-E046BB411354",
+        "SRC-87C5196D9CE1"
+      ],
+      "attribution": "HOUTHI_CLAIM; SAUDI_AUTHORITIES_REPORT_EVENT",
+      "initial_reported_deaths": 12,
+      "revised_reported_deaths": 13,
+      "reported_injured_at_least": 309,
+      "revised_known_by": "2026-10-11"
+    },
+    {
+      "event_id": "EVT-20261010-US-BLOCKADE-OCEAN-MOLICA",
+      "event_date": "2026-10-10",
+      "summary": "CENTCOM stated that a US fighter struck the stern of the Panama-flagged commercial ship Ocean Molica, also known as Arika Sun, in the Gulf of Oman, disabling propulsion without harming crew, after alleged blockade warnings were ignored. The strike and military announcement are established as reported; claimed violation, crew effects and necessity remain sourced to CENTCOM, not independently adjudicated.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-DDB6C2017085"
+      ],
+      "attribution": "US_CENTCOM_ACKNOWLEDGED_STRIKE"
+    },
+    {
+      "event_id": "EVT-20261011-RIYADH-AIRPORT-ADDITIONAL-ATTACK",
+      "event_date": "2026-10-11",
+      "summary": "A separate Sunday attack against Riyadh airport killed one additional person and injured around a dozen. Do not combine the deaths and injuries with those from the October 10 mass-casualty event without an explicitly labeled cumulative series.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3D85FC8E7463",
+        "SRC-E046BB411354",
+        "SRC-3C36713F2EBF"
+      ],
+      "attribution": "HOUTHI_CLAIM; SAUDI_REPORT"
+    },
+    {
+      "event_id": "EVT-20261011-INDIA-PETRO-DOLPHIN-SOHAR",
+      "event_date": "2026-10-11",
+      "summary": "Indian authorities reported Nicaragua-flagged tanker Petro Dolphin struck by a drone at Sohar Anchorage off Oman; nine of 11 Indian crew rescued, two still missing at the Oct 12 report. No perpetrator independently established in the reviewed source.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-6CA612908A3B"
+      ],
+      "attribution": "UNKNOWN_ATTACKER; DRONE_REPORTED_BY_INDIA",
+      "crew_indians_reported": 11,
+      "rescued_indians_reported": 9,
+      "missing_indians_reported": 2
+    },
+    {
+      "event_id": "EVT-20261011-INDIA-VALTHERA-HORMUZ",
+      "event_date": "2026-10-11",
+      "summary": "Indian authorities reported Marshall Islands-flagged tanker Valthera hit by an unknown projectile in the Hormuz region and a fire aboard. All 11 Indian crew members were safe. This is separate from Petro Dolphin and GEM No.2.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-6CA612908A3B"
+      ],
+      "attribution": "UNKNOWN",
+      "crew_indians_reported": 11,
+      "crew_indians_safe": 11
+    },
+    {
+      "event_id": "EVT-20261011-REZAEI-US-HORMUZ-REPLY",
+      "event_date": "2026-10-11",
+      "summary": "Iranian security official Mohsen Rezaei characterized the US response relayed through Qatari intermediaries to Iran's seven Hormuz reopening conditions as insufficient, saying some conditions were accepted and others unclear. This is Iran's characterization only; no independently verified US concessions, signed agreement, or normalized strait reopening is established.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-8C89D901E1BA"
+      ]
+    },
+    {
+      "event_id": "EVT-20261012-RIYADH-AIRPORT-CLOSURE-EXTENDED",
+      "event_date": "2026-10-12",
+      "summary": "A Saudi NOTAM indicated King Khalid International Airport would remain closed until 2100 GMT October 17 for safety and readiness procedures. Reuters/Cirium reported Saudi airport flight cancellations reached 46.4%; other Saudi airports including Jeddah continued some operations. This is an operational aviation closure, not the destruction of Saudi airports as a class.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-E046BB411354",
+        "SRC-B2144A1F9652"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-SAUDI-YEMEN-STRIKES-AND-MEDIATION",
+      "event_date": "2026-10-12",
+      "summary": "Saudi-led coalition reported further incoming missile/drone attacks; Houthis claimed additional strikes, with individual interceptions and impacts not all verified. Iran publicly offered to facilitate dialogue with Saudi Arabia; the UAE called for collective Gulf defense action. Offers and calls are not proof of mediation acceptance or deployment.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3C36713F2EBF"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-R4-JOINT-RIYADH-CONDEMNATION",
+      "event_date": "2026-10-12",
+      "summary": "Turkey, Pakistan, Egypt and Saudi Arabia jointly condemned the Houthi attacks and supported Saudi defense measures. Turkish support was described as defensive and technical; the declaration does not itself establish a Turkish or Pakistani offensive deployment.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-2BF59BD134C1"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-SAUDI-DEFENSE-INVESTIGATION",
+      "event_date": "2026-10-12",
+      "summary": "AP reported Saudi authorities investigating why warning and intercept systems failed to prevent the deadly Oct 10 airport attack; anonymous officials described preliminary drone/missile sequencing. Investigation and preliminary mechanism are reported, not a final verified technical failure analysis.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-87C5196D9CE1"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-EU-LEBANON-SUPPORT-MISSION",
+      "event_date": "2026-10-12",
+      "summary": "The EU Council formally established a three-year advisory mission supporting the Lebanese Armed Forces and Internal Security Forces in border, maritime and domestic security. Establishment is official; initial EU personnel deployment and work launch remain planned rather than observed.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-263AE9A1D700",
+        "SRC-4136D1077963"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-LEBANON-EXPLOSIVES-INVESTIGATION",
+      "event_date": "2026-10-12",
+      "summary": "Lebanon's prime minister pledged a probe into an explosives truck intercepted in the preceding week. AP reported 780 kg of explosives, including TNT and C4, and detainees; officials suspect Hezbollah links but group responsibility and intended use are not established. Lebanese forces separately seized 200 kg being smuggled from Syria; do not merge the seizures.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-A808DD1C9E24"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-UK-FAIRFORD-IRGC-ASSESSMENT",
+      "event_date": "2026-10-12",
+      "summary": "UK Prime Minister Andy Burnham assessed a suspected September 27 RAF Fairford plot was highly likely coordinated from Iran and almost certainly IRGC-directed; Iranian ambassador denied involvement. Seven men arrested in the investigation had been released on police bail; seized vehicles had petrol but no viable explosives reported. This is a later official attribution assessment about the earlier incident, not a newly executed September 27 attack.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-4DCE3CC9CBB2"
+      ],
+      "underlying_event_date": "2026-09-27",
+      "independent_forensic_proof_of_IRGC_direction": "NOT_DISCLOSED_PUBLICLY",
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-ISRAEL-UNEXPLODED-MUNITION-SCHOOL",
+      "event_date": "2026-10-12",
+      "summary": "An explosive remnant detonated during a school trip in northern Israel, killing a 14-year-old and injuring 24 people. Authorities suspected Hezbollah-origin unexploded ordnance; attribution to a specific prior weapon/attack remains under investigation. This is not evidence of a new October 12 Hezbollah launch.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-0C63C184D737"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    },
+    {
+      "event_id": "EVT-20261012-SAUDI-PUBLIC-WARNING-GAP",
+      "event_date": "2026-10-12",
+      "summary": "Reuters investigated the absence of public early warning alerts before recent Saudi airport attacks; reporting says the public warnings stopped days earlier. The Saudi government had not explained the absence, and any theory about political motive remains inference. Do not equate warning-system alert silence with confirmed total radar failure.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-F1CC424A8CB5"
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-MULTI-VESSEL-OCTOBER-20261012",
+      "mode": "add",
+      "record": {
+        "shipping_id": "SHIP-HORMUZ-MULTI-VESSEL-OCTOBER-20261012",
+        "date": "2026-10-12",
+        "status": "Multiple distinct documented Oct 9-11 vessel incidents; unsafe passage and uncertain perpetrators; not a total export shutdown",
+        "observed_state": "GEM No.2 was hit by an unidentified projectile Oct 9 and its 22 Indian crew were later rescued; Ocean Molica was struck by a US jet Oct 10 under US blockade enforcement; Petro Dolphin and Valthera suffered separate Oct 11 attacks with different outcomes. India reported two crew missing aboard Petro Dolphin on Oct 12. These are distinct vessel identities and separate armed-force attribution questions.",
+        "adjudication": "RECONCILED_NAMED_VESSEL_INCIDENTS; NO_DUPLICATE_RESCUE_EVENTS; ALL_ATTACKER_ATTRIBUTIONS_NOT_ESTABLISHED; HORMUZ_NOT_NORMALIZED",
+        "source_ids": [
+          "SRC-F1C7505D35AC",
+          "SRC-F3EFEBF0635D",
+          "SRC-DDB6C2017085",
+          "SRC-6CA612908A3B",
+          "SRC-A67B898D534E"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "facility",
+      "entity_id": "FAC-SAUDI-KING-KHALID-AIRPORT-20261012",
+      "mode": "add",
+      "record": {
+        "facility_id": "FAC-SAUDI-KING-KHALID-AIRPORT-20261012",
+        "name": "King Khalid International Airport, Riyadh",
+        "facility_class": "CIVIL_AVIATION",
+        "date": "2026-10-12",
+        "status": "OPERATIONS_SUSPENDED_TO_2026-10-17T21:00Z_PER_NOTAM",
+        "observed_state": "Oct 10 mass-casualty strike damaged airport infrastructure and precipitated suspension; Oct 11 separate attack followed. Oct 12 NOTAM extends closure until 21:00 UTC Oct 17. No finding that every runway or every Saudi airport is destroyed; other hubs retained some movement.",
+        "adjudication": "CIVIL_AIRPORT_CLOSED_PENDING_SAFETY_AND_READINESS_REVIEW; WHOLE_SITE_DESTROYED_NOT_ESTABLISHED",
+        "source_ids": [
+          "SRC-F9C756229544",
+          "SRC-3D85FC8E7463",
+          "SRC-E046BB411354",
+          "SRC-87C5196D9CE1"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-RIYADH-AIRPORT-20261010-REV1",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-RIYADH-AIRPORT-20261010-REV1",
+        "event_ref": "EVT-20261010-RIYADH-AIRPORT-MASS-CASUALTY",
+        "date": "2026-10-10",
+        "aggregation_type": "EVENT_SPECIFIC_NONCUMULATIVE",
+        "deaths_reported": 13,
+        "injured_reported_at_least": 309,
+        "initial_deaths_reported": 12,
+        "initial_reported_date": "2026-10-10",
+        "revised_reported_date": "2026-10-11",
+        "status": "REVISED_OFFICIAL_FATALITY_TOLL",
+        "adjudication": "OCT10_REVISED_COUNT; DO_NOT_ADD_INITIAL_12_AND_REVISED_13",
+        "source_ids": [
+          "SRC-F9C756229544",
+          "SRC-3D85FC8E7463",
+          "SRC-E046BB411354"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-RIYADH-AIRPORT-20261011-SEPARATE",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-RIYADH-AIRPORT-20261011-SEPARATE",
+        "event_ref": "EVT-20261011-RIYADH-AIRPORT-ADDITIONAL-ATTACK",
+        "date": "2026-10-11",
+        "aggregation_type": "EVENT_SPECIFIC_NONCUMULATIVE",
+        "deaths_reported": 1,
+        "injured_reported_approx": "nearly a dozen",
+        "status": "SEPARATE_EVENT_FROM_OCT10",
+        "source_ids": [
+          "SRC-3D85FC8E7463",
+          "SRC-E046BB411354"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-IRAN-SHADOW-FLEET-DESIGNATIONS-20261008",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-IRAN-SHADOW-FLEET-DESIGNATIONS-20261008",
+        "date": "2026-10-08",
+        "metric": "US Treasury legal sanctions designations of Iranian-linked shadow fleet vessels",
+        "count_new_designated_vessels": 17,
+        "count_distinct_delisted_vessels": 2,
+        "status": "OFFICIAL_DESIGNATIONS_IN_FORCE; REPORTED_NEUTRALIZATION_NOT_PHYSICALLY_DEMONSTRATED",
+        "observed_state": "US Treasury announced targeting 17 vessels, owners and support networks on October 8, and separately described two delistings. Designation is a legal action; no source-backed conclusion that every listed vessel ceased operations.",
+        "source_ids": [
+          "SRC-00DE17228059"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OIL-BRENT-WTI-FUTURES-20261008",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OIL-BRENT-WTI-FUTURES-20261008",
+        "date": "2026-10-08",
+        "metric": "ICE Brent crude futures settlement and NYMEX WTI futures settlement",
+        "brent_futures_usd_per_bbl": 104.28,
+        "wti_futures_usd_per_bbl": 91.49,
+        "status": "OBSERVED_FUTURES_SETTLEMENTS_NOT_PHYSICAL_SPOT",
+        "observed_state": "Reuters attributes the Oct 8 price increase to both Middle East conflict risk and Hurricane Isaias/Gulf of Mexico production interruption. These values must not be inserted into EIA physical Brent spot series.",
+        "source_ids": [
+          "SRC-312F4071659D"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-VLCC-US-ASIA-CHARTER-20261009",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-VLCC-US-ASIA-CHARTER-20261009",
+        "date": "2026-10-09",
+        "metric": "Reported US Gulf-to-China VLCC charter economics",
+        "reported_usd_per_2m_bbl_voyage": 80000000,
+        "status": "REUTERS_MARKET_OBSERVATION_NOT_ALL_ROUTE_RATE",
+        "observed_state": "Reuters reports a potential 2 million barrel US Gulf-to-China voyage charter cost near USD 80m amid inefficiencies and tanker capacity constraints. Not a universal freight rate or proof all Gulf loading stopped.",
+        "source_ids": [
+          "SRC-DAAD878194AE"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-SAUDI-AIRPORT-CANCELLATIONS-20261012",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-SAUDI-AIRPORT-CANCELLATIONS-20261012",
+        "date": "2026-10-12",
+        "metric": "Share of cancelled flights across Saudi airports according to Cirium",
+        "reported_cancelled_percent": 46.4,
+        "status": "SOURCE_REPORTED_OPERATIONAL_DISRUPTION",
+        "observed_state": "Cirium reported flight cancellations at 46.4% across Saudi airports, with major airlines suspending Riyadh and other routes; this does not mean all regional airspace is closed.",
+        "source_ids": [
+          "SRC-E046BB411354",
+          "SRC-B2144A1F9652"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-HORMUZ-SEVEN-CONDITIONS-20261011",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-US-IRAN-HORMUZ-SEVEN-CONDITIONS-20261011",
+        "date": "2026-10-11",
+        "status": "NO_VERIFIED_SIGNED_SETTLEMENT; IRAN_SAYS_US_REPLY_INSUFFICIENT",
+        "observed_state": "Iranian official Mohsen Rezaei says US response to Tehran's seven conditions, via Qatar, partially accepted some terms and left others unclear. No corresponding US concession is independently verified; Reuters received no immediate White House comment.",
+        "adjudication": "IRANIAN_NEGOTIATING_CHARACTERIZATION_ONLY; NO_REOPENING_CONFIRMED",
+        "source_ids": [
+          "SRC-8C89D901E1BA"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-EU-LEBANON-SECURITY-MISSION-20261012",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-EU-LEBANON-SECURITY-MISSION-20261012",
+        "date": "2026-10-12",
+        "status": "FORMALLY_ESTABLISHED; OPERATIONS_PENDING",
+        "observed_state": "EU Council established a CSDP advisory support mission for Lebanese armed and internal security forces with initial three-year mandate; deployment/operational launch subject to follow-on planning.",
+        "source_ids": [
+          "SRC-263AE9A1D700",
+          "SRC-4136D1077963"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-UK-FAIRFORD-IRGC-OFFICIAL-ASSESSMENT-20261012",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-UK-FAIRFORD-IRGC-OFFICIAL-ASSESSMENT-20261012",
+        "date": "2026-10-12",
+        "status": "UK_GOVERNMENT_ATTRIBUTION_ASSESSMENT_CONTESTED_BY_IRAN",
+        "observed_state": "UK prime minister publicly attributes likely coordination of Sept 27 Fairford suspected plot to Iran and almost certainly to IRGC. Iran denies. British police had recovered petrol but not viable explosives; suspects were released on bail. This official assessment is significant new knowledge but not independently disclosed technical attribution proof.",
+        "source_ids": [
+          "SRC-4DCE3CC9CBB2"
+        ],
+        "knowledge_time": "2026-10-12T23:22:00-04:00"
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-retrospective-source-review-20261012.json"
+    ],
+    "upstream_status": "RETROSPECTIVE_VERIFIED_SOURCE_REVIEW_NOT_COMPLETE_SCHEDULED_SWEEP"
+  }
+}
