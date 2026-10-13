@@ -321,7 +321,9 @@
       "source_ids": [
         "SRC-E046BB411354",
         "SRC-B2144A1F9652"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-SAUDI-YEMEN-STRIKES-AND-MEDIATION",
@@ -332,7 +334,9 @@
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
         "SRC-3C36713F2EBF"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-R4-JOINT-RIYADH-CONDEMNATION",
@@ -343,7 +347,9 @@
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
         "SRC-2BF59BD134C1"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-SAUDI-DEFENSE-INVESTIGATION",
@@ -354,7 +360,9 @@
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
         "SRC-87C5196D9CE1"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-EU-LEBANON-SUPPORT-MISSION",
@@ -366,7 +374,9 @@
       "source_ids": [
         "SRC-263AE9A1D700",
         "SRC-4136D1077963"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-LEBANON-EXPLOSIVES-INVESTIGATION",
@@ -377,7 +387,9 @@
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
         "SRC-A808DD1C9E24"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-UK-FAIRFORD-IRGC-ASSESSMENT",
@@ -390,7 +402,9 @@
         "SRC-4DCE3CC9CBB2"
       ],
       "underlying_event_date": "2026-09-27",
-      "independent_forensic_proof_of_IRGC_direction": "NOT_DISCLOSED_PUBLICLY"
+      "independent_forensic_proof_of_IRGC_direction": "NOT_DISCLOSED_PUBLICLY",
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-ISRAEL-UNEXPLODED-MUNITION-SCHOOL",
@@ -401,7 +415,9 @@
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
         "SRC-0C63C184D737"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     },
     {
       "event_id": "EVT-20261012-SAUDI-PUBLIC-WARNING-GAP",
@@ -412,7 +428,9 @@
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
         "SRC-F1CC424A8CB5"
-      ]
+      ],
+      "first_reported": "2026-10-12",
+      "first_reported_basis": "Earliest date of the accepted source report of this new snapshot or assessment in this retrospective review; not a claim of new underlying physical occurrence."
     }
   ],
   "entities": [
