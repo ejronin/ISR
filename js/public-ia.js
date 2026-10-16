@@ -2279,7 +2279,8 @@
     // This is presentation policy, not a replacement for the accepted four-state finding.
     // Require an explicit *prewar* withdrawal. Ambiguous 'before/early war' stays presumed.
     if (/withdrew before the war|withdrawal completed before the war/i.test(note) ||
-        (id === 'US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(String(facility && facility.current_presence_status || '')))) return 'PREWAR_DRAWDOWN';
+        (id === 'US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(String(facility && facility.current_presence_status || ''))) ||
+        (id === 'US-RMELAN' && /Feb\. 23.*broader U\.S\. Syria withdrawal was underway/i.test(String(facility && facility.current_presence_status || '')))) return 'PREWAR_DRAWDOWN';
     return 'PRESUMED_OPERABLE';
   }
 
