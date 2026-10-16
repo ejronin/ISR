@@ -55,7 +55,7 @@ assert(marketResearch.canonical_status === 'EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT
 assert(marketResearch.publisher === 'U.S. Energy Information Administration','Unqualified market publisher.');
 assert(marketResearch.metric === 'Europe Brent crude oil spot price FOB','Market metric must be EIA spot Brent, not futures.');
 const marketObservations = marketResearch.observations || [];
-assert(marketObservations.length === 41,'Market research sample cardinality drift.');
+assert(marketObservations.length === 47,'Market research sample cardinality drift.');
 for (let i=0;i<marketObservations.length;i++) {
   const row=marketObservations[i];
   assert(/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date) && Number.isFinite(row.value) && row.value>0,'Invalid market observation.');
@@ -67,9 +67,11 @@ assert(q4.value===105 && q4.unit==='USD/barrel' && q4.period==='2026-Q4', 'EIA Q
 assert(q4.forecast_vintage==='2026-10-06' && q4.source_url==='https://www.eia.gov/outlooks/steo/report/global_oil.php', 'EIA primary forecast provenance mismatch.');
 assert(q4.canonical_status===marketResearch.canonical_status, 'Research-only market data and forecast must stay noncanonical.');
 assert(q4.period_start==='2026-10-01' && q4.period_end==='2026-12-31', 'Incorrect 4Q26 static reference period.');
-assert(marketObservations[0].date === '2026-01-09' && marketObservations.at(-1).date === '2026-10-06','Unexpected observed market date range.');
+assert(marketObservations[0].date === '2026-01-09' && marketObservations.at(-1).date === '2026-10-14','Unexpected observed market date range.');
 assert(marketObservations.find(x=>x.date==='2026-02-27')?.value === 71.32,'EIA prewar market checkpoint mismatch.');
 assert(marketObservations.find(x=>x.date==='2026-10-02')?.value === 135.51,'EIA October observed market checkpoint mismatch.');
+assert(marketObservations.find(x=>x.date==='2026-10-07')?.value === 126.00 && marketObservations.find(x=>x.date==='2026-10-14')?.value === 126.55,'EIA refreshed Oct 7–14 spot checkpoints mismatch.');
+assert(marketResearch.canonical_status === 'EXTERNAL_PRIMARY_SOURCE_RESEARCH_NOT_ACCEPTED_AS_CANONICAL','EIA source promotion is an Evidence Integration decision.');
 assert((sanctions.wartime_actions||[]).filter(x=>x.date&&x.title).length>=8,'Missing accepted sanctions marker events.');
 
 assert(currentState.artifact_role === 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL', 'Generated public-current-state role changed.');
