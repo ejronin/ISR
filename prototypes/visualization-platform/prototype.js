@@ -973,7 +973,7 @@ async function initMarketObservationPrototype() {
      projection?.type!=='EIA_STEO_PROJECTED_QUARTER_AVERAGE_NOT_DAILY_PRICE' ||
      projection?.period!=='2026-Q4' || projection?.value!==105)
     throw new Error('Missing qualified EIA Q4 forecast-average research reference.');
-  if(observations.length!==41 || observations.some((row,i)=>
+  if(observations.length!==47 || observations.some((row,i)=>
     !/^2026-[0-9]{2}-[0-9]{2}$/.test(row.date) || !Number.isFinite(row.value) ||
     row.value<=0 || (i>0 && observations[i-1].date>=row.date)))
     throw new Error('Missing, malformed or non-chronological EIA market observations.');

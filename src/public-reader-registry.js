@@ -106,6 +106,8 @@
     YELLOW: ['Damaged; parts inoperable', 'facility-yellow'],
     BLUE: ['Damaged; operable', 'facility-blue'],
     GREEN: ['Untouched', 'facility-green'],
+    PRESUMED_OPERABLE: ['Presumed operating (not verified)', 'facility-presumed'],
+    PREWAR_DRAWDOWN: ['Prewar withdrawal / drawdown', 'facility-drawdown'],
     UNCLASSIFIED: ['Unclassified', 'facility-unclassified']
   });
 
@@ -341,23 +343,29 @@
   }
 
   function facilities(article, context) {
-    intro(article,'This is the authoritative reader view of current facility state. The four public colors come only from the accepted facility adjudication; all other tracked facilities remain neutral and unclassified.');
+    intro(article,'Verified damage and operating findings are shown separately from presumed operation and prewar withdrawals.');
     article.querySelector('[data-reader-facility-dashboard]')?.remove();
     const all=[...records(context.model,'ledger.facilities'),...records(context.model,'gate3.facilities')], map=new Map();
     all.forEach(r=>{const id=r.facility_id||r.id||r.name;if(id)map.set(id,{...(map.get(id)||{}),...r,facility_id:id});});
     const accepted=facilityAdjudication(context);
-    const stateFor=id=>{
+    const stateFor=(id, record)=>{
       const row=accepted.classifiedById.get(id);
       const state=txt(row&&row.public_operational_state).toUpperCase();
-      return Object.prototype.hasOwnProperty.call(FACILITY_PUBLIC_STATE,state)&&state!=='UNCLASSIFIED'?state:'UNCLASSIFIED';
+      if (['RED','YELLOW','BLUE','GREEN'].includes(state)) return state;
+      const unresolved=accepted.unclassifiedById.get(id);
+      if (!unresolved) return 'UNCLASSIFIED';
+      return (/withdrew before the war|withdrawal completed before the war/i.test(txt(unresolved.reason)) ||
+        (id==='US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(txt(record&&record.current_presence_status))) ||
+        (id==='US-RMELAN' && /Feb\. 23.*broader U\.S\. Syria withdrawal was underway/i.test(txt(record&&record.current_presence_status))))
+        ? 'PREWAR_DRAWDOWN' : 'PRESUMED_OPERABLE';
     };
     const s=node(article.ownerDocument,'section','content-section reader-facility-dashboard');
     s.dataset.readerFacilityDashboard='accepted-four-state-adjudication';
     s.dataset.facilityStatusAuthority='analysis.facility_operational_status';
     add(s,'h2','','Current facility status');
-    add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. Only facilities with an accepted four-state finding receive red, yellow, blue or green; every other tracked facility remains unclassified.`);
-    const order=['RED','YELLOW','BLUE','GREEN','UNCLASSIFIED'], groups=new Map(order.map(k=>[k,[]]));
-    map.forEach((r,id)=>groups.get(stateFor(id)).push([id,r]));
+    add(s,'p','lead-copy',`${map.size} tracked facilities. Red, yellow, blue and green show verified findings. Teal means assumed operating, not confirmed undamaged. Purple means a prewar withdrawal.`);
+    const order=['RED','YELLOW','BLUE','GREEN','PRESUMED_OPERABLE','PREWAR_DRAWDOWN','UNCLASSIFIED'], groups=new Map(order.map(k=>[k,[]]));
+    map.forEach((r,id)=>groups.get(stateFor(id,r)).push([id,r]));
     const bar=add(s,'div','reader-facility-status-bar');
     bar.setAttribute('role','img');
     bar.setAttribute('aria-label',order.map(k=>`${FACILITY_PUBLIC_STATE[k][0]}: ${groups.get(k).length}`).join('; '));
@@ -373,7 +381,7 @@
         add(c,'p','card-kicker',`Operational map state: ${FACILITY_PUBLIC_STATE[k][0]}`);
         const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Evidence through ${dates.at(-1)}`);
         const basis=txt(classified&&classified.basis||unresolved&&unresolved.reason||'No accepted four-state classification is available for this facility.');
-        add(c,'strong','',k==='UNCLASSIFIED'?'Why this remains unclassified':'Why this status is supported');add(c,'p','',basis);
+        add(c,'strong','',['UNCLASSIFIED','PRESUMED_OPERABLE','PREWAR_DRAWDOWN'].includes(k)?'What the record establishes':'Why this status is supported');add(c,'p','',basis);
         evidence(c,context,{...r,source_ids:[...new Set([...(r.source_ids||[]),...(classified&&classified.source_ids||[]),...(unresolved&&unresolved.source_ids||[])])]},'Evidence and sources');
       });
     });
@@ -644,13 +652,13 @@
       item.button=button;
     });
     const unavailable=add(modes,'p','economic-mode-unavailable',
-      'TREND unavailable: no accepted dated, same-metric observation series is established here. EVENT CONTEXT overlay unavailable: recorded events cannot be plotted as GDP forecast causation.');
+      'A price-over-time chart needs approved dated prices. These GDP figures compare forecasts, so a price trend is not shown here yet.');
     const introNode=article.querySelector('.page-intro');
     if(introNode)introNode.after(modes);else article.prepend(modes);
     if(viewItems.length)selected(viewItems[0]);
     const transmission=add(article,'section','content-section economic-transmission-visual');
     add(transmission,'h2','','Economic transmission: what is known, and what is only possible');
-    add(transmission,'p','section-note','These are distinct evidence classes, not a proven three-step causal sequence. No connecting arrow is implied.');
+    add(transmission,'p','section-note','Banking restrictions, reported economic effects and possible future effects are shown separately.');
     const lanes=add(transmission,'div','economic-transmission-lanes');
     const pathway=add(lanes,'article','economic-transmission-lane economic-mechanism');
     add(pathway,'p','card-kicker','SUPPORTED MECHANISM');
@@ -666,7 +674,7 @@
     add(potential,'p','card-kicker','POTENTIAL / WATCH · NOT AN OBSERVED RESULT');
     add(potential,'h3','','Further counterparty withdrawal');
     add(potential,'p','','Additional banks or shippers could withdraw from Iran-linked transactions if risks rise. This is a scenario to watch, not evidence that any particular route has stopped.');
-    add(transmission,'p','scope-note','Context relationship only: the presence of a legal mechanism and a reported trade decline does not prove one caused the other.');
+    add(transmission,'p','scope-note','The trade decline has several reported causes, including the war and sanctions.');
   }
 
   function hormuzTalks(article) {

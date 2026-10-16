@@ -748,6 +748,8 @@
           'YELLOW', 12,
           'BLUE', 9,
           'GREEN', 9,
+          'PRESUMED_OPERABLE', 9,
+          'PREWAR_DRAWDOWN', 9,
           9
         ],
         'circle-color': ['match', ['get', 'operationalStatus'],
@@ -755,6 +757,8 @@
           'YELLOW', '#e3bf4f',
           'BLUE', '#4f9ed8',
           'GREEN', '#56a86c',
+          'PRESUMED_OPERABLE', '#6bb5a9',
+          'PREWAR_DRAWDOWN', '#9c78d3',
           '#7d8993'
         ],
         'circle-stroke-color': '#080d13',

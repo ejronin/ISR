@@ -116,6 +116,12 @@
 .reader-status-segment.facility-green,
 .reader-facility-segment.facility-green,
 .reader-status-key.facility-green::before { background: #56a86c; }
+.reader-status-segment.facility-presumed,
+.reader-facility-segment.facility-presumed,
+.reader-status-key.facility-presumed::before { background: #6bb5a9; }
+.reader-status-segment.facility-drawdown,
+.reader-facility-segment.facility-drawdown,
+.reader-status-key.facility-drawdown::before { background: #9c78d3; }
 .reader-status-segment.facility-unclassified,
 .reader-facility-segment.facility-unclassified,
 .reader-status-key.facility-unclassified::before { background: #778390; }
