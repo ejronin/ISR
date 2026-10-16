@@ -331,7 +331,8 @@
     const unresolved = accepted.unclassifiedById.get(id);
     if (!unresolved) return 'UNCLASSIFIED';
     return (/withdrew before the war|withdrawal completed before the war/i.test(text(unresolved.reason)) ||
-      (id === 'US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(text(record && record.current_presence_status))))
+      (id === 'US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(text(record && record.current_presence_status))) ||
+      (id === 'US-RMELAN' && /Feb\. 23.*broader U\.S\. Syria withdrawal was underway/i.test(text(record && record.current_presence_status))))
       ? 'PREWAR_DRAWDOWN' : 'PRESUMED_OPERABLE';
   }
 
