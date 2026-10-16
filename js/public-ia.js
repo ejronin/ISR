@@ -2332,7 +2332,7 @@
       cameraModes: ['theater', 'gulf'],
       title: 'Facilities in the current record',
       records: mappedFacilities,
-      description: `${verifiedCount} bases have a verified damage/operating classification; ${presumedCount} are presumed operating without proof of an intact base; ${drawdownCount} had an accepted prewar withdrawal. Marker locations are approximate.`
+      description: `${verifiedCount} bases have a verified damage/operating classification; ${presumedCount} are presumed operating without proof of an intact base; ${drawdownCount} had an accepted prewar withdrawal. Map markers show the facility’s general location, not the exact point of impact.`
     }));
     appendFacilityStatusLegend(frame.article);
 
