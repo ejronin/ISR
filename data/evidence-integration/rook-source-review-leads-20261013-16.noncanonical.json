@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "ROOK_SOURCE_REVIEW_LEADS_NONCANONICAL",
+  "authority": "EVIDENCE_DISCOVERY_ONLY_NOT_ACCEPTED_FOR_PUBLICATION",
+  "review_date": "2026-10-16",
+  "latest_known_merged_canonical_cutoff": "2026-10-12T23:00:00-04:00",
+  "scope": {
+    "source_publication_start": "2026-10-13",
+    "source_publication_end": "2026-10-16",
+    "full_sweep_completed": false,
+    "missing_windows_not_backfilled": true,
+    "write_policy": "APPEND_ONLY_DISCOVERY_NO_CANONICAL_OR_RELEASE_MUTATION"
+  },
+  "source_leads": [
+    {
+      "discovery_id": "REC-20261013-AP-MARITIME",
+      "event_date": "2026-10-13",
+      "reported_date": "2026-10-13",
+      "category": "MARITIME_SECURITY",
+      "summary": "AP reports new projectile attacks on commercial vessels near Hormuz and references Iranian demands over unauthorized ship-to-ship transfers.",
+      "source_title": "Iran increases threat to Strait of Hormuz shipping, and other Middle East developments",
+      "source_url": "https://apnews.com/article/3e6e5f152048c035081eac369f62ed4f",
+      "disposition": "SOURCE_REPORT_ONLY",
+      "review": "Reconcile individual vessels, occurrence clocks, UKMTO incident IDs, attribution and existing canonical maritime entries before acceptance."
+    },
+    {
+      "discovery_id": "REC-20261014-REUTERS-IRGC-MARITIME",
+      "event_date": null,
+      "reported_date": "2026-10-14",
+      "category": "MARITIME_SECURITY",
+      "summary": "Reuters reports Iranian officials describing expanded targeting of ships that do not comply with Tehran's routing restrictions, extending threat geography into Gulf of Oman and waters near Qatar and UAE.",
+      "source_title": "Iran shifting tactics to step up attacks on shipping before US vote, officials say",
+      "source_url": "https://www.reuters.com/world/middle-east/iran-shifting-tactics-step-up-attacks-shipping-before-us-vote-officials-say-2026-10-14/",
+      "disposition": "ATTRIBUTED_REPORT",
+      "review": "Separate reported Iranian strategic intent from independently confirmed individual strikes and avoid duplicating recorded ship incidents."
+    },
+    {
+      "discovery_id": "REC-20261014-REUTERS-FERTILIZER",
+      "event_date": null,
+      "reported_date": "2026-10-14",
+      "category": "DIPLOMACY_TRADE_HUMANITARIAN",
+      "summary": "A UN official warns that the fertilizer-shipment corridor proposal requires U.S.-Iranian agreement and has not been implemented; potential consequences concern planting seasons and food imports.",
+      "source_title": "Failure to activate Hormuz fertilizer plan could trigger food crisis, UN official says",
+      "source_url": "https://www.reuters.com/world/middle-east/failure-activate-hormuz-fertilizer-plan-could-trigger-food-crisis-un-official-2026-10-14/",
+      "disposition": "SOURCE_REPORTED_PROPOSAL_AND_RISK",
+      "review": "Preserve proposal-versus-agreement distinction and attribute modeled or potential food impacts, not observed famine."
+    },
+    {
+      "discovery_id": "REC-20261015-US-TREASURY-IDB",
+      "event_date": "2026-10-15",
+      "reported_date": "2026-10-15",
+      "category": "SANCTIONS_FINANCE",
+      "summary": "U.S. Treasury/OFAC designate International Development Bank for Investment and Finance (Iraq) pursuant to EO 13902 for Iran financial-sector activity, plus associated offshore and shadow-banking actors; General License FF permits winding down specified IDB transactions.",
+      "source_title": "Operation Economic Outcast Targets Iran’s International Financial Networks and Shadow Banking Architecture",
+      "source_url": "https://home.treasury.gov/news/press-releases/sb0660",
+      "primary_confirmation_url": "https://ofac.treasury.gov/recent-actions/20261015",
+      "disposition": "PRIMARY_US_GOVERNMENT_DESIGNATION_CONFIRMED",
+      "review": "Extract exact SDN IDs, legal authority, effective date and General License FF scope; designation itself does not prove interrupted flows or particular quantified losses."
+    },
+    {
+      "discovery_id": "REC-20261015-AP-ADEN-PALACE",
+      "event_date": "2026-10-15",
+      "reported_date": "2026-10-15",
+      "category": "YEMEN_SECURITY",
+      "summary": "AP reports Houthi-claimed missile/drone strikes near the Maashiq government palace in Aden, with at least two reported dead and six injured in AP's cited initial count.",
+      "source_title": "2 killed in explosions near palace used by Yemen's government in latest Houthi attack",
+      "source_url": "https://apnews.com/article/ed4dcdad5cfd4b08033b1af5cf81dca5",
+      "disposition": "REPORTED_CASUALTIES_PROVISIONAL",
+      "review": "Other reports cite higher and later casualties; preserve source-specific counts and event/report clocks pending independent reconciliation."
+    },
+    {
+      "discovery_id": "REC-20261015-REUTERS-ARAMCO",
+      "event_date": null,
+      "reported_date": "2026-10-15",
+      "category": "ENERGY_INFRASTRUCTURE",
+      "summary": "Reuters describes Saudi Aramco's recent pipeline-damage repair and restart, with reported output rebound near 8 million barrels per day; this is company-reported/Reuters context, not proof all facilities are untouched or whole network recovered.",
+      "source_title": "How Aramco learned to keep pumping oil under fire",
+      "source_url": "https://www.reuters.com/business/energy/how-aramco-learned-keep-pumping-oil-under-fire-2026-10-15/",
+      "disposition": "SOURCE_REPORTED_COMPANY_OPERATION",
+      "review": "Identify line-specific strike, repair dates, throughput periods, source clocks, and overlap with existing East-West pipeline facts."
+    },
+    {
+      "discovery_id": "REC-20261016-REUTERS-LPG-BLOCKADE",
+      "event_date": null,
+      "reported_date": "2026-10-16",
+      "category": "SHIPPING_SANCTIONS",
+      "summary": "Reuters cites tanker tracking/UANI/SynMax showing at least eight LPG tankers and one jet-fuel tanker transited despite U.S. blockade since mid-July. These are source-identified cases, not all Iranian crude exports or blanket U.S. escort failures.",
+      "source_title": "Iran ships some LPG, jet fuel despite US blockade, data shows",
+      "source_url": "https://www.reuters.com/business/energy/iran-ships-some-lpg-jet-fuel-despite-us-blockade-data-shows-2026-10-16/",
+      "disposition": "SOURCE_REPORTED_VESSEL_TRACKING",
+      "review": "Reconcile tanker names, cargo types, ship-to-ship transfers, AIS deception, minimum counts and pre-existing export records; distinguish LPG/jet fuel from crude."
+    }
+  ],
+  "financial_data_qualification_handoff": {
+    "issue": 302,
+    "source": "https://www.eia.gov/dnav/pet/hist/RBRTED.htm",
+    "metric": "Europe Brent Spot Price FOB",
+    "publication_as_seen": "2026-10-15",
+    "unit": "USD per barrel physical spot",
+    "new_observations": [
+      {
+        "date": "2026-10-07",
+        "value": 126
+      },
+      {
+        "date": "2026-10-08",
+        "value": 130.18
+      },
+      {
+        "date": "2026-10-09",
+        "value": 130.03
+      },
+      {
+        "date": "2026-10-12",
+        "value": 129.95
+      },
+      {
+        "date": "2026-10-13",
+        "value": 125.78
+      },
+      {
+        "date": "2026-10-14",
+        "value": 126.55
+      }
+    ],
+    "future_data_not_inferred": true,
+    "original_41_research_samples_not_accepted_yet": true,
+    "note": "Verify every original and new row against official EIA source and distinct EIA STEO forecast before authorizing Economy read-model ingestion."
+  },
+  "required_next_lane": "Evidence Integration: de-duplicate against canonical sequence 35, separately resolve ROOK missing scheduled windows after Oct 12, register primary/source identifiers, adjudicate current effects and then generate a new signed public release. Discovery items must never render as accepted public claims."
+}
