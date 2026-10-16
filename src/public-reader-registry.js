@@ -348,13 +348,14 @@
     const all=[...records(context.model,'ledger.facilities'),...records(context.model,'gate3.facilities')], map=new Map();
     all.forEach(r=>{const id=r.facility_id||r.id||r.name;if(id)map.set(id,{...(map.get(id)||{}),...r,facility_id:id});});
     const accepted=facilityAdjudication(context);
-    const stateFor=id=>{
+    const stateFor=(id, record)=>{
       const row=accepted.classifiedById.get(id);
       const state=txt(row&&row.public_operational_state).toUpperCase();
       if (['RED','YELLOW','BLUE','GREEN'].includes(state)) return state;
       const unresolved=accepted.unclassifiedById.get(id);
       if (!unresolved) return 'UNCLASSIFIED';
-      return /withdrew before the war|withdrawal completed before the war/i.test(txt(unresolved.reason))
+      return (/withdrew before the war|withdrawal completed before the war/i.test(txt(unresolved.reason)) ||
+        (id==='US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(txt(record&&record.current_presence_status))))
         ? 'PREWAR_DRAWDOWN' : 'PRESUMED_OPERABLE';
     };
     const s=node(article.ownerDocument,'section','content-section reader-facility-dashboard');
@@ -363,7 +364,7 @@
     add(s,'h2','','Current facility status');
     add(s,'p','lead-copy',`${map.size} tracked facilities. Red, yellow, blue and green show verified findings. Teal means assumed operating, not confirmed undamaged. Purple means a prewar withdrawal.`);
     const order=['RED','YELLOW','BLUE','GREEN','PRESUMED_OPERABLE','PREWAR_DRAWDOWN','UNCLASSIFIED'], groups=new Map(order.map(k=>[k,[]]));
-    map.forEach((r,id)=>groups.get(stateFor(id)).push([id,r]));
+    map.forEach((r,id)=>groups.get(stateFor(id,r)).push([id,r]));
     const bar=add(s,'div','reader-facility-status-bar');
     bar.setAttribute('role','img');
     bar.setAttribute('aria-label',order.map(k=>`${FACILITY_PUBLIC_STATE[k][0]}: ${groups.get(k).length}`).join('; '));
