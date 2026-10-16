@@ -86,7 +86,12 @@ for (const phrase of [
   'Open the Lie Ledger'
 ]) assert(source.includes(phrase), `missing owner-required reader contract: ${phrase}`);
 assert(source.includes("modelData(model, 'analysis.facility_operational_status')"), 'facility map does not consume the accepted operational-status adjudication');
-assert(source.includes("_visualOperationalStatus: acceptedFacilityOperationalState(accepted)"), 'facility map does not pass accepted states directly to the renderer');
+assert(source.includes("_visualOperationalStatus: facilityPresentationState(id, adjudication)"), 'facility map must carry explicit accepted or clearly-labelled presentation status');
+assert(source.includes("const accepted = acceptedFacilityOperationalState(adjudication.classifiedById.get(id))"), 'four-state evidence classification must take precedence over the display-only assumption');
+assert(source.includes("'PREWAR_DRAWDOWN'") && source.includes("'PRESUMED_OPERABLE'"), 'facility display must distinguish prewar withdrawal from assumed operating status');
+assert(source.includes("'Teal means presumed operating") && source.includes('Purple identifies an accepted prewar withdrawal'), 'map legend must explain distinct non-adjudicated display states');
+assert(read('js/public-visualization-renderer.js').includes("'PREWAR_DRAWDOWN', '#9c78d3'"), 'purple prewar withdrawal marker color missing');
+assert(read('js/public-visualization-renderer.js').includes("'PRESUMED_OPERABLE', '#6bb5a9'"), 'teal presumed-operation marker color missing');
 assert(!source.includes('function facilityMapStatus('), 'facility colors are being inferred inside the renderer instead of supplied by evidence authority');
 assert(!readerLayerSource.includes('positiveDamage'), 'reader support still infers facility state from damage/presence text');
 assert(!readerRegistrySource.includes("'US-INCIRLIK':['operating'"), 'reader registry still hard-codes the superseded Incirlik operating bucket');
