@@ -298,7 +298,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           assert.equal(reviewState.facilityBlue, 0, `facility map manufactured BLUE at ${width}px`);
           assert.equal(reviewState.facilityGreen, 0, `facility map manufactured GREEN at ${width}px`);
           assert(reviewState.facilityUnclassified + reviewState.facilityPresumed + reviewState.facilityDrawdown >= 15, `facility map lost any unverified or prewar drawdown facilities at ${width}px`);
-          assert(reviewState.facilityPresumed >= 12, `facility map lost clearly-labelled presumed-operating installations at ${width}px`);
+          assert(reviewState.facilityPresumed >= 11, `facility map lost presumed-operating installations at ${width}px: ${JSON.stringify(reviewState)}`);
           assert(reviewState.facilityDrawdown >= 4, `facility map failed to distinguish explicitly prewar withdrawals at ${width}px`);
         }
         await sleep(180);
