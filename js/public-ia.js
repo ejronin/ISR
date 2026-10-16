@@ -2270,7 +2270,7 @@
     PREWAR_DRAWDOWN: 'Prewar withdrawal / drawdown'
   });
 
-  function facilityPresentationState(id, adjudication) {
+  function facilityPresentationState(id, adjudication, facility) {
     const accepted = acceptedFacilityOperationalState(adjudication.classifiedById.get(id));
     if (accepted) return accepted;
     const unresolved = adjudication.unclassifiedById.get(id);
@@ -2278,7 +2278,8 @@
     const note = String(unresolved.reason || '');
     // This is presentation policy, not a replacement for the accepted four-state finding.
     // Require an explicit *prewar* withdrawal. Ambiguous 'before/early war' stays presumed.
-    if (/withdrew before the war|withdrawal completed before the war/i.test(note)) return 'PREWAR_DRAWDOWN';
+    if (/withdrew before the war|withdrawal completed before the war/i.test(note) ||
+        (id === 'US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(String(facility && facility.current_presence_status || '')))) return 'PREWAR_DRAWDOWN';
     return 'PRESUMED_OPERABLE';
   }
 
@@ -2321,7 +2322,7 @@
     const adjudication = facilityOperationalAdjudication(context.model);
     const mappedFacilities = facilities.map(facility => {
       const id = String(facility.facility_id || facility.id || '');
-      return { ...facility, _visualOperationalStatus: facilityPresentationState(id, adjudication) };
+      return { ...facility, _visualOperationalStatus: facilityPresentationState(id, adjudication, facility) };
     });
     const verifiedCount = adjudication.classified.length;
     const presumedCount = mappedFacilities.filter(item => item._visualOperationalStatus === 'PRESUMED_OPERABLE').length;
@@ -2366,7 +2367,7 @@
       const id = String(facility.facility_id || facility.id || '');
       const accepted = adjudication.classifiedById.get(id);
       const unresolved = adjudication.unclassifiedById.get(id);
-      const publicState = facilityPresentationState(id, adjudication);
+      const publicState = facilityPresentationState(id, adjudication, facility);
       const mapState = FACILITY_PRESENTATION_STATE_LABELS[publicState] || 'Unclassified';
       const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id);
       const sourceContext = facilitySourceContext(facility);
