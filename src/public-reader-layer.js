@@ -303,6 +303,8 @@
     YELLOW: { label: 'Damaged; parts inoperable', className: 'facility-yellow' },
     BLUE: { label: 'Damaged; operable', className: 'facility-blue' },
     GREEN: { label: 'Untouched', className: 'facility-green' },
+    PRESUMED_OPERABLE: { label: 'Presumed operating (not verified)', className: 'facility-presumed' },
+    PREWAR_DRAWDOWN: { label: 'Prewar withdrawal / drawdown', className: 'facility-drawdown' },
     UNCLASSIFIED: { label: 'Unclassified', className: 'facility-unclassified' }
   });
 
@@ -320,6 +322,16 @@
     const id = text(record && (record.facility_id || record.id || record.name));
     const state = acceptedStateById instanceof Map ? text(acceptedStateById.get(id)).toUpperCase() : '';
     return Object.prototype.hasOwnProperty.call(FACILITY_STATUS, state) && state !== 'UNCLASSIFIED' ? state : 'UNCLASSIFIED';
+  }
+
+  function facilityDisplayStatus(record, accepted) {
+    const id = text(record && (record.facility_id || record.id || record.name));
+    const verified = facilityStatus(record, accepted.classifiedById);
+    if (verified !== 'UNCLASSIFIED') return verified;
+    const unresolved = accepted.unclassifiedById.get(id);
+    if (!unresolved) return 'UNCLASSIFIED';
+    return /withdrew before the war|withdrawal completed before the war/i.test(text(unresolved.reason))
+      ? 'PREWAR_DRAWDOWN' : 'PRESUMED_OPERABLE';
   }
 
   function facilityDate(record) {
@@ -354,7 +366,7 @@
     dashboard.dataset.readerFacilityDashboard = VERSION;
     dashboard.dataset.facilityStatusAuthority = 'analysis.facility_operational_status';
     append(dashboard, 'h2', '', 'Facility status by actor');
-    append(dashboard, 'p', 'section-note', 'Only accepted four-state facility findings receive a status color. Facilities without an accepted four-state finding remain unclassified and neutral.');
+    append(dashboard, 'p', 'section-note', 'The original four colors show verified findings. Teal marks presumed operation, not confirmed intact condition. Purple marks prewar withdrawals.');
     const groups = new Map();
     facilityRecords.forEach(record => {
       const actor = normalizeActor(record);
@@ -367,12 +379,12 @@
       if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
       return a.localeCompare(b);
     });
-    const statusOrder = ['RED', 'YELLOW', 'BLUE', 'GREEN', 'UNCLASSIFIED'];
+    const statusOrder = ['RED', 'YELLOW', 'BLUE', 'GREEN', 'PRESUMED_OPERABLE', 'PREWAR_DRAWDOWN', 'UNCLASSIFIED'];
     sortedGroups.forEach(([actor, facilities]) => {
       const panel = append(dashboard, 'section', 'reader-facility-actor');
       append(panel, 'h3', '', actor);
       const buckets = new Map(statusOrder.map(key => [key, []]));
-      facilities.forEach(record => buckets.get(facilityStatus(record, accepted.classifiedById)).push(record));
+      facilities.forEach(record => buckets.get(facilityDisplayStatus(record, accepted)).push(record));
       const denominator = facilities.length;
       const bar = append(panel, 'div', 'reader-status-bar');
       bar.setAttribute('role', 'img');
