@@ -110,11 +110,13 @@
       "event_date": null,
       "reported_date": "2026-10-19",
       "category": "REGIONAL_DIPLOMACY",
-      "summary": "Egyptian president sought parliamentary authorization to assist Saudi defense if asked. Reuters says vote was expected October 26. This is a conditional authorization process, not a troop deployment or operational Egyptian participation.",
+      "summary": "Egypt's National Defence Council approved providing support if Saudi Arabia requests assistance, but President Sisi separately sought the required parliamentary authorization for possible deployment. Reuters reported October 19 that parliament postponed the vote until October 26. Neither the conditional defense policy nor postponement proves Egyptian units deployed.",
       "source_title": "What's behind Egypt's move towards possible military involvement in Saudi-Yemen conflict?",
       "source_url": "https://www.reuters.com/world/middle-east/whats-behind-egypts-move-towards-possible-military-involvement-saudi-yemen-2026-10-19/",
       "disposition": "CONDITIONAL_PROPOSAL_NOT_DEPLOYMENT",
-      "review": "Verify exact presidential request date, parliamentary vote date and later legislative action separately. Do not assign forces or depict as active coalition until confirmed."
+      "review": "Separate October 18 National Defence Council decision from required two-thirds parliamentary vote, now postponed to October 26 per Reuters October 19. Verify any later authorization, Saudi request, or physical deployment before rendering Egypt as an active combat participant.",
+      "additional_source_url": "https://www.reuters.com/world/middle-east/egypt-delays-vote-military-support-saudi-arabia-until-october-26-2026-10-19/",
+      "primary_corroboration_url": "https://apnews.com/article/f7d499cb13525df2bc7eb318e0fc1404"
     },
     {
       "discovery_id": "REC-20261019-REUTERS-OIL-KPLER",
@@ -181,6 +183,61 @@
       "source_url": "https://www.reuters.com/world/middle-east/trump-move-restart-direct-us-flights-with-lebanon-hits-roadblock-2026-10-16/",
       "disposition": "AVIATION_REQUIREMENT_PENDING",
       "review": "Seek ICAO/FAA/Lebanese primary technical notices and airline decisions; do not classify the airport inoperable merely because certification blocks specific US flights."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-SAUDI-FII-POSTPONED",
+      "event_date": "2026-10-19",
+      "reported_date": "2026-10-19",
+      "category": "ECONOMICS_COMMERCIAL_DISRUPTION",
+      "summary": "Saudi Arabia's organizers postponed the October 26–29 Future Investment Initiative conference until 2027 following recent deadly attacks. This is a confirmed conference postponement, not evidence all Saudi investment activity or future trade is halted.",
+      "source_title": "Saudi FII postpones flagship conference until 2027",
+      "source_url": "https://www.reuters.com/world/middle-east/saudi-fii-postpones-flagship-conference-until-2027-2026-10-19/",
+      "disposition": "SOURCE_REPORTED_CONFIRMED_EVENT_POSTPONEMENT",
+      "review": "Check FII organizer's dated announcement and exact future scheduling; add named conference impact separately from sector-wide economics."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-GCC-EQUITIES",
+      "event_date": "2026-10-19",
+      "reported_date": "2026-10-19",
+      "category": "FINANCIAL_MARKETS_REGIONAL",
+      "summary": "Reuters October 19 Gulf close: Saudi main index -0.7%, Dubai -0.3%, Abu Dhabi -0.3%, Qatar flat at six-year low, Egypt EGX30 +0.4%. Reuters notes Brent futures -1.32% to about $108.41/b; equity closes, futures market observations and an EIA physical spot chart are separate metrics. Price action cannot be attributed solely to war.",
+      "source_title": "Gulf bourses subdued as regional worries weigh",
+      "source_url": "https://www.reuters.com/world/middle-east/gulf-bourses-subdued-regional-worries-weigh-2026-10-19/",
+      "disposition": "SOURCE_REPORTED_MARKET_CLOSE_MULTI_DRIVER",
+      "review": "Verify exchange close and FX conversion, Reuters publication clock, instrument contract and October 18 levels; compare accepted regional economy source and retain index return units."
+    },
+    {
+      "discovery_id": "REC-20261018-AP-EGYPT-NSC",
+      "event_date": "2026-10-18",
+      "reported_date": "2026-10-18",
+      "category": "REGIONAL_DEFENSE_DIPLOMACY",
+      "summary": "AP reports that Egypt's National Defence Council agreed to help Saudi Arabia defend against Houthi attacks if requested. This is a high-level authorization signal, distinct from required parliamentary authorization and from any confirmed Egyptian military deployment.",
+      "source_title": "Egypt's top security body agrees to help Saudi Arabia defend itself against Houthi attacks",
+      "source_url": "https://apnews.com/article/f7d499cb13525df2bc7eb318e0fc1404",
+      "disposition": "CONDITIONAL_POLICY_NOT_OPERATION",
+      "review": "Reconcile with October 19 Reuters postponed parliamentary vote; ensure neither statement is represented as troops arriving."
+    },
+    {
+      "discovery_id": "REC-20261018-WAPO-IRAN-ELECTORAL-STRATEGY",
+      "event_date": null,
+      "reported_date": "2026-10-18",
+      "category": "IRAN_ACTOR_INTENT_MEDIA_REPORT",
+      "summary": "The Washington Post reports Iranian officials describing stronger Hormuz disruption as a means to impose fuel price pressure ahead of the November 2026 US midterms. Attribution is reported official strategic intent, not proof every attack had the same motivation or that it changes US election outcomes.",
+      "source_title": "Tehran seeks to punish Trump in midterms with oil price pain, Iranian officials say",
+      "source_url": "https://www.washingtonpost.com/world/2026/10/18/tehran-seeks-punish-trump-midterms-with-oil-price-pain-iranian-officials-say/",
+      "disposition": "ATTRIBUTED_INTENT_CLAIM_NOT_OPERATIONAL_PROOF",
+      "review": "Extract precisely attributed quotes and distinguish observable kinetic actions from official/anonymous explanations and separate existing Iran sanctions-pressure claims."
+    },
+    {
+      "discovery_id": "REC-20261019-GUARDIAN-CONTAINER-DAMAGE",
+      "event_date": null,
+      "reported_date": "2026-10-19",
+      "category": "HORMUZ_MARITIME_HUMANITARIAN",
+      "summary": "The Guardian reports cargo spilling from damaged container ships near Hormuz, locals scavenging cargo, and warnings about environmental contamination; its report mentions at least 15 container ship attacks over a 10-day window. The denominator differs from Reuters confirmed incident counts and should not be added to them.",
+      "source_title": "People scour strait of Hormuz for spilt cargo after Iran attacks container ships",
+      "source_url": "https://www.theguardian.com/world/2026/oct/19/strait-of-hormuz-spilt-cargo-iran-attacks-container-ships",
+      "disposition": "SOURCE_REPORTED_COUNT_AND_ENVIRONMENTAL_RISK",
+      "review": "Identify hulls/IMO and casualty/cargo damage, avoid asserting pollutant volumes or exact location without evidence, reconcile count universe, overlap and interval with UKMTO/Reuters incidents."
     }
   ],
   "release_gate": {
