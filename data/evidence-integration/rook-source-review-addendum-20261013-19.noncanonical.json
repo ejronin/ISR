@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "ROOK_SOURCE_REVIEW_ADDENDUM_NONCANONICAL",
+  "authority": "EVIDENCE_DISCOVERY_ONLY_NOT_ACCEPTED_FOR_PUBLICATION",
+  "review_date": "2026-10-19",
+  "latest_known_merged_canonical_cutoff": "2026-10-12T23:00:00-04:00",
+  "scope": {
+    "source_publication_start": "2026-10-14",
+    "source_publication_end": "2026-10-19",
+    "full_sweep_completed": false,
+    "scheduled_rook_windows_executed": false,
+    "missing_windows_not_backfilled": true,
+    "clock_precision": "PUBLICATION_DATE_UNLESS_EXPLICITLY_STATED_IN_PRIMARY_OR_WIRE",
+    "write_policy": "APPEND_ONLY_DISCOVERY_NO_CANONICAL_OR_RELEASE_MUTATION",
+    "prior_intake": "data/evidence-integration/rook-source-review-leads-20261013-16.noncanonical.json"
+  },
+  "source_leads": [
+    {
+      "discovery_id": "REC-20261014-AP-MINE-SINKING",
+      "event_date": "2026-10-14",
+      "reported_date": "2026-10-14",
+      "category": "MARITIME_SECURITY",
+      "summary": "AP reports Singapore identified two vessels struck by projectiles near Hormuz and that one sank. Iranian statements separately attributed a sinking to a naval mine and alleged routing violations. Do not equate the vessels or mechanisms without hull identity evidence.",
+      "source_title": "Iran says a ship sank after striking a mine in Strait of Hormuz, and other Middle East developments",
+      "source_url": "https://apnews.com/article/7e2c57a29fd5c3afc7ffe0cf63954bf3",
+      "disposition": "CONFLICTING_MECHANISM_AND_HULL_IDENTIFICATION",
+      "review": "Reconcile Singapore flag records, IMO number, coordinates, imagery and UKMTO reporting; avoid counting one sinking twice. Do not infer lawful Iranian jurisdiction from its allegations."
+    },
+    {
+      "discovery_id": "REC-20261015-REUTERS-GULF-INFRASTRUCTURE",
+      "event_date": null,
+      "reported_date": "2026-10-15",
+      "category": "MILITARY_INFRASTRUCTURE_BDA",
+      "summary": "Reuters visual investigation identifies at least 135 reported Iranian drone and missile attacks on at least 84 Gulf civilian infrastructure sites since February 28, with named equipment-level damage and site-specific uncertainty. These are retrospective cumulative investigative counts, not new October 15 attacks or a blanket operational-outage finding.",
+      "source_title": "Iran’s precision strikes picked apart Gulf infrastructure, blunting US war plans",
+      "source_url": "https://www.reuters.com/investigates/special-report/iran-crisis-infrastructure-attacks/",
+      "disposition": "RETROSPECTIVE_SOURCE_REVIEW",
+      "review": "Extract geolocated incidents, verify original occurrence times and cross-reference accepted strike/site IDs. Preserve existing four-state base adjudication and identify any candidate fact upgrades exclusively through Evidence Integration."
+    },
+    {
+      "discovery_id": "REC-20261015-TREASURY-FINCEN-KHUMS",
+      "event_date": "2026-10-15",
+      "reported_date": "2026-10-15",
+      "category": "SANCTIONS_FINANCE_COMPLIANCE",
+      "summary": "US Treasury FinCEN issued an alert concerning potential diversion of religious charity networks and khums; this is a financial-institution reporting alert, not an OFAC designation or evidence that a named payment was stopped.",
+      "source_title": "Operation Economic Outcast Targets Iranian Regime’s Abuse of Religious Charity Networks",
+      "source_url": "https://home.treasury.gov/news/press-releases/sb0661",
+      "disposition": "PRIMARY_US_GOVERNMENT_ALERT",
+      "review": "Capture exact FinCEN alert identifier and reported indicators, distinguish reporting obligations from legal asset blocking, and link without double counting the October 15 OFAC designations already staged."
+    },
+    {
+      "discovery_id": "REC-20261016-REUTERS-VLCC-RATES",
+      "event_date": null,
+      "reported_date": "2026-10-16",
+      "category": "SHIPPING_ECONOMICS",
+      "summary": "Reuters reports Baltic Exchange Gulf of Oman-to-China VLCC freight assessment about 776 Worldscale, down from 841 the prior week. Despite falling, freight rates remained near elevated records. This is a route-specific freight index, not a spot oil price or realized shipment cost for all vessels.",
+      "source_title": "Supertanker rates fall from record highs",
+      "source_url": "https://www.reuters.com/business/energy/supertanker-rates-fall-record-highs-2026-10-16/",
+      "disposition": "SOURCE_REPORTED_MARKET_OBSERVATION",
+      "review": "Check observation timestamp, precise Worldscale route contract and index lineage before inserting into dated economics; do not mix Worldscale points, freight dollar totals and Brent prices."
+    },
+    {
+      "discovery_id": "REC-20261017-AP-HOUSEHOLD-PRICE-EFFECTS",
+      "event_date": null,
+      "reported_date": "2026-10-17",
+      "category": "ECONOMIC_CONSEQUENCES",
+      "summary": "AP reports differentiated US household retail and transport cost effects from the Iran war, noting uneven pass-through and company absorption; not a single verified war-only inflation coefficient.",
+      "source_title": "Retail price impacts from the Iran war are uneven but add up for US households before midterms",
+      "source_url": "https://apnews.com/article/839cad4e83990c95385558906dfa1f92",
+      "disposition": "ECONOMIC_CONTEXT_REVIEW",
+      "review": "Separate published data from estimates, periods and attribution assumptions; verify source datasets before promoting price percentage comparisons to accepted quantitative charts."
+    },
+    {
+      "discovery_id": "REC-20261018-IRGC-HORMUZ-MINE-TANKERS",
+      "event_date": "2026-10-18",
+      "reported_date": "2026-10-18",
+      "category": "MARITIME_SECURITY",
+      "summary": "Iranian IRGC statements alleged tanker mine strikes/fire in the southern Strait of Hormuz. Reuters reported one tanker fire and explosion as an Iranian claim; Al Jazeera/AFP reported an Iranian claim of two tankers. Independent vessel identity, casualty and damage confirmation not yet established in the collected material.",
+      "source_title": "Iran says two tankers catch fire after hitting mines in Strait of Hormuz",
+      "source_url": "https://www.aljazeera.com/news/2026/10/18/iran-says-two-tankers-catch-fire-after-hitting-mines-in-strait-of-hormuz",
+      "corroborating_source_url": "https://www.reuters.com/business/energy/oil-slips-trumps-sanction-waiver-may-lead-more-russian-fuel-supplies-2026-10-18/",
+      "disposition": "IRGC_ATTRIBUTED_HULL_COUNT_CONFLICT",
+      "review": "Resolve one-versus-two reporting, IMO/hull identity and UKMTO cases; independently verify strike mechanism before any map strike or loss update. Do not treat Iranian unlawful-route claim as international law."
+    },
+    {
+      "discovery_id": "REC-20261018-REUTERS-HORMUZ-PROPOSAL",
+      "event_date": "2026-10-18",
+      "reported_date": "2026-10-18",
+      "category": "DIPLOMACY_HORMUZ",
+      "summary": "Iranian Foreign Minister Abbas Araqchi said the mid-September offer for a conditional reopening of Hormuz remained on the table and that Iran was reviewing a US response. Seven conditions and US nuclear-first requirements remain disputed; no signed reopening agreement established.",
+      "source_title": "Iran urges US to accept proposal to reopen Strait of Hormuz",
+      "source_url": "https://www.reuters.com/world/middle-east/iran-urges-us-accept-proposal-reopen-strait-hormuz-2026-10-18/",
+      "disposition": "ATTRIBUTED_DIPLOMATIC_POSITION_NOT_AGREEMENT",
+      "review": "Compare with accepted prior seven-condition position and US response. Update one existing diplomatic position rather than add a false new treaty or concession."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-AP-SHABWA",
+      "event_date": "2026-10-19",
+      "reported_date": "2026-10-19",
+      "category": "YEMEN_MILITARY_CASUALTIES",
+      "summary": "Reuters and AP report an October 19 Houthi ballistic missile strike on a Yemeni government security-force training camp in Shabwa province. Local government authorities reported 53 dead and roughly 200 injured; Houthis claimed responsibility and alleged Saudi control of the site, not independently verified.",
+      "source_title": "Houthi attack kills 53 at Yemen government training camp, officials say",
+      "source_url": "https://www.reuters.com/world/least-18-killed-houthi-attack-yemeni-government-military-camp-shabwa-sources-say-2026-10-19/",
+      "corroborating_source_url": "https://apnews.com/article/6afad4ec4c22dcccd379152ea87cb0e2",
+      "disposition": "MULTISOURCE_REPORTED_WITH_PROVISIONAL_CASUALTIES",
+      "review": "Record unique Shabwa attack and source-specific provisional casualty counts, separate from Aden October 15 attack and Riyadh October 10/11 tallies. Verify latest revisions before any aggregate adjustment."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-EGYPT-SAUDI-SUPPORT",
+      "event_date": null,
+      "reported_date": "2026-10-19",
+      "category": "REGIONAL_DIPLOMACY",
+      "summary": "Egyptian president sought parliamentary authorization to assist Saudi defense if asked. Reuters says vote was expected October 26. This is a conditional authorization process, not a troop deployment or operational Egyptian participation.",
+      "source_title": "What's behind Egypt's move towards possible military involvement in Saudi-Yemen conflict?",
+      "source_url": "https://www.reuters.com/world/middle-east/whats-behind-egypts-move-towards-possible-military-involvement-saudi-yemen-2026-10-19/",
+      "disposition": "CONDITIONAL_PROPOSAL_NOT_DEPLOYMENT",
+      "review": "Verify exact presidential request date, parliamentary vote date and later legislative action separately. Do not assign forces or depict as active coalition until confirmed."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-OIL-KPLER",
+      "event_date": null,
+      "reported_date": "2026-10-19",
+      "category": "ECONOMICS_SHIPPING_FLOW",
+      "summary": "Reuters reports Kpler estimate of seven-day average Gulf crude flow roughly 8.5 million barrels per day last week versus more than 20 million the week before, and at least 10 confirmed commercial vessel incidents over last week. October 19 Brent and WTI figures in the same Reuters article are intraday futures quotes, not EIA Europe Brent physical spot observations.",
+      "source_title": "Oil edges higher as investors weigh renewed Houthi attacks on Saudi infrastructure",
+      "source_url": "https://www.reuters.com/business/energy/oil-slips-trumps-sanction-waiver-may-lead-more-russian-fuel-supplies-2026-10-18/",
+      "disposition": "PROVIDER_SPECIFIC_FLOW_ESTIMATE_AND_FUTURES",
+      "review": "Determine Kpler observation dates, cargo/type vessel universe, provider methodology and whether counts overlap October 13-18 cases. Keep futures, spot, weekly flow and incident counts in separate series; avoid attributing all changes solely to Iran."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-IRGC-SAUDI-CLAIMS",
+      "event_date": "2026-10-19",
+      "reported_date": "2026-10-19",
+      "category": "SAUDI_HOUTHI_ATTRIBUTION",
+      "summary": "Houthis claimed new attacks on Yanbu/Aramco, Shaybah oilfield, Riyadh King Khalid International Airport and Abha airport. Reuters says Saudi authorities had not immediately confirmed the claims and could not independently verify them.",
+      "source_title": "Oil edges higher as investors weigh renewed Houthi attacks on Saudi infrastructure",
+      "source_url": "https://www.reuters.com/business/energy/oil-slips-trumps-sanction-waiver-may-lead-more-russian-fuel-supplies-2026-10-18/",
+      "disposition": "ACTOR_CLAIMS_UNVERIFIED",
+      "review": "Keep claim-only lane; seek Saudi official, independent imagery or local corroboration for each site. No automatic facility status revision or damages."
+    },
+    {
+      "discovery_id": "REC-20261019-REUTERS-IRAN-RUSSIA-DIPLOMACY",
+      "event_date": "2026-10-19",
+      "reported_date": "2026-10-19",
+      "category": "DIPLOMACY_FOREIGN_MINISTERS",
+      "summary": "Iranian Foreign Minister Araqchi spoke at a joint press conference with Russian Foreign Minister Lavrov in Tehran, accused the US of causing Hormuz insecurity and called for diplomacy and regional security arrangements. Statements are positions, not proof a Russia-Iran security or US-Iran agreement was signed.",
+      "source_title": "Iran's Araqchi blames US for Strait of Hormuz tensions, calls for diplomacy",
+      "source_url": "https://www.reuters.com/world/irans-araqchi-blames-us-strait-hormuz-tensions-calls-diplomacy-2026-10-19/",
+      "disposition": "ATTRIBUTED_DIPLOMATIC_STATEMENTS",
+      "review": "Capture exact statements and Russia response, de-duplicate existing positions; do not infer mutual defense commitment or a negotiated outcome."
+    }
+  ],
+  "release_gate": {
+    "status": "BLOCKED_PENDING_EVIDENCE_INTEGRATION",
+    "requirements": [
+      "Check source publication/update clocks and incident occurrence clocks",
+      "Reconcile source IDs, vessel identity, actor attribution, location and accepted prior records",
+      "Apply independent corroboration without collapsing actor claims into confirmed effects",
+      "Construct source-backed canonical packet and register through standard manifest pipeline",
+      "Qualify exact merged commit, deploy and attest live public bytes"
+    ],
+    "protected_facts": [
+      "No current WOL/Lie Ledger or facility adjudications rewritten by this intake",
+      "No market research series promoted to signed chart",
+      "No claim of noon/midnight ROOK runs performed"
+    ]
+  }
+}
