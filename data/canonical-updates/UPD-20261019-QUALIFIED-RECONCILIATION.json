@@ -1,0 +1,458 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261019-QUALIFIED-RECONCILIATION",
+  "known_at": "2026-10-19T14:57:19-04:00",
+  "evidence_cutoff": "2026-10-19T14:55:19-04:00",
+  "summary": "Source-reviewed selective October 14–19 reconciliation: independently supported government sanctions and compliance actions, Shabwa casualties, Saudi commercial/diplomatic postponements, Hormuz shipping incidents and flow estimates, market/freight observations, and attributed diplomacy/actor claims. Does NOT claim complete ROOK 12-hour sweep coverage, verify every alleged mine/strike or change WOL, accepted facility judgments, protected financial series, or independent operational conclusions. Scheduled collection gaps remain open.",
+  "sources": [
+    {
+      "source_id": "SRC-2EB5F988C64F",
+      "url": "https://home.treasury.gov/news/press-releases/sb0660",
+      "source_role": "US Treasury October 15 primary source: designation of Iraq International Development Bank and associated sanctions-evasion networks; US effectiveness claims are not independently proven"
+    },
+    {
+      "source_id": "SRC-B85136241753",
+      "url": "https://ofac.treasury.gov/recent-actions/20261015",
+      "source_role": "OFAC October 15 primary action and Iran General License FF wind-down; legal effect separate from physical trade disruption"
+    },
+    {
+      "source_id": "SRC-BCB4E528926E",
+      "url": "https://www.fincen.gov/news/news-releases/operation-economic-outcast-targets-iranian-regimes-abuse-religious-charity",
+      "source_role": "FinCEN primary October 15 suspicious-activity alert concerning khums/religious charity diversion; alert, not designation"
+    },
+    {
+      "source_id": "SRC-E7E527D7BE72",
+      "url": "https://www.reuters.com/world/middle-east/eu-gulf-states-postpone-summit-due-saudi-arabia-2026-10-15/",
+      "source_role": "Reuters October 15 reports official GCC/EU postponement of planned October 24 Riyadh summit"
+    },
+    {
+      "source_id": "SRC-A4BA2198BAFF",
+      "url": "https://www.theguardian.com/world/2026/oct/19/strait-of-hormuz-spilt-cargo-iran-attacks-container-ships",
+      "source_role": "Guardian October 19 later imagery/report of October 14 GFS Pride sinking, separate claimant descriptions of mine mechanism; UKMTO counts and reports have distinct scope"
+    },
+    {
+      "source_id": "SRC-9BA3999BDEDE",
+      "url": "https://www.reuters.com/business/energy/yemens-houthis-vow-more-attacks-saudi-airports-oil-facilities-after-aramco-hq-2026-10-14/",
+      "source_role": "Reuters October 14 Saudi Aramco HQ reported strike and divergent damage accounts; no inference of complete outage"
+    },
+    {
+      "source_id": "SRC-E41EE4031752",
+      "url": "https://www.reuters.com/business/energy/supertanker-rates-fall-record-highs-2026-10-16/",
+      "source_role": "Reuters October 16 Baltic Exchange Gulf of Oman-to-China VLCC Worldscale rate series; no conversion to crude price"
+    },
+    {
+      "source_id": "SRC-3DCECE272758",
+      "url": "https://www.reuters.com/world/middle-east/iran-urges-us-accept-proposal-reopen-strait-hormuz-2026-10-18/",
+      "source_role": "Reuters October 18 Iranian foreign minister negotiating position; not a signed agreement"
+    },
+    {
+      "source_id": "SRC-3542824EBE0D",
+      "url": "https://www.reuters.com/business/energy/oil-slips-trumps-sanction-waiver-may-lead-more-russian-fuel-supplies-2026-10-18/",
+      "source_role": "Reuters October 19 updated market report with Kpler seven-day Gulf crude-flow estimates and attributed Saudi/Hormuz claims"
+    },
+    {
+      "source_id": "SRC-4DEEFD2CB947",
+      "url": "https://www.reuters.com/world/least-18-killed-houthi-attack-yemeni-government-military-camp-shabwa-sources-say-2026-10-19/",
+      "source_role": "Reuters October 19 Shabwa attack, 53 killed/200 injured local-government count and video verification; actor responsibility claimed"
+    },
+    {
+      "source_id": "SRC-3CE3E5DA3B99",
+      "url": "https://apnews.com/article/6afad4ec4c22dcccd379152ea87cb0e2",
+      "source_role": "AP October 19 independent reporting Shabwa strike with at least 53 killed and more than 200 injured; casualty totals provisional"
+    },
+    {
+      "source_id": "SRC-CE7510DC8BA6",
+      "url": "https://www.reuters.com/world/middle-east/saudi-fii-postpones-flagship-conference-until-2027-2026-10-19/",
+      "source_role": "Reuters October 19 cites official organizer confirmation that Riyadh FII postponed from October 26-29 to 2027"
+    },
+    {
+      "source_id": "SRC-2232F768DE48",
+      "url": "https://www.reuters.com/world/middle-east/whats-behind-egypts-move-towards-possible-military-involvement-saudi-yemen-2026-10-19/",
+      "source_role": "Reuters October 19 Egyptian president request for conditional Saudi defense authorization; parliamentary vote pending"
+    },
+    {
+      "source_id": "SRC-7B3F25B60BBF",
+      "url": "https://www.reuters.com/world/middle-east/gulf-bourses-subdued-regional-worries-weigh-2026-10-19/",
+      "source_role": "Reuters October 19 GCC market closes and Brent futures; not economic causal proof or EIA physical spot series"
+    },
+    {
+      "source_id": "SRC-D974CBD7693C",
+      "url": "https://www.reuters.com/world/irans-araqchi-blames-us-strait-hormuz-tensions-calls-diplomacy-2026-10-19/",
+      "source_role": "Reuters October 19 Iranian and Russian foreign ministers press remarks, official positions not treaties"
+    },
+    {
+      "source_id": "SRC-69745685B359",
+      "url": "https://www.reuters.com/world/middle-east/un-peacekeeping-chief-says-talks-future-lebanon-mission-must-begin-soon-2026-10-14/",
+      "source_role": "Reuters October 14 future UNIFIL mission discussions; not new force deployment"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261014-HORMUZ-GFS-PRIDE-SINKING",
+      "event_date": "2026-10-14",
+      "summary": "Singapore-flagged container ship GFS Pride sank off Oman on October 14, with floating cargo subsequently imaged/reported. Reported mine mechanism and Iranian attribution are source- or actor-attributed, not independently established in the cited account. Twenty-one crew were reportedly evacuated. This is distinct from the October 9 GEM No.2 tanker and October 11 Petro Dolphin/Valthera incidents.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-A4BA2198BAFF"
+      ],
+      "attribution": "MINE_MECHANISM_REPORTED_NOT_INDEPENDENTLY_CONFIRMED",
+      "event_identity": "GFS_PRIDE"
+    },
+    {
+      "event_id": "EVT-20261014-SAUDI-ARAMCO-HQ-DAMAGE-REPORT",
+      "event_date": "2026-10-14",
+      "summary": "Reuters reported a Houthi strike on Saudi Aramco headquarters in Dhahran, with reported fire and differing damage severity accounts. The physical attack does not establish shutdown of Saudi oil production, nor can these effects be assigned to military bases without site-level evidence.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9BA3999BDEDE"
+      ],
+      "attribution": "HOUTHI_ATTACK_REPORTED; DAMAGE_SCOPE_CONTESTED"
+    },
+    {
+      "event_id": "EVT-20261014-UNIFIL-FUTURE-MANDATE-TALKS",
+      "event_date": "2026-10-14",
+      "summary": "UN peacekeeping leadership called for discussions on the future of the UNIFIL mission in Lebanon. The comments did not extend the UN mandate, create a new operation or establish an additional deployed force.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-69745685B359"
+      ]
+    },
+    {
+      "event_id": "EVT-20261015-US-OFAC-IDB-SHADOW-BANKING",
+      "event_date": "2026-10-15",
+      "summary": "US Treasury/OFAC designated Iraq's International Development Bank for Investment and Finance and associated Iran-linked finance actors under Operation Economic Outcast. OFAC published Iran General License FF for specified wind-down transactions. These are confirmed legal measures; Treasury's claimed resulting payment disruption is not independently quantified by the designation itself.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-2EB5F988C64F",
+        "SRC-B85136241753"
+      ]
+    },
+    {
+      "event_id": "EVT-20261015-FINCEN-KHUMS-COMPLIANCE-ALERT",
+      "event_date": "2026-10-15",
+      "summary": "FinCEN issued an alert directing attention to potential Iranian misuse of religious charity and khums-linked networks. The alert seeks detection/reporting of suspicious financial activity; it does not itself designate every charity, freeze particular accounts, or demonstrate cessation of transfers.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-BCB4E528926E"
+      ]
+    },
+    {
+      "event_id": "EVT-20261015-EU-GCC-SUMMIT-POSTPONED",
+      "event_date": "2026-10-15",
+      "summary": "The GCC and EU postponed their previously scheduled October 24 Riyadh summit. GCC cited continuing Houthi threats and suspension of Riyadh airport operations; the EU stated the new date would be announced later. This is a confirmed diplomatic scheduling change, not termination of EU-GCC cooperation.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-E7E527D7BE72"
+      ]
+    },
+    {
+      "event_id": "EVT-20261016-GULF-OMAN-CHINA-VLCC-WS-INDEX",
+      "event_date": "2026-10-16",
+      "summary": "Reuters cited Baltic Exchange data showing Gulf of Oman-to-China VLCC rates around Worldscale 776, down from 841 the prior week while still near records. Worldscale is a route-specific freight index, not dollars per barrel, freight cost of all vessels, or EIA physical Brent spot.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-E41EE4031752"
+      ]
+    },
+    {
+      "event_id": "EVT-20261018-IRAN-HORMUZ-SEVEN-CONDITION-OFFER",
+      "event_date": "2026-10-18",
+      "summary": "Foreign Minister Abbas Araqchi reiterated Tehran's earlier conditional proposal for reopening Hormuz, said Iran was reviewing US comments and insisted on initial focus on navigation/sanctions while Washington sought nuclear commitments. This is a later position update to the existing seven-condition negotiations, not acceptance of a settlement or restored lawful Iranian jurisdiction over the strait.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3DCECE272758"
+      ],
+      "updates_existing_ref": "EVT-20261011-REZAEI-US-HORMUZ-REPLY",
+      "relationship": "LATER_REAFFIRMATION_NOT_SECOND_AGREEMENT"
+    },
+    {
+      "event_id": "EVT-20261018-HORMUZ-MINE-TANKER-IRGC-CLAIM",
+      "event_date": "2026-10-18",
+      "summary": "Iran's IRGC reported an oil tanker fire/explosion after an alleged naval-mine strike in southern Hormuz. Hull identity, mechanism, perpetrator and casualty effects were not independently established in the cited Reuters report. Do not convert multiple actor claims into verified unique hull losses.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3542824EBE0D"
+      ],
+      "attribution": "IRGC_CLAIM_ONLY; UNVERIFIED_HULL_LOSS"
+    },
+    {
+      "event_id": "EVT-20261019-YEMEN-SHABWA-TRAINING-CAMP-STRIKE",
+      "event_date": "2026-10-19",
+      "summary": "A missile attack hit a Yemeni government security-force training camp in Shabwa. Local authorities reported 53 dead and around 200 wounded; Reuters verified video showing casualties. Houthis acknowledged targeting the camp and alleged Saudi control, which was not independently shown. Figures are provisional and separate from Riyadh October 10/11 and Aden October 15 casualties.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-4DEEFD2CB947",
+        "SRC-3CE3E5DA3B99"
+      ],
+      "attribution": "HOUTHI_CLAIM; INDEPENDENT_VIDEO_OF_AFTERMATH",
+      "casualty_scope": "SHABWA_EVENT_ONLY"
+    },
+    {
+      "event_id": "EVT-20261019-HOUTHI-SAUDI-TARGET-CLAIMS",
+      "event_date": "2026-10-19",
+      "summary": "Houthis claimed new attacks against Saudi energy, aviation and military facilities including Yanbu, Shaybah, Riyadh and Abha. Reuters reported Saudi authorities had not immediately corroborated those claims and could not verify individual impacts. No facility damage/operability status is advanced by this claim report.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3542824EBE0D"
+      ],
+      "attribution": "HOUTHI_CLAIMS_NOT_VERIFIED"
+    },
+    {
+      "event_id": "EVT-20261019-KPLER-GULF-FLOW-REVERSAL",
+      "event_date": "2026-10-19",
+      "summary": "Kpler estimated Gulf crude flows at a seven-day average of approximately 8.5 million barrels per day for the preceding week, against more than 20 million bpd in the prior week; Reuters also quoted at least ten confirmed commercial-vessel incidents under Kpler's coverage. These are Kpler-specific estimates/windows, not total world oil supply or the UKMTO count, and cannot be added to separate provider incident totals.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3542824EBE0D"
+      ]
+    },
+    {
+      "event_id": "EVT-20261019-SAUDI-FII-POSTPONED-2027",
+      "event_date": "2026-10-19",
+      "summary": "Organizers confirmed the Saudi Future Investment Initiative conference originally scheduled October 26–29 had been postponed until 2027 amid recent attacks. This is a verified event cancellation/postponement, not cessation of Saudi investment activity.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-CE7510DC8BA6"
+      ]
+    },
+    {
+      "event_id": "EVT-20261019-EGYPT-SAUDI-AID-PARLIAMENT-PENDING",
+      "event_date": "2026-10-19",
+      "summary": "Egypt was considering conditional military support for Saudi Arabia if requested, following President Sisi's request for parliamentary authorization. Parliament had not approved a deployment as of this report and no new Egyptian combat deployment is established. A parliamentary vote was expected October 26.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-2232F768DE48"
+      ]
+    },
+    {
+      "event_id": "EVT-20261019-GCC-EQUITY-AND-BRENT-FUTURES",
+      "event_date": "2026-10-19",
+      "summary": "Reuters reported Saudi main stock index down 0.7%, Dubai and Abu Dhabi both down about 0.3%, Qatar flat, Egypt EGX30 up about 0.4%. Brent quotes in the report are futures market observations. Movements cannot be exclusively attributed to the war or treated as EIA physical spot prices.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-7B3F25B60BBF"
+      ]
+    },
+    {
+      "event_id": "EVT-20261019-IRAN-RUSSIA-FOREIGN-MINISTERS",
+      "event_date": "2026-10-19",
+      "summary": "Iranian and Russian foreign ministers publicly discussed Gulf tensions and diplomatic proposals in Tehran. Iranian descriptions of responsibility for shipping insecurity and Russian interest in mediation are official positions, not an established Iran-Russia security agreement or US-Iran nuclear settlement.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-D974CBD7693C"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-SHABWA-20261019",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-YEMEN-SHABWA-20261019",
+        "event_ref": "EVT-20261019-YEMEN-SHABWA-TRAINING-CAMP-STRIKE",
+        "date": "2026-10-19",
+        "aggregation_type": "EVENT_SPECIFIC_NONCUMULATIVE",
+        "deaths_reported": 53,
+        "injured_reported_approx": 200,
+        "status": "LOCAL_AUTHORITY_PROVISIONAL_REPORTED",
+        "adjudication": "NO_ANNOUNCED_FINAL_TOLL; NO_SAUDI_RIYADH_OR_ADEN_COMBINATION",
+        "source_ids": [
+          "SRC-4DEEFD2CB947",
+          "SRC-3CE3E5DA3B99"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OFAC-IDB-SHADOW-BANKS-20261015",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OFAC-IDB-SHADOW-BANKS-20261015",
+        "date": "2026-10-15",
+        "metric": "US Treasury legal sanctions targeting IDB and finance networks",
+        "status": "LEGAL_DESIGNATION_CONFIRMED; QUANTIFIED_OPERATIONAL_DISRUPTION_NOT_ESTABLISHED",
+        "observed_state": "International Development Bank (Iraq) and related Iran finance actors designated; OFAC General License FF authorizes limited wind-down transactions. Distinguish financial restrictions from proved transfer losses.",
+        "source_ids": [
+          "SRC-2EB5F988C64F",
+          "SRC-B85136241753"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-FINCEN-CHARITY-KHUMS-ALERT-20261015",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-FINCEN-CHARITY-KHUMS-ALERT-20261015",
+        "date": "2026-10-15",
+        "metric": "US FinCEN religious charity network abuse alert",
+        "status": "PRIMARY_US_GOVERNMENT_ALERT_NOT_OFAC_DESIGNATION",
+        "observed_state": "Compliance monitoring/SAR alert related to suspected khums-related diversion; no proven universal blocking or specific funds frozen by alert.",
+        "source_ids": [
+          "SRC-BCB4E528926E"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-VLCC-GULF-OMAN-CHINA-WORLD-SCALE-20261016",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-VLCC-GULF-OMAN-CHINA-WORLD-SCALE-20261016",
+        "date": "2026-10-16",
+        "metric": "Baltic Exchange Gulf of Oman to China VLCC freight Worldscale index",
+        "worldscale_current_approx": 776,
+        "worldscale_previous_week": 841,
+        "status": "SOURCE_REPORTED_ROUTE_SPECIFIC_INDEX",
+        "observed_state": "Rates down week-on-week from a record and still high. Units are Worldscale points, not USD/bbl, and cannot be plotted on physical spot price axis.",
+        "source_ids": [
+          "SRC-E41EE4031752"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-CRUDE-KPLER-7DAY-20261019",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-GULF-CRUDE-KPLER-7DAY-20261019",
+        "date": "2026-10-19",
+        "metric": "Kpler seven-day average Gulf crude flows; two nonoverlapping preceding week windows",
+        "reported_current_week_million_bpd_approx": 8.5,
+        "reported_prior_week_million_bpd_lower_bound": 20,
+        "status": "PROVIDER_SPECIFIC_REUTERS_REPORTED_ROLLING_7DAY",
+        "observed_state": "Source described more than 20 million bpd previous week and about 8.5m bpd last week; precise coverage/time denominators must be preserved; no declaration of total export stop.",
+        "source_ids": [
+          "SRC-3542824EBE0D"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-SAUDI-FII-EVENT-POSTPONED-20261019",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-SAUDI-FII-EVENT-POSTPONED-20261019",
+        "date": "2026-10-19",
+        "metric": "Future Investment Initiative October 26–29 2026 scheduled event",
+        "status": "POSTPONED_TO_2027_DATE_NOT_ANNOUNCED",
+        "observed_state": "Organizers confirmed postponement of Riyadh flagship investment conference; no inferred quantified investment loss.",
+        "source_ids": [
+          "SRC-CE7510DC8BA6"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-GFS-PRIDE-20261014",
+      "mode": "add",
+      "record": {
+        "shipping_id": "SHIP-HORMUZ-GFS-PRIDE-20261014",
+        "date": "2026-10-14",
+        "vessel_name": "GFS Pride",
+        "status": "CONTAINER_SHIP_SUNK_HULL_IDENTITY_REPORTED",
+        "observed_state": "Reported sinking off Oman and subsequent floating cargo, with Sentinel-2 imagery in media report; 21 crew reportedly evacuated. Mine mechanism and assignment are not independently proven.",
+        "adjudication": "SINGLE_VESSEL_EVENT_NOT_OCT09_GEM_NO2; NO_MINE_PERPETRATOR_PROVEN",
+        "source_ids": [
+          "SRC-A4BA2198BAFF"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019",
+      "mode": "add",
+      "record": {
+        "shipping_id": "SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019",
+        "date": "2026-10-19",
+        "status": "KPLER_PROVIDER_SPECIFIC_WEEKLY_REPORTED_MINIMUM",
+        "reported_incident_count_at_least": 10,
+        "observed_state": "Reuters quotes Kpler's at least ten confirmed vessel incidents in the referenced seven-day week; overlapping incidents may be counted by UKMTO, IMO, Guardian and other sources.",
+        "adjudication": "DO_NOT_ADD_PROVIDER_COUNTS_TO_DISTINCT_HULL_LOSS_TOTALS",
+        "source_ids": [
+          "SRC-3542824EBE0D"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-EU-GCC-RIYADH-SUMMIT-20261015",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-EU-GCC-RIYADH-SUMMIT-20261015",
+        "date": "2026-10-15",
+        "status": "OCTOBER_24_RIYADH_SUMMIT_POSTPONED",
+        "observed_state": "GCC publicly tied postponement to Houthi security threats and King Khalid airport restrictions; EU did not attribute a separate cause. Next summit date unannounced.",
+        "source_ids": [
+          "SRC-E7E527D7BE72"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-EGYPT-SAUDI-COND-DEFENSE-20261019",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-EGYPT-SAUDI-COND-DEFENSE-20261019",
+        "date": "2026-10-19",
+        "status": "PARLIAMENTARY_AUTHORIZATION_PENDING_NO_NEW_DEPLOYMENT_CONFIRMED",
+        "observed_state": "President Sisi called for potential help to Saudi Arabia conditional on Saudi request and domestic legislative approval. Expected vote October 26, no actual intervention accepted.",
+        "source_ids": [
+          "SRC-2232F768DE48"
+        ],
+        "knowledge_time": "2026-10-19T14:57:19-04:00"
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-source-review-leads-20261013-16.noncanonical.json",
+      "data/evidence-integration/rook-source-review-addendum-20261013-19.noncanonical.json"
+    ],
+    "upstream_status": "RETROSPECTIVE_SOURCE_REVIEW_ONLY; NO_SYNTHETIC_SCHEDULED_ROOK_SWEEPS"
+  }
+}
