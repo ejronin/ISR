@@ -425,7 +425,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
             const root=document.querySelector('.economic-mode-controls');
             const buttons=[...root.querySelectorAll('button')];
             const active=buttons.filter(x=>x.getAttribute('aria-pressed')==='true');
-            return {count:buttons.length,active:active.length,unavailable:root.textContent.includes('TREND unavailable'),
+            return {count:buttons.length,active:active.length,unavailable:/approved dated prices/i.test(root.querySelector('.economic-mode-unavailable')?.textContent || ''),
              realSelector:buttons.every(x=>x.hasAttribute('aria-controls')),
              preserved:document.querySelector('[data-protected-economic-chart="retained"]')?.getBoundingClientRect().height > 0};
           })()`);
