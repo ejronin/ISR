@@ -148,6 +148,39 @@
       "source_url": "https://www.reuters.com/world/irans-araqchi-blames-us-strait-hormuz-tensions-calls-diplomacy-2026-10-19/",
       "disposition": "ATTRIBUTED_DIPLOMATIC_STATEMENTS",
       "review": "Capture exact statements and Russia response, de-duplicate existing positions; do not infer mutual defense commitment or a negotiated outcome."
+    },
+    {
+      "discovery_id": "REC-20261014-REUTERS-UNIFIL-FUTURE",
+      "event_date": null,
+      "reported_date": "2026-10-14",
+      "category": "LEBANON_UN_PEACEKEEPING",
+      "summary": "UN peacekeeping leadership urged early Security Council talks over the future of UNIFIL, whose existing mandate and withdrawal planning remain in dispute. Lebanese authorities request extension; no renewed mandate or additional peacekeeper deployment was established by this report.",
+      "source_title": "UN peacekeeping chief says talks on future of Lebanon mission must begin soon",
+      "source_url": "https://www.reuters.com/world/middle-east/un-peacekeeping-chief-says-talks-future-lebanon-mission-must-begin-soon-2026-10-14/",
+      "disposition": "REPORTED_UN_POLICY_POSITION_NOT_DECISION",
+      "review": "Resolve current resolution/mandate and withdrawal timetable from UN primary documents; distinguish existing force posture from proposed future mission."
+    },
+    {
+      "discovery_id": "REC-20261017-REUTERS-LEBANON-US-TALKS",
+      "event_date": null,
+      "reported_date": "2026-10-17",
+      "category": "LEBANON_ISRAEL_DIPLOMACY",
+      "summary": "Lebanon said a military delegation would press for an end to Israeli attacks during US-hosted October 20 talks in Tampa. Future scheduled engagement does not establish that the meeting occurred or an agreement was reached.",
+      "source_title": "Lebanon says military delegation will press for halt to Israeli attacks at US talks",
+      "source_url": "https://www.reuters.com/world/middle-east/lebanon-says-military-delegation-will-press-halt-israeli-attacks-us-talks-2026-10-17/",
+      "disposition": "SCHEDULED_TALKS_NOT_HELD_YET",
+      "review": "Check the Lebanese presidency's contemporaneous statement, exact October 20 attendance and meeting result after occurrence. Keep Israel-Lebanon/Hezbollah positions attributed."
+    },
+    {
+      "discovery_id": "REC-20261016-REUTERS-LEBANON-AVIATION",
+      "event_date": null,
+      "reported_date": "2026-10-16",
+      "category": "AVIATION_ECONOMY_LEBANON",
+      "summary": "Reuters reports ICAO-identified Beirut airport certification and safety limitations obstructing potential resumption of direct US-Lebanon flights. Announcement or political support to resume flights does not demonstrate certification, restored schedules or actual service.",
+      "source_title": "Trump move to restart direct US flights with Lebanon hits roadblock",
+      "source_url": "https://www.reuters.com/world/middle-east/trump-move-restart-direct-us-flights-with-lebanon-hits-roadblock-2026-10-16/",
+      "disposition": "AVIATION_REQUIREMENT_PENDING",
+      "review": "Seek ICAO/FAA/Lebanese primary technical notices and airline decisions; do not classify the airport inoperable merely because certification blocks specific US flights."
     }
   ],
   "release_gate": {
