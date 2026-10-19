@@ -4670,3 +4670,10 @@ tbody tr:last-child td { border-bottom: 0; }
 .sanctions-route-case .evidence-drawer{width:100%;min-width:0;max-width:100%;overflow-wrap:break-word}
 .sanctions-route-case .evidence-drawer[open]{margin-top:.65rem}
 @media(max-width:800px){.sanctions-route-overview{grid-template-columns:1fr}.sanctions-route-profile-content{padding:.7rem}.sanctions-route-profile-summary{padding:.8rem}}
+
+/* October 16: distinct operating presumption and prewar drawdown presentation. */
+.facility-operational-swatch[data-facility-operational-status="PRESUMED_OPERABLE"] { background:#6bb5a9; }
+.facility-operational-swatch[data-facility-operational-status="PREWAR_DRAWDOWN"] { background:#9c78d3; }
+.sanctions-route-profile-content, .sanctions-route-matrix, .sanctions-route-case, .economic-forecast-revision { min-width:0; max-width:100%; }
+.sanctions-route-profile-content p, .sanctions-route-case p, .sanctions-selected-route p { overflow-wrap:break-word; word-break:normal; }
+@media (max-width:650px) { .sanctions-route-matrix { grid-template-columns:minmax(0,1fr); } .sanctions-route-profile-content, .sanctions-selected-route { padding:.85rem; } .sanctions-route-profile summary { line-height:1.5; } }

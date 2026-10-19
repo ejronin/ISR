@@ -59,11 +59,11 @@ class CDP{
    for(let i=0;i<120;i++){
     try{
      snapshot=await cdp.eval('(()=>{const s=document.querySelector("#market-status")?.textContent||"";return {status:s, count:document.querySelectorAll("#market-observations-table tr").length, svg:document.querySelectorAll("#market-observations-chart svg").length, markers:document.querySelectorAll(".market-event-button").length, actionsOpen:document.querySelector("#market-actions-disclosure")?.open, cards:document.querySelectorAll(".market-gdp-mobile-card").length, cardsDisplay:getComputedStyle(document.querySelector(".market-gdp-mobile-cards")).display, tableDisplay:getComputedStyle(document.querySelector("[data-market-forecast-table]")).display, forecast:document.querySelector("[data-market-projection]")?.textContent||"", overflow:document.documentElement.scrollWidth-innerWidth};})()');
-     if(snapshot?.status?.includes('41 EIA observed'))break;
+     if(snapshot?.status?.includes('47 EIA observed'))break;
     }catch(_){}
     await wait(250);
    }
-   assert(snapshot&&snapshot.count===41,'41 actual EIA observations not visible at '+width+'px');
+   assert(snapshot&&snapshot.count===47,'47 actual EIA observations not visible at '+width+'px');
    assert(snapshot.svg>0,'ECharts SVG line missing at '+width+'px');
    assert(snapshot.markers>=10,'sanctions dates not selectable at '+width+'px');
    assert(snapshot.actionsOpen === (width>=700),'sanctions calendar must default compact on mobile and open on desktop');

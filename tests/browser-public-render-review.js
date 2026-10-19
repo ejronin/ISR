@@ -278,7 +278,9 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
             facilityYellow: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="YELLOW"]').length,
             facilityBlue: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="BLUE"]').length,
             facilityGreen: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="GREEN"]').length,
-            facilityUnclassified: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="UNCLASSIFIED"]').length
+            facilityUnclassified: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="UNCLASSIFIED"]').length,
+            facilityPresumed: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="PRESUMED_OPERABLE"]').length,
+            facilityDrawdown: document.querySelectorAll('[data-reader-facility-dashboard] [data-facility-operational-status="PREWAR_DRAWDOWN"]').length
           };
         })()`);
         assert(reviewState.width > 0 && reviewState.height > 0, `${focus.label} map has no rendered area at ${width}px`);
@@ -295,7 +297,9 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
           assert.equal(reviewState.facilityYellow, 3, `facility map YELLOW count changed at ${width}px`);
           assert.equal(reviewState.facilityBlue, 0, `facility map manufactured BLUE at ${width}px`);
           assert.equal(reviewState.facilityGreen, 0, `facility map manufactured GREEN at ${width}px`);
-          assert(reviewState.facilityUnclassified >= 15, `facility map lost neutral/unclassified facilities at ${width}px`);
+          assert(reviewState.facilityUnclassified + reviewState.facilityPresumed + reviewState.facilityDrawdown >= 15, `facility map lost any unverified or prewar drawdown facilities at ${width}px`);
+          assert(reviewState.facilityPresumed >= 11, `facility map lost presumed-operating installations at ${width}px: ${JSON.stringify(reviewState)}`);
+          assert(reviewState.facilityDrawdown >= 4, `facility map failed to distinguish explicitly prewar withdrawals at ${width}px`);
         }
         await sleep(180);
         await captureElement(cdp, focus.selector, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`, 1100);
@@ -421,7 +425,7 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
             const root=document.querySelector('.economic-mode-controls');
             const buttons=[...root.querySelectorAll('button')];
             const active=buttons.filter(x=>x.getAttribute('aria-pressed')==='true');
-            return {count:buttons.length,active:active.length,unavailable:root.textContent.includes('TREND unavailable'),
+            return {count:buttons.length,active:active.length,unavailable:/approved dated prices/i.test(root.querySelector('.economic-mode-unavailable')?.textContent || ''),
              realSelector:buttons.every(x=>x.hasAttribute('aria-controls')),
              preserved:document.querySelector('[data-protected-economic-chart="retained"]')?.getBoundingClientRect().height > 0};
           })()`);

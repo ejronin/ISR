@@ -2264,6 +2264,26 @@
     GREEN: 'Untouched'
   });
 
+  const FACILITY_PRESENTATION_STATE_LABELS = Object.freeze({
+    ...FACILITY_OPERATIONAL_STATE_LABELS,
+    PRESUMED_OPERABLE: 'Presumed operating (not verified)',
+    PREWAR_DRAWDOWN: 'Prewar withdrawal / drawdown'
+  });
+
+  function facilityPresentationState(id, adjudication, facility) {
+    const accepted = acceptedFacilityOperationalState(adjudication.classifiedById.get(id));
+    if (accepted) return accepted;
+    const unresolved = adjudication.unclassifiedById.get(id);
+    if (!unresolved) return '';
+    const note = String(unresolved.reason || '');
+    // This is presentation policy, not a replacement for the accepted four-state finding.
+    // Require an explicit *prewar* withdrawal. Ambiguous 'before/early war' stays presumed.
+    if (/withdrew before the war|withdrawal completed before the war/i.test(note) ||
+        (id === 'US-QASRAK' && /^Withdrawal began Feb\. 23, 2026\./i.test(String(facility && facility.current_presence_status || ''))) ||
+        (id === 'US-RMELAN' && /Feb\. 23.*broader U\.S\. Syria withdrawal was underway/i.test(String(facility && facility.current_presence_status || '')))) return 'PREWAR_DRAWDOWN';
+    return 'PRESUMED_OPERABLE';
+  }
+
   function facilityOperationalAdjudication(model) {
     const payload = modelData(model, 'analysis.facility_operational_status') || {};
     const classified = asArray(payload.classified);
@@ -2285,13 +2305,15 @@
       ['RED', FACILITY_OPERATIONAL_STATE_LABELS.RED],
       ['YELLOW', FACILITY_OPERATIONAL_STATE_LABELS.YELLOW],
       ['BLUE', FACILITY_OPERATIONAL_STATE_LABELS.BLUE],
-      ['GREEN', FACILITY_OPERATIONAL_STATE_LABELS.GREEN]
+      ['GREEN', FACILITY_OPERATIONAL_STATE_LABELS.GREEN],
+      ['PRESUMED_OPERABLE', FACILITY_PRESENTATION_STATE_LABELS.PRESUMED_OPERABLE],
+      ['PREWAR_DRAWDOWN', FACILITY_PRESENTATION_STATE_LABELS.PREWAR_DRAWDOWN]
     ].forEach(([key, label]) => {
       const item = append(legend, 'span', 'facility-operational-legend-item');
       const swatch = append(item, 'i', 'facility-operational-swatch'); swatch.dataset.facilityOperationalStatus = key;
       append(item, 'span', '', label);
     });
-    append(host, 'p', 'facility-operational-unclassified-note', 'Gray facility markers are unclassified. No color is assigned without an accepted facility operational-state finding.');
+    append(host, 'p', 'facility-operational-unclassified-note', 'Teal means presumed operating where no shutdown is established; it is not verified intact or undamaged. Purple identifies an accepted prewar withdrawal. Red, yellow, blue and green remain evidence-adjudicated findings.');
     return legend;
   }
 
@@ -2300,18 +2322,19 @@
     const facilities = mergeCurrentRecords(modelData(context.model, 'ledger.facilities'), modelData(context.model, 'gate3.facilities'), ['facility_id', 'id']);
     const adjudication = facilityOperationalAdjudication(context.model);
     const mappedFacilities = facilities.map(facility => {
-      const accepted = adjudication.classifiedById.get(String(facility.facility_id || facility.id || ''));
-      return { ...facility, _visualOperationalStatus: acceptedFacilityOperationalState(accepted) };
+      const id = String(facility.facility_id || facility.id || '');
+      return { ...facility, _visualOperationalStatus: facilityPresentationState(id, adjudication, facility) };
     });
-    const classifiedMappedIds = new Set(mappedFacilities.filter(item => item._visualOperationalStatus).map(item => String(item.facility_id || item.id || '')));
-    const unclassifiedCount = facilities.filter(item => !classifiedMappedIds.has(String(item.facility_id || item.id || ''))).length;
+    const verifiedCount = adjudication.classified.length;
+    const presumedCount = mappedFacilities.filter(item => item._visualOperationalStatus === 'PRESUMED_OPERABLE').length;
+    const drawdownCount = mappedFacilities.filter(item => item._visualOperationalStatus === 'PREWAR_DRAWDOWN').length;
     const claimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits'));
     frame.article.append(createRepresentativeMap(context, {
       typeLabel: 'BASES & INFRASTRUCTURE · ACCEPTED FACILITY GEOGRAPHY',
       cameraModes: ['theater', 'gulf'],
       title: 'Facilities in the current record',
       records: mappedFacilities,
-      description: `${adjudication.classified.length.toLocaleString()} facilities have an accepted operational-state color; ${unclassifiedCount.toLocaleString()} tracked facilities remain neutral and unclassified. Map markers show the facility’s general location, not the exact point of impact.`
+      description: `${verifiedCount} bases have a verified damage/operating classification; ${presumedCount} are presumed operating without proof of an intact base; ${drawdownCount} had an accepted prewar withdrawal. Map markers show the facility’s general location, not the exact point of impact.`
     }));
     appendFacilityStatusLegend(frame.article);
 
@@ -2345,8 +2368,8 @@
       const id = String(facility.facility_id || facility.id || '');
       const accepted = adjudication.classifiedById.get(id);
       const unresolved = adjudication.unclassifiedById.get(id);
-      const publicState = acceptedFacilityOperationalState(accepted);
-      const mapState = publicState ? FACILITY_OPERATIONAL_STATE_LABELS[publicState] : 'Unclassified';
+      const publicState = facilityPresentationState(id, adjudication, facility);
+      const mapState = FACILITY_PRESENTATION_STATE_LABELS[publicState] || 'Unclassified';
       const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id);
       const sourceContext = facilitySourceContext(facility);
       const adjudicationSources = asArray(accepted && accepted.source_ids).concat(asArray(unresolved && unresolved.source_ids));
@@ -2732,7 +2755,7 @@
   function SanctionsPage(context) {
     const frame = pageFrame(
       context,
-      'Which financial valves were closed, what still flows around them, and why this wartime sanctions campaign is not simply the same thing Iran has faced for decades.'
+      'Which sanctions restrict banks, payments and trade, and what can still move through other routes.'
     );
     frame.article.dataset.sanctionsPage = 'true';
 
@@ -2767,7 +2790,7 @@
       ['WHAT CHANGED', 'The target set widened from Iran itself to more of the middlemen, foreign institutions and commercial routes that keep transactions moving.'],
       ['WHY IT MATTERS', 'The practical pressure comes when banks and businesses decide Iran-linked business is not worth the compliance, correspondent-banking or market-access risk.'],
       ['WHAT STILL FLOWS', 'Local-currency trade, barter, digital assets, front companies and third-country settlement remain possible in parts of the network.'],
-      ['EVIDENCE RULE', 'A designation proves legal action. It does not, by itself, prove that a route stopped or that the Iranian economy suffered a specific amount of damage.']
+      ['EVIDENCE RULE', 'Being sanctioned restricts an institution. Actual financial losses require separate evidence.']
     ].forEach(([title, text], index) => {
       const card = append(summaryGrid, 'article', `sanctions-summary-card sanctions-summary-${index + 1}`);
       append(card, 'p', 'card-kicker', title);
@@ -2784,7 +2807,7 @@
       append(li, 'span', '', publicNarrative(point.text));
     });
     const beforeNow = append(whyGrid, 'aside', 'sanctions-before-now');
-    append(beforeNow, 'h3', '', '47 years is not the same as now');
+    append(beforeNow, 'h3', '', 'How the sanctions campaign changed');
     [['BEFORE', network.why_now && network.why_now.before_now && network.why_now.before_now.before], ['NOW', network.why_now && network.why_now.before_now && network.why_now.before_now.now]].forEach(([kicker, item]) => {
       const block = append(beforeNow, 'div', `sanctions-era sanctions-era-${String(kicker).toLowerCase()}`);
       append(block, 'p', 'card-kicker', kicker);
@@ -2830,7 +2853,7 @@
       if (sourceIdsFrom(item).length) card.append(EvidenceDrawer.create(context, sourceEnvelope(item), { localSources }));
     });
     const behavior = append(reach, 'aside', 'scope-note sanctions-behavior-note');
-    append(behavior, 'strong', '', 'Legal reach is not the same as behavioral reach.');
+    append(behavior, 'strong', '', 'Why foreign banks may stop doing business');
     append(behavior, 'p', '', publicNarrative(network.governing_rules && network.governing_rules.legal_reach_is_not_behavioral_reach));
 
     // Visual IA: an evidence-led sanctions breakdown, not category-box art.
