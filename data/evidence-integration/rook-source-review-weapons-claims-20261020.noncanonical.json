@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "ROOK_SOURCE_REVIEW_ADDENDUM_NONCANONICAL",
+  "authority": "EVIDENCE_DISCOVERY_ONLY_NOT_ACCEPTED_FOR_PUBLICATION",
+  "review_date": "2026-10-20",
+  "scope": {
+    "source_publication_start": "2026-09-21",
+    "source_publication_end": "2026-10-19",
+    "full_sweep_completed": false,
+    "scheduled_rook_windows_executed": false,
+    "missing_windows_not_backfilled": true,
+    "write_policy": "APPEND_ONLY_DISCOVERY_NO_CANONICAL_OR_RELEASE_MUTATION",
+    "note": "Topical source review, not an exhaustive 12-hour war evidence sweep; October 19 accepted shipping evidence is already canonical."
+  },
+  "source_leads": [
+    {
+      "discovery_id": "REC-20261015-MOAB-PLANNING",
+      "event_date": null,
+      "reported_date": "2026-10-15",
+      "category": "US_MILITARY_PLANNING",
+      "summary": "CBS and CNN reported that U.S. defense planners had prepared contingent GBU-43/B MOAB options for Iranian targets. Reports do not establish a presidential execution order, fixed strike time, selected operational target, or that a strike will occur. Reuters said it could not independently verify the CNN account.",
+      "source_title": "White House prepares plans to use weapon dubbed 'mother of all bombs' on Iran, sources say",
+      "source_url": "https://www.cbsnews.com/news/iran-trump-administration-mother-of-all-bombs/",
+      "corroborating_source_url": "https://www.reuters.com/world/us-military-weighs-use-mother-all-bombs-potential-future-strikes-iran-cnn-says-2026-10-15/",
+      "disposition": "REPORTED_CONDITIONAL_PLANNING_NO_EXECUTION_DATE",
+      "review": "Do not publish as a scheduled strike, authorized execution or actual deployment. Distinguish air-blast GBU-43/B MOAB from deeply penetrating GBU-57 MOP and from a thermobaric or fuel-air design without technical evidence."
+    },
+    {
+      "discovery_id": "REC-20261016-PICKAXE-COMMENTS",
+      "event_date": "2026-10-16",
+      "reported_date": "2026-10-16",
+      "category": "US_OFFICIAL_STATEMENT",
+      "summary": "Reuters reports Trump discussed possible future action against Iranian Pickaxe Mountain nuclear installations and did not confirm use of a MOAB. Possible action is neither a strike order nor an announced schedule.",
+      "source_title": "Trump says US may need to strike Iran's Pickaxe Mountain",
+      "source_url": "https://www.reuters.com/world/trump-says-us-may-need-strike-irans-pickaxe-mountain-2026-10-16/",
+      "disposition": "ATTRIBUTED_CONTINGENT_POLICY_STATEMENT",
+      "review": "Compare actual statement with follow-up statements; retain date and avoid inferred operational tasking."
+    },
+    {
+      "discovery_id": "REC-20261014-IRAN-SHIPPING-TACTICS",
+      "event_date": null,
+      "reported_date": "2026-10-14",
+      "category": "IRAN_MARITIME_COERCION",
+      "summary": "Reuters interviews with Iranian officials describe a deliberate shift/intensification of attacks on shipping to raise economic pressure. Supports a prominent coercive-maritime pattern, not an exclusive measure of Iranian strike capability or evidence that no military targets are ever engaged. Already overlaps accepted October 19 evidence.",
+      "source_title": "Iran shifting tactics to step up attacks on shipping before US vote, officials say",
+      "source_url": "https://www.reuters.com/world/middle-east/iran-shifting-tactics-step-up-attacks-shipping-before-us-vote-officials-say-2026-10-14/",
+      "disposition": "INTENT_ATTRIBUTED_TO_IRANIAN_OFFICIALS",
+      "review": "Evidence Integration deduplicate against October 19 accepted packet and separate named incidents from tactical motive and maritime counts."
+    },
+    {
+      "discovery_id": "REC-20261019-NAQDI-MOP-REVERSE-ENGINEERING",
+      "event_date": null,
+      "reported_date": "2026-10-19",
+      "category": "IRGC_TECHNOLOGY_CLAIM",
+      "summary": "Secondary report attributing to IRIB says IRGC adviser Mohammad Reza Naqdi claimed to have recovered an unexploded GBU-57 component, analyzed alloys/electronics, and obtained all technology. It also confuses the GBU-57 MOP with the 'mother of all bombs' (the distinct GBU-43/B MOAB). Analysis of fragments would not by itself establish possession of a functional reverse-engineered GBU-57, a production line, guidance/fusing reproduction, or deployable inventory.",
+      "source_title": "Iran claims to have reverse-engineered US GBU-57 bunker-buster bomb",
+      "source_url": "https://dailybaku.az/en/article/iran-claims-to-have-reverse-engineered-us-gbu-57-bunker-buster-bomb",
+      "disposition": "ATTRIBUTED_TECHNOLOGY_CLAIM_UNVERIFIED",
+      "review": "Locate original IRIB interview, preserve Naqdi exact words and Iranian terminology, evaluate evidence of a complete reproduction. Claims Forensics owner only for any WOL/Lie Ledger determination."
+    },
+    {
+      "discovery_id": "REC-20260921-IRGC-NEW-STRATEGIC-WEAPONS",
+      "event_date": "2026-09-21",
+      "reported_date": "2026-09-21",
+      "category": "IRGC_OFFICIAL_THREAT",
+      "summary": "IRGC spokesperson Hossein Mohebbi told Tasnim Iran had new weaponry and could expand targets and geography if renewed war starts. No type, demonstrated operational use, quantities, or independent capability proof for his claimed strategic weapons is supplied. Older public statement resurfacing in October is not a new October weapon delivery.",
+      "source_title": "IRGC Warns of Wider War Theater If Iran Faces New Aggression",
+      "source_url": "https://www.tasnimnews.ir/en/news/2026/09/21/3701995/irgc-warns-of-wider-war-theater-if-iran-faces-new-aggression",
+      "disposition": "ATTRIBUTED_CAPABILITY_AND_DETERRENCE_CLAIM",
+      "review": "Capture original quote/date and avoid inferring missiles or lasers from unnamed weapons. Any strong factual/Lie Ledger classification goes to Claims Forensics."
+    },
+    {
+      "discovery_id": "REC-20261011-REPORTED-IRAN-MISSILE-TESTS",
+      "event_date": "2026-10-11",
+      "reported_date": "2026-10-13",
+      "category": "IRAN_WEAPONS_TEST_REPORTS",
+      "summary": "Critical Threats' October 13 update reviewed unverified footage/reports alleging tests of multiple Iranian missile and drone types on October 11 and expressly said CTP-ISW could not verify those reports. This is evidence of circulated test claims, not independent demonstration of new weapon production or capability.",
+      "source_title": "Iran Update, October 13, 2026",
+      "source_url": "https://www.criticalthreats.org/analysis/iran-update-october-13-2026",
+      "disposition": "REPORTED_TESTS_INDEPENDENTLY_UNVERIFIED",
+      "review": "Identify dates, photos, platforms and location before promoting particular test, weapon or performance claims."
+    }
+  ],
+  "open_questions": [
+    "No dated, attributable technical source identified in this intake confirming a new operational Iranian laser weapon used in this conflict. Treat circulating laser stories as specific-claim leads until a claimant, weapon type and evidence are identified.",
+    "Iranian defensive preparations and official ground-war readiness claims do not show that a U.S. invasion is ordered or that Iran can decisively defeat it.",
+    "The October 19 maritime incident count has provider-, scope- and timeframe-specific denominators; do not combine UKMTO/Guardian/Reuters/Kpler numbers.",
+    "No public U.S. MOAB strike execution date confirmed."
+  ],
+  "downstream_referral": {
+    "evidence_integration": [
+      "Review the reported MOAB planning and official remarks for canonical event treatment with conditional-status semantics.",
+      "Cross-reference shipping claims to October 19 accepted observations without duplicate incidents."
+    ],
+    "claims_forensics": [
+      "Review Naqdi's alleged complete MOP reverse-engineering claim, original IRIB footage and MOAB/MOP conflation.",
+      "Review specific laser/new-missile/ground-invasion readiness propositions only when actual speaker and primary-source context are located."
+    ],
+    "public_product": [
+      "Keep U.S. MOAB planning labeled as contingent and unpublished as a scheduled strike.",
+      "Use currently accepted maritime evidence to distinguish commercial coercion from military target damage."
+    ]
+  }
+}
