@@ -1,0 +1,293 @@
+{
+  "role": "RECOVERY_SOURCE_LEADS_UNADJUDICATED",
+  "accepted_cutoff": "2026-10-07T14:03:00-04:00",
+  "coverage": "partial; missing scheduled windows still require full reconstruction",
+  "canonical_mutation": false,
+  "leads": [
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters reports Riyadh and Abha airport attacks with three killed earlier in week; damaged parked Saudia aircraft and verified smoke footage. Distinguish different events and contemporaneous casualty counts.",
+      "source": "https://www.reuters.com/world/asia-pacific/syria-considers-help-yemen-war-after-saudi-airports-come-under-houthi-fire-2026-10-08/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters reports tanker attack risk, Iranian threats to unauthorized Hormuz routes and contemporaneous maritime disruptions; actor threats and independent incidents must not be conflated.",
+      "source": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters reports Brent settlement $104.28 and WTI $91.49; oil-price spike had both war-risk and hurricane supply components, not single-cause attribution.",
+      "source": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "EASA widens Saudi airspace risk advisory after attacks; distinguish civil aviation alert and airline suspension from aircraft losses.",
+      "source": "https://www.reuters.com/world/middle-east/eu-aviation-agency-widens-saudi-airspace-alert-citing-growing-risk-houthi-2026-10-09/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "Proposed Iraq-Syria Hormuz-bypass pipeline and U.S. envoy ethics questions; disputed interpretation",
+      "source": "https://www.reuters.com/world/us/trump-envoy-kept-financial-ties-firm-behind-15-billion-hormuz-bypass-oil-2026-10-09/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-10",
+      "subject": "Riyadh airport mass-casualty event; initial toll 12, 309 injured; later updates must supersede",
+      "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "Revised toll 13 and a distinct Sunday airport incident; preserve chronological distinction and attribution uncertainty",
+      "source": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "Rezaei calls U.S. Hormuz response insufficient; Iranian assertions not U.S.-confirmed concessions",
+      "source": "https://www.reuters.com/world/middle-east/iran-says-us-response-its-proposal-reopen-hormuz-was-insufficient-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "U.S. blockade incident involving civilian cargo vessel; U.S. military account requires verification",
+      "source": "https://www.reuters.com/world/us-military-says-it-disabled-cargo-vessel-trying-run-iran-blockade-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "Gulf market snapshot; Saudi TASI -0.2%, Qatar -1.5%; attribution separate from prices",
+      "source": "https://www.reuters.com/world/middle-east/saudi-stocks-slide-after-attack-riyadh-airport-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "World Bank talks to 30-40 countries on possible crisis aid; talks not disbursements",
+      "source": "https://www.reuters.com/business/finance/world-bank-talks-with-dozens-countries-about-crisis-aid-banga-says-2026-10-11/",
+      "verification": "SOURCE_URL_NOT_YET_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "Thursday Riyadh airport attacks: Saudi authorities reported three killed; a Saudia Airlines aircraft was damaged; Houthi claims and Saudi coalition response reported. Distinct from October 10 Saturday mass-casualty attack.",
+      "source": "https://www.reuters.com/world/middle-east/houthi-strikes-riyadh-airport-killed-three-saudis-war-escalates-2026-10-09/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters Gulf bourse close: Saudi benchmark -1.6%, Abu Dhabi -1.6%, Dubai -1.7%, Qatar -2.2%; separately reported tanker casualty near Qatar and two-month-low Strait traffic; incident attribution unresolved.",
+      "source": "https://www.reuters.com/world/middle-east/gulf-stocks-retreat-hormuz-tanker-attacks-hit-wartime-high-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-09",
+      "subject": "AP reports Lebanese drone strike injured six, vessel struck by projectile off UAE with unknown perpetrator, and an unverified IRGC claim against a gas carrier. Separate incidents, observation vs actor claim.",
+      "source": "https://apnews.com/article/4aba968d517041a89ae2284f0e00bd87",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-10",
+      "subject": "Reuters original Saturday Riyadh airport casualty count: 12 killed, 309 injured; subsequent reporting revises death tally to 13. Preserve initial publication and subsequent change.",
+      "source": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "U.S. Treasury imposed new Iran-related shadow fleet sanctions covering named networks and 17 vessels according to Reuters. Legal designations are established by official sanctions notice; no automatic proof vessels ceased operation or revenues stopped.",
+      "source": "https://www.reuters.com/world/middle-east/us-imposes-fresh-iran-related-sanctions-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED",
+      "check": "Obtain OFAC official release and SDN designation list; resolve identity and effective date per vessel."
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Reuters tanker risk account details Iranian threats to close routes and reported projectile strike on chemical tanker Acers near Qatar; preserve threats separately from independently documented strike and perpetrators.",
+      "source": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-10",
+      "subject": "AP reports 22 crew rescued from burning tanker off UAE, suspected contact with a mine; cause and responsibility not established in same report; avoid merging with independent tanker attacks until vessel IDs reconciled.",
+      "source": "https://apnews.com/article/a5f40b5e0ab08ae8128db5ed749114d8",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    },
+    {
+      "date": "2026-10-11",
+      "subject": "IOM reports a migrant boat capsized October 8–9 in waters near Djibouti en route to Yemen, with at least 139 fatalities and 84 missing as reported October 11. A humanitarian migration tragedy, not an armed attack; conflict-related causal attribution is not established.",
+      "source": "https://www.reuters.com/world/africa/109-migrants-including-15-children-dead-after-boat-djibouti-yemen-capsizes-un-2026-10-11/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED",
+      "check": "Check IOM latest figures, vessel/incident identity, original release, and whether incident meets Atlas Iran-war scope; preserve separately from Yemen war casualties."
+    },
+    {
+      "date": "2026-10-08",
+      "subject": "Lufthansa Group and several Indian airlines suspended Riyadh flights after Houthi threats and airport attacks. Cancellations and operational suspension should be distinguished from aircraft damage and an official airport closure.",
+      "source": "https://www.reuters.com/world/middle-east/lufthansa-air-india-suspend-flights-riyadh-after-houthi-attacks-2026-10-08/",
+      "verification": "PUBLIC_SEARCH_CONFIRMED",
+      "canonical_status": "NOT_ACCEPTED"
+    }
+  ],
+  "next": [
+    "Collect and account for each 12-hour window",
+    "Find and validate existing artifacts, including external scheduler failures",
+    "Check exact source publication times and existing-event IDs",
+    "Only then produce validated ROOK sweep artifacts and promote via Evidence Integration"
+  ],
+  "source_audit": "Live source search confirms October 9 Riyadh event and October 11 Sunday follow-up, plus October 11 Hormuz/Rezaei, CENTCOM cargo-vessel and stock-market Reuters articles. Other lead URLs are not yet directly verified; do not promote them. Added independently discovered October 8 Gulf-equity Reuters report, October 9 AP multitheater reporting, and October 10 Riyadh casualty report; their source links are search confirmed. Full window sweeps not asserted.",
+  "recovery_windows": [
+    {
+      "start": "2026-10-07T14:03:00-04:00",
+      "end": "2026-10-08T00:00:00-04:00",
+      "status": "NOT_FULLY_RECONSTRUCTED"
+    },
+    {
+      "start": "2026-10-08T00:00:00-04:00",
+      "end": "2026-10-08T12:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    },
+    {
+      "start": "2026-10-08T12:00:00-04:00",
+      "end": "2026-10-09T00:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    },
+    {
+      "start": "2026-10-09T00:00:00-04:00",
+      "end": "2026-10-09T12:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    },
+    {
+      "start": "2026-10-09T12:00:00-04:00",
+      "end": "2026-10-10T00:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    },
+    {
+      "start": "2026-10-10T00:00:00-04:00",
+      "end": "2026-10-10T12:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    },
+    {
+      "start": "2026-10-10T12:00:00-04:00",
+      "end": "2026-10-11T00:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    },
+    {
+      "start": "2026-10-11T00:00:00-04:00",
+      "end": "2026-10-11T12:00:00-04:00",
+      "status": "PARTIAL_LEADS_ONLY"
+    }
+  ],
+  "intake_gate": "A dated publication lead does not prove a specific 12-hour collection window was swept. Original publication timestamp and first-public-available time required before assigning events to window; these are not completed sweep artifacts.",
+  "verified_publication_clocks": [
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/houthi-strikes-riyadh-airport-killed-three-saudis-war-escalates-2026-10-09/",
+      "public_available_time": "2026-10-09T05:18:24-04:00",
+      "basis": "Reuters surfaced source article timestamp 2026-10-09 09:18:24 UTC; Thursday attack occurred October 8; this reporting belongs to the October 9 noon collection cutoff."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/yemens-houthis-renew-warning-over-saudi-airports-after-deadly-riyadh-attack-2026-10-11/",
+      "public_available_time": "2026-10-11T06:23:29-04:00",
+      "basis": "Reuters surfaced source article timestamp 2026-10-11 10:23:29 UTC; report covers Saturday attack and Sunday subsequent attack; keep event times separate."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/us-imposes-fresh-iran-related-sanctions-2026-10-08/",
+      "public_available_time": "2026-10-08T12:58:49-04:00",
+      "basis": "Reuters indexed original article UTC timestamp 2026-10-08 16:58:49; post-noon ET source availability despite October 8 occurrence."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/asia-pacific/attack-risks-rise-tankers-iran-vows-block-more-hormuz-routes-2026-10-08/",
+      "public_available_time": "2026-10-08T09:17:47-04:00",
+      "basis": "Reuters indexed original article UTC timestamp 2026-10-08 13:17:47; belongs before October 8 noon ET collection boundary."
+    },
+    {
+      "source_url": "https://www.reuters.com/world/middle-east/loud-blast-heard-riyadh-airport-airlines-cancel-more-flights-2026-10-10/",
+      "public_available_time": "2026-10-10T10:13:07-04:00",
+      "basis": "Reuters indexed original article UTC timestamp 2026-10-10 14:13:07; original toll 12 killed/309 wounded, later superseded."
+    }
+  ],
+  "primary_source_corroboration": [
+    {
+      "date": "2026-10-08",
+      "authority": "U.S. Department of the Treasury/OFAC",
+      "url": "https://home.treasury.gov/news/press-releases/sb0653",
+      "result": "Official October 8 designation action lists 17 targeted vessels and also two distinct de-listings (HAKUNA MATATA, PINOCCHIO). Do not report all named vessels as additions or infer physical interdiction.",
+      "classification": "CONFIRMED_OFFICIAL_ACTION",
+      "followup": "Keep Treasury's assertions of operational neutralization separate from legal designation facts; source 17 individual IMO identifiers from original document."
+    },
+    {
+      "date": "2026-10-08",
+      "authority": "OFAC Iran sanctions program recent-actions listing",
+      "url": "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions",
+      "result": "Lists 2026-10-08 Iran-related designations and license action; source supports designation-date continuity.",
+      "classification": "CONFIRMED_OFFICIAL_ACTION"
+    },
+    {
+      "date": "2026-10-08",
+      "authority": "U.S. Department of the Treasury",
+      "source": "https://home.treasury.gov/news/press-releases/sb0653",
+      "classification": "PRIMARY_DOCUMENT_REVIEWED",
+      "observation": "Treasury announced sanctions action against 17 shadow fleet vessels under EO 13902; distinct from the action, its 'neutralizes vast majority' description is an agency effectiveness claim and not independently established operational cessation.",
+      "named_examples": [
+        {
+          "name": "PARITOSH",
+          "imo": "9383352"
+        },
+        {
+          "name": "BITU",
+          "imo": "9531765"
+        },
+        {
+          "name": "STARWAY",
+          "imo": "9273246"
+        },
+        {
+          "name": "GAS LUCKY",
+          "imo": "9177557"
+        },
+        {
+          "name": "NOBLE SEA",
+          "imo": "9343118"
+        },
+        {
+          "name": "SHENZHEN",
+          "imo": "9276561"
+        },
+        {
+          "name": "EXFLAME",
+          "imo": "9294678"
+        }
+      ],
+      "delistings": [
+        {
+          "name": "HAKUNA MATATA",
+          "imo": "9354167"
+        },
+        {
+          "name": "PINOCCHIO",
+          "imo": "9400112"
+        }
+      ],
+      "method": "Seven examples only; do not infer completeness of vessel list. Two delistings are NOT additions."
+    }
+  ],
+  "critical_backfill_boundary": "This file is a source-lead register only. Never mark October 7–11 sweeps as COMPLETE without exhaustive recorded coverage and ROOK validation. Candidate facts require Evidence Integration adjudication before inclusion in release data."
+}
