@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_PROPOSITION_REFERRAL_ADJUDICATION",
+  "maintenance_version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260924-1",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "evidence_contract_path": "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+  "baseline_main_sha": "ca091f227965cfb2ed793a8aab442dcf68193555",
+  "assessment_date": "2026-09-24",
+  "evidence_cutoff": "2026-09-23T18:12:00-04:00",
+  "upstream_inputs": [
+    "data/evidence-integration/rook-saudi-iran-stability-proxy-referral-20260923T1812ET.json",
+    "data/evidence-integration/rook-hormuz-position-authority-lineage-20260922T0930ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260922T1200ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260923T0000ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260923T1200ET.json"
+  ],
+  "rules_applied": [
+    "FALSE != LIE; policy inconsistency is not deception evidence by itself.",
+    "Atomic propositions retain independent truth and knowledge states.",
+    "Speaker office and authority at statement time are evidence; adviser rhetoric is not silently promoted to binding state policy.",
+    "Houthi evidence does not propagate to Hamas.",
+    "Later narrower negotiating formulations do not erase earlier claims and do not prove abandonment of omitted conditions.",
+    "Anonymous-source reporting can establish a reported proposition while speaker authority remains unresolved.",
+    "Support, financing, weapons, training, strategic guidance, operational assistance, operation-specific direction and organization-wide command/control are distinct propositions."
+  ],
+  "chains": [
+    {
+      "chain_id": "CH-IRAN-NEGOTIATION-WILLINGNESS-20260922-23",
+      "classification": "CONTROL_CASE",
+      "summary": "Iran publicly endorsed diplomacy while mediated U.S.-Iran contact occurred. The record supports willingness to engage in negotiation/contact; it does not establish willingness to accept U.S. terms, reach agreement, or abandon coercive leverage.",
+      "propositions": [
+        {
+          "id": "CF-SEP23-001",
+          "claimant": "Masoud Pezeshkian / Iranian diplomatic position",
+          "office_authority": "President of Iran; public diplomatic speaker, not sole national-security authority",
+          "statement_time": "2026-09-22/23",
+          "wording_status": "PARAPHRASE_FROM_ACCEPTED_UPSTREAM; exact quotation not promoted in supplied referral",
+          "proposition": "Iran supports diplomacy / is willing to negotiate.",
+          "evidence_available_at_statement_time": [
+            "Qatari-mediated exchanges between Abbas Araqchi and U.S. envoys were occurring or had occurred",
+            "Iran transmitted negotiating conditions through mediators"
+          ],
+          "later_evidence": [
+            "Reuters reconstruction of indirect talks through Qatar",
+            "No agreement or accepted concessions established by cutoff"
+          ],
+          "truth": "SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE",
+          "temporal_effect": "Contemporaneous conduct corroborates willingness to engage; does not resolve bargaining flexibility."
+        },
+        {
+          "id": "CF-SEP23-002",
+          "claimant": "Saudi/Gulf position",
+          "office_authority": "Exact Saudi speaker/wording not recovered in supplied upstream artifact",
+          "statement_time": "2026-09-23 or earlier UNGA context",
+          "wording_status": "COLLECTION LEAD / PARAPHRASE",
+          "proposition": "Iran does not genuinely want negotiations.",
+          "evidence_available_at_statement_time": [
+            "Iran maintained coercive military posture and substantial conditions"
+          ],
+          "later_evidence": [
+            "Actual mediated U.S.-Iran contact is established"
+          ],
+          "truth": "UNSUBSTANTIATED",
+          "knowledge": "NOT_ASSESSABLE",
+          "temporal_effect": "Categorical reading is not supported by the current record because actual engagement occurred; exact Saudi wording remains required before stronger adjudication."
+        }
+      ]
+    },
+    {
+      "chain_id": "CH-IRAN-REGIONAL-STABILITY-CONDUCT-202609",
+      "classification": "CONTROL_CASE",
+      "summary": "Iranian stability rhetoric and Saudi/Gulf conduct criticism are separated. Proxy/support evidence may contradict a broad implication of non-interference or non-escalation, but does not logically falsify every statement favoring regional stability.",
+      "propositions": [
+        {
+          "id": "CF-SEP23-003",
+          "claimant": "Iranian public/diplomatic position",
+          "office_authority": "Multiple Iranian diplomatic speakers; exact source statement required",
+          "statement_time": "2026-09",
+          "wording_status": "GENERAL POSITION; exact quotation not recovered",
+          "proposition": "Iran seeks regional stability.",
+          "evidence_available_at_statement_time": [
+            "Iranian diplomatic engagement and review of Qatar regional-security proposal",
+            "Concurrent Iranian support relationships with armed non-state actors"
+          ],
+          "later_evidence": [
+            "AP/Reuters reporting on direct IRGC assistance to Houthi operations"
+          ],
+          "truth": "UNRESOLVED",
+          "knowledge": "NOT_ASSESSABLE",
+          "temporal_effect": "Normative/strategic characterization is too broad for a binary lie finding without exact wording and scope."
+        },
+        {
+          "id": "CF-SEP23-004",
+          "claimant": "Saudi/Gulf official position",
+          "office_authority": "Exact speaker pending collection",
+          "statement_time": "2026-09",
+          "wording_status": "PARAPHRASE",
+          "proposition": "Iranian support for armed non-state actors is conduct inconsistent with Iranian claims of regional stability.",
+          "evidence_available_at_statement_time": [
+            "Longstanding evidence of Iranian support to Houthis and Hamas"
+          ],
+          "later_evidence": [
+            "AP multi-source field-adviser reporting"
+          ],
+          "truth": "PARTLY_SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE",
+          "temporal_effect": "The factual premise of support is supported for specified relationships; 'inconsistent with stability' remains an evaluative inference, not a deception adjudication."
+        }
+      ]
+    },
+    {
+      "chain_id": "CH-IRAN-HOUTHI-SUPPORT-TAXONOMY-202609",
+      "classification": "CONTROL_CASE",
+      "summary": "Evidence supports Iranian support and materially strengthens direct operational-assistance findings. Organization-wide Iranian command/control of all Houthi actions remains unestablished.",
+      "propositions": [
+        {
+          "id": "CF-SEP23-005",
+          "axis": "FINANCING",
+          "proposition": "Iran provides financial support to the Houthis.",
+          "truth": "SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-006",
+          "axis": "WEAPONS",
+          "proposition": "Iran provides weapons or weapons support to the Houthis.",
+          "truth": "SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-007",
+          "axis": "TRAINING",
+          "proposition": "Iran provides training/support expertise to the Houthis.",
+          "truth": "SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-008",
+          "axis": "STRATEGIC_GUIDANCE",
+          "proposition": "Iran/IRGC provides strategic guidance to Houthi operations.",
+          "truth": "SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-009",
+          "axis": "OPERATIONAL_ASSISTANCE",
+          "proposition": "IRGC advisers provided tactical planning, front-line commander support and communications/satellite-intelligence analysis during the Red Sea-coast offensive.",
+          "truth": "SUPPORTED",
+          "truth_qualifier": "MULTI_SOURCE_AP_ATTRIBUTION; anonymous-source limitations retained",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-010",
+          "axis": "OPERATION_SPECIFIC_DIRECTION",
+          "proposition": "IRGC personnel helped direct the specific Houthi Red Sea-coast offensive described by AP.",
+          "truth": "PARTLY_SUPPORTED",
+          "truth_qualifier": "AP reconstruction supports direction/field assistance; exact command relationships and adviser identities remain unresolved",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-011",
+          "axis": "ORGANIZATION_WIDE_COMMAND_CONTROL",
+          "proposition": "Iran commands and controls all Houthi operations.",
+          "truth": "UNSUBSTANTIATED",
+          "truth_qualifier": "Current evidence does not justify propagation from operation-specific assistance to organization-wide control",
+          "knowledge": "NOT_ASSESSABLE"
+        }
+      ]
+    },
+    {
+      "chain_id": "CH-IRAN-HAMAS-SUPPORT-SEPARATE-202609",
+      "classification": "CONTROL_CASE",
+      "summary": "Hamas is adjudicated independently; no Houthi operational-control evidence is imported.",
+      "propositions": [
+        {
+          "id": "CF-SEP23-012",
+          "axis": "MATERIAL_FINANCIAL_SUPPORT",
+          "proposition": "Iran has provided material/financial support to Hamas.",
+          "truth": "SUPPORTED",
+          "knowledge": "NOT_ASSESSABLE"
+        },
+        {
+          "id": "CF-SEP23-013",
+          "axis": "SPECIFIC_OPERATION_FOREKNOWLEDGE_OR_COMMAND",
+          "proposition": "Iran had foreknowledge of or commanded a specific Hamas operation merely because Iran supports Hamas.",
+          "truth": "UNSUBSTANTIATED",
+          "truth_qualifier": "Support relationship does not establish operation-specific foreknowledge or command",
+          "knowledge": "NOT_ASSESSABLE"
+        }
+      ]
+    },
+    {
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "classification": "CONTROL_CASE_EXISTING_CHAIN_ADVANCE",
+      "summary": "Authority-layered position evolution: maximalist adviser rhetoric -> SNSC seven-condition framework -> anonymous-official two-condition Hormuz offer -> Araqchi/state-media three-condition formulation. These are related but not semantically interchangeable.",
+      "propositions": [
+        {
+          "id": "CF-SEP23-014",
+          "claimant": "Mohammad Bagher Zolghadr",
+          "office_authority": "Political adviser to Supreme Leader Mojtaba Khamenei; former SNSC secretary; former senior IRGC commander; not sitting SNSC secretary",
+          "statement_time": "2026-09-17",
+          "proposition": "Hormuz would not reopen until Donald Trump and Benjamin Netanyahu were removed from power.",
+          "truth": "SUPPORTED_AS_STATEMENT",
+          "knowledge": "NOT_ASSESSABLE",
+          "authority_effect": "High-level signaling; not established as controlling formal negotiating condition."
+        },
+        {
+          "id": "CF-SEP23-015",
+          "claimant": "Mohsen Rezaei",
+          "office_authority": "Sitting SNSC secretary and Supreme Leader representative to SNSC",
+          "statement_time": "2026-09-19/20",
+          "proposition": "Iran transmitted a seven-condition framework to Washington through mediators.",
+          "truth": "SUPPORTED_AS_REPORTED_FORMAL_POSITION",
+          "knowledge": "NOT_ASSESSABLE",
+          "authority_effect": "Materially greater formal national-security authority than Zolghadr."
+        },
+        {
+          "id": "CF-SEP23-016",
+          "claimant": "Unnamed senior Iranian official reported by Reuters",
+          "office_authority": "Unresolved",
+          "statement_time": "2026-09-22",
+          "proposition": "Iran could reopen Hormuz within seven days if U.S. military pressure eased and the blockade on Iranian ports was lifted.",
+          "truth": "SUPPORTED_AS_REPORTED_OFFER",
+          "knowledge": "NOT_ASSESSABLE",
+          "authority_effect": "Credible government-offer reporting; formal authority/implementation power unresolved."
+        },
+        {
+          "id": "CF-SEP23-017",
+          "claimant": "Abbas Araqchi / Iranian state-media account",
+          "office_authority": "Foreign minister / diplomatic executor; formulation reported through state media",
+          "statement_time": "2026-09-22/23",
+          "proposition": "Hormuz reopening conditions included lifting the naval blockade, releasing frozen Iranian assets, and ending war across all resistance fronts.",
+          "truth": "SUPPORTED_AS_REPORTED_POSITION",
+          "knowledge": "NOT_ASSESSABLE",
+          "authority_effect": "Diplomatic negotiating formulation; relationship to broader seven conditions unresolved."
+        },
+        {
+          "id": "CF-SEP23-018",
+          "claimant": "Analytic relationship",
+          "proposition": "The two-condition and three-condition formulations establish that the other five seven-framework conditions were abandoned.",
+          "truth": "UNSUBSTANTIATED",
+          "knowledge": "NOT_ASSESSABLE",
+          "temporal_effect": "Omission/narrowing is not a formal retraction absent evidence."
+        }
+      ]
+    },
+    {
+      "chain_id": "CH-IRAN-CIVILIAN-HARM-DENIAL-UNGA-202609",
+      "classification": "DEFERRED_EXACT_WORDING_REQUIRED",
+      "summary": "The Sep. 23/24 evidence sweep flags an Iranian UNGA denial of civilian targeting/harm and contrary casualty evidence, but that later artifact is outside this task's specified Sep. 22-23 input set and exact promoted wording is not present in the inspected referral set.",
+      "propositions": [
+        {
+          "id": "CF-SEP23-019",
+          "claimant": "Masoud Pezeshkian",
+          "office_authority": "President of Iran",
+          "statement_time": "2026-09-23",
+          "proposition": "Iran did not hit civilian populations.",
+          "wording_status": "REFERRED BY LATER EVIDENCE; exact source promotion required before canonical semantic insertion",
+          "truth": "DEFERRED",
+          "knowledge": "DEFERRED"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "atomic_propositions": 19,
+    "chains_created": 5,
+    "chains_updated": 1,
+    "deferred_chains": 1
+  },
+  "unresolved": [
+    "Recover exact Saudi UNGA speaker and wording before converting paraphrased 'does not want negotiations/stability' claims into stronger factual propositions.",
+    "Recover exact Iranian regional-stability wording and scope.",
+    "Identify/attribute the unnamed Sep. 22 senior Iranian official and determine authority to bind Hormuz reopening.",
+    "Determine whether SNSC/Supreme Leader/IRGC/IRGCN adopted Zolghadr's Trump/Netanyahu-removal prerequisite.",
+    "Determine whether three Hormuz conditions are chokepoint-specific while the seven-condition framework governs broader settlement.",
+    "Corroborate identities and chain of command of IRGC advisers in Yemen.",
+    "Promote exact Pezeshkian civilian-population wording and contrary casualty evidence before final adjudication."
+  ],
+  "downstream_wol_referrals": [],
+  "downstream_wol_note": "No new WOL-eligible knowing-falsehood finding is established in this pass. FALSE/contradiction is not inferred from policy inconsistency, and knowledge predicates are not manufactured.",
+  "web_of_lies_modified": false
+}
