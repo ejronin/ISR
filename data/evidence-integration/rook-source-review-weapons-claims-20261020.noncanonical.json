@@ -48,15 +48,16 @@
       "review": "Evidence Integration deduplicate against October 19 accepted packet and separate named incidents from tactical motive and maritime counts."
     },
     {
-      "discovery_id": "REC-20261019-NAQDI-MOP-REVERSE-ENGINEERING",
-      "event_date": null,
-      "reported_date": "2026-10-19",
+      "discovery_id": "REC-20261018-NAQDI-MOP-REVERSE-ENGINEERING",
+      "event_date": "2026-10-18",
+      "reported_date": "2026-10-18",
       "category": "IRGC_TECHNOLOGY_CLAIM",
-      "summary": "Secondary report attributing to IRIB says IRGC adviser Mohammad Reza Naqdi claimed to have recovered an unexploded GBU-57 component, analyzed alloys/electronics, and obtained all technology. It also confuses the GBU-57 MOP with the 'mother of all bombs' (the distinct GBU-43/B MOAB). Analysis of fragments would not by itself establish possession of a functional reverse-engineered GBU-57, a production line, guidance/fusing reproduction, or deployable inventory.",
-      "source_title": "Iran claims to have reverse-engineered US GBU-57 bunker-buster bomb",
-      "source_url": "https://dailybaku.az/en/article/iran-claims-to-have-reverse-engineered-us-gbu-57-bunker-buster-bomb",
+      "summary": "Iranian outlets quoted IRGC senior adviser Mohammad Reza Naqdi on October 18 claiming U.S. GBU-57 MOPs failed to detonate, that Iran recovered material, analyzed alloys/electronic circuits and acquired the technical know-how. He explicitly distinguished the 14-ton GBU-57 from the approximately 10-ton GBU-43/B 'mother of all bombs'. No independent confirmation establishes recovered intact weapons, a working reproduction, manufacturing ability or deployable Iranian MOP arsenal.",
+      "source_title": "Tabnak quoting Naqdi October 18 on recovered GBU-57 technology",
+      "source_url": "https://www.tabnak.ir/fa/news/1399312/%D9%81%D9%86%D8%A7%D9%88%D8%B1%DB%8C-%D8%A8%D9%85%D8%A8-14-%D8%AA%D9%86%DB%8C-%D8%A2%D9%85%D8%B1%DB%8C%DA%A9%D8%A7-%D8%AF%D8%B1-%D8%A7%D8%AE%D8%AA%DB%8C%D8%A7%D8%B1-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86",
       "disposition": "ATTRIBUTED_TECHNOLOGY_CLAIM_UNVERIFIED",
-      "review": "Locate original IRIB interview, preserve Naqdi exact words and Iranian terminology, evaluate evidence of a complete reproduction. Claims Forensics owner only for any WOL/Lie Ledger determination."
+      "review": "Obtain original Naqdi speech/audio and any verifiable fragment imagery, clarify whether statement alleges some bombs or bomb subcomponents failed. Differentiate access to material from reverse engineering an operational GBU-57 and verify prior firing records. Claims Forensics alone owns any false/lie ruling.",
+      "corroborating_source_url": "https://www.khabaronline.ir/news/2290093/%D8%B3%D8%B1%D8%AF%D8%A7%D8%B1-%D9%86%D9%82%D8%AF%DB%8C-%D9%86%DB%8C%D9%85%DB%8C-%D8%A7%D8%B2-%D8%A8%D9%85%D8%A8-%DB%B1%DB%B4-%D8%AA%D9%86%DB%8C-GBU-%DB%B5%DB%B7-%D8%AC%D9%86%DA%AF-%D8%AF%D9%88%D8%A7%D8%B2%D8%AF%D9%87-%D8%B1%D9%88%D8%B2%D9%87-%D8%B9%D9%85%D9%84-%D9%86%DA%A9%D8%B1%D8%AF"
     },
     {
       "discovery_id": "REC-20260921-IRGC-NEW-STRATEGIC-WEAPONS",
