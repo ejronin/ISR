@@ -207,8 +207,8 @@
   }
 
   function overview(article, context) {
-    intro(article, 'Iran remains under military and economic pressure. Hormuz is severely disrupted again: Kpler reported a sharp weekly fall in Gulf crude flows as shipping attacks intensified. Iran still demands seven conditions for reopening; no U.S.-Iran agreement is in force.');
-    const s=section(article,'Where does it stand now?', 'Iran is imposing renewed shipping risk and commercial disruption without achieving international acceptance of its claimed control over the strait. Kpler estimates of Gulf crude flow fell sharply in the week before October 19, reversing the earlier recovery trend without proving that all traffic stopped.');
+    intro(article, 'Iran remains under military and economic pressure while attacks against ships near Hormuz continue. The latest October 29 tanker attack has no verified perpetrator. Qatar resumed mediation October 30; no signed U.S.–Iran reopening or ceasefire agreement is in force.');
+    const s=section(article,'Where does it stand now?', 'The October 29 limpet-mine attack on a tanker and other maritime incidents show that trade remains at risk. Iran claims authority over passage routes, but that claim is not established as international law. Qatar has returned to Tehran for talks; both sides remain apart over sanctions, the blockade and nuclear terms.');
     s.dataset.overviewCurrentPosition = 'accepted-evidence';
     add(s,'p','', "Iran hasn't capitulated. But its negotiating position increasingly looks like a country trying to get the best deal it can from a bad position, rather than a country deciding what the final deal will be. That's a long way from where Iran said this war was going.");
     add(s,'p','', 'Recent evidence places commercial shipping at the center of Iran’s immediate pressure campaign. Merchant-vessel attacks can disrupt trade and raise costs even without forcing a U.S. military withdrawal or proving that American bases are out of action. That describes the current evidence, not a claim that Iran has stopped all military-target attacks.');
@@ -219,7 +219,7 @@
     const g=add(s,'div','record-list');
     const earlier=card(g,'What Iran said it would achieve','Iran talked about controlling Hormuz, deciding who could pass and charging ships for passage. It demanded that others accept its conditions before shipping and negotiations returned to normal.','ORIGINAL OBJECTIVE');
     eventEvidence(earlier, ['EV-20260805-001','EV-20260822-001','G3-IRAN-HORMUZ-RESTRICTED-ZONE-20260907','G3-IRAN-HORMUZ-SEQUENCING-20260920']);
-    const offer=card(g,'What Iran is asking for now','After Washington rejected the September 26 proposal, Foreign Minister Araqchi reaffirmed Iran’s seven-condition reopening terms on October 18 and said U.S. comments were under review. Tehran seeks sanctions and navigation relief first; Washington has pressed nuclear concessions. Saudi Arabia rejects Iranian passage tolls. No agreement has been reached.','CURRENT RESULT');
+    const offer=card(g,'What Iran is asking for now','After Washington rejected Iran’s September 26 proposal, Tehran continued seeking an end to the U.S. port blockade and relief from oil sanctions. Qatar returned on October 30 to explore a deal, but Iran rejected the latest ideas and Washington wants nuclear issues addressed from the start. Saudi Arabia continues opposing Iranian passage tolls. No agreement has been signed.','CURRENT RESULT');
     eventEvidence(offer, ['G3-IRAN-HORMUZ-REOPENING-OFFER-20260922','G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926','G3-OMAN-IRAN-HORMUZ-MEETING-20260926','EVT-20261018-IRAN-HORMUZ-SEVEN-CONDITION-OFFER']);
     const result=card(g,'Iran has not made others accept its terms','Iran has not established the permanent control over Hormuz it sought or forced the United States to accept its terms. Gulf states have not accepted Iranian control of regional shipping. Saudi Arabia is publicly calling for the prewar system to return, without Iranian fees or tolls. Iran is asking for the pressure against it to end.','WHY THIS FALLS SHORT');
     eventEvidence(result, ['G3-ARAB-LEAGUE-HORMUZ-POSITION-20260908','G3-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926','G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926']);
@@ -503,7 +503,7 @@
 
   function shipping(article, context) {
     addClass(article, 'guide-migrated-page guide-shipping-page');
-    intro(article,'Recent attacks reversed part of the earlier Gulf shipping recovery. Kpler estimated about 8.5 million barrels/day of regional crude flows in the latest seven-day period versus more than 20 million before, alongside at least ten commercial-vessel incidents in its reporting. Other providers use different denominators and time windows.');
+    intro(article,'Shipping through Hormuz remains dangerous. October 19 Kpler regional crude-flow figures document an earlier downturn; the October 29 Louise 1 tanker attack adds a later independently reported incident with the attacker unidentified. Iran separately claims multiple mine strikes. Do not treat those Iranian counts as confirmed or add them to other providers’ totals.');
 
     const summary=section(article,'Current maritime picture','Tracked traffic, physical passage and commercial or legal acceptance are separate facts.');
     addClass(summary,'guide-summary-strip');
@@ -513,8 +513,8 @@
     const a=card(g,'Iran’s 77-vessel list','Iran announced possible fines, detention or confiscation and warned maritime service providers. External legal recognition, enforceability and insurer/P&I/classification-society compliance are not established.','IRANIAN ANNOUNCEMENT');evidence(a,context,rows.find(r=>r.shipping_id==='SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'));
     const pressure=add(summary,'aside','scope-note');
     add(pressure,'strong','','Why merchant vessels are being attacked');
-    add(pressure,'p','','Iran is trying to make passage on routes it does not approve expensive and dangerous. That demand does not establish lawful Iranian control over those routes. The accepted October 14–19 record shows renewed attacks and reduced crude flows. This is coercion directed at commercial traffic, not proof that Iranian strikes disabled U.S. military forces. The count of merchant-vessel incidents cannot be used as a count of military strikes, and claimed mine mechanisms still require independent confirmation.');
-    const shippingIds=['SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019','SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'];
+    add(pressure,'p','','Iran is trying to make passage on routes it does not approve expensive and dangerous. Its demand does not establish lawful control over those routes. The accepted record now includes the October 29 Louise 1 limpet-mine attack, which caused temporary machinery damage but has no verified attacker. Iran’s separate multi-tanker mine statements are claims pending vessel-level reconciliation. Shipping losses are not proof of disabled U.S. military forces.');
+    const shippingIds=['SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019','SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914','SHIP-LOUISE1-HORMUZ-LIMPET-20261029'];
     evidence(pressure,context,{source_ids:rows.filter(r=>shippingIds.includes(r.shipping_id)).flatMap(r=>r.source_ids||[])});
 
     const method=findSection(article,/^How to read the traffic observations$/i);
@@ -607,6 +607,10 @@
     card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
     const fin=card(g,'Financial pressure','On October 15, U.S. Treasury/OFAC designated International Development Bank in Iraq and related Iran-finance actors, with a narrow wind-down license. FinCEN separately issued a religious-charity abuse alert. Legal actions are confirmed; impacts on particular payment flows need independent transaction evidence.','OCT. 15 / BANKS & COMPLIANCE');evidence(fin,context,er.find(r=>r.economic_id==='ECON-OFAC-IDB-SHADOW-BANKS-20261015'));
     const hz=card(g,'Iran → Hezbollah funding','Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September for displaced Lebanese families. Intermediaries reportedly charged a 20% fee. Hezbollah confirmed that funds had been secured but did not identify the source; Iran did not acknowledge the transfer in the report.','SOURCE-REPORTED / COSTLY CHANNEL');evidence(hz,context,er.find(r=>r.economic_id==='ECON-IRAN-HEZBOLLAH-AID-TRANSFER-20261007'));
+    const latest=add(s,'aside','scope-note');
+    add(latest,'strong','','Later cost and market observations');
+    add(latest,'p','','The Pentagon estimated $47.1 billion in U.S. military war spending through October 16, published by AP on October 28. Reuters quoted Brent futures at $115.15 a barrel and WTI at $101.16 intraday on October 26. These are three different measures: estimated military spending and two futures prices, not a single financial series or proof of causal impact.');
+    evidence(latest,context,{source_ids:er.filter(r=>['ECON-OCT26-BRENT-WTI-FUTURES-INTRADAY','ECON-OCT16-US-WAR-COST-PENTAGON-OCT28-REPORT'].includes(r.economic_id)).flatMap(r=>r.source_ids||[])});
     const forecast=findSection(article,/^2026 growth forecasts$|economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);
     if(forecast){
       forecast.dataset.protectedEconomicChart='retained';
@@ -696,8 +700,8 @@
     intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Negotiating claims do not become agreements by repetition.');
     const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
     const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
-    card(g,'U.S.–Iran / Hormuz contacts','Iran reiterated the seven-condition reopening proposal on October 18 while Washington maintained its nuclear-enrichment requirement. The offers have not produced a signed Hormuz or nuclear agreement.','CONTACTS / NO AGREEMENT');
-    card(g,'Egypt / Saudi conditional defense aid','Egypt’s president requested parliamentary authority for possible Saudi defense assistance if requested. As of October 19, approval remained pending with a vote expected October 26. No new Egyptian deployment was established.','OCT. 19 / PENDING AUTHORIZATION');
+    card(g,'U.S.–Iran / Hormuz contacts','Qatari mediators returned to Tehran on October 30. Iran rejected the latest proposals, while Washington continues to insist nuclear issues be addressed from the outset. No signed Hormuz or nuclear agreement exists.','OCT. 30 / NO AGREEMENT');
+    card(g,'Egypt / Saudi conditional defense aid','Egypt’s parliament approved defensive support for Saudi Arabia on October 27. Authorization is not evidence that Egyptian troops or aircraft have deployed or conducted combat operations.','OCT. 27 / AUTHORIZED');
     card(g,'Eslami / IAEA conference','A UN sanctions travel exemption for Mohammad Eslami was not approved after a U.S. objection. This is not a new general sanctions package.','EXEMPTION NOT APPROVED');
     card(g,'Israel–Lebanon talks','A U.S. official said Israel and Lebanon are expected to meet in Rome in October. That is an expected negotiation, not a completed meeting.','EXPECTED');
   }
@@ -709,7 +713,7 @@
 
   function nuclear(article, context) {
     const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The negotiating gap is explicit; no nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
-    const technical=section(article,'Current enrichment status','Reuters’ Oct. 7 IAEA-grounded review says Iran is not currently known to be enriching uranium. The IAEA believes a little more than 200 kg of uranium enriched up to 60% remains, primarily in the Isfahan tunnel complex with some also at Natanz. Inspectors have not returned to the bombed enrichment sites, Iran has not fully accounted for the surviving stock, and the status of the new Isfahan tunnel enrichment plant remains unknown. No current enrichment is known does not mean Iran is unable to restart.');
+    const technical=section(article,'Current enrichment status','IAEA Director General Rafael Grossi told the Security Council on October 28 that inspectors have seen no evidence Iran has tried to reconstruct the nuclear facilities bombed in 2025–26. The agency still cannot verify Iran’s surviving enriched uranium stockpile because full access has not been restored. No observed rebuilding is not proof of permanent facility destruction or of an independently verified zero nuclear capability.');
   }
 
   function regional(article, context) {
