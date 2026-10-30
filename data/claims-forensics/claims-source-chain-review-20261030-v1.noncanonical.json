@@ -23,14 +23,16 @@
     "data/lie-ledger-v2-evidence-adjudications.json"
   ],
   "invariants": {
-    "sealed_proposition_records": 89,
     "baseline_preserved": true,
     "accepted_packet_hashes_preserved": true,
     "prior_case_adjudications_preserved": true,
     "public_wol_ledger_mutations": 0,
     "new_unique_lies": 0,
     "new_public_claims": 0,
-    "formal_correction_applied": false
+    "formal_correction_applied": false,
+    "sealed_record_count": 89,
+    "expected_metrics_unique_propositions": 41,
+    "denominator_class_distinction": "89 adjudication records are not interchangeable with 41 unique propositions in the existing expected_metrics; neither is changed."
   },
   "review_standard": "Source and statement fidelity first; factual truth and knowledge separately; source reuse is not corroboration; no retroactive evidence or missed-sweep fabrication. Findings below are source-qualified referrals, not publishable verdicts.",
   "cases": [
