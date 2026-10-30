@@ -1,0 +1,62 @@
+{
+  "artifact_role": "ROOK_TOPICAL_RECONCILIATION_AND_CLAIMS_REFERRAL",
+  "schema_version": "1.0",
+  "review_date": "2026-10-30",
+  "scope": {
+    "start": "2026-10-20",
+    "end": "2026-10-30T08:16:00-04:00",
+    "full_sweep_completed": false,
+    "missing_12_hour_windows_not_reconstructed": true,
+    "canonical_packet": "data/canonical-updates/UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json"
+  },
+  "claim_leads": [
+    {
+      "claim": "IRGC statement on October 29 that three or more tankers hit Iranian sea mines by using an 'unauthorized' southern Strait of Hormuz route",
+      "source": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+      "disposition": "UNADJUDICATED_ACTOR_CLAIM",
+      "required": "Per-hull IMO IDs, UKMTO incident reconciliation, mechanism, verifiable timing and external legal authority; do not merge with Louise 1 limpet mine attack or assume Tehran's asserted legal authority."
+    },
+    {
+      "claim": "Iranian navy Rear Admiral Jalil Moghadam October 29 claims of over 20 operations against US warships and 300 against US interests",
+      "source": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+      "disposition": "UNADJUDICATED_EXACT_ACCOUNTING_CLAIM",
+      "required": "Full list of claimed incidents, deduplicated target identities, event clock, outcome evidence and relevant US responses; an exact tally implies testable accounting."
+    },
+    {
+      "claim": "IRGC October 30 claim of destroyed US unmanned surface craft in eastern Hormuz",
+      "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+      "disposition": "UNVERIFIED_ATTRIBUTED_OPERATIONAL_CLAIM",
+      "required": "US military confirmation, hull identity, remote telemetry, imagery, independent media or physical recovery."
+    },
+    {
+      "claim": "Houthi denial of Saudi allegation that a drone was directed toward Mecca",
+      "source": "https://apnews.com/article/7f7f34ceb62f294a450e48ace0bd56e0",
+      "disposition": "CONFLICTING_ATTRIBUTED_STATEMENTS",
+      "required": "Saudi air-defense geospatial track and Houthi launch evidence; separate interception from intention and end-target."
+    },
+    {
+      "claim": "Saudi attribution of Taiz October 29 deaths from an airstrike, reported by Houthi health authorities",
+      "source": "https://apnews.com/article/172666b6c90fc3f0ed8a161f2457be2c",
+      "disposition": "PROVISIONAL_CLAIMED_CASUALTY_AND_ACTOR_ATTRIBUTION",
+      "required": "Independent local investigation, site damage imagery, named incident event ID and casualty provenance."
+    },
+    {
+      "claim": "Satellite collection suggests Russia transmitted tactical targeting intelligence to Houthis and Iraq militias",
+      "source": "https://apnews.com/article/0989403fb38ccd9d7c9ad11a16e28d24",
+      "disposition": "INVESTIGATIVE_INFERENCE_WITH_UNVERIFIED_TRANSMISSION_MECHANISM",
+      "required": "Distinguish visible orbital geometry and tasking from a demonstrated sensor-to-shooter transfer; assess independent official testimony or physical evidence."
+    },
+    {
+      "claim": "Iran has operationally reverse-engineered GBU-57 MOP and possesses new laser weapons",
+      "source": "https://www.tabnak.ir/fa/news/1399312/",
+      "disposition": "CONTINUING_ISSUE_312_NO_NEW_EVIDENCE_ACCEPTED",
+      "required": "Carry forward original October 18 speaker/translation; differentiate recovered pieces, engineering research and full operational capability."
+    }
+  ],
+  "referrals": {
+    "claims_forensics": "Evaluate the above seven claim families under the controlled WOL/Lie Ledger rules: stable proposition/actor IDs, exact original language, repetition-versus-new-claim, evidence/source chronology, falsity vs knowledge, corrections, source-propagation relationships. No automatic new LIE ruling and no changes to prior adjudications by evidence ingestion.",
+    "public_product": "Update claim checks and chronology from owner-qualified outcomes only, and keep reported actor claims visually and verbally separate from verified damage.",
+    "map_review": "Add no point coordinate for 25NM-NE-Khasab approximation until evidence establishes map-grade coordinate; leave existing base operational classification unchanged absent facility-specific proof.",
+    "economic_review": "Use only dated source-specific intraday futures/market observations; do not mix with protected EIA Brent spot series or produce a 2026 October realized total using incomplete observations."
+  }
+}
