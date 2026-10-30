@@ -1,0 +1,39 @@
+name: ROOK evidence freshness watchdog
+
+on:
+  schedule:
+    # Schedule in UTC; the Python gate selects 00:20 and 12:20 New York time
+    # across daylight-saving transitions.
+    - cron: '20 4,5,16,17 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: rook-evidence-freshness
+  cancel-in-progress: false
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - name: Check 12-hour ROOK intake and accepted-evidence age
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/check_rook_freshness_watchdog.py
+      - name: Report missing evidence intake (no fabricated sweep)
+        if: failure() && steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment 296 --body-file rook-freshness-watchdog-report.md
