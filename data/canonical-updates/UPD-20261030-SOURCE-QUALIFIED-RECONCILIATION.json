@@ -370,7 +370,14 @@
         "source_ids": [
           "SRC-059AD04D57CC"
         ],
-        "knowledge_time": "2026-10-30T08:19:00-04:00"
+        "knowledge_time": "2026-10-30T08:19:00-04:00",
+        "topic": "Unrecovered scheduled ROOK 12-hour collection windows through October 30",
+        "collection_actions": [
+          "Reconstruct each scheduled 00/12 ET window from original provenance and label completed, failed, unsubmitted or unrecoverable without inventing a completed sweep.",
+          "Verify missing October 21 collection JSON from the task artifact, validate the real window end and register it as ROOK upstream intake if physically accessible.",
+          "Reconcile each recovered event against accepted event IDs, evidence publication clocks, Claims Forensics referrals and independently attributable sources before canonical promotion.",
+          "Require qualified exact-head CI and public Pages attestation for every accepted evidence release."
+        ]
       }
     }
   ],
