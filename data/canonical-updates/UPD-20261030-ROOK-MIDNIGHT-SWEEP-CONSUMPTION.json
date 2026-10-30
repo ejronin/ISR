@@ -1,0 +1,147 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+  "known_at": "2026-10-30T08:39:00-04:00",
+  "evidence_cutoff": "2026-10-30T08:38:30-04:00",
+  "summary": "Source-qualified October 29 regulatory and energy events from the completed October 29 noon to October 30 midnight evidence review. Inspection covered three incoming event leads, four later-event updates, five attributed claims and three economic observations. Accepted only independently source-checked license supersession, oil borrowing awards, reported executive withdrawals and separately qualified Taiz medical access evidence. Other purported military damage, drone capture, election claims and provisional casualty reports remain unadjudicated referrals or unchanged. No complete historical missed-sweep recovery, no WOL/Lie Ledger change and no map-coordinate or protected market series change.",
+  "sources": [
+    {
+      "source_id": "SRC-4ECE6B69D8B2",
+      "url": "https://ofac.treasury.gov/media/937311/download?inline=",
+      "source_role": "Original U.S. Treasury OFAC General License FF-1 dated October 29; authoritative text, narrowly authorized wind-down, supersedes FF"
+    },
+    {
+      "source_id": "SRC-E097193B8EDB",
+      "url": "https://ofac.treasury.gov/recent-actions/20261029",
+      "source_role": "October 29 2026 OFAC issuance notice; date and original-license source"
+    },
+    {
+      "source_id": "SRC-689903B48338",
+      "url": "https://www.reuters.com/business/energy/us-loans-40-million-barrels-oil-spr-last-share-global-agreement-2026-10-29/",
+      "source_role": "Reuters October 29 Department of Energy reported October 28 SPR borrowing contracts; award, not physical delivery"
+    },
+    {
+      "source_id": "SRC-4E6610436CEE",
+      "url": "https://www.reuters.com/business/energy/exxon-chevron-cancel-adipec-executive-trips-sources-say-2026-10-29/",
+      "source_role": "Reuters October 29 security-concern executive nonattendance reporting; conference not canceled"
+    },
+    {
+      "source_id": "SRC-E15C3FAAE481",
+      "url": "https://www.reuters.com/world/middle-east/yemens-hospitals-buckle-fighting-escalates-2026-10-29/",
+      "source_role": "Reuters October 29 Red Cross and aid-source hospital and displacement observations; source-specific estimates"
+    },
+    {
+      "source_id": "SRC-7FC2256D74A2",
+      "url": "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035",
+      "source_role": "AP October 29 regional update with actor-attributed Saudi/Houthi, drone and Gaza claims; nonindependent BDA remains unaccepted"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261029-OFAC-GL-FF1-SUPERSEDES-FF",
+      "event_date": "2026-10-29",
+      "summary": "OFAC General License FF-1 effective October 29 replaced FF of October 15, authorizing only specifically enumerated wind-down transactions involving Iraq Development Bank and its 50%-owned entities until 12:01 AM EST December 1. Payment to a blocked person must enter a blocked account. This is not sanctions rescission or proof that money moved.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-4ECE6B69D8B2",
+        "SRC-E097193B8EDB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-US-SPR-LOAN-CONTRACT-AWARDS",
+      "event_date": "2026-10-28",
+      "summary": "U.S. Department of Energy reported contracts awarded Oct28 for about 16.8 million barrels of SPR oil loans, following about 23.8 million awarded Oct13. Roughly 40 million barrels in combined awards implements part of the existing 172 million US international reserve-release commitment. Awarded borrowing contracts are not physical deliveries or a new 40 million barrels on top of 172 million.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-689903B48338"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-ADIPEC-OIL-MAJOR-EXECUTIVE-TRIPS",
+      "event_date": "2026-10-29",
+      "summary": "Reuters sources said ExxonMobil CEO Darren Woods and Chevron upstream president Clay Neff canceled trips to the upcoming Abu Dhabi ADIPEC energy conference amid security concerns. Neither a new UAE strike nor the cancellation of the conference itself is established; its organizer expected over 120 US exhibitors.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-4E6610436CEE"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "event_date": "2026-10-29",
+      "summary": "Reuters reported hospital and Red Cross accounts of severe pressure on Taiz medical services, with facilities treating up to 700 war wounded weekly and large displacement since August. These are source-attributed capacity and displaced-person observations, not a new count of conflict deaths or proof all roads were identically closed.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-E15C3FAAE481"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OFAC-IDB-SHADOW-BANKS-20261015",
+      "mode": "update",
+      "record": {
+        "economic_id": "ECON-OFAC-IDB-SHADOW-BANKS-20261015",
+        "date": "2026-10-29",
+        "metric": "October 29 OFAC FF-1 replaces FF limited International Development Bank wind-down",
+        "status": "AMENDED_GENERAL_LICENSE_CONFIRMED_DESIGNATION_PERSISTS",
+        "observed_state": "October 29 FF-1 superseded October 15 FF, allows specified wind-down activity through Dec1 12:01 AM EST involving Iraqi Development Bank/qualifying majority-owned entities; blocked-person payments to blocked accounts. This is not delisting, broad sanctions relief or proof actual funds transferred.",
+        "source_ids": [
+          "SRC-4ECE6B69D8B2",
+          "SRC-E097193B8EDB"
+        ],
+        "knowledge_time": "2026-10-30T08:39:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-SPR-40M-LOAN-AWARDS-20261028",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-SPR-40M-LOAN-AWARDS-20261028",
+        "date": "2026-10-28",
+        "metric": "US Strategic Petroleum Reserve borrowing contract awards, millions of barrels",
+        "tranche_oct28_awarded_million_bbl_approx": 16.8,
+        "tranche_oct13_awarded_million_bbl_approx": 23.8,
+        "combined_awarded_million_bbl_approx": 40,
+        "status": "BORROWING_AWARDS_NOT_VERIFIED_PHYSICAL_WITHDRAWAL",
+        "observed_state": "Reuters sourced October 28 award of ~16.8m barrels with earlier ~23.8m Oct13, completing roughly 40m loan agreements within U.S. 172m commitment; actual delivery and return dates must be observed separately.",
+        "source_ids": [
+          "SRC-689903B48338"
+        ],
+        "knowledge_time": "2026-10-30T08:39:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OCT29-ADIPEC-TRAVEL-CANCELLATION",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OCT29-ADIPEC-TRAVEL-CANCELLATION",
+        "date": "2026-10-29",
+        "metric": "Two oil-major executive travel cancellations due to reported regional security concern",
+        "status": "REUTERS_TWO_SOURCE_ATTRIBUTED_TRAVEL_CHANGE_EVENT_NOT_CANCELLED",
+        "observed_state": "Reuters says ExxonMobil and Chevron executives withdrew from ADIPEC travel; 120+ US companies were still expected to exhibit. Does not establish UAE attack or facility outage.",
+        "source_ids": [
+          "SRC-4E6610436CEE"
+        ],
+        "knowledge_time": "2026-10-30T08:39:00-04:00"
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T0000ET.json"
+    ]
+  }
+}
