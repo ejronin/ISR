@@ -395,11 +395,22 @@
       "previous_lineage_sha256": "da30bac95e2ec8c87adab849dd1675f21220bbbf9527528438af263b62122081",
       "sequence": 36,
       "sha256": "42b5b9de1af76bd92cbd1881f03765076841bc2857085f27a512ba038bb9f702"
+    },
+    {
+      "sequence": 37,
+      "packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "path": "data/canonical-updates/UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json",
+      "sha256": "a4e5d5e698efbb52fcb2ab3cdd19ec6f0a32e99f0f8fb3a230771ba9a15c3e88",
+      "known_at": "2026-10-30T08:19:00-04:00",
+      "evidence_cutoff": "2026-10-30T08:16:00-04:00",
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "previous_lineage_sha256": "1e2694c8248b0ad7d5e36a524419ab72368349e301faf2eeea69eb2d2d79104f",
+      "lineage_sha256": "8c8be633afd3227b2615d4c5a163380d1ee6129f8c866987bc5703804508f170"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-10-19T14:55:19-04:00",
+  "current_evidence_cutoff": "2026-10-30T08:16:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
