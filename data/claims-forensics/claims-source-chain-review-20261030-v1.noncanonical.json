@@ -335,7 +335,8 @@
       "type": "REPORTS",
       "basis": "AP attributes Taiz access count to WFP; original WFP report directly retrieved",
       "source": "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz",
-      "independent_corroboration": true
+      "independent_corroboration": false,
+      "evidence_role": "WFP is independent contrary evidence to the Houthi claim; AP quoting WFP is NOT independent corroboration of WFP."
     }
   ],
   "corrections_and_knowledge": {
