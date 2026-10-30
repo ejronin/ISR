@@ -1,0 +1,401 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-10-29T12:00:00-04:00",
+    "window_end": "2026-10-30T00:00:00-04:00",
+    "collection_time": "2026-10-30T08:16:38-04:00",
+    "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+    "collection_mode": "DELAYED_POST_WINDOW_REVIEW_NOT_CONTEMPORANEOUS"
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261029-ADIPEC-EXECUTIVE-WITHDRAWALS",
+      "event_type": "ENERGY_EVENT_ATTENDANCE_SECURITY_WITHDRAWAL",
+      "actor": "ExxonMobil / Chevron / ADIPEC",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29T13:40:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "Reuters, citing two sources, reported Exxon CEO Darren Woods and Chevron upstream president Clay Neff cancelled travel to ADIPEC in Abu Dhabi over security concerns. Companies declined comment; event organiser said 120+ US firms would still exhibit. This establishes reported executive nonattendance, not cancellation of the event, a new attack on UAE or an operational order.",
+      "sources": [
+        "https://www.reuters.com/business/energy/exxon-chevron-cancel-adipec-executive-trips-sources-say-2026-10-29/"
+      ],
+      "evidence_class": "INDEPENDENT_REPORTING_TWO_SOURCES",
+      "disposition": "NEW_EVENT"
+    },
+    {
+      "event_id": "ROOK-20261029-OFAC-GL-FF1",
+      "event_type": "SANCTIONS_GENERAL_LICENSE_AMENDMENT",
+      "actor": "US Treasury / OFAC",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "OFAC General License FF-1 replaces and supersedes FF dated October 15, authorizing narrowly defined wind-down transactions involving International Development Bank for Investment and Finance (Iraq Development Bank) and majority-owned entities through 12:01 a.m. EST December 1, 2026; payment to blocked persons must enter blocked accounts. This is limited wind-down permission, not removal of designation or blanket sanctions relief. Exact publication hour not established.",
+      "sources": [
+        "https://ofac.treasury.gov/media/937311/download?inline="
+      ],
+      "evidence_class": "PRIMARY_REGULATORY_DOCUMENT",
+      "window_assignment": "DATE_ONLY_TIME_UNCONFIRMED",
+      "disposition": "NEW_LEGAL_INSTRUMENT_SUPERSEDES_PRIOR_LICENSE_ONLY"
+    },
+    {
+      "event_id": "ROOK-20261029-GAZA-VEHICLE-STRIKE-REPORTED",
+      "event_type": "GAZA_CIVILIAN_HARM_REPORTED",
+      "actor": "Gaza hospital health officials / Israeli military",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "AP reported hospital officials said an Israeli strike on a civilian vehicle in central Gaza killed two and wounded one. Israel's military had not commented in that report. Reported deaths and strike attribution remain source-attributed; exact occurrence/publication hour and whether a pre-existing event identity exists require deduplication.",
+      "sources": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ],
+      "evidence_class": "HOSPITAL_ACCOUNT_REPORTED_BY_AP",
+      "window_assignment": "DATE_ONLY_TIME_UNCONFIRMED",
+      "disposition": "PROVISIONAL_NEW_HUMAN_IMPACT_REFERRAL"
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261029-SPR-LOAN-AWARDS",
+      "updates_existing_ref": "UPD-US-SPR-40M-BARREL-LOAN-OFFER-20260929",
+      "relationship": "UPDATE_EARLIER_UPSTREAM_SPR_LOAN_OFFER_TO_AWARDED_CONTRACTS_NOT_PHYSICAL_DELIVERY",
+      "occurrence_time": "2026-10-28",
+      "publication_time": "2026-10-29T17:12:42-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "Reuters reports US Energy Department awarded about 16.8m barrels in loan contracts on Oct 28 to Gunvor, Trafigura, Phillips 66 and Vitol; an earlier 23.8m-barrel tranche was awarded Oct 13. Approximately 40m barrels of borrowing agreements complete the previously offered US SPR tranche. These are loan contract awards, not proof all barrels have been physically drawn or returned. US wider 172m commitment and 400m IEA aggregate are separate denominators.",
+      "sources": [
+        "https://www.reuters.com/business/energy/us-loans-40-million-barrels-oil-spr-last-share-global-agreement-2026-10-29/"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE"
+    },
+    {
+      "update_id": "ROOK-20261029-TAIZ-HEALTH-ACCESS",
+      "updates_existing_ref": "LOCKER-YEMEN-WFP-HUNGER-20261002",
+      "relationship": "LATER_HUMANITARIAN_EVIDENCE_ADDS_HEALTH_CAPACITY_DISPLACEMENT_AND_AID_ACCESS",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29T12:34:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "Reuters interviewed affected patients and medical staff; Red Cross reported facilities treating up to 700 war wounded in a week. About half of 281,000 newly displaced Yemenis since August are in Taiz governorate; the area has been largely isolated since October 3. UN and aid agencies cite medicine, oxygen, fuel, anesthetic and maternity-service shortages. These are distinct indicators, not a new independent casualty total.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemens-hospitals-buckle-fighting-escalates-2026-10-29/"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE"
+    },
+    {
+      "update_id": "ROOK-20261029-HOUTHI-SAUDI-STRIKES",
+      "updates_existing_ref": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "relationship": "LATER_ACTOR_STRIKE_CLAIMS_AND_SAUDI_INTERCEPTION_REPORTS_WITH_UNVERIFIED_DAMAGE",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "AP reports Saudi authorities said they intercepted two ballistic missiles aimed toward Riyadh. Houthi spokesman Yahya Saree claimed attacks on Saudi oil sites, airports and military targets without specifying precise attack times; Saudi government had not confirmed the claimed impacts. Keep intercept report separate from claimed impacts and from any prior Ras Tanura incident.",
+      "sources": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "window_assignment": "DATE_ONLY_TIME_UNCONFIRMED"
+    },
+    {
+      "update_id": "ROOK-20261029-IRAN-HORMUZ-DIPLOMACY",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_ACTOR_STATEMENTS_PRESERVE_SEVEN_CONDITION_POSITION_NO_AGREEMENT",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "summary": "Reuters and AP reported Iran acknowledged receipt of a message from Vice President Vance and had not responded; Trump characterized the outreach as concerning medical supplies while US media attributed it to renewed peace talks. Iranian parliament speaker reiterated the seven-condition framework. Reuters publication at 11:38 ET predates this window, so it is retained as context/late discovery, not a new in-window diplomatic breakthrough.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/vance-outreach-iran-related-medical-supplies-says-trump-2026-10-29/",
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ],
+      "disposition": "NO_MATERIAL_AGREEMENT_CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "window_assignment": "PRIOR_PUBLICATION_CONTEXT"
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261029-IRGC-THREE-TANKERS-MINED",
+      "claimant": "IRGC / Iranian state broadcaster",
+      "claim": "Three unidentified oil tankers struck mines and caught fire while taking an unauthorized Hormuz route.",
+      "occurrence_time": "2026-10-28/2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "status": "UNVERIFIED_ACTOR_CLAIM",
+      "contrary_or_independent_evidence": "AP could not confirm vessel identities, casualties, incident count or mechanism. Do not equate with the later reported Louise 1 strike.",
+      "sources": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261029-IRGC-DRONE-CAPTURE",
+      "claimant": "Iranian state television / IRGC",
+      "claim": "IRGC electronically captured and landed an American MQM-170 Outlaw drone near Hormuz.",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "status": "CONTRADICTED_BY_US_OFFICIAL_DENIAL_NOT_INDEPENDENTLY_ADJUDICATED",
+      "contrary_or_independent_evidence": "US CENTCOM spokesman Tim Hawkins called the claim false. No independent drone wreckage/serial/geolocation confirmation established.",
+      "sources": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261029-HOUTHI-SAUDI-OIL-AIRPORT-STRIKES",
+      "claimant": "Yahya Saree / Houthis",
+      "claim": "Missiles and drones struck Saudi oil refineries, production sites, airports and military targets and caused casualties.",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "status": "UNVERIFIED_DAMAGE_AND_CASUALTY_CLAIM",
+      "contrary_or_independent_evidence": "AP says spokesman did not give precise occurrence times and Saudi authorities had not confirmed the alleged impacts. Saudi interception statements do not independently establish target damage.",
+      "sources": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261029-TAIZ-SIEGE-DENIAL",
+      "claimant": "Abdul Malik al-Houthi",
+      "claim": "No Taiz siege; food and humanitarian access remain open.",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "status": "ACTOR_DENIAL_CONFLICTS_WITH_AID_AGENCY_ACCESS_REPORTING",
+      "contrary_or_independent_evidence": "Reuters reports blocked humanitarian supplies and WFP inability to reach 600,000 aid-dependent people per AP; preserve different definitions of access and do not infer all routes uniformly closed.",
+      "sources": [
+        "https://apnews.com/article/yemen-taiz-houthis-siege-famine-humanitarian-crisis-172666b6c90fc3f0ed8a161f2457be2c",
+        "https://www.reuters.com/world/middle-east/yemens-hospitals-buckle-fighting-escalates-2026-10-29/"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261029-ISRAEL-ELECTION-FRAUD",
+      "claimant": "Netanyahu / Likud",
+      "claim": "Arab-led parties stole votes or benefited from foreign interference.",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "status": "UNSUBSTANTIATED_POLITICAL_CLAIM",
+      "contrary_or_independent_evidence": "AP reports election committee inquiry into unspecified foreign interference did not identify Arab-led parties; election results/coalition negotiations must remain separate from unproven allegations.",
+      "sources": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261029-US-SPR-40M-LOAN-CONTRACTS",
+      "occurrence_time": "2026-10-28",
+      "publication_time": "2026-10-29T17:12:42-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "metric": "SPR_BORROWING_CONTRACTS",
+      "value_approx_million_barrels": 40,
+      "summary": "Energy Department reported award of roughly 40m barrels of borrowing contracts across Oct 13 and Oct 28 tranches. This is completion of awards under an existing 172m US commitment, not 40m additional barrels above that commitment; future 44m interest barrels and repayment timing are administration projections.",
+      "sources": [
+        "https://www.reuters.com/business/energy/us-loans-40-million-barrels-oil-spr-last-share-global-agreement-2026-10-29/"
+      ],
+      "disposition": "UPDATE"
+    },
+    {
+      "economic_id": "ROOK-20261029-ADIPEC-CORPORATE-TRAVEL",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29T13:40:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "metric": "ENERGY_CONFERENCE_PARTICIPATION",
+      "summary": "Two US oil-major executive trips reportedly cancelled due to security concerns. Event organiser still expects broad participation; do not equate this with UAE infrastructure damage or conference cancellation.",
+      "sources": [
+        "https://www.reuters.com/business/energy/exxon-chevron-cancel-adipec-executive-trips-sources-say-2026-10-29/"
+      ],
+      "disposition": "NEW_MARKET_RISK_SIGNAL"
+    },
+    {
+      "economic_id": "ROOK-20261029-OIL-PRICE-OBSERVATION",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-29",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T08:16:38-04:00",
+      "evidence_horizon_time": "2026-10-30T00:00:00-04:00",
+      "metric": "BRENT_WTI_FUTURES",
+      "brent_usd_per_barrel_reported": 114.88,
+      "wti_usd_per_barrel_reported": 102,
+      "summary": "WSJ reported Thursday price declines amid diplomatic speculation; exact contract/settlement timestamps require primary exchange confirmation. Do not treat this as a definitive same-contract daily close or infer price causality.",
+      "sources": [
+        "https://www.wsj.com/business/energy-oil/oil-prices-fall-as-traders-weigh-u-s-iran-diplomacy-afe80fa9"
+      ],
+      "disposition": "PROVISIONAL_OBSERVATION"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Yemen Taiz access/health",
+      "decision": "UPDATE",
+      "reason": "Reuters new health system observations, Red Cross workload and displacement denominator."
+    },
+    {
+      "drawer": "Saudi-Houthi missile and oil strike records",
+      "decision": "UPDATE",
+      "reason": "Separate Saudi interception report from Houthi unverified site/damage claims; no independently established new BDA."
+    },
+    {
+      "drawer": "US SPR emergency oil release",
+      "decision": "UPDATE",
+      "reason": "Previously offered 40m-barrel loan tranche now reported awarded; no physical draw inference. Prior reference: UPD-US-SPR-40M-BARREL-LOAN-OFFER-20260929."
+    },
+    {
+      "drawer": "Iran-US seven-condition negotiations",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Receipt/characterization of Vance message does not establish agreement, accepted nuclear concessions or Hormuz reopening."
+    },
+    {
+      "drawer": "Iranian tanker/mine reports",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Three-tanker IRGC claim unverified; later Louise 1 reporting published after cutoff, separate lead."
+    },
+    {
+      "drawer": "IAEA enrichment access",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified new inspection implementation in reviewed sources."
+    },
+    {
+      "drawer": "Lebanon/Hezbollah disposition",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently established in-window state change; earlier financing/rearmament reports retained as historical leads."
+    },
+    {
+      "drawer": "Israel election and Gaza human impact",
+      "decision": "UPDATE",
+      "reason": "Date-only AP Gaza deaths and electoral fraud assertions require incident/time and result certification checks."
+    },
+    {
+      "drawer": "OFAC Iraq Development Bank license",
+      "decision": "SUPERSEDE",
+      "reason": "FF-1 expressly supersedes FF regulatory text, not the underlying blocked-person designation."
+    }
+  ],
+  "coverage": {
+    "method": "Targeted public web-source searches across Reuters, AP, OFAC and sector sources with cross-domain discovery; not authenticated access to paid AIS/Kpler/LSEG terminals, restricted government feeds or continuous monitoring.",
+    "searched_source_classes": [
+      "Iran political/security/military statements",
+      "United States executive/military/diplomacy",
+      "Israel elections/security and Gaza/Hamas",
+      "Saudi Arabia/GCC Oman Qatar UAE Kuwait Bahrain",
+      "Iraq",
+      "Yemen/Houthi military and Taiz humanitarian",
+      "Lebanon/Hezbollah",
+      "Syria-related",
+      "Pakistan/Turkiye",
+      "China/Russia/Europe/EU",
+      "UN/IAEA/IMO and humanitarian",
+      "UKMTO/maritime/shipping",
+      "OFAC/sanctions",
+      "energy/oil/LNG/SPR",
+      "commercial AIS/Kpler/LSEG public reporting",
+      "claims and corrections",
+      "independent OSINT"
+    ],
+    "material_results": [
+      "US SPR loan awards",
+      "Taiz hospital/access deterioration",
+      "Exxon/Chevron executive travel cancellations",
+      "OFAC FF-1 amended Iraq bank wind-down authorization",
+      "Saudi interception vs Houthi claims",
+      "IRGC mine/drone claims vs independent confirmation",
+      "Gaza civilian casualty report requiring exact-clock deduplication",
+      "Israeli election fraud allegation remains unsubstantiated"
+    ],
+    "checked_no_qualifying_delta": [
+      "No verified signed US-Iran/Hormuz settlement or implemented IAEA access found in this review.",
+      "No independently verified new Lebanon/Hezbollah disposition in exact window.",
+      "No independent BDA for Houthi Saudi target claims.",
+      "No confirmed additional Oman/UAE/Qatar/Kuwait/Bahrain aviation authority closure within cutoff.",
+      "No confirmed newly announced China/Russia military delivery within cutoff."
+    ],
+    "limitations": [
+      "Not an exhaustive authenticated scrape of every listed actor or source class.",
+      "AP Thursday rolling page lacks exact per-item publication timestamps; DATE_ONLY records must not be promoted to hour-specific findings.",
+      "OFAC FF-1 exact release hour not verified.",
+      "Historical Reuters source published 10:00 UTC and QatarEnergy 14:17 UTC on Oct29 fall before this window and are discovery leads only.",
+      "Later Reuters Oct30 tanker and Qatari mediator reports postdate the midnight evidence horizon."
+    ]
+  },
+  "source_discovery_additions": [
+    {
+      "source_name": "Reuters Iran MOD procurement investigation",
+      "url": "https://www.reuters.com/world/iran/irans-hidden-web-military-agencies-is-slipping-hardware-past-us-blockade-2026-10-29/",
+      "publication_time": "2026-10-29T06:00:00-04:00",
+      "reason": "Earlier-than-window detailed import/procurement network investigation; reconcile separately with sanctions and BDA, do not count as this window's new event."
+    },
+    {
+      "source_name": "Reuters QatarEnergy LNG hedge",
+      "url": "https://www.reuters.com/business/energy/qatarenergy-buys-us-other-lng-hedge-future-hormuz-disruptions-2026-10-29/",
+      "publication_time": "2026-10-29T10:17:00-04:00",
+      "reason": "Before window; significant 7mtpa long-term LNG purchase hedge for later economic reconciliation, no proof of physical Hormuz normalization."
+    },
+    {
+      "source_name": "Reuters Louise 1 limpet mine incident",
+      "url": "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+      "publication_time": "2026-10-30T07:03:00-04:00",
+      "reason": "Incident reported to have occurred Oct29 but article published after midnight; check original UKMTO advisory clock and vessel identity before assignment."
+    },
+    {
+      "source_name": "Reuters Qatari mediators return to Tehran",
+      "url": "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/",
+      "publication_time": "2026-10-30T03:09:00-04:00",
+      "reason": "Post-cutoff diplomacy update for next scheduled window, not a completed settlement."
+    }
+  ],
+  "unresolved_questions": [
+    "Original UKMTO alert timestamp, IMO number and attack mechanism for Louise 1; reconcile with separate Iranian three-tanker mine claim without conflation.",
+    "Independent verification of Saudi oil-facility damage and Houthi strike occurrence times.",
+    "Exact per-item AP rolling update times and Gaza strike identity/casualty revisions.",
+    "Taiz aid-route access by corridor, observed versus projected displacement and disease counts.",
+    "Exact OFAC FF-1 release hour and scope of affected 50%-owned entities.",
+    "Physical SPR drawdown versus awarded loan volumes, repayment schedule and contemporaneous contract prices.",
+    "Whether any IAEA inspectors obtained new access after the latest accepted packet; no positive evidence found.",
+    "Source-level attribution of alleged Iranian UAV capture, drone serials and geolocated imagery.",
+    "Unresolved scheduled locker gaps after October 7 and evidence reconciliation Issue #296."
+  ],
+  "completion": {
+    "status": "COMPLETE_ROUTINE_UPSTREAM_COLLECTION_WITH_DISCLOSED_COVERAGE_LIMITATIONS",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true,
+    "upstream_only": true,
+    "source_review_performed": true,
+    "repository_validator_status": "PENDING_REPOSITORY_WRITE_AND_COMPARE_VALIDATION",
+    "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
+    "completion_report": "Append-only upstream locker only. Source claims remain claims; no canonical/public mutation or accepted evidence promotion."
+  }
+}
