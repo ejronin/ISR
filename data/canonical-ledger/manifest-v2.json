@@ -400,12 +400,12 @@
       "sequence": 37,
       "packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
       "path": "data/canonical-updates/UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json",
-      "sha256": "4e1be1f19efbbd66520f79b2005ab20aed8bcae06f3128f454d2e3473e8eb233",
+      "sha256": "7a398714fabe2f3fcab116c53916bba8b418c79a394b2e9bdc524c160137ba31",
       "known_at": "2026-10-30T08:19:00-04:00",
       "evidence_cutoff": "2026-10-30T08:16:00-04:00",
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "previous_lineage_sha256": "1e2694c8248b0ad7d5e36a524419ab72368349e301faf2eeea69eb2d2d79104f",
-      "lineage_sha256": "7eb07f075e552a1f1a02b1b311b4a8a76ee223baf9658969e5095b5a06cc0ee6"
+      "lineage_sha256": "6b06e4854be267cba0da17d5d21c25059074b9ecbeb7cecea189b6d07f34b930"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
