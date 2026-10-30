@@ -406,11 +406,22 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "previous_lineage_sha256": "1e2694c8248b0ad7d5e36a524419ab72368349e301faf2eeea69eb2d2d79104f",
       "lineage_sha256": "6b06e4854be267cba0da17d5d21c25059074b9ecbeb7cecea189b6d07f34b930"
+    },
+    {
+      "sequence": 38,
+      "packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "path": "data/canonical-updates/UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION.json",
+      "sha256": "69fe5a647fa85c8b4cb179fe2b26c01960d61a2b87e72feadbcab551d1e31c83",
+      "known_at": "2026-10-30T08:39:00-04:00",
+      "evidence_cutoff": "2026-10-30T08:38:30-04:00",
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "previous_lineage_sha256": "6b06e4854be267cba0da17d5d21c25059074b9ecbeb7cecea189b6d07f34b930",
+      "lineage_sha256": "07debd64ebd5aa1a4e182b5ce9b9e6159ffe486b629ba3f727531f6e2b96f364"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-10-30T08:16:00-04:00",
+  "current_evidence_cutoff": "2026-10-30T08:38:30-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
