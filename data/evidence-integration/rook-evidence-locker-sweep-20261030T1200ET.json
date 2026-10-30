@@ -1,0 +1,734 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-10-30T00:00:00-04:00",
+    "window_end": "2026-10-30T12:00:00-04:00",
+    "scheduled_window_end": "2026-10-30T12:00:00-04:00",
+    "collection_time": "2026-10-30T12:06:05-04:00",
+    "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+    "collection_mode": "POST_CUTOFF_ROUTINE_REVIEW",
+    "source_publication_rule": "Only reports available by window end; date-only reports retained with publication-time uncertainty; prior occurrence is not new occurrence."
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261030-ISRAEL-ELECTION-COUNT",
+      "event_type": "ELECTORAL_RESULT_ANNOUNCEMENT",
+      "actor": "Israeli election committee / political parties",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "AP reported the released vote count for the October 27 election: Netanyahu-aligned bloc 53 seats, Eisenkot opposition bloc 48, Arab-led parties 19. Neither bloc holds 61 seats; formal certification/submission to president expected November 4. Result reporting is not formation of government or proof of fraud.",
+      "sources": [
+        "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674"
+      ],
+      "evidence_class": "SOURCE_ATTRIBUTED_PUBLIC_REPORTING",
+      "disposition": "NEW_REPORTED_RESULT_NOT_FINAL_CERTIFICATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "National Israeli election results",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    },
+    {
+      "event_id": "ROOK-20261030-G20-PHOTO-CANCELLATION",
+      "event_type": "MULTILATERAL_DIPLOMATIC_EVENT",
+      "actor": "United States / European delegations / Russia",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "AP reported US cancelled customary G20 foreign-minister group photo in Atlanta after European diplomats objected to appearance with Russia's Lavrov. The G20 ministerial meeting proceeded; this is diplomatic disagreement, not cancellation of G20 or a military commitment on Iran.",
+      "sources": [
+        "https://apnews.com/article/g20-rubio-russia-ukraine-iran-war-ed4ab8ad9fedd628c39ac05bc5092cac"
+      ],
+      "evidence_class": "SOURCE_ATTRIBUTED_PUBLIC_REPORTING",
+      "disposition": "NEW_REPORTED_DIPLOMATIC_EVENT",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Atlanta G20 meeting",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261030-TAIZ-GOVERNOR-ACCESS-METRICS",
+      "updates_existing_ref": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "relationship": "LATER_SOURCE_ATTRIBUTED_LOCAL_GOVERNOR_ESTIMATES_NOT_NEW_CASUALTY_INCIDENT",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T05:00:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "Guardian interviewed Taiz governor Nabil Shamsan: he estimates minimum 35,000 cubic metres/day water demand versus at most 1,000 entering, 120 suspended health centres, up to 1,800 dialysis patients needing supplies, 64 deaths and 173 injuries Aug–Oct20, and 6,400 newly displaced families. Governor estimates and attribution remain source-specific; do not add 64 to existing incident deaths or equate displaced families with individuals. Houthi leader denies a siege; Human Rights Watch describes blocked access.",
+      "sources": [
+        "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "LOCALITY_ONLY",
+        "source_location_description": "Taiz city and surrounding access corridors, Yemen",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "City-scale humanitarian conditions; no specific roadblock or strike coordinate established."
+      }
+    },
+    {
+      "update_id": "ROOK-20261030-LOUISE1-UKMTO-FOLLOWUP",
+      "updates_existing_ref": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+      "relationship": "LATER_UKMTO_REPORT_RECONCILES_HULL_AND_FIRE_WITH_ALREADY_ACCEPTED_EVENT",
+      "occurrence_time": "2026-10-29",
+      "publication_time": "2026-10-30T07:03:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "Reuters and UKMTO describe two explosive devices attached from small craft to tanker port side about 25 NM northeast of Khasab, fire extinguished, crew safe, voyage resumed; three security sources identify Panama-flagged Louise 1. Already recorded in accepted packet sequence 37. No new attack, attribution or point-coordinate promotion; additional source detail only.",
+      "sources": [
+        "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+        "https://www.iranintl.com/en/202610303203"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Approximately 25 nautical miles northeast of Khasab, Oman, Strait of Hormuz",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "Distance/bearing alone cannot identify a unique incident point; retain original UKMTO locality."
+      }
+    },
+    {
+      "update_id": "ROOK-20261030-SA-MECCA-DRONE-DENIAL-RECHECK",
+      "updates_existing_ref": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "relationship": "SAUDI_COALITION_INTERCEPTION_REPORT_AND_HOUTHI_DENIAL_ALREADY_ACCEPTED_NO_NEW_BDA",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T02:12:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "Reuters reports Saudi-led coalition claimed drone interception over Mecca region and Houthi spokesman Yahya Saree denied conducting a Saudi-territory operation. Both accounts already qualified in accepted packet sequence 37. No independent launch site, aimpoint, impact or perpetrator determination.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Mecca region, Saudi Arabia; interception point not given",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "Regional description is not a Mecca city impact coordinate."
+      }
+    },
+    {
+      "update_id": "ROOK-20261030-QATAR-MEDIATION-RECHECK",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "relationship": "SAME_REUTERS_MEDIATOR_REPORT_AS_ACCEPTED_NO_NEW_IMPLEMENTATION",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T03:09:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "Reuters official briefed on negotiations says Qatar mediators returned to Tehran coordinated with US. Iranian official rejected Sunday draft; Tehran seeks blockade/sanctions relief first and Washington wants nuclear issues addressed at outset. Already accepted in sequence 37. No signed agreement, inspected enrichment arrangement or Hormuz reopening.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Diplomatic mediation",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    },
+    {
+      "update_id": "ROOK-20261030-US-DCAS-CASUALTY-ACCOUNTING",
+      "updates_existing_ref": "US_IRAN_WAR_PERSONNEL_CASUALTY_ACCOUNTING",
+      "relationship": "OFFICIAL_DATABASE_RETROSPECTIVE_NONCOMBAT_FATALITY_RECLASSIFICATION_NOT_NEW_HOSTILE_ATTACK",
+      "occurrence_time": "2026-10-29/2026-10-30",
+      "publication_time": "2026-10-30T02:39:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "CBS citing DCAS reports 23 total US service member deaths in Iran-war/overseas-operation accounting, 11 hostile and 12 nonhostile; Washington Post reports two airmen were newly added and deaths were illness/under investigation. This is retrospective administrative inclusion, not two new hostile deaths or two deaths occurring in this 12-hour window. Verify DCAS direct data for exact amendment clock and historical fatality dates.",
+      "sources": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.washingtonpost.com/politics/2026/10/29/two-us-service-members-die-amid-iran-war-pentagon-tally-shows/"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "US DoD casualty database",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261030-IRGC-THREE-TANKERS-FRIDAY",
+      "claimant": "IRGC Navy / Iranian state media",
+      "claim": "Three oil tankers caught fire and exploded using routes Iran calls unauthorized; one allegedly carried 2 million barrels and struck a mine.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T08:00:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "status": "UNVERIFIED_ACTOR_CLAIM",
+      "contrary_or_independent_evidence": "Reuters unable to verify the count, vessel identities, 2m-barrel cargo, mine mechanism or explosions. Do not merge with independently reported Louise 1 without matching IMO/hull and chronology. The similar Oct29 three-tanker statement may be repetition rather than three additional hulls.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "unlocated pending source",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Southern Strait of Hormuz / routes described by IRGC, no individual hull positions",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    },
+    {
+      "claim_id": "ROOK-20261030-IRGC-US-UNMANNED-SHIP",
+      "claimant": "IRGC Navy / Iranian state media",
+      "claim": "Iran destroyed an unmanned US vessel in the eastern Strait of Hormuz.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T08:00:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "status": "UNVERIFIED_ACTOR_CLAIM_ALREADY_IN_ACCEPTED_DRAWER",
+      "contrary_or_independent_evidence": "Reuters could not verify and US military did not immediately confirm; earlier accepted packet already preserves this allegation. Do not promote as US platform loss or new BDA.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "unlocated pending source",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Eastern Strait of Hormuz, no hull ID or coordinates",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    },
+    {
+      "claim_id": "ROOK-20261030-HOUTHI-MECCA-DENIAL",
+      "claimant": "Yahya Saree / Houthi movement",
+      "claim": "No Houthi operation was conducted toward Saudi territory on Friday; Saudi coalition interception account is false.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T02:12:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "status": "DISPUTED_ACTOR_DENIAL",
+      "contrary_or_independent_evidence": "Saudi-led coalition says it destroyed a Houthi-launched drone in Mecca region. Neither independent flight path nor intended target has been established; already covered in accepted event, not duplicate launch.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Mecca region, Saudi Arabia; actual drone track unknown",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    },
+    {
+      "claim_id": "ROOK-20261030-TAIZ-SIEGE-CONTRADICTION",
+      "claimant": "Abdul-Malik al-Houthi / Nabil Shamsan / HRW",
+      "claim": "Houthi leader asserts humanitarian access open; Taiz governor asserts severe restrictions and blocked water deliveries.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T05:00:00-04:00",
+      "publication_time_precision": "MINUTE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "status": "CONFLICTING_SOURCE_ATTRIBUTED_ACCESS_ACCOUNTS",
+      "contrary_or_independent_evidence": "Guardian reports governor water-delivery metrics and HRW independent access criticism. Do not infer that every Taiz corridor is identically closed; require route-level observation.",
+      "sources": [
+        "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Taiz and surrounding approaches, Yemen",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    },
+    {
+      "claim_id": "ROOK-20261030-ISRAEL-FRAUD-CLAIM-RECHECK",
+      "claimant": "Netanyahu / Likud",
+      "claim": "Arab-led parties benefited from election fraud and foreign interference.",
+      "occurrence_time": "2026-10-29/2026-10-30",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "DATE_ONLY",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "status": "UNSUBSTANTIATED_ACTOR_ALLEGATION",
+      "contrary_or_independent_evidence": "AP reports election committee found no basis for systemic electoral integrity violation; Shin Bet investigation is not a finding of culpability and does not invalidate reported 53/48/19 count.",
+      "sources": [
+        "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "National election",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      }
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261030-BRENT-WTI-1236UTC",
+      "metric": "BRENT_DEC_JAN_AND_WTI_INTRADAY_FUTURES",
+      "occurrence_time": "2026-10-30T08:36:00-04:00",
+      "publication_time": "2026-10-30T02:27:00Z",
+      "publication_time_precision": "INITIAL_PUBLICATION_TIMESTAMP_WITH_LATER_UNTIMED_UPDATE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "Reuters observed at 12:36 GMT: expiring December Brent $117.14/bbl, more active January Brent $113.10/bbl, WTI $103.94/bbl. Article initial timestamp 02:27 UTC but later in-article observation at 12:36 UTC; exact article update time not shown. These are intraday futures, not settlement, not spot, and December vs January contracts must not be mixed.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "disposition": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Market/policy observation",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      },
+      "observation_time": "2026-10-30T12:36:00Z",
+      "december_brent_usd_per_barrel": 117.14,
+      "january_brent_usd_per_barrel": 113.1,
+      "wti_usd_per_barrel": 103.94
+    },
+    {
+      "economic_id": "ROOK-20261030-OIL-MONTHLY-PROJECTION",
+      "metric": "OCTOBER_MONTH_TO_DATE_OIL_FUTURES_PERCENTAGE",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T02:27:00Z",
+      "publication_time_precision": "INITIAL_PUBLICATION_TIMESTAMP_WITH_LATER_UNTIMED_UPDATE",
+      "collection_time": "2026-10-30T12:06:05-04:00",
+      "evidence_horizon_time": "2026-10-30T12:00:00-04:00",
+      "summary": "Reuters said Brent was on track for a 13% October gain and WTI for 15%, not yet final monthly settlements. The continued tanker threat is contextual, not a verified unique cause of price movements.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "disposition": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Market/policy observation",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No source-supported point coordinates or canonical map-location identity established."
+      },
+      "brent_month_to_date_percent_reported": 13,
+      "wti_month_to_date_percent_reported": 15
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Oct29 Louise 1 attack",
+      "canonical_ref": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Accepted sequence 37 already includes hull, two limpet devices, temporary engine fire, unknown attacker; no new point-grade geolocation."
+    },
+    {
+      "drawer": "IRGC multiple tanker mine claims",
+      "canonical_ref": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "decision": "UPDATE",
+      "reason": "New Oct30 Reuters publication repeats or expands three-tanker actor claim; vessel-level identity and whether additional events remain unresolved."
+    },
+    {
+      "drawer": "Saudi Mecca-region interception",
+      "canonical_ref": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Saudi coalition and Houthi denial both already accepted in sequence 37; no independent track or target proof."
+    },
+    {
+      "drawer": "Qatari mediation and Iran-US nuclear/Hormuz conditions",
+      "canonical_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Previously accepted mediator visit and incompatible conditions remain; no deal or implementation."
+    },
+    {
+      "drawer": "Taiz hospital/access humanitarian",
+      "canonical_ref": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "decision": "UPDATE",
+      "reason": "Guardian newly publishes governor's detailed water, dialysis, medical closure and displaced family metrics with conflicting Houthi account."
+    },
+    {
+      "drawer": "US war casualties",
+      "decision": "UPDATE",
+      "reason": "Public DoD database accounting revised to 23, 11 hostile plus 12 nonhostile; not new battlefield deaths."
+    },
+    {
+      "drawer": "Israeli elections and fraud allegations",
+      "decision": "SUPERSEDE",
+      "reason": "Released full count 53/48/19 supersedes partial tally, but formal certification and government formation remain pending; fraud allegations remain unsubstantiated."
+    },
+    {
+      "drawer": "Gaza/Hamas military disposition",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No source-qualified new military disposition within exact window."
+    },
+    {
+      "drawer": "Lebanon/Hezbollah financing and disposition",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No source-qualified new financial transfer or military status change within exact window."
+    },
+    {
+      "drawer": "IAEA access and nuclear stockpile",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new implemented safeguards access beyond Oct28 Grossi report in accepted canonical packet."
+    },
+    {
+      "drawer": "OFAC Iran and Iraq bank sanctions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "OFAC latest Iran action listed Oct29 FF-1, already accepted; no new Oct30 action identified."
+    },
+    {
+      "drawer": "Yemen Aden and Lahj fighting",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Oct30 articles describe ongoing conflict and civilian preparations, but no independently dated new physical strike with unique target coordinates was established."
+    },
+    {
+      "drawer": "Gulf exports, AIS and shipping flow",
+      "decision": "UPDATE",
+      "reason": "Reuters oil intraday prices recorded; FT 8.7m bpd Hormuz weekly flow lead remains unverified through accessible full text and cannot overwrite canonical series."
+    },
+    {
+      "drawer": "Turkey/Pakistan/Saudi Mecca Defence Pact",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Earlier Turkish parliamentary committee approval remains; no new ratification or deployment verified."
+    },
+    {
+      "drawer": "Russia/China/Europe",
+      "decision": "UPDATE",
+      "reason": "G20 group-photo cancellation involving Russia and European delegations is a diplomatic event, not new material military support."
+    }
+  ],
+  "coverage": {
+    "method": "Targeted public OSINT across international wire, regional media, government/authority pages and maritime/energy public reporting. No authenticated paid AIS/Kpler/LSEG terminal or classified feeds. Date-only reporting does not establish exact 12-hour publication placement.",
+    "coverage_by_actor_and_source_class": [
+      {
+        "category": "Iran political/military/security",
+        "status": "MATERIAL_CLAIMS_REVIEWED",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/"
+        ]
+      },
+      {
+        "category": "United States executive, military, casualties",
+        "status": "MATERIAL_ADMINISTRATIVE_UPDATE",
+        "sources": [
+          "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+          "https://www.washingtonpost.com/politics/2026/10/29/two-us-service-members-die-amid-iran-war-pentagon-tally-shows/",
+          "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Israel political/security and elections",
+        "status": "MATERIAL_ELECTORAL_RESULT",
+        "sources": [
+          "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674"
+        ]
+      },
+      {
+        "category": "Saudi Arabia and GCC, Oman, Qatar, UAE, Kuwait, Bahrain",
+        "status": "SAUDI_CLAIM_AND_QATAR_DIPLOMACY; OTHERS_NO_QUALIFYING_DELTA",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/",
+          "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Iraq",
+        "status": "NO_QUALIFYING_NEW_DELTA; OFAC_PREVIOUS_LICENSE_REVIEWED",
+        "sources": [
+          "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions"
+        ]
+      },
+      {
+        "category": "Yemen/Houthis",
+        "status": "TAIZ_HUMANITARIAN_UPDATE_AND_CONFLICTING_SAUDI_DRONE_CLAIMS",
+        "sources": [
+          "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+          "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+          "https://www.aljazeera.com/news/2026/10/30/need-a-plan-b-yemenis-in-aden-prepare-for-another-war-as-missiles-fall"
+        ]
+      },
+      {
+        "category": "Lebanon/Hezbollah",
+        "status": "NO_QUALIFYING_NEW_DELTA_IN_TARGETED_REVIEW",
+        "sources": []
+      },
+      {
+        "category": "Gaza/Hamas",
+        "status": "NO_QUALIFYING_NEW_DELTA_IN_TARGETED_REVIEW",
+        "sources": []
+      },
+      {
+        "category": "Syria-related actors",
+        "status": "NO_QUALIFYING_NEW_DELTA_IN_TARGETED_REVIEW",
+        "sources": []
+      },
+      {
+        "category": "Pakistan/Turkiye",
+        "status": "NO_NEW_RATIFICATION_OR_DEPLOYMENT_VERIFIED",
+        "sources": []
+      },
+      {
+        "category": "China/Russia/Europe/EU",
+        "status": "G20_DIPLOMATIC_DISAGREEMENT_ONLY",
+        "sources": [
+          "https://apnews.com/article/g20-rubio-russia-ukraine-iran-war-ed4ab8ad9fedd628c39ac05bc5092cac"
+        ]
+      },
+      {
+        "category": "UN/IAEA/IMO and human impact",
+        "status": "NO_NEW_IAEA_ACCESS; TAIZ_GOVERNOR_AND_HRW_HUMANITARIAN_SOURCE",
+        "sources": [
+          "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+          "https://www.reuters.com/world/middle-east/status-irans-uranium-enrichment-programme-2026-10-07/"
+        ]
+      },
+      {
+        "category": "Maritime authorities and shipping/AIS/Kpler/LSEG public",
+        "status": "LOUISE1_RECONCILED_WITH_ACCEPTED; UNVERIFIED_IRGC_COUNTS; NO_PAID_DATA",
+        "sources": [
+          "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+          "https://www.ukmto.org/recent-incidents",
+          "https://www.ft.com/content/66ba3e98-26f5-46f1-9af3-5854364b4e9f"
+        ]
+      },
+      {
+        "category": "Aviation authorities",
+        "status": "NO_NEW_QUALIFIED_AIRSPACE_CLOSURE_VERIFIED",
+        "sources": []
+      },
+      {
+        "category": "Sanctions authorities",
+        "status": "OFAC_OCT29_LATEST_NO_OCT30_DELTA_VERIFIED",
+        "sources": [
+          "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions"
+        ]
+      },
+      {
+        "category": "Energy/commodity markets",
+        "status": "DATED_INTRADAY_FUTURES_OBSERVATIONS",
+        "sources": [
+          "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Claims/corrections and independent OSINT",
+        "status": "SEPARATE_ACTOR_CLAIMS_AND_REPORTING",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+          "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674",
+          "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+        ]
+      }
+    ],
+    "reviewed_source_count": 16,
+    "counts": {
+      "new_events": 2,
+      "existing_event_updates": 5,
+      "claims_and_corrections": 5,
+      "economic_energy_updates": 2,
+      "prior_drawers_reviewed": 15
+    },
+    "limitations": [
+      "Exact UKMTO incident warning ID and original issue timestamp for Louise 1 not recovered from dynamically rendered primary portal; Reuters quotes UKMTO.",
+      "Reuters Iran IRGC article says three tankers; older IRGC claims may describe same hulls, no duplicate physical attack counted.",
+      "The latest accepted canonical cutoff on main was 2026-10-30T08:38:30-04:00 and packet sequence 37 already contained Oct30 events; these are explicitly deduplicated.",
+      "AP Oct30 election/G20 pages lack accessible precise publication hour; retained date-only and subject to source-horizon reconciliation.",
+      "No authenticated commercial AIS, Kpler or LSEG datasets; FT paywall prevents independent inspection of detailed route denominator.",
+      "Physical coordinates, attacker attribution, BDA and operational intentions are not inferred."
+    ]
+  },
+  "source_discovery_additions": [
+    {
+      "source_name": "UKMTO original Oct29 Khasab incident advisory",
+      "url": "https://www.ukmto.org/recent-incidents",
+      "publication_time": "UNRESOLVED",
+      "reason": "Retrieve primary UKMTO alert ID, original clock and any official position; no coordinate derived from 25NM NE Khasab."
+    },
+    {
+      "source_name": "Financial Times Oct30 Louise 1 and Hormuz flow",
+      "url": "https://www.ft.com/content/66ba3e98-26f5-46f1-9af3-5854364b4e9f",
+      "publication_time": "2026-10-30",
+      "reason": "Public summary cites 8.7m bpd Hormuz weekly flow through Oct29; full methodology and vessel denominator paywalled, not promoted."
+    },
+    {
+      "source_name": "Pentagon Defense Casualty Analysis System",
+      "url": "https://dcas.dmdc.osd.mil/",
+      "publication_time": "ROLLING",
+      "reason": "Verify exact fatality addition timestamps and hostile/nonhostile categories; avoid occurrence-date inference."
+    },
+    {
+      "source_name": "Guardian Taiz governor and HRW reporting",
+      "url": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+      "publication_time": "2026-10-30T09:00:00Z",
+      "reason": "Governor water access, health facility and displaced-family indicators with competing Houthi denial."
+    },
+    {
+      "source_name": "Israeli election committee official result/certification",
+      "url": "https://www.gov.il/en/departments/central_elections_committee/govil-landing-page",
+      "publication_time": "PENDING",
+      "reason": "Cross-check 53/48/19 released count and November 4 formal certification before final-government claims."
+    },
+    {
+      "source_name": "Reuters Oct30 oil December/January contract distinction",
+      "url": "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+      "publication_time": "2026-10-30T02:27:00Z_INITIAL",
+      "reason": "Intraday quotes at 12:36 GMT; do not merge expiry contracts or treat as monthly close."
+    }
+  ],
+  "unresolved_questions": [
+    "Are IRGC's Oct30 three claimed tanker fires the same hulls as Oct29 reports or distinct verified incidents? Need IMO identities, event clocks and independent monitoring.",
+    "Exact original UKMTO warning ID, incident time, geolocation and vessel IMO for Louise 1; no point plotted.",
+    "What was the original route/impact location for the Saudi Mecca-region drone, if any? Coalition claim and Houthi denial do not establish city targeting.",
+    "Does DCAS independently show 23 deaths with 11 hostile and 12 nonhostile and when were the two airmen's deaths? Do not infer new battle casualties.",
+    "When will Israeli election results be formally certified and can the fraud allegations be independently corroborated?",
+    "Which Taiz access corridors are actually blocked, and how are water, dialysis and displacement estimates independently measured?",
+    "Do Qatari proposals produce any signed US-Iran settlement, verified nuclear inspections or legally implemented Hormuz transit regime?",
+    "Can FT/Kpler route-specific 8.7m bpd figure be checked against methodology and dates without conflating regional Gulf export totals?",
+    "No coordinates or protected public marker changes authorized; require source-grade location before map projection.",
+    "Issue #296 retains unresolved historic 12-hour sweep gaps; this artifact does not retroactively fill them."
+  ],
+  "geospatial_handoff": {
+    "contract_version": "2026-10-30",
+    "rule": "Use sourced map-grade locality or canonical IDs only; bearing/distance without unique position remains geolocation UNRESOLVED; no coordinates fabricated.",
+    "map_eligible_reviewed": [
+      {
+        "canonical_ref": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+        "event_date": "2026-10-29",
+        "map_eligibility": "region-only",
+        "geolocation": "UNRESOLVED",
+        "description": "25 nautical miles northeast of Khasab, Oman",
+        "source": "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+        "projection_ready": false,
+        "reason": "Previously accepted event; new information does not justify point marker."
+      },
+      {
+        "canonical_ref": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+        "event_date": "2026-10-30",
+        "map_eligibility": "region-only",
+        "geolocation": "UNRESOLVED",
+        "description": "Mecca region, Saudi Arabia",
+        "source": "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+        "projection_ready": false,
+        "reason": "No exact interception point or independently verified target."
+      },
+      {
+        "claim_ref": "ROOK-20261030-IRGC-THREE-TANKERS-FRIDAY",
+        "map_eligibility": "unlocated pending source",
+        "geolocation": "UNRESOLVED",
+        "description": "Strait of Hormuz; no per-hull location",
+        "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "projection_ready": false,
+        "reason": "Actor claim only, no independently matched vessels."
+      },
+      {
+        "claim_ref": "ROOK-20261030-IRGC-US-UNMANNED-SHIP",
+        "map_eligibility": "unlocated pending source",
+        "geolocation": "UNRESOLVED",
+        "description": "Eastern Strait of Hormuz",
+        "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "projection_ready": false,
+        "reason": "No independent vessel or loss confirmation."
+      },
+      {
+        "update_ref": "ROOK-20261030-TAIZ-GOVERNOR-ACCESS-METRICS",
+        "map_eligibility": "region-only",
+        "geolocation": "LOCALITY_ONLY",
+        "description": "Taiz city, Yemen",
+        "source": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+        "projection_ready": false,
+        "reason": "Humanitarian locality, not discrete new strike or route coordinate."
+      }
+    ],
+    "nonspatial_categories": [
+      "diplomacy",
+      "elections",
+      "market quotes",
+      "sanctions",
+      "national casualty accounting"
+    ],
+    "protected_routes_or_markers_mutated": false
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_UPSTREAM_COLLECTION_WITH_DISCLOSED_COVERAGE_LIMITATIONS",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true,
+    "upstream_only": true,
+    "source_review_performed": true,
+    "repository_validator_status": "PENDING_GITHUB_PR_CI_VALIDATION",
+    "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
+    "completion_report": "Source-qualified 12-hour upstream sweep; known Oct30 events in accepted packet sequence 37 explicitly deduplicated. All physical incident geolocation unresolved unless sourced. No protected canonical, signed release, public marker or route mutation. Do not treat as durable completed/unconsumed until repository validator recognizes PR."
+  }
+}
