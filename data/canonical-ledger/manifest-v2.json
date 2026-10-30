@@ -411,12 +411,12 @@
       "sequence": 38,
       "packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
       "path": "data/canonical-updates/UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION.json",
-      "sha256": "69fe5a647fa85c8b4cb179fe2b26c01960d61a2b87e72feadbcab551d1e31c83",
+      "sha256": "905dcf4839406783bb7a04c33c51c7cdef6eba8cc868835f571f59acdf939e37",
       "known_at": "2026-10-30T08:39:00-04:00",
       "evidence_cutoff": "2026-10-30T08:38:30-04:00",
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "previous_lineage_sha256": "6b06e4854be267cba0da17d5d21c25059074b9ecbeb7cecea189b6d07f34b930",
-      "lineage_sha256": "07debd64ebd5aa1a4e182b5ce9b9e6159ffe486b629ba3f727531f6e2b96f364"
+      "lineage_sha256": "5c7edc97b16b69975771d0c8324c425eb79895c25ba9bb573d80352af3430e86"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
