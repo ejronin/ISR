@@ -66,8 +66,8 @@
   "existing_event_updates": [
     {
       "update_id": "ROOK-20261029-SPR-LOAN-AWARDS",
-      "updates_existing_ref": "ROOK-20260929-US-SPR-40M-LOAN-OFFER",
-      "relationship": "UPDATE_OFFER_TO_AWARDED_BORROWING_CONTRACTS_NOT_PHYSICAL_DELIVERY",
+      "updates_existing_ref": "UPD-US-SPR-40M-BARREL-LOAN-OFFER-20260929",
+      "relationship": "UPDATE_EARLIER_UPSTREAM_SPR_LOAN_OFFER_TO_AWARDED_CONTRACTS_NOT_PHYSICAL_DELIVERY",
       "occurrence_time": "2026-10-28",
       "publication_time": "2026-10-29T17:12:42-04:00",
       "publication_time_precision": "MINUTE",
@@ -271,7 +271,7 @@
     {
       "drawer": "US SPR emergency oil release",
       "decision": "UPDATE",
-      "reason": "Previously offered 40m-barrel loan tranche now reported awarded; no physical draw inference."
+      "reason": "Previously offered 40m-barrel loan tranche now reported awarded; no physical draw inference. Prior reference: UPD-US-SPR-40M-BARREL-LOAN-OFFER-20260929."
     },
     {
       "drawer": "Iran-US seven-condition negotiations",
