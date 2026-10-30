@@ -4,7 +4,7 @@
   "packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
   "known_at": "2026-10-30T08:19:00-04:00",
   "evidence_cutoff": "2026-10-30T08:16:00-04:00",
-  "summary": "Selective source-verified October 21–30 catch-up across Iranian maritime coercion, Gulf/Yemen attacks, regional diplomacy, nuclear safeguards, military spending and dated market quotes. Events include attributed actor statements and source-qualified observations. The 12-hour ROOK coverage gap is NOT restored, and no whole-theater exhaustive sweep is asserted. No WOL/Lie Ledger case adjudication or facility-operability judgment is changed. Unknown perpetrator and venue coordinates remain unknown.",
+  "summary": "Selective source-verified October 21–30 catch-up across Iranian maritime coercion, Gulf/Yemen attacks, regional diplomacy, nuclear safeguards, military spending and dated market quotes. Events include attributed actor statements and source-qualified observations. The 12-hour scheduled evidence collection coverage gap is NOT restored, and no whole-theater exhaustive sweep is asserted. No WOL/Lie Ledger case adjudication or facility-operability judgment is changed. Unknown perpetrator and venue coordinates remain unknown.",
   "sources": [
     {
       "source_id": "SRC-E20CE2667B88",
@@ -356,28 +356,6 @@
           "SRC-3C66EFC26D93"
         ],
         "knowledge_time": "2026-10-30T08:19:00-04:00"
-      }
-    },
-    {
-      "entity_type": "gap",
-      "entity_id": "GAP-ROOK-SCHEDULED-OCT20-30-2026",
-      "mode": "add",
-      "record": {
-        "gap_id": "GAP-ROOK-SCHEDULED-OCT20-30-2026",
-        "date": "2026-10-30",
-        "status": "MISSING_DURABLE_COMPLETE_12H_SWEEPS",
-        "observed_state": "ROOK's last completed recognized 12-hour sweep remains October 7 14:03 ET. October 21 collection was locally preserved but GitHub write failed and was not a recognized completed sweep; later scheduled windows were not recovered. This selectively source-qualified October 30 packet does not repair that coverage gap.",
-        "source_ids": [
-          "SRC-059AD04D57CC"
-        ],
-        "knowledge_time": "2026-10-30T08:19:00-04:00",
-        "topic": "Unrecovered scheduled ROOK 12-hour collection windows through October 30",
-        "collection_actions": [
-          "Reconstruct each scheduled 00/12 ET window from original provenance and label completed, failed, unsubmitted or unrecoverable without inventing a completed sweep.",
-          "Verify missing October 21 collection JSON from the task artifact, validate the real window end and register it as ROOK upstream intake if physically accessible.",
-          "Reconcile each recovered event against accepted event IDs, evidence publication clocks, Claims Forensics referrals and independently attributable sources before canonical promotion.",
-          "Require qualified exact-head CI and public Pages attestation for every accepted evidence release."
-        ]
       }
     }
   ],
