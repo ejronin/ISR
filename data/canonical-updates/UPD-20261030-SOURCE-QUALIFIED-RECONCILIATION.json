@@ -1,0 +1,363 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+  "known_at": "2026-10-30T08:19:00-04:00",
+  "evidence_cutoff": "2026-10-30T08:16:00-04:00",
+  "summary": "Selective source-verified October 21–30 catch-up across Iranian maritime coercion, Gulf/Yemen attacks, regional diplomacy, nuclear safeguards, military spending and dated market quotes. Events include attributed actor statements and source-qualified observations. The 12-hour scheduled evidence collection coverage gap is NOT restored, and no whole-theater exhaustive sweep is asserted. No WOL/Lie Ledger case adjudication or facility-operability judgment is changed. Unknown perpetrator and venue coordinates remain unknown.",
+  "sources": [
+    {
+      "source_id": "SRC-E20CE2667B88",
+      "url": "https://apnews.com/article/ab585e99b346e02843b858ff5d6523b8",
+      "source_role": "AP October 28 reporting of IAEA Director Grossi UN Security Council testimony; IAEA reports no observed reconstruction, but cannot verify whole nuclear stockpile"
+    },
+    {
+      "source_id": "SRC-0DB5BB34A4AA",
+      "url": "https://apnews.com/article/0122d6201f904496a080e60e0f983697",
+      "source_role": "AP October 27 parliamentary approval; prospective defensive assistance, not verified deployed forces"
+    },
+    {
+      "source_id": "SRC-5180B33CE2A0",
+      "url": "https://apnews.com/article/36486edb61b3bf4e0df67e8a17123e44",
+      "source_role": "AP October 26 four-party Iran, Saudi, Turkey, Pakistan consultations; talks not signed peace agreement"
+    },
+    {
+      "source_id": "SRC-3C66EFC26D93",
+      "url": "https://apnews.com/article/81d781a54149709d1ca6754d2aab78bc",
+      "source_role": "AP October 28 reporting Pentagon/CENTCOM cost-to-date estimate as of October 16; estimated categories, not audited total economic cost"
+    },
+    {
+      "source_id": "SRC-8857A29EE4F5",
+      "url": "https://apnews.com/article/0989403fb38ccd9d7c9ad11a16e28d24",
+      "source_role": "AP October 28 investigation of Russian satellite presence and alleged intelligence relay; correlation not proof of transfer"
+    },
+    {
+      "source_id": "SRC-D1901CB5F6AC",
+      "url": "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+      "source_role": "Reuters October 30 security-source attribution of October 29 tanker Louise 1 limpet-mine incident; unknown perpetrator"
+    },
+    {
+      "source_id": "SRC-91C370966DB4",
+      "url": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+      "source_role": "Reuters October 30 IRGC naval statements concerning tankers and claimed US unmanned vessel; actor claims with no US independent confirmation"
+    },
+    {
+      "source_id": "SRC-42818A9D55F8",
+      "url": "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/",
+      "source_role": "Reuters October 30 Qatari draft talks and separate US/Iran conditions; mediator reporting, not agreement"
+    },
+    {
+      "source_id": "SRC-AC0F15D71DA4",
+      "url": "https://finance.yahoo.com/news/oil-prices-down-almost-1-232445179.html",
+      "source_role": "Reuters October 26 dated Brent and WTI futures intraday quotes syndicated by Yahoo; not EIA physical spot prices"
+    },
+    {
+      "source_id": "SRC-F3BE284F724E",
+      "url": "https://www.reuters.com/world/middle-east/uae-shares-extend-losses-regional-conflict-fears-2026-10-23/",
+      "source_role": "Reuters October 23 UAE index/Brent close observations; historical market period not comparable daily economic totals"
+    },
+    {
+      "source_id": "SRC-A261F7C5D403",
+      "url": "https://apnews.com/article/7f7f34ceb62f294a450e48ace0bd56e0",
+      "source_role": "AP October 30 Saudi interception and Houthi denial over Mecca area; attribution disputed"
+    },
+    {
+      "source_id": "SRC-1653AEC36AEB",
+      "url": "https://apnews.com/article/172666b6c90fc3f0ed8a161f2457be2c",
+      "source_role": "AP October 30 Yemen Taiz humanitarian and October 29 airstrike competing casualty claims, provisional"
+    },
+    {
+      "source_id": "SRC-059AD04D57CC",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+      "source_role": "CBS October 29 UKMTO projectile report and Iranian multiple-tanker statements; distinguish independently monitored incident from Iranian claims"
+    },
+    {
+      "source_id": "SRC-7AEDCE5DF3A5",
+      "url": "https://www.reuters.com/world/middle-east/shield-not-sword-saudi-arabia-2026-10-21/",
+      "source_role": "Reuters October 21 regional defense cooperation and Taiz humanitarian briefing; evidence and analysis attributed"
+    },
+    {
+      "source_id": "SRC-355C3D40239C",
+      "url": "https://www.theguardian.com/world/2026/oct/28/gulf-states-multipart-peace-deal-avert-renewal-us-iran-war",
+      "source_role": "Guardian October 28 diplomatic reporting about revised reopening ideas; proposed four-day sequence not signed agreement"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261021-SA-DEFENSIVE-PARTNERS",
+      "event_date": "2026-10-21",
+      "summary": "Reuters briefing described UK defensive Typhoon missions, French air-defense assistance for Yanbu and delayed Egyptian parliamentary authorization. Announced or planned allied assistance does not prove all assets have deployed or expanded offensive operations.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-7AEDCE5DF3A5"
+      ]
+    },
+    {
+      "event_id": "EVT-20261023-UAE-MARKETS-ENERGY",
+      "event_date": "2026-10-23",
+      "summary": "Reuters reported UAE market declines as Saudi infrastructure risk grew, and quoted Brent futures around $114.61/bbl. Market indexes, futures quotes and military damage are separate observed categories.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-F3BE284F724E"
+      ]
+    },
+    {
+      "event_id": "EVT-20261026-TEHRAN-REGIONAL-TALKS",
+      "event_date": "2026-10-26",
+      "summary": "AP reported officials from Saudi Arabia, Turkey and Pakistan meeting Iranian representatives in Tehran. Parties agreed to continue regional peace and security discussions; no implemented US-Iran agreement or military cessation was established.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-5180B33CE2A0"
+      ]
+    },
+    {
+      "event_id": "EVT-20261026-BRENT-FUTURES-QUOTE",
+      "event_date": "2026-10-26",
+      "summary": "Reuters observed Brent futures $115.15 and WTI futures $101.16 around 12:39 GMT, both intraday market observations rather than EIA physical spot or end-of-day prices.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-AC0F15D71DA4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261027-EGYPT-SAUDI-AUTHORIZATION",
+      "event_date": "2026-10-27",
+      "summary": "Egyptian parliament approved presidential authorization for defensive assistance to Saudi Arabia against Houthi attacks. Approval supersedes the earlier pending-vote status, but no Egyptian ground offensive in Yemen or completed deployment was established.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-0DB5BB34A4AA"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-IAEA-RECONSTRUCTION-INSPECTION",
+      "event_date": "2026-10-28",
+      "summary": "IAEA Director General Grossi said the agency saw no evidence of reconstruction at bombed Iranian nuclear sites and warned that inspectors still lack access sufficient to verify enriched uranium stockpile status. Absence of observed rebuilding is not proof all facilities permanently inoperable.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-E20CE2667B88"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-US-WAR-COST-ESTIMATE",
+      "event_date": "2026-10-28",
+      "summary": "AP published a CENTCOM estimate supplied to Congress of $47.1 billion in US military war spending through October 16; this is a dated cost estimate, not an October 28 expenditure or all-inclusive economic impact.",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-3C66EFC26D93"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-RUSSIAN-SATELLITE-CORRELATION",
+      "event_date": "2026-10-28",
+      "summary": "AP investigation reported repeated Russian satellite passes around sites later targeted in 40 attacks by Houthi and Iraqi militia forces, plus officials' accusations about intelligence sharing. Satellite orbital correlation does not independently prove transmission, tasking or direct Russian targeting.",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-8857A29EE4F5"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "event_date": "2026-10-29",
+      "summary": "IRGC described multiple tankers hitting mines along a southern Strait of Hormuz route that Iran regards as unauthorized. Vessel count and mechanism are IRGC assertions requiring per-hull verification, not independently confirmed Iranian legal jurisdiction.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-059AD04D57CC",
+        "SRC-91C370966DB4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-LOUISE1-LIMPET-ATTACK",
+      "event_date": "2026-10-29",
+      "summary": "Tanker Louise 1 was attacked about 25 nautical miles northeast of Khasab according to UKMTO and Reuters maritime sources; two devices attached to the hull by a small boat caused temporary engine-room fire/damage, crew safe. Responsibility not established, and this incident cannot be combined with separate unverified IRGC mine claims without hull identity reconciliation.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-D1901CB5F6AC"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-TAIZ-SA-AIRSTRIKE-REPORT",
+      "event_date": "2026-10-29",
+      "summary": "AP reported that Houthi-run health authorities attributed at least 13 deaths in western Taiz to a Saudi airstrike. Exact responsibility, casualties and precise point remain source-attributed; this is separate from the longer humanitarian siege.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-1653AEC36AEB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "event_date": "2026-10-30",
+      "summary": "Reuters reported Qatari mediators returned to Tehran; Iranian officials resisted a proposed draft while US and Iranian conditions on sanctions, blockade and nuclear sequencing remain opposed. There is no reported signed reopening or ceasefire settlement.",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-42818A9D55F8"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "event_date": "2026-10-30",
+      "summary": "Saudi Arabia reported intercepting a drone near Mecca; Houthi spokesman denied targeting the city. Interception is a Saudi official report; no independently verified Houthi city-targeting intent is inferred.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-A261F7C5D403"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-IRGC-US-DRONE-DESTROYED-CLAIM",
+      "event_date": "2026-10-30",
+      "summary": "IRGC navy claimed it destroyed a US unmanned maritime craft east of Hormuz. US military confirmation and independent hull identity were not established when Reuters reported the claim.",
+      "event_class": "CORE_WARTIME_EVENT",
+      "strike_countable": false,
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-91C370966DB4"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-EGYPT-SAUDI-COND-DEFENSE-20261019",
+      "mode": "update",
+      "record": {
+        "diplomacy_id": "DIP-EGYPT-SAUDI-COND-DEFENSE-20261019",
+        "date": "2026-10-27",
+        "status": "PARLIAMENTARY_AUTHORIZATION_APPROVED_NO_DEPLOYMENT_VERIFIED",
+        "observed_state": "Egyptian parliament authorized defensive support to Saudi Arabia, superseding the October 19 pending vote. Separate evidence required for actual defense system deployment, aircraft movements or combat actions.",
+        "source_ids": [
+          "SRC-0DB5BB34A4AA"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-REGIONAL-TEHRAN-TALKS-20261026",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAN-REGIONAL-TEHRAN-TALKS-20261026",
+        "date": "2026-10-26",
+        "status": "CONTINUING_MULTILATERAL_DISCUSSIONS_NO_CONCLUDED_AGREEMENT",
+        "observed_state": "AP reported Iran-Saudi-Turkey-Pakistan consultations on regional stability, with discussions to continue. No binding peace or concrete force commitment established.",
+        "source_ids": [
+          "SRC-5180B33CE2A0"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-QATAR-MEDIATION-20261030",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-US-IRAN-QATAR-MEDIATION-20261030",
+        "date": "2026-10-30",
+        "status": "MEDIATOR_ACTIVITY_NO_SIGNED_CEASEFIRE_OR_REOPENING",
+        "observed_state": "Reuters reported Qatari mediator visit and conflicting US/Iran preconditions; Iranian official rejected the latest draft, and separate Vance medical-supply explanation disputed peace-talk framing.",
+        "source_ids": [
+          "SRC-42818A9D55F8"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+      "mode": "add",
+      "record": {
+        "shipping_id": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+        "date": "2026-10-29",
+        "vessel_name": "Louise 1",
+        "status": "LIMPET_MINE_DAMAGE_REUTERS_UKMTO_REPORTED_ATTACKER_UNKNOWN",
+        "observed_state": "Reuters and maritime security sources named Panama-flagged Louise 1. Engine-room fire temporarily disabled vessel; UKMTO reported crew safe and voyage resumed. Approx. 25 nautical miles northeast Khasab is a regional estimate, not plot-grade exact coordinates.",
+        "adjudication": "NO_PERPETRATOR_ASSIGNED; DO_NOT_MERGE_IRGC_MULTI_TANKER_COUNTS_WITHOUT_HULL_MATCH",
+        "source_ids": [
+          "SRC-D1901CB5F6AC"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OCT26-BRENT-WTI-FUTURES-INTRADAY",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OCT26-BRENT-WTI-FUTURES-INTRADAY",
+        "date": "2026-10-26",
+        "metric": "Reuters-sourced intraday ICE Brent and NYMEX WTI futures USD per barrel (not EIA spot)",
+        "brent_futures_usd_per_bbl": 115.15,
+        "wti_futures_usd_per_bbl": 101.16,
+        "observation_time_utc": "2026-10-26T12:39:00Z",
+        "status": "REUTERS_REPORTED_INTRADAY_QUOTES",
+        "observed_state": "Intraday trading prices only. No physical crude settlement, P&L realization or whole-war price change can be inferred.",
+        "source_ids": [
+          "SRC-AC0F15D71DA4"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OCT23-UAE-INDICES-BRENT",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OCT23-UAE-INDICES-BRENT",
+        "date": "2026-10-23",
+        "metric": "Reuters-reported UAE equity index declines and Brent futures (different markets and units)",
+        "dubai_index_daily_percent": -1.4,
+        "abu_dhabi_index_daily_percent": -1.2,
+        "brent_futures_usd_per_bbl_approx": 114.61,
+        "status": "REUTERS_REPORTED_MARKET_OBSERVATION",
+        "observed_state": "Index declines and dated Brent futures observations associated with heightened regional risk; correlation and market commentary do not prove single-cause attribution.",
+        "source_ids": [
+          "SRC-F3BE284F724E"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OCT16-US-WAR-COST-PENTAGON-OCT28-REPORT",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OCT16-US-WAR-COST-PENTAGON-OCT28-REPORT",
+        "date": "2026-10-28",
+        "metric": "CENTCOM/Pentagon estimated US military spending through October 16",
+        "reported_total_usd_billion": 47.1,
+        "measurement_cutoff": "2026-10-16",
+        "status": "OFFICIAL_ESTIMATE_REPORTED_BY_AP_NOT_AUDITED_ALL_INCLUSIVE_COST",
+        "observed_state": "AP reported $47.1 billion Pentagon estimate issued to Congress as of Oct16, including roughly $29bn munitions, $11.9bn operations, $6bn equipment losses. Subtotal categories approximate and omit other costs including base damage.",
+        "source_ids": [
+          "SRC-3C66EFC26D93"
+        ],
+        "knowledge_time": "2026-10-30T08:19:00-04:00"
+      }
+    }
+  ],
+  "narrative_claims": []
+}
