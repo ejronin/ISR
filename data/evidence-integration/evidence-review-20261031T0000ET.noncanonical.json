@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "EVIDENCE_INTEGRATION_NONCANONICAL_SOURCE_REVIEW",
+  "authority": "EVIDENCE_INTEGRATION_SOURCE_REVIEW_ONLY",
+  "status": "REVIEWED_PENDING_CANONICAL_REGISTRATION_AND_RELEASE_GATES",
+  "review_date": "2026-10-31",
+  "base_main_sha": "60c94076ddb3a5c8c1bf044259fdd17f0d1c0984",
+  "accepted_baseline": {
+    "sequence": 38,
+    "evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "manifest_path": "data/canonical-ledger/manifest-v2.json"
+  },
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T0000ET.json"
+    ],
+    "current_review_window": "2026-10-30T12:00:00-04:00/2026-10-31T00:00:00-04:00",
+    "intake_pr": 327,
+    "intake_head_sha": "6e1db943c669bf3c83050fe07e58924b763e15d8",
+    "intake_merge_sha": "60c94076ddb3a5c8c1bf044259fdd17f0d1c0984",
+    "full_intake_ci": "https://github.com/ejronin/ISR/actions/runs/41166985674",
+    "prior_noon_review_pr": 326
+  },
+  "acceptance_boundary": "Review-only. Neither Oct30 noon nor Oct31 midnight sweep is consumed. No canonical packet, accepted history, manifest, public projection, map or chart was modified. This is not zero-material-delta acceptance. Registration requires full repository checkout, evidence-level reconciliation, scripts/gate3_v2_registration.py --register, exact-prefix history and FULL exact-head CI before merge and Pages live attestation.",
+  "review_dispositions": [
+    {
+      "ref": "ROOK-20261030-LAVAN-UKMTO188-PROJECTILE",
+      "decision": "HOLD_PRIMARY_WARNING_AND_HULL_RECONCILIATION",
+      "source": "https://regulasshipping.com/blog/ukmto-188-26-records-a-projectile-hit-40-nm-south-of-lavan-island/",
+      "primary_needed": "https://www.ukmto.org/recent-incidents original UKMTO warning 188-26 PDF; original issuance time; hull/IMO; later damage and casualty correction",
+      "occurrence_time": "2026-10-30T18:00:00Z (reported)",
+      "public_available_time": "2026-10-30 DATE_ONLY, not minute-verified",
+      "knowledge_time": "2026-10-31T00:03:32.218-04:00 ROOK collection, not canonical knowledge",
+      "identity": "Distinct warning number, date, method and location from Oct29 Louise 1 187-26; do not assume link to IRGC tanker tally or RITI",
+      "attribution": "UKMTO received master's report of unknown projectile, no perpetrator, weapon type or vessel class established",
+      "geography": {
+        "status": "REGION_ONLY",
+        "description": "40 NM south of Lavan Island, Iran",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_eligible": false
+      },
+      "chart": "NONE"
+    },
+    {
+      "ref": "ROOK-20261030-SA-EAST-SOUTH-DRONE-COALITION-REPORTS",
+      "decision": "HOLD_OCCURRENCE_CLOCK_AND_INDEPENDENT_BDA",
+      "source": "https://www.al-monitor.com/originals/2026/10/saudi-led-coalition-says-it-downs-drone-over-oil-rich-eastern-region",
+      "occurrence_time": "early Saturday local reported, but Reuters timestamp Oct30 19:37Z conflicts; unresolved",
+      "public_available_time": "Reuters Oct30 date / Oct31 local syndicated, exact first-public time unresolved",
+      "identity": "Two broad-region coalition reports distinct from earlier Medina/Mecca claim; do not conflate Houthi Friday denial",
+      "attribution": "Coalition interception assertions, no independently confirmed flight track, debris or target",
+      "geography": {
+        "status": "REGION_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_eligible": false
+      },
+      "chart": "NONE"
+    },
+    {
+      "ref": "ROOK-20261030-US-SA-EMBASSY-DEPARTURE-DISCLOSURE",
+      "decision": "QUALIFIED_PRIMARY_POLICY_FACT_BUT_DUPLICATE_PUBLICATION_CHECK_REQUIRED",
+      "source": "https://travel.state.gov/en/international-travel/travel-advisories/saudi-arabia.html",
+      "corroboration": "https://www.reuters.com/world/middle-east/us-orders-non-emergency-staff-leave-saudi-arabia-over-security-risks-2026-10-30/",
+      "occurrence_time": "2026-10-23 effective order",
+      "public_available_time": "Primary State Department advisory dated 2026-10-23; Reuters repeat 2026-10-30 14:32 EDT; Guardian reported earlier on 2026-10-22",
+      "identity": "Existing Oct22/23 departure order, NOT a new Oct30 order or proof of completed departures; check prior canonical event/source identities",
+      "attribution": "US Department of State policy established, implementation/travel of individual employees not established",
+      "geography": {
+        "status": "NONSPATIAL_POLICY",
+        "marker_eligible": false
+      },
+      "chart": "NONE"
+    },
+    {
+      "ref": "ROOK-20261030-PAK-MECCA-PACT-SPOKESMAN",
+      "decision": "QUALIFIED_ON_RECORD_STATEMENT_PENDING_EVENT_ID_DEDUP_AND_REGISTRATION",
+      "source": "https://www.marketscreener.com/news/pakistan-military-cautiously-optimistic-on-iran-us-mediation-ce785fdbd18df424",
+      "occurrence_time": "2026-10-30 interview",
+      "public_available_time": "Reuters syndication 2026-10-30 14:24 EDT, modified 14:33 EDT",
+      "identity": "Statement on existing Pakistan/Saudi/Turkey pact and mediation, not a new treaty accession, deployment or ceasefire",
+      "attribution": "Lt Gen Ahmed Sharif Chaudhry attributed statement; future Iran membership and troop deployment are conditional possibilities",
+      "geography": {
+        "status": "NONSPATIAL_STATEMENT",
+        "marker_eligible": false
+      },
+      "chart": "NONE"
+    },
+    {
+      "ref": "ROOK-20261030-IMO-122-CONFIRMED",
+      "decision": "QUALIFIED_PRIMARY_CUMULATIVE_SNAPSHOT_PENDING_PRIOR_BASELINE_AND_HULL_LEVEL_RECONCILIATION",
+      "source": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "occurrence_time": "cumulative as-of 2026-10-30, not incident occurrence",
+      "public_available_time": "2026-10-30 DATE_ONLY; live page modification clock unknown",
+      "observation": {
+        "confirmed_incidents": 122,
+        "seafarer_fatalities": 24,
+        "unit": "cumulative confirmed incidents / cumulative seafarer deaths",
+        "provider": "IMO",
+        "as_of": "2026-10-30"
+      },
+      "identity": "Latest visible incident row 2026-10-23; cannot infer eight new Oct30 attacks or add to UKMTO totals; compare previous 114 snapshot",
+      "geography": {
+        "status": "NONSPATIAL_AGGREGATE",
+        "marker_eligible": false
+      },
+      "chart": "TEXT_ONLY until same-provider dated cumulative series and identities validated"
+    },
+    {
+      "ref": "ROOK-20261030-OIL-FINAL-SETTLEMENT",
+      "decision": "HOLD_COMPARABILITY_AND_SOURCE_CONFLICT_FOR_CHART",
+      "source": "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+      "conflicting_source": "https://www1.folha.uol.com.br/mercado/2026/10/petroleo-sobe-mais-de-14-em-outubro-e-encerra-mes-no-maior-valor-desde-maio.shtml",
+      "observation_time": "2026-10-30 market close, exchange/contract confirmation pending",
+      "publication_time": "Reuters initial pre-window article later updated without authenticated update clock; Folha 2026-10-30 19:35 Brazil local",
+      "observations": [
+        {
+          "provider": "Reuters",
+          "contract": "December Brent",
+          "price_usd_per_barrel": 117.64
+        },
+        {
+          "provider": "Reuters",
+          "contract": "WTI",
+          "price_usd_per_barrel": 104.12
+        },
+        {
+          "provider": "Folha",
+          "contract": "January Brent",
+          "price_usd_per_barrel": 113.1
+        },
+        {
+          "provider": "Folha",
+          "contract": "December WTI",
+          "price_usd_per_barrel": 102.95
+        }
+      ],
+      "identity": "Different contracts, revisions or observation times not resolved; do not mix Reuters intraday with settlements, spot, monthly percentage or Folha series",
+      "geography": {
+        "status": "NONSPATIAL",
+        "marker_eligible": false
+      },
+      "chart": "TEXT_ONLY_HOLD"
+    },
+    {
+      "ref": "ROOK-20261030-HEZBOLLAH-TRUCK-COURT-CHARGES",
+      "decision": "HOLD_PRIMARY_COURT_ORDER_AND_PUBLICATION_CLOCK",
+      "source": "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47",
+      "identity": "Judicial charges update prior truck seizure, not new seizure or conviction; Hezbollah intent claim disputed",
+      "public_available_time": "2026-10-30 DATE_ONLY; exact in-window availability not verified",
+      "geography": {
+        "status": "NONSPATIAL_PROCEDURAL",
+        "marker_eligible": false
+      },
+      "chart": "NONE"
+    },
+    {
+      "ref": "ROOK-20261030-IRGC-FOUR-TANKERS",
+      "decision": "HOLD_ACTOR_TALLY_UNVERIFIED",
+      "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+      "identity": "Reassertion of earlier three-tanker claim, new four-tanker number lacks four unique hull IDs and time; no addition of physical attacks",
+      "attribution": "IRGC claim only; independent proof of mine mechanism and casualties absent",
+      "geography": {
+        "status": "CORRIDOR_ONLY",
+        "marker_eligible": false
+      },
+      "chart": "NONE"
+    }
+  ],
+  "routing": {
+    "claims_forensics": {
+      "issue": "https://github.com/ejronin/ISR/issues/320",
+      "refs": [
+        "ROOK-20261030-IRGC-FOUR-TANKERS",
+        "ROOK-20261030-IRAN-USV-DRONE",
+        "ROOK-20261030-SA-DRONES-REGIONAL",
+        "ROOK-20261030-HEZBOLLAH-EXPLOSIVES-INTENT",
+        "ROOK-20261030-TRUMP-END-SOON"
+      ],
+      "instruction": "Source-chain, proposition and knowledge-time referral only; Evidence Integration makes no WOL/Lie Ledger truth/intent verdict."
+    },
+    "public_product": {
+      "issue": "https://github.com/ejronin/ISR/issues/324",
+      "instruction": "No point markers for Lavan offset, Saudi regions, Hormuz corridors or Hebron city-only records; map parity only when source-qualified location ID and precision exist. IMO cumulative counts and Reuters/Folha settlements remain text-only until provider, contract, observation clock, benchmark and denominators reconcile."
+    },
+    "collection": {
+      "issue": "https://github.com/ejronin/ISR/issues/296",
+      "instruction": "Historical Oct7-29 12-hour windows remain incomplete; neither newly reviewed sweep is consumed. Keep issue open."
+    }
+  },
+  "remaining_blockers": [
+    "No complete local GitHub checkout; GitHub host DNS resolution fails in execution container, so registrar cannot be run on full repository.",
+    "Original UKMTO warning 188-26 PDF issuance clock and hull identification not directly verified.",
+    "Saudi early-Saturday event clock inconsistent with Reuters timestamp.",
+    "Prior Oct22/23 State Department policy publication identity must be deduplicated.",
+    "Reuters/Folha oil contract and market-close discrepancy unresolved.",
+    "Historical Oct7-29 missing 12-hour sweep windows unreconciled."
+  ],
+  "sweep_consumed": false,
+  "canonical_sequence_after_review": 38,
+  "canonical_cutoff_after_review": "2026-10-30T08:38:30-04:00"
+}
