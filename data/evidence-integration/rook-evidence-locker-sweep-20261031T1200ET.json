@@ -1,0 +1,1211 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-10-31T00:00:00-04:00",
+    "window_end": "2026-10-31T12:00:00-04:00",
+    "scheduled_window_end": "2026-10-31T12:00:00-04:00",
+    "collection_time": "2026-10-31T12:04:05-04:00",
+    "evidence_horizon_time": "2026-10-31T12:00:00-04:00",
+    "collection_mode": "ROUTINE_UPSTREAM_OSINT",
+    "source_publication_rule": "Occurrence, publication, collection and evidence horizon are independent; date-only or subsequently updated reports do not prove event occurrence within window."
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261031-IRAN-KHAMENEI-UNRESTRICTED-RESPONSE-ORDER",
+      "event_type": "IRAN_LEADERSHIP_MILITARY_POSTURE_STATEMENT",
+      "actor": "Iran Supreme Leader Mojtaba Khamenei, written statement attributed to his office",
+      "occurrence_time": "2026-10-31_DATE_ONLY",
+      "publication_time": "2026-10-31T13:07:00Z",
+      "publication_time_precision": "ARAB_NEWS_REUTERS_AFP_PUBLICATION_MINUTE; ORIGINAL_TELEGRAM_TIME_NOT_AUTHENTICATED",
+      "summary": "Iranian leadership publicly ordered readiness for immediate response without geographic limits to renewed attacks and an updated target list including US and Israeli physical and nonphysical assets. State media described a meeting with top commanders, but Khamenei has not been independently photographed in public; treat meeting as state-reported. No independently established launch order, troop movement, targeting coordinates or executed attack.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.dawn.com/news/2041187/irans-supreme-leader-warns-us-israel-of-unrestricted-geographical-response-to-new-attacks"
+      ],
+      "evidence_class": "ATTRIBUTED_IRAN_LEADERSHIP_STATEMENT_CROSS_REPORTED_BY_REUTERS_AFP",
+      "disposition": "NEW_POLICY_AND_THREAT_STATEMENT_NOT_NEW_ATTACK",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Iran national military policy; reported commanders meeting in Tehran not an authenticated troop movement",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261031-SA-RIYADH-DRONE-INTERCEPTION-CLAIM",
+      "event_type": "AIR_DEFENSE_INTERCEPTION_REPORTED",
+      "actor": "Saudi-led coalition spokesman Turki al-Malki",
+      "occurrence_time": "2026-10-31_EARLY_SATURDAY_TIME_UNKNOWN",
+      "publication_time": "2026-10-31T14:47:00+03:00",
+      "publication_time_precision": "SAUDI_GAZETTE_LOCAL_MINUTE; ORIGINAL_X_POST_CLOCK_NOT_RETRIEVED",
+      "summary": "Coalition spokesman said a hostile drone was intercepted over Riyadh Region; fragments fell without reported injuries and authorities were inspecting debris. Spokesman did not independently identify operator or launch point in this specific announcement. Separate from Oct30 Eastern/Southern and Medina/Makkah claims; do not infer precise Riyadh city impact or Houthi responsibility.",
+      "sources": [
+        "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+        "https://www.dawn.com/news/2041159/saudi-says-intercepted-hostile-drone-in-riyadh-region",
+        "https://www.arabnews.com/saudi-arabia/coalition-intercepts-houthi-drones-over-riyadh-and-madinah-missile-in-south-3009043"
+      ],
+      "evidence_class": "SAUDI_COALITION_ON_RECORD_CLAIM_CORROBORATED_AS_PUBLIC_STATEMENT_NOT_INDEPENDENT_RADAR_DATA",
+      "disposition": "NEW_REPORTED_INTERCEPTION_UNATTRIBUTED",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Riyadh Region, Saudi Arabia; debris location not disclosed",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261031-JORDAN-SYRIA-14-ARMED-CROSSING-REPORT",
+      "event_type": "BORDER_ENGAGEMENT_DISCLOSURE",
+      "actor": "Jordan Armed Forces border guards and unidentified armed crossers",
+      "occurrence_time": "2026-10-30_FRIDAY_EVENING_LOCAL_TIME_UNSPECIFIED",
+      "publication_time": "2026-10-31T08:34:00Z",
+      "publication_time_precision": "REUTERS_MINUTE; JORDAN_PRIMARY_STATEMENT_TIME_UNRECOVERED",
+      "summary": "Jordanian military reported 14 armed people attempting to cross from Syria into northern Jordan on Friday, engagement under fire and unspecified casualties among the group; remainder fled into Syria. Nationality, organizational affiliation, precise border sector, casualty count and independent confirmation unavailable. New Saturday disclosure of Friday occurrence, not a Saturday firefight.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+        "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+      ],
+      "evidence_class": "JORDAN_ARMED_FORCES_ACTOR_REPORT_VIA_REUTERS_AND_REGIONAL_PRESS",
+      "disposition": "NEW_REPORTED_PHYSICAL_EVENT_PRIOR_DAY_OCCURRENCE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Northern Jordan–Syria border; no identified crossing or exact coordinates",
+        "location_precision": "BORDER_CORRIDOR_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261031-KUWAIT-SOUTH-LIVEFIRE-ANNOUNCEMENT",
+      "event_type": "ANNOUNCED_FUTURE_MILITARY_EXERCISE",
+      "actor": "Kuwait Army Directorate of Moral Guidance and Public Relations",
+      "occurrence_time": "2026-11-01/2026-11-05_FUTURE_PLANNED",
+      "publication_time": "2026-10-31T12:38:00+03:00",
+      "publication_time_precision": "KUWAIT_TIMES_LOCAL_MINUTE",
+      "summary": "Kuwait army announced live-fire exercises in southern Kuwait November 1–5 and instructed residents to avoid firing areas. Separate from previously announced Oct30–Nov3 northwest Kuwait exercise. This is advance notice, not evidence exercises began, troop deployment or any combat incident.",
+      "sources": [
+        "https://kuwaittimes.com/article/52723/kuwait/army-to-hold-live-fire-exercises-in-south-from-sunday/",
+        "https://kuwaittimes.com/article/52623/kuwait/army-units-to-hold-live-fire-drills-in-northwest-kuwait-from-oct-30-to-nov-3/",
+        "https://www.iranintl.com/en/liveblog/202610312594"
+      ],
+      "evidence_class": "KUWAIT_ARMY_ANNOUNCEMENT_REPORTED_BY_KUWAIT_TIMES_KUNA",
+      "disposition": "NEW_FUTURE_EXERCISE_NOTICE_NOT_IMPLEMENTATION",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Southern Kuwait exercise area unspecified",
+        "location_precision": "SOUTHERN_REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261031-MANAMA-ARAB-DEESCALATION-STATEMENTS",
+      "event_type": "REGIONAL_SECURITY_DIPLOMACY_STATEMENTS",
+      "actor": "Saudi Vice Foreign Minister Waleed ElKhereiji and Egypt Foreign Minister Badr Abdelatty",
+      "occurrence_time": "2026-10-31_MORNING_BAHRAIN_LOCAL",
+      "publication_time": "2026-10-31T08:20:00Z",
+      "publication_time_precision": "REUTERS_EGYPT_MINUTE; AP_ROUNDUP_DATE_ONLY",
+      "summary": "At IISS Manama Dialogue, Egypt's foreign minister warned another US–Iran escalation would be more destructive; Saudi vice minister called for peace and efforts to avert escalation. Statements evidence regional diplomatic posture, not a new agreement, collective deployment or implemented de-escalation.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/egypt-fears-escalation-iran-war-would-be-more-destructive-foreign-minister-says-2026-10-31/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "evidence_class": "ON_RECORD_REGIONAL_OFFICIAL_STATEMENTS_REUTERS_AP",
+      "disposition": "NEW_DIPLOMATIC_STATEMENTS_NO_SIGNED_AGREEMENT",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "IISS Manama Dialogue, Bahrain; policy speech only",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261031-SYRIA-JORDAN-SECURITY-TALKS-PACT-REVIEW",
+      "event_type": "SYRIA_REGIONAL_SECURITY_POLICY_STATEMENT",
+      "actor": "Syrian Foreign Minister Asaad al-Shibani",
+      "occurrence_time": "2026-10-31_MORNING_BAHRAIN_LOCAL",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "AP_LIVE_ROUNDUP_UPDATE_TIME_NOT_PROVEN",
+      "summary": "Syrian foreign minister described border security with Jordan as shared responsibility and said high-level talks expected next month; Syria continues evaluating possible Mecca Pact membership. No membership decision, formal invitation accepted, troop deployment, or completed border arrangement established. Jordanian and Syrian death claims from prior strikes remain contested.",
+      "sources": [
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+        "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+      ],
+      "evidence_class": "ON_RECORD_SYRIAN_MINISTER_AP_ROUNDUP",
+      "disposition": "NEW_POLICY_DISCLOSURE_NOT_PACT_ACCESSION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Manama diplomatic statement; no new physical deployment",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261031-DOHA-MEDIATION-TWO-DAY-CONDITIONAL-PLAN",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "relationship": "UPDATE_LATER_TALKS_AND_CONDITIONAL_TIMELINE_NOT_IMPLEMENTATION",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T12:26:00Z",
+      "publication_time_precision": "IRAN_INTERNATIONAL_LIVE_REUTERS_SOURCE_ENTRY; REUTERS_FULL_REPORT_14:57Z",
+      "summary": "Iranian envoys held talks with Qatari mediators in Doha following more than 12 hours of Tehran talks Friday. Qatar in regular contact with Washington. Foreign Minister Araghchi said a mediator proposal could shorten conditional Hormuz reopening to two days (from seven), while Iran reviewed nuclear proposals and Vance letter but did not plan direct US meetings. Reuters reported Qatar's seven-day trust-building sequence rejected as unsatisfactory. No US acceptance, sanctions waiver, signed deal, Hormuz reopening or IAEA inspection implemented.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "disposition": "UPDATE_NEGOTIATION_PROCESS_ONLY",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Doha mediation, not a physical strike or deployment",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-SA-EAST-SOUTH-INTERCEPTION-CLOCK-RECONCILIATION",
+      "updates_existing_ref": "ROOK-20261030-SA-EAST-SOUTH-DRONE-COALITION-REPORTS",
+      "relationship": "UPDATE_PUBLICATION_VS_OCCURRENCE_CLOCK_AND_REVIEW_POTENTIAL_OVERLAP",
+      "occurrence_time": "2026-10-31_EARLY_SATURDAY_REPORTED_TIME_UNSPECIFIED",
+      "publication_time": "2026-10-30T19:37:00Z",
+      "publication_time_precision": "REUTERS_PREVIOUS_WINDOW_TIMESTAMP_WITH_EARLY_SATURDAY_TEXT; SAUDI_GAZETTE_31OCT_05:55_LOCAL",
+      "summary": "Reuters Friday timestamp called Eastern Region interception 'early Saturday'; Saturday Saudi press summarizes Eastern and Southern drones among Friday/Saturday claims. Preserve possibility of Saturday occurrence and avoid duplicating the earlier locker record. Distinct Saturday Riyadh drone separately entered; no precise impact or independent Houthi attribution.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+        "https://saudigazette.com.sa/article/665878/saudi-arabia/saudi-air-defenses-intercept-houthi-missiles-drones-targeting-five-regions",
+        "https://www.arabnews.com/saudi-arabia/coalition-intercepts-houthi-drones-over-riyadh-and-madinah-missile-in-south-3009043"
+      ],
+      "disposition": "UPDATE_CHRONOLOGY_NO_DUPLICATE_ATTACK",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Saudi Eastern and Southern Regions; separate unspecified intercept localities",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-JORDAN-SYRIA-PRIOR-STRIKES-DIPLOMACY",
+      "updates_existing_ref": "JORDAN-SYRIA-OCT26-AIRSTRIKES-AND-CIVILIAN-CASUALTY-DISPUTE",
+      "relationship": "UPDATE_LATER_DIPLOMATIC_PROCEDURE_AND_SOURCE_ATTRIBUTION",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "AP_ROUNDUP_DATE_ONLY",
+      "summary": "Syrian foreign minister called border security shared responsibility, said a high-level meeting expected in November. Previous Jordanian assertion of 20 militants killed and Syrian account of seven civilian deaths are not reconciled; do not turn claims into independently verified BDA. Friday border infiltration is a separate reported event.",
+      "sources": [
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+      ],
+      "disposition": "UPDATE_DIPLOMATIC_FOLLOWUP_WITH_BDA_UNRESOLVED",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Diplomatic followup to prior southern Syria strikes",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-IMO-122-24-UNCHANGED",
+      "updates_existing_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "relationship": "NO_MATERIAL_CHANGE_PRIOR_AS_OF_SNAPSHOT",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-30_DATE_ONLY_LIVE_REGISTRY_AS_OF",
+      "publication_time_precision": "AS_OF_DATE_ONLY_NO_FRESH_SNAPSHOT",
+      "summary": "Accessible IMO registry continues to show 122 confirmed incidents as of Oct30 and 24 seafarer fatalities; no authenticated Oct31 increment found. This cumulative denominator is distinct from media-reported October 35 attacks and should not be summed.",
+      "sources": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Cumulative maritime registry, no individual new point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-IRGC-FOUR-TANKER-CLAIM-HOLD",
+      "updates_existing_ref": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "relationship": "NO_MATERIAL_CHANGE_NO_INDEPENDENT_HULL_LINKAGE",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-30_PRIOR",
+      "publication_time_precision": "PRIOR_ACTOR_CLAIM",
+      "summary": "No independent confirmation that four IRGC-claimed mine-hit tankers correspond to four unique hulls, UKMTO 188-26 Lavan or RITI rescue. Preserve unverified claim and do not manufacture additional vessel events or attacker attribution.",
+      "sources": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+        "https://www.ukmto.org/recent-incidents",
+        "https://www.reuters.com/world/middle-east/oman-navy-evacuates-25-crew-vessel-off-musandam-2026-10-30/"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Strait of Hormuz corridors; vessel identities and precise locations unknown",
+        "location_precision": "CORRIDOR_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-ISRAEL-ELECTION-NO-COALITION",
+      "updates_existing_ref": "ISRAEL-20261027-ELECTION-RESULTS-COALITION-FORMATION",
+      "relationship": "NO_MATERIAL_IMPLEMENTATION_CHANGE_POST_FINAL_RESULTS",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-31_DATE_ONLY_AP_PROFILE",
+      "publication_time_precision": "AP_DATE_ONLY_PROFILE_NOT_CERTIFICATION_EVENT",
+      "summary": "Final results previously reported 53 Netanyahu bloc, 48 principal Jewish opposition, 19 Arab-led seats, no 61-seat majority. AP Saturday profile says 18 Arab-led seats, a source-level discrepancy needing official Knesset certification/party roster reconciliation; no formed government, fraud finding or vote count change verified by cutoff.",
+      "sources": [
+        "https://www.washingtonpost.com/world/2026/10/30/israel-elections-netanyahu-results-eisenkot-arabs/f7aa6aee-d432-11f1-9931-2a41b76fc976_story.html",
+        "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3"
+      ],
+      "disposition": "NO MATERIAL CHANGE_SOURCE_COUNT_CONFLICT_RECORDED",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Israeli election/coalition politics",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-IAEA-IRAN-ACCESS-HOLD",
+      "updates_existing_ref": "EVT-20261028-IAEA-RECONSTRUCTION-INSPECTION",
+      "relationship": "NO_MATERIAL_CHANGE_NO_NEW_INSPECTION_IMPLEMENTED",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-28_PRIOR_REVIEW",
+      "publication_time_precision": "NO_NEW_PRIMARY_IN_WINDOW_STATEMENT_VERIFIED",
+      "summary": "No authenticated new IAEA access to bombed enrichment sites, accounting for enriched uranium stock, or verified nuclear implementation identified in this review. Absence of discovery is not evidence of access denial or nuclear activity.",
+      "sources": [
+        "https://www.iaea.org/newscenter",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "IAEA implementation and Iranian nuclear facilities; no new site event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-GAZA-WFP-AID-HOLD",
+      "updates_existing_ref": "GAZA-WFP-OCT2026-FOOD-ASSISTANCE-REDUCTION",
+      "relationship": "NO_MATERIAL_CHANGE_NO_NEW_SOURCE_QUALIFIED_WINDOW_COUNT",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-19_PRIOR",
+      "publication_time_precision": "PRIOR_WFP_ANNOUNCEMENT",
+      "summary": "WFP's October reduction from 1.6m to 1.1m monthly Gaza beneficiaries remains prior evidence. No new authenticated in-window WFP Gaza funding, casualty, aid access or Hamas military disposition change identified.",
+      "sources": [
+        "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza",
+        "https://www.ochaopt.org/updates"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Gaza humanitarian programme, no new strike locality",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261031-OFAC-IRAN-GL-HOLD",
+      "updates_existing_ref": "EVT-20261029-OFAC-GL-FF1-SUPERSEDES-FF",
+      "relationship": "NO_MATERIAL_CHANGE_NO_NEW_OFFICIAL_ACTION_FOUND",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-29_PRIOR",
+      "publication_time_precision": "LAST_VERIFIED_OFFICIAL_ACTION_IN_REVIEW",
+      "summary": "No new in-window Iran sanctions general license or blocking action verified from accessible OFAC Iran listing; Oct29 FF-1 Iraq Development Bank wind-down remains separate and narrow. Do not infer blanket sanctions relief from talks.",
+      "sources": [
+        "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Financial sanctions and licenses",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261031-IRAN-KHAMENEI-RETALIATION-SCOPE",
+      "claimant": "Mojtaba Khamenei official written statement",
+      "claim": "Iran's armed forces should prepare an immediate response without geographical limits and expand the potential US/Israeli target bank.",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T13:07:00Z",
+      "publication_time_precision": "REUTERS_AFP_SYNDICATION_MINUTE",
+      "status": "VERIFIED_PUBLIC_STATEMENT_NOT_VERIFIED_EXECUTION_OR_CAPABILITY",
+      "contrary_or_independent_evidence": "Reuters/AP corroborate that statement was issued; no independent evidence that any new targets were struck, deployments occurred, or the reported private meeting can be visually authenticated.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.dawn.com/news/2041187/irans-supreme-leader-warns-us-israel-of-unrestricted-geographical-response-to-new-attacks"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Non-physical policy or diplomatic event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261031-SA-RIYADH-DRONE-ATTRIBUTION",
+      "claimant": "Saudi-led coalition spokesman Turki al-Malki",
+      "claim": "A hostile drone was intercepted in Riyadh Region, debris fell and no injuries occurred.",
+      "occurrence_time": "2026-10-31_EARLY_SATURDAY",
+      "publication_time": "2026-10-31T14:47:00+03:00",
+      "publication_time_precision": "LOCAL_MINUTE",
+      "status": "ACTOR_REPORT_INTERCEPTION_UNCORROBORATED_BY_PRIMARY_RADAR_OR_DEBRIS_EXAM",
+      "contrary_or_independent_evidence": "Spokesman did not name launcher in specific Riyadh statement; Houthi attribution from surrounding reports is not direct evidence. No precise debris location.",
+      "sources": [
+        "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+        "https://www.dawn.com/news/2041159/saudi-says-intercepted-hostile-drone-in-riyadh-region"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Riyadh Region, Saudi Arabia",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261031-ARAGHCHI-TWO-DAY-HORMUZ-PLAN",
+      "claimant": "Iran Foreign Minister Abbas Araghchi",
+      "claim": "Mediators reached a proposal that could shorten conditional reopening of Hormuz to two days if Iranian demands are met.",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T13:42:00Z",
+      "publication_time_precision": "IRAN_INTL_LIVE_MINUTE_ATTRIBUTED_AL_JAZEERA_INTERVIEW",
+      "status": "NEGOTIATING_PROPOSAL_NOT_ACCEPTED_AGREEMENT_OR_REOPENING",
+      "contrary_or_independent_evidence": "Reuters says Qatar seven-day confidence plan was unsatisfactory to Iran; no signed US assent, implemented waivers, inspections or reopened passage.",
+      "sources": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Hormuz maritime access proposal, not actual route status",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261031-DOHA-DIRECT-TALKS-CONFLICT",
+      "claimant": "Al-Araby Al-Jadeed sources vs Iran IRGC-linked Tasnim and Araghchi",
+      "claim": "A US delegation may join Iranian envoys for direct Doha talks, versus Iranian statements that no direct US meeting is planned.",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T12:53:00Z",
+      "publication_time_precision": "TASNIM_ATTRIBUTED_LIVE_MINUTE; OTHER_REPORT_PUBLICATION_UNVERIFIED",
+      "status": "CONFLICTING_REPORTS_DIRECT_TALKS_NOT_ESTABLISHED",
+      "contrary_or_independent_evidence": "Reuters establishes Iran-Qatar mediated talks and Qatari US contacts, not direct US-Iran meeting; Araghchi explicitly ruled out current direct meetings.",
+      "sources": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Non-physical policy or diplomatic event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261031-JORDAN-BORDER-CASUALTIES",
+      "claimant": "Jordan Armed Forces",
+      "claim": "14 armed people attempted to cross from Syria Friday; multiple casualties among them, remainder fled.",
+      "occurrence_time": "2026-10-30_FRIDAY",
+      "publication_time": "2026-10-31T08:34:00Z",
+      "publication_time_precision": "REUTERS_MINUTE",
+      "status": "ACTOR_CLAIM_WITH_UNSPECIFIED_CASUALTIES_AND_AFFILIATION",
+      "contrary_or_independent_evidence": "No independent verified casualty tally, affiliation, exact crossing point or captured persons. Avoid assigning to ISIS without evidence.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+        "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Northern Jordan–Syria border",
+        "location_precision": "BORDER_CORRIDOR_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No authenticated exact coordinates or canonical point identity; prohibit point projection."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261031-ISRAEL-ARAB-SEAT-COUNT-SOURCE-CONFLICT",
+      "claimant": "AP Oct31 profile vs AP Oct30 final-result report",
+      "claim": "AP Oct31 profile says Arab-led parties won 18 Knesset seats; Oct30 final-result reports say 19.",
+      "occurrence_time": "2026-10-27_ELECTION",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "PROFILE_DATE_ONLY",
+      "status": "SOURCE_COUNT_DISCREPANCY_UNRESOLVED_NOT_ELECTION_FRAUD_EVIDENCE",
+      "contrary_or_independent_evidence": "Oct30 published final-results report says 53/48/19; obtain Central Elections Committee official roster before superseding.",
+      "sources": [
+        "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3",
+        "https://www.washingtonpost.com/world/2026/10/30/israel-elections-netanyahu-results-eisenkot-arabs/f7aa6aee-d432-11f1-9931-2a41b76fc976_story.html"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Non-physical policy or diplomatic event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261031-HORMUZ-OCTOBER-35-ATTACKS",
+      "claimant": "Khaama Press citing Al Jazeera and unnamed maritime security data",
+      "claim": "At least 35 attacks on commercial ships in Persian Gulf and Strait of Hormuz during October, described as record month.",
+      "occurrence_time": "2026-10_MONTH",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "DATE_ONLY_ORIGINAL_AL_JAZEERA_DATASET_NOT_RETRIEVED",
+      "status": "SECONDARY_AGGREGATE_UNVERIFIED_PROVIDER_AND_DENOMINATOR",
+      "contrary_or_independent_evidence": "IMO shows cumulative 122 confirmed incidents as of Oct30, a different geographic/time population; do not add or equate. Identify underlying dataset and whether incidents or hulls counted.",
+      "sources": [
+        "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+        "https://www.reuters.com/business/energy/ship-attacks-strait-hormuz-hit-record-high-october-2026-10-23/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Aggregate maritime monthly reporting, not an individual attack",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261031-HORMUZ-OCTOBER-35-ATTACKS-SECONDARY",
+      "metric": "OCTOBER_MONTHLY_COMMERCIAL_SHIPPING_ATTACK_COUNT_REPORTED",
+      "occurrence_time": "2026-10_MONTH",
+      "observation_time": "2026-10-31_DATE_ONLY_SOURCE_PUBLICATION",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "SECONDARY_KHAAMA_PRESS_ORIGINAL_PROVIDER_NOT_RETRIEVED",
+      "summary": "Secondary report says at least 35 October attacks, attributing to Al Jazeera/maritime security data without verifiable original series in review. NOT a validated monthly total or 35 new attacks; not comparable to IMO cumulative 122/24. Preserve for provider verification and chart hold.",
+      "reported_october_attacks": 35,
+      "data_status": "SOURCE_DISCOVERY_ONLY_UNVERIFIED_DENOMINATOR",
+      "sources": [
+        "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "disposition": "SOURCE_DISCOVERY_CHART_HOLD",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Monthly aggregate not spatial point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "economic_id": "ROOK-20261031-OIL-WEEKEND-NO-NEW-SETTLEMENT",
+      "metric": "OCT30_SETTLEMENT_CARRY_FORWARD_NO_SATURDAY_FUTURES_CLOSE",
+      "occurrence_time": "2026-10-31_SATURDAY",
+      "observation_time": "2026-10-30_US_MARKET_CLOSE_PRIOR_WINDOW",
+      "publication_time": "2026-10-30_PRIOR",
+      "publication_time_precision": "PRIOR_REUTERS_UPDATED_ARTICLE",
+      "summary": "Saturday review identified no new exchange settlement after Friday; prior locker retained Reuters Dec Brent $117.64, Jan Brent $113.43 and WTI $104.12 with conflicting Folha observations. Do not record weekend secondary republication as fresh price, and do not infer Hormuz traffic normalization.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "disposition": "NO MATERIAL CHANGE_PRIOR_MARKET_OBSERVATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Commodity market observation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    },
+    {
+      "economic_id": "ROOK-20261031-IRAN-TWO-DAY-OPENING-CONDITIONAL",
+      "metric": "PROPOSED_HORMUZ_REOPENING_TIMELINE_NOT_ACTUAL_FLOW",
+      "occurrence_time": "2026-10-31",
+      "observation_time": "2026-10-31T13:42:00Z",
+      "publication_time": "2026-10-31T13:42:00Z",
+      "publication_time_precision": "IRAN_INTL_LIVE_MINUTE",
+      "summary": "Araghchi's two-day implementation claim is conditional on Iranian terms and mediated discussion. No verified executed reopening, traffic counts, new AIS transits, oil waiver or sanctions relief; hold flow/chart state unchanged.",
+      "proposed_days": 2,
+      "implementation_status": "UNIMPLEMENTED_NEGOTIATING_PROPOSAL",
+      "sources": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "disposition": "UPDATE_PROPOSAL_ONLY_NO_FLOW_CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Shipping policy proposal",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No physical strike point or movement independently established."
+      },
+      "collection_time": "2026-10-31T12:04:05-04:00",
+      "evidence_horizon_time": "2026-10-31T12:00:00-04:00"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Oct30 12:00–Oct31 00:00 ROOK midnight locker",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Reviewed exact prior sweep; do not repeat Lavan projectile, RITI or Oct30 embassy disclosure."
+    },
+    {
+      "drawer": "Oct30 Qatar/Tehran mediation",
+      "decision": "UPDATE",
+      "reason": "Saturday Doha mediated talks, proposed two-day conditional timeline and direct-talks denial; no deal."
+    },
+    {
+      "drawer": "Iran Khamenei leadership posture",
+      "decision": "UPDATE",
+      "reason": "New Oct31 written order on response geography and target list; statement not new strike."
+    },
+    {
+      "drawer": "Oct30 Saudi Eastern/Southern drone reports",
+      "decision": "UPDATE",
+      "reason": "Source day/clock reconciliation; do not double count Saturday Riyadh claim."
+    },
+    {
+      "drawer": "Oct30 Saudi Medina/Makkah claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Earlier Houthi denials and Saudi claims remain disputed; no re-attribution."
+    },
+    {
+      "drawer": "Jordan–Syria October 26 strikes",
+      "decision": "UPDATE",
+      "reason": "Oct31 ministerial border-security meeting expectation; casualty claims remain unresolved."
+    },
+    {
+      "drawer": "Mecca Joint Defence Agreement / Turkey ratification",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Syria says reviewing possible membership; no accession or Turkish ratification/deployment established."
+    },
+    {
+      "drawer": "IMO Middle East incident registry",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "122 confirmed and 24 fatalities as of Oct30 unchanged; cumulative series distinct from monthly media totals."
+    },
+    {
+      "drawer": "UKMTO 188-26 Lavan projectile",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new authenticated coordinates, hull identity, attacker or BDA; prior region-only status preserved."
+    },
+    {
+      "drawer": "RITI Musandam crew rescue",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Oct30 25-crew rescue is prior incident; no proven link to IRGC mine claim."
+    },
+    {
+      "drawer": "IRGC four tanker/mine claim",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified four hulls, mine cause or relation to UKMTO reports."
+    },
+    {
+      "drawer": "Israel October election / coalition",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No 61-seat coalition formed; 18 vs 19 Arab seats reporting discrepancy flagged."
+    },
+    {
+      "drawer": "IAEA bombed-site inspections / uranium",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new implemented access or uranium accounting verified."
+    },
+    {
+      "drawer": "Gaza WFP October aid reductions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Earlier 1.6m to 1.1m monthly recipients not re-counted."
+    },
+    {
+      "drawer": "Lebanon Hezbollah truck charges and financing",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new in-window judicial or payment execution record verified."
+    },
+    {
+      "drawer": "OFAC Iran sanctions and Iraq Development Bank FF-1",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new in-window official action verified; earlier narrow wind-down license persists."
+    },
+    {
+      "drawer": "Oct30 oil market settlements and Saudi export direction",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No Saturday settlement; prior provider conflicts remain open."
+    },
+    {
+      "drawer": "Kuwait northwest Oct30–Nov3 exercise",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "New south Nov1–5 exercise is separate notice; neither is evidence of combat."
+    },
+    {
+      "drawer": "Russia / China / EU and UN diplomatic posture",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new independently verified theater-specific force, sanctions or IAEA implementation in checked public sources."
+    }
+  ],
+  "coverage": {
+    "method": "English-language public OSINT: Reuters, AP, AFP syndication, Iran International live timestamped statements, Saudi Gazette/Arab News, Kuwait Times/KUNA, IISS Manama reporting, IMO primary cumulative registry, WFP/OCHA, OFAC and IAEA official public pages, energy Reuters and shipping secondary dataset discovery. No paid AIS/Kpler/LSEG subscriptions or authenticated nonpublic telemetry. No inference from absence of discovery.",
+    "coverage_by_actor_and_source_class": [
+      {
+        "category": "Iran political/military/security",
+        "status": "NEW_LEADER_ORDER_AND_ARAGHCHI_MEDIATION_STATEMENTS",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.iranintl.com/en/liveblog/202610312594",
+          "https://www.dawn.com/news/2041187/irans-supreme-leader-warns-us-israel-of-unrestricted-geographical-response-to-new-attacks"
+        ]
+      },
+      {
+        "category": "United States",
+        "status": "QATARI_US_CONTACTS_VANCE_LETTER_ATTRIBUTED_NO_DIRECT_US_IRAN_MEETING",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.iranintl.com/en/liveblog/202610312594"
+        ]
+      },
+      {
+        "category": "Israel",
+        "status": "ELECTION_COALITION_REVIEW_NO_NEW_STRIKE_VERIFIED",
+        "sources": [
+          "https://www.washingtonpost.com/world/2026/10/30/israel-elections-netanyahu-results-eisenkot-arabs/f7aa6aee-d432-11f1-9931-2a41b76fc976_story.html",
+          "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3"
+        ]
+      },
+      {
+        "category": "Saudi Arabia / GCC",
+        "status": "RIYADH_INTERCEPT_CLAIM_AND_BAHRAIN_DEESCALATION",
+        "sources": [
+          "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+          "https://www.reuters.com/world/middle-east/egypt-fears-escalation-iran-war-would-be-more-destructive-foreign-minister-says-2026-10-31/",
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+        ]
+      },
+      {
+        "category": "Oman",
+        "status": "PRIOR_RITI_RESCUE_AND_HORMUZ_PROPOSED_ROUTE_NO_NEW_EVENT",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/oman-navy-evacuates-25-crew-vessel-off-musandam-2026-10-30/",
+          "https://www.iranintl.com/en/liveblog/202610312594"
+        ]
+      },
+      {
+        "category": "Qatar",
+        "status": "DOHA_MEDIATION_CONTINUES_NO_SIGNED_AGREEMENT",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.iranintl.com/en/liveblog/202610312594"
+        ]
+      },
+      {
+        "category": "UAE",
+        "status": "NO_NEW_VERIFIED_MATERIAL_DELTA_IN_REVIEW",
+        "sources": [
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+        ]
+      },
+      {
+        "category": "Kuwait",
+        "status": "SOUTHERN_LIVEFIRE_FUTURE_NOTICE_SEPARATE_NORTHWEST_DRILL",
+        "sources": [
+          "https://kuwaittimes.com/article/52723/kuwait/army-to-hold-live-fire-exercises-in-south-from-sunday/",
+          "https://kuwaittimes.com/article/52623/kuwait/army-units-to-hold-live-fire-drills-in-northwest-kuwait-from-oct-30-to-nov-3/"
+        ]
+      },
+      {
+        "category": "Bahrain",
+        "status": "MANAMA_DIALOGUE_OFFICIAL_STATEMENTS",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/egypt-fears-escalation-iran-war-would-be-more-destructive-foreign-minister-says-2026-10-31/",
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+        ]
+      },
+      {
+        "category": "Iraq",
+        "status": "NO_NEW_VERIFIED_THEATER_DELTA_IN_REVIEW",
+        "sources": [
+          "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+        ]
+      },
+      {
+        "category": "Yemen / Houthis",
+        "status": "SAUDI_COALITION_INTERCEPT_CLAIMS_ATTRIBUTION_NOT_INDEPENDENT",
+        "sources": [
+          "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+          "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+          "https://saudigazette.com.sa/article/665878/saudi-arabia/saudi-air-defenses-intercept-houthi-missiles-drones-targeting-five-regions"
+        ]
+      },
+      {
+        "category": "Lebanon / Hezbollah",
+        "status": "PRIOR_COURT_FINANCING_DRAWERS_NO_VERIFIED_NEW_DELTA",
+        "sources": [
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+        ]
+      },
+      {
+        "category": "Gaza / Hamas / West Bank",
+        "status": "WFP_OCHA_PRIOR_HUMANITARIAN_SNAPSHOT_NO_NEW_QUALIFYING_CHANGE",
+        "sources": [
+          "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza",
+          "https://www.ochaopt.org/updates"
+        ]
+      },
+      {
+        "category": "Syria / Jordan",
+        "status": "14_ARMED_BORDER_CROSSING_REPORTED_AND_SYRIAN_POLICY_FOLLOWUP",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+          "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+        ]
+      },
+      {
+        "category": "Pakistan / Türkiye",
+        "status": "PAKISTAN_QATAR_MEDIATION_AND_TURKISH_PACT_PRIOR_RATIFICATION_STEP",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://apnews.com/article/b75b3e02240f55d364b3072c2300ad36"
+        ]
+      },
+      {
+        "category": "China / Russia / Europe / EU",
+        "status": "SEARCHED_NO_NEW_QUALIFYING_IRAN_WAR_POLICY_OR_FORCE_DELTA",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+        ]
+      },
+      {
+        "category": "UN / IAEA / IMO",
+        "status": "IMO_122_24_AS_OF_OCT30_IAEA_NO_NEW_IMPLEMENTED_INSPECTION",
+        "sources": [
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.iaea.org/newscenter"
+        ]
+      },
+      {
+        "category": "Maritime and aviation authorities",
+        "status": "UKMTO_PRIOR_LAVAN_RITI_NO_NEW_AUTHENTICATED_WINDOW_STRIKE_OR_NOTAM",
+        "sources": [
+          "https://www.ukmto.org/recent-incidents",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.reuters.com/world/middle-east/oman-navy-evacuates-25-crew-vessel-off-musandam-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Sanctions authorities",
+        "status": "OFAC_PRIOR_GL_FF1_NO_NEW_WINDOW_RELIEF",
+        "sources": [
+          "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions"
+        ]
+      },
+      {
+        "category": "Energy and commodity markets",
+        "status": "FRIDAY_SETTLEMENT_CARRY_FORWARD_WEEKEND_NO_NEW_CLOSE",
+        "sources": [
+          "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Commercial shipping / AIS / Kpler / LSEG public",
+        "status": "SECONDARY_35_ATTACKS_MONTHLY_COUNT_HOLD_NO_PAID_TERMINALS",
+        "sources": [
+          "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.reuters.com/business/energy/ship-attacks-strait-hormuz-hit-record-high-october-2026-10-23/"
+        ]
+      },
+      {
+        "category": "Human impact agencies",
+        "status": "WFP_GAZA_PRIOR_REVIEW_JORDAN_CASUALTIES_ACTOR_ONLY",
+        "sources": [
+          "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza",
+          "https://www.ochaopt.org/updates",
+          "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/"
+        ]
+      },
+      {
+        "category": "Claims / corrections / independent OSINT",
+        "status": "DIRECT_TALKS_DISPUTE_18_VS_19_SEATS_35_MONTHLY_COUNT_HOLD",
+        "sources": [
+          "https://www.iranintl.com/en/liveblog/202610312594",
+          "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3",
+          "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/"
+        ]
+      }
+    ],
+    "reviewed_source_count": 26,
+    "source_urls_reviewed": [
+      "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+      "https://www.iranintl.com/en/liveblog/202610312594",
+      "https://www.dawn.com/news/2041187/irans-supreme-leader-warns-us-israel-of-unrestricted-geographical-response-to-new-attacks",
+      "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+      "https://www.dawn.com/news/2041159/saudi-says-intercepted-hostile-drone-in-riyadh-region",
+      "https://www.arabnews.com/saudi-arabia/coalition-intercepts-houthi-drones-over-riyadh-and-madinah-missile-in-south-3009043",
+      "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+      "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/",
+      "https://kuwaittimes.com/article/52723/kuwait/army-to-hold-live-fire-exercises-in-south-from-sunday/",
+      "https://kuwaittimes.com/article/52623/kuwait/army-units-to-hold-live-fire-drills-in-northwest-kuwait-from-oct-30-to-nov-3/",
+      "https://www.reuters.com/world/middle-east/egypt-fears-escalation-iran-war-would-be-more-destructive-foreign-minister-says-2026-10-31/",
+      "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+      "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+      "https://saudigazette.com.sa/article/665878/saudi-arabia/saudi-air-defenses-intercept-houthi-missiles-drones-targeting-five-regions",
+      "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "https://www.ukmto.org/recent-incidents",
+      "https://www.reuters.com/world/middle-east/oman-navy-evacuates-25-crew-vessel-off-musandam-2026-10-30/",
+      "https://www.washingtonpost.com/world/2026/10/30/israel-elections-netanyahu-results-eisenkot-arabs/f7aa6aee-d432-11f1-9931-2a41b76fc976_story.html",
+      "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3",
+      "https://www.iaea.org/newscenter",
+      "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza",
+      "https://www.ochaopt.org/updates",
+      "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions",
+      "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+      "https://www.reuters.com/business/energy/ship-attacks-strait-hormuz-hit-record-high-october-2026-10-23/",
+      "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+    ],
+    "counts": {
+      "new_events": 6,
+      "existing_event_updates": 9,
+      "claims_and_corrections": 7,
+      "economic_energy_updates": 3,
+      "prior_drawers_reviewed": 19,
+      "actor_source_classes_reviewed": 23,
+      "map_eligible_records_reviewed": 7
+    },
+    "limitations": [
+      "Live and continuously updated articles may contain later editorial text; event publication times use earliest individually identified entry when available.",
+      "Reuters Doha story first surfaced 12:26 UTC via live syndication and Reuters full report displays 14:57 UTC, both before cutoff; no post-cutoff detail promoted as independently known.",
+      "AP Oct31 Syria and Israel profile lack exact publication times; retained with DATE_ONLY publication precision.",
+      "No independent radar, satellite, AIS or primary UKMTO 188-26 PDF coordinates obtained.",
+      "Iran official Khamenei statement verified as public claim, not independent confirmation of private military meeting or capability.",
+      "No paid AIS/Kpler/LSEG terminal. No normalized shipping, exact vessel tracks or attacker attribution inferred.",
+      "Review is source-limited; NO MATERIAL CHANGE means no qualifying evidence established in checked sources, not proof none occurred.",
+      "Prior Oct30 midnight sweep merged on main, with historical gaps still open in Issue #296."
+    ]
+  },
+  "source_discovery_additions": [
+    {
+      "source_name": "Iran Khamenei original Telegram/leader.ir statement and command meeting proof",
+      "url": "https://www.leader.ir/en",
+      "publication_time": "2026-10-31_ORIGINAL_TIME_UNKNOWN",
+      "reason": "Authenticate original statement timestamp, wording and whether meeting has independent visual confirmation."
+    },
+    {
+      "source_name": "Saudi coalition spokesman Riyadh X post and debris evidence",
+      "url": "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+      "publication_time": "2026-10-31_SATURDAY_TIME_UNKNOWN",
+      "reason": "Confirm exact interception time, drone provenance and whether Riyadh-region debris coordinates become available."
+    },
+    {
+      "source_name": "Al Jazeera Araghchi interview full transcript",
+      "url": "https://www.iranintl.com/en/liveblog/202610312594",
+      "publication_time": "2026-10-31T13:42:00Z_SECONDARY_REPORT",
+      "reason": "Verify whether two-day plan is Iranian/Qatari agreement only and the precise sequence of conditional steps."
+    },
+    {
+      "source_name": "Jordan armed forces original 14-person border report",
+      "url": "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+      "publication_time": "2026-10-31T08:34:00Z_REUTERS",
+      "reason": "Recover crossing sector, exact Friday occurrence and casualty breakdown; do not infer ISIS identity."
+    },
+    {
+      "source_name": "Underlying October 35 maritime attacks dataset",
+      "url": "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "reason": "Identify original Al Jazeera/Windward/Kpler incident methodology, cutoff and whether 35 counts hulls or events."
+    },
+    {
+      "source_name": "Official Israel Central Elections Committee final 120-seat distribution",
+      "url": "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3",
+      "publication_time": "2026-10-31_DATE_ONLY_AP",
+      "reason": "Reconcile AP Saturday 18 Arab-led seats with Friday final-results reporting 19; do not label as fraud."
+    },
+    {
+      "source_name": "Kuwait southern live-fire original KUNA notice",
+      "url": "https://kuwaittimes.com/article/52723/kuwait/army-to-hold-live-fire-exercises-in-south-from-sunday/",
+      "publication_time": "2026-10-31T12:38:00+03:00",
+      "reason": "Obtain source map and verify geographic exercise perimeter; future announcement is not actual troop movement."
+    },
+    {
+      "source_name": "UKMTO 188-26 source PDF and IMO subsequent registry",
+      "url": "https://www.ukmto.org/recent-incidents",
+      "publication_time": "2026-10-30_PRIOR",
+      "reason": "Resolve Lavan incident identity and coordinates, avoid cross-window duplication."
+    },
+    {
+      "source_name": "IAEA current Iran inspections implementation",
+      "url": "https://www.iaea.org/newscenter",
+      "publication_time": "2026-10-31_REVIEW_NO_NEW_RELEASE_FOUND",
+      "reason": "Continue monitoring primary implemented inspection access and material stockpile evidence."
+    }
+  ],
+  "unresolved_questions": [
+    "Does the Iran leader's written statement reflect an authenticated in-person meeting? No independent visual confirmation in reviewed sources.",
+    "Which exact two-day sequence did Iran and Qatar discuss, and did Washington agree? No agreement or implementation established.",
+    "Did any direct US-Iran meeting occur in Doha? Reuters confirms mediator contact; Iran denies direct meetings; Al-Araby forecast is not confirmation.",
+    "What is Riyadh drone's launch origin, interception time, debris coordinates and independently verified attacker? Not established.",
+    "Where on the Jordan–Syria border did 14 armed crossers engage Jordanian guards, and how many casualties? No authenticated point or count.",
+    "Can Saudi Eastern/Southern 'early Saturday' claims be assigned to Oct31 without duplicating Oct30 article? Exact occurrence clocks unresolved.",
+    "Are 35 October commercial ship attacks a validated provider count and what is the denominator? Original source not retrieved.",
+    "Does IMO's as-of-Oct30 122/24 registry include recent Lavan, RITI or Louise 1 events? Per-hull linkage unresolved.",
+    "Which Israel final Arab-party seat tally is official: 18 in Saturday AP profile or 19 in prior final-results report? Official roster needed.",
+    "Have Kuwait's Nov1–5 southern drills actually commenced? Not as of Oct31 noon cutoff.",
+    "Did Syria accept any Mecca Pact invitation or did Turkey complete parliamentary ratification? No evidence of implementation in review.",
+    "Did any new IAEA inspection, OFAC waiver, sanctions relief, ceasefire, Hormuz normalization or verified Houthi ceasefire occur? None established from checked sources.",
+    "Is the Reuters/Folha October 30 oil futures settlement mismatch resolved? No new source-quality reconciliation.",
+    "Can original UKMTO 188-26 Lavan coordinates and attacker be verified? Prior region-only hold remains.",
+    "Can Jordan/Syria Oct26 strike casualty dispute be independently reconciled? No verified BDA."
+  ],
+  "geospatial_handoff": {
+    "review_rule": "Only source-authenticated point coordinates or justified existing canonical location IDs qualify plot-ready; broad region, border corridor and projected exercise areas remain UNRESOLVED. No fabricated points, routes or military base changes.",
+    "reviewed_map_eligible_records": [
+      {
+        "record_id": "ROOK-20261031-SA-RIYADH-DRONE-INTERCEPTION-CLAIM",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Riyadh Region, Saudi Arabia; debris location not disclosed",
+        "source_url": "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported"
+      },
+      {
+        "record_id": "ROOK-20261031-JORDAN-SYRIA-14-ARMED-CROSSING-REPORT",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Northern Jordan–Syria border; no identified crossing or exact coordinates",
+        "source_url": "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/"
+      },
+      {
+        "record_id": "ROOK-20261031-KUWAIT-SOUTH-LIVEFIRE-ANNOUNCEMENT",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Southern Kuwait exercise area unspecified",
+        "source_url": "https://kuwaittimes.com/article/52723/kuwait/army-to-hold-live-fire-exercises-in-south-from-sunday/"
+      },
+      {
+        "record_id": "ROOK-20261031-SA-EAST-SOUTH-INTERCEPTION-CLOCK-RECONCILIATION",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Saudi Eastern and Southern Regions; separate unspecified intercept localities",
+        "source_url": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/"
+      },
+      {
+        "record_id": "ROOK-20261031-IRGC-FOUR-TANKER-CLAIM-HOLD",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Strait of Hormuz corridors; vessel identities and precise locations unknown",
+        "source_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      },
+      {
+        "record_id": "ROOK-20261031-SA-RIYADH-DRONE-ATTRIBUTION",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Riyadh Region, Saudi Arabia",
+        "source_url": "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported"
+      },
+      {
+        "record_id": "ROOK-20261031-JORDAN-BORDER-CASUALTIES",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Northern Jordan–Syria border",
+        "source_url": "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/"
+      }
+    ],
+    "plot_ready_count": 0,
+    "region_only_count": 7,
+    "unlocated_pending_source_count": 0,
+    "nonspatial_count": 18,
+    "protected_route_geometry_mutated": false,
+    "operational_base_adjudication_mutated": false,
+    "public_markers_mutated": false
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_UPSTREAM_COLLECTION_WITH_DISCLOSED_COVERAGE_LIMITATIONS",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true,
+    "upstream_only": true,
+    "source_review_performed": true,
+    "repository_validator_status": "PENDING_GITHUB_PR_CI_VALIDATION",
+    "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
+    "completion_report": "Oct31 00:00–12:00 EDT upstream review: Khamenei written response-order claim, Doha Qatar-mediated talks and conditional two-day Hormuz proposal without implementation, Saudi Riyadh interception claim, Jordan Friday border crossing disclosed Saturday, Kuwait future exercise, Manama Arab de-escalation statements and Syrian pact discussion. Prior drawers reconciled; maritime 35/month count and 18-vs-19 Israeli seats held as source discrepancies. No new verified IAEA access, sanctioned waiver, exact maritime BDA or normalized shipping. All geospatial physical reports region-only; no protected canonical/public/route/marker mutations. Require exact-compare ROOK intake validator and unconsumed status before durable completion."
+  }
+}
