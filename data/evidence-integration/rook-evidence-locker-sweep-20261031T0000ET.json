@@ -1,0 +1,832 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-10-30T12:00:00-04:00",
+    "window_end": "2026-10-31T00:00:00-04:00",
+    "scheduled_window_end": "2026-10-31T00:00:00-04:00",
+    "collection_time": "2026-10-31T00:03:32.218-04:00",
+    "evidence_horizon_time": "2026-10-31T00:00:00-04:00",
+    "collection_mode": "ROUTINE_UPSTREAM_OSINT",
+    "source_publication_rule": "Separate incident, original publication, subsequent update, collection and horizon clocks; exact pre-cutoff knowledge is not inferred from date-only publication or retrospectively updated article bodies."
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261030-LAVAN-UKMTO188-PROJECTILE",
+      "event_type": "MARITIME_PROJECTILE_ATTACK_REPORT",
+      "actor": "Unknown attacker; vessel master reporting via UKMTO",
+      "occurrence_time": "2026-10-30T18:00:00Z",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "DATE_ONLY_PRIMARY_WARNING_ISSUANCE_TIME_NOT_RECOVERED",
+      "summary": "UKMTO Warning 188-26 reportedly records vessel struck on port side by unknown projectile at 1800 UTC, 40 nautical miles south of Lavan Island, Iran, causing fire. Crew reportedly safe; no reported environmental impact. Hull/IMO, projectile type, attacker and final damage status unknown. Distinct from Oct29 Louise 1 limpet devices northeast of Khasab; not linked to Iran's unverified four-tanker tally.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "https://regulasshipping.com/blog/ukmto-188-26-records-a-projectile-hit-40-nm-south-of-lavan-island/",
+        "https://www.ukmto.org/recent-incidents"
+      ],
+      "evidence_class": "UKMTO_ATTRIBUTED_MARITIME_WARNING_REPORTED_BY_REUTERS_AND_SECONDARY_WARNING_DIGEST",
+      "disposition": "NEW_PHYSICAL_INCIDENT_UNATTRIBUTED",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "40 nautical miles south of Lavan Island, Iran, Arabian Gulf",
+        "location_precision": "DIRECTION_AND_DISTANCE_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "Offset is a descriptive radius/bearing, not an authenticated latitude/longitude; warning's original PDF/coordinates remain to be retrieved."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261030-SA-EAST-SOUTH-DRONE-COALITION-REPORTS",
+      "event_type": "MILITARY_INTERCEPTION_CLAIMS",
+      "actor": "Saudi-led coalition",
+      "occurrence_time": "2026-10-30/2026-10-31 LOCAL_UNRESOLVED",
+      "publication_time": "2026-10-30T19:37:00Z",
+      "publication_time_precision": "REUTERS_TIMESTAMP_WITH_INCONSISTENT_LOCAL_DAY_WORDING",
+      "summary": "Coalition announced drone interceptions over Saudi Eastern Region and subsequently toward Southern Region, attributing Southern-bound drone to Houthis. Reuters copy calls Eastern event 'early Saturday' despite Oct30 19:37 UTC page timestamp; do not assign unverified occurrence to either side of ET cutoff. Friday Medina drone claim and Houthi denial are prior separate drawer. No exact flight track, impact, launch site, independent BDA or casualties established.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/"
+      ],
+      "evidence_class": "COALITION_ACTOR_CLAIM_REPORTED_BY_REUTERS",
+      "disposition": "NEW_REPORTED_CLAIMS_PENDING_INCIDENT_TIME_RECONCILIATION",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Saudi Eastern Region and Southern Region; two broad regions, no individual impact coordinates",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "Not plot-ready; regions are not coordinates and timing may cross the evidence cutoff."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261030-US-SA-EMBASSY-DEPARTURE-DISCLOSURE",
+      "event_type": "US_DIPLOMATIC_SECURITY_POSTURE",
+      "actor": "United States Embassy Riyadh / State Department",
+      "occurrence_time": "2026-10-23",
+      "publication_time": "2026-10-30T18:32:00Z",
+      "publication_time_precision": "REUTERS_MINUTE",
+      "summary": "US Embassy said ordered departure of non-emergency government employees and families effective October 23, publicly reported Oct30 14:32 EDT; special authorization for government staff using Saudi airports. Retrospective effective date is NOT a new Oct30 departure or evidence every affected person departed. Warning references Houthi attacks and aviation disruption.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-orders-non-emergency-staff-leave-saudi-arabia-over-security-risks-2026-10-30/"
+      ],
+      "evidence_class": "EMBASSY_STATEMENT_REPORTED_BY_REUTERS",
+      "disposition": "NEW_PUBLIC_DISCLOSURE_OF_EARLIER_EFFECTIVE_POLICY",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Saudi Arabia countrywide diplomatic security policy",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261030-PAK-MECCA-PACT-SPOKESMAN",
+      "event_type": "DEFENCE_PACT_POSITION_STATEMENT",
+      "actor": "Pakistan armed forces spokesman Lt Gen Ahmed Sharif Chaudhry",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T17:49:00Z",
+      "publication_time_precision": "REUTERS_MINUTE",
+      "summary": "In Reuters interview Pakistan military spokesman described Iran-US mediation as 'cautiously optimistic', said Mecca defence pact text does not bar additional members including potentially Iran subject to political decisions, reaffirmed Pakistan's Saudi defense commitment but denied Pakistan is a party to Yemen conflict. Additional troop deployment depends on future political decisions; no Iran membership, ratification change, troop movement or combat action established.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/pakistan-military-cautiously-optimistic-iran-us-mediation-2026-10-30/"
+      ],
+      "evidence_class": "ON_RECORD_PAKISTAN_MILITARY_SPOKESMAN",
+      "disposition": "NEW_POLICY_STATEMENT_NOT_PACT_IMPLEMENTATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Rawalpindi interview and regional diplomatic policy",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261030-IRGC-FOUR-TANKER-REASSERTION",
+      "updates_existing_ref": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "relationship": "UPDATE_LATER_ACTOR_TALLY_WITHOUT_INDEPENDENT_HULL_CONFIRMATION",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T12:00:00Z",
+      "publication_time_precision": "REUTERS_PAGE_TIMESTAMP_MAY_REFLECT_INITIAL_PRE_WINDOW_VERSION",
+      "summary": "IRGC Navy said four tankers had caught fire/exploded in unauthorized routes, with claimed fourth supertanker >2m barrels. Reuters could not verify claims or link UKMTO projectile reports to claimed vessels. Preserve as changed actor tally, not four independently verified attacks; publication timestamp is before window start and subsequent update time unknown.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "disposition": "UPDATE_CLAIM_ONLY",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Strait of Hormuz, alleged southern unauthorized routes",
+        "location_precision": "CORRIDOR_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "Actor claim has no vessel identities or strike points."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261030-IMO-122-CONFIRMED",
+      "updates_existing_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "relationship": "SUPERSEDE_PREVIOUS_CUMULATIVE_REGISTRY_SNAPSHOT_NOT_NEW_STRIKES",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "AS_OF_DATE_ONLY_LIVE_PAGE_UPDATE_CLOCK_UNKNOWN",
+      "summary": "IMO live highlighted confirmed-incident registry now displays 122 confirmed incidents as at Oct30 and 24 seafarer fatalities, versus earlier Oct19 114 incident snapshot. Count is cumulative and cannot be summed with UKMTO or private provider weekly counts; displayed incident table's latest listed hull is Oct23, so the registry does not itself confirm today's UKMTO reports.",
+      "sources": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "disposition": "SUPERSEDE_CUMULATIVE_SNAPSHOT",
+      "prior_drawer_decision": "SUPERSEDE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Regional IMO cumulative incident registry",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261030-QATAR-IRAN-NO-DEAL",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "relationship": "NO_MATERIAL_IMPLEMENTATION_CHANGE_LATER_CONTEXT",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T07:09:00Z",
+      "publication_time_precision": "REUTERS_PRE_WINDOW_PUBLICATION",
+      "summary": "Reuters early Friday reports Qatar shuttle visit and incompatible U.S. nuclear-first versus Iranian sanctions/blockade-first sequencing. No later in-window signed settlement, IAEA implementation, sanctions lift or Hormuz reopening established. Trump said war would wrap up soon but provided no timetable or signed instrument.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/",
+        "https://www.reuters.com/world/trump-iran-war-its-going-get-wrapped-up-soon-2026-10-30/"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Iran-US-Qatar diplomacy",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261030-HEZBOLLAH-TRUCK-COURT-CHARGES",
+      "updates_existing_ref": "LEBANON-HEZBOLLAH-SEIZED-EXPLOSIVES-TRUCK-OCT2026",
+      "relationship": "UPDATE_EXISTING_OCTOBER_SEIZURE_WITH_JUDICIAL_PROCEDURE",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "AP_DATE_ONLY_NOT_PROVEN_POST_NOON",
+      "summary": "AP reports Lebanese military court charges against 13 people tied to previously seized truck carrying 780kg explosives on Beirut-Bekaa highway: two detained, 11 charged in absentia. Hezbollah acknowledged ownership and claims material was intended for Israeli targets; accusations of intended domestic assassination not established. Court charges are not convictions and are not a new explosives seizure.",
+      "sources": [
+        "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47"
+      ],
+      "disposition": "UPDATE_WITH_PUBLICATION_TIME_UNCERTAINTY",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Lebanese military court; earlier truck seizure highway locality not a new strike",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261030-HEBRON-HOMES-DEMOLISHED",
+      "updates_existing_ref": "EVT-20261023-HEBRON-CHECKPOINT-ATTACK-AND-ISRAELI-OPERATION",
+      "relationship": "UPDATE_LATER_OPERATIONAL_DISPLACEMENT_AND_DEMOLITIONS",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T15:30:00Z",
+      "publication_time_precision": "REUTERS_PRE_WINDOW_PUBLICATION",
+      "summary": "Reuters reported Israeli military demolished homes of two Oct23 Hebron checkpoint attackers; operation reportedly displaced more than 3,000 Palestinians. Published at 11:30 EDT, before target window; retained for prior-drawer reconciliation only, not falsely assigned as a new afternoon strike.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israel-demolishes-gunmens-homes-west-bank-operation-that-has-displaced-thousands-2026-10-30/"
+      ],
+      "disposition": "NO_NEW_WINDOW_DELTA_PRIOR_SOURCE_DISCOVERY",
+      "prior_drawer_decision": "NO MATERIAL CHANGE_IN_THIS_WINDOW",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Hebron city, occupied West Bank; specific demolition addresses not verified",
+        "location_precision": "CITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No sourced building coordinates; do not create precise points."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261030-IRGC-FOUR-TANKERS",
+      "claimant": "IRGC Navy",
+      "claim": "Four oil tankers hit mines and exploded/caught fire in Strait of Hormuz; one supertanker >2m barrels.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T12:00:00Z",
+      "publication_time_precision": "REUTERS_INITIAL_TIMESTAMP; UPDATE_TIME_UNKNOWN",
+      "status": "UNVERIFIED_ACTOR_CLAIM",
+      "contrary_or_independent_evidence": "UKMTO independently logged projectile incidents, but hull overlap with IRGC tally unknown; Reuters unable to verify mine causation or four distinct vessels.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Unspecified Strait of Hormuz corridors",
+        "location_precision": "CORRIDOR_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261030-IRAN-USV-DRONE",
+      "claimant": "Iranian state media / Iranian military",
+      "claim": "Iran destroyed US unmanned surface vessel and downed/captured MQM-170 US drone near Qeshm.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T12:00:00Z",
+      "publication_time_precision": "REUTERS_INITIAL_TIMESTAMP; UPDATE_TIME_UNKNOWN",
+      "status": "DISPUTED_ACTOR_CLAIM",
+      "contrary_or_independent_evidence": "CENTCOM says all US unmanned surface vessels accounted for. No independent evidence of drone capture, identity or BDA.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Eastern Strait of Hormuz / Qeshm Island, Iran",
+        "location_precision": "ISLAND_OR_WATERWAY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261030-SA-DRONES-REGIONAL",
+      "claimant": "Saudi-led coalition",
+      "claim": "Interceptions of drones over Eastern and Southern Regions attributed to Houthis.",
+      "occurrence_time": "2026-10-30/2026-10-31 LOCAL_UNRESOLVED",
+      "publication_time": "2026-10-30T19:37:00Z",
+      "publication_time_precision": "REUTERS_TIMESTAMP_WITH_LOCAL_DAY_CONFLICT",
+      "status": "ACTOR_CLAIM_NO_INDEPENDENT_TRACK_OR_BDA",
+      "contrary_or_independent_evidence": "No independent trajectory, wreckage, casualties or source-confirmed point. Houthis separately denied Friday Medina attack; do not automatically extend denial to both new regional incidents.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Saudi Eastern Region / Southern Region",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261030-HEZBOLLAH-EXPLOSIVES-INTENT",
+      "claimant": "Hezbollah",
+      "claim": "Seized 780kg explosives shipment was intended for use against Israeli forces in southern Lebanon.",
+      "occurrence_time": "2026-10",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "DATE_ONLY_LATER_REPORT",
+      "status": "ACTOR_EXPLANATION_NOT_INDEPENDENTLY_ADJUDICATED",
+      "contrary_or_independent_evidence": "Lebanese court charges concern internal state security and illegal explosives. Public accusations of domestic assassination plot are also unproven; ownership acknowledged, intent disputed.",
+      "sources": [
+        "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Claim about previously seized shipment",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261030-TRUMP-END-SOON",
+      "claimant": "US President Donald Trump",
+      "claim": "Iran war will be wrapped up soon and US needs guarantee Iran never has nuclear weapon.",
+      "occurrence_time": "2026-10-30",
+      "publication_time": "2026-10-30T11:55:00Z",
+      "publication_time_precision": "PRE_WINDOW_REUTERS_PUBLICATION",
+      "status": "PREDICTION_AND_NEGOTIATING_POSITION_NOT_AGREEMENT",
+      "contrary_or_independent_evidence": "No signed agreement, Iranian nuclear concession or IAEA access established; this statement is not a forecast validated by events.",
+      "sources": [
+        "https://www.reuters.com/world/trump-iran-war-its-going-get-wrapped-up-soon-2026-10-30/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "US political statement",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261030-OIL-FINAL-SETTLEMENT",
+      "metric": "OCT30_BRENT_DEC_JAN_WTI_SETTLEMENTS",
+      "occurrence_time": "2026-10-30",
+      "observation_time": "2026-10-30_US_MARKET_CLOSE",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "REUTERS_INITIAL_ARTICLE_PRE_WINDOW_LATER_SETTLEMENT_UPDATE_UNTIMED",
+      "summary": "Reuters later-updated Oct30 market story reports expiring December Brent settlement $117.64/bbl, active January Brent $113.43/bbl, WTI $104.12/bbl; October Brent +13.6%, WTI +15.2%. Folha article at 19:35 Brazil local instead reports January Brent $113.10 and WTI $102.95, monthly +14.32%/+13.86%; source discrepancy preserved for exchange-contract/observation-time reconciliation, not silently averaged. Prior noon sweep had intraday prices, not settlements.",
+      "december_brent_settlement_usd_per_barrel_reuters": 117.64,
+      "january_brent_settlement_usd_per_barrel_reuters": 113.43,
+      "wti_settlement_usd_per_barrel_reuters": 104.12,
+      "october_brent_percent_reuters": 13.6,
+      "october_wti_percent_reuters": 15.2,
+      "source_conflict": {
+        "january_brent_usd_per_barrel_folha": 113.1,
+        "wti_usd_per_barrel_folha": 102.95
+      },
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+        "https://www1.folha.uol.com.br/mercado/2026/10/petroleo-sobe-mais-de-14-em-outubro-e-encerra-mes-no-maior-valor-desde-maio.shtml"
+      ],
+      "disposition": "UPDATE_CONFLICT_REQUIRES_VERIFICATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Energy futures market prices",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "economic_id": "ROOK-20261030-SA-EXPORTS-SHIPTRACKING",
+      "metric": "SAUDI_OCTOBER_CRUDE_EXPORT_DIRECTION",
+      "occurrence_time": "2026-10",
+      "publication_time": "2026-10-30",
+      "publication_time_precision": "LATER_UPDATED_REUTERS_STORY_UNTIMED",
+      "summary": "Reuters reports two of three ship-tracking providers indicated Saudi October crude exports rose from September despite attacks; source provides no reconciled numeric series in accessible story. Do not infer all providers agree, transit lane normalization, or an exact bpd change.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "disposition": "UPDATE_DIRECTION_ONLY",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Saudi crude export market observation",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    },
+    {
+      "economic_id": "ROOK-20261030-US-REFINER-MARGINS",
+      "metric": "EXXON_CHEVRON_Q3_REFINING_MARGIN_EARNINGS",
+      "occurrence_time": "2026-Q3",
+      "publication_time": "2026-10-30T10:32:00Z",
+      "publication_time_precision": "INITIAL_REUTERS_TIMESTAMP_PRE_WINDOW_LATER_QUOTES_UNTIMED",
+      "summary": "Reuters reports Exxon and Chevron Q3 refining earnings elevated amid war-related fuel shortages, with Exxon refining income exceeding upstream for first time in at least six years and Chevron downstream highest in same span; these are historical earnings disclosed Oct30, not physical evidence of a new refinery strike. Exxon adjusted EPS $4.23, Chevron $5.28; avoid assigning a single causal share to Iran conflict.",
+      "sources": [
+        "https://www.reuters.com/business/energy/wrapup-exxon-chevron-earnings-propelled-by-war-driven-refining-surge-2026-10-30/"
+      ],
+      "disposition": "UPDATE_REFINING_ECONOMICS",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Corporate earnings and refined product markets",
+        "location_precision": "LOCALITY_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "No sourced strike-grade coordinates; do not place a precise marker."
+      },
+      "collection_time": "2026-10-31T00:03:32.218-04:00",
+      "evidence_horizon_time": "2026-10-31T00:00:00-04:00"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Oct29 Louise 1 attached-device attack",
+      "canonical_ref": "EVT-20261029-LOUISE1-LIMPET-ATTACK",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new authenticated hull BDA or exact coordinates; UKMTO 188 is different weapon, location and day."
+    },
+    {
+      "drawer": "Oct29 IRGC tanker/mine claims",
+      "canonical_ref": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "decision": "UPDATE",
+      "reason": "Four-tanker version and >2m barrel supertanker claim retained as unverified actor statements, not new independent incidents."
+    },
+    {
+      "drawer": "Oct30 Qatar mediation",
+      "canonical_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No signed agreement, IAEA access, Hormuz normalization or nuclear concession."
+    },
+    {
+      "drawer": "Oct30 Medina/Mecca intercept claim",
+      "canonical_ref": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Friday Medina denial/claim already reported; new Eastern/Southern reports held separately with time uncertainty."
+    },
+    {
+      "drawer": "Oct29 Taiz medical-access crisis",
+      "canonical_ref": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new verified in-window casualty or aid-access change; older Guardian and AP reporting not re-counted."
+    },
+    {
+      "drawer": "Oct23 Hebron checkpoint attack/West Bank operation",
+      "decision": "UPDATE",
+      "reason": "Oct30 morning Reuters report of home demolitions and >3,000 displacement retained as prior-window chronology; not newly counted as afternoon strike."
+    },
+    {
+      "drawer": "Hezbollah seized explosives truck",
+      "decision": "UPDATE",
+      "reason": "Lebanese judicial charges on existing shipment, not a new seizure; publication exact time uncertain."
+    },
+    {
+      "drawer": "IMO maritime incident totals",
+      "decision": "SUPERSEDE",
+      "reason": "Oct30 as-of 122 confirmed / 24 seafarer deaths replaces prior 114 as-of Oct19, without implying eight new Oct30 attacks."
+    },
+    {
+      "drawer": "Oct30 noon oil intraday futures",
+      "decision": "SUPERSEDE",
+      "reason": "Later settlement quote differs from intraday; conflicting Folha/Reuters contract observations disclosed."
+    },
+    {
+      "drawer": "Mecca Joint Defence Agreement",
+      "decision": "UPDATE",
+      "reason": "Pakistan spokesman clarifies potential membership and Yemen nonparticipation; no troop movement or ratification."
+    },
+    {
+      "drawer": "US embassy Saudi security posture",
+      "decision": "UPDATE",
+      "reason": "Oct30 disclosure of departure order effective Oct23; not new departure event."
+    },
+    {
+      "drawer": "IAEA Iran damaged sites/uranium",
+      "canonical_ref": "EVT-20261028-IAEA-RECONSTRUCTION-INSPECTION",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new implemented inspection or authenticated uranium disposition; Oct28 Grossi status persists."
+    },
+    {
+      "drawer": "Gaza/WFP aid reductions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "WFP Oct19 cuts and prior October reporting already in source record; no new Oct30 Gaza policy change verified."
+    },
+    {
+      "drawer": "OFAC Iran/Iraq sanctions",
+      "canonical_ref": "EVT-20261029-OFAC-GL-FF1-SUPERSEDES-FF",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Latest Iran OFAC listing remains Oct29 FF-1; no Oct30 Iran sanctions action located."
+    },
+    {
+      "drawer": "Gulf oil bypass and tanker flows",
+      "decision": "UPDATE",
+      "reason": "Reuters two of three trackers say Saudi Oct exports up, no source-qualified precise bpd or normalized transit."
+    },
+    {
+      "drawer": "Syria-related actors",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Eastern Syria flood reporting is humanitarian/natural hazard, not established change in military theater disposition."
+    },
+    {
+      "drawer": "Russia/China/Europe/IISS defense assessment",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Oct30 IISS retrospective defense study is analysis, not new force deployment or operational BDA."
+    }
+  ],
+  "coverage": {
+    "method": "Targeted English-language public OSINT: Reuters/AP wire, Guardian/FT, regional press, UKMTO warning secondary digest, IMO primary cumulative registry, OFAC official sanctions listing, WFP/IAEA prior statements, EIA and energy-market Reuters coverage. No paid AIS/Kpler/LSEG terminals or authenticated private maritime feeds. Source time exactness explicitly limited.",
+    "coverage_by_actor_and_source_class": [
+      {
+        "category": "Iran political/military/security",
+        "status": "ACTOR_CLAIMS_AND_NEGOTIATING_POSITION_REVIEWED",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/"
+        ]
+      },
+      {
+        "category": "United States political/military/diplomatic",
+        "status": "EMBASSY_SECURITY_POLICY_DISCLOSURE_AND_TRUMP_CLAIM",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/us-orders-non-emergency-staff-leave-saudi-arabia-over-security-risks-2026-10-30/",
+          "https://www.reuters.com/world/trump-iran-war-its-going-get-wrapped-up-soon-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Israel political/security",
+        "status": "WEST_BANK_MORNING_OPERATION_REVIEWED_NO_AFTERNOON_VERIFIED_DELTA",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/israel-demolishes-gunmens-homes-west-bank-operation-that-has-displaced-thousands-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Saudi Arabia / GCC / Oman / Qatar / UAE / Kuwait / Bahrain",
+        "status": "SAUDI_COALITION_CLAIMS_OMAN_MARITIME_PRIOR_EVENT_QATAR_MEDIATION; OTHERS_NO_NEW_QUALIFYING_DELTA",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/oman-navy-evacuates-25-crew-vessel-off-musandam-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Iraq",
+        "status": "NO_QUALIFYING_IN_WINDOW_DELTA",
+        "sources": [
+          "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions"
+        ]
+      },
+      {
+        "category": "Yemen / Houthis",
+        "status": "COALITION_INTERCEPT_CLAIMS_TAIZ_PRIOR_HUMANITARIAN_REVIEW",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+          "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+        ]
+      },
+      {
+        "category": "Lebanon / Hezbollah",
+        "status": "JUDICIAL_CHARGES_PRIOR_SEIZURE_PUBLICATION_TIME_UNCERTAIN",
+        "sources": [
+          "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47"
+        ]
+      },
+      {
+        "category": "Gaza / Hamas / West Bank",
+        "status": "NO_NEW_GAZA_DISPOSITION; WEST_BANK_PRIOR_WINDOW_REPORT",
+        "sources": [
+          "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza",
+          "https://www.reuters.com/world/middle-east/israel-demolishes-gunmens-homes-west-bank-operation-that-has-displaced-thousands-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Syria-related actors",
+        "status": "FLOOD_HUMAN_IMPACT_REVIEWED_NOT_MILITARY_DELTA",
+        "sources": [
+          "https://www.reuters.com/business/environment/five-children-among-seven-dead-eastern-syria-floods-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Pakistan / Türkiye",
+        "status": "ON_RECORD_PAKISTAN_PACT_CLARIFICATION_NO_DEPLOYMENT",
+        "sources": [
+          "https://www.reuters.com/world/asia-pacific/pakistan-military-cautiously-optimistic-iran-us-mediation-2026-10-30/"
+        ]
+      },
+      {
+        "category": "China / Russia / Europe / EU",
+        "status": "NO_QUALIFYING_IRAN_WAR_FORCE_OR_SANCTIONS_DELTA; IISS_RETROSPECTIVE_REVIEW",
+        "sources": [
+          "https://www.theguardian.com/world/2026/oct/30/gulf-states-rethink-trillion-dollar-defence-us-iran-war-iiss-report"
+        ]
+      },
+      {
+        "category": "UN / IAEA / IMO",
+        "status": "IMO_CUMULATIVE_UPDATE_IAEA_NO_NEW_INSPECTION",
+        "sources": [
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://apnews.com/article/ab585e99b346e02843b858ff5d6523b8"
+        ]
+      },
+      {
+        "category": "Maritime and aviation authorities",
+        "status": "UKMTO188_LAVAN_WARNING; US_EMBASSY_SAUDI_AIRPORT_AUTHORIZATION",
+        "sources": [
+          "https://www.ukmto.org/recent-incidents",
+          "https://regulasshipping.com/blog/ukmto-188-26-records-a-projectile-hit-40-nm-south-of-lavan-island/",
+          "https://www.reuters.com/world/middle-east/us-orders-non-emergency-staff-leave-saudi-arabia-over-security-risks-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Sanctions authorities",
+        "status": "OFAC_OCT29_LAST_LISTED_ACTION_NO_NEW_OCT30_DELTA",
+        "sources": [
+          "https://ofac.treasury.gov/sanctions-programs-and-country-information/iran-sanctions"
+        ]
+      },
+      {
+        "category": "Energy / commodity markets",
+        "status": "OCT30_FUTURES_SETTLEMENT_AND_REFINING_REPORTING",
+        "sources": [
+          "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+          "https://www1.folha.uol.com.br/mercado/2026/10/petroleo-sobe-mais-de-14-em-outubro-e-encerra-mes-no-maior-valor-desde-maio.shtml",
+          "https://www.reuters.com/business/energy/wrapup-exxon-chevron-earnings-propelled-by-war-driven-refining-surge-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Commercial shipping / AIS / Kpler / LSEG public",
+        "status": "IMO_PRIMARY_REGISTRY_SAUDI_TRACKER_DIRECTION_NO_PAID_TERMINAL",
+        "sources": [
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Human impact agencies",
+        "status": "TAIZ_GAZA_EXISTING_WFP_AND_SYRIA_FLOOD_CONTEXT",
+        "sources": [
+          "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+          "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza",
+          "https://www.reuters.com/business/environment/five-children-among-seven-dead-eastern-syria-floods-2026-10-30/"
+        ]
+      },
+      {
+        "category": "Claims / corrections / independent OSINT",
+        "status": "IRGC_USV_AND_TANKER_CLAIMS_SAUDI_INTERCEPT_HEZBOLLAH_INTENT_SOURCE_CONFLICT",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+          "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+          "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47",
+          "https://www1.folha.uol.com.br/mercado/2026/10/petroleo-sobe-mais-de-14-em-outubro-e-encerra-mes-no-maior-valor-desde-maio.shtml"
+        ]
+      }
+    ],
+    "reviewed_source_count": 21,
+    "counts": {
+      "new_events": 4,
+      "existing_event_updates": 5,
+      "claims_and_corrections": 5,
+      "economic_energy_updates": 3,
+      "prior_drawers_reviewed": 17
+    },
+    "limitations": [
+      "UKMTO original Warning 188-26 PDF not independently downloaded; 1800 UTC incident and 40NM south of Lavan corroborated via Reuters and secondary numbered-warning digest.",
+      "Reuters 19:37 UTC Friday article says Saudi Eastern interception occurred 'early Saturday'; source day conflict prohibits confident in-window occurrence assignment.",
+      "AP Lebanese court report and IMO as-of Oct30 registry lack verified exact publication clock; inclusion is source-discovery/continuity not proof of new post-noon occurrence.",
+      "Reuters oil article page displays initial 02:27 UTC timestamp despite later settlement content; later update clock unresolved and alternative Folha settlement differs.",
+      "No licensed paid AIS, Kpler or LSEG feed. Do not infer vessel IDs, origin, geolocation, BDA, actor attribution, military command or intent.",
+      "Previous Oct30 noon sweep is merged into main but unconsumed relative to latest accepted canonical cutoff at start of collection; no duplication of its new events."
+    ]
+  },
+  "source_discovery_additions": [
+    {
+      "source_name": "UKMTO original Warning 188-26 PDF and incident-time metadata",
+      "url": "https://www.ukmto.org/recent-incidents",
+      "publication_time": "2026-10-30_UNRESOLVED",
+      "reason": "Retrieve exact source PDF and authenticated timestamp for 1800 UTC Lavan attack; avoid fabricated point."
+    },
+    {
+      "source_name": "Oman Maritime Security Centre RITI official report",
+      "url": "https://www.reuters.com/world/middle-east/oman-navy-evacuates-25-crew-vessel-off-musandam-2026-10-30/",
+      "publication_time": "2026-10-30T12:45:00Z_REUTERS",
+      "reason": "Earlier-window RITI 25 crew rescued 1.6NM off Musandam, identity and overlap with IRGC claims unresolved; do not create duplicate post-noon event."
+    },
+    {
+      "source_name": "Reuters vs Folha Oct30 closing oil settlement reconciliation",
+      "url": "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+      "publication_time": "2026-10-30_UPDATED_TIME_UNKNOWN",
+      "reason": "Reconcile Reuters Dec/Jan Brent WTI settlement with Folha's alternative January/WTI close and exchange observation times."
+    },
+    {
+      "source_name": "IMO confirmed incident registry as-of Oct30",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "publication_time": "2026-10-30_DATE_ONLY",
+      "reason": "Track cumulative 122 count and 24 deaths with per-hull source identity; never add to private weekly attack counts."
+    },
+    {
+      "source_name": "Lebanese National News Agency original military court filing",
+      "url": "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47",
+      "publication_time": "2026-10-30_DATE_ONLY",
+      "reason": "Find judicial order exact date/time, defendants, charge disposition; court allegations are not convictions."
+    }
+  ],
+  "unresolved_questions": [
+    "Identify vessel, flag, IMO, exact primary warning time, weapon and final condition for 188-26 Lavan projectile strike; check for duplication with IRGC unverified tanker tally.",
+    "Obtain precise original occurrence clocks for Saudi Eastern/Southern interceptions and reconcile Reuters 'early Saturday' vs Oct30 19:37 UTC timestamp.",
+    "Was RITI (Panama flag, 25 evacuated) any of IRGC's alleged mine-hit tankers? No source establishes linkage.",
+    "Has Qatar mediation produced a signed, implemented agreement or IAEA inspection access? None verified as of cutoff.",
+    "Can Lebanese court primary order be obtained and did charges occur after noon ET? No exact timestamp in AP.",
+    "Resolve Reuters/Folha oil settlement discrepancies and whether January Brent $113.43 or $113.10 refer to identical market sessions.",
+    "Does IMO as-of Oct30 cumulative 122 include any Oct29/Oct30 incidents? Visible table latest Oct23; no per-hull match.",
+    "Which, if any, Saudi crude export tracking providers quantify Oct volume? No exact bpd established.",
+    "Have any current-day aviation NOTAM or GCC sanctions releases materially changed after 12:00 ET? No verified update from accessible public sources."
+  ],
+  "geospatial_handoff": {
+    "review_rule": "Only sourced coordinates or previously justified canonical location IDs may yield plot-ready points. Descriptive distances, city, island, corridor or province are region-only and UNRESOLVED.",
+    "reviewed_map_eligible_records": [
+      {
+        "record_id": "ROOK-20261030-LAVAN-UKMTO188-PROJECTILE",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "40NM south of Lavan Island; no exact point",
+        "source_url": "https://regulasshipping.com/blog/ukmto-188-26-records-a-projectile-hit-40-nm-south-of-lavan-island/"
+      },
+      {
+        "record_id": "ROOK-20261030-SA-EAST-SOUTH-DRONE-COALITION-REPORTS",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Saudi Eastern/Southern Regions only",
+        "source_url": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/"
+      },
+      {
+        "record_id": "ROOK-20261030-HEBRON-HOMES-DEMOLISHED",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Hebron city; no house addresses",
+        "source_url": "https://www.reuters.com/world/middle-east/israel-demolishes-gunmens-homes-west-bank-operation-that-has-displaced-thousands-2026-10-30/"
+      }
+    ],
+    "plot_ready_count": 0,
+    "region_only_count": 3,
+    "unlocated_pending_source_count": 0,
+    "nonspatial_count": 9,
+    "protected_route_geometry_mutated": false,
+    "operational_base_adjudication_mutated": false,
+    "public_markers_mutated": false
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_UPSTREAM_COLLECTION_WITH_DISCLOSED_COVERAGE_LIMITATIONS",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true,
+    "upstream_only": true,
+    "source_review_performed": true,
+    "repository_validator_status": "PENDING_GITHUB_PR_CI_VALIDATION",
+    "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
+    "completion_report": "Oct30 noon–Oct31 midnight EDT upstream public-source review; strict event/publication/collection/horizon clocks; distinct Lavan UKMTO projectile and prior Louise1, Saudi actor claims with day uncertainty, embassy retrospective policy, Pakistan on-record clarification, IMO cumulative 122/24, Lebanon judicial update and competing market closes. No protected canonical/public/release/route/marker mutation. Treat completed/unconsumed only after validator CI confirms."
+  }
+}
