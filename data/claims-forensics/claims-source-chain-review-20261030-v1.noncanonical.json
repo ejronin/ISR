@@ -1,0 +1,367 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_SOURCE_CHAIN_REVIEW_CANDIDATE_NONCANONICAL",
+  "review_version": "CF-20261030-SOURCE-CHAIN-01",
+  "review_date": "2026-10-30",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "status": "CANDIDATE_REFERRAL_NOT_ACCEPTED_NOT_PUBLIC",
+  "baseline_main_sha": "e9dae982e0d8f2803233ad79cf89728602745685",
+  "upstream_evidence_horizon": "2026-10-30T08:38:30-04:00",
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+  ],
+  "inputs": [
+    "data/evidence-integration/rook-evidence-locker-sweep-20261030T0000ET.json",
+    "data/evidence-integration/rook-topical-claims-review-20261030.noncanonical.json",
+    "data/evidence-integration/rook-source-review-weapons-claims-20261020.noncanonical.json",
+    "data/canonical-updates/UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json",
+    "data/canonical-updates/UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json",
+    "data/lie-ledger-v2-evidence-adjudications.json"
+  ],
+  "invariants": {
+    "baseline_preserved": true,
+    "accepted_packet_hashes_preserved": true,
+    "prior_case_adjudications_preserved": true,
+    "public_wol_ledger_mutations": 0,
+    "new_unique_lies": 0,
+    "new_public_claims": 0,
+    "formal_correction_applied": false,
+    "sealed_record_count": 89,
+    "expected_metrics_unique_propositions": 41,
+    "denominator_class_distinction": "89 adjudication records are not interchangeable with 41 unique propositions in the existing expected_metrics; neither is changed."
+  },
+  "review_standard": "Source and statement fidelity first; factual truth and knowledge separately; source reuse is not corroboration; no retroactive evidence or missed-sweep fabrication. Findings below are source-qualified referrals, not publishable verdicts.",
+  "cases": [
+    {
+      "id": "CF-20261030-01",
+      "issue": 320,
+      "actor": "Rear Admiral Jalil Moghadam, Iranian Army Navy coordinating deputy",
+      "statement_date": "2026-10-29",
+      "carrier": "IRNA exclusive interview, English edition, news 86306716, published 29 October 13:22 as displayed by IRNA",
+      "propositions": [
+        ">20 Iranian Navy operations against U.S. warships during the 40-day conflict beginning 2026-02-28",
+        "Approximately 300 additional operations against U.S. interests at multiple locations, including missile/drone actions",
+        "USS Abraham Lincoln allegedly suspended flight operations for three days after an Iranian cruise-missile targeting",
+        "U.S. destroyer DDG-103 and three other destroyers allegedly targeted"
+      ],
+      "fidelity_note": "The source asserts operations/targeting, not 20 confirmed hits or 300 destroyed assets; 300 is approximate, and IRNA expressly scopes the historical total to the 40-day war, not all eight months.",
+      "truth": "UNSUBSTANTIATED for operation totals and claimed carrier flight suspension; targeting is not independently proven impact or loss",
+      "knowledge": "INSUFFICIENT_EVIDENCE; institutional naval records could be relevant but are not supplied",
+      "prior_membership": [
+        "CHAIN-CL-LINCOLN",
+        "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+        "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905"
+      ],
+      "relation": "New dated assertion and potential repetition/mutation of established carrier narrative; not a second unique Lincoln lie by default",
+      "source_urls": [
+        "https://en.irna.ir/news/86306716/Exclusive-Iranian-Navy-carried-out-more-than-20-operations",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "next_evidence": "Obtain Iranian Navy operation ledger with event dates/hull identities and contemporaneous USS Lincoln air operations, DDG-103 track and damage records."
+    },
+    {
+      "id": "CF-20261030-02",
+      "issue": 320,
+      "actor": "IRGC Navy / Iranian Navy",
+      "statement_date": "2026-10-29 to 2026-10-30",
+      "propositions": [
+        "IRGC Oct29 said three tankers struck naval mines while using the unauthorized southern Hormuz route",
+        "Iranian Navy later described additional damaged tanker(s); Reuters Oct30 quoted two vessels stopped south of Hormuz"
+      ],
+      "truth": "UNSUBSTANTIATED for claimed three/four-vessel sea-mine count and mechanism; Louise 1 is separately reported hit by two attached limpet mines, with perpetrator unknown",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "prior_membership": [
+        "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+        "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909"
+      ],
+      "relation": "New Oct29 incident family, not a replay of September tanker events; Oct30 two-vessel count may be subset/update, not a proved correction",
+      "source_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "next_evidence": "Per-vessel IMO, UTC incident time, UKMTO number, physical mine type, damage, claimed legal authority; never identify Louise 1 as one of three without a source."
+    },
+    {
+      "id": "CF-20261030-03",
+      "issue": 320,
+      "actor": "IRGC Navy",
+      "statement_date": "2026-10-30",
+      "propositions": [
+        "Iran destroyed a U.S. unmanned maritime vessel in eastern Hormuz"
+      ],
+      "truth": "UNSUBSTANTIATED; U.S. confirmation, hull identity and independent recovery absent",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "prior_membership": [
+        "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906"
+      ],
+      "relation": "Same target category, different asserted incident/date; link as narrative family but do not merge physical occurrences or increment a unique-lie denominator",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "next_evidence": "US Navy/CENTCOM loss register, USV hull designation, imagery and location/time."
+    },
+    {
+      "id": "CF-20261030-04",
+      "issue": 320,
+      "actor": "Saudi-led coalition and Houthi military spokesman Yahya Saree",
+      "statement_date": "2026-10-30",
+      "propositions": [
+        "Coalition says a Houthi drone was intercepted near Mecca",
+        "Saree denies an operation against Saudi territory; denial of intending to strike Mecca is a separate proposition"
+      ],
+      "truth": "CONFLICTING_ATTRIBUTED_ACCOUNTS; interception does not prove intended target or origin, and denial does not disprove an interception",
+      "knowledge": "NOT_ASSESSABLE without launch/track records",
+      "prior_membership": [
+        "CH-HOUTHI-SAUDI-ATTACKS-20260913-14"
+      ],
+      "relation": "October 30 incident separate from September Mecca-area interception; no same-event merge",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+        "https://apnews.com/article/7f7f34ceb62f294a450e48ace0bd56e0"
+      ],
+      "next_evidence": "Radar track, launch site, debris/serial, destination geometry, exact Saree statement and timestamps."
+    },
+    {
+      "id": "CF-20261030-05",
+      "issue": 320,
+      "actor": "Houthi-run health ministry",
+      "statement_date": "2026-10-29",
+      "propositions": [
+        "Initial ministry statement reported 12 dead and 3 critically injured in al-Barah, Maqbana, Taiz",
+        "Later reporting cited at least 13 killed and attributed the strike to Saudi forces"
+      ],
+      "truth": "PROVISIONAL_ATTRIBUTED_CASUALTY_AND_PERPETRATOR; no independently verified total or strike attribution",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "prior_membership": [],
+      "relation": "12-to-at-least-13 is an evolving preliminary count of one incident, not two events or proven deception/correction",
+      "source_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://apnews.com/article/172666b6c90fc3f0ed8a161f2457be2c"
+      ],
+      "next_evidence": "Named casualty roll, hospital and morgue records, munition remnants, geolocated site and Saudi operational response."
+    },
+    {
+      "id": "CF-20261030-06",
+      "issue": 320,
+      "actor": "AURORAH Geosignal Intelligence / AP-cited Saudi and Houthi officials",
+      "statement_date": "2026-10-27 to 2026-10-28",
+      "propositions": [
+        "Russian satellite passes correlated with sites in 40 Saudi attacks between July 1 and October 19",
+        "Officials alleged Russian intelligence benefited Iranian-aligned attackers, potentially via Iranian intermediaries"
+      ],
+      "truth": "REPORTED_CORRELATION_AND_ATTRIBUTED_TESTIMONY; orbital correlation is not a demonstrated specific intelligence transmission",
+      "knowledge": "NOT_ASSESSABLE for any Russian, Iranian or proxy individual",
+      "prior_membership": [],
+      "relation": "Distinct evidence/influence lead, not proof of a verified Russia-to-Houthi sensor-to-shooter edge",
+      "source_urls": [
+        "https://apnews.com/article/0989403fb38ccd9d7c9ad11a16e28d24",
+        "https://www.washingtonpost.com/world/2026/10/27/russia-iran-satellite-intelligence-houthis-iraqi-militias/ec0b73a2-d218-11f1-9931-2a41b76fc976_story.html"
+      ],
+      "next_evidence": "Tasking records, transmission logs, official first-hand testimony with mechanism, or corroborated intelligence artifacts."
+    },
+    {
+      "id": "CF-20261030-07",
+      "issue": 312,
+      "actor": "Mohammad Reza Naqdi, senior IRGC adviser",
+      "statement_date": "2026-10-18",
+      "propositions": [
+        "Claimed undetonated GBU-57 material and technical analysis of alloys/circuits",
+        "Claimed Iran acquired GBU-57-related technology; operational Iranian manufacture or deployment is a stronger claim not established by the source"
+      ],
+      "truth": "UNSUBSTANTIATED for recovered material and reverse-engineering capability; no independent working weapon demonstration",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "prior_membership": [],
+      "relation": "October 18 original lead; secondary translations and MOAB/MOP headlines must not be counted as independent claims or conflated with GBU-43/B",
+      "source_urls": [
+        "https://www.tabnak.ir/fa/news/1399312/",
+        "https://www.khabaronline.ir/news/2290093/",
+        "https://charter97.org/en/news/2026/10/18/702336/"
+      ],
+      "next_evidence": "Original Persian speech/video, accurate translation, recovered serial/parts, independent metallurgical/circuit examination and manufacture/test evidence."
+    },
+    {
+      "id": "CF-20261030-08",
+      "issue": 320,
+      "actor": "IRGC Navy and U.S. CENTCOM spokesman Capt. Tim Hawkins",
+      "statement_date": "2026-10-29",
+      "propositions": [
+        "IRGC said its EW unit took control of an American MQM-170 Outlaw and landed it intact west of Hormuz",
+        "IRGC alleged the aircraft was on an air-defense reconnaissance mission and launched from a southern Gulf state",
+        "CENTCOM explicitly rejected the capture claim"
+      ],
+      "truth": "UNSUBSTANTIATED AND OFFICIALLY DISPUTED; published imagery may show an MQM-170-family aircraft but does not establish ownership, EW takeover, mission, provenance or landing mechanism",
+      "knowledge": "INSUFFICIENT_EVIDENCE for IRGC deception; U.S. denial is counterclaim, not independently dispositive",
+      "prior_membership": [
+        "CH-AIRCRAFT-KILL-AGGREGATES"
+      ],
+      "relation": "New MQM-170 capture proposition, not a repeat of MQ-9 shootdown ordinals or 2011 RQ-170 case",
+      "source_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.twz.com/news-features/lets-talk-about-the-u-s-target-drone-iran-claims-to-have-recovered-intact",
+        "https://www.aa.com.tr/tr/dunya/iran-devrim-muhafizlari-hurmuz-bogazinda-abdye-ait-mqm-170-tipi-iha-saglam-sekilde-ele-gecirildi/4104733"
+      ],
+      "next_evidence": "Full video metadata, airframe serial, launch inventory, flight telemetry, exact IRGC origin statement and any CENTCOM documentation."
+    },
+    {
+      "id": "CF-20261030-09",
+      "issue": 320,
+      "actor": "Iranian Armed Forces, reported by Anadolu Agency",
+      "statement_date": "2026-10-29",
+      "propositions": [
+        "Claimed cumulative 14 MQ-1 and 54 MQ-9 UAVs shot down"
+      ],
+      "truth": "UNSUBSTANTIATED exact cumulative accounting without individual loss ledger",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "prior_membership": [
+        "CH-AIRCRAFT-KILL-AGGREGATES"
+      ],
+      "relation": "Later cumulative count belongs to existing aircraft-kill narrative; no automatic new unique proposition/lie, no inference that 54 contradicts earlier 52nd/53rd ordinals",
+      "source_urls": [
+        "https://www.aa.com.tr/tr/dunya/iran-devrim-muhafizlari-hurmuz-bogazinda-abdye-ait-mqm-170-tipi-iha-saglam-sekilde-ele-gecirildi/4104733"
+      ],
+      "next_evidence": "Deduplicated 54-airframe ledger, MQ-1/MQ-9 serials, dates, and independently confirmed U.S. losses."
+    },
+    {
+      "id": "CF-20261030-10",
+      "issue": 320,
+      "actor": "Abdul Malik al-Houthi",
+      "statement_date": "2026-10-29",
+      "propositions": [
+        "Denied that Taiz was under siege",
+        "Said access for food and humanitarian needs was open"
+      ],
+      "truth": "MATERIALLY CONTRADICTED IN ORDINARY BROAD READING by WFP's October 14 contemporaneous report that 600,000+ Taiz aid-dependent people were inaccessible; some other corridors remained open, so exact categorical scope and alternative readings require original Arabic review before final FALSE/MISLEADING split",
+      "knowledge": "INSUFFICIENT_EVIDENCE for personal knowing deception; Houthi leadership control and October 14 public correction opportunity are relevant, not conclusive",
+      "prior_membership": [],
+      "relation": "Potential new claim chain; WFP is independent contrary evidence, not an amplifier of the Houthi denial",
+      "source_urls": [
+        "https://apnews.com/article/172666b6c90fc3f0ed8a161f2457be2c",
+        "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz",
+        "https://www.reuters.com/world/middle-east/yemens-hospitals-buckle-fighting-escalates-2026-10-29/"
+      ],
+      "next_evidence": "Original Al-Masirah Arabic video/transcript, corridor-by-corridor access and date-specific Houthi operational orders/knowledge. Do not equate some aid movement with general open access."
+    },
+    {
+      "id": "CF-20261030-11",
+      "issue": 320,
+      "actor": "Benjamin Netanyahu / Likud",
+      "statement_date": "2026-10-28 to 2026-10-29",
+      "propositions": [
+        "Alleged Arab-led parties stole Israel's election by bribery/fraud/foreign financing",
+        "Linked alleged foreign influence to Qatar/Turkey in political messaging"
+      ],
+      "truth": "UNSUBSTANTIATED; election committee opened a limited investigation without substantiating an election-wide theft or identifying the parties as responsible",
+      "knowledge": "INSUFFICIENT_EVIDENCE; officials' statements that no systemic irregularity was known are contrary evidence but not proof of what Netanyahu knew",
+      "prior_membership": [],
+      "relation": "Novel political-election claim family, not a verified Iran-war strike event; assess product scope before canonical membership",
+      "source_urls": [
+        "https://www.jta.org/2026/10/30/israel/israel-probes-alleged-qatari-election-meddling-in-arab-vote-as-netanyahu-claims-election-stolen",
+        "https://www.jpost.com/israel-election-2026/article-913187",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "next_evidence": "Original Likud/Netanyahu posts, election commission evidence, Shin Bet findings, certified result and correction history."
+    },
+    {
+      "id": "CF-20261030-12",
+      "issue": 320,
+      "actor": "Houthi spokesman Yahya Saree",
+      "statement_date": "2026-10-29",
+      "propositions": [
+        "Claimed missile/drone strikes against Saudi oil sites, airports and military installations caused impacts/casualties"
+      ],
+      "truth": "UNSUBSTANTIATED specific BDA and casualties; Saudi interception evidence does not establish impact at named sites",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "prior_membership": [
+        "CH-HOUTHI-SAUDI-ATTACKS-20260913-14"
+      ],
+      "relation": "October 29 operational claims require event-date and target deduplication; same source/target class does not prove same physical occurrence",
+      "source_urls": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "next_evidence": "Specific target list, Saudi site inspection/operations, geolocated strike imagery, time and named casualty evidence."
+    },
+    {
+      "id": "CF-20261030-13",
+      "issue": 312,
+      "actor": "IRGC spokesperson Hossein Mohebbi / unidentified online laser-weapon claimants",
+      "statement_date": "2026-09-21; October recirculation",
+      "propositions": [
+        "IRGC spokesman warned of unnamed new strategic weapons and wider future targeting",
+        "Specific Iranian operational laser-weapon deployment has no source-qualified claimant or observed demonstration in reviewed intake"
+      ],
+      "truth": "UNSUBSTANTIATED capability claim; no attributable October operational laser deployment verified",
+      "knowledge": "NOT_ASSESSABLE for anonymous third-party posts",
+      "prior_membership": [],
+      "relation": "September 21 deterrence statement repeated in October is not an October deployment or independent new source",
+      "source_urls": [
+        "https://www.tasnimnews.ir/en/news/2026/09/21/3701995/irgc-warns-of-wider-war-theater-if-iran-faces-new-aggression",
+        "https://www.criticalthreats.org/analysis/iran-update-october-13-2026"
+      ],
+      "next_evidence": "Original speaker/video and identifiable weapon, date, location, test telemetry and independent observation."
+    }
+  ],
+  "verified_source_edges": [
+    {
+      "from": "IRNA interview (29 Oct)",
+      "to": "CBS (29 Oct 11:10 EDT)",
+      "type": "REPORTS/ATTRIBUTES_TO",
+      "basis": "CBS explicitly links original IRNA interview",
+      "source": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+      "independent_corroboration": false
+    },
+    {
+      "from": "IRGC Navy public statement (29 Oct)",
+      "to": "CBS reporting (29 Oct 08:11 EDT)",
+      "type": "REPORTS",
+      "basis": "CBS directly quotes IRGC Navy capture statement",
+      "source": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+      "independent_corroboration": false
+    },
+    {
+      "from": "IRGC Navy public statement (29 Oct)",
+      "to": "Anadolu Agency (29 Oct)",
+      "type": "REPORTS",
+      "basis": "AA attributes drone and UAV cumulative claims to IRGC/armed-forces statement",
+      "source": "https://www.aa.com.tr/tr/dunya/iran-devrim-muhafizlari-hurmuz-bogazinda-abdye-ait-mqm-170-tipi-iha-saglam-sekilde-ele-gecirildi/4104733",
+      "independent_corroboration": false
+    },
+    {
+      "from": "WFP primary field reporting (14 Oct)",
+      "to": "AP Taiz reporting (29/30 Oct)",
+      "type": "REPORTS",
+      "basis": "AP attributes Taiz access count to WFP; original WFP report directly retrieved",
+      "source": "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz",
+      "independent_corroboration": false,
+      "evidence_role": "WFP is independent contrary evidence to the Houthi claim; AP quoting WFP is NOT independent corroboration of WFP."
+    }
+  ],
+  "corrections_and_knowledge": {
+    "verified_retractions": [],
+    "verified_same_actor_corrections": [],
+    "possible_count_evolution": [
+      "Taiz 12 initial vs at least 13 later; provisional casualty update, not evidence of falsity",
+      "Iranian tanker three vs later two stopped; may be subsets or subsequent incidents, no correction proved"
+    ],
+    "knowledge_access_not_proven": [
+      "Moghadam's actual operation accounting/records",
+      "IRGC drone telemetry and custody",
+      "Houthi leader's contemporaneous access to Taiz aid restrictions",
+      "Netanyahu's private access to election fraud evidence"
+    ]
+  },
+  "acceptance_gates": [
+    "Recover primary exact words where currently reported through secondary outlets",
+    "Deduplicate all event/claim identities against canonical chain IDs and prior 89 records",
+    "Demonstrate proposition-specific factual and knowledge evidence separately",
+    "Record any proposed formal correction with old/new semantics and source-qualified revision",
+    "Run exact-head full CI including canonical, WOL, Ledger and public source parity",
+    "Obtain live-byte publication attestation before claiming any reader change"
+  ],
+  "disposition": "REFER_TO_ISSUES_320_AND_312; NO_CANONICAL_LEDGER_OR_WOL_CHANGE"
+}
