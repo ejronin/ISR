@@ -19,8 +19,8 @@
       "event_type": "IRAN_LEADERSHIP_MILITARY_POSTURE_STATEMENT",
       "actor": "Iran Supreme Leader Mojtaba Khamenei, written statement attributed to his office",
       "occurrence_time": "2026-10-31_DATE_ONLY",
-      "publication_time": "2026-10-31T13:07:00Z",
-      "publication_time_precision": "ARAB_NEWS_REUTERS_AFP_PUBLICATION_MINUTE; ORIGINAL_TELEGRAM_TIME_NOT_AUTHENTICATED",
+      "publication_time": "2026-10-31",
+      "publication_time_precision": "DATE_ONLY_ORIGINAL_OFFICIAL_TELEGRAM_PUBLICATION_TIME_NOT_AUTHENTICATED; REUTERS_FULL_REPORT_14:57Z",
       "summary": "Iranian leadership publicly ordered readiness for immediate response without geographic limits to renewed attacks and an updated target list including US and Israeli physical and nonphysical assets. State media described a meeting with top commanders, but Khamenei has not been independently photographed in public; treat meeting as state-reported. No independently established launch order, troop movement, targeting coordinates or executed attack.",
       "sources": [
         "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
@@ -449,8 +449,8 @@
       "claimant": "Mojtaba Khamenei official written statement",
       "claim": "Iran's armed forces should prepare an immediate response without geographical limits and expand the potential US/Israeli target bank.",
       "occurrence_time": "2026-10-31",
-      "publication_time": "2026-10-31T13:07:00Z",
-      "publication_time_precision": "REUTERS_AFP_SYNDICATION_MINUTE",
+      "publication_time": "2026-10-31",
+      "publication_time_precision": "DATE_ONLY_ORIGINAL_OFFICIAL_STATEMENT_TIME_UNVERIFIED",
       "status": "VERIFIED_PUBLIC_STATEMENT_NOT_VERIFIED_EXECUTION_OR_CAPABILITY",
       "contrary_or_independent_evidence": "Reuters/AP corroborate that statement was issued; no independent evidence that any new targets were struck, deployments occurred, or the reported private meeting can be visually authenticated.",
       "sources": [
