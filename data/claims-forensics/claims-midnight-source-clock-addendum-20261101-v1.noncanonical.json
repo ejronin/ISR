@@ -1,0 +1,439 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_AND_CORRECTION_REFERRAL",
+  "review_version": "CF-20261101-MIDNIGHT-SOURCE-CLOCK-01",
+  "review_date": "2026-11-01",
+  "lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_CANONICAL_ADJUDICATION_OR_PUBLICATION",
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "config/evidence-adjudication-reasoning.json",
+    "config/lie-ledger-governance.json",
+    "config/web-of-lies-governance.json"
+  ],
+  "upstream": {
+    "newest_rook_locker": "data/evidence-integration/rook-evidence-locker-sweep-20261101T0000ET.json",
+    "window_start": "2026-10-31T12:00:00-04:00",
+    "window_end": "2026-11-01T00:00:00-04:00",
+    "collection_time": "2026-11-01T04:01:12.092Z",
+    "rook_intake_pr": 331,
+    "rook_merge_sha": "ce33cbcf39917cb76e348122d8f746b2787c8100",
+    "evidence_review": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+    "evidence_review_pr": 332,
+    "evidence_review_head": "4d32ba4c57bc39c82e8bbb88aee0788a150ac84e",
+    "evidence_review_status": "DRAFT_NONCANONICAL_NOT_ACCEPTED",
+    "prior_claims_pr": 323,
+    "prior_claims_head": "f6b3676f377f59adb73dfcaa6964435729bacd32",
+    "prior_claims_reviews": [
+      "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "data/claims-forensics/claims-noon-source-clock-addendum-20261030-v1.noncanonical.json",
+      "data/claims-forensics/claims-midnight-source-clock-addendum-20261031-v1.noncanonical.json",
+      "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json"
+    ],
+    "open_issues": [
+      320,
+      312
+    ],
+    "accepted_canonical_sequence": 38,
+    "accepted_evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "accepted_manifest": "data/canonical-ledger/manifest-v2.json"
+  },
+  "forensic_method": "Exact original proposition first; separate speech date, source publication and collection clocks; distinguish quoted speech from attributed paraphrase and reported planning from execution. Independent verification of publication does not verify operational fact. A counterparty denial or lack of access is not affirmative proof of falsity. FALSE and knowledge-of-falsity require independent findings; source/actor roles and corrections require evidenced edges. Do not backdate later sources.",
+  "candidates": [
+    {
+      "id": "CF-20261101-M01",
+      "upstream_claim_id": "ROOK-20261101-TRUMP-IRAN-NUCLEAR-KNOCKED-OUT",
+      "family": "TRUMP_IRAN_NUCLEAR_BDA_AND_PICKAXE_THREAT",
+      "actor": "Donald Trump, US president",
+      "original_statement_clock": "2026-10-31 late EDT, exact minute not authenticated",
+      "reported_exact_quotes": [
+        "We've knocked out their nuclear",
+        "We still have to take care of, I would say one or two sites, but we can do that in 10 minutes."
+      ],
+      "source_publication_clock": "RFE/RL live entry 2026-11-01 02:52 CET = 2026-10-31 21:52 EDT; page subsequently updated",
+      "source_urls": [
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+        "https://apnews.com/article/ab585e99b346e02843b858ff5d6523b8"
+      ],
+      "atomic_propositions": [
+        "Past US action has disabled an unspecified scope of Iran's nuclear capability (vague BDA assertion, not an exact asset count)",
+        "One or two remaining sites are potential future targets (speaker estimate, not an executed strike)",
+        "US could destroy them in ten minutes (prospective capability claim, not observed effect)"
+      ],
+      "contrary_documentary_record": "IAEA director Grossi's Oct27 Security Council reporting says the agency cannot verify the status of Iran's enriched-uranium stockpile or fully inspect affected sites; absence of reconstruction at damaged sites does not establish complete elimination of nuclear material, and IAEA nonverification does not establish the inverse claim that all sites remain operational.",
+      "truth": "UNSUBSTANTIATED_BDA; CONDITIONAL_FUTURE_THREAT_NOT_A_COMPLETED_STRIKE",
+      "knowledge": "INSUFFICIENT_EVIDENCE: President has possible classified BDA access, but actual briefing, damage reports and awareness of contradictions before Oct31 are not in record.",
+      "repetition_vs_novel": "Existing Trump nuclear-obliteration/BDA narrative family; Oct31 is a new dated speaker instance with explicit one-or-two-site qualification, not a second proven physical destruction or automatically new unique proposition.",
+      "verified_edges": [
+        {
+          "from": "Trump Oct31 remarks",
+          "to": "RFE/RL Oct31 EDT live entry",
+          "type": "REPORTS",
+          "basis": "direct reported quotation in linked live entry"
+        },
+        {
+          "from": "IAEA Grossi Oct27 assessment",
+          "to": "Trump Oct31 broad BDA",
+          "type": "EVIDENTIARY_LIMIT",
+          "basis": "independent safeguards access limitation, not proof of opposite BDA"
+        }
+      ],
+      "correction_or_retraction": "No authenticated post-Oct31 Trump retraction/correction in reviewed horizon.",
+      "needed": "Original video and transcript with minute; US BDA/target list and imagery; IAEA site-specific access and nuclear-material accounting; official correction and speaker briefing chronology."
+    },
+    {
+      "id": "CF-20261101-M02",
+      "upstream_claim_id": "ROOK-20261101-REZAEI-NUCLEAR-BAN-DEBATE",
+      "family": "IRAN_NUCLEAR_DOCTRINE_DEBATE",
+      "actor": "Mohsen Rezaei, Iran Supreme National Security Council secretary",
+      "original_statement_clock": "2026-10-31 state-TV interview, minute not authenticated",
+      "reported_exact_quote": "There has been no new decision regarding a change in the nuclear doctrine.",
+      "source_publication_clock": "Iran International 2026-10-31 23:26 UTC, later updated; AP Oct31 rolling report",
+      "source_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "atomic_propositions": [
+        "Some Iranians have called for revisiting the nuclear-weapons ban if hostilities resume",
+        "Rezaei says no change has been decided as of his Oct31 interview"
+      ],
+      "truth": "SUPPORTED_AS_REPORTED_DECLARATORY_STATUS; no independently authenticated Iranian policy change or operational nuclear weapon",
+      "knowledge": "NOT_ASSESSABLE for deception absent contrary signed decision and speaker access; SNSC position gives potential access but not affirmative contradiction.",
+      "repetition_vs_novel": "Distinct Oct31 policy-status statement; prior doctrine debate exists, but this does not establish a new decision or a new weapons deployment.",
+      "verified_edges": [
+        {
+          "from": "Rezaei Oct31 state-TV interview",
+          "to": "Iran International Oct31 report",
+          "type": "REPORTS",
+          "basis": "attributed quote"
+        },
+        {
+          "from": "Rezaei Oct31 interview",
+          "to": "AP Oct31 rolling report",
+          "type": "REPORTS",
+          "basis": "independent carrier of statement, not independent policy verification"
+        }
+      ],
+      "correction_or_retraction": "None evidenced.",
+      "needed": "Original Persian interview; any signed SNSC/fatwa/doctrine decision with effective date; authenticated subsequent correction."
+    },
+    {
+      "id": "CF-20261101-M03",
+      "upstream_claim_id": "ROOK-20261101-REZAEI-OMAN-HORMUZ-ROUTE",
+      "family": "IRAN_OMAN_HORMUZ_PROPOSED_CORRIDOR",
+      "actor": "Mohsen Rezaei, Iranian SNSC secretary",
+      "original_statement_clock": "2026-10-31 state-TV interview; compare separate Aug27 Al-Manar interview",
+      "reported_exact_quote": "everyone passing through this waterway will do so under Iranian management",
+      "source_publication_clock": "AP Oct31 rolling report; Iran International 2026-10-31 23:26 UTC",
+      "source_urls": [
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.marketscreener.com/news/iran-sets-conditions-for-reopening-strait-of-hormuz-top-security-official-rezaei-says-ce7858dfd989f42d",
+        "https://www.reuters.com/world/middle-east/oman-presented-regional-mechanism-hormuz-iran-source-says-2026-07-28/"
+      ],
+      "atomic_propositions": [
+        "Rezaei says an Iran-Oman route had been agreed (claim of bilateral understanding, not independently authenticated consent)",
+        "On reopening, every ship would travel under Iranian management (proposed condition, not observed operating regime)",
+        "Strait reopening remains conditional on US meeting Iranian demands (not an executed reopening)"
+      ],
+      "source_fidelity_correction": "The Oct31 Iran International article describes an Iranian-backed route proposal and negotiations, not an independently verified new Oct31 bilateral signature. AP attributes 'agreed upon' route wording to Rezaei. Earlier Reuters Aug27 reported the same Rezaei assertion via Al-Manar interpreter; therefore the purported bilateral agreement is an OLD claim repeated/conditioned, not a new concluded Oct31 agreement.",
+      "contrary_documentary_record": "Reuters Jul28 describes Oman's voluntary-fee multilateral proposal as limiting Iranian sole control; no signed Omani acceptance of Iranian management, verified traffic scheme or effective transit notice established.",
+      "truth": "UNSUBSTANTIATED_BILATERAL_AGREEMENT_AND_OPERATION; SUPPORTED_AS_REPORTED_CONDITIONAL_IRANIAN_POSITION",
+      "knowledge": "INSUFFICIENT_EVIDENCE: Iranian negotiating access does not show what Oman formally accepted or what Rezaei knew was false.",
+      "repetition_vs_novel": "REPEAT/MUTATION of Aug27 Rezaei Iran-Oman corridor claim; Oct31 adds explicit all-vessels-under-Iranian-management condition, not a new physical route or independent confirmation.",
+      "verified_edges": [
+        {
+          "from": "Rezaei Aug27 Al-Manar interview",
+          "to": "Reuters Aug27 wire carried by MarketScreener",
+          "type": "REPORTS",
+          "basis": "dated Reuters reprint of earlier agreement assertion"
+        },
+        {
+          "from": "Rezaei Oct31 state-TV interview",
+          "to": "AP Oct31 rolling report",
+          "type": "REPORTS",
+          "basis": "explicit attributed Iranian-management quote"
+        },
+        {
+          "from": "Rezaei Oct31 state-TV interview",
+          "to": "Iran International Oct31 report",
+          "type": "REPORTS",
+          "basis": "conditional negotiation account"
+        }
+      ],
+      "correction_or_retraction": "No Omani confirmation or same-speaker correction evidenced.",
+      "needed": "Original Persian Oct31 and Aug27 interview; Omani foreign ministry signed text/route chart, IMO notices, AIS transits, fee arrangements and effective implementation."
+    },
+    {
+      "id": "CF-20261101-M04",
+      "upstream_claim_id": "ROOK-20261101-REZAEI-US-THREE-PROPOSALS",
+      "family": "US_IRAN_DIPLOMATIC_PROPOSAL_ACCOUNTING",
+      "actor": "Mohsen Rezaei, Iranian SNSC secretary",
+      "original_statement_clock": "2026-10-31 state-TV interview, minute not authenticated",
+      "reported_exact_quote": "We are now waiting for the Americans' response.",
+      "source_publication_clock": "Iran International 2026-10-31 23:26 UTC",
+      "source_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "atomic_propositions": [
+        "Washington supplied three proposals/responses in the diplomatic channel",
+        "Second was more favorable and third remains ambiguous",
+        "Iran awaits US reply to its latest position"
+      ],
+      "contrary_documentary_record": "Reuters confirms Qatari mediation and continuing US contact, but this does not authenticate the exact three proposal texts, their content or ordering; Rezaei's characterization of the US intending to negotiate then attack is an attributed inference, not demonstrated US intent.",
+      "truth": "UNSUBSTANTIATED_EXACT_THREE_DOCUMENT_COUNT_AND_US_INTENT; SUPPORTED_AS_REPORTED_IRANIAN_NEGOTIATING_DESCRIPTION",
+      "knowledge": "INSUFFICIENT_EVIDENCE: Rezaei's SNSC position implies possible access to diplomatic correspondence but no authenticated proposal archive, receipt log or contradiction is available.",
+      "repetition_vs_novel": "Dated update to existing Qatar/Islamabad negotiations family, not three independently observed agreements or a new negotiation event.",
+      "verified_edges": [
+        {
+          "from": "Rezaei Oct31 interview",
+          "to": "Iran International Oct31",
+          "type": "REPORTS",
+          "basis": "direct attributed interview description"
+        },
+        {
+          "from": "Qatari mediation account",
+          "to": "Reuters Oct31",
+          "type": "REPORTS",
+          "basis": "separate sourced process context, not confirmation of Rezaei's document count"
+        }
+      ],
+      "correction_or_retraction": "None evidenced.",
+      "needed": "US/Qatari/Iranian dated drafts and delivery receipts, authorized spokesperson accounts, any explicit corrections to exact count or alleged intent."
+    },
+    {
+      "id": "CF-20261101-M05",
+      "upstream_claim_id": "ROOK-20261101-HOUTHI-UN-STAFF-ESPIONAGE",
+      "family": "HOUTHI_UN_NGO_ESPIONAGE_ALLEGATIONS",
+      "actor": "Houthi authorities, specific original speaker and date not established in this intake",
+      "original_statement_clock": "Earlier than Oct31, exact original accusation and date NOT recovered; Oct31 is publication of retrospective allegation in UN staff custody-death coverage",
+      "source_publication_clock": "Reuters Oct31 19:37 UTC = 15:37 EDT; AP Oct31 rolling report",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.nationaltribune.com.au/death-in-custody-of-un-human-rights-staff-member-in-yemen-devastating-turk-demands-investigation/"
+      ],
+      "atomic_propositions": [
+        "Detained UN/NGO staff worked as US/Israeli spies (earlier Houthi allegation)",
+        "UN staff member Mohammad al-Shami died in Houthi custody (UN disclosure; distinct from spy allegation)",
+        "Cause/date/responsibility for the death remain unknown in public medical record"
+      ],
+      "contrary_documentary_record": "UN explicitly denies espionage allegations; UN/OHCHR says al-Shami detained since Jun6 2024 and family learned of death over a month later with no cause; neither the death nor UN denial by itself proves each espionage accusation false.",
+      "truth": "UNSUBSTANTIATED_ESPIONAGE; CUSTODY_DEATH_REPORTED_BY_UN; CAUSE_AND_RESPONSIBILITY_NOT_ADJUDICATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE: Houthi custodial access could matter to detention facts, but no detainee-specific espionage file, statement-date knowledge or evidence of intentional fabrication was reviewed.",
+      "repetition_vs_novel": "Reuters/AP Oct31 RETELL earlier allegation; not an authenticated new Oct31 Houthi statement, second spy incident or proof of death cause.",
+      "verified_edges": [
+        {
+          "from": "Prior unspecified Houthi espionage allegations",
+          "to": "Reuters Oct31 report",
+          "type": "RETROSPECTIVE_REPORTS",
+          "basis": "Reuters states Houthis have said detainees were spies, without new Oct31 statement"
+        },
+        {
+          "from": "Prior unspecified Houthi espionage allegations",
+          "to": "AP Oct31 rolling report",
+          "type": "RETROSPECTIVE_REPORTS",
+          "basis": "AP likewise reports old claim; NOT independent proof"
+        },
+        {
+          "from": "UN Oct31 disclosure",
+          "to": "Reuters Oct31 report",
+          "type": "REPORTS",
+          "basis": "Reuters reports UN rights chief statement"
+        }
+      ],
+      "correction_or_retraction": "No same-speaker retraction, corrected detainee identity or exculpatory knowledge path established.",
+      "needed": "Earliest original Houthi Arabic accusation, speaker/date, named detainee scope, documentary evidence and UN rebuttal; custodial/medical records and investigation chronology separately."
+    },
+    {
+      "id": "CF-20261101-M06",
+      "upstream_claim_id": "ROOK-20261101-ISRAEL-STOLEN-ELECTION-ALLEGATION",
+      "family": "ISRAEL_2026_ELECTION_THEFT_NARRATIVE",
+      "prior_case": "CF-20261030-11",
+      "actor": "Likud/Netanyahu (Oct28-29 original allegation); Oct31 rally supporters; Deputy Minister Almog Cohen named Oct31 speaker",
+      "original_statement_clock": "Likud original Oct28-29 pending primary post; rally 2026-10-31 22:40 Israel local (=16:40 EDT) for quoted Cohen comments",
+      "reported_exact_quote": "We won't let anyone steal the elections",
+      "source_publication_clock": "Times of Israel Oct31 22:40 Israel local; AP Oct31 live updates",
+      "source_urls": [
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://www.timesofisrael.com/liveblog_entry/hundreds-rally-in-tel-aviv-to-demand-a-jewish-arab-government-counterprotest-also-expected/",
+        "https://www.washingtonpost.com/business/2026/10/29/israel-elections-netanyahu-eisenkot-arab-results/ccb52284-d360-11f1-9931-2a41b76fc976_story.html"
+      ],
+      "atomic_propositions": [
+        "Likud/Netanyahu alleged Arab-party election theft and possible hostile foreign assistance (earlier factual accusation)",
+        "Oct31 demonstrators repeated the election-was-stolen accusation (speaker identities mostly unverified)",
+        "Almog Cohen's actual Oct31 quoted 'won't let' sentence is future resistance rhetoric, not by itself an exact new assertion of completed election fraud"
+      ],
+      "contrary_documentary_record": "Central Elections Committee described a limited inquiry and stated the results were not in question; reported seat distribution 53/48/19 and Qatar denial do not establish theft, but inquiry existence alone neither proves nor disproves foreign payment attempts.",
+      "truth": "UNSUBSTANTIATED_ELECTION_THEFT_AND_FOREIGN_CULPABILITY; DOCUMENTED_PARTISAN_REPETITION_AND_DISTINCT_FUTURE_RHETORIC",
+      "knowledge": "INSUFFICIENT_EVIDENCE: identify who possessed election intelligence, saw CEC correction and knowingly repeated the same factual allegation after it.",
+      "repetition_vs_novel": "SAME CF-20261030-11 claim family; Oct31 protest is propagation, not another unique proposition or a second election. Cohen quote must not be strengthened into 'I know it was stolen'.",
+      "verified_edges": [
+        {
+          "from": "Earlier Likud election-theft narrative",
+          "to": "Oct31 rally protesters",
+          "type": "REPETITION_CANDIDATE",
+          "basis": "ToI reports supporters making same allegation, but individual speaker/chain identity not all recovered"
+        },
+        {
+          "from": "Oct31 Almog Cohen speech",
+          "to": "Times of Israel Oct31",
+          "type": "QUOTES",
+          "basis": "named exact quote"
+        },
+        {
+          "from": "CEC election statement",
+          "to": "Earlier theft allegation",
+          "type": "DOCUMENTARY_CONTRARY_CONTEXT",
+          "basis": "limited inquiry does not invalidate certified tally"
+        }
+      ],
+      "correction_or_retraction": "CEC statement is official contrary context, NOT a Likud correction. No same-speaker retraction established.",
+      "needed": "Original Likud/Netanyahu posts, CEC official notice and final certified Nov4 result, investigation records, rally recordings and actor receipt of correction."
+    },
+    {
+      "id": "CF-20261101-M07",
+      "upstream_claim_id": "ROOK-20261101-US-ISRAEL-CALL-STRIKE-DECISION",
+      "family": "US_ISRAEL_OCT31_CALL_AND_FUTURE_STRIKE_PLANNING",
+      "actor": "Anonymous sources described by Wall Street Journal; Trump and Netanyahu are reported call participants, NOT confirmed speakers of a strike authorization",
+      "original_statement_clock": "Call reportedly Oct31 morning EDT; source disclosure first seen by Times of Israel Nov1 02:37 Israel local = Oct31 20:37 EDT",
+      "source_publication_clock": "WSJ original posting minute not authenticated; ToI secondary 02:37 Israel Nov1",
+      "source_urls": [
+        "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+        "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "atomic_propositions": [
+        "Trump and Netanyahu reportedly held a call",
+        "The call occurred amid US planning for possible strikes",
+        "No source in this review establishes that the call authorized a strike or that an order was executed"
+      ],
+      "contrary_documentary_record": "Rubio Oct31 said Trump had not made a decision on resuming strikes and preferred diplomacy; this is temporally relevant but does not prove the call did not occur, nor establish all later decisions.",
+      "truth": "REPORTED_CALL_NOT_INDEPENDENTLY_AUTHENTICATED; STRIKE_AUTHORIZATION_UNSUBSTANTIATED",
+      "knowledge": "NOT_ASSESSABLE for unnamed sources' deception without identity, transcript or authenticated readouts.",
+      "repetition_vs_novel": "One reported call, WSJ -> ToI attribution; no second call or new physical strike. Reuters diplomatic context is not a duplicate direct witness.",
+      "verified_edges": [
+        {
+          "from": "WSJ anonymous-source call report",
+          "to": "Times of Israel Nov1 02:37 Israel entry",
+          "type": "ATTRIBUTES_TO",
+          "basis": "ToI explicitly credits WSJ; not independent corroboration"
+        },
+        {
+          "from": "Rubio Oct31 statement",
+          "to": "WSJ planning report",
+          "type": "TEMPORAL_CONTEXT",
+          "basis": "no-decision statement; not proof call false"
+        }
+      ],
+      "correction_or_retraction": "None established.",
+      "needed": "Authenticated White House/Israeli readouts, call logs, original WSJ timestamp, any orders with decision time and evidence of subsequent correction."
+    },
+    {
+      "id": "CF-20261101-M08",
+      "additional_source_discovery": true,
+      "related_issue": 312,
+      "family": "IRAN_UNSPECIFIED_NEW_WEAPONS_RETALIATION_THREAT",
+      "actor": "Mohsen Rezaei, reported Oct31 X post; not the Sept21 Mohebbi speaker",
+      "original_statement_clock": "2026-10-31 X post reported by AP; original account post ID/time not recovered",
+      "reported_exact_quote": "devastating blows on the aggressor using new weapons",
+      "source_publication_clock": "AP Oct31 rolling report, dynamic update minute not authenticated",
+      "source_urls": [
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.criticalthreats.org/analysis/iran-update-october-13-2026"
+      ],
+      "atomic_propositions": [
+        "Conditional threat of future use of unspecified 'new weapons' if attacked",
+        "No named operational system, laser capability, field test or actual use asserted by this quotation"
+      ],
+      "truth": "SUPPORTED_AS_ATTRIBUTED_THREAT; OPERATIONAL_NEW_WEAPON_CAPABILITY_UNSUBSTANTIATED",
+      "knowledge": "NOT_ASSESSABLE: no system identity, access record, launch or false technical demonstration.",
+      "repetition_vs_novel": "New named speaker/date and rhetorical instance within Issue #312 weapons-capability family; NOT independent confirmation of Sept21 Mohebbi capability, Oct11 test or operational laser; no unique lie added.",
+      "verified_edges": [
+        {
+          "from": "Reported Rezaei Oct31 X threat",
+          "to": "AP Oct31 rolling report",
+          "type": "REPORTS",
+          "basis": "AP attribution; X original not retrieved"
+        }
+      ],
+      "correction_or_retraction": "None evidenced.",
+      "needed": "Original X post with timestamp/ID, Persian text, exact named systems and independent launch/test/field deployment records; compare to Sept21 and Oct18 original speeches."
+    },
+    {
+      "id": "CF-20261101-M09",
+      "additional_source_discovery": true,
+      "family": "IRAN_NUCLEAR_NON_DIVERSION_ASSURANCE",
+      "actor": "Mohsen Rezaei, Iranian SNSC secretary",
+      "original_statement_clock": "2026-10-31 state-TV interview; exact minute not authenticated",
+      "reported_proposition": "Iran's nuclear facilities underwent extensive inspections and there has been no diversion in its nuclear program (Iran International attribution, not verbatim original transcript).",
+      "source_publication_clock": "Iran International 2026-10-31 23:26 UTC, article later updated",
+      "source_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://h.aa.com.tr/en/americas/un-nuclear-watchdog-chief-urges-iran-to-grant-iaea-access-to-verify-nuclear-material/4102705",
+        "https://vienna.mission.gov.au/vien/BoG2026_September_Iran.html"
+      ],
+      "atomic_propositions": [
+        "Past extensive inspection history (partly supported historically)",
+        "Present categorical assurance that no nuclear material has been diverted (requires inventory and access basis)"
+      ],
+      "contrary_documentary_record": "IAEA Director General Grossi Oct27 said Iran had not supplied information/access necessary to verify previously declared material, except limited Bushehr activity. September IAEA Board statements also say Agency cannot verify no diversion. Inability to verify no diversion is NOT affirmative proof that diversion occurred.",
+      "truth": "UNSUBSTANTIATED_PRESENT_NO_DIVERSION_ASSURANCE; HISTORICAL_INSPECTIONS_PARTLY_SUPPORTED; NOT_FALSE_ON_NONVERIFICATION_ALONE",
+      "knowledge": "POSSIBLE_ACCESS_TO_NATIONAL_RECORDS_BUT_INSUFFICIENT_EVIDENCE_OF_KNOWING_FALSEHOOD; public IAEA warnings are documented correction opportunities, not proof Rezaei read or concealed actual diversion.",
+      "repetition_vs_novel": "Reiteration of longstanding Iranian institutional no-diversion narrative; distinct Oct31 speaker instance, not proof of new inventory or another unique lie.",
+      "verified_edges": [
+        {
+          "from": "Rezaei Oct31 interview",
+          "to": "Iran International Oct31 report",
+          "type": "REPORTS",
+          "basis": "attributed non-diversion assertion"
+        },
+        {
+          "from": "Grossi Oct27 IAEA briefing",
+          "to": "Rezaei Oct31 no-diversion assurance",
+          "type": "DOCUMENTARY_EPISTEMIC_LIMIT",
+          "basis": "independent verification gap, not proof of diversion"
+        }
+      ],
+      "correction_or_retraction": "No verified correction or same-speaker admission.",
+      "needed": "Original Persian quote and qualifier, latest IAEA safeguards report, Iranian material accounting and inspection records, actor access, any later admissions/corrections."
+    }
+  ],
+  "source_network_integrity": {
+    "verified_carrier_edges": "WSJ->ToI is attribution; Reuters->syndicated mirrors is same wire, not independent source; AP and Iran International independently report Rezaei interview but share a single underlying actor; Reuters/AP Oct31 Houthi espionage are retrospectives; Oct31 election protest is downstream propagation of earlier Likud family.",
+    "unqualified_edges": "No verified bot network, paid coordination, source-reward threshold, stealth deletion, deliberate citation laundering, named Houthi original account or first-seen X identifier.",
+    "correction_opportunities": "Oct27 IAEA public warning and CEC limited-inquiry statement are available public contrary material; actual speaker receipt/knowledge is unproven. No invented post-horizon retractions.",
+    "source_fidelity_referrals": [
+      "Do not convert Rezaei Aug27 Iran-Oman route allegation into a newly signed Oct31 bilateral deal.",
+      "Do not convert Cohen Oct31 future-tense election warning into his assertion of a completed fraud.",
+      "Do not convert Trump's 'one or two sites' threat into a completed strike or complete inventory BDA.",
+      "Do not treat a lack of IAEA access as proof either diversion or no diversion.",
+      "Do not convert old Houthi espionage accusations into new Oct31 Houthi speech."
+    ]
+  },
+  "protected_invariants": {
+    "canonical_accepted_sequence": 38,
+    "sealed_adjudication_record_count": 89,
+    "expected_metrics_unique_propositions": 41,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_edits": 0,
+    "protected_lie_ledger_edits": 0,
+    "public_source_drawer_edits": 0,
+    "canonical_packet_registrations": 0,
+    "accepted_event_count_change": 0,
+    "formal_versioned_correction": false
+  },
+  "acceptance_gates": [
+    "Recover original speech, post, release and publication clocks; match exact actor and proposition to prior claim family.",
+    "Obtain independent evidence for each falsifiable operational, electoral, diplomatic or nuclear accounting claim; test contradictory evidence without mistaking nonverification for falsity.",
+    "Assess knowledge and corrections separately using documented access, timing, actual records and alternatives.",
+    "If independently proven, prepare formal source-qualified versioned Claims Forensics correction with canonical logic graph and WOL-native incident adjudication separately under its contract.",
+    "Reconcile Claims branch with current main; run full CI at exact new head and verify release integrity; only merge/publish qualified accepted changes with live-byte attestation."
+  ],
+  "disposition": "APPEND_ONLY_NONCANONICAL_REFERRAL_NO_MERGE_NO_PUBLICATION"
+}
