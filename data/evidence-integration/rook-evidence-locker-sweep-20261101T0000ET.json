@@ -1,0 +1,1197 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-10-31T12:00:00-04:00",
+    "window_end": "2026-11-01T00:00:00-04:00",
+    "scheduled_window_end": "2026-11-01T00:00:00-04:00",
+    "collection_time": "2026-11-01T04:01:12.092Z",
+    "evidence_horizon_time": "2026-11-01T00:00:00-04:00",
+    "collection_mode": "ROUTINE_UPSTREAM_OSINT",
+    "source_publication_rule": "Separate event occurrence, original publication, retrieval and evidence horizon. Pre-window events may enter only as later disclosures or source review; post-horizon article edits do not retroactively enter this window."
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261101-US-TRUMP-PICKAXE-MOUNTAIN-REMARKS",
+      "event_type": "US_PRESIDENT_PUBLIC_MILITARY_THREAT",
+      "actor": "US President Donald Trump",
+      "occurrence_time": "2026-10-31_LATE_EVENING_ET_TIME_NOT_AUTHENTICATED",
+      "publication_time": "2026-11-01T02:52:00+01:00",
+      "publication_time_precision": "RFERL_CET_LIVE_POST_02:52_NOV1_EQUALS_21:52_EDT_OCT31",
+      "summary": "Trump publicly described one or two remaining Iranian sites, naming Pickaxe Mountain, and suggested military action could be rapid; also described Iran talks as going fine but Iran as unreliable. Statement is not an order, attack, authenticated BDA or proof of nuclear material at site.",
+      "sources": [
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+        "https://www.timesofisrael.com/liveblog_entry/trump-says-talks-with-iran-going-fine-but-islamic-republic-not-very-reliable/"
+      ],
+      "evidence_class": "ON_RECORD_PUBLIC_STATEMENT_CROSS_REPORTED",
+      "disposition": "NEW_DISCLOSURE_NOT_PROOF_OF_OPERATIONAL_EXECUTION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial public statement or administrative event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261101-US-ISRAEL-LEADER-PHONE-CALL-DISCLOSURE",
+      "event_type": "REPORTED_HIGH_LEVEL_PHONE_CONTACT",
+      "actor": "US President Donald Trump and Israeli PM Benjamin Netanyahu",
+      "occurrence_time": "2026-10-31_MORNING_ET_REPORTED",
+      "publication_time": "2026-11-01T02:37:00+02:00",
+      "publication_time_precision": "TIMES_OF_ISRAEL_ISRAEL_LOCAL_NOV1_02:37_EQUALS_OCT31_20:37_EDT",
+      "summary": "WSJ reported, citing people familiar with the call, that Trump and Netanyahu spoke Saturday morning amid US consideration of Iran options. Content of conversation and any strike authorization not established. Published during this sweep but occurrence earlier in day.",
+      "sources": [
+        "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+        "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/"
+      ],
+      "evidence_class": "ATTRIBUTED_REPORTING_NOT_OFFICIAL_TRANSCRIPT",
+      "disposition": "NEW_DISCLOSURE_NOT_PROOF_OF_OPERATIONAL_EXECUTION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial public statement or administrative event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261101-YEMEN-UN-STAFF-CUSTODY-DEATH-DISCLOSURE",
+      "event_type": "UN_HUMAN_IMPACT_DETENTION_DEATH_DISCLOSURE",
+      "actor": "UN High Commissioner for Human Rights Volker Türk / UN staff member Mohammad al-Shami",
+      "occurrence_time": "2026-09_APPROX_DEATH_MORE_THAN_ONE_MONTH_BEFORE_OCT31_DATE_UNDISCLOSED",
+      "publication_time": "2026-10-31T15:38:00-04:00",
+      "publication_time_precision": "REUTERS_SYNDICATION_PUBLICATION_MINUTE_EDT",
+      "summary": "UN rights chief disclosed that Mohammad al-Shami, detained by Houthis since 6 June 2024, died in custody over a month earlier; family only recently notified and cause unknown. UN calls for independent investigation. Do not assign cause, intent or individual perpetrator without records.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "https://ca.marketscreener.com/news/un-says-yemeni-staff-member-dies-in-houthi-custody-demands-investigation-ce785fd8db80f32c",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "evidence_class": "UN_OFFICIAL_DISCLOSURE_VIA_REUTERS_AP",
+      "disposition": "NEW_DISCLOSURE_NOT_PROOF_OF_OPERATIONAL_EXECUTION",
+      "geospatial": {
+        "map_eligibility": "unlocated pending source",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Unspecified Houthi-controlled detention facility in Yemen; exact custody site and place of death not disclosed",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "Named settlement does not establish exact impact coordinates or accepted location identity; source must be qualified before projection.",
+        "source_url": "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261101-ISRAEL-TELAVIV-POSTELECTION-RALLIES",
+      "event_type": "ISRAEL_DOMESTIC_POLITICAL_PROTEST",
+      "actor": "Pro Jewish-Arab coalition demonstrators and separate Netanyahu supporters",
+      "occurrence_time": "2026-10-31_EVENING_ISRAEL_LOCAL",
+      "publication_time": "2026-11-01T00:12:00+02:00",
+      "publication_time_precision": "TIMES_OF_ISRAEL_LIVE_POST_NOV1_00:12_ISRAEL_LOCAL_EQUALS_OCT31_18:12_EDT",
+      "summary": "Local reporting estimated approximately 2,000 participants in Tel Aviv demonstration for a Jewish-Arab governing coalition, marching Habima Square to Rabin Square; a separate smaller right-wing rally alleged election theft. These are political demonstrations, not military deployments or proof of electoral fraud.",
+      "sources": [
+        "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "evidence_class": "ON_SCENE_REPORTING_AND_AP_PHOTOGRAPHY",
+      "disposition": "NEW_DISCLOSURE_NOT_PROOF_OF_OPERATIONAL_EXECUTION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Tel Aviv public political demonstrations; not a strike map event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "event_id": "ROOK-20261101-G20-ATLANTA-CHAIR-STATEMENT-NO-COMMUNIQUE",
+      "event_type": "MULTILATERAL_DIPLOMATIC_OUTCOME",
+      "actor": "G20 foreign ministers chaired by US Secretary of State Marco Rubio",
+      "occurrence_time": "2026-10-31_G20_CONCLUSION_TIME_NOT_AUTHENTICATED",
+      "publication_time": "2026-10-31T13:31:00-04:00",
+      "publication_time_precision": "AP_SYNDICATION_UPDATED_TIME_EDT",
+      "summary": "G20 Atlanta foreign-minister meeting ended without joint consensus communiqué; chair statement emphasized secure energy flows and maritime navigation. EU-Russia disagreements documented. Does not establish implemented Hormuz security operation, sanctions change or consensus with Russia/China.",
+      "sources": [
+        "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+        "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+      ],
+      "evidence_class": "AP_AND_ON_RECORD_RUBIO_STATEMENT",
+      "disposition": "NEW_DISCLOSURE_NOT_PROOF_OF_OPERATIONAL_EXECUTION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial public statement or administrative event",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261101-IRAN-REZAEI-NUCLEAR-DOCTRINE-REVIEW",
+      "updates_existing_ref": "IAEA bombed-site inspections / uranium / Iran nuclear doctrine",
+      "relationship": "UPDATE_NEW_PUBLIC_DOCTRINE_REVIEW_STATEMENT",
+      "occurrence_time": "2026-10-31_STATE_TV_INTERVIEW",
+      "publication_time": "2026-10-31T21:44:00+02:00",
+      "publication_time_precision": "REUTERS_SYNDICATION_JERUSALEM_LOCAL_MINUTE",
+      "summary": "Security chief Mohsen Rezaei says debate over maintaining Iran's ban on nuclear weapons if hostilities resume, explicitly says NO DECISION to change doctrine. No evidence of weapon construction, NPT withdrawal, implemented IAEA access, recovered enrichment, or uranium BDA.",
+      "sources": [
+        "https://www.jpost.com/middle-east/iran-news/article-913416",
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.jpost.com/middle-east/iran-news/article-913416"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-IRAN-SEVEN-DEMANDS-HORMUZ-ROUTE",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "relationship": "UPDATE_CONDITIONAL_IMPLEMENTATION_TERMS_NO_REOPENING",
+      "occurrence_time": "2026-10-31_STATE_TV_INTERVIEW",
+      "publication_time": "2026-10-31T23:26:00Z",
+      "publication_time_precision": "IRAN_INTERNATIONAL_ORIGINAL_UTC_MINUTE_WITH_LATER_UPDATE_POST_HORIZON_NOT_PROMOTED",
+      "summary": "Rezaei says Hormuz remains closed until Iran's seven conditions met; claims shipping must use Iran/Oman agreed route under Iranian management. This is a unilateral condition, not proof Oman agreed, a recognized legal navigation regime, an opened route, or actual transits. Rezaei described three US proposals without documentary confirmation.",
+      "sources": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.iranintl.com/en/202610317760"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-QATAR-DOHA-MEDIATION-NO-SIGNED-DEAL",
+      "updates_existing_ref": "ROOK-20261031-DOHA-MEDIATION-TWO-DAY-CONDITIONAL-PLAN",
+      "relationship": "NO_MATERIAL_IMPLEMENTATION_CHANGE",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-31T14:57:00Z",
+      "publication_time_precision": "REUTERS_ORIGINAL_UTC_MINUTE_BEFORE_WINDOW",
+      "summary": "Reuters Saturday Doha mediation and Iranian two-day proposal were in previous noon locker. Later Rezaei statement confirms demands remain unmet; no US agreement, signed deal, implemented IAEA access or Hormuz normalization.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://www.iranintl.com/en/202610317760"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-IRAN-ARMY-TARGET-POSTURE-FOLLOWUP",
+      "updates_existing_ref": "ROOK-20261031-IRAN-KHAMENEI-UNRESTRICTED-RESPONSE-ORDER",
+      "relationship": "UPDATE_SUBORDINATE_MILITARY_STATEMENT_NOT_EXECUTED_STRIKE",
+      "occurrence_time": "2026-10-31_DATE_ONLY",
+      "publication_time": "2026-10-31T16:33:00Z",
+      "publication_time_precision": "IRAN_INTERNATIONAL_UTC_MINUTE_WITHIN_WINDOW",
+      "summary": "Iran armed-forces chief of staff Abdolrahim Abdollahi echoed a broader geographic target list and threatened retaliation. This supports public posture but not independently authenticated target capabilities, command dissemination, troop movement, or a launch order.",
+      "sources": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.iranintl.com/en/202610317760"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-SOUTH-LEBANON-SATURDAY-STRIKES-REVIEW",
+      "updates_existing_ref": "SOUTH_LEBANON_20261031_REPORTED_STRIKES_CANONICAL_ID_NOT_YET_MATCHED",
+      "relationship": "UPDATE_SOURCE_REVIEW_AND_IDF_ALTERNATIVE_DESCRIPTION",
+      "occurrence_time": "2026-10-31_MORNING_AND_AFTERNOON_LEBANON_LOCAL",
+      "publication_time": "2026-10-31T18:58:00+02:00",
+      "publication_time_precision": "LORIENT_LOCAL_18:58_EQUALS_OCT31_12:58_EDT; EARLIER_13:39_AND_16:59_LOCAL_REPORT",
+      "summary": "L'Orient correspondent reports airstrikes and drone blasts at Kfar Tebnit, Haddatha, Braachit, Mayfadoun and Ibl al-Saqi area. IDF separately characterized a Kfar Tebnit explosion as controlled demolition. Occurrences largely preceded this sweep, and no independent BDA, casualty figure, exact impact point or stable canonical event ID has been established. Do not duplicate strike counts; retain as reconciliation lead.",
+      "sources": [
+        "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html",
+        "https://today.lorientlejour.com/article/1552838/6-pm-update-khamenei-warns-us-of-response-with-no-geographical-limits-rajji-says-lebanon-will-not-be-used-to-threaten-arab-countries.html",
+        "https://www.timesofisrael.com/liveblog_entry/idf-says-reported-israeli-strike-in-southern-lebanon-was-controlled-detonation/"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Kfar Tebnit, Haddatha, Braachit, Mayfadoun, Ibl al-Saqi, southern Lebanon: named village localities only; exact incident sites unverified",
+        "location_precision": "NAMED_LOCALITY_NO_AUTHENTICATED_IMPACT_POINT",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "Named settlement does not establish exact impact coordinates or accepted location identity; source must be qualified before projection.",
+        "source_url": "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-IMO-122-24-REVIEW",
+      "updates_existing_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "relationship": "NO_NEW_AS_OF_SNAPSHOT",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-30_DATE_ONLY",
+      "publication_time_precision": "IMO_OFFICIAL_AS_OF_DATE",
+      "summary": "IMO public registry still states 122 confirmed Middle East maritime incidents and 24 seafarer fatalities as of October 30. No October 31 increment published in accessible snapshot; not proof no new incident occurred.",
+      "sources": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-US-RUBIO-NO-STRIKE-DECISION",
+      "updates_existing_ref": "US_IRAN_POST_MIDTERMS_STRIKE_POSTURE",
+      "relationship": "UPDATE_PUBLIC_US_DECISION_STATUS",
+      "occurrence_time": "2026-10-31_G20_PRESS_CONFERENCE",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "THE_NATIONAL_19:31_UAE_EQUALS_11:31_EDT_BEFORE_WINDOW; REUTERS_EARLIER",
+      "summary": "Rubio says Trump has not decided to restart strikes and prefers diplomacy; US air-defense assistance and shipping security assertions are attributed US official claims. Later Trump threat does not supersede no-authorized-strike finding.",
+      "sources": [
+        "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-ISRAEL-POSTELECTION-COALITION",
+      "updates_existing_ref": "ISRAEL_2026_ELECTION_COALITION",
+      "relationship": "UPDATE_PUBLIC_MOBILIZATION_NO_GOVERNMENT_FORMED",
+      "occurrence_time": "2026-10-31_EVENING_ISRAEL_LOCAL",
+      "publication_time": "2026-11-01T00:12:00+02:00",
+      "publication_time_precision": "TIMES_OF_ISRAEL_LIVE_MINUTE",
+      "summary": "Opposition demonstrations and smaller counterprotests follow results reported as Netanyahu bloc 53, Jewish-led opposition 48 and Arab parties 19. No governing coalition formed; fraud accusations lack demonstrated evidence and are retained as claims.",
+      "sources": [
+        "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "update_id": "ROOK-20261101-OFAC-FF1-UNCHANGED",
+      "updates_existing_ref": "OFAC_IRAN_SANCTIONS_FF1",
+      "relationship": "NO_NEW_OFFICIAL_ACTION",
+      "occurrence_time": "2026-10-31_REVIEW",
+      "publication_time": "2026-10-29_DATE_ONLY",
+      "publication_time_precision": "OFAC_LATEST_ACTION_AS_OF_OCT29",
+      "summary": "Official OFAC recent-actions list still shows Oct29 amended Iran General License as latest Iran action; no Oct31 new Iran sanction or blanket relief found.",
+      "sources": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Nonspatial evidence reconciliation",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://ofac.treasury.gov/recent-actions"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261101-TRUMP-IRAN-NUCLEAR-KNOCKED-OUT",
+      "claimant": "Donald Trump",
+      "claim": "US has knocked out Iran's nuclear capability; one or two sites remain",
+      "occurrence_time": "2026-10-31_LATE_ET",
+      "publication_time": "2026-11-01T02:52:00+01:00",
+      "publication_time_precision": "RFERL_CET_POST",
+      "status": "UNVERIFIED_BDA_ACTOR_ASSERTION",
+      "contrary_or_independent_evidence": "No independent IAEA inspection, enrichment or material-accounting confirmation identified in this window. A public threat does not prove the site holds uranium or an operational program.",
+      "sources": [
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+        "https://www.iaea.org/news?type=718"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261101-REZAEI-NUCLEAR-BAN-DEBATE",
+      "claimant": "Mohsen Rezaei",
+      "claim": "Iran is debating changing its ban on nuclear weapons if attacked again",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T21:44:00+02:00",
+      "publication_time_precision": "REUTERS_REPRINT_LOCAL_MINUTE",
+      "status": "DISCUSSION_CONFIRMED_AS_PUBLIC_STATEMENT_NO_CHANGE_DECIDED",
+      "contrary_or_independent_evidence": "Rezaei expressly said no decision taken; not evidence Iran has built a bomb or abandoned NPT.",
+      "sources": [
+        "https://www.jpost.com/middle-east/iran-news/article-913416",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.jpost.com/middle-east/iran-news/article-913416"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261101-REZAEI-OMAN-HORMUZ-ROUTE",
+      "claimant": "Mohsen Rezaei",
+      "claim": "Iran and Oman agreed a route for all Hormuz ships under Iranian management",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T23:26:00Z",
+      "publication_time_precision": "IRAN_INTERNATIONAL_UTC_MINUTE",
+      "status": "UNILATERAL_IRANIAN_CONDITION_NOT_BILATERALLY_CONFIRMED",
+      "contrary_or_independent_evidence": "No independent Omani adoption, route chart, transit implementation or legal regime confirmation found.",
+      "sources": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.iranintl.com/en/202610317760"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261101-REZAEI-US-THREE-PROPOSALS",
+      "claimant": "Mohsen Rezaei",
+      "claim": "Washington sent three proposals, later ones more favorable, and Iranian demands remain prerequisite",
+      "occurrence_time": "2026-10-31",
+      "publication_time": "2026-10-31T23:26:00Z",
+      "publication_time_precision": "IRAN_INTERNATIONAL_UTC_MINUTE",
+      "status": "ATTRIBUTED_ACTOR_DESCRIPTION_NOT_US_DOCUMENTARY_PROOF",
+      "contrary_or_independent_evidence": "US public account says diplomacy continues but does not authenticate three proposal texts or acceptance.",
+      "sources": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.iranintl.com/en/202610317760"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261101-HOUTHI-UN-STAFF-ESPIONAGE",
+      "claimant": "Houthi authorities",
+      "claim": "Detained UN and NGO personnel were spies for US and Israel",
+      "occurrence_time": "PREVIOUS_STATEMENTS_REPEATED_OCT31",
+      "publication_time": "2026-10-31T15:38:00-04:00",
+      "publication_time_precision": "REUTERS_EDT_MINUTE",
+      "status": "UNSUPPORTED_AND_CONTESTED_CLAIM",
+      "contrary_or_independent_evidence": "UN denies espionage accusation; UN rights chief calls for independent death inquiry, not proof of cause of death.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "https://ca.marketscreener.com/news/un-says-yemeni-staff-member-dies-in-houthi-custody-demands-investigation-ce785fd8db80f32c",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261101-ISRAEL-STOLEN-ELECTION-ALLEGATION",
+      "claimant": "Some Netanyahu-aligned demonstrators and Likud",
+      "claim": "Arab parties stole the October 27 election with foreign help",
+      "occurrence_time": "2026-10-31_EVENING_ISRAEL_LOCAL",
+      "publication_time": "2026-10-31T22:40:00+02:00",
+      "publication_time_precision": "TIMES_OF_ISRAEL_LOCAL_MINUTE",
+      "status": "UNSUBSTANTIATED_POLITICAL_CLAIM",
+      "contrary_or_independent_evidence": "Reported seat results and rallies do not establish electoral fraud; no independent proof in reviewed reports.",
+      "sources": [
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "claim_id": "ROOK-20261101-US-ISRAEL-CALL-STRIKE-DECISION",
+      "claimant": "WSJ sources, secondary repetition",
+      "claim": "Trump-Netanyahu call was amid strike planning",
+      "occurrence_time": "2026-10-31_MORNING_ET",
+      "publication_time": "2026-11-01T02:37:00+02:00",
+      "publication_time_precision": "SECONDARY_PUBLICATION_MINUTE",
+      "status": "CALL_REPORTED_DECISION_AND_CONTENT_UNVERIFIED",
+      "contrary_or_independent_evidence": "No authenticated transcript, order, final strike authorization or troop movement from the call.",
+      "sources": [
+        "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+        "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Actor statement without a verified point",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg"
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261101-OIL-OCTOBER-FRIDAY-CLOSE-CONTEXT",
+      "metric": "OCTOBER_CRUDE_MONTHLY_CHANGE_REPORTED",
+      "occurrence_time": "2026-10-30_FRIDAY_MARKET_CLOSE",
+      "observation_time": "2026-10-30_MARKET_SETTLEMENT_CONTRACTS_NOT_RETRIEVED",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "SOURCE_DATE_ONLY_UNLESS_SPECIFIED",
+      "summary": "Secondary financial reporting says oil rose more than 2% Friday and around 14% during October. Exact ICE/NYMEX contract settlement prices and benchmark must be independently verified; Saturday was not a new trading settlement. Do not infer causality solely from geopolitical commentary.",
+      "data_status": "SECONDARY_REPORTING_NOT_CHART_READY",
+      "sources": [
+        "https://m.economictimes.com/markets/commodities/news/oil-prices-soar-14-in-october-to-end-at-6-month-high-as-us-weighs-fresh-attacks-after-midterm-elections-more-upside-ahead/articleshow/135388221.cms"
+      ],
+      "disposition": "NO_UNJUSTIFIED_INTERPOLATION_OR_NORMALIZATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Not a source-verified physical strike or force movement",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": null
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "economic_id": "ROOK-20261101-HORMUZ-IMO-CUMULATIVE-NO-NEW-SNAPSHOT",
+      "metric": "IMO_CONFIRMED_INCIDENTS_AND_SEAFARER_FATALITIES",
+      "occurrence_time": "2026-10-30_AS_OF",
+      "observation_time": "2026-10-30_AS_OF",
+      "publication_time": "2026-10-30_DATE_ONLY",
+      "publication_time_precision": "SOURCE_DATE_ONLY_UNLESS_SPECIFIED",
+      "summary": "IMO cumulative count remains 122 confirmed incidents and 24 seafarer fatalities as of October 30. No Nov1 updated official denominator; no additive incident count, vessel throughput estimate or proof of normalization.",
+      "data_status": "OFFICIAL_HISTORICAL_SNAPSHOT_NO_NEW_IN_WINDOW_METRIC",
+      "sources": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "disposition": "NO_UNJUSTIFIED_INTERPOLATION_OR_NORMALIZATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Not a source-verified physical strike or force movement",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": null
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    },
+    {
+      "economic_id": "ROOK-20261101-G20-ENERGY-FREEDOM-OF-NAVIGATION-POLICY",
+      "metric": "G20_CHAIR_ENERGY_AND_SHIPPING_POLICY",
+      "occurrence_time": "2026-10-31_G20_CONCLUSION",
+      "observation_time": "2026-10-31_POLICY_STATEMENT_NOT_MARKET_OBSERVATION",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "publication_time_precision": "SOURCE_DATE_ONLY_UNLESS_SPECIFIED",
+      "summary": "Chair statement calls for secure energy flows and freedom of navigation; no joint G20 communiqué or implemented shipping corridor, insurance rate, oil export or commodity price established.",
+      "data_status": "POLICY_ONLY_NONNUMERIC_DO_NOT_PLOT_AS_ENERGY_PRICE",
+      "sources": [
+        "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+        "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+      ],
+      "disposition": "NO_UNJUSTIFIED_INTERPOLATION_OR_NORMALIZATION",
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "geolocation_status": "NOT_APPLICABLE",
+        "source_location_description": "Not a source-verified physical strike or force movement",
+        "location_precision": "NOT_APPLICABLE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_APPLICABLE",
+        "uncertainty_note": "Do not project a policy, diplomatic, economic or political event on the strike map.",
+        "source_url": null
+      },
+      "collection_time": "2026-11-01T04:01:12.092Z",
+      "evidence_horizon_time": "2026-11-01T00:00:00-04:00"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Oct31 00:00–12:00 ROOK noon locker",
+      "decision": "UPDATE",
+      "reason": "Reviewed prior full sweep; separate Trump evening remarks, UN staff death disclosure, Israel protests and G20 outcome; no duplicate Khamenei morning statement."
+    },
+    {
+      "drawer": "Iran Khamenei October 31 response order",
+      "decision": "UPDATE",
+      "reason": "Subordinate military chief later echoed target-list rhetoric; no verified launch order or executed attack."
+    },
+    {
+      "drawer": "Iran nuclear doctrine and IAEA access",
+      "decision": "UPDATE",
+      "reason": "Rezaei public debate disclosed, expressly no decision; IAEA official press releases no new Iran access."
+    },
+    {
+      "drawer": "Qatar Doha / Tehran mediation",
+      "decision": "UPDATE",
+      "reason": "Rezaei clarified seven demands and claimed Oman route; still no deal or actual reopening."
+    },
+    {
+      "drawer": "US–Israel military planning",
+      "decision": "UPDATE",
+      "reason": "WSJ reports Oct31 morning phone call; no transcript or strike authorization."
+    },
+    {
+      "drawer": "US Trump/Rubio public strike posture",
+      "decision": "UPDATE",
+      "reason": "Rubio no decision; later Trump named Pickaxe Mountain, still not an order."
+    },
+    {
+      "drawer": "Israeli election and coalition",
+      "decision": "UPDATE",
+      "reason": "Oct31 evening Tel Aviv demonstrations; 53/48/19 seats, no coalition."
+    },
+    {
+      "drawer": "Israeli election fraud assertions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently substantiated election manipulation; newly repeated claims logged."
+    },
+    {
+      "drawer": "Southern Lebanon Israeli operations",
+      "decision": "UPDATE",
+      "reason": "Local source describes Oct31 earlier strikes and IDF controlled-detonation alternative; canonical event identity and BDA unresolved."
+    },
+    {
+      "drawer": "Hezbollah financing / Lebanon state sovereignty",
+      "decision": "UPDATE",
+      "reason": "Lebanese FM Rajji Oct31 statement on disarming armed groups, not executed disarmament."
+    },
+    {
+      "drawer": "Yemen detained UN humanitarian personnel",
+      "decision": "SUPERSEDE",
+      "reason": "UN confirms previously unreported death in custody of Mohammad al-Shami, death date and cause unknown; prior detention-only status requires later-evidence update."
+    },
+    {
+      "drawer": "Saudi Riyadh / Medina / Eastern-Southern interceptions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new independently verified in-window strike or attacker attribution found; do not duplicate earlier reports."
+    },
+    {
+      "drawer": "Shabwa October 19 camp casualty accounting",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently confirmed casualty revision in reviewed Oct31 sources."
+    },
+    {
+      "drawer": "Jordan–Syria border engagement and talks",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Prior October 30 occurrence disclosed Oct31 already covered; no new casualty BDA."
+    },
+    {
+      "drawer": "Mecca Defence Pact / Pakistan Türkiye",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new ratification, accession or troop deployment verified."
+    },
+    {
+      "drawer": "Kuwait Nov1–5 planned exercise",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Scheduled start not proof execution at Oct31 cutoff."
+    },
+    {
+      "drawer": "IMO 122 confirmed maritime incidents 24 fatalities",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Registry as-of Oct30 unchanged; no new vessel identities or incident coordinates."
+    },
+    {
+      "drawer": "UKMTO Lavan Island 188-26 and IRGC four-tanker claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No authenticated new hull IDs, mine causes, attribution or BDA."
+    },
+    {
+      "drawer": "OFAC Iran FF-1 and sanctions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Official recent actions unchanged after Oct29."
+    },
+    {
+      "drawer": "Energy/SPR/Qatar LNG",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No comparable Saturday settlement or new physical SPR delivery/repair record."
+    },
+    {
+      "drawer": "G20 China/Russia/EU posture",
+      "decision": "UPDATE",
+      "reason": "Atlanta foreign ministers ended without joint communiqué; chair statement navigation priority, not collective enforcement."
+    },
+    {
+      "drawer": "Gaza/Hamas WFP aid and civilian-harm records",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No source-qualified new casualty, aid-delivery or Hamas military disposition during this horizon."
+    },
+    {
+      "drawer": "Oman/Qatar/UAE/Bahrain/GCC diplomacy",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Mediation continued; no signed regional pact or Omani adoption of Iranian routing claim."
+    },
+    {
+      "drawer": "UN/IAEA/IMO/aviation source classes",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new Iranian IAEA inspection or UKMTO precise maritime point in public official pages."
+    }
+  ],
+  "coverage": {
+    "method": "Public English-language OSINT using Reuters, AP, RFE/RL, Iran International, The National, Times of Israel, L'Orient, UN/OHCHR attribution, IMO, UKMTO, OFAC, IAEA, G20 and secondary commodity reporting. Prior Oct31 noon drawer reviewed. No paid AIS, Kpler, LSEG, satellite imagery, authenticated military telemetry or private source access. A no-delta finding is limited to checked sources, not a theater-wide proof of absence.",
+    "coverage_by_actor_and_source_class": [
+      {
+        "category": "Iran political/military/security",
+        "status": "REZAEI_DOCTRINE_AND_HORMUZ_CONDITIONS_UPDATED",
+        "sources": [
+          "https://www.iranintl.com/en/202610317760",
+          "https://www.jpost.com/middle-east/iran-news/article-913416",
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+        ]
+      },
+      {
+        "category": "United States",
+        "status": "TRUMP_LATE_THREAT_AND_RUBIO_NO_DECISION_RECONCILED",
+        "sources": [
+          "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+          "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/",
+          "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg"
+        ]
+      },
+      {
+        "category": "Israel",
+        "status": "POSTELECTION_RALLIES_AND_REPORTED_TRUMP_CALL",
+        "sources": [
+          "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+          "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+          "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/"
+        ]
+      },
+      {
+        "category": "Saudi Arabia / GCC",
+        "status": "NO_NEW_VERIFIED_INTERCEPTION_BDA; GCC_SPEECH_PRIOR_WINDOW",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+        ]
+      },
+      {
+        "category": "Oman",
+        "status": "REZAEI_CLAIMS_AGREED_ROUTE_NO_OMANI_CONFIRMATION",
+        "sources": [
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+          "https://www.iranintl.com/en/202610317760"
+        ]
+      },
+      {
+        "category": "Qatar",
+        "status": "DOHA_MEDIATION_NO_SIGNED_DEAL",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.iranintl.com/en/202610317760"
+        ]
+      },
+      {
+        "category": "UAE",
+        "status": "NO_NEW_VERIFIED_MATERIAL_DELTA",
+        "sources": [
+          "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+        ]
+      },
+      {
+        "category": "Kuwait",
+        "status": "PRIOR_FUTURE_LIVEFIRE_NOTICE_NO_EXECUTION",
+        "sources": [
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+        ]
+      },
+      {
+        "category": "Bahrain",
+        "status": "PRIOR_MANAMA_DIALOGUE_SPEECHES_NO_NEW_MATERIAL_DELTA",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://today.lorientlejour.com/article/1552834/rajji-says-lebanon-will-no-longer-allow-its-territory-to-be-used-to-threaten-arab-countries.html"
+        ]
+      },
+      {
+        "category": "Iraq",
+        "status": "NO_NEW_VERIFIED_MATERIAL_DELTA",
+        "sources": [
+          "https://ofac.treasury.gov/recent-actions",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+        ]
+      },
+      {
+        "category": "Yemen / Houthis",
+        "status": "UN_STAFF_DEATH_DISCLOSED; ESPIONAGE_CLAIM_UNSUPPORTED",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+        ]
+      },
+      {
+        "category": "Lebanon / Hezbollah",
+        "status": "SOUTHERN_STRIKES_SOURCE_RECONCILIATION_AND_RAJJI_POLICY",
+        "sources": [
+          "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html",
+          "https://today.lorientlejour.com/article/1552838/6-pm-update-khamenei-warns-us-of-response-with-no-geographical-limits-rajji-says-lebanon-will-not-be-used-to-threaten-arab-countries.html",
+          "https://today.lorientlejour.com/article/1552834/rajji-says-lebanon-will-no-longer-allow-its-territory-to-be-used-to-threaten-arab-countries.html"
+        ]
+      },
+      {
+        "category": "Gaza / Hamas / West Bank",
+        "status": "NO_NEW_SOURCE_QUALIFIED_THEATER_DISPOSITION",
+        "sources": [
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+        ]
+      },
+      {
+        "category": "Syria / Jordan",
+        "status": "PREVIOUS_BORDER_REPORT_AND_PACT_DISCUSSION_NO_NEW_DELTA",
+        "sources": [
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+        ]
+      },
+      {
+        "category": "Pakistan / Türkiye",
+        "status": "MECCA_PACT_UNCHANGED_AND_PRIOR_MEDIATION",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+          "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues"
+        ]
+      },
+      {
+        "category": "China / Russia / Europe / EU",
+        "status": "G20_NO_JOINT_COMMUNIQUE_AND_EU_RUSSIA_DIVISIONS",
+        "sources": [
+          "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+          "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+        ]
+      },
+      {
+        "category": "UN / IAEA / IMO",
+        "status": "UN_STAFF_DEATH_IAEA_NO_NEW_IRAN_ACCESS_IMO_122_24",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+          "https://www.iaea.org/news?type=718",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+        ]
+      },
+      {
+        "category": "Maritime and aviation authorities",
+        "status": "UKMTO_PUBLIC_PORTAL_NO_NEW_AUTHENTICATED_POINT",
+        "sources": [
+          "https://www.ukmto.org/",
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+        ]
+      },
+      {
+        "category": "Sanctions authorities",
+        "status": "OFAC_LATEST_IRAN_ACTION_OCT29_NO_NEW_SANCTIONS",
+        "sources": [
+          "https://ofac.treasury.gov/recent-actions"
+        ]
+      },
+      {
+        "category": "Energy and commodity markets",
+        "status": "SATURDAY_NO_NEW_SETTLEMENT_OCTOBER_MONTHLY_SECONDARY_CONTEXT",
+        "sources": [
+          "https://m.economictimes.com/markets/commodities/news/oil-prices-soar-14-in-october-to-end-at-6-month-high-as-us-weighs-fresh-attacks-after-midterm-elections-more-upside-ahead/articleshow/135388221.cms"
+        ]
+      },
+      {
+        "category": "Commercial shipping / AIS / Kpler / LSEG public",
+        "status": "NO_PUBLIC_VERIFIED_NEW_HULL_IDENTITIES_OR_PAID_AIS_ACCESS",
+        "sources": [
+          "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "https://www.ukmto.org/"
+        ]
+      },
+      {
+        "category": "Human impact agencies",
+        "status": "UN_OHCHR_DETENTION_DEATH_DISCLOSURE; GAZA_PREVIOUS_AID_BASELINE",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+          "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+        ]
+      },
+      {
+        "category": "Claims / corrections / independent OSINT",
+        "status": "SEVEN_CLAIMS_TRIAGED_WITH_ATTRIBUTION_BOUNDARIES",
+        "sources": [
+          "https://www.iranintl.com/en/202610317760",
+          "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+          "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+          "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/"
+        ]
+      }
+    ],
+    "reviewed_source_count": 21,
+    "source_urls_reviewed": [
+      "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+      "https://www.timesofisrael.com/liveblog_entry/trump-says-talks-with-iran-going-fine-but-islamic-republic-not-very-reliable/",
+      "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+      "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/",
+      "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+      "https://ca.marketscreener.com/news/un-says-yemeni-staff-member-dies-in-houthi-custody-demands-investigation-ce785fd8db80f32c",
+      "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+      "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+      "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+      "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+      "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/",
+      "https://www.jpost.com/middle-east/iran-news/article-913416",
+      "https://www.iranintl.com/en/202610317760",
+      "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+      "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html",
+      "https://today.lorientlejour.com/article/1552838/6-pm-update-khamenei-warns-us-of-response-with-no-geographical-limits-rajji-says-lebanon-will-not-be-used-to-threaten-arab-countries.html",
+      "https://www.timesofisrael.com/liveblog_entry/idf-says-reported-israeli-strike-in-southern-lebanon-was-controlled-detonation/",
+      "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "https://ofac.treasury.gov/recent-actions",
+      "https://www.iaea.org/news?type=718",
+      "https://m.economictimes.com/markets/commodities/news/oil-prices-soar-14-in-october-to-end-at-6-month-high-as-us-weighs-fresh-attacks-after-midterm-elections-more-upside-ahead/articleshow/135388221.cms"
+    ],
+    "counts": {
+      "new_events": 5,
+      "existing_event_updates": 9,
+      "claims_and_corrections": 7,
+      "economic_energy_updates": 3,
+      "prior_drawers_reviewed": 24,
+      "actor_source_categories": 23
+    },
+    "limitations": [
+      "Several dynamic articles have unknown original update times; preserve publication precision and avoid post-cutoff text as in-window proof.",
+      "No paid AIS/Kpler/LSEG, independent BDA imagery or military C2 access.",
+      "No precise strike geolocation authenticated for Oct31 southern Lebanon; village names are not impact coordinates.",
+      "No new Saturday oil futures settlement; secondary October performance not chart-ready."
+    ]
+  },
+  "source_discovery_additions": [
+    {
+      "source_name": "Reuters UN staff death",
+      "url": "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+      "publication_time": "2026-10-31T15:38:00-04:00",
+      "reason": "New human-impact disclosure; seek OHCHR original statement, death date, custody site and medical records"
+    },
+    {
+      "source_name": "WSJ Trump–Netanyahu phone call",
+      "url": "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "reason": "Primary reported anonymous-source call; request confirmation/transcript"
+    },
+    {
+      "source_name": "RFE/RL Trump Pickaxe remarks",
+      "url": "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+      "publication_time": "2026-11-01T02:52:00+01:00",
+      "reason": "On-record public statement, distinguish threat from BDA"
+    },
+    {
+      "source_name": "Iran International Rezaei interview",
+      "url": "https://www.iranintl.com/en/202610317760",
+      "publication_time": "2026-10-31T23:26:00Z",
+      "reason": "Seven-condition route, nuclear-doctrine and proposal-chronology claims; updated text after cutoff must not be promoted"
+    },
+    {
+      "source_name": "Times of Israel Israeli post-election rallies",
+      "url": "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+      "publication_time": "2026-11-01T00:12:00+02:00",
+      "reason": "Grounded political crowd report with source timing"
+    },
+    {
+      "source_name": "AP regional Oct31 roundup",
+      "url": "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+      "publication_time": "2026-10-31_DATE_ONLY",
+      "reason": "Multi-actor corroboration; dynamic article update clock not authenticated"
+    },
+    {
+      "source_name": "L'Orient southern Lebanon strikes",
+      "url": "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html",
+      "publication_time": "2026-10-31T16:59:00+02:00",
+      "reason": "Named villages and later report; reconcile against IDF controlled-demolition description"
+    },
+    {
+      "source_name": "L'Orient Lebanon evening update",
+      "url": "https://today.lorientlejour.com/article/1552838/6-pm-update-khamenei-warns-us-of-response-with-no-geographical-limits-rajji-says-lebanon-will-not-be-used-to-threaten-arab-countries.html",
+      "publication_time": "2026-10-31T18:58:00+02:00",
+      "reason": "In-window summary of earlier occurrences, not additional attacks"
+    },
+    {
+      "source_name": "AP G20 conclusion syndicated",
+      "url": "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+      "publication_time": "2026-10-31T13:31:00-04:00",
+      "reason": "Russia/Europe disputes, no consensus and maritime navigation statement"
+    },
+    {
+      "source_name": "IMO official incidents",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "publication_time": "2026-10-30_AS_OF",
+      "reason": "Cumulative denominator and named hull registry"
+    },
+    {
+      "source_name": "OFAC recent actions",
+      "url": "https://ofac.treasury.gov/recent-actions",
+      "publication_time": "2026-10-29_LATEST",
+      "reason": "Official sanctions date check"
+    },
+    {
+      "source_name": "IAEA press releases",
+      "url": "https://www.iaea.org/news?type=718",
+      "publication_time": "2026-10-30_LATEST",
+      "reason": "Official negative check for new Iran inspection"
+    }
+  ],
+  "unresolved_questions": [
+    "Obtain original UN OHCHR Oct31 statement and independent medical/detention records for Mohammad al-Shami; exact date, facility and cause of death are unknown.",
+    "Confirm whether Rezaei's seven conditions and Oman route have formal Omani consent, route chart or IMO recognition; do not infer actual Hormuz reopening.",
+    "Verify Rezaei's three alleged US proposals against US documents and time-stamped originals.",
+    "Determine whether Iran's nuclear doctrine has formally changed; Rezaei explicitly said no decision and IAEA access is unverified.",
+    "Obtain exact timing/transcript of reported Trump–Netanyahu Oct31 call; no strike authorization is established.",
+    "Verify Trump Pickaxe Mountain remark original recording and distinguish physical site claim from independently proven enrichment/material BDA.",
+    "Reconcile Lebanon Oct31 Kfar Tebnit demolition vs airstrike descriptions and distinct Mayfadoun drone events; obtain impact locations, civilian injury and infrastructure status.",
+    "Verify precise original publication clock of AP dynamic regional roundup; avoid promoting post-cutoff edits.",
+    "Check official IMO registry after Oct30 as-of snapshot and UKMTO incident bulletins; no inference of zero attacks from absence of update.",
+    "Check updated market provider contract and Friday settlement before plotting October 14% secondary monthly change.",
+    "Verify Israel coalition formation and independently evaluate stolen-election allegations; do not infer fraud from slogans.",
+    "Recover original UN/IAEA/IMO/FAA, GCC, Pakistani/Turkish, Chinese/Russian/EU and shipping authority releases where the accessible English-language public review was sparse.",
+    "Continue Issue #296 historical missing-window reconciliation without manufacturing retroactive sweeps."
+  ],
+  "geospatial_handoff": {
+    "review_rule": "No fabricated coordinates, point IDs, routes or facility status. Named village or unidentified detention facility does not imply exact incident coordinates; diplomatic, policy, economic and protest events are nonspatial for the strike map.",
+    "reviewed_map_eligible_records": [
+      {
+        "record_id": "ROOK-20261101-YEMEN-UN-STAFF-CUSTODY-DEATH-DISCLOSURE",
+        "disposition": "unlocated pending source",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Unspecified Houthi-controlled detention facility in Yemen; exact custody site and place of death not disclosed",
+        "source_url": "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "location_precision": "NOT_APPLICABLE"
+      },
+      {
+        "record_id": "ROOK-20261101-SOUTH-LEBANON-SATURDAY-STRIKES-REVIEW",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Kfar Tebnit, Haddatha, Braachit, Mayfadoun, Ibl al-Saqi, southern Lebanon: named village localities only; exact incident sites unverified",
+        "source_url": "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html",
+        "location_precision": "NAMED_LOCALITY_NO_AUTHENTICATED_IMPACT_POINT"
+      }
+    ],
+    "plot_ready_count": 0,
+    "region_only_count": 1,
+    "unlocated_pending_source_count": 1,
+    "nonspatial_count": 22,
+    "protected_route_geometry_mutated": false,
+    "operational_base_adjudication_mutated": false,
+    "public_markers_mutated": false
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_UPSTREAM_COLLECTION_WITH_DISCLOSED_COVERAGE_LIMITATIONS",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true,
+    "upstream_only": true,
+    "source_review_performed": true,
+    "repository_validator_status": "PENDING_GITHUB_PR_CI_VALIDATION",
+    "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
+    "completion_report": "Oct31 noon–Nov1 midnight EDT: late Trump Pickaxe threat, reported Trump-Netanyahu call, UN death-in-custody disclosure, Israeli post-election rallies, G20 conclusion; Rezaei nuclear doctrine discussion (no change decided), seven Hormuz conditions (no implementation), Lebanon village-level strike chronology and IDF demolition alternative, IMO/OFAC no new official snapshot. Actor claims held separately; no authenticated strike BDA, naval normalization, IAEA access, Omani route consent, or authorized US strike. All map eligibility explicitly dispositioned; append-only upstream only. Require exact-head CI rook_intake_status.py validate --compare-ref against base and completed/unconsumed status."
+  }
+}
