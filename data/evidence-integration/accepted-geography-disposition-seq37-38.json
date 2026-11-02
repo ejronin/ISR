@@ -1,0 +1,272 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_ACCEPTED_EVENT_MAP_ELIGIBILITY_AUDIT",
+  "scope": "Accepted v2 sequence 37 and 38 only",
+  "source_manifest": "data/canonical-ledger/manifest-v2.json",
+  "source_packets": [
+    "data/canonical-updates/UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json",
+    "data/canonical-updates/UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION.json"
+  ],
+  "record_count": 18,
+  "eligible_exact_point_markers": 0,
+  "region_only": 7,
+  "nonspatial": 11,
+  "publication_effect": "AUDIT_ONLY_NO_MARKERS_NO_COORDINATES",
+  "scope_note": "Classification covers seq37/38 accepted chronology. Source-supported region-level reports remain visible in chronology/source readers; precise point markers require new independent exact location evidence. Historical and later noncanonical review backlogs remain open.",
+  "rows": [
+    {
+      "event_id": "EVT-20261021-SA-DEFENSIVE-PARTNERS",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-21",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-7AEDCE5DF3A5"
+      ]
+    },
+    {
+      "event_id": "EVT-20261023-UAE-MARKETS-ENERGY",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-23",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-F3BE284F724E"
+      ]
+    },
+    {
+      "event_id": "EVT-20261026-BRENT-FUTURES-QUOTE",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-26",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-AC0F15D71DA4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261026-TEHRAN-REGIONAL-TALKS",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-5180B33CE2A0"
+      ]
+    },
+    {
+      "event_id": "EVT-20261027-EGYPT-SAUDI-AUTHORIZATION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-27",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-0DB5BB34A4AA"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-IAEA-RECONSTRUCTION-INSPECTION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-28",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-E20CE2667B88"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-RUSSIAN-SATELLITE-CORRELATION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-28",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-8857A29EE4F5"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-US-SPR-LOAN-CONTRACT-AWARDS",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-28",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-689903B48338"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-US-WAR-COST-ESTIMATE",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-28",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-3C66EFC26D93"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-ADIPEC-OIL-MAJOR-EXECUTIVE-TRIPS",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-29",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-4E6610436CEE"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-29",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-059AD04D57CC",
+        "SRC-91C370966DB4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-LOUISE1-LIMPET-ATTACK",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-29",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-D1901CB5F6AC"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-OFAC-GL-FF1-SUPERSEDES-FF",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-29",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-4ECE6B69D8B2",
+        "SRC-E097193B8EDB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-29",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-E15C3FAAE481"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-TAIZ-SA-AIRSTRIKE-REPORT",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-29",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-1653AEC36AEB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-IRGC-US-DRONE-DESTROYED-CLAIM",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-30",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-91C370966DB4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-30",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-42818A9D55F8"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-30",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-A261F7C5D403"
+      ]
+    }
+  ]
+}
