@@ -1,0 +1,157 @@
+{
+  "entities": [],
+  "events": [
+    {
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_date": "2026-10-14",
+      "event_id": "EVT-20261014-CAR-HOUTHI-MISSILE-SUPPLY-REVIEW",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC5",
+        "SRC-18CDB7900AC6"
+      ],
+      "strike_countable": false,
+      "summary": "Conflict Armament Research reported that shipments to the Houthis included specialized components for attempted production of a missile based on Iran's Kheibar Shekan design. This establishes an investigated procurement and manufacturing effort, not a completed operational missile, a particular active factory, Iranian command of a site, or authorization by the Chinese government."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-10-15",
+      "event_id": "EVT-20261015-IRAQ-KHAZALI-DEPUTY-PM-APPOINTMENT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC3",
+        "SRC-18CDB7900AC4"
+      ],
+      "strike_countable": false,
+      "summary": "Iraq's parliament appointed Laith Hadi al-Khazali as a deputy prime minister on October 15. AP reported his prior US sanctions and position in the Iran-aligned Asaib Ahl al-Haq movement. The appointment is confirmed; it is not evidence that he transmitted US intelligence or that Baghdad ordered such transfers."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-01",
+      "event_id": "EVT-20261101-UKMTO-191-RELAYED-MAYDAY",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC2"
+      ],
+      "strike_countable": false,
+      "summary": "UKMTO notice 191 reported that the master of one ship relayed another vessel's Mayday call alleging an unknown-projectile hit within the Strait of Hormuz. The victim vessel's identity, attacker, independent physical damage and final casualty picture were not established by this relay. Do not count a separately verified hull from this notice alone."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-UKMTO-192-TANKER-PROJECTILE-REPORT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC2"
+      ],
+      "strike_countable": false,
+      "summary": "UKMTO published notice 192 concerning a tanker reportedly struck by two unidentified projectiles about 72 nautical miles east of Ras al-Khafji, Saudi Arabia. The crew was reported accounted for and no environmental impact reported. The warning does not identify the attacker, exact vessel or verified site of impact."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IMO-CONFIRMED-SHIPPING-CUMULATIVE",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC1"
+      ],
+      "strike_countable": false,
+      "summary": "The IMO's updated verified maritime incident list counted 125 confirmed incidents in the Middle East through its November 2 publication and 24 confirmed seafarer fatalities. This is a cumulative as-of total, up from 122 at the October 30 snapshot, not evidence of three fresh November 2 attacks; the added list entries include retrospective October incidents."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC7"
+      ],
+      "strike_countable": false,
+      "summary": "Iranian officials said a proposed Hormuz reopening and resumption of US nuclear talks could occur within two days if Washington accepted Iran's conditions, including sanctions and blockade relief. No US acceptance, reopened shipping route or implemented ceasefire was established in the report."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-CHINA-IRAN-SAUDI-OMAN-DIPLOMATIC-OUTREACH",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC7",
+        "SRC-18CDB7900AC8",
+        "SRC-18CDB7900AC9"
+      ],
+      "strike_countable": false,
+      "summary": "China announced plans for a regional envoy and reported separate Wang Yi talks with Iranian and Saudi officials; Xi Jinping met Oman's sultan and urged negotiations and safe navigation. These are documented diplomatic contacts and proposals, not proof of Chinese military intervention or a signed Hormuz settlement."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IOM-YEMEN-DISPLACEMENT-SNAPSHOT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC7"
+      ],
+      "strike_countable": false,
+      "summary": "The UN migration agency said more than 300,000 Yemenis had been displaced by renewed fighting. This is a source-reported cumulative displacement estimate, not a count of people newly displaced on November 2 or a casualty tally; geographic and timeframe comparability with earlier estimates remains limited."
+    }
+  ],
+  "evidence_cutoff": "2026-11-02T13:23:00-05:00",
+  "known_at": "2026-11-02T13:23:59-05:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20261102-SOURCE-VERIFIED-CURRENT-SNAPSHOT",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "source_id": "SRC-18CDB7900AC1",
+      "source_role": "IMO primary as-of November 2 confirmed incident list: 125 cumulative confirmed incidents, 24 seafarer fatalities; retrospective confirmations do not imply three November 2 attacks",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC2",
+      "source_role": "UKMTO primary incident notices 191 and 192; initially relayed/reported observations, unknown projectiles and unknown perpetrators; no established incident identity with IMO counts",
+      "url": "https://www.ukmto.org/recent-incidents"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC3",
+      "source_role": "Iraqi Council of Representatives primary appointment record October 15: Laith Hadi al-Khazali deputy prime minister",
+      "url": "https://iq.parliament.iq/en/2026/10/15/the-council-of-representatives-votes-on-deputy-prime-ministers-and-eleven-cabinet-members/"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC4",
+      "source_role": "AP contemporaneous October 15 profile of al-Khazali, historical US sanctions and Iran-aligned militia leadership; appointment does not establish intelligence transfer",
+      "url": "https://apnews.com/article/5b602c6e33a4fefe1abb53277de44263"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC5",
+      "source_role": "Conflict Armament Research October 14 missile manufacturing supply-chain investigation; recovered/identified components and prospective Houthi production, not proven government-directed transfer or active factory",
+      "url": "https://storymaps.arcgis.com/stories/1637a6eef3d2418abbcdd3efa47c256b"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC6",
+      "source_role": "AP reporting on CAR research into Chinese-sourced Houthi missile-manufacturing components; supplied designs do not establish complete weapons",
+      "url": "https://apnews.com/article/2ad930f312484954bcc21cca7e94e571"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC7",
+      "source_role": "AP November 2 running report; Iranian conditional two-day plan, IOM displacement total and China special envoy; dated publication snapshot rather than verified agreement",
+      "url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC8",
+      "source_role": "Reuters November 2 reporting of Wang Yi meetings with Saudi and Iranian officials; diplomatic statements, not verified US-Iran deal",
+      "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC9",
+      "source_role": "Reuters November 2 China-Oman leader meeting and 20-point statement urging navigation and diplomacy; no new enforcement agreement",
+      "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
+    }
+  ],
+  "status": "ACCEPTED",
+  "summary": "Selective source-qualified status through November 2: primary IMO cumulative maritime register, UKMTO reports distinguished from confirmed incidents, Iraqi parliament appointment, CAR-sourced Houthi procurement investigation, Iranian conditional Hormuz plan, Chinese diplomacy and UN-reported Yemen displacement. Plain-language actor/observation distinction and no synthetic military BDA, current coordinates, chart merging, new claim adjudication or blanket historical 12-hour sweep recovery. The recent evidence intake backlog remains partially unconsumed.",
+  "upstream_provenance": {
+    "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
+    "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
+    "map_parity_debt": "https://github.com/ejronin/ISR/issues/324",
+    "scope": "SELECTIVE_QUALIFIED_SOURCES_NOT_FULL_SWEEP_ACCEPTANCE"
+  }
+}
