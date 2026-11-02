@@ -277,6 +277,15 @@
   "upstream_provenance": {
     "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
     "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T1200ET.json"
+    ],
     "map_parity_debt": "https://github.com/ejronin/ISR/issues/324",
     "review_clock_note": "Known-at and evidence cutoff moved forward to Nov2 16:12 EST because the Nov2 oil-futures settlement and late Doha mediation reporting were added after the initial 13:23 reviewed candidate; no source is backdated into the original cutoff.",
     "scope": "SELECTIVE_QUALIFIED_SOURCES_NOT_FULL_SWEEP_ACCEPTANCE"
