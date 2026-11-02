@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_ADDENDUM",
+  "review_version": "CF-20261031-NOON-SOURCE-CLOCK-01",
+  "review_date": "2026-10-31",
+  "owner_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION",
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "config/evidence-adjudication-reasoning.json",
+    "config/lie-ledger-governance.json",
+    "config/web-of-lies-governance.json"
+  ],
+  "prior_claims_reviews": [
+    "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+    "data/claims-forensics/claims-noon-source-clock-addendum-20261030-v1.noncanonical.json",
+    "data/claims-forensics/claims-midnight-source-clock-addendum-20261031-v1.noncanonical.json"
+  ],
+  "upstream": {
+    "locker": "data/evidence-integration/rook-evidence-locker-sweep-20261031T1200ET.json",
+    "window": "2026-10-31T00:00:00-04:00/2026-10-31T12:00:00-04:00",
+    "intake_pr": 329,
+    "intake_merged": true,
+    "intake_head_sha": "1cbf7574ee519781077c6c64c3be3ce2610d6661",
+    "intake_exact_head_ci_run": 41218142822,
+    "evidence_integration_review_pr": 330,
+    "evidence_integration_review_state": "DRAFT_NONCANONICAL",
+    "accepted_canonical_sequence": 38,
+    "accepted_evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "baseline_main_sha_at_review": "cb4774824d2119ef5c7de933fa1f586433a06e43",
+    "note": "Merged upstream collection is not canonical consumption. No retroactive sweep, accepted event or release is inferred."
+  },
+  "methodology": "Atomic ordinary-meaning propositions; exact actor/date/statement versus carrier date; factual truth separately from actor knowledge. A report of a statement can be verified as reporting while its physical or political outcome remains unverified. UNSUBSTANTIATED is not FALSE, and FALSE is not knowing deception. Shared official source or wire syndication is not independent corroboration. Proposed source edges are referrals only, not protected WOL-native findings.",
+  "candidates": [
+    {
+      "id": "CF-20261031-N01",
+      "family": "IRAN_LEADERSHIP_CONDITIONAL_RETALIATION_ORDER",
+      "actor": "Mojtaba Khamenei, statement attributed to his office",
+      "statement_date": "2026-10-31; original official post minute not authenticated",
+      "exact_reported_language": "Immediate and effective response 'without geographical limitations' if enemies renew military/terrorist attacks; military target database to be expanded.",
+      "proposition_decomposition": [
+        "The office issued a conditional military deterrence/retaliation directive on Oct31",
+        "Iranian forces have actually implemented an expanded target bank or undertaken new strikes (NOT asserted as completed by quoted directive)",
+        "Khamenei personally attended a command meeting (reported by office; independent visual confirmation not established)"
+      ],
+      "support": "AFP/Dawn reports a written statement posted to Khamenei's website; Axios and AP relay office statements. This supports existence of an attributed official statement, not physical command execution or new strikes.",
+      "contrary_or_limits": "No independently authenticated meeting footage, strike list, force movement or new attack resulting from this directive in reviewed window.",
+      "truth": "SUPPORTED_AS_ATTRIBUTED_PUBLIC_STATEMENT; military execution NOT_ESTABLISHED; future conditional threat not adjudicable as present-tense false operational result",
+      "knowledge": "NOT_ASSESSABLE for prospective threat; no falsified present-tense operational proposition established",
+      "lineage": [
+        "Khamenei office statement -> AFP/Dawn REPORTS/ATTRIBUTES_TO",
+        "Khamenei office statement -> Axios REPORTS/ATTRIBUTES_TO",
+        "AP and Reuters relay the office's account; shared statement is not independent proof of military implementation"
+      ],
+      "repetition_vs_novel": "New dated conditional leadership posture statement, not new verified military attack, not a unique knowing lie",
+      "sources": [
+        "https://www.dawn.com/news/2041187",
+        "https://www.axios.com/2026/10/31/irans-supreme-leader-maximum-response-us-attack",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4",
+        "https://saba.ye/en/news3823476.htm"
+      ],
+      "missing": "Original leader.ir/Farsi release and precise publication clock, independent meeting evidence, any operational order logs or subsequent correction."
+    },
+    {
+      "id": "CF-20261031-N02",
+      "family": "SAUDI_COALITION_RIYADH_EASTERN_SOUTHERN_INTERCEPT_CLAIMS",
+      "related_prior_case": "CF-20261031-A03",
+      "actor": "Saudi coalition spokesman Major General Turki al-Malki",
+      "statement_dates": "Friday 2026-10-30 and Saturday 2026-10-31; exact official X post IDs and local clocks pending",
+      "exact_reported_language": "Saturday coalition reports: hostile drone intercepted/destroyed over Riyadh Region, fragments fell without injuries; separate Eastern Region and Houthi-attributed Southern Region drone interceptions. Friday coalition reported Riyadh drone and southern missile.",
+      "proposition_decomposition": [
+        "The coalition published distinct Friday and Saturday reports (source-clock distinction)",
+        "A Saturday hostile drone was physically intercepted over Riyadh Region and no injuries occurred",
+        "Eastern and Southern Region drones were separately intercepted Saturday",
+        "The Saturday Riyadh drone was launched by Houthis (NOT established by the specific Riyadh statement)"
+      ],
+      "support": "Saturday Al Jazeera Arabic and Roya quote/embedded coalition X wording for Riyadh and explicitly note no launcher identified; SPA/WAS-derived Sobranews reports three Saturday coalition bulletins after midnight, and Friday AFP/Times of Israel and Arab News separately report Friday Riyadh interception.",
+      "contrary_or_limits": "The Saturday and Friday official public statements appear separately dated, resolving a carrier-day conflation but NOT proving two distinct physical Riyadh interceptions without original post IDs, radar/debris or exact occurrence times. Eastern/Southern actor-attributed BDA remains uncorroborated.",
+      "truth": "SUPPORTED_AS_DISTINCT_DATED_ATTRIBUTED_STATEMENTS; physical interception BDA and launcher UNSUBSTANTIATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE; coalition radar/launch/debris and corrections not available; no proven knowingly false statement",
+      "lineage": [
+        "al-Malki Oct31 X posts -> Roya EMBEDS/QUOTES and Al Jazeera Arabic REPORTS",
+        "Coalition Oct31 bulletins -> Saudi Press Agency/WAS -> Sobranews CARRIED_BY",
+        "Coalition Oct30 X posts -> AFP -> Times of Israel CARRIED_BY; Arab News separately reports the same Friday public account",
+        "Saturday source clocks and Friday source clocks should not be collapsed into one statement or automatically counted as distinct physical events"
+      ],
+      "repetition_vs_novel": "Saturday Riyadh statement is a dated statement distinct from Friday Riyadh carrier reports; occurrence identity unresolved. Related to prior Saudi candidate, no new accepted event or unique lie.",
+      "sources": [
+        "https://en.royanews.tv/news/75506/Saudi-led-coalition-says-intercepted-Houthi-drone-over-Riyadh",
+        "https://www.aljazeera.net/amp/news/2026/10/31/%D8%A7%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%81-%D9%8A%D8%B9%D9%84%D9%86-%D8%AA%D8%AF%D9%85%D9%8A%D8%B1-%D9%85%D8%B3%D9%8A%D8%B1%D8%A9-%D9%85%D8%B9%D8%A7%D8%AF%D9%8A%D8%A9-%D9%81%D9%8A",
+        "https://www.sobranews.com/sobra/419043/",
+        "https://www.timesofisrael.com/liveblog_entry/saudi-coalition-says-intercepted-drone-over-riyadh-region-missile-in-south/",
+        "https://www.arabnews.com/saudi-arabia/saudi-led-coalition-intercepts-houthi-drone-over-riyadh-missile-in-south-3009043",
+        "https://english.aawsat.com/gulf/5335721-coalition-downs-2-drones-fired-saudi-arabia"
+      ],
+      "missing": "Original X post URLs/IDs and timestamps, independent radar/debris/flight track, precise Riyadh locality and whether Friday/Saturday reports refer to distinct interceptions; do not assign Saturday Riyadh launch to Houthis from regional context."
+    },
+    {
+      "id": "CF-20261031-N03",
+      "family": "ARAGHCHI_TWO_DAY_CONDITIONAL_HORMUZ_PROPOSAL",
+      "actor": "Iranian Foreign Minister Abbas Araghchi",
+      "statement_date": "2026-10-31; Iran International live carrier 13:42 UTC, original Al Jazeera interview clock not authenticated",
+      "exact_reported_language": "A proposal could permit reopening the Strait of Hormuz within two days if Iran's conditions are satisfied.",
+      "proposition_decomposition": [
+        "Iranian official described a conditional two-day implementation proposal",
+        "The United States agreed to it (NOT established)",
+        "Hormuz reopened to normal traffic in two days (future contingent forecast, NOT an accomplished fact)"
+      ],
+      "support": "AP October31 and Iran International attribute conditional remarks; Reuters reports Doha mediation and earlier seven-day plan dispute.",
+      "contrary_or_limits": "No signed agreement, US acceptance, implemented sanctions/inspection steps, or vessel traffic normalization established; seven-day and two-day statements are differing proposal sequences, not necessarily corrections.",
+      "truth": "SUPPORTED_AS_ATTRIBUTED_CONDITIONAL_PROPOSAL; actual implementation NOT_ESTABLISHED",
+      "knowledge": "NOT_ASSESSABLE for future conditional outcome; no evidence of false present-tense completion claim",
+      "lineage": [
+        "Araghchi reported interview -> Iran International REPORTS",
+        "Iranian/Qatari negotiation accounts -> AP and Reuters REPORTS; shared statements are not independent proof of agreement"
+      ],
+      "repetition_vs_novel": "Update to existing Qatar/Tehran mediation and Hormuz proposal family, not new signed accord, vessel movement, or new unique lie",
+      "sources": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "missing": "Full original interview, precise two-day sequencing, original Qatari draft, US response and verified implementation timestamps."
+    },
+    {
+      "id": "CF-20261031-N04",
+      "family": "DOHA_DIRECT_US_IRAN_TALKS_RUMOR_VERSUS_DENIAL",
+      "actors": "Al-Araby Al-Jadeed unnamed sources (prospective) versus Iranian Tasnim/Araghchi denial of current direct meeting",
+      "statement_date": "2026-10-31; Tasnim secondary live carrier 12:53 UTC; Al-Araby original publication clock not authenticated",
+      "exact_reported_language": "A US delegation may join Iranian envoys for direct Doha talks versus Iranian statements that no direct US meeting is planned.",
+      "proposition_decomposition": [
+        "Unnamed sources forecast a possible future direct meeting",
+        "Iranian officials deny that a direct meeting is currently planned",
+        "A direct US-Iran meeting actually took place (NOT established)"
+      ],
+      "support": "Reuters describes Qatari mediator contacts and Iranian envoys; Iran International carries denial and rumor.",
+      "contrary_or_limits": "A possible future meeting and a present denial are not inherently logically incompatible; mediator contact is not direct bilateral meeting.",
+      "truth": "FUTURE_POSSIBILITY_NOT_ESTABLISHED; direct meeting UNSUBSTANTIATED, not proven FALSE from denial alone",
+      "knowledge": "INSUFFICIENT_EVIDENCE; anonymous-source access and original records not established",
+      "lineage": [
+        "Al-Araby unnamed-source report -> later live-report retelling (original link/clock missing)",
+        "Tasnim/Araghchi denial -> Iran International REPORTS",
+        "Reuters mediator report is not independent corroboration of a direct meeting"
+      ],
+      "repetition_vs_novel": "Narrative branch of existing Doha mediation family, not second physical diplomatic meeting or new lie",
+      "sources": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "missing": "Original Al-Araby text, named-source provenance, original Tasnim statement, meeting roster and authenticated diplomatic minutes."
+    },
+    {
+      "id": "CF-20261031-N05",
+      "family": "JORDAN_SYRIA_FOURTEEN_CROSSERS_AND_UNSPECIFIED_CASUALTIES",
+      "actor": "Jordan Armed Forces",
+      "occurrence_date": "Friday 2026-10-30; exact hour unknown",
+      "first_reported_publication": "Reuters Saturday 2026-10-31 08:34 UTC as recorded in locker",
+      "exact_reported_language": "14 armed persons attempted to enter from Syria; Jordanian forces engaged them, with casualties among the group and others fleeing.",
+      "proposition_decomposition": [
+        "14 armed persons attempted crossing from Syria on Friday (exact accounting claim)",
+        "Some were wounded or killed (no numerical casualty breakdown asserted)",
+        "The armed group was ISIS or another specific organization (NOT supported by the statement)"
+      ],
+      "support": "Reuters attributes count and outcome to Jordan Armed Forces; The National carries related account.",
+      "contrary_or_limits": "No independent site/identity list, exact border crossing, custody/death records, or verified casualty count; Saturday publication is not Saturday occurrence.",
+      "truth": "UNSUBSTANTIATED for exact 14 and physical casualty outcomes beyond actor attribution",
+      "knowledge": "INSUFFICIENT_EVIDENCE; own-force engagement reports may exist but not produced; no correction evidence",
+      "lineage": [
+        "Jordan Armed Forces statement -> Reuters REPORTS",
+        "Reuters -> Internazionale SYNDICATES (not independent corroboration)",
+        "The National reports same institutional account, no independent casualty confirmation demonstrated"
+      ],
+      "repetition_vs_novel": "New dated border claim, not proven new canonical event or falsehood; distinguish from Oct26 Jordan strikes",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/10/31/jordan-stops-fighters-attempting-to-enter-from-syria-armed-forces-say",
+        "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+      ],
+      "missing": "Original Jordan military bulletin and timestamp, exact sector, identity and casualty list, independently verified evidence."
+    },
+    {
+      "id": "CF-20261031-N06",
+      "family": "ISRAEL_ARAB_PARTY_SEAT_COUNT_SOURCE_VARIANT",
+      "related_prior_case": "CF-20261030-11",
+      "actors": "AP October31 profile (18) versus October30 results reporting (19); these are media source count variants, not Netanyahu statements",
+      "election_date": "2026-10-27",
+      "report_dates": "2026-10-30 and 2026-10-31",
+      "exact_propositions": [
+        "October31 AP profile says Arab-led parties received 18 seats",
+        "Earlier reports give 19 seats in 53/48/19 split",
+        "Israel's Central Elections Committee had published legally final results by October31 (NOT supported; official calendar sets November4 publication)"
+      ],
+      "support": "Government Central Elections Committee timetable specifies November4 official result publication. Media 18/19 figures refer to pre-certification counts and may differ by count revision or definitions; reason not proven.",
+      "contrary_or_limits": "No source-qualified final official roster reconciles 18/19 as of review; difference is not proof of election fraud, and does not validate Netanyahu's prior bribery allegation.",
+      "truth": "UNRESOLVED_SOURCE_VARIANT for pre-certification seat totals; official final outcome NOT_YET_PUBLISHED_AS_OF_REVIEW",
+      "knowledge": "No evidence that either reporter or Netanyahu knew a cited figure was false; his separate fraud accusation remains UNSUBSTANTIATED",
+      "lineage": [
+        "AP Oct31 profile -> media count 18",
+        "October30 results reporting -> media count 19",
+        "Official government timetable -> date of expected certification, not proof of either seat count"
+      ],
+      "repetition_vs_novel": "Source numerical discrepancy within existing election family; no new fraud incident, no unique lie",
+      "sources": [
+        "https://www.gov.il/en/pages/time--table-26",
+        "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3",
+        "https://www.washingtonpost.com/world/2026/10/30/israel-elections-netanyahu-results-eisenkot-arabs/f7aa6aee-d432-11f1-9931-2a41b76fc976_story.html",
+        "https://www.israelielections.com/2026/results/"
+      ],
+      "missing": "Official certified CEC 120-seat party roster on or after Nov4, timestamped preliminary snapshots and any explicit editorial correction."
+    },
+    {
+      "id": "CF-20261031-N07",
+      "family": "HORMUZ_OCTOBER_THIRTY_FIVE_ATTACK_AGGREGATE",
+      "actor": "Khaama Press attributing to Al Jazeera and unidentified maritime security data",
+      "statement_date": "2026-10-31 date-only",
+      "exact_reported_language": "At least 35 attacks on commercial ships in the Persian Gulf and Strait of Hormuz in October, described as record month.",
+      "proposition_decomposition": [
+        "October attack tally is at least 35 under the unidentified dataset's scope",
+        "Reuters on October23 reported 28 confirmed and reported attacks in October from Noam Raydan's Washington Institute dataset (earlier cutoff and named provider)",
+        "IMO as-of October30 reports 122 cumulative confirmed incidents and 24 seafarer deaths (different geographic/time population)"
+      ],
+      "support": "Reuters October23 explicitly identifies Raydan and 28 October attacks at that time; IMO cumulative registry is primary but not a direct comparable October count.",
+      "contrary_or_limits": "28 as of Oct23 does not falsify 35 by Oct31; 122 all-war incidents does not corroborate 35 October ship attacks. Khaama underlying 35 methodology, original Al Jazeera report, exact cutoff and incident/hull unit unavailable.",
+      "truth": "UNSUBSTANTIATED for 35 as exact source-qualified count; no affirmative FALSE finding",
+      "knowledge": "INSUFFICIENT_EVIDENCE for source awareness of discrepancies; no documented correction opportunity",
+      "lineage": [
+        "Khaama -> Al Jazeera ATTRIBUTES_TO (original report and underlying data not independently recovered)",
+        "Al Jazeera -> unnamed maritime data CLAIMED_DERIVATION only; do not assert proven provider edge",
+        "Reuters Oct23 -> Noam Raydan/Washington Institute dataset ATTRIBUTES_TO; Al-Monitor carries Reuters wire, not independent provider"
+      ],
+      "repetition_vs_novel": "New numerical carrier variant of ongoing Hormuz attack accounting, not 35 new canonical events or unique lies",
+      "sources": [
+        "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+        "https://www.reuters.com/business/energy/ship-attacks-strait-hormuz-hit-record-high-october-2026-10-23/",
+        "https://www.al-monitor.com/originals/2026/10/ship-attacks-strait-hormuz-hit-record-high-october",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "missing": "Original Al Jazeera report, dataset provider/methodology, UTC cutoff, unique IMO hull/event reconciliation, later corrections."
+    }
+  ],
+  "related_no_new_verdict": {
+    "issue_312": "Naqdi Oct18 GBU-57 debris/technology, Sept21 unnamed strategic weapons and operational laser assertions have no new primary speech, recovered component or deployment evidence in noon locker; do not relabel or manufacture capability.",
+    "prior_claims": "Oct29-30 tanker 3-to-4 count, USV/MQM-170, Taiz access denial, Hezbollah Oct15 explosives intended use, Trump Oct30 forecast and Netanyahu election-theft accusation remain under prior referrals. This addendum does not duplicate or promote those propositions.",
+    "no_verified_retractions": "No authenticated same-speaker correction/retraction, knowingly false source presentation, proven source award or correction-path chronology recovered in this horizon.",
+    "speaker_knowledge": "Institutional access is a possible investigative factor, not established receipt of counterevidence; no knowing-deception finding is supported by these new sources."
+  },
+  "protected_invariants": {
+    "sealed_adjudication_records": 89,
+    "existing_expected_metrics_unique_propositions": 41,
+    "accepted_canonical_sequence": 38,
+    "accepted_event_count_change": 0,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_edits": 0,
+    "protected_lie_ledger_edits": 0,
+    "public_source_drawer_edits": 0,
+    "canonical_registration": 0,
+    "source_awards_changed": 0,
+    "formal_versioned_correction": false
+  },
+  "gates": [
+    "Recover original speaker/post IDs and local clocks, especially Friday versus Saturday coalition reports and Araghchi interview",
+    "Reconcile independent physical evidence and same-event identity before promoting military/attack outcomes",
+    "Obtain official election result and original maritime 35-count methodology; preserve distinct denominators",
+    "Adjudicate truth separately from speaker knowledge and evidence of correction opportunity",
+    "Formal source-qualified versioned Claims Forensics correction required for any protected verdict/metric change",
+    "Reconcile branch against current main; run full CI on exact final head and verify signed release state",
+    "Only after acceptance and merge verify live public bytes/hashes; no publication authorized by referral"
+  ],
+  "disposition": "APPEND_ONLY_NONCANONICAL_REFERRAL_NO_MERGE_OR_PUBLICATION"
+}

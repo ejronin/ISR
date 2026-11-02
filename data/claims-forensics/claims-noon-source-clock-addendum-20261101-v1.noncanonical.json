@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_ADDENDUM",
+  "review_version": "CF-20261101-NOON-SOURCE-CLOCK-01",
+  "review_date": "2026-11-01",
+  "owner_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION",
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "config/evidence-adjudication-reasoning.json",
+    "config/lie-ledger-governance.json",
+    "config/web-of-lies-governance.json"
+  ],
+  "prior_claims_reviews": [
+    "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+    "data/claims-forensics/claims-noon-source-clock-addendum-20261030-v1.noncanonical.json",
+    "data/claims-forensics/claims-midnight-source-clock-addendum-20261031-v1.noncanonical.json",
+    "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+    "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json"
+  ],
+  "upstream": {
+    "locker": "data/evidence-integration/rook-evidence-locker-sweep-20261101T1200ET.json",
+    "window_start": "2026-11-01T00:00:00-04:00",
+    "window_end": "2026-11-01T12:00:00-05:00",
+    "dst_elapsed_hours": 13,
+    "intake_pr": 333,
+    "intake_merged": true,
+    "intake_head_sha": "dafbc37e959e6b930ef9bd02dd506a84194e791a",
+    "intake_merge_main_sha_at_review": "be6a4ae74639f06ebe812b6c88e2ac9937590e8d",
+    "evidence_integration_review_pr": 334,
+    "evidence_integration_review_head": "50616776a66b269db812abd05625ef333a6ee99c",
+    "evidence_integration_review_state": "DRAFT_NONCANONICAL",
+    "accepted_canonical_sequence": 38,
+    "accepted_evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "prior_unconsumed_lockers": [
+      "20261030T1200ET",
+      "20261031T0000ET",
+      "20261031T1200ET",
+      "20261101T0000ET"
+    ],
+    "note": "New ROOK locker merged as append-only intake; Evidence Integration review is not Gate3 ACCEPTED. No retroactive sweeps or automatic event increments."
+  },
+  "methodology": "Each candidate distinguishes original actor words from reporter paraphrase and separately tests the atomic factual and speaker-knowledge propositions. Reported official statements establish a statement, not independently verified effects. Different media carriers do not equal independent corroboration. WOL edges are sourced proposed lineage relationships only; no WOL-native verdict, award or behavior metric is granted or denied. UNSUBSTANTIATED is not FALSE; FALSE is not automatically knowing deception. Later post-horizon evidence is flagged with its actual later time.",
+  "candidates": [
+    {
+      "id": "CF-20261101-N01",
+      "upstream_claim_id": "ROOK-20261101-NOON-QATAR-ATTACK-ATTRIBUTION",
+      "family": "AL_MAYEDA_20261030_UNIDENTIFIED_OBJECTS",
+      "actor": "Qatar Gas Transport Company (Nakilat)",
+      "statement_clock": "Company statement webpage labels 2026-10-30; original release hour unverified. QNA/stock-exchange relay dated 2026-11-01 09:49 +03:00 (06:49Z). Incident Friday 2026-10-30 evening, Gulf local time unspecified.",
+      "reported_wording": "LNG carrier Al Mayeda was hit by unidentified objects; no crew injured or environmental impact; vessel safe and operational, impact under assessment.",
+      "propositions": [
+        "Company reported an Oct30 vessel impact involving unidentified objects (SUPPORTED as original company statement)",
+        "No injuries, pollution, or loss of operation (company-account status, not independently surveyed)",
+        "Iran/Houthis attacked the vessel, it was struck at Hormuz, or it was disabled (NOT CLAIMED by company; no attributable basis)"
+      ],
+      "truth": "SUPPORTED_AS_PRIMARY_COMPANY_REPORT; independent incident mechanism/attribution UNSUBSTANTIATED",
+      "knowledge": "NOT_ASSESSABLE for alleged perpetrator; no false company proposition established",
+      "repetition": "First source statement date differs from Nov1 QNA relay; same underlying Oct30 vessel incident, not a new Nov1 strike and not automatically the Oct30 Lavan warning.",
+      "edges": [
+        [
+          "Nakilat company statement",
+          "Nakilat Oct30 webpage",
+          "ORIGINAL_PUBLICATION_DATE_LABEL"
+        ],
+        [
+          "Nakilat statement/stock-exchange announcement",
+          "QNA via The Peninsula Nov1",
+          "ATTRIBUTED_RELAY"
+        ],
+        [
+          "Nakilat statement",
+          "Al Jazeera Nov1",
+          "AMPLIFICATION_OF_SAME_COMPANY_ACCOUNT"
+        ]
+      ],
+      "contradictions_and_corrections": "Oct30 company webpage label contradicts any assertion that first public company statement necessarily occurred Nov1; exact posting time remains unresolved. No company retraction identified. Operational status directly weighs against a claim of total loss, which Nakilat did not make.",
+      "knowledge_evidence": "Nakilat has vessel/crew contact; no contradictory log, survey, internal warning or correction record accessible.",
+      "sources": [
+        "https://nakilat.com/al-mayeda-vessel-incident-in-the-arabian-gulf/",
+        "https://thepeninsulaqatar.com/article/01/11/2026/qatar-gas-transport-company-announces-attack-on-one-of-its-vessels-in-arabian-gulf",
+        "https://www.aljazeera.com/news/2026/11/1/qatar-lng-carrier-struck-by-unidentified-objects-in-gulf"
+      ],
+      "needed": "Vessel IMO number, log/AIS, damage survey, original company/stock-exchange posting timestamp, UKMTO case identity, incident objects and perpetrator."
+    },
+    {
+      "id": "CF-20261101-N02",
+      "upstream_claim_id": "ROOK-20261101-NOON-COALITION-BDA",
+      "family": "SAUDI_COALITION_YEMEN_STRIKES_BDA",
+      "actor": "Coalition spokesman Major General Turki al-Malki",
+      "statement_clock": "2026-11-01 original Saudi Press Agency N2715448, hour not authenticated; operation described as Sunday morning in Yemen.",
+      "reported_wording": "Coalition carried out a precision military operation this morning to neutralize vital resources used by the Houthi militia to support missile/UAV attacks.",
+      "propositions": [
+        "Coalition officially asserted a Sunday morning operation (SUPPORTED as actor statement)",
+        "Operation was precision-targeted and neutralized specific vital resources (UNSUBSTANTIATED effect/BDA)",
+        "Houthi assets were used for the specified attacks (specific facility/weapon links UNSUBSTANTIATED)"
+      ],
+      "truth": "SUPPORTED_AS_OFFICIAL_OPERATION_ANNOUNCEMENT; neutralization and targeting basis UNSUBSTANTIATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE; coalition likely has own-force tasking and BDA access but those records/imagery are not authenticated",
+      "repetition": "Distinct Nov1 operation announcement within continuing coalition strike family, not proof of a second occurrence of the Oct26 operation and not a new unique lie.",
+      "edges": [
+        [
+          "al-Malki/Coalition",
+          "SPA N2715448",
+          "ORIGINAL_OFFICIAL_STATEMENT"
+        ],
+        [
+          "SPA statement",
+          "Gulf News Nov1",
+          "REPORTS_SAME_ACTOR"
+        ],
+        [
+          "Coalition-released footage",
+          "Gulf News later report",
+          "ACTOR_SUPPLIED_VISUAL_AMPLIFICATION_NOT_INDEPENDENT_BDA"
+        ]
+      ],
+      "contradictions_and_corrections": "No independently geolocated imagery or damage inspection; do not treat a Houthi contrary report as automatically disproving coalition BDA. No authenticated correction in reviewed window.",
+      "knowledge_evidence": "Operational command role suggests access, but no targeting log, munition footage metadata, post-strike imagery or known false BDA was recovered.",
+      "sources": [
+        "https://www.spa.gov.sa/N2715448",
+        "https://gulfnews.com/world/gulf/saudi/saudi-led-coalition-launches-military-operation-targeting-houthi-resources-1.500731798",
+        "https://gulfnews.com/world/gulf/saudi/saudi-coalition-releases-footage-of-military-strikes-on-houthi-sites-in-yemen-1.500731901"
+      ],
+      "needed": "Original announcement timestamp, coordinates, target identities, authenticated video/strike logs, independent before-after BDA, casualty documentation and correction history."
+    },
+    {
+      "id": "CF-20261101-N03",
+      "upstream_claim_id": "ROOK-20261101-NOON-GAZA-POLICE-MILITANTS",
+      "family": "GAZA_20261101_KHAN_YOUNIS_TARGET_CLASSIFICATION",
+      "actor": "Gaza Interior Ministry versus Israel Defense Forces; Reuters carries both",
+      "statement_clock": "Reuters 2026-11-01 12:26Z (07:26 EST) reporting Sunday morning; original ministry/IDF statement minutes not recovered.",
+      "reported_wording": "Gaza ministry said five police officers were killed in western Khan Younis; IDF said it struck several militants there.",
+      "propositions": [
+        "Five people killed at western Khan Younis and three separately at Gaza City (Reuters reports two distinct incidents, not one eight-person strike)",
+        "Five killed were police officers (ministry attribution; identity independently unverified)",
+        "IDF targets were militants (IDF attribution; combatant status independently unverified)",
+        "Gaza City strike was the same IDF claim (NOT asserted by IDF, which had no immediate comment)"
+      ],
+      "truth": "SUPPORTED_AS_CONFLICTING_ATTRIBUTED_STATEMENTS; individual police/militant status UNSUBSTANTIATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE for both actors; casualty rolls, unit assignments, targeting intelligence and speaker access missing",
+      "repetition": "New Nov1 Khan Younis incident, separate from Gaza City three and unrelated earlier Khan Younis incidents; one Reuters wire repeated by syndicators is not corroboration.",
+      "edges": [
+        [
+          "Gaza Interior Ministry",
+          "Reuters Nov1",
+          "ATTRIBUTED_CLAIM"
+        ],
+        [
+          "IDF",
+          "Reuters Nov1",
+          "ATTRIBUTED_COUNTERCLAIM"
+        ],
+        [
+          "Reuters Nov1",
+          "Investing.com Nov1",
+          "WIRE_SYNDICATION_NOT_INDEPENDENT_SOURCE"
+        ]
+      ],
+      "contradictions_and_corrections": "Police and militant status need not be mutually exclusive without person-level role definitions; competing descriptions are not affirmative falsity proof. No verified correction/retraction.",
+      "knowledge_evidence": "Both organizations potentially hold identity/target files, none obtained. Do not impute institutional knowledge to a specific spokesman.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/",
+        "https://www.investing.com/news/world-news/israeli-strikes-kill-eight-people-in-gaza--medics-say-4989738"
+      ],
+      "needed": "Names and identity records of five, target intelligence, post-strike evidence, original IDF and ministry releases, Gaza City independent investigation."
+    },
+    {
+      "id": "CF-20261101-N04",
+      "upstream_claim_id": "ROOK-20261101-NOON-DAMMAM-IRNA-FIRE",
+      "family": "IRNA_DAMMAM_20261101_YEMENI_STRIKE_FIRE",
+      "actor": "IRNA English X account (state news agency), not authenticated Houthi operational claimant",
+      "statement_clock": "2026-11-01 IRNA X post as embedded in Express Tribune Nov1; original post ID visible via linked embed but original precise UTC minute not independently recovered.",
+      "reported_wording": "A Yemeni strike hit an industrial complex in Dammam, eastern Saudi Arabia, sparking a large fire at the facility.",
+      "propositions": [
+        "Industrial complex in Dammam experienced a large fire Sunday (UNSUBSTANTIATED independent facility identity/incident)",
+        "Fire was caused by a Yemeni strike (UNSUBSTANTIATED mechanism and attribution)",
+        "Image/video depicts the named place and time (UNAUTHENTICATED media provenance)"
+      ],
+      "truth": "UNSUBSTANTIATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE; no verified IRNA sourcing, geolocation, internal editorial or Houthi command knowledge",
+      "repetition": "Potential new Oct/Nov attack assertion, not an independently established new physical occurrence and not a duplicate of Oct13 Dhahran Aramco or Oct27 Ras Tanura claims.",
+      "edges": [
+        [
+          "IRNA English X post",
+          "Express Tribune Nov1",
+          "QUOTED_AND_EMBEDDED"
+        ],
+        [
+          "IRNA English X post",
+          "ABC News Pakistan Nov1",
+          "SAME_POST_REPUBLICATION"
+        ],
+        [
+          "IRNA claim/Mehr echo",
+          "Thursday Times Nov1",
+          "RELAY_NOT_INDEPENDENT_GEOLOCATION"
+        ]
+      ],
+      "contradictions_and_corrections": "No affirmative physical contradiction found; lack of Saudi confirmation is not proof of no fire. Earlier Saudi fires concern different sites/dates and cannot falsify or verify this claim. No verified retraction.",
+      "knowledge_evidence": "IRNA may possess footage but provenance and firsthand reporting not demonstrated; no proof that a named Iranian official originated or knowingly falsified the assertion.",
+      "sources": [
+        "https://tribune.com.pk/story/2638101/strike-at-industrial-complex-in-saudi-arabias-dammam-causes-huge-fire-iranian-state-media",
+        "https://thursdaytimes.com/2026/11/01/saudi/dammam-industrial-complex-fire-reported-yemeni-strike-saudi-arabia/"
+      ],
+      "needed": "Original X ID/timestamp, reverse provenance and geolocation of media, named industrial operator and Saudi emergency report, independent imagery and Houthi primary claim."
+    },
+    {
+      "id": "CF-20261101-N05",
+      "upstream_claim_id": "ROOK-20261101-NOON-IRAN-DEFENSE-GEOGRAPHY",
+      "family": "IRAN_CONDITIONAL_UNRESTRICTED_RETALIATION",
+      "actor": "Iranian defense/IRGC spokespeople, exact speaker in Nov1 secondary report not independently isolated",
+      "statement_clock": "2026-11-01 date-only secondary report; original Persian statement/post hour unverified.",
+      "reported_wording": "Iran is prepared for any scenario and retaliation is not geographically limited; a future war may be longer.",
+      "propositions": [
+        "Iranian officials described deterrent readiness and possible wider retaliation (SUPPORTED as attributed rhetoric)",
+        "Iran has already executed unrestricted-range strikes or expanded operational targets (NOT asserted as completed by cited rhetoric)",
+        "Iran possesses particular newly deployed laser/MOP technology (NOT established by these remarks)"
+      ],
+      "truth": "SUPPORTED_AS_ATTRIBUTED_CONDITIONAL_POSTURE; operational capability UNSUBSTANTIATED",
+      "knowledge": "NOT_ASSESSABLE for prospective warning; no falsified present-tense deployment proposition",
+      "repetition": "Repetition/mutation of Oct31 Mojtaba Khamenei conditional directive CF-20261031-N01, not a new strike or new weapons verification; refer technology claims to Issue #312.",
+      "edges": [
+        [
+          "Iranian military official statements",
+          "Express Tribune Nov1",
+          "SECONDARY_REPORT"
+        ],
+        [
+          "Khamenei office Oct31",
+          "Iran International Oct31/Nov1 live",
+          "CARRIED_EARLIER_CONDITIONAL_POSTURE"
+        ]
+      ],
+      "contradictions_and_corrections": "No authenticated operational order or deployment record; a threat's nonexecution by review time is not a false statement. No correction.",
+      "knowledge_evidence": "No source for access to new capabilities, operational range or decision to strike.",
+      "sources": [
+        "https://tribune.com.pk/story/2638074/irgc-commander-says-military-fully-prepared-for-any-scenario-enemy-may-devise",
+        "https://www.iranintl.com/en/liveblog/202610312594"
+      ],
+      "needed": "Original Persian release, speaker identity and exact time, explicit present-tense claims separated from future conditional rhetoric, evidence of execution if alleged."
+    },
+    {
+      "id": "CF-20261101-N06",
+      "upstream_claim_id": "ROOK-20261101-NOON-SAUDI-MISSILE-DRONE",
+      "family": "SAUDI_COALITION_INTERCEPT_ACCOUNTING",
+      "actor": "Major General Turki al-Malki for Saudi-led coalition",
+      "statement_clock": "2026-11-01 SPA N2715553 ballistic missile (publication hour unverified) and N2715558 UAV 19:05 Saudi/16:05Z (11:05 EST); compare Oct31 SPA N2714429 Southern UAV 04:14 Saudi/01:14Z.",
+      "reported_wording": "Air defenses intercepted and destroyed a Houthi-launched ballistic missile toward the Southern Region; a separate SPA bulletin says a Houthi-launched UAV toward the Southern Region was intercepted and destroyed.",
+      "propositions": [
+        "Two separate dated Nov1 official statement documents exist (SUPPORTED by SPA)",
+        "Two different physical weapons were intercepted/destroyed (UNSUBSTANTIATED without independent debris/radar)",
+        "Houthis launched each (Saudi official attribution, independently unverified)",
+        "These are different from the Oct31 Southern UAV and Oct29 Eastern missile occurrences (NOT yet established)"
+      ],
+      "truth": "SUPPORTED_AS_TWO_DISTINCT_OFFICIAL_STATEMENTS; physical BDA/launch attribution UNSUBSTANTIATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE; coalition own-force records likely accessible but original radar/debris/flight tracks unavailable",
+      "repetition": "Two Nov1 statement instances, distinct weapon types, within existing Saudi missile/drone chain; do not create two unique lies or automatically add two incidents.",
+      "edges": [
+        [
+          "al-Malki",
+          "SPA N2715553",
+          "ORIGINAL_OFFICIAL_BALLISTIC_CLAIM"
+        ],
+        [
+          "al-Malki",
+          "SPA N2715558",
+          "ORIGINAL_OFFICIAL_UAV_CLAIM"
+        ],
+        [
+          "SPA Nov1",
+          "Iran International/Khalij Times live",
+          "CARRIED_SAME_ACTOR_ACCOUNTS"
+        ],
+        [
+          "SPA Oct31 N2714429",
+          "SPA Nov1 N2715558",
+          "POSSIBLE_OCCURRENCE_OVERLAP_UNPROVEN_NOT_A_REPETITION_VERDICT"
+        ]
+      ],
+      "contradictions_and_corrections": "Original bulletins establish distinct publication dates, not distinct strike dates. No independent contradictory physical evidence or correction established.",
+      "knowledge_evidence": "No signed launch/intercept log, BDA, geolocation, radar trace or authenticated correction chronology.",
+      "sources": [
+        "https://www.spa.gov.sa/en/N2715553",
+        "https://www.spa.gov.sa/en/N2715558",
+        "https://www.spa.gov.sa/fr/N2714429",
+        "https://www.spa.gov.sa/en/N2713108"
+      ],
+      "needed": "Original missile bulletin minute, launch/intercept time, geolocation, radar/debris, Houthi claims/denials, cross-check with Oct29/31 official case numbers."
+    },
+    {
+      "id": "CF-20261101-N07",
+      "upstream_claim_id": "ROOK-20261101-NOON-IRAN-UK-TERROR-LABEL",
+      "family": "IRAN_UK_DESIGNATION_AND_PARTICIPATION_ALLEGATION",
+      "actor": "Iran Foreign Ministry (state-run IRNA/Anadolu carriers)",
+      "statement_clock": "2026-11-01 official ministry statement reported by IRNA/Anadolu; effective date Nov1; original signed document minute unverified.",
+      "reported_wording": "Iran designated the Royal Navy and RAF terrorist organizations and MI6 a hostile group, citing UK action against IRGC and alleging UK logistical/basing participation in the US-Israel war.",
+      "propositions": [
+        "Iran announced a unilateral designation of named UK entities effective Nov1 (SUPPORTED as official decision report, not internationally binding finding)",
+        "UK provided military/logistical facilities to the war as Iran alleges (UNSUBSTANTIATED in the reviewed claim packet)",
+        "The designations prove Royal Navy/RAF committed terrorist acts (DOES_NOT_FOLLOW from a unilateral legal/political label)"
+      ],
+      "truth": "SUPPORTED_AS_REPORTED_UNILATERAL_DESIGNATION; underlying UK participation allegations UNSUBSTANTIATED",
+      "knowledge": "INSUFFICIENT_EVIDENCE on asserted UK actions; original ministry intelligence, legal finding and contrary official records not available",
+      "repetition": "New Nov1 Iranian policy/label instance, not a new kinetic attack, new proved UK conduct or a WOL knowing-deception incident.",
+      "edges": [
+        [
+          "Iran Foreign Ministry",
+          "IRNA Nov1",
+          "STATE_AGENCY_CARRIER"
+        ],
+        [
+          "Iran Foreign Ministry via IRNA",
+          "Anadolu Nov1",
+          "REPORTS_SAME_MINISTRY_ACTION"
+        ],
+        [
+          "Iran Foreign Ministry via IRNA",
+          "Dawn Nov1",
+          "REPORTS_SAME_MINISTRY_ACTION"
+        ]
+      ],
+      "contradictions_and_corrections": "Iran's claim that UK classified IRGC under a 2026 statute requires comparison with original UK legal text and scope; designation and proof of alleged UK battlefield participation are separate propositions. No formal correction.",
+      "knowledge_evidence": "Ministry might possess diplomatic and intelligence records but none reviewed; designation motive/reciprocity alone is not evidence of knowing falsity.",
+      "sources": [
+        "https://m.aa.com.tr/en/middle-east/iran-designates-british-navy-air-force-as-terrorist-organizations/4107764",
+        "https://www.dawn.com/news/2041372/iran-designates-british-navy-air-force-as-terrorist-organisations",
+        "https://www.iranintl.com/en/202611018474"
+      ],
+      "needed": "Signed Farsi ministry decree and publication time, UK statutory designation text/effective date, specific UK base-use records and official corrections."
+    },
+    {
+      "id": "CF-20261101-N08",
+      "upstream_claim_id": "ROOK-20261101-NOON-ISRAEL-VOTE-ALLEGATIONS",
+      "family": "ISRAEL_2026_ELECTION_STOLEN_VOTE_NARRATIVE",
+      "actor": "Likud/Netanyahu broad allegation; police, Shin Bet, election authorities and court as separate sources",
+      "statement_clock": "Original broad stolen-election allegations Oct28-29; Nov1 court/police development reported by AP after the 12:00 EST ROOK horizon (AP syndication timestamp Nov1 11:36 CT = 12:36 EST), so NOT part of the noon locker.",
+      "reported_wording": "Likud alleged Arab-led parties 'stole' the Oct27 election through bribery and foreign influence; Nov1 court found insufficient evidence for detention restrictions in an individual bribery case and most suspects were released.",
+      "propositions": [
+        "Individual voter bribery suspicions are under investigation (SUPPORTED as investigation, not conviction)",
+        "Arab-led parties stole the national election/systemically compromised results (UNSUBSTANTIATED; election officials/police state no supporting basis)",
+        "Nov1 judicial release exonerates all allegations (NOT established; individual procedural rulings are narrower)"
+      ],
+      "truth": "UNSUBSTANTIATED_BROAD_STOLEN_ELECTION_CLAIM_WITH_AFFIRMATIVE_OFFICIAL_COUNTEREVIDENCE; no formal FALSE promotion pending exact primary record",
+      "knowledge": "INSUFFICIENT_EVIDENCE for Netanyahu/Likud knowing falsity; timing of Shin Bet/CEC briefing, police records, original party evidence and corrections incomplete",
+      "repetition": "Nov1 vote-buying case update and further retellings belong to existing CF-20261030-11 and CF-20261101-M06 election family; no additional unique proposition.",
+      "edges": [
+        [
+          "Likud/Netanyahu Oct28-29",
+          "Reuters/FT/Times of Israel",
+          "ORIGINAL_ALLEGATION_REPORTED"
+        ],
+        [
+          "Shin Bet and election commission Oct29",
+          "Times of Israel Oct29",
+          "DOCUMENTARY_LIMITED_PROBE_COUNTEREVIDENCE"
+        ],
+        [
+          "Nov1 court hearing and police releases",
+          "AP Nov1",
+          "SUBSEQUENT_PROCEDURAL_COUNTEREVIDENCE_AFTER_ROOK_HORIZON"
+        ]
+      ],
+      "contradictions_and_corrections": "Election officials and police say broad theft is unsubstantiated and Shin Bet probe limited; Nov1 judge found inadequate evidence for restrictions in an individual case. These materially weaken the sweeping claim, but do not establish that no isolated offenses occurred or that the speaker knew the sweeping allegation was false. Certification scheduled Nov4; no authenticated Likud retraction.",
+      "knowledge_evidence": "Party's claim of many witness accounts and authorities' public rebuttals create a correction opportunity; exact speaker exposure to contrary files and post-rebuttal repetition remain unproven.",
+      "sources": [
+        "https://www.timesofisrael.com/election-committee-director-rejects-claims-of-widespread-fraud-as-baseless/",
+        "https://apnews.com/article/a3df86ebfbe5c64306f21f33e69208e0",
+        "https://www.reuters.com/world/middle-east/netanyahu-risk-losing-power-steps-up-attacks-israels-arab-parties-2026-10-29/",
+        "https://www.jpost.com/israel-election-2026/article-913293"
+      ],
+      "needed": "Original Likud/X allegations and timestamps, official police case docket and court order, intelligence briefing/correction delivery to claimant, CEC Nov4 certification and any retraction."
+    }
+  ],
+  "related_no_new_verdict": [
+    {
+      "family": "IRAN_NEW_WEAPONS_MOP_LASER",
+      "issue": 312,
+      "decision": "No new operational MOP/laser proof; conditional military posture and unnamed new weapons do not establish a weapon deployment."
+    },
+    {
+      "family": "ISRAEL_2026_ELECTION_STOLEN_VOTE_NARRATIVE",
+      "issue": 320,
+      "decision": "Nov1 court development is subsequent evidence in the existing claim family, not a new lie count."
+    }
+  ],
+  "protected_invariants": {
+    "accepted_canonical_sequence": 38,
+    "sealed_proposition_denominator": 89,
+    "existing_unique_propositions": 41,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_lie_ledger_changes": 0,
+    "canonical_changes": 0,
+    "public_source_drawer_changes": 0,
+    "unique_proposition_denominator_delta": 0
+  },
+  "gates": {
+    "candidate_source_review": "SOURCE_LINKED_NONCANONICAL",
+    "evidence_integration": "DRAFT_UNACCEPTED_PR334",
+    "formal_claim_acceptance": "NOT_GRANTED",
+    "exact_head_full_ci": "REQUIRED_ON_THIS_COMMIT",
+    "branch_reconciliation": "REQUIRED_BEFORE_MERGE",
+    "release_integrity": "REQUIRED",
+    "live_byte_attestation": "REQUIRED_AFTER_QUALIFIED_MERGE",
+    "publish": "PROHIBITED_UNTIL_ALL_GATES_PASS"
+  },
+  "disposition": "Eight upstream claim families referred with distinct atomic propositions and sourced proposed lineage; no FALSE/knowing-lie verdict, protected data mutation, merge or public release."
+}

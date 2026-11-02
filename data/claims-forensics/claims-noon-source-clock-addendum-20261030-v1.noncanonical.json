@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_ADDENDUM",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION",
+  "review_date": "2026-10-30",
+  "owner_lane": "CLAIMS_FORENSICS",
+  "prior_review": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+  "source_locker": "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json",
+  "source_locker_main_sha": "159479f5fc9418a47b3273ff40fec14e887fbdad",
+  "source_review": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json (draft PR #326; not accepted canonical evidence)",
+  "accepted_baseline": {
+    "canonical_sequence": 38,
+    "cutoff": "2026-10-30T08:38:30-04:00",
+    "sealed_adjudication_records": 89,
+    "expected_unique_propositions": 41
+  },
+  "governance": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+  ],
+  "adjudication_standard": "Test exact communicated propositions and independent counterevidence; absence of corroboration is UNSUBSTANTIATED, not FALSE. FALSE and knowing deception are separately established. Later publication of earlier allegations is not a novel statement without an original source clock. No source behavior or propagation edge promoted without documented lineage.",
+  "candidate_addenda": [
+    {
+      "case_id": "CF-20261030-10",
+      "claim_family": "TAIZ_SIEGE_ACCESS",
+      "speaker": "Abdul-Malik Badr al-Din al-Houthi",
+      "claimed_statement_date": "2026-10-29 (prior reporting; primary Arabic speech date and original text pending)",
+      "first_reviewed_carrier": {
+        "publisher": "The Guardian",
+        "publication_time": "2026-10-30T05:00:00-04:00",
+        "url": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+      },
+      "reported_english_quote_excerpt": "The way is open for food, medicine, and humanitarian aid to enter the city",
+      "separate_propositions": [
+        "Food, medicine and humanitarian aid access to Taiz is open",
+        "Taiz is not under siege; reported English continuation invites verification"
+      ],
+      "independent_prior_documentary_contradiction": {
+        "publisher": "United Nations World Food Programme",
+        "published": "2026-10-14",
+        "url": "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz",
+        "finding": "WFP and partners could not access more than 600,000 Taiz residents dependent on aid; 800,000 beyond reach is wider Taiz-plus-West-Coast total, not Taiz alone. WFP still served reachable areas."
+      },
+      "additional_oct30_contradiction": {
+        "publisher": "The Guardian",
+        "published": "2026-10-30T05:00:00-04:00",
+        "speaker": "Taiz governor Nabil Shamsan",
+        "finding": "Governor estimated minimum 35,000 cubic meters/day water needed and no more than 1,000 entering, with water shipments blocked at Houthi roadblocks; 120 health centres suspended. These are attributed governor estimates, not independently audited totals. Human Rights Watch separately describes access restrictions.",
+        "url": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+      },
+      "truth": "MATERIALLY_CONTRADICTED_BROAD_DENIAL_PENDING_ORIGINAL_ARABIC_AND_ROUTE_SCOPE; no final FALSE promotion",
+      "knowledge": "INSUFFICIENT_EVIDENCE; October 14 public WFP notice is a documented opportunity for correction, not proof of speaker receipt/knowledge",
+      "repetition_vs_novel": "Same October 29 al-Houthi access denial already referred in prior packet CF-20261030-10; Guardian October 30 is a later quotation and contrary evidence, not a new lie or second unique proposition",
+      "verified_source_relationships": [
+        {
+          "from": "al-Houthi reported statement",
+          "to": "Guardian Oct30 report",
+          "relationship": "REPORTS/QUOTES",
+          "publication_time": "2026-10-30T05:00:00-04:00",
+          "source_url": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+        },
+        {
+          "from": "WFP Oct14 access report",
+          "to": "al-Houthi Oct29 categorical access claim",
+          "relationship": "INDEPENDENT_CONTRARY_EVIDENCE_NOT_AMPLIFICATION",
+          "source_url": "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz"
+        }
+      ],
+      "next_evidence": "Original dated Al-Masirah Arabic transcript/video; precise road-by-road conditions and Houthi access orders; contemporaneous delivery records; evidence of leader knowledge and any subsequent retraction."
+    },
+    {
+      "case_id": "CF-20261030-02",
+      "claim_family": "HORMUZ_THREE_TANKER_MINE_ASSERTION",
+      "speaker": "IRGC Navy public relations office",
+      "source_clock_discrepancy": [
+        {
+          "publisher": "CBS News",
+          "post_time": "2026-10-29T06:19:00-04:00",
+          "assertion": "Thursday October 29 three-tanker mine/explosion claim, alleged events in preceding 24 hours",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/#post-update-4c06d11c"
+        },
+        {
+          "publisher": "Reuters",
+          "publication_date": "2026-10-30",
+          "assertion": "IRGC Navy said Friday October 30 three tankers caught fire and exploded; one reportedly carried two million barrels and hit a mine",
+          "url": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+        }
+      ],
+      "truth": "UNSUBSTANTIATED exact three hulls, explosions, sea-mine mechanism, and two-million-barrel cargo; Reuters explicitly unable to verify",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "repetition_vs_novel": "Potential October 29 re-release/repetition or October 30 new statement; do not count six vessels or assert identical statement until original Persian timestamps and IMO list reconcile.",
+      "separate_incident": "Louise 1 October 29 attached limpet devices is an independently reported single hull; do not equate with a claimed sea-mine casualty absent matched IMO and mechanism.",
+      "source_relationships": "CBS and Reuters independently report IRGC-origin allegations; independent reporting of an assertion is not independent verification of the asserted hull losses.",
+      "next_evidence": "Original Oct29 and Oct30 Persian IRGC bulletins with timestamps, IMO/AIS hulls, UKMTO incident numbers, cargo manifests, physical damage and mine forensics, subsequent official corrections."
+    },
+    {
+      "case_id": "CF-20261030-11",
+      "claim_family": "ISRAEL_ELECTION_THEFT_ALLEGATION",
+      "speaker": "Benjamin Netanyahu / Likud",
+      "reported_statement_date": "2026-10-28 to 2026-10-29 (original post/video pending)",
+      "reported_quote_excerpt": "stolen by Arab parties",
+      "carrier": {
+        "publisher": "CBS News",
+        "published": "2026-10-29T11:38:00-04:00",
+        "url": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/#post-update-4c379d1a"
+      },
+      "counterclaim": {
+        "speaker": "Qatar Foreign Ministry spokesman Majid al-Ansari",
+        "published": "2026-10-29",
+        "statement": "Denied Qatar interference and financing of Israeli political efforts",
+        "source_url": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/#post-update-4c379d1a"
+      },
+      "new_source": {
+        "publisher": "AP",
+        "published": "2026-10-30",
+        "url": "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674",
+        "finding": "Reported 53 Netanyahu-aligned, 48 opposition, 19 Arab-led seats, 61-seat majority threshold; uncertified count and election inquiry are not proof of theft or specific foreign interference."
+      },
+      "truth": "UNSUBSTANTIATED alleged election theft and named-party culpability; a counterparty denial alone does not establish FALSE",
+      "knowledge": "INSUFFICIENT_EVIDENCE; require original accusation, election committee records and correction timeline",
+      "repetition_vs_novel": "Same prior CF-20261030-11 election claim family; October 30 count is new context, not a new Netanyahu claim.",
+      "next_evidence": "Original Netanyahu/Likud post and precise assertion, certified results, electoral authority/Shin Bet case findings, any later correction or substantiation."
+    }
+  ],
+  "deduplication_checks": [
+    {
+      "claim_family": "IRGC_USV_DESTRUCTION",
+      "prior_case": "CF-20261030-03",
+      "result": "Oct30 noon locker repeats already accepted seq37 unverified actor claim; no independent USV loss or new proposition"
+    },
+    {
+      "claim_family": "SAUDI_HOUTHI_MECCA_DRONE",
+      "prior_case": "CF-20261030-04",
+      "result": "Coalition interception and Saree denial already accepted seq37; source recirculation not second launch, independent track/intent absent"
+    },
+    {
+      "claim_family": "TAIZ_CASUALTIES",
+      "prior_case": "CF-20261030-05",
+      "result": "Governor Aug-Oct20 64 deaths not added to Oct29 al-Barah preliminary 12/13 incident; distinct denominators"
+    },
+    {
+      "claim_family": "MOP_AND_LASER",
+      "prior_issue": 312,
+      "result": "No new original Naqdi speech, recovered GBU-57 engineering evidence, or operational laser test in noon locker; prior referral unchanged"
+    }
+  ],
+  "publication_invariants": {
+    "sealed_case_ids_unchanged": true,
+    "sealed_adjudication_record_count": 89,
+    "expected_unique_proposition_count": 41,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_mutations": 0,
+    "protected_lie_ledger_mutations": 0,
+    "public_drawer_mutations": 0,
+    "accepted_canonical_event_mutations": 0,
+    "formal_correction": false
+  },
+  "release_gate": "Draft-only source-linked addendum; exact-head CI may qualify artifact integrity but cannot substitute primary-source/knowledge adjudication, qualified acceptance, exact merge SHA or Pages live-byte attestation."
+}

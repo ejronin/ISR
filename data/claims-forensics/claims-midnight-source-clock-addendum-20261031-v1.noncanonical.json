@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_ADDENDUM",
+  "review_version": "CF-20261031-MIDNIGHT-SOURCE-CLOCK-01",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION",
+  "review_date": "2026-10-31",
+  "owner_lane": "CLAIMS_FORENSICS",
+  "prior_reviews": [
+    "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+    "data/claims-forensics/claims-noon-source-clock-addendum-20261030-v1.noncanonical.json"
+  ],
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+  ],
+  "upstream": {
+    "source_locker": "data/evidence-integration/rook-evidence-locker-sweep-20261031T0000ET.json",
+    "locker_window": "2026-10-30T12:00:00-04:00/2026-10-31T00:00:00-04:00",
+    "locker_merged_main_sha": "60c94076ddb3a5c8c1bf044259fdd17f0d1c0984",
+    "evidence_review": "draft PR #328 (not accepted canonical evidence)",
+    "previous_noon_review": "draft PR #326 (not accepted canonical evidence)",
+    "accepted_canonical_sequence_at_review": 38,
+    "accepted_canonical_cutoff": "2026-10-30T08:38:30-04:00",
+    "scope_note": "The locker is committed as upstream collection but not consumed by canonical Evidence Integration; no retroactive sweep or accepted chronology inferred."
+  },
+  "review_standard": "Preserve the ordinary exact actor proposition and its original date; source-carrier publication is not independent corroboration. UNSUBSTANTIATED is not FALSE; FALSE is not evidence of knowing deception. Only evidenced actor-to-carrier/source-to-source edges may be proposed; no protected WOL edge without formal qualification.",
+  "candidate_findings": [
+    {
+      "id": "CF-20261031-A01",
+      "family": "HORMUZ_IRGC_TANKER_MINE_TALLY",
+      "prior_case": "CF-20261030-02",
+      "actor": "IRGC Navy",
+      "original_statement_clock": "Oct 29 three-vessel allegation reported by CBS at 06:19 EDT; Oct 30 Reuters Friday four-vessel version; primary Persian original and exact updated Reuters clock not recovered",
+      "reported_propositions": [
+        "Earlier allegation: three tankers struck mines/exploded, not three independently verified hulls",
+        "Later alleged total: four tankers caught fire/exploded while on unauthorized routes",
+        "Claimed fourth tanker/supertanker carried more than 2 million barrels and hit a mine"
+      ],
+      "publication_clock_caveat": "Reuters article's initial 2026-10-30T12:00:00Z page timestamp is 08:00 EDT, BEFORE current noon-to-midnight locker window; four-vessel update's first-public timestamp not authenticated. No claim that the fourth assertion originated during this window.",
+      "source_links": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/#post-update-4c06d11c",
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "https://www.al-monitor.com/originals/2026/10/irans-irgc-navy-says-four-tankers-catch-fire-strait-hormuz",
+        "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/"
+      ],
+      "verified_relationships": [
+        "IRGC assertion -> Reuters REPORTS/ATTRIBUTES_TO (not independent hull confirmation)",
+        "Reuters wire -> Al-Monitor CARRIED_BY / SYNDICATES (not independent corroboration)",
+        "Oct 29 three-tanker allegation -> Oct 30 four-tanker version POSSIBLE_COUNT_MUTATION, pending original Persian bulletin and release clock"
+      ],
+      "independent_counterevidence": "UKMTO reported projectile strike(s) but did not attribute to Iran or match an IMO hull to IRGC's four. Oct 29 Louise 1 attached limpet devices are a different verified mechanism; do not equate them with sea-mine claim. Reuters explicitly could not verify four tankers.",
+      "truth": "UNSUBSTANTIATED for exact four-vessel total, mine causation, cargo and explosion outcomes; no affirmative FALSE adjudication",
+      "knowledge": "INSUFFICIENT_EVIDENCE: no original IRGC vessel list, damage ledger, operational reporting or evidence of receipt of corrections",
+      "repetition_vs_novel": "Existing CF-20261030-02 family, possible numeric mutation from three to four; zero new unique-proposition/lie count pending hull identity and source clock",
+      "missing": "Original Oct29/30 IRGC Persian bulletins and timestamps; four IMO/flag/AIS identifiers; UKMTO 187-26/188-26 hull reconciliation; manifests and physical mine forensic evidence; actor corrections."
+    },
+    {
+      "id": "CF-20261031-A02",
+      "family": "IRAN_USV_DESTRUCTION_AND_MQM170_CAPTURE",
+      "prior_cases": [
+        "CF-20261030-03",
+        "CF-20261030-08"
+      ],
+      "actor": "IRGC Navy / Iranian state media",
+      "statement_clock": "Oct 29 MQM-170 capture claim and Oct 30 USV destruction allegation already in prior review; Reuters Oct30 article updated to carry both",
+      "separate_propositions": [
+        "A U.S. unmanned surface vessel was destroyed in the eastern Strait of Hormuz",
+        "A U.S. MQM-170 drone was downed/captured over Qeshm, allegedly by electronic warfare"
+      ],
+      "counterstatement": "CENTCOM: All U.S. military unmanned surface vessels in the Middle East are accounted for, including a squadron on Strait of Hormuz patrol (Reuters Oct30). This denies the USV-loss proposition, not independently the MQM-170 claim.",
+      "source_links": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "https://www.twz.com/news-features/lets-talk-about-the-u-s-target-drone-iran-claims-to-have-recovered-intact"
+      ],
+      "verified_relationships": [
+        "Iranian military/state media assertions -> Reuters REPORTS",
+        "CENTCOM -> Reuters QUOTED_OFFICIAL_COUNTERSTATEMENT; not proof of actor knowledge"
+      ],
+      "truth": "DISPUTED / UNSUBSTANTIATED; CENTCOM counterclaim is affirmative contrary institutional testimony, but serial/hull/accounting evidence needed for FALSE",
+      "knowledge": "INSUFFICIENT_EVIDENCE for IRGC knowledge and for any correction opportunity; do not infer from a denial alone",
+      "repetition_vs_novel": "Same two pre-existing candidate families; do not merge surface-vessel destruction with aerial target-drone capture or create a second loss",
+      "missing": "USV fleet inventory and movement logs, independent hull/serial/imagery, Iranian original release and EW chain, CENTCOM subsequent accounting/corrections."
+    },
+    {
+      "id": "CF-20261031-A03",
+      "family": "SAUDI_COALITION_EAST_SOUTH_DRONE_INTERCEPTIONS",
+      "related_prior_case": "CF-20261030-04 (Mecca/Medina disputed launch is distinct)",
+      "actor": "Saudi-led coalition",
+      "statement_clock": "Reuters article dated Oct30 2026 with Oct30 19:37Z timestamp, yet text says 'early Saturday' (Oct31 Saudi local); original coalition release clock and event occurrence unresolved",
+      "reported_propositions": [
+        "Coalition intercepted and destroyed a drone over Saudi Eastern Region",
+        "Coalition subsequently intercepted a Houthi-launched drone toward Southern Region"
+      ],
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region-2026-10-30/",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/10/31/saudi-led-coalition-says-it-destroyed-houthi-drone-over-medina-region"
+      ],
+      "verified_relationships": [
+        "Coalition claim -> Reuters REPORTS",
+        "Reuters wire -> Internazionale SYNDICATES",
+        "Earlier Houthi Friday Medina denial is not a verified contradiction of Eastern/Southern launches"
+      ],
+      "truth": "UNSUBSTANTIATED interception BDA, origin and target intent; source-clock inconsistency blocks exact-day placement",
+      "knowledge": "INSUFFICIENT_EVIDENCE; coalition radar/debris/launch data not supplied; Houthi denial scope must not be extended",
+      "repetition_vs_novel": "Potential distinct reported intercepts from Oct30 Mecca/Medina family, but no accepted event, no distinct proven impact, no public WOL incident",
+      "missing": "Original coalition release with local timestamp; radar/track and debris, target identity, Houthi original denial scope, independent witnesses."
+    },
+    {
+      "id": "CF-20261031-A04",
+      "family": "HEZBOLLAH_780KG_EXPLOSIVES_OWNERSHIP_AND_INTENT",
+      "actor": "Hassan Fadlallah, Hezbollah parliamentary bloc member",
+      "original_statement_date": "2026-10-15 (AP original, 10:51:18 UTC), NOT October 30",
+      "original_reported_words": "Explosives were 'intended exclusively for use against the Israeli occupation' in southern Lebanon; assassination allegations described as 'baseless' (AP Oct15 attribution, not authenticated primary Hezbollah transcript)",
+      "atomic_propositions": [
+        "Hezbollah owned the seized 780 kg explosives shipment (affirmative acknowledgment)",
+        "Shipment was intended exclusively for attacks on Israeli forces in southern Lebanon (contested intent claim)",
+        "Domestic political-assassination allegations were baseless (categorical denial; underlying accusation also unproved)"
+      ],
+      "documentary_record": [
+        "AP Oct12 reported 780 kg seizure, two detained, and transport instructions without established end use",
+        "AP Oct15 records Fadlallah's Hezbollah ownership admission and asserted exclusive external-use intent",
+        "AP Oct30 reports military court charges against 13 (2 detained, 11 in absentia); charges include internal security and unlawful explosives but are not findings of assassination purpose or convictions"
+      ],
+      "sources": [
+        "https://apnews.com/article/f36ef1b24e3b505136d76e4fdfdcdcb6",
+        "https://apnews.com/article/afd966f3b357d29a486eb042de9744ae",
+        "https://apnews.com/article/42fd2e524f77fe033bfb0088e2003c47"
+      ],
+      "verified_relationships": [
+        "Fadlallah Oct15 statement -> AP Oct15 REPORTS/QUOTES (speaker attribution)",
+        "AP Oct30 court report -> AP Oct15 earlier admission RETELLS as prior statement, NOT a new Oct30 Hezbollah repetition",
+        "Lebanese court charges -> intent proposition DOCUMENTARY_CONTEXT, NOT automatic CONTRADICTS or proven falsity"
+      ],
+      "truth": "OWNERSHIP_ACKNOWLEDGED_BY_CLAIMANT and consistent with court-linked seizure; intended target and categorical denial UNSUBSTANTIATED, not FALSE",
+      "knowledge": "Hezbollah's ownership admission evidences its own knowledge of ownership as of Oct15; does not establish knowledge that its claimed destination was false",
+      "repetition_vs_novel": "New candidate family relative to 13-case packet, but October30 AP is a procedural update to earlier Oct15 original statement, not new speaker repetition; no denominator promotion",
+      "missing": "Original Hezbollah/Fadlallah release; Lebanese military court order and evidence on route, receiver and intended use; any subsequent correction, admission or verified operational instructions."
+    },
+    {
+      "id": "CF-20261031-A05",
+      "family": "TRUMP_IRAN_WAR_END_SOON_FORECAST",
+      "actor": "U.S. President Donald Trump",
+      "original_statement_date": "2026-10-30; Reuters original 11:55 UTC (07:55 EDT), before current noon locker",
+      "reported_quote": "It's going to get wrapped up soon",
+      "accompanying_quote": "We need a guarantee there'll never be a nuclear weapon",
+      "source_links": [
+        "https://www.reuters.com/world/trump-iran-war-its-going-get-wrapped-up-soon-2026-10-30/",
+        "https://www.investing.com/news/commodities-news/trump-on-iran-war-its-going-to-get-wrapped-up-soon-4987341"
+      ],
+      "verified_relationships": [
+        "Trump KCMO interview -> Reuters REPORTS/QUOTES",
+        "Reuters wire -> Investing.com CARRIED_BY; not independent confirmation of future outcome"
+      ],
+      "truth": "FORWARD_PREDICTION_NOT_YET_TESTABLE; demand for nuclear guarantee is negotiating position, not claim of signed agreement or completed war",
+      "knowledge": "NOT_ASSESSABLE as knowing deception on the future prediction absent false present-tense supporting representations",
+      "repetition_vs_novel": "New dated political forecast; not a proven new lie, not an agreement, not a retroactively established outcome",
+      "missing": "Original KCMO recording/transcript and contemporaneous qualifiers; later objective agreement and war termination milestones, with observation dates."
+    }
+  ],
+  "source_behavior_and_correction_review": {
+    "verified_carrier_edges_only": "Reuters/Al-Monitor and Reuters/Internazionale share wire origin; AP Oct30 retells Oct15 Hezbollah statement. No independent corroboration, correction/retraction or source award inferred.",
+    "no_verified_same_speaker_retractions": "No original dated self-correction/retraction of the five reviewed claim families established in this evidence horizon.",
+    "no_proven_knowledge": "No source-qualified knowledge-of-falsity finding for tanker tally, USV/drone claims, Saudi interceptions, Hezbollah intended use, or Trump forecast.",
+    "documentary_contradictions": "CENTCOM contradicts IRGC USV loss, UKMTO does not corroborate IRGC tanker counts, court charges do not establish domestic-assassination purpose. These relationships do not by themselves establish knowing deception."
+  },
+  "protected_invariants": {
+    "sealed_adjudication_record_count": 89,
+    "existing_expected_metrics_unique_propositions": 41,
+    "count_classes_not_interchangeable": true,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_edits": 0,
+    "protected_lie_ledger_edits": 0,
+    "public_source_drawer_edits": 0,
+    "canonical_registration": 0,
+    "accepted_event_count_change": 0,
+    "formal_claims_forensics_correction": false
+  },
+  "acceptance_gates": [
+    "Recover and time-authenticate original actor statements and verify precise proposition identity",
+    "Reconcile evidence independently at hull, serial, radar or judicial-document level and test speaker knowledge separately",
+    "Obtain formal source-qualified Claims Forensics correction before any protected semantic or denominator change",
+    "Run full CI against exact proposed head; reconcile branch with current main and require qualified acceptance",
+    "For any public change require release integrity and live deployed byte/hash attestation after exact merge SHA"
+  ],
+  "disposition": "APPEND_ONLY_NONCANONICAL_REFERRAL_NO_MERGE_OR_PUBLICATION"
+}

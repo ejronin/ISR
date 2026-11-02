@@ -1,0 +1,460 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_ADDENDUM",
+  "review_version": "CF-20261102-NOON-SOURCE-CLOCK-01",
+  "review_date": "2026-11-02",
+  "owner_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION",
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "config/evidence-adjudication-reasoning.json"
+  ],
+  "upstream": {
+    "locker": "data/evidence-integration/rook-evidence-locker-sweep-20261102T1200ET.json",
+    "window_start": "2026-11-02T00:00:00-05:00",
+    "window_end": "2026-11-02T12:00:00-05:00",
+    "collection_time": "2026-11-02T12:00:14-05:00",
+    "intake_pr": 337,
+    "intake_merged": true,
+    "intake_merged_main_sha": "f14a0e68ef740a1e09de29826313f5925bc00304",
+    "evidence_integration_review_pr": 338,
+    "evidence_integration_review_state": "DRAFT_NONCANONICAL",
+    "selective_canonical_candidate_pr": 339,
+    "selective_canonical_candidate_status": "REVIEWED_NOT_ACCEPTED",
+    "accepted_canonical_sequence": 38,
+    "accepted_evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "completed_unconsumed_recent_lockers": 7,
+    "issue_refs": [
+      320,
+      312
+    ]
+  },
+  "methodology": "Ten source-linked actor/source claim instances from the merged noon locker, checked against noncanonical Evidence Integration #338, prior Claims addenda, contemporaneous Reuters/AP/Al Jazeera and governing doctrine. Claims are split into atomic propositions and exact source/statement clocks. A journalist verifying that an actor spoke is not independent verification of claimed effects. Proposals, corrections, estimates, strike effects and knowledge are adjudicated separately. Proposed WOL edges are referrals only, not WOL-native awards/incidents. Repetition never increments unique-lie metrics. Original Persian/Arabic and actor knowledge gaps are explicit.",
+  "candidates": [
+    {
+      "id": "CF-20261102-N01",
+      "upstream_claim_id": "ROOK-20261102-NOON-IRAN-TWO-DAY",
+      "family": "IRAN_DOHA_CONDITIONAL_HORMUZ_REOPENING",
+      "actor": "Esmaeil Baghaei (Nov 2 Reuters attribution) and Abbas Araghchi (Oct 31 Al Jazeera quote relayed Nov 2)",
+      "statement_and_publication_clock": "Reuters Nov 2 09:33Z initial article; Baghaei Monday date-only; Araghchi two-day statement quoted from Saturday Oct31; original Persian minutes not recovered",
+      "reported_wording": "Baghaei: no agreement or secure Hormuz reopening unless US blockade ends and Iranian demands are addressed; faster seven-step proposal possible. Reuters explicitly attributes the specific two-day instead-of-seven-day statement to Araghchi's Saturday Al Jazeera interview, not a direct Baghaei quote.",
+      "atomic_propositions": [
+        "Iran offered conditional faster reopening: attributed statement SUPPORTED",
+        "Baghaei personally stated the exact two-day promise: NOT ESTABLISHED by Reuters attribution",
+        "US accepted, signed or executed reopening: NOT ESTABLISHED"
+      ],
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "prior_membership": "REPEAT/MUTATION of Sep25 seven-day Araghchi proposal and Oct31/Nov1 two-day Doha family; no new completed agreement, no unique lie",
+      "proposed_source_lineage_edges": [
+        [
+          "Baghaei Nov2 press remarks",
+          "Reuters Nov2",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Araghchi Oct31 Al Jazeera interview",
+          "Reuters Nov2",
+          "QUOTES_PRIOR_SPEAKER"
+        ],
+        [
+          "Reuters Nov2",
+          "Reuters-syndicated outlets",
+          "SYNDICATES_NOT_INDEPENDENT_CORROBORATION"
+        ]
+      ],
+      "documentary_comparison": "Reuters Sep25 directly quotes Araghchi's conditional seven-day proposal; Nov2 Reuters distinguishes Baghaei's conditional terms from Araghchi's Saturday two-day timeline; Doha mediation ended without breakthrough. A draft is not a signed deal.",
+      "speaker_knowledge_evidence": "Diplomats may possess negotiating drafts but original signed text, US acceptance and delivery receipts absent; no proof of knowledge of a false implementation claim.",
+      "correction_and_repetition_review": "Source-fidelity correction needed in ROOK intake and future Claims chain: split two-day attribution from Baghaei's Nov2 remarks; do not silently rewrite earlier speaker node. No official retraction located.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+        "https://www.reuters.com/world/middle-east/irans-araqchi-says-now-up-us-accept-7-day-plan-2026-09-25/",
+        "https://www.theguardian.com/world/2026/nov/01/negotiators-braced-for-worst-over-us-iran-talks-to-reopen-strait-of-hormuz"
+      ],
+      "qualification_needed": "Original Baghaei Persian press transcript and Araghchi Oct31 Al Jazeera recording, US/Qatar/Oman signed acceptance, navigation implementation records.",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N02",
+      "upstream_claim_id": "ROOK-20261102-NOON-SAUDI-MISSILE-ATTRIBUTION",
+      "family": "SAUDI_HOUTHI_SOUTHERN_INTERCEPTION_STATEMENTS",
+      "actor": "Saudi-led coalition spokesman Turki al-Maliki (Al Jazeera attribution); Saudi Civil Defence separate alerts",
+      "statement_and_publication_clock": "Reuters original Nov2 07:22:42Z; Monday coalition statement is described as later than the all-clear; original SPA/X post minute not established",
+      "reported_wording": "Coalition claimed it 'intercepted and destroyed a ballistic missile' targeting southern Saudi Arabia; Monday alerts/all-clear for Khamis Mushait, Abha, Taif and Najran are separate civil-defence statements.",
+      "atomic_propositions": [
+        "Civil-defence warnings/all-clear were issued: reported by Reuters",
+        "One Houthi ballistic missile was launched, intercepted and destroyed: UNSUBSTANTIATED physical result and attribution",
+        "Sunday drone and Monday missile are two separately dated official statements, not automatically independently proven events"
+      ],
+      "prior_membership": "NEW MONDAY SPEAKER INSTANCE in ongoing Saudi-Houthi interception family; do not duplicate Sunday missile/UAV report or add verified interception counts",
+      "proposed_source_lineage_edges": [
+        [
+          "Saudi-led coalition statement",
+          "Reuters Nov2",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Saudi-led coalition statement",
+          "Al Jazeera Nov2",
+          "SHARES_OFFICIAL_SOURCE"
+        ],
+        [
+          "Saudi Civil Defence alerts",
+          "Reuters Nov2",
+          "REPORTS"
+        ]
+      ],
+      "documentary_comparison": "Reuters Nov2 and Al Jazeera Nov2 both cite coalition for missile; two outlets sharing official source do not independently verify radar track or debris. Al Jazeera distinguishes Sunday drone.",
+      "speaker_knowledge_evidence": "Coalition may hold radar and intercept logs, not released; no evidence of the speaker's contrary internal knowledge or correction delivery.",
+      "correction_and_repetition_review": "No verified official correction; preserve announcement order and date without inventing exact attack clock.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/",
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "qualification_needed": "Original Saudi official statement ID/time, radar/telemetry, debris, launch origin, Sunday/Monday physical event deduplication.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N03",
+      "upstream_claim_id": "ROOK-20261102-NOON-HODEIDAH-PORT-INJURIES",
+      "family": "HOUTHI_SAUDI_YEMEN_FACILITY_STRIKE_CASUALTY_ALLEGATIONS",
+      "actor": "Houthi-affiliated outlet (not named individual), relayed by Al Jazeera",
+      "statement_and_publication_clock": "Al Jazeera Nov2 date-only; underlying Houthi outlet original posting time and occurrence date not recovered",
+      "reported_wording": "Four injured at Ras Isa port dock; three injured at an oil-company site in Bajil district; Saudi-led airstrikes blamed.",
+      "atomic_propositions": [
+        "Seven casualties across two named locations: UNSUBSTANTIATED",
+        "Saudi aircraft caused the injuries: UNSUBSTANTIATED attribution",
+        "Two independently established strikes or verified site damage: NOT ESTABLISHED"
+      ],
+      "prior_membership": "NOVEL site-specific alleged injury locations; may share operational family with Nov1 Hodeidah medical-faculty allegation, but distinct sites, no forced merge or duplicate casualty tally",
+      "proposed_source_lineage_edges": [
+        [
+          "Houthi-affiliated media",
+          "Al Jazeera Nov2",
+          "ATTRIBUTES_TO"
+        ]
+      ],
+      "documentary_comparison": "Al Jazeera explicitly says Saudi-led coalition did not comment; no independent facility or medical evidence. Nov1 medical faculty is different site and cannot validate Ras Isa/Bajil.",
+      "speaker_knowledge_evidence": "Original reporter/medical source and institutional custody unknown; no proof of fabrication or correction opportunity.",
+      "correction_and_repetition_review": "No authenticated source revision or retraction found.",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "qualification_needed": "Original Houthi bulletin and clock, medical rosters, hospital logs, imagery, Saudi sortie records and precise facility identity.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N04",
+      "upstream_claim_id": "ROOK-20261102-NOON-TAIZ-MARKET",
+      "family": "YEMEN_TAIZ_MARKET_EXPLOSION_CASUALTY_ATTRIBUTION",
+      "actor": "Anees al-Asbahi, Houthi-run health ministry spokesperson (AP attribution)",
+      "statement_and_publication_clock": "AP Nov2 rolling report date-only for allegation; market location and exact occurrence time not identified",
+      "reported_wording": "An explosion at a Taiz province market killed three people including two children, wounded eight; Saudi Arabia responsible.",
+      "atomic_propositions": [
+        "Market explosion: UNVERIFIED occurrence/site",
+        "Three dead including two children and eight wounded: UNSUBSTANTIATED exact counts",
+        "Saudi responsibility: UNSUBSTANTIATED attribution"
+      ],
+      "prior_membership": "NEW market-specific allegation; distinct from Oct29 Taiz airstrike casualty and Oct31/Nov1 Hodeidah site claims pending site/incident identity",
+      "proposed_source_lineage_edges": [
+        [
+          "Houthi-run health ministry spokesperson",
+          "AP Nov2 rolling report",
+          "ATTRIBUTES_TO"
+        ]
+      ],
+      "documentary_comparison": "AP explicitly could not independently verify incident, casualties or attribution. No geolocated market or physical record; prior Taiz siege denial is a separate access proposition.",
+      "speaker_knowledge_evidence": "Spokesperson may have health ministry records but no authenticated roster, chain of custody or correction-delivery proof obtained.",
+      "correction_and_repetition_review": "No documented correction, repeat or independent verification yet.",
+      "sources": [
+        "https://apnews.com/article/8722c8b5a9deb228e7a188d4760ea8ed"
+      ],
+      "qualification_needed": "Original Arabic statement and timestamp, precise market, hospitals, death certificates, independent scene imagery, weapon remnants and strike logs.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N05",
+      "upstream_claim_id": "ROOK-20261102-NOON-YEMEN-1272-OPERATIONS",
+      "family": "YEMEN_GOVERNMENT_24H_OPERATION_AND_BDA_CLAIMS",
+      "actor": "Colonel Majed Abdullah al-Nazili, Yemeni government army spokesman",
+      "statement_and_publication_clock": "Al Jazeera Nov2 cites Sunday evening Nov1 statement about previous 24 hours; original military release timestamp unavailable",
+      "reported_wording": "1,272 'targeting operations' in 24 hours; roughly 500 Houthi fighters killed; nearly 170 vehicles/equipment/heavy weapons destroyed or disabled across al-Jawf, Marib, al-Bayda.",
+      "atomic_propositions": [
+        "1,272 operations in one 24h window: UNSUBSTANTIATED exact operational accounting",
+        "Approximately 500 Houthi killed: UNSUBSTANTIATED casualty BDA",
+        "Approximately 170 items destroyed/disabled: UNSUBSTANTIATED mixed asset and effect categories"
+      ],
+      "prior_membership": "NEW exact-count claim instance for Yemeni government offensive; do not treat 1,272 as geolocated strikes or add 500/170 to accepted physical totals",
+      "proposed_source_lineage_edges": [
+        [
+          "Yemeni army spokesman al-Nazili Nov1",
+          "Al Jazeera Nov2",
+          "ATTRIBUTES_TO"
+        ]
+      ],
+      "documentary_comparison": "Al Jazeera says unable to independently verify. Three denominators (operations/persons/equipment) and destroyed-vs-disabled must remain separate; claimant-only arithmetic has no accessible itemized ledger.",
+      "speaker_knowledge_evidence": "Spokesman may have own-force operation logs and BDA; no logs, methodology, count correction or proof of contemporaneous contrary records produced.",
+      "correction_and_repetition_review": "No independently documented repeat/retraction or count revision.",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "qualification_needed": "Original Arabic military communique, definition of targeting operation, 24h boundaries, strike IDs, target rosters, casualty validation and asset BDA.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N06",
+      "upstream_claim_id": "ROOK-20261102-NOON-GAZA-TARGET-IDENTITY",
+      "family": "IDF_GAZA_STRIKE_TARGET_IDENTITIES_NOV2",
+      "actor": "Israel Defense Forces",
+      "statement_and_publication_clock": "Reuters Nov2 initial 07:18:29Z; same URL later updated to add Tel Al-Hawa vehicle strike, revised exact time not recovered",
+      "reported_wording": "IDF said two Gaza strikes targeted Palestinian militants, and later said a militant was struck in Tel Al-Hawa; individual identities were not supplied.",
+      "atomic_propositions": [
+        "IDF issued targeting statements: SUPPORTED as attributed",
+        "Killed individuals were militants: UNSUBSTANTIATED without identities",
+        "Initial three deaths and later at-least-four deaths are different article versions and separate strike localities, not contradictory proof of fabrication"
+      ],
+      "prior_membership": "NEW Nov2 strike-specific target assertions; separate from Nov1 Gaza strikes; preserve Khan Younis, Al-Mussadar and later Tel Al-Hawa occurrences without aggregating incompatible article versions",
+      "proposed_source_lineage_edges": [
+        [
+          "IDF statements",
+          "Reuters Nov2",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Gaza medics",
+          "Reuters Nov2",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Reuters Nov2 initial article",
+          "Reuters Nov2 revised same URL",
+          "SOURCE_REVISION_NOT_NEW_INDEPENDENT_SOURCE"
+        ]
+      ],
+      "documentary_comparison": "Reuters initial 3 deaths: two Khan Younis and one Al-Mussadar; later adds one Tel Al-Hawa death to at least 4. Neither casualty reporting nor IDF assertion alone determines combatant status.",
+      "speaker_knowledge_evidence": "IDF may possess targeting intelligence and after-action reports, but no named target files or exculpatory/corrective records are provided.",
+      "correction_and_repetition_review": "Reuters revision is an event update, not evidence of a knowing correction or IDF admission; preserve original vs revised timestamps if recovered.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "qualification_needed": "IDF primary release(s), strike IDs, target names, evidence of combatant membership, medical/death records, original/revised Reuters publication logs.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N07",
+      "upstream_claim_id": "ROOK-20261102-NOON-IRAN-NPT",
+      "family": "IRAN_NPT_PEACEFUL_PROGRAM_AND_NUCLEAR_DOCTRINE",
+      "actor": "Esmaeil Baghaei, Iranian Foreign Ministry spokesperson",
+      "statement_and_publication_clock": "Nov2 statement, Times of India 13:21Z indexed; original Iranian transcript and exact speech time missing",
+      "reported_wording": "Iran remains bound by NPT obligations; its nuclear program is peaceful; nuclear doctrine discussion ongoing; US described as a major NPT threat.",
+      "atomic_propositions": [
+        "Iran's NPT legal status and obligations: separately verifiable from treaty records, not adjudicated here",
+        "Full safeguards compliance and exclusively peaceful purpose: NOT established by spokesperson's assertion",
+        "Nuclear doctrine discussions: reported rhetoric, not an operational weapon decision"
+      ],
+      "prior_membership": "REPEAT/MUTATION of ongoing Iranian peaceful-intent, IAEA access and nuclear doctrine claim family; distinct from Oct18 Naqdi MOP/laser claims in #312",
+      "proposed_source_lineage_edges": [
+        [
+          "Baghaei Nov2 remarks",
+          "Times of India Nov2",
+          "ATTRIBUTES_TO"
+        ]
+      ],
+      "documentary_comparison": "IAEA safeguards/stockpile access gap prevents independent verification of full compliance or intent; inability to verify is not proof of diversion. The source headline's US-threat framing is not a discrete weapons deployment.",
+      "speaker_knowledge_evidence": "No Iranian internal nuclear decisions, full IAEA records, speaker briefing or correction receipt; intent cannot be inferred solely from access gap.",
+      "correction_and_repetition_review": "No authenticated retraction; preserve distinct treaty-membership, compliance, intent and doctrine propositions.",
+      "sources": [
+        "https://timesofindia.indiatimes.com/world/middle-east/iran-calls-us-biggest-threat-to-npt-warns-of-stronger-defence-push/articleshow/135463488.cms",
+        "https://www.iaea.org/newscenter"
+      ],
+      "qualification_needed": "Original Iranian transcript, NPT depositary status, latest IAEA safeguards report and access chronology, verified doctrine decision text.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N08",
+      "upstream_claim_id": "ROOK-20261102-NOON-ADNOC-INVENTORY",
+      "family": "ADNOC_GLOBAL_INVENTORY_AND_LOGISTICS_ASSERTIONS",
+      "actor": "Sultan Al Jaber, ADNOC CEO, ADIPEC remarks",
+      "statement_and_publication_clock": "Reuters original Nov2 06:38:37Z; speech Monday at ADIPEC, exact spoken minute not established",
+      "reported_wording": "Nearly 1bn barrels drawn from global oil inventories; diesel seasonal lows in some regions; 600bn cubic feet LNG gap; logistics 30% vs 5% of barrel cost.",
+      "atomic_propositions": [
+        "Nearly 1bn barrels global inventory draw: UNSUBSTANTIATED independent reconciliation",
+        "35-year seasonal diesel lows and 600 bcf LNG supply gap: UNSUBSTANTIATED geographic/methodological comparability",
+        "Logistics share rose from 5% to 30%: UNSUBSTANTIATED denominator and period"
+      ],
+      "prior_membership": "NEW exact economic assertion set; not a military strike count or proof of specific supply destruction; separate from ADNOC denial of Reuters UAE production data",
+      "proposed_source_lineage_edges": [
+        [
+          "Al Jaber ADIPEC remarks",
+          "Reuters Nov2",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Reuters Nov2",
+          "Reuters syndicated carriers",
+          "SYNDICATES_NOT_INDEPENDENT"
+        ]
+      ],
+      "documentary_comparison": "Reuters reports the CEO's statements, not audited global accounting. Oil barrels, LNG cubic feet, product inventory and logistics-cost shares are unlike units; don't aggregate them.",
+      "speaker_knowledge_evidence": "CEO has corporate market access, but underlying dataset and correction/review chain unavailable; no proof he knew a false figure.",
+      "correction_and_repetition_review": "No original transcript correction or revision demonstrated.",
+      "sources": [
+        "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/"
+      ],
+      "qualification_needed": "ADIPEC speech recording, methodology, global inventory baseline/time range, diesel regions, LNG calculation and cost-share denominator.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N09",
+      "upstream_claim_id": "ROOK-20261102-NOON-ADNOC-DATA-DISPUTE",
+      "family": "ADNOC_REUTERS_OPEC_IEA_UAE_PRODUCTION_DISPUTE",
+      "actor": "ADNOC spokesperson, responding to Reuters",
+      "statement_and_publication_clock": "Reuters original Nov2 15:55:12Z; ADNOC response time within Reuters reporting cycle not specified",
+      "reported_wording": "ADNOC said Reuters' cited data were wrong and its report inaccurate, without specifying which data or providing alternative figures.",
+      "atomic_propositions": [
+        "ADNOC issued denial: SUPPORTED as reported",
+        "All disputed Reuters/OPEC/IEA values are wrong: UNSUBSTANTIATED categorical challenge absent itemization",
+        "OPEC secondary-source September crude 3.917m bpd, IEA crude 4.4m bpd, IEA total liquids 5.3m bpd are distinct estimates/categories, not a single arithmetic contradiction"
+      ],
+      "prior_membership": "NEW data-dispute speaker instance; keep separate from Al Jaber global inventory figures and do not count competing estimate as a falsehood by fiat",
+      "proposed_source_lineage_edges": [
+        [
+          "OPEC secondary-source figures",
+          "Reuters Nov2",
+          "CITES"
+        ],
+        [
+          "IEA September estimates",
+          "Reuters Nov2",
+          "CITES"
+        ],
+        [
+          "ADNOC spokesperson reply",
+          "Reuters Nov2",
+          "QUOTES"
+        ],
+        [
+          "Reuters Nov2 article",
+          "Downstream Reuters carriers",
+          "SYNDICATES_NOT_INDEPENDENT"
+        ]
+      ],
+      "documentary_comparison": "Reuters explicitly requested ADNOC comment and recorded its unparticularized denial. No substitute numbers supplied; unlike crude and total-liquids denominators must not be compared as if identical.",
+      "speaker_knowledge_evidence": "ADNOC may possess own production/export records; exact figures, source disagreement and correction notices not supplied. No knowing deception proven by denial alone.",
+      "correction_and_repetition_review": "No formal Reuters correction or ADNOC numerical replacement recovered; do not label ordinary disagreement as stealth edit.",
+      "sources": [
+        "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/"
+      ],
+      "qualification_needed": "ADNOC original response and internal figures, OPEC and IEA original September tables, export dataset and source-revision timeline.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-N10",
+      "upstream_claim_id": "ROOK-20261102-NOON-POST-CUTOFF-HOUTHI-DRONES",
+      "family": "HOUTHI_SAUDI_DRONE_TARGETING_CLAIMS_NOV2",
+      "actor": "Houthi movement, original military spokesperson not identified by Reuters",
+      "statement_and_publication_clock": "Reuters original Nov2 16:16Z, before noon EST/17:00Z horizon; occurrence Nov2 date-only; original Houthi release time unavailable",
+      "reported_wording": "Houthis said drones were launched toward Dammam airport, early-warning radar in Jizan and a military transport aircraft at Jizan airport; no reported confirmation of impact.",
+      "atomic_propositions": [
+        "Houthi launch assertion: SUPPORTED as actor statement",
+        "Drones actually launched toward three targets: UNSUBSTANTIATED independent tracking",
+        "Dammam airport/radar/transport aircraft hit or damaged: NOT CLAIMED IN REUTERS and NOT VERIFIED"
+      ],
+      "prior_membership": "NEW Nov2 dated launch claim; do not merge with Nov1 Dammam industrial fire allegation or October Saudi air-defense reports without incident identifiers; no verified target losses",
+      "proposed_source_lineage_edges": [
+        [
+          "Houthi movement statement",
+          "Reuters Nov2",
+          "ATTRIBUTES_TO"
+        ]
+      ],
+      "documentary_comparison": "Reuters reports no immediate Saudi confirmation and no detail whether drones reached targets. ROOK record ID says POST-CUTOFF, but 16:16Z precedes 17:00Z noon EST cutoff; temporal-label correction required, not a post-cutoff exclusion.",
+      "speaker_knowledge_evidence": "Houthi launch authority may have launch logs, not provided; no knowledge of failure/false launch established. No Saudi telemetry or wreckage.",
+      "correction_and_repetition_review": "No confirmed official retraction; original speaker identity and first-seen time still needed.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-drones-towards-saudi-arabias-dammam-airport-2026-11-02/"
+      ],
+      "qualification_needed": "Original Houthi statement and timestamp, launch video metadata, Saudi radar/air-defence logs, target BDA, aircraft registration and incident identity.",
+      "factual_disposition": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    }
+  ],
+  "source_fidelity_and_clock_corrections": [
+    {
+      "ref": "CF-20261102-N01",
+      "kind": "ATTRIBUTION_NARROWING_REFERRAL",
+      "finding": "Nov2 Reuters directly quotes Baghaei's conditions; the two-day-versus-seven-day comparison is explicitly attributed to Araghchi's Oct31 Al Jazeera remarks. Do not attribute an exact two-day Baghaei quotation absent his original text.",
+      "source": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+      "action": "Correct intake attribution via versioned source review, retain both dated speaker nodes and link them as proposal evolution."
+    },
+    {
+      "ref": "CF-20261102-N06",
+      "kind": "ROLLING_ARTICLE_VERSION_REFERRAL",
+      "finding": "Reuters Nov2 URL slug retains 'three' while later body says at least four after Tel Al-Hawa incident. Initial 3 and later 4 have different source versions/incident sets; not a false earlier count.",
+      "source": "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/",
+      "action": "Preserve initial and revised publication clocks, locality and casualties before canonical projection."
+    },
+    {
+      "ref": "CF-20261102-N10",
+      "kind": "TEMPORAL_LABEL_REFERRAL",
+      "finding": "Upstream claim ID contains POST-CUTOFF despite Reuters first publication 2026-11-02T16:16:00Z preceding 2026-11-02T17:00:00Z cutoff.",
+      "source": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-drones-towards-saudi-arabias-dammam-airport-2026-11-02/",
+      "action": "Preserve original ID and correct interpretation in a versioned referral; no retroactive collection."
+    }
+  ],
+  "later_evidence_for_existing_family": {
+    "family": "HOUTHI_TAIZ_SIEGE_DENIAL",
+    "finding": "Al Jazeera Nov2 attributes to Taiz Governor Nabil Shamsan 120 health centres closed and 66 near closure since supply routes were cut, and to a Taiz siege committee member at least 23 damaged/overturned trucks over two weeks. These are additional attributed contemporary access accounts against the earlier broad denial, not automatically independent verified counts or knowledge proof.",
+    "sources": [
+      "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf",
+      "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz"
+    ],
+    "prior_review": "Issue #320 Oct29/30 Taiz denial; preserve original Arabic denial, WFP Oct14 baseline and subsequent source versions.",
+    "disposition": "SOURCE-LINKED CONTRARY-EVIDENCE REFERRAL, NO NEW FALSE/KNOWING-LIE VERDICT"
+  },
+  "related_no_new_verdict": {
+    "issue_312": "Oct18 Naqdi GBU-57 debris/reverse-engineering, Sept21 Mohebbi new-weapons deterrence and Oct31 Rezaei conditional new-weapons threat remain open. No original operational laser/MOP evidence in this locker.",
+    "correction_paths": "No authenticated original speaker retractions, delivery/receipt evidence or internal records establishing knowledge at the statement time recovered.",
+    "WOL_scope": "No WOL-native incident qualification, behavior score, award, or Hall rank inferred from syndication or actor-only allegations."
+  },
+  "protected_invariants": {
+    "accepted_canonical_sequence": 38,
+    "sealed_adjudication_proposition_denominator": 89,
+    "existing_unique_propositions": 41,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_ledger_edits": 0,
+    "public_source_drawer_edits": 0,
+    "accepted_packet_mutations": 0
+  },
+  "gates": {
+    "formal_source_qualified_claims_acceptance": "NOT_MET",
+    "upstream_evidence_registration": "NOT_MET",
+    "branch_reconciliation": "REQUIRED",
+    "exact_head_full_CI": "REQUIRED_AFTER_COMMIT",
+    "release_integrity": "REQUIRED",
+    "live_byte_attestation": "NOT_PERFORMED",
+    "merge_or_publish": "PROHIBITED_PENDING_ALL_GATES"
+  },
+  "disposition": "Ten noon actor/source referrals plus three source-fidelity/clock corrections and one later-evidence Taiz access referral. No new canonical claim packet, physical incident count, WOL-native adverse finding, protected verdict, public drawer edit or retroactive sweep."
+}
