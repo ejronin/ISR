@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "EVIDENCE_INTEGRATION_NONCANONICAL_SOURCE_REVIEW",
+  "authority": "EVIDENCE_INTEGRATION_SOURCE_REVIEW_ONLY",
+  "status": "REVIEWED_PENDING_CANONICAL_REGISTRATION_AND_RELEASE_GATES",
+  "review_date": "2026-10-30",
+  "base_main_sha": "159479f5fc9418a47b3273ff40fec14e887fbdad",
+  "accepted_baseline": {
+    "sequence": 38,
+    "evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "manifest_path": "data/canonical-ledger/manifest-v2.json"
+  },
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json"
+    ],
+    "window_start": "2026-10-30T00:00:00-04:00",
+    "window_end": "2026-10-30T12:00:00-04:00",
+    "intake_pr": 325,
+    "intake_merge_sha": "159479f5fc9418a47b3273ff40fec14e887fbdad",
+    "intake_exact_head_sha": "5c372a6d02febdbdc8658d512056e1edecdf2341",
+    "intake_ci": "https://github.com/ejronin/ISR/actions/runs/41086859879"
+  },
+  "acceptance_boundary": "This review file is not an ACCEPTED canonical packet, does not consume the sweep, does not advance the manifest or certify earlier missing windows. Gate 3 v2 registrar has not been run; a packet must be registered by scripts/gate3_v2_registration.py --register and pass exact-head full CI before merging.",
+  "review_dispositions": [
+    {
+      "ref": "ROOK-20261030-ISRAEL-ELECTION-COUNT",
+      "decision": "QUALIFIED_SOURCE_ATTRIBUTED_EVENT_PENDING_REGISTRATION",
+      "event_identity": "Oct 30 election-count release, not Oct 27 election occurrence and not Nov 4 certification",
+      "source": "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674",
+      "publication_clock": "AP syndication published Oct 30 06:54 ET (https://www.inquirer.com/news/nation-world/israel-elections-netanyahu-parliament-majority-20261030.html); AP report accessible",
+      "verified_observation": "53 Netanyahu bloc, 48 main opposition, 19 Arab-led parties; total 120, threshold 61; count released early Oct 30",
+      "boundary": "Attribution to AP and reported count; no independent official certified tally checked; no proof of fraud or government formation",
+      "geospatial": "NONSPATIAL",
+      "chart": "ELECTION_SEAT_COMPOSITION_ONLY_IF_PUBLIC_PRODUCT_CHOOSES_AND_SOURCE_DEFINITIONS_MATCH"
+    },
+    {
+      "ref": "ROOK-20261030-G20-PHOTO-CANCELLATION",
+      "decision": "HOLD_EVENT_DATE_CORRECTION_AND_RELEVANCE",
+      "event_identity": "Decision to cancel planned G20 family photo, not cancellation of meeting",
+      "source": "https://apnews.com/article/g20-rubio-russia-ukraine-iran-war-ed4ab8ad9fedd628c39ac05bc5092cac",
+      "publication_clock": "AP syndication published Oct 30 00:02 ET, updated 11:12 ET (https://www.news4jax.com/news/politics/2026/10/30/g20-diplomats-including-from-china-and-russia-face-deep-rifts-as-they-prepare-to-meet-in-atlanta/)",
+      "verified_observation": "AP attributed photo cancellation to US officials; the G20 meeting proceeded",
+      "boundary": "AP states Rubio decided late Thursday Oct 29, whereas locker occurrence_time says Oct 30. Correct occurrence/publication separation before any canonical event; relevance to Iran theater is peripheral.",
+      "geospatial": "NONSPATIAL",
+      "chart": "NONE"
+    },
+    {
+      "ref": "ROOK-20261030-TAIZ-GOVERNOR-ACCESS-METRICS",
+      "decision": "QUALIFIED_SOURCE_ATTRIBUTED_EXISTING_EVENT_UPDATE_PENDING_REGISTRATION",
+      "updates_existing_ref": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "source": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+      "publication_clock": "Guardian Oct 30 09:00 GMT / 05:00 EDT; last modified 09:01 GMT",
+      "verified_observation": "Governor Shamsan estimated 35,000 m3/day minimum water demand vs <=1,000 entering; 120 suspended health centres; up to 1,800 dialysis patients; 64 deaths and 173 injured Aug–Oct 20; 6,400 displaced families",
+      "boundary": "Governor's estimates and Houthi leader's denial are attributed conflicting accounts. HRW independent access criticism supports concern but does not audit every number. Do not sum with Oct 29 incident casualties or convert families to persons.",
+      "geospatial": "REGION_ONLY_TAIZ_NO_POINT_COORDINATES",
+      "chart": "TEXT_ONLY_UNTIL_SERIES_PROVIDER_DATE_AND_DENOMINATOR_RECONCILED"
+    },
+    {
+      "ref": "ROOK-20261030-LOUISE1-UKMTO-FOLLOWUP",
+      "decision": "NO_MATERIAL_CHANGE_DUPLICATE",
+      "updates_existing_ref": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+      "source": "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+      "boundary": "Already in accepted seq37; do not duplicate attack or attribute attacker; 25 NM NE Khasab is approximate locality, not verified unique coordinate.",
+      "geospatial": "REGION_ONLY_NO_POINT"
+    },
+    {
+      "ref": "ROOK-20261030-SA-MECCA-DRONE-DENIAL-RECHECK",
+      "decision": "NO_MATERIAL_CHANGE_DUPLICATE",
+      "updates_existing_ref": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "source": "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+      "boundary": "Saudi report and Houthi denial already in seq37. Neither flight path nor target intent independently established.",
+      "geospatial": "REGION_ONLY_NO_POINT"
+    },
+    {
+      "ref": "ROOK-20261030-QATAR-MEDIATION-RECHECK",
+      "decision": "NO_MATERIAL_CHANGE_DUPLICATE",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "source": "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/",
+      "boundary": "Already in seq37; no implemented ceasefire, Hormuz reopening or signed deal.",
+      "geospatial": "NONSPATIAL"
+    },
+    {
+      "ref": "ROOK-20261030-US-DCAS-CASUALTY-ACCOUNTING",
+      "decision": "HOLD_PRIMARY_DATA_AND_RECLASSIFICATION_CLOCK",
+      "updates_existing_ref": "US_IRAN_WAR_PERSONNEL_CASUALTY_ACCOUNTING",
+      "source": "https://www.washingtonpost.com/politics/2026/10/29/two-us-service-members-die-amid-iran-war-pentagon-tally-shows/",
+      "primary_check": "https://dcas.dmdc.osd.mil/dcas/app/conflictCasualties/oo/deaths (displayed as-of Oct 23, not proof of Oct 29 amendment)",
+      "boundary": "WP reports 23 cumulative US deaths, 11 hostile/12 nonhostile, 2 added retrospectively. Need DCAS revised release/version and exact underlying death dates. Do not classify as 2 new combat deaths or 2 Oct30 deaths.",
+      "geospatial": "NONSPATIAL",
+      "chart": "NO_CASUALTY_SERIES_UPDATE_UNTIL_DIRECT_RECONCILIATION"
+    },
+    {
+      "ref": "ROOK-20261030-IRGC-THREE-TANKERS-FRIDAY",
+      "decision": "HOLD_REPETITION_HULL_IDENTITIES_AND_DATE",
+      "source": "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+      "boundary": "CBS describes IRGC three-tanker explosion statement as Thursday Oct 29, while locker labels Friday Oct 30. Could be repeat of already accepted IRGC mine claims. Require original Persian statement, time, individual IMO numbers, AIS and UKMTO correlation; do not add 3 vessels.",
+      "geospatial": "UNLOCATED_PENDING_SOURCE"
+    },
+    {
+      "ref": "ROOK-20261030-IRGC-US-UNMANNED-SHIP",
+      "decision": "NO_MATERIAL_CHANGE_UNVERIFIED_DUPLICATE",
+      "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+      "boundary": "Already attributed claim in seq37; no independent US platform loss evidence.",
+      "geospatial": "UNLOCATED_PENDING_SOURCE"
+    },
+    {
+      "ref": "ROOK-20261030-HOUTHI-MECCA-DENIAL",
+      "decision": "NO_MATERIAL_CHANGE_CONFLICTING_CLAIMS",
+      "boundary": "Already captured Saudi/Houthi accounts; refer exact proposition to Claims Forensics, not an Evidence lie verdict.",
+      "geospatial": "REGION_ONLY"
+    },
+    {
+      "ref": "ROOK-20261030-TAIZ-SIEGE-CONTRADICTION",
+      "decision": "REFER_CLAIMS_FORENSICS_NO_VERDICT",
+      "source": "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege",
+      "boundary": "Houthi leader says aid access open, governor and HRW describe severe restrictions; seek route-level access records and original statements.",
+      "geospatial": "REGION_ONLY"
+    },
+    {
+      "ref": "ROOK-20261030-ISRAEL-FRAUD-CLAIM-RECHECK",
+      "decision": "REFER_CLAIMS_FORENSICS_NO_VERDICT",
+      "source": "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674",
+      "boundary": "AP reports election committee rejected systemic-fraud allegation; preserve exact original allegation, committee record and investigation timing. No fraud fact inferred.",
+      "geospatial": "NONSPATIAL"
+    },
+    {
+      "ref": "ROOK-20261030-BRENT-WTI-1236UTC",
+      "decision": "SOURCE_QUALIFIED_TEXT_ONLY_PENDING_CLOCK_AND_BENCHMARK_CONTRACT",
+      "source": "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+      "observation_time": "2026-10-30T12:36:00Z",
+      "values": {
+        "december_brent_usd_per_barrel": 117.14,
+        "january_brent_usd_per_barrel": 113.1,
+        "wti_usd_per_barrel": 103.94
+      },
+      "boundary": "Intraday futures at 08:36 EDT, not EIA Brent physical spot, not settlement. Initial article timestamp earlier than later quote; verify updated publication clock for exact 12:36 observation before canonical inclusion.",
+      "chart": "DO_NOT_APPEND_TO_PROTECTED_EIA_SPOT_SERIES"
+    },
+    {
+      "ref": "ROOK-20261030-OIL-MONTHLY-PROJECTION",
+      "decision": "HOLD_FORECAST_NOT_FINAL_SETTLEMENT",
+      "source": "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/",
+      "values": {
+        "brent_projected_percent": 13,
+        "wti_projected_percent": 15
+      },
+      "boundary": "Pre-close October projections, not final returns. Syndicated Reuters version has WTI 14% at 07:27 GMT, so revisions/timestamps matter.",
+      "chart": "TEXT_ONLY_FORECAST_NOT_SETTLEMENT"
+    }
+  ],
+  "routing": {
+    "claims_forensics_issue": "https://github.com/ejronin/ISR/issues/320",
+    "map_chart_issue": "https://github.com/ejronin/ISR/issues/324",
+    "collection_gap_issue": "https://github.com/ejronin/ISR/issues/296",
+    "public_product": "Only plot verified location IDs or source-supported precision; retain region-only/unlocated observations in sourced list. No coordinate fabrication. Keep EIA spot and intraday futures distinct. Claim changes are referrals, not WOL/Lie Ledger verdicts."
+  },
+  "remaining_blockers": [
+    "Run the repository registrar against a full exact-main checkout to create any accepted Gate 3 v2 packet; this execution environment cannot clone GitHub due to DNS failure, and connector does not execute repository scripts.",
+    "Resolve event occurrence/publication discrepancies, primary casualty database, tanker hull identities and Reuters intraday article update clock before promoting those records.",
+    "Require exact-head full CI including browser/accessibility, and exact merged Pages release identity/live-byte attestation before any LIVE assertion.",
+    "Earlier Oct 7–29 missing scheduled ROOK windows remain incomplete and are not repaired by this one completed sweep."
+  ],
+  "sweep_consumed": false,
+  "canonical_sequence_after_review": 38,
+  "canonical_cutoff_after_review": "2026-10-30T08:38:30-04:00"
+}
