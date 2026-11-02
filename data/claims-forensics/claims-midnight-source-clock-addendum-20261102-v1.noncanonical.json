@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_NONCANONICAL_SOURCE_CLOCK_ADDENDUM",
+  "review_version": "CF-20261102-MIDNIGHT-SOURCE-CLOCK-01",
+  "review_date": "2026-11-02",
+  "owner_lane": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION",
+  "controlling_contracts": [
+    "docs/ENGINEERING_DOCTRINE.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "config/evidence-adjudication-reasoning.json"
+  ],
+  "upstream": {
+    "locker": "data/evidence-integration/rook-evidence-locker-sweep-20261102T0000ET.json",
+    "window_start": "2026-11-01T12:00:00-05:00",
+    "window_end": "2026-11-02T00:00:00-05:00",
+    "collection_time": "2026-11-02T05:00:00.858Z",
+    "intake_pr": 335,
+    "intake_merged": true,
+    "intake_merge_main_sha_at_review": "281a0fe89b1c881e1666b7c6721bfb6688d42406",
+    "evidence_integration_review_pr": 336,
+    "evidence_integration_review_head": "07dde647f53a32142604e20cf97c40fc1efeefb3",
+    "evidence_integration_review_state": "DRAFT_NONCANONICAL",
+    "accepted_canonical_sequence": 38,
+    "accepted_evidence_cutoff": "2026-10-30T08:38:30-04:00",
+    "completed_unconsumed_lockers": 6,
+    "prior_reviews_unconsumed": [
+      326,
+      328,
+      330,
+      332,
+      334
+    ],
+    "issue_refs": [
+      320,
+      312
+    ]
+  },
+  "methodology": "Claimant statement vs physical occurrence vs carrier/source publication clocks separately tracked. Novel source instances do not automatically create new unique propositions, events, WOL incidents, or awards. Edges are evidence-backed referral proposals only; WOL adjudicates its own native incidents. Do not treat independent reporting of an actor's statement as independent confirmation of the claimed effects. UNSUBSTANTIATED is not FALSE, and FALSE is not knowing deception. Corrections require documented knowledge and version paths.",
+  "candidates": [
+    {
+      "id": "CF-20261102-M01",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-IRGC-TWO-TANKERS",
+      "family": "IRGC_HORMUZ_MINE_TANKER_CUMULATIVE",
+      "actor": "IRGC Navy spokesperson, state-media channel; personal name not recovered",
+      "statement_and_publication_clock": "Reuters Nov1 20:12Z indexed; underlying Iranian state-media release minute not recovered; Nov1 2026 statement, not established attack time",
+      "reported_wording": "Two tankers exploded after striking mines on an unauthorized Hormuz route; other carrier reports one supertanker burning and AIS off, unverified original Persian",
+      "atomic_propositions": [
+        "IRGC issued the claim: supported as attributed statement",
+        "Two separately identified tankers struck naval mines and exploded: UNSUBSTANTIATED",
+        "The vessels used an unauthorized route and turned off AIS: UNSUBSTANTIATED",
+        "One supertanker remained ablaze: UNSUBSTANTIATED secondary quote"
+      ],
+      "factual_disposition": "UNSUBSTANTIATED_EFFECT_AND_EXACT_COUNT; NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "REPEATED/MUTATED existing Oct29 three-to-four tanker family, not two new confirmed hulls, not six cumulative; membership requires original incident list",
+      "proposed_source_lineage_edges": [
+        [
+          "IRGC state media",
+          "Reuters Nov1",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Reuters Nov1",
+          "Times of Israel Reuters wire Nov1",
+          "SYNDICATES"
+        ],
+        [
+          "IRGC state-media assertion",
+          "Jerusalem Post Nov1",
+          "REPORTS_ADDITIONAL_QUOTED_DETAIL"
+        ]
+      ],
+      "documentary_comparison": "Oct29 three/four tanker assertions, Oct30 Louise 1 limpet mines and UKMTO 191/192 lack reconciled IMO hull identities or matching mine mechanism; UKMTO projectile warnings do not prove IRGC's mine claims.",
+      "speaker_knowledge_evidence": "IRGC may have navigation/target data but no original logs, mine placement, hull identification, crew report, imagery or access/correction timeline obtained.",
+      "correction_and_repetition_review": "No authenticated retraction or correction; November wording is a later count claim, not proof of additional incidents.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-exploded-after-hitting-mines-hormuz-2026-11-01/",
+        "https://www.jpost.com/middle-east/iran-news/article-913514",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287",
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "qualification_needed": "Original Sepah News/IRIB Persian clip and timestamp; each tanker IMO/AIS, mine residue, fire/BDA, count reconciliation, spokesperson's access and correction delivery.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M02",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-HOUTHI-MEDICAL-FACULTY",
+      "family": "HODEIDAH_UNIVERSITY_ALLEGED_SAUDI_STRIKES",
+      "actor": "Houthi-run Education Ministry via Al Masirah; individual official unidentified",
+      "statement_and_publication_clock": "Europa Press published Nov1 16:16 Madrid CET = 15:16Z; alleged strikes earlier Nov1, exact occurrence and original Al Masirah release minute unknown",
+      "reported_wording": "Saudi aircraft struck Hodeidah University Faculty of Medicine twice; ministry condemned attack on medical education facility.",
+      "atomic_propositions": [
+        "The Houthi ministry made the allegation: supported as attributed report",
+        "Two Saudi strikes physically hit the named faculty: UNSUBSTANTIATED",
+        "Civilian facility damage or casualties: NOT ESTABLISHED by report"
+      ],
+      "factual_disposition": "UNSUBSTANTIATED_SITE_SPECIFIC_ATTRIBUTION; NOT_FALSE_ESTABLISHED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "NOVEL site-specific target allegation; potential same-day occurrence family as Saudi Nov1 coalition operation, not proven same target",
+      "proposed_source_lineage_edges": [
+        [
+          "Houthi Al Masirah and Education Ministry",
+          "Europa Press Nov1",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "Houthi institutional allegation",
+          "AP Nov1",
+          "REPORTS"
+        ],
+        [
+          "Saudi coalition operation announcement",
+          "Hodeidah facility claim",
+          "SAME_DAY_NOT_PROVEN_SAME_TARGET"
+        ]
+      ],
+      "documentary_comparison": "SPA coalition acknowledged a general Yemen operation but not the named medical faculty; coincidence of date is neither site BDA nor exoneration.",
+      "speaker_knowledge_evidence": "Ministry may have local reports; no authenticated witness records, original video, building imagery or knowledge chain; coalition target records unavailable.",
+      "correction_and_repetition_review": "No evidenced correction, retraction or repeat-after-correction; separate threat against Aramco in Europa Press is a conditional threat, not proof of an attack.",
+      "sources": [
+        "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b",
+        "https://www.spa.gov.sa/N2715448"
+      ],
+      "qualification_needed": "Original Al Masirah video and ministry bulletin; faculty geolocation and before/after imagery; strike logs, witnesses, casualties and original speaker clock.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M03",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-MARITIME-191-ATTRIBUTION",
+      "family": "UKMTO_191_26_THIRD_PARTY_ATTACK_ATTRIBUTION",
+      "actor": "Unidentified originator of Mayday; merchant master relaying it to UKMTO",
+      "statement_and_publication_clock": "Incident Nov1 15:09Z; UKMTO source product 191-26; upstream 18:22Z publication unverified from PDF metadata",
+      "reported_wording": "Merchant master relayed another vessel's VHF Channel 16 Mayday reporting an unknown projectile hit in Strait of Hormuz.",
+      "atomic_propositions": [
+        "UKMTO received relay: supported by primary warning",
+        "Attacker was Iran or identified proxy: NOT CLAIMED by UKMTO and UNSUBSTANTIATED",
+        "Crew deaths, hull identity, total loss: NOT ESTABLISHED"
+      ],
+      "factual_disposition": "SUPPORTED_AS_REPORT_RECEIPT_ONLY; ATTRIBUTION_UNSUBSTANTIATED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "NOVEL warning identity, not independently a novel actor-deception proposition; may overlap IRGC mine narrative, identity unproven",
+      "proposed_source_lineage_edges": [
+        [
+          "Unidentified VHF Mayday",
+          "Relaying merchant master",
+          "REPORTED_RELAY"
+        ],
+        [
+          "Relaying merchant master",
+          "UKMTO Warning 191-26",
+          "REPORTS"
+        ]
+      ],
+      "documentary_comparison": "Warning says unknown projectile, not a mine, verified Iranian attack, named hull, or confirmed casualty; cannot equate with 192-26 at 23:47Z.",
+      "speaker_knowledge_evidence": "Original Mayday speaker and reporting vessel unknown; no basis to evaluate speaker's knowledge of attacker.",
+      "correction_and_repetition_review": "No identified correction or first-originator retraction; do not fabricate WOL attribution edge.",
+      "sources": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287"
+      ],
+      "qualification_needed": "VHF audio, both vessel identities, independent incident report, hull damage, primary warning issue metadata and attacker evidence.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M04",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-MARITIME-192-ATTRIBUTION",
+      "family": "UKMTO_192_26_PROJECTILE_HIT",
+      "actor": "Tanker master via UKMTO; unidentified attacker",
+      "statement_and_publication_clock": "Incident Nov1 23:47Z; upstream UKMTO social posting approx Nov2 01:46Z; primary PDF URL known but independent retrieval unavailable",
+      "reported_wording": "A southeast-bound tanker 72 nautical miles east of Ras Al Khafji was hit on port side by two unknown projectiles; crew accounted for, no environmental impact reported.",
+      "atomic_propositions": [
+        "Master's report relayed through UKMTO: supported by official posting and secondary account",
+        "Two physical impacts and final damage: attributed report, independently unverified",
+        "Attacker, weapon origin or Iranian responsibility: UNSUBSTANTIATED"
+      ],
+      "factual_disposition": "SUPPORTED_AS_ATTRIBUTED_MASTER_REPORT_ONLY; PERPETRATOR_UNSUBSTANTIATED",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "NOVEL UKMTO 192-26 warning; distinct clock/region from 191-26, not an additional confirmed IRGC mine incident",
+      "proposed_source_lineage_edges": [
+        [
+          "Tanker master",
+          "UKMTO Warning 192-26",
+          "REPORTS"
+        ],
+        [
+          "UKMTO social post",
+          "Independent secondary maritime report",
+          "REPORTS"
+        ]
+      ],
+      "documentary_comparison": "Two projectiles differ from alleged mine impacts; 192 is Arabian Gulf near Khafji, not 191 Strait Mayday. No vessel IMO and no direct authenticated PDF text in independent review.",
+      "speaker_knowledge_evidence": "Master is primary observer of impact, not identified perpetrator; no independent cargo/damage survey.",
+      "correction_and_repetition_review": "No identified correction; primary PDF retrievability remains a source qualification hold.",
+      "sources": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "qualification_needed": "Retrievable signed primary warning, ship/flag/IMO, voyage, projectiles, damage, timestamp, crew and attacker proof.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M05",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-ALMAYEDA-IRAN-CLEARANCE",
+      "family": "AL_MAYEDA_20261030_CLEARANCE_AND_ATTACKER",
+      "actor": "Secondary Qatar press account; Iranian clearance authority unnamed",
+      "statement_and_publication_clock": "Nakilat original page labelled Oct30; Doha News Nov1 date-only; JMIC Update 110 ICOD Nov1 13:00Z; clearance document/time unavailable",
+      "reported_wording": "Al Mayeda reportedly possessed Iranian clearance yet was struck; Qatar condemned the incident.",
+      "atomic_propositions": [
+        "Oct30 vessel incident reported by company and JMIC: supported as attributed company/monitor report",
+        "Iranian navigation clearance existed: UNSUBSTANTIATED",
+        "Iran caused the strike because clearance existed: INVALID INFERENCE / UNSUBSTANTIATED",
+        "Incident was in the Strait of Hormuz: not established; JMIC approximately 40 NM south of Lavan Island"
+      ],
+      "factual_disposition": "UNSUBSTANTIATED_CLEARANCE_AND_PERPETRATOR; NO_FALSE_OR_LIE_FINDING",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "REPEAT of Al Mayeda Oct30 family; not a Nov1 second strike or UKMTO 191/192 duplicate",
+      "proposed_source_lineage_edges": [
+        [
+          "Nakilat Oct30",
+          "Qatar Nov1 reporting",
+          "AMPLIFIES"
+        ],
+        [
+          "JMIC Warning 188-26 linkage",
+          "JMIC Update 110",
+          "REPORTS"
+        ],
+        [
+          "Qatar condemnation",
+          "Doha News",
+          "ATTRIBUTES_TO"
+        ]
+      ],
+      "documentary_comparison": "Nakilat reports vessel safe and operational; JMIC geography is Gulf south of Lavan, not proven Strait; no Iranian clearance authorization or strike actor.",
+      "speaker_knowledge_evidence": "Nakilat has vessel/crew contact but not attacker identity; Iranian authorization records and issuance access not obtained.",
+      "correction_and_repetition_review": "No evidenced retraction or contradiction of company status; later Qatari reaction not a second physical incident.",
+      "sources": [
+        "https://nakilat.com/al-mayeda-vessel-incident-in-the-arabian-gulf/",
+        "https://dohanews.co/qatar-condemns-reckless-and-irresponsible-attack-on-lng-carrier-in-arabian-gulf/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "qualification_needed": "Original Iranian clearance certificate, issuing office, voyage/IMO/AIS, UKMTO 188-26, Qatar ministry primary statement and forensic damage attribution.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M06",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-SA-INTERCEPTION-ATTRIBUTION",
+      "family": "SAUDI_NOV1_SOUTHERN_MISSILE_AND_UAV",
+      "actor": "Saudi coalition / spokesperson al-Malki as carried by Saudi Gazette",
+      "statement_and_publication_clock": "Primary SPA N2715553 and N2715558 dated Nov1; UAV reported 16:05Z; Saudi Gazette Nov1 21:53 +03:00 = 18:53Z, later relay",
+      "reported_wording": "Saudi coalition says a ballistic missile and a UAV fired by Houthis were intercepted over southern Saudi region.",
+      "atomic_propositions": [
+        "Saudi official interception statements exist: supported",
+        "Actual interceptions, physical debris, launch origin: UNSUBSTANTIATED independently",
+        "Saudi Gazette later report establishes new additional interceptions: FALSE AS AN INFERENCE, not an actor lie"
+      ],
+      "factual_disposition": "UNSUBSTANTIATED_EFFECT_AND_LAUNCH_ATTRIBUTION; NO_KNOWING_DECEPTION",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "REPEAT of Nov1 noon source family, not additional physical missile/UAV counts",
+      "proposed_source_lineage_edges": [
+        [
+          "Saudi Press Agency N2715553",
+          "Saudi Gazette Nov1",
+          "ATTRIBUTED_RELAY"
+        ],
+        [
+          "Saudi Press Agency N2715558",
+          "Saudi Gazette Nov1",
+          "ATTRIBUTED_RELAY"
+        ]
+      ],
+      "documentary_comparison": "Two primary bulletins are distinct official statements, not necessarily two independently verified successful engagements; Oct31 southern UAV occurrence requires clock reconciliation.",
+      "speaker_knowledge_evidence": "Coalition has radar/interceptor records in principle, but records and correction opportunities not obtained.",
+      "correction_and_repetition_review": "No authenticated correction or repetition after notice; do not infer deception from unavailable BDA.",
+      "sources": [
+        "https://www.spa.gov.sa/en/N2715553",
+        "https://www.spa.gov.sa/en/N2715558",
+        "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region"
+      ],
+      "qualification_needed": "Original launch and interception times, telemetry, debris, geolocation, origin intelligence, compare Oct31 bulletin.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M07",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-OIL-MARKET-TIMESTAMP",
+      "family": "REUTERS_OIL_PRICE_SOURCE_VERSION_CLOCK",
+      "actor": "Reuters article/editorial metadata, not a military claimant",
+      "statement_and_publication_clock": "Original Reuters/syndicated Nov1 23:13Z with 23:03Z quotes; later revised text has Nov2 04:07Z quotes; source page may retain earlier initial published timestamp",
+      "reported_wording": "Original Brent 111.92 and WTI 102.34 at 23:03Z; revised Brent 109.75 and WTI 100.69 at 04:07Z Nov2.",
+      "atomic_propositions": [
+        "Both version-specific price quotations are time-scoped reported observations",
+        "04:07Z quote was publicly available at 23:13Z: NOT SUPPORTED; chronology impossible for unchanged contemporaneous copy",
+        "Editorial deceptive stealth edit: NOT ESTABLISHED"
+      ],
+      "factual_disposition": "SOURCE_CLOCK_CORRECTION_REFERRAL_NOT_A_FALSE_ACTOR_VERDICT",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "NOVEL source-version anomaly, not a unique military lie or 89-denominator proposition",
+      "proposed_source_lineage_edges": [
+        [
+          "Reuters original Nov1 article",
+          "Reuters updated Nov2 article",
+          "SAME_URL_VERSION_CHANGE"
+        ],
+        [
+          "Reuters original/syndicated copy",
+          "Earlier price quote",
+          "PRESERVES_EARLIER_VERSION"
+        ]
+      ],
+      "documentary_comparison": "A 04:07Z market quote cannot be original text published 23:13Z; distinguish article publication and later edit. This is a factual temporal conflict in source-version assignment, not evidence of editorial intent.",
+      "speaker_knowledge_evidence": "No Reuters editorial revision logs, update notice history or source knowledge evidence recovered.",
+      "correction_and_repetition_review": "Correction needed to evidence-clock provenance; no proof Reuters concealed a correction or knowingly misstated prices.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "qualification_needed": "Archive of both versions, Reuters update timestamp, raw market feed, corrected source-drawer availability clocks.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    },
+    {
+      "id": "CF-20261102-M08",
+      "upstream_claim_id": "ROOK-20261102-MIDNIGHT-IRAN-ROUTE-NORMALIZATION",
+      "family": "IRAN_DOHA_TWO_DAY_CONDITIONAL_HORMUZ_PROPOSAL",
+      "actor": "Iranian foreign ministry / mediators as attributed by Reuters",
+      "statement_and_publication_clock": "Reuters Nov1 date-only article; original Araghchi and mediator remarks exact hour unavailable; JMIC Nov1 13:00Z risk assessment",
+      "reported_wording": "Two-day reopening discussed conditionally as part of mediated settlement; not an implemented route.",
+      "atomic_propositions": [
+        "Negotiations and proposal reported: supported as attributed reporting",
+        "A signed agreement or actual Hormuz normalization: NOT ESTABLISHED",
+        "119 US-facilitated Oct29-31 transits equal full commercial normalization: INVALID COMPARISON"
+      ],
+      "factual_disposition": "UNSUBSTANTIATED_IMPLEMENTATION; CONDITIONAL_PROPOSAL_NOT_FALSE",
+      "knowledge_disposition": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "prior_membership": "REPEAT of Oct31 Rezaei/Araghchi reopening proposal family, no new executed agreement",
+      "proposed_source_lineage_edges": [
+        [
+          "Iranian negotiators/officials",
+          "Reuters Nov1",
+          "ATTRIBUTES_TO"
+        ],
+        [
+          "JMIC Update 110",
+          "Continued risk/traffic assessment",
+          "REPORTS"
+        ]
+      ],
+      "documentary_comparison": "JMIC 119 facilitated movements is a different population from AIS cargo movements; continued maritime risk and no signed agreement refute any inference that normalization already occurred, but not the conditional proposal itself.",
+      "speaker_knowledge_evidence": "Diplomatic parties may have draft texts, not available; no verified knowledge that a signed agreement existed.",
+      "correction_and_repetition_review": "No signed acceptance or retraction found; no claim of actual implementation by the cited Iranian official.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "qualification_needed": "Original Persian and Qatari proposal text, US/Oman consent, signed terms, navigation notice, operational traffic normalization and knowledge timeline.",
+      "publication_status": "NONCANONICAL_REFERRAL_ONLY"
+    }
+  ],
+  "related_no_new_verdict": {
+    "issue_312": "Oct18 Naqdi GBU-57 debris/reverse-engineering, Sept21 Mohebbi new-weapons deterrence and Oct31 Rezaei conditional new-weapons threat remain unverified. No new original laser, MOP, recovered device or operational proof in this locker.",
+    "aggregate_warning": "JMIC 167 mixed reports vs IMO 122 confirmed incidents as of Oct30 have different definitions and cutoff; 119 facilitated movements vs commercial AIS population not comparable; neither creates a new claim verdict.",
+    "unknown_correction_paths": "No authenticated primary retractions, correction-delivery receipts or knowledge acquisition paths recovered for these eight referrals."
+  },
+  "protected_invariants": {
+    "accepted_canonical_sequence": 38,
+    "sealed_adjudication_proposition_denominator": 89,
+    "existing_unique_propositions": 41,
+    "new_false_verdicts": 0,
+    "new_knowing_deception_verdicts": 0,
+    "protected_wol_ledger_edits": 0,
+    "public_source_drawer_edits": 0,
+    "accepted_packet_mutations": 0
+  },
+  "gates": {
+    "formal_source_qualified_claims_acceptance": "NOT_MET",
+    "upstream_evidence_registration": "NOT_MET",
+    "branch_reconciliation": "REQUIRED",
+    "exact_head_full_CI": "REQUIRED_AFTER_COMMIT",
+    "release_integrity": "REQUIRED",
+    "live_byte_attestation": "NOT_PERFORMED",
+    "merge_or_publish": "PROHIBITED_PENDING_ALL_GATES"
+  },
+  "disposition": "Eight dated claim/source-clock referrals only; no new protected adjudications, source awards, public changes, physical event increments or retroactive sweeps."
+}
