@@ -107,6 +107,22 @@
         ],
         "status": "LEGAL_DESIGNATION_CONFIRMED_NO_PHYSICAL_ASSET_LOSS_INFERRED"
       }
+    },
+    {
+      "entity_id": "ECON-OPEC-DECEMBER-2026-REQUIRED-PRODUCTION-TARGET",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "date": "2026-11-01",
+        "economic_id": "ECON-OPEC-DECEMBER-2026-REQUIRED-PRODUCTION-TARGET",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "metric": "OPEC+ seven-state required production targets for December 2026 (policy, not production)",
+        "observed_state": "OPEC primary decision reaffirmed September required production levels for December, seven participating countries. No basis to plot as actual barrels per day produced, global inventories, or November production delta.",
+        "source_ids": [
+          "SRC-18CDB7900ACD"
+        ],
+        "status": "OFFICIAL_UNCHANGED_DECEMBER_TARGET_POLICY_NOT_REALIZED_OUTPUT"
+      }
     }
   ],
   "events": [
@@ -238,6 +254,17 @@
       ],
       "strike_countable": false,
       "summary": "U.S. OFAC announced October 21 Iran-related shadow-fleet sanctions, listing five individuals, four organizations and nine vessels as blocked. General Licenses GG and HH permitted specified wind-down, safety, environmental and cargo offloading transactions. These are confirmed U.S. legal measures and limited licenses, not proof vessels were seized, physically disabled, revenue losses were quantified, or broader sanctions were revoked."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-11-01",
+      "event_id": "EVT-20261101-OPEC-PLUS-DECEMBER-REQUIRED-TARGETS",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900ACD"
+      ],
+      "strike_countable": false,
+      "summary": "Seven OPEC+ members—Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria and Oman—said on November 1 they would maintain September 2026 required production levels as their December 2026 targets. The decision is a stated quota/required-production policy; it does not prove actual oil output, spare capacity, physical loadings, or changes in global supply."
     }
   ],
   "evidence_cutoff": "2026-11-02T16:12:00-05:00",
@@ -307,10 +334,17 @@
       "source_role": "Primary OFAC Oct21 SDN listing: five Iran-related individuals, four legal entities and nine vessels newly designated, plus two narrowly scoped wind-down/safety and offloading general licenses. Distinguish from unrelated Belarus/North Korea removals.",
       "title": "October 21 Iran-related shadow fleet and vessel designations; GL GG and HH",
       "url": "https://ofac.treasury.gov/recent-actions/20261021"
+    },
+    {
+      "outlet": "OPEC",
+      "source_id": "SRC-18CDB7900ACD",
+      "source_role": "OPEC primary Nov1 published decision of seven participating states; December required production targets unchanged from September, not a verified production/output observation or global physical supply forecast.",
+      "title": "Seven OPEC+ countries maintain September required production targets for December 2026",
+      "url": "https://www.opec.org/pr-detail/620-1-november-2026.html"
     }
   ],
   "status": "REVIEWED",
-  "summary": "Reviewed, not yet registered: selective source-qualified additions for Oct14-Nov2 Houthi procurement, Iraqi appointments, confirmed shipping hulls and cumulative IMO counts, two UKMTO notices, US-Iran mediated talks, Chinese outreach, Yemen displacement and exact-contract Nov2 oil-futures settlements. Distinguishes merchant losses from military attrition and futures settlement from EIA physical spot; no exhaustive historical sweep consumption, strike BDA, new WOL verdict, exact marker, or chart overwrite. Further primary OFAC Oct21 shadow-fleet designations and narrow wind-down license terms separately recorded; designated ships are NOT military/merchant-vessel damage.",
+  "summary": "Reviewed, not yet registered: selective source-qualified additions for Oct14-Nov2 Houthi procurement, Iraqi appointments, confirmed shipping hulls and cumulative IMO counts, two UKMTO notices, US-Iran mediated talks, Chinese outreach, Yemen displacement and exact-contract Nov2 oil-futures settlements. Distinguishes merchant losses from military attrition and futures settlement from EIA physical spot; no exhaustive historical sweep consumption, strike BDA, new WOL verdict, exact marker, or chart overwrite. Further primary OFAC Oct21 shadow-fleet designations and narrow wind-down license terms separately recorded; designated ships are NOT military/merchant-vessel damage. Official Nov1 OPEC+ unchanged December required production target is policy, not a measured output or price-chart series.",
   "upstream_provenance": {
     "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
     "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
