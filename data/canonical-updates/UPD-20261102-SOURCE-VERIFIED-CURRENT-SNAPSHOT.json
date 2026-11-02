@@ -1,0 +1,364 @@
+{
+  "entities": [
+    {
+      "entity_id": "ECON-NOV02-BRENT-WTI-FUTURES-SETTLEMENT",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "brent_futures_settlement_usd_bbl": 104.77,
+        "brent_session_change_percent": -7.63,
+        "date": "2026-11-02",
+        "economic_id": "ECON-NOV02-BRENT-WTI-FUTURES-SETTLEMENT",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "metric": "ICE Brent and NYMEX WTI futures settlement prices in USD per barrel",
+        "observed_state": "Nov2 Reuters reported futures settlements Brent $104.77/bbl and WTI $96.46/bbl, both sharply lower on talks-related expectations. Futures quotes are distinct from EIA physical spot; do not add percent changes or plot against incompatible providers/contract vintages.",
+        "source_ids": [
+          "SRC-18CDB7900ACB"
+        ],
+        "status": "REUTERS_REPORTED_SESSION_SETTLEMENT_NOT_EIA_PHYSICAL_SPOT",
+        "wti_futures_settlement_usd_bbl": 96.46,
+        "wti_session_change_percent": -7.36
+      }
+    },
+    {
+      "entity_id": "SHIP-IMO-RITI-DAMAGE-20261029",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "aggregation_type": "INDIVIDUAL_HULL_WITHIN_IMO_125_CUMULATIVE_NOT_ADDITIVE",
+        "date": "2026-10-29",
+        "imo_number": "9249075",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "observed_state": "IMO lists RITI as damaged in Strait of Hormuz on October 29. No pollution reported. The IMO entry does not identify an attacker or precise impact point; not a military equipment loss.",
+        "shipping_id": "SHIP-IMO-RITI-DAMAGE-20261029",
+        "source_ids": [
+          "SRC-18CDB7900AC1"
+        ],
+        "status": "IMO_CONFIRMED_DAMAGE_NO_POLLUTION_ATTACKER_UNKNOWN",
+        "vessel_name": "RITI"
+      }
+    },
+    {
+      "entity_id": "SHIP-IMO-AL-MAYEDA-DAMAGE-20261030",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "aggregation_type": "INDIVIDUAL_HULL_WITHIN_IMO_125_CUMULATIVE_NOT_ADDITIVE",
+        "date": "2026-10-30",
+        "imo_number": "9397298",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "observed_state": "IMO records AL MAYEDA as damaged on October 30, about 40 nautical miles south of Lavan Island, Iran, with no pollution. An approximate location is not a qualified strike coordinate, and the perpetrator remains unidentified. This is merchant-vessel damage, not military equipment attrition.",
+        "shipping_id": "SHIP-IMO-AL-MAYEDA-DAMAGE-20261030",
+        "source_ids": [
+          "SRC-18CDB7900AC1"
+        ],
+        "status": "IMO_CONFIRMED_DAMAGE_NO_POLLUTION_ATTACKER_UNKNOWN",
+        "vessel_name": "AL MAYEDA"
+      }
+    },
+    {
+      "entity_id": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+      "entity_type": "shipping",
+      "mode": "update",
+      "record": {
+        "imo_number": "9290323",
+        "observed_state": "IMO confirms LOUISE 1 (IMO 9290323) damaged on October 29 about 25 nautical miles northeast of Khasab. Reuters/UKMTO described attached explosive devices and an engine-room fire; the vessel later continued its voyage. No perpetrator identified, no exact impact coordinate, and not a separate new November 2 attack.",
+        "source_ids": [
+          "SRC-D1901CB5F6AC",
+          "SRC-18CDB7900AC1"
+        ],
+        "status": "IMO_CONFIRMED_DAMAGE_REUTERS_UKMTO_REPORTED_LIMPET_MECHANISM_ATTACKER_UNKNOWN"
+      }
+    },
+    {
+      "entity_id": "SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "confirmed_incident_count": 125,
+        "confirmed_seafarer_fatalities": 24,
+        "date": "2026-11-02",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "metric": "IMO cumulative confirmed maritime incidents in Strait of Hormuz and wider Middle East",
+        "observed_state": "IMO's source-specific confirmed incidents register reached 125 by Nov2, up from 122 at the Oct30 snapshot because three retrospectively confirmed October hull events were added. No assertion of three Nov2 attacks. Not additive to JMIC, UKMTO, Kpler, or IRGC attack totals.",
+        "shipping_id": "SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102",
+        "source_ids": [
+          "SRC-18CDB7900AC1"
+        ],
+        "source_scope": "IMO_CONFIRMED_INCIDENT_REGISTER",
+        "status": "SOURCE_VERIFIED_CUMULATIVE_NOT_ADDITIVE"
+      }
+    },
+    {
+      "entity_id": "ECON-OFAC-IRAN-SHADOW-FLEET-20261021",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "date": "2026-10-21",
+        "economic_id": "ECON-OFAC-IRAN-SHADOW-FLEET-20261021",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "metric": "Primary OFAC Iran-related SDN designations and limited GL GG/HH",
+        "newly_designated_entities": 4,
+        "newly_designated_individuals": 5,
+        "newly_designated_vessels": 9,
+        "observed_state": "OFAC designated five individuals, four firms and nine vessels linked to its Iranian shadow fleet action; GL GG and HH permit specific wind-down and safety/offloading activities. Counts are legal designations, not physical strikes, seizures or verified economic loss amounts.",
+        "source_ids": [
+          "SRC-18CDB7900ACC"
+        ],
+        "status": "LEGAL_DESIGNATION_CONFIRMED_NO_PHYSICAL_ASSET_LOSS_INFERRED"
+      }
+    },
+    {
+      "entity_id": "ECON-OPEC-DECEMBER-2026-REQUIRED-PRODUCTION-TARGET",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "date": "2026-11-01",
+        "economic_id": "ECON-OPEC-DECEMBER-2026-REQUIRED-PRODUCTION-TARGET",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "metric": "OPEC+ seven-state required production targets for December 2026 (policy, not production)",
+        "observed_state": "OPEC primary decision reaffirmed September required production levels for December, seven participating countries. No basis to plot as actual barrels per day produced, global inventories, or November production delta.",
+        "source_ids": [
+          "SRC-18CDB7900ACD"
+        ],
+        "status": "OFFICIAL_UNCHANGED_DECEMBER_TARGET_POLICY_NOT_REALIZED_OUTPUT"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_date": "2026-10-14",
+      "event_id": "EVT-20261014-CAR-HOUTHI-MISSILE-SUPPLY-REVIEW",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC5",
+        "SRC-18CDB7900AC6"
+      ],
+      "strike_countable": false,
+      "summary": "Conflict Armament Research reported that shipments to the Houthis included specialized components for attempted production of a missile based on Iran's Kheibar Shekan design. This establishes an investigated procurement and manufacturing effort, not a completed operational missile, a particular active factory, Iranian command of a site, or authorization by the Chinese government."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-10-15",
+      "event_id": "EVT-20261015-IRAQ-KHAZALI-DEPUTY-PM-APPOINTMENT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC3",
+        "SRC-18CDB7900AC4"
+      ],
+      "strike_countable": false,
+      "summary": "Iraq's parliament appointed Laith Hadi al-Khazali as a deputy prime minister on October 15. AP reported his prior US sanctions and position in the Iran-aligned Asaib Ahl al-Haq movement. The appointment is confirmed; it is not evidence that he transmitted US intelligence or that Baghdad ordered such transfers."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-01",
+      "event_id": "EVT-20261101-UKMTO-191-RELAYED-MAYDAY",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC2"
+      ],
+      "strike_countable": false,
+      "summary": "UKMTO notice 191 reported that the master of one ship relayed another vessel's Mayday call alleging an unknown-projectile hit within the Strait of Hormuz. The victim vessel's identity, attacker, independent physical damage and final casualty picture were not established by this relay. Do not count a separately verified hull from this notice alone."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-UKMTO-192-TANKER-PROJECTILE-REPORT",
+      "event_time_precision": "DATE_ONLY",
+      "event_type": "SOURCE_DISCLOSURE",
+      "incident_occurred_utc": "2026-11-01T23:47:00Z",
+      "publication_date": "2026-11-02",
+      "source_ids": [
+        "SRC-18CDB7900AC2"
+      ],
+      "strike_countable": false,
+      "summary": "UKMTO published warning 192 on November 2 about a tanker reportedly struck by two unidentified projectiles in an incident recorded at 23:47 UTC on November 1, approximately 72 nautical miles east of Ras al-Khafji, Saudi Arabia. The crew was reported accounted for. This November 2 record is the warning publication, not a claim the attack occurred on November 2; vessel identity, perpetrator and independent impact assessment were unresolved."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IMO-CONFIRMED-SHIPPING-CUMULATIVE",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC1"
+      ],
+      "strike_countable": false,
+      "summary": "The IMO's updated verified maritime incident list counted 125 confirmed incidents in the Middle East through its November 2 publication and 24 confirmed seafarer fatalities. This is a cumulative as-of total, up from 122 at the October 30 snapshot, not evidence of three fresh November 2 attacks; the added list entries include retrospective October incidents."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC7",
+        "SRC-18CDB7900ACA"
+      ],
+      "strike_countable": false,
+      "summary": "Iranian and Qatari officials continued indirect contacts about a proposed Hormuz reopening and renewed nuclear talks, including a conditional two-day implementation outline. Reuters reported on November 2 that the Doha discussions had ended without a breakthrough and the draft was still being circulated. Iran demanded blockade and sanctions relief before further nuclear concessions; there was no signed deal or verified reopening."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-CHINA-IRAN-SAUDI-OMAN-DIPLOMATIC-OUTREACH",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC7",
+        "SRC-18CDB7900AC8",
+        "SRC-18CDB7900AC9"
+      ],
+      "strike_countable": false,
+      "summary": "China announced plans for a regional envoy and reported separate Wang Yi talks with Iranian and Saudi officials; Xi Jinping met Oman's sultan and urged negotiations and safe navigation. These are documented diplomatic contacts and proposals, not proof of Chinese military intervention or a signed Hormuz settlement."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IOM-YEMEN-DISPLACEMENT-SNAPSHOT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC7"
+      ],
+      "strike_countable": false,
+      "summary": "The UN migration agency said more than 300,000 Yemenis had been displaced by renewed fighting. This is a source-reported cumulative displacement estimate, not a count of people newly displaced on November 2 or a casualty tally; geographic and timeframe comparability with earlier estimates remains limited."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-ICE-NYMEX-CRUDE-FUTURES-SETTLEMENT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900ACB"
+      ],
+      "strike_countable": false,
+      "summary": "Reuters reported November 2 futures settlements of $104.77 per barrel for ICE Brent (down 7.63%) and $96.46 per barrel for U.S. WTI (down 7.36%). These are separately denominated exchange-traded futures settlements on a dated market session, not EIA physical spot, Gulf lifting volumes, wartime financial damage or a basis for interpolating missing days."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IMO-LATE-CONFIRMED-OCT29-30-HULLS",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC1"
+      ],
+      "strike_countable": false,
+      "summary": "The IMO November 2 retrospective confirmed-incident register newly identified RITI (IMO 9249075) and LOUISE 1 (IMO 9290323) as damaged on October 29, and AL MAYEDA (IMO 9397298) as damaged on October 30. Those three previously dated incidents are included in IMO's cumulative 125; they are not three attacks carried out on November 2. The IMO does not identify an attacker or certify total commercial-vessel losses across all sources."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-10-21",
+      "event_id": "EVT-20261021-OFAC-IRAN-SHADOW-FLEET-SDNLIST",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900ACC"
+      ],
+      "strike_countable": false,
+      "summary": "U.S. OFAC announced October 21 Iran-related shadow-fleet sanctions, listing five individuals, four organizations and nine vessels as blocked. General Licenses GG and HH permitted specified wind-down, safety, environmental and cargo offloading transactions. These are confirmed U.S. legal measures and limited licenses, not proof vessels were seized, physically disabled, revenue losses were quantified, or broader sanctions were revoked."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-11-01",
+      "event_id": "EVT-20261101-OPEC-PLUS-DECEMBER-REQUIRED-TARGETS",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900ACD"
+      ],
+      "strike_countable": false,
+      "summary": "Seven OPEC+ members—Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria and Oman—said on November 1 they would maintain September 2026 required production levels as their December 2026 targets. The decision is a stated quota/required-production policy; it does not prove actual oil output, spare capacity, physical loadings, or changes in global supply."
+    }
+  ],
+  "evidence_cutoff": "2026-11-02T16:12:00-05:00",
+  "known_at": "2026-11-02T16:12:33-05:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20261102-SOURCE-VERIFIED-CURRENT-SNAPSHOT",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "source_id": "SRC-18CDB7900AC1",
+      "source_role": "IMO primary as-of November 2 confirmed incident list: 125 cumulative confirmed incidents, 24 seafarer fatalities; retrospective confirmations do not imply three November 2 attacks",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC2",
+      "source_role": "UKMTO primary incident notices 191 and 192; initially relayed/reported observations, unknown projectiles and unknown perpetrators; no established incident identity with IMO counts",
+      "url": "https://www.ukmto.org/recent-incidents"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC3",
+      "source_role": "Iraqi Council of Representatives primary appointment record October 15: Laith Hadi al-Khazali deputy prime minister",
+      "url": "https://iq.parliament.iq/en/2026/10/15/the-council-of-representatives-votes-on-deputy-prime-ministers-and-eleven-cabinet-members/"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC4",
+      "source_role": "AP contemporaneous October 15 profile of al-Khazali, historical US sanctions and Iran-aligned militia leadership; appointment does not establish intelligence transfer",
+      "url": "https://apnews.com/article/5b602c6e33a4fefe1abb53277de44263"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC5",
+      "source_role": "Conflict Armament Research October 14 missile manufacturing supply-chain investigation; recovered/identified components and prospective Houthi production, not proven government-directed transfer or active factory",
+      "url": "https://storymaps.arcgis.com/stories/1637a6eef3d2418abbcdd3efa47c256b"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC6",
+      "source_role": "AP reporting on CAR research into Chinese-sourced Houthi missile-manufacturing components; supplied designs do not establish complete weapons",
+      "url": "https://apnews.com/article/2ad930f312484954bcc21cca7e94e571"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC7",
+      "source_role": "AP November 2 running report; Iranian conditional two-day plan, IOM displacement total and China special envoy; dated publication snapshot rather than verified agreement",
+      "url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC8",
+      "source_role": "Reuters November 2 reporting of Wang Yi meetings with Saudi and Iranian officials; diplomatic statements, not verified US-Iran deal",
+      "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC9",
+      "source_role": "Reuters November 2 China-Oman leader meeting and 20-point statement urging navigation and diplomacy; no new enforcement agreement",
+      "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACA",
+      "source_role": "Reuters November 2 later report: Qatar mediation ended without breakthrough, Iran and US indirect contacts continue, conditional Hormuz reopening plan and sequencing demands; source reports parties' claims but no settlement.",
+      "url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACB",
+      "source_role": "Reuters November 2 ICE Brent and NYMEX WTI futures session settlement quotes in USD/bbl, down 7.63% and 7.36%; not EIA physical spot, not realized damages and not a synthetic daily history.",
+      "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+    },
+    {
+      "outlet": "U.S. Treasury OFAC",
+      "source_id": "SRC-18CDB7900ACC",
+      "source_role": "Primary OFAC Oct21 SDN listing: five Iran-related individuals, four legal entities and nine vessels newly designated, plus two narrowly scoped wind-down/safety and offloading general licenses. Distinguish from unrelated Belarus/North Korea removals.",
+      "title": "October 21 Iran-related shadow fleet and vessel designations; GL GG and HH",
+      "url": "https://ofac.treasury.gov/recent-actions/20261021"
+    },
+    {
+      "outlet": "OPEC",
+      "source_id": "SRC-18CDB7900ACD",
+      "source_role": "OPEC primary Nov1 published decision of seven participating states; December required production targets unchanged from September, not a verified production/output observation or global physical supply forecast.",
+      "title": "Seven OPEC+ countries maintain September required production targets for December 2026",
+      "url": "https://www.opec.org/pr-detail/620-1-november-2026.html"
+    }
+  ],
+  "status": "REVIEWED",
+  "summary": "Reviewed, not yet registered: selective source-qualified additions for Oct14-Nov2 Houthi procurement, Iraqi appointments, confirmed shipping hulls and cumulative IMO counts, two UKMTO notices, US-Iran mediated talks, Chinese outreach, Yemen displacement and exact-contract Nov2 oil-futures settlements. Distinguishes merchant losses from military attrition and futures settlement from EIA physical spot; no exhaustive historical sweep consumption, strike BDA, new WOL verdict, exact marker, or chart overwrite. Further primary OFAC Oct21 shadow-fleet designations and narrow wind-down license terms separately recorded; designated ships are NOT military/merchant-vessel damage. Official Nov1 OPEC+ unchanged December required production target is policy, not a measured output or price-chart series.",
+  "upstream_provenance": {
+    "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
+    "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T1200ET.json"
+    ],
+    "map_parity_debt": "https://github.com/ejronin/ISR/issues/324",
+    "review_clock_note": "Known-at and evidence cutoff moved forward to Nov2 16:12 EST because the Nov2 oil-futures settlement and late Doha mediation reporting were added after the initial 13:23 reviewed candidate; no source is backdated into the original cutoff.",
+    "scope": "SELECTIVE_QUALIFIED_SOURCES_NOT_FULL_SWEEP_ACCEPTANCE"
+  }
+}

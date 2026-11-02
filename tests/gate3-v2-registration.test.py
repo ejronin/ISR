@@ -102,6 +102,32 @@ class Gate3V2RegistrationTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.temporary.cleanup()
 
+    def test_nov2_reviewed_multi_domain_candidate_can_register_transactionally(self) -> None:
+        """A reviewed new packet is not authority until the real registrar can consume it."""
+        relative = "data/canonical-updates/UPD-20261102-SOURCE-VERIFIED-CURRENT-SNAPSHOT.json"
+        target = self.root / relative
+        if not target.exists():
+            self.skipTest("nov2 candidate not on this branch")
+        packet = json.loads(target.read_text(encoding="utf-8"))
+        if packet.get("status") == "ACCEPTED":
+            self.skipTest("already accepted packet is validated by manifest authority tests")
+        self.assertEqual(packet["status"], "REVIEWED")
+        self.assertEqual(len(packet["events"]), 12)
+        self.assertEqual(len(packet["sources"]), 13)
+        self.assertEqual(len(packet["entities"]), 7)
+        packet["status"] = "ACCEPTED"
+        target.write_bytes(registrar.canonical_json_bytes(packet))
+        prior = manifest(self.root)
+        entry = registrar.register_v2_packet(self.root, relative)
+        self.assertEqual(entry["sequence"], len(prior["accepted_updates"]) + 1)
+        after = manifest(self.root)
+        self.assertEqual(after["accepted_updates"][:-1], prior["accepted_updates"])
+        self.assertEqual(after["current_evidence_cutoff"], packet["evidence_cutoff"])
+        from build_canonical_current_state_v2 import build_state
+        current = build_state(self.root)
+        self.assertTrue(any(row["event_id"] == "EVT-20261102-IMO-CONFIRMED-SHIPPING-CUMULATIVE" for row in current["chronology"]))
+        self.assertTrue(any(row["event_id"] == "EVT-20261102-ICE-NYMEX-CRUDE-FUTURES-SETTLEMENT" for row in current["chronology"]))
+
     def assert_manifest_unchanged(self, before: bytes) -> None:
         self.assertEqual((self.root / registrar.MANIFEST_PATH).read_bytes(), before)
 
