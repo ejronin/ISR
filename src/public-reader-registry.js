@@ -211,7 +211,7 @@
     intro(article, `This public record contains evidence accepted through ${acceptedCutoff}. Ships face continued danger around Hormuz. A reported attack is not the same as independently verified damage or attribution, and a negotiating proposal is not a signed agreement.`);
     const s=section(article,'Where does it stand now?', 'The accepted record documents pressure on merchant shipping, contested routes through Hormuz and diplomatic proposals. Read each event by its source and date: maritime warnings do not identify an attacker, claims of military damage require corroboration, and talks do not establish a ceasefire or reopened trade route.');
     s.dataset.overviewCurrentPosition = 'accepted-evidence';
-    add(s,'p','', 'Iran has continued to press its stated conditions while other governments have proposed negotiations. The accepted evidence does not by itself resolve the parties\' bargaining power, prove that a settlement was implemented, or establish that the conflict has ended.');
+    add(s,'p','', "Iran hasn't capitulated. It is trying to get the best deal it can through negotiations while keeping some demands in place. That is not the same as obtaining an agreement, securing its stated war aims, or ending the conflict.");
     add(s,'p','', 'Recent evidence places commercial shipping at the center of Iran’s immediate pressure campaign. Merchant-vessel attacks can disrupt trade and raise costs even without forcing a U.S. military withdrawal or proving that American bases are out of action. That describes the current evidence, not a claim that Iran has stopped all military-target attacks.');
     const eventEvidence = (host, ids) => {
       const selected = context.model.chronology.filter(item => ids.includes(item.event_id));
