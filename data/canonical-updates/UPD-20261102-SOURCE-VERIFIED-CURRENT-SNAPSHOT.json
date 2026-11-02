@@ -88,6 +88,25 @@
         "source_scope": "IMO_CONFIRMED_INCIDENT_REGISTER",
         "status": "SOURCE_VERIFIED_CUMULATIVE_NOT_ADDITIVE"
       }
+    },
+    {
+      "entity_id": "ECON-OFAC-IRAN-SHADOW-FLEET-20261021",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "date": "2026-10-21",
+        "economic_id": "ECON-OFAC-IRAN-SHADOW-FLEET-20261021",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
+        "metric": "Primary OFAC Iran-related SDN designations and limited GL GG/HH",
+        "newly_designated_entities": 4,
+        "newly_designated_individuals": 5,
+        "newly_designated_vessels": 9,
+        "observed_state": "OFAC designated five individuals, four firms and nine vessels linked to its Iranian shadow fleet action; GL GG and HH permit specific wind-down and safety/offloading activities. Counts are legal designations, not physical strikes, seizures or verified economic loss amounts.",
+        "source_ids": [
+          "SRC-18CDB7900ACC"
+        ],
+        "status": "LEGAL_DESIGNATION_CONFIRMED_NO_PHYSICAL_ASSET_LOSS_INFERRED"
+      }
     }
   ],
   "events": [
@@ -208,6 +227,17 @@
       ],
       "strike_countable": false,
       "summary": "The IMO November 2 retrospective confirmed-incident register newly identified RITI (IMO 9249075) and LOUISE 1 (IMO 9290323) as damaged on October 29, and AL MAYEDA (IMO 9397298) as damaged on October 30. Those three previously dated incidents are included in IMO's cumulative 125; they are not three attacks carried out on November 2. The IMO does not identify an attacker or certify total commercial-vessel losses across all sources."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-10-21",
+      "event_id": "EVT-20261021-OFAC-IRAN-SHADOW-FLEET-SDNLIST",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900ACC"
+      ],
+      "strike_countable": false,
+      "summary": "U.S. OFAC announced October 21 Iran-related shadow-fleet sanctions, listing five individuals, four organizations and nine vessels as blocked. General Licenses GG and HH permitted specified wind-down, safety, environmental and cargo offloading transactions. These are confirmed U.S. legal measures and limited licenses, not proof vessels were seized, physically disabled, revenue losses were quantified, or broader sanctions were revoked."
     }
   ],
   "evidence_cutoff": "2026-11-02T16:12:00-05:00",
@@ -270,10 +300,17 @@
       "source_id": "SRC-18CDB7900ACB",
       "source_role": "Reuters November 2 ICE Brent and NYMEX WTI futures session settlement quotes in USD/bbl, down 7.63% and 7.36%; not EIA physical spot, not realized damages and not a synthetic daily history.",
       "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+    },
+    {
+      "outlet": "U.S. Treasury OFAC",
+      "source_id": "SRC-18CDB7900ACC",
+      "source_role": "Primary OFAC Oct21 SDN listing: five Iran-related individuals, four legal entities and nine vessels newly designated, plus two narrowly scoped wind-down/safety and offloading general licenses. Distinguish from unrelated Belarus/North Korea removals.",
+      "title": "October 21 Iran-related shadow fleet and vessel designations; GL GG and HH",
+      "url": "https://ofac.treasury.gov/recent-actions/20261021"
     }
   ],
   "status": "REVIEWED",
-  "summary": "Reviewed, not yet registered: selective source-qualified additions for Oct14-Nov2 Houthi procurement, Iraqi appointments, confirmed shipping hulls and cumulative IMO counts, two UKMTO notices, US-Iran mediated talks, Chinese outreach, Yemen displacement and exact-contract Nov2 oil-futures settlements. Distinguishes merchant losses from military attrition and futures settlement from EIA physical spot; no exhaustive historical sweep consumption, strike BDA, new WOL verdict, exact marker, or chart overwrite.",
+  "summary": "Reviewed, not yet registered: selective source-qualified additions for Oct14-Nov2 Houthi procurement, Iraqi appointments, confirmed shipping hulls and cumulative IMO counts, two UKMTO notices, US-Iran mediated talks, Chinese outreach, Yemen displacement and exact-contract Nov2 oil-futures settlements. Distinguishes merchant losses from military attrition and futures settlement from EIA physical spot; no exhaustive historical sweep consumption, strike BDA, new WOL verdict, exact marker, or chart overwrite. Further primary OFAC Oct21 shadow-fleet designations and narrow wind-down license terms separately recorded; designated ships are NOT military/merchant-vessel damage.",
   "upstream_provenance": {
     "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
     "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
