@@ -518,7 +518,7 @@
     const imo=rows.find(r=>r.shipping_id==='SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102');
     if(imo){
       const n=Number(imo.confirmed_incident_count), fatalities=Number(imo.confirmed_seafarer_fatalities);
-      const msg=Number.isFinite(n)&&Number.isFinite(fatalities)?`IMO confirms ${n} cumulative shipping incidents and ${fatalities} seafarer fatalities as of November 2. The latest additions include retrospectively dated October incidents; do not treat this as ${n} new attacks or add it to other sources' different populations.`:'IMO's latest accepted register is a dated cumulative observation; inspect its source before comparing counts.';
+      const msg=Number.isFinite(n)&&Number.isFinite(fatalities)?`IMO confirms ${n} cumulative shipping incidents and ${fatalities} seafarer fatalities as of November 2. The latest additions include retrospectively dated October incidents; do not treat this as ${n} new attacks or add it to other sources' different populations.`:'The latest accepted IMO register is a dated cumulative observation; inspect its source before comparing counts.';
       const c=card(g,'IMO: confirmed maritime incidents',msg,'NOV. 2 / CUMULATIVE');evidence(c,context,imo);
     }
     const h=card(g,'Hormuz: renewed shipping disruption','Kpler reported at least ten commercial-vessel incidents in its latest reporting week and regional crude flows averaging about 8.5 million barrels/day. The container ship GFS Pride also sank October 14. Do not add these counts to separate IMO, UKMTO or previous-period incident tallies.','OCT. 19 / SOURCE-REPORTED');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019'));
