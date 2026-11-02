@@ -112,9 +112,9 @@ class Gate3V2RegistrationTests(unittest.TestCase):
         if packet.get("status") == "ACCEPTED":
             self.skipTest("already accepted packet is validated by manifest authority tests")
         self.assertEqual(packet["status"], "REVIEWED")
-        self.assertEqual(len(packet["events"]), 10)
-        self.assertEqual(len(packet["sources"]), 11)
-        self.assertEqual(len(packet["entities"]), 5)
+        self.assertEqual(len(packet["events"]), 11)
+        self.assertEqual(len(packet["sources"]), 12)
+        self.assertEqual(len(packet["entities"]), 6)
         packet["status"] = "ACCEPTED"
         target.write_bytes(registrar.canonical_json_bytes(packet))
         prior = manifest(self.root)
