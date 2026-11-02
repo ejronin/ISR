@@ -403,9 +403,7 @@
     card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');
     card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');
     card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
-    const merchantRows=records(context.model,'gate3.shipping');
-    const confirmedMerchant=merchantRows.filter(r=>String(r.status||'').startsWith('IMO_CONFIRMED_DAMAGE')||r.shipping_id==='SHIP-LOUISE1-HORMUZ-LIMPET-20261029');
-    add(s,'p','scope-note','The accepted shipping ledger contains '+confirmedMerchant.length+' individually referenced qualifying vessel records in this reader comparison. This is not an all-war merchant-loss count or a military attrition total.');
+    add(s,'p','scope-note','Merchant-vessel damage is tracked in the separate Shipping ledger. Do not add damaged civilian vessels, sanctions designations or intercepted cargo to military equipment losses. Use the linked shipping reader for verified vessel identities and source-specific cumulative totals.');
     routeLink(s,'hormuz.shipping','Read the merchant-vessel loss evidence');
 
     const material=findSection(article,/^Equipment$/i);
