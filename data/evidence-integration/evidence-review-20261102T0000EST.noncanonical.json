@@ -1,0 +1,859 @@
+{
+  "schema_version": "1.0-noncanonical",
+  "artifact_role": "EVIDENCE_INTEGRATION_SOURCE_REVIEW_NOT_ACCEPTANCE",
+  "status": "REVIEWED_PENDING_CANONICAL_REGISTRATION",
+  "main_sha_at_review": "281a0fe89b1c881e1666b7c6721bfb6688d42406",
+  "reviewed_window": {
+    "start": "2026-11-01T12:00:00-05:00",
+    "end": "2026-11-02T00:00:00-05:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-11-02T05:00:00.858Z"
+  },
+  "accepted_baseline": {
+    "sequence": 38,
+    "evidence_cutoff": "2026-10-30T08:38:30-04:00"
+  },
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T0000ET.json"
+    ],
+    "latest_locker_sha_ref": "281a0fe89b1c881e1666b7c6721bfb6688d42406",
+    "prior_five": "Previously reviewed noncanonically in PRs #326, #328, #330, #332, #334; not accepted/consumed."
+  },
+  "source_checks": [
+    {
+      "source": "UKMTO Warning 191-26",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287",
+      "result": "PRIMARY_PDF_READ",
+      "note": "Incident 2026-11-01 15:09 UTC; vessel master relayed another vessel's Mayday; official PDF does not itself prove precise 18:22 UTC publication timestamp."
+    },
+    {
+      "source": "UKMTO Warning 192-26",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3",
+      "result": "OFFICIAL_SOCIAL_POST_AND_INDEPENDENT_REPORT_ONLY",
+      "note": "Original PDF inaccessible to independent browser; official UKMTO social post and secondary report support 23:47 UTC event and 72NM east Ras Al Khafji; publication 01:46 UTC from social tracking not PDF metadata."
+    },
+    {
+      "source": "JMIC Update 110",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a",
+      "result": "PRIMARY_PDF_READ",
+      "note": "ICOD 2026-11-01 13:00 UTC; 167 mixed incidents, 119 US-facilitated Oct29-31, CENTCOM 144/4/2. PDF cutoff is not independently verified publication 14:26 UTC."
+    },
+    {
+      "source": "Reuters China-Oman meeting",
+      "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/",
+      "result": "ARTICLE_READ",
+      "note": "Published Nov2 04:32 UTC; agreement proposed, not signed."
+    },
+    {
+      "source": "IMO confirmed maritime index",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "result": "PRIMARY_WEB_READ",
+      "note": "122 confirmed incidents and 24 fatalities as of Oct30, distinct population from JMIC 167."
+    },
+    {
+      "source": "OFAC recent actions",
+      "url": "https://ofac.treasury.gov/recent-actions",
+      "result": "PRIMARY_WEB_READ",
+      "note": "Latest listing Oct29 amended Iran-related general license; absence from index not absence of all policy activity."
+    },
+    {
+      "source": "IAEA press releases",
+      "url": "https://www.iaea.org/news?type=718",
+      "result": "PRIMARY_WEB_READ",
+      "note": "Latest listed Oct30, no new Iran access announcement; not proof of no access."
+    },
+    {
+      "source": "OPEC Nov1 statement",
+      "url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+      "result": "PRIMARY_WEB_READ",
+      "note": "Seven-country December required output maintained at September level; policy not measured output."
+    },
+    {
+      "source": "Saudi Gazette interception report",
+      "url": "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region",
+      "result": "ARTICLE_READ",
+      "note": "Nov1 21:53 local; attributed coalition claims, duplicate earlier noon report."
+    },
+    {
+      "source": "Europa Press Hodeidah faculty",
+      "url": "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+      "result": "ARTICLE_READ",
+      "note": "Nov1 16:16 Madrid local; Houthi-attributed allegation; no independent facility BDA."
+    },
+    {
+      "source": "Reuters oil futures",
+      "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+      "result": "ORIGINAL_AND_UPDATED_VERSIONS_RECONCILED_PARTIALLY",
+      "note": "Original syndicated Reuters version at 23:13 UTC quoted 23:03 UTC Brent 111.92 WTI 102.34; later updated Reuters article 04:07 UTC quoted Brent 109.75 WTI 100.69; do not backdate later values."
+    },
+    {
+      "source": "Reuters IRGC mine statement",
+      "url": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-exploded-after-hitting-mines-hormuz-2026-11-01/",
+      "result": "INDEXED_REPORT_ONLY",
+      "note": "Iranian military assertion; no independent hulls or evidence of new vessel losses."
+    }
+  ],
+  "records": [
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-UKMTO-191",
+      "record_class": "new_reported_event",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01T15:09:00Z",
+      "source_publication_time_upstream": "2026-11-01T18:22:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "PRIMARY_WARNING_VERIFIED; Mayday relayed by a different master, not independent hull/attack/BDA confirmation. Distinct warning 191-26. Need vessel identity, flag/owner confirmation, voyage and independent casualty/damage evidence.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "STRAIT_WIDE_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-UKMTO-192",
+      "record_class": "new_reported_event",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01T23:47:00Z",
+      "source_publication_time_upstream": "2026-11-02T01:46:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "OFFICIAL_POST_AND_SECONDARY_VERIFIED; direct primary PDF retrieval unavailable to independent web reviewer. Warning 192-26 distinct by 23:47 UTC incident and 72NM east Ras Al Khafji; no hull identity or attacker. Need retrievable original warning, flag/owner report and independent BDA.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "DISTANCE_AND_BEARING_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-CHINA-OMAN-LEADERS",
+      "record_class": "new_reported_event",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-02_MONDAY_BEIJING_LOCAL_TIME_UNSPECIFIED",
+      "source_publication_time_upstream": "2026-11-02T04:32:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "REUTERS_ARTICLE_VERIFIED at 2026-11-02 04:32 UTC; diplomatic meeting/proposal, not signed bilateral agreement or Hormuz operational concession. Meeting occurrence time not specified.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-JMIC110-REGISTRY",
+      "record_class": "later_evidence_update",
+      "existing_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "occurrence_time": "2026-11-01T13:00:00Z",
+      "source_publication_time_upstream": "2026-11-01T14:26:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "PRIMARY_JMIC_VERIFIED; 167 includes attacks, suspicious activity and approaches since March 1. IMO separately 122 confirmed incidents as of Oct 30. Not comparable; no 45-incident delta.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-ALMAYEDA-JMIC",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-AL-MAYEDA-DISCLOSURE",
+      "occurrence_time": "2026-10-30_TIME_UNSPECIFIED",
+      "source_publication_time_upstream": "2026-11-01T14:26:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "PRIMARY_JMIC_VERIFIED; JMIC identifies Al Mayeda with warning 188-26, approximate 40NM south Lavan Island. Update existing Oct 30 event only; no new attack, exact coordinate or independently confirmed attacker.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "DISTANCE_AND_BEARING_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-AZINI-JMIC",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-SOMALI-AZINI-PIRACY-DISCLOSURE",
+      "occurrence_time": "2026-10-29_DATE_ONLY",
+      "source_publication_time_upstream": "2026-11-01T14:26:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a",
+        "https://apnews.com/article/dd4d404235781a3b871668c353540e4c"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "PRIMARY_JMIC_VERIFIED; JMIC joins MSCIO 161/26 and UKMTO 190-26 as one fishing vessel incident, with geographic descriptions not precise. Do not create separate merchant hijacking.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "MULTI_SOURCE_COASTAL_AREA",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-HODEIDAH-UNIVERSITY",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-SAUDI-COALITION-YEMEN-OPERATION",
+      "occurrence_time": "2026-11-01_BEFORE_1616_MADRID_TIME_UNSPECIFIED",
+      "source_publication_time_upstream": "2026-11-01T15:16:23Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "EUROPA_PRESS_VERIFIED 2026-11-01 16:16 Madrid local (=15:16 UTC); attributes allegation to Houthi media and education ministry. Not independent target BDA, site damage or casualties. Pre-window publication.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "NAMED_FACILITY_ACTOR_CLAIM",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-US-BLOCKADE-JMIC",
+      "record_class": "later_evidence_update",
+      "existing_ref": "US_BLOCKADE_IRAN_PORTS_NAVCENT_NCAGS",
+      "occurrence_time": "2026-11-01_AS_OF_JMIC_1300Z",
+      "source_publication_time_upstream": "2026-11-01T14:26:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "PRIMARY_JMIC_VERIFIED; as-of Nov 1 CENTCOM cumulative 144 redirected, 4 disabled, 2 boarded. No hull-specific or in-window new action. Need original CENTCOM time-stamped release before chart.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-SAUDI-INTERCEPTIONS",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-SAUDI-INTERCEPTIONS",
+      "occurrence_time": "2026-11-01_SUNDAY_TIME_UNSPECIFIED",
+      "source_publication_time_upstream": "2026-11-01T21:53:00+03:00",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region",
+        "https://www.ft.com/content/efaa2962-1acb-45cf-afb4-d0088f0a1046"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "SAUDI_GAZETTE_VERIFIED 2026-11-01 21:53 Saudi local; same previously recorded Sunday claimed missile/UAV interceptions, not new event. Saudi coalition actor claim, no independent BDA.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "REGION_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-QATAR-ALMAYEDA-CONDEMNATION",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-AL-MAYEDA-DISCLOSURE",
+      "occurrence_time": "2026-11-01_SUNDAY_DATE_ONLY",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://dohanews.co/qatar-condemns-reckless-and-irresponsible-attack-on-lng-carrier-in-arabian-gulf/"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "SECONDARY_REACTION; statement date only, not an additional vessel event or attacker identification. Need ministry primary timestamp.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-DOHA",
+      "record_class": "later_evidence_update",
+      "existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "occurrence_time": "2026-11-01_SUNDAY_MEDIATION",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY_OR_PRIOR_WINDOW",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "PRIOR_REPORTS; no executed ceasefire, blockade lifting, route opening, or signed Oman/US acceptance. Do not promote forecast/proposal.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-IAEA",
+      "record_class": "later_evidence_update",
+      "existing_ref": "IAEA bombed-site inspections / uranium / Iran nuclear doctrine",
+      "occurrence_time": "2026-11-02_REVIEW",
+      "source_publication_time_upstream": "2026-10-30_LATEST_LISTED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.iaea.org/news?type=718"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "IAEA_PRESS_RELEASE_INDEX_VERIFIED; newest listing Oct 30, not proof of absence of nonpublic access.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-OFAC",
+      "record_class": "later_evidence_update",
+      "existing_ref": "OFAC_IRAN_SANCTIONS_FF1",
+      "occurrence_time": "2026-11-02_REVIEW",
+      "source_publication_time_upstream": "2026-10-29_LATEST_LISTED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "OFAC_RECENT_ACTIONS_INDEX_VERIFIED; latest listed Oct 29 amended Iran-related license. No inferred comprehensive sanctions relief.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-IMO",
+      "record_class": "later_evidence_update",
+      "existing_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "occurrence_time": "2026-11-02_REVIEW",
+      "source_publication_time_upstream": "2026-10-30_LATEST_LISTED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx",
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287",
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "IMO_HIGHLIGHTED_INCIDENTS_VERIFIED; 122 confirmed as-of Oct 30, 24 fatalities. UKMTO warnings 191/192 not automatically added.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-OPEC",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-OPEC-DECEMBER-TARGETS",
+      "occurrence_time": "2026-11-01_SUNDAY",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html",
+        "https://www.reuters.com/business/energy/opec-set-keep-oil-output-targets-steady-sources-say-2026-11-01/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "OPEC_PRIMARY_VERIFIED Nov 1 decision maintains September required levels for December. Policy target, not actual production; duplicate of prior sweep.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-GAZA",
+      "record_class": "later_evidence_update",
+      "existing_ref": "ROOK-20261101-NOON-GAZA-CITY-THREE-REPORTED-KILLED",
+      "occurrence_time": "2026-11-01_SUNDAY",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b",
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "REPORTED_GAZA_CASUALTY_FOLLOWUP; no new independent victim-level reconciliation. Retain prior 3 Gaza City + 5 Khan Younis distinct, no ninth casualty.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "MULTI_CITY_EXISTING_EVENTS",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-MECCA",
+      "record_class": "later_evidence_update",
+      "existing_ref": "MECCA_DEFENCE_PACT_RATIFICATION_AND_SYRIA_POSSIBLE_ACCESSION",
+      "occurrence_time": "2026-11-02_REVIEW",
+      "source_publication_time_upstream": "2026-10-27_LAST_PARLIAMENT_COMMITTEE_ACTION",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://apnews.com/article/b75b3e02240f55d364b3072c2300ad36"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "NO_NEW_PRIMARY_RATIFICATION; parliamentary committee action is not full Turkish ratification, Syrian accession or troop movement.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-LEBANON",
+      "record_class": "later_evidence_update",
+      "existing_ref": "SOUTH_LEBANON_20261031_REPORTED_STRIKES_CANONICAL_ID_NOT_YET_MATCHED",
+      "occurrence_time": "2026-11-02_REVIEW",
+      "source_publication_time_upstream": "2026-11-01_NO_QUALIFIED_NEW_SOURCE",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ft.com/content/efaa2962-1acb-45cf-afb4-d0088f0a1046"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "NO_NEW_VERIFIABLE_BDA; no inference from absence of additional public reporting.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-YEMEN-DISPLACEMENT",
+      "record_class": "later_evidence_update",
+      "existing_ref": "YEMEN_2026_TAIZ_WESTERN_DISPLACEMENT",
+      "occurrence_time": "2026-11-02_REVIEW",
+      "source_publication_time_upstream": "2026-11-01_PRIOR_IOM_SNAPSHOT",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "INCOMPATIBLE_DENOMINATORS; >300k western Yemen vs ~281k since August not same baseline, no sanctioned chart update.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-IRGC-TWO-TANKERS",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01T20:12:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-exploded-after-hitting-mines-hormuz-2026-11-01/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "REUTERS_REPORTS_IRGC_NAVY_ASSERTION; no hulls, coordinates, independent mine identification or evidence of two additional explosions; possible overlap with warnings 191/192 and prior October claims.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "STRAIT_WIDE_ACTOR_CLAIM",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-HOUTHI-MEDICAL-FACULTY",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01T15:16:23Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "HOUTHI_ATTRIBUTED_TARGET_CLAIM; do not infer Saudi strike site, BDA or deaths from coalition-wide operation.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "NAMED_FACILITY_UNVERIFIED_IMPACT",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-MARITIME-191-ATTRIBUTION",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01T18:22:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "NO_PERPETRATOR_VERIFIED; Mayday relay is a report, not Iran attribution.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "STRAIT_WIDE_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-MARITIME-192-ATTRIBUTION",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-02T01:46:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "NO_PERPETRATOR_VERIFIED; reported projectiles do not identify launching actor.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "APPROXIMATE_OFFSET_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-ALMAYEDA-IRAN-CLEARANCE",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://dohanews.co/qatar-condemns-reckless-and-irresponsible-attack-on-lng-carrier-in-arabian-gulf/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "REPORTED_CLEARANCE/CONDENMATION_NOT_PROOF_OF_IRAN_RESPONSIBILITY; no independent navigation authorization chain.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "region-only",
+        "precision": "APPROXIMATE_OFFSET_ONLY",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-SA-INTERCEPTION-ATTRIBUTION",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01T21:53:00+03:00",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "SAUDI_COALITION_ACTOR_ASSERTION; independently confirm launch, intercept and origin before adjudication.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-OIL-MARKET-TIMESTAMP",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01T23:13:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "REUTERS_PAGE_VERSION_CONFLICT; 23:13 UTC Nov1 original article has Brent 111.92/WTI 102.34 at 23:03; later updated article has Brent 109.75/WTI 100.69 at 04:07 UTC Nov2. Later quote cannot inherit earlier public-available time.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-IRAN-ROUTE-NORMALIZATION",
+      "record_class": "claim_or_correction",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "source_review_disposition": "HELD_OR_DUPLICATE",
+      "evidence_reason": "NEGOTIATION_PROPOSAL_NOT_OPERATIONAL_REOPENING; no signed agreement or implemented routing.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": "https://github.com/ejronin/ISR/issues/320"
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-JMIC-TRAFFIC",
+      "record_class": "economic_observation",
+      "existing_ref": null,
+      "occurrence_time": "2026-10-29_TO_2026-11-01T13:00:00Z",
+      "source_publication_time_upstream": "2026-11-01T14:26:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "JMIC_PRIMARY_VERIFIED; 119 US-facilitated Oct29-31, separate non-facilitated cargo AIS population, 490 approximate AIS-visible waiting outside strait Nov1. No sum, no like-for-like chart.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-OIL-0407",
+      "record_class": "economic_observation",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-02T04:07:00Z",
+      "source_publication_time_upstream": "2026-11-01T23:13:00Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "No independent source-level promotion this cycle; upstream attribution retained and needs corroboration before acceptance.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-MIDNIGHT-OPEC-NO-NEW",
+      "record_class": "economic_observation",
+      "existing_ref": null,
+      "occurrence_time": "2026-11-01_DATE_ONLY",
+      "source_publication_time_upstream": "2026-11-01_DATE_ONLY",
+      "collection_time": "2026-11-02T05:00:00.858Z",
+      "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
+      "source_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_AS_ATTRIBUTED_REPORT_ONLY",
+      "evidence_reason": "No independent source-level promotion this cycle; upstream attribution retained and needs corroboration before acceptance.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "geography": {
+        "map_eligibility": "nonspatial",
+        "precision": "NOT_APPLICABLE",
+        "location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_POINT_MARKER_WITHOUT_QUALIFIED_LOCATION"
+      },
+      "claims_forensics_referral": null
+    }
+  ],
+  "coverage_disposition": {
+    "upstream_prior_drawers_recorded": 23,
+    "independently_rechecked_primary_sources": 9,
+    "limits": "Not an exhaustive new review of all 23 prior drawers or all 6 unconsumed windows; prior reviews remain open. No acceptance implied by structural validation."
+  },
+  "downstream_routing": {
+    "claims_forensics": "https://github.com/ejronin/ISR/issues/320",
+    "source_review": "https://github.com/ejronin/ISR/issues/315",
+    "map_chart": "https://github.com/ejronin/ISR/issues/324",
+    "collection_gaps": "https://github.com/ejronin/ISR/issues/296",
+    "map_note": "191 Strait-wide, 192 radial offset, Al Mayeda 40NM south Lavan, Azini Somalia/Socotra, Hodeidah alleged named site and Saudi interceptions all lack qualified impact coordinates. No new exact marker.",
+    "chart_note": "JMIC 167 vs IMO 122 incompatible definitions; JMIC 119 facilitated vs AIS cargo separate populations; oil 04:07 quote later than page 23:13 original; OPEC targets not output; no chart series update.",
+    "public_product": "Public Product owns any eventual marker/chart/copy changes, after accepted canonical registration."
+  },
+  "release_disposition": {
+    "new_accepted_packets": 0,
+    "sweeps_consumed": 0,
+    "sequence_advanced": false,
+    "manifest_modified": false,
+    "public_modified": false,
+    "registrar_executed": false,
+    "reason": "Local full repository checkout unavailable (github.com DNS resolution failure); evidence holds and prior unconsumed sweeps remain. No acceptance or live claim."
+  }
+}
