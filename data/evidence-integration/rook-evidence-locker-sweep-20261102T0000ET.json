@@ -8,11 +8,12 @@
     "window_start": "2026-11-01T12:00:00-05:00",
     "window_end": "2026-11-02T00:00:00-05:00",
     "scheduled_window_end": "2026-11-02T00:00:00-05:00",
-    "collection_time": "2026-11-02T04:59:03.147Z",
+    "collection_time": "2026-11-02T05:00:00.858Z",
     "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
     "collection_mode": "ROUTINE_UPSTREAM_OSINT",
     "source_publication_rule": "Occurrence, original publication, collection and evidence-horizon clocks are separate. Prior-window occurrence newly disclosed is an update, not a new strike. After-horizon edits must not retroactively enter this locker.",
-    "boundary_note": "Previous noon sweep ends 2026-11-01T12:00:00-05:00. This sweep spans the following 12 elapsed hours, entirely EST."
+    "boundary_note": "Previous noon sweep ends 2026-11-01T12:00:00-05:00. This sweep spans the following 12 elapsed hours, entirely EST.",
+    "post_cutoff_review_note": "Source discovery and exact cutoff reconciliation checked after 2026-11-02T05:00:00Z; no new source-qualified event with occurrence/publication before cutoff was identified in final check. Source reporting with uncertain publication clock remains qualified accordingly."
   },
   "new_events": [
     {
@@ -21,7 +22,7 @@
       "actor": "UK Maritime Trade Operations / reporting merchant-vessel master",
       "occurrence_time": "2026-11-01T15:09:00Z",
       "publication_time": "2026-11-01T18:22:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "UKMTO Warning 191-26: a merchant-vessel master relayed a VHF Ch16 Mayday stating another vessel was hit by an unknown projectile in Strait of Hormuz. Warning confirms receipt of report, not independently authenticated hull, crew status, casualties, fire, attacker, weapon or BDA. Do not merge with 192-26, earlier RITI, LOUISE 1, ARZANAH or AL MAYEDA.",
       "sources": [
@@ -49,7 +50,7 @@
       "actor": "UK Maritime Trade Operations / casualty vessel master",
       "occurrence_time": "2026-11-01T23:47:00Z",
       "publication_time": "2026-11-02T01:46:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "UKMTO Warning 192-26: master reported southeastbound tanker hit by two unknown projectiles on port side in Arabian Gulf, 72 NM east of Ras Al Khafji, Saudi Arabia. All crew accounted for and no reported environmental impact at issuance. Vessel identity, hull damage, attacker and exact coordinates unestablished. Distinct from UKMTO 191-26.",
       "sources": [
@@ -77,7 +78,7 @@
       "actor": "Xi Jinping / Sultan Haitham bin Tariq",
       "occurrence_time": "2026-11-02_MONDAY_BEIJING_LOCAL_TIME_UNSPECIFIED",
       "publication_time": "2026-11-02T04:32:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Reuters reports Xi and Sultan Haitham began Beijing talks on expanding strategic partnership and regional stability. Oman ruler arrived Sunday for two-day visit. No signed new military basing arrangement, Iran-Hormuz route approval, Chinese force movement or joint operational action established.",
       "sources": [
@@ -109,7 +110,7 @@
       "prior_drawer_decision": "UPDATE",
       "occurrence_time": "2026-11-01T13:00:00Z",
       "publication_time": "2026-11-01T14:26:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "JMIC Update 110 (ICOD 011300 UTC) counts 167 regional maritime incidents since March 1, explicitly including attacks, suspicious activity and approaches. IMO public registry remains updated Oct30 (prior 122 attacks/24 deaths). Different denominators, periods and validation methods; no 45-incident arithmetic delta. UKMTO publication predates this noon-to-midnight window and is recorded as retrospective source discovery, not a new in-window incident.",
       "sources": [
@@ -138,7 +139,7 @@
       "prior_drawer_decision": "SUPERSEDE",
       "occurrence_time": "2026-10-30_TIME_UNSPECIFIED",
       "publication_time": "2026-11-01T14:26:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "JMIC 110 identifies AL MAYEDA LNG carrier in UKMTO 188-26 as struck by projectiles approx. 40 NM south of Lavan Island, Iran; reported fire and safe crew. Supersedes prior Gulf-wide geospatial description, but no exact impact coordinates, independent attacker attribution or verified final repair state. The official JMIC source was published before this window and discovered in this run.",
       "sources": [
@@ -166,7 +167,7 @@
       "prior_drawer_decision": "UPDATE",
       "occurrence_time": "2026-10-29_DATE_ONLY",
       "publication_time": "2026-11-01T14:26:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "JMIC 110 links AZINI fishing-vessel hijacking to MSCIO 161/26 and UKMTO 190-26, describing position east-southeast of Socotra. AP/Puntland described between Bandar Bayla and Hafun. Neither description supplies coordinates; do not silently resolve geography or current crew status. JMIC published before window.",
       "sources": [
@@ -195,7 +196,7 @@
       "prior_drawer_decision": "UPDATE",
       "occurrence_time": "2026-11-01_BEFORE_1616_MADRID_TIME_UNSPECIFIED",
       "publication_time": "2026-11-01T15:16:23Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Houthi-linked Al Masirah and Houthi education ministry allege two Saudi strikes hit Hodeidah University Faculty of Medicine. Saudi coalition confirmed a broader Yemen operation, not this exact impact or damage. Source published before this sweep began; treat as late-discovered target allegation within prior event, not independently verified new strike, BDA or casualties.",
       "sources": [
@@ -224,7 +225,7 @@
       "prior_drawer_decision": "UPDATE",
       "occurrence_time": "2026-11-01_AS_OF_JMIC_1300Z",
       "publication_time": "2026-11-01T14:26:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "JMIC Update 110 relays CENTCOM figures of 144 commercial vessels redirected, four disabled and two boarded under blockade enforcement as of Nov1. These are cumulative official-source figures, not 144 new actions in this window. No individual hull, event time or precise interdiction coordinates established.",
       "sources": [
@@ -252,7 +253,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-01_SUNDAY_TIME_UNSPECIFIED",
       "publication_time": "2026-11-01T21:53:00+03:00",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Saudi Gazette reports coalition claim of one ballistic missile and one UAV intercepted over southern Saudi region. Earlier Nov1 noon locker already preserved these Sunday claims; do not double count. No independently verified launch point, exact intercept position or debris BDA.",
       "sources": [
@@ -280,7 +281,7 @@
       "prior_drawer_decision": "UPDATE",
       "occurrence_time": "2026-11-01_SUNDAY_DATE_ONLY",
       "publication_time": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Qatar's Foreign Ministry condemned the October 30 Al Mayeda incident and said authorities are investigating. No attacker named, no additional casualties, no independently verified damage or new ship incident. Publication clock within Sunday not sufficiently precise to classify as first in this 12-hour window.",
       "sources": [
@@ -308,7 +309,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-01_SUNDAY_MEDIATION",
       "publication_time": "2026-11-01_DATE_ONLY_OR_PRIOR_WINDOW",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Reuters/AP continue to report Qatar-mediated talks, conditional two-day reopening proposal, and no final agreement. No Washington or Oman signed acceptance, navigational implementation, IAEA access or proven normalization. No distinct new negotiation outcome established in this window.",
       "sources": [
@@ -336,7 +337,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-02_REVIEW",
       "publication_time": "2026-10-30_LATEST_LISTED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "IAEA public press-release index latest dated Oct30 (Ukraine), no new Iran inspection implementation disclosed. This negative publication check is not evidence no private access occurred.",
       "sources": [
@@ -363,7 +364,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-02_REVIEW",
       "publication_time": "2026-10-29_LATEST_LISTED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "OFAC recent-actions index latest Oct29 amended Iran-related general license; no newly listed in-window action. Does not establish broader sanctions easing.",
       "sources": [
@@ -390,7 +391,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-02_REVIEW",
       "publication_time": "2026-10-30_LATEST_LISTED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "IMO public incident index remains updated Oct30. New UKMTO warnings 191 and 192 cannot automatically be added to IMO's previously reported 122 confirmed incidents; distinct validation and inclusion rules.",
       "sources": [
@@ -419,7 +420,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-01_SUNDAY",
       "publication_time": "2026-11-01_DATE_ONLY",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "OPEC official November 1 decision maintaining September required production levels for December was already recorded in prior noon locker. No second production decision or proof actual output reached quotas.",
       "sources": [
@@ -447,7 +448,7 @@
       "prior_drawer_decision": "UPDATE",
       "occurrence_time": "2026-11-01_SUNDAY",
       "publication_time": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "AP follow-up mentions a four-year-old among Sunday Gaza casualties. Does not establish a ninth fatality; preserve separate Gaza City three and western Khan Younis five from Reuters. Precise site, victim identity reconciliation and targeting accounts remain open.",
       "sources": [
@@ -476,7 +477,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-02_REVIEW",
       "publication_time": "2026-10-27_LAST_PARLIAMENT_COMMITTEE_ACTION",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Turkish parliamentary committee approval remains distinct from full ratification and actual troop deployment; no qualifying later source establishes Syrian accession or new Pakistan deployment.",
       "sources": [
@@ -503,7 +504,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-02_REVIEW",
       "publication_time": "2026-11-01_NO_QUALIFIED_NEW_SOURCE",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "No newly authenticated Hezbollah force disposition or site-level strike BDA identified in screened public reporting. No negative proof of absence.",
       "sources": [
@@ -530,7 +531,7 @@
       "prior_drawer_decision": "NO MATERIAL CHANGE",
       "occurrence_time": "2026-11-02_REVIEW",
       "publication_time": "2026-11-01_PRIOR_IOM_SNAPSHOT",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Previous IOM greater-than-300,000 western Yemen displacement and earlier approximately 281,000 since August retain different denominator/geography; no newly authenticated comparable update.",
       "sources": [
@@ -557,7 +558,7 @@
       "claim_text": "Two oil tankers exploded after hitting mines on an unauthorized Strait of Hormuz route.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01T20:12:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "Reuters independently verifies the IRGC made the statement, not vessel identity, mine mechanism, explosions, two distinct incidents or BDA. Do not conflate with UKMTO 191/192 or add two verified attacks.",
       "independently_verified": false,
@@ -584,7 +585,7 @@
       "claim_text": "Saudi aircraft struck Hodeidah University medical faculty twice.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01T15:16:23Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "Actor-linked allegation of specific civilian educational site; coalition broader operation does not independently confirm this target, number of impacts or casualties.",
       "independently_verified": false,
@@ -612,7 +613,7 @@
       "claim_text": "Unknown projectile hit a vessel, with speculative Iranian attribution or casualty claims.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01T18:22:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "UKMTO primary confirms receipt of Mayday relay only; neither attacker, crew status nor casualties specified. Third-party attribution and casualties unverified.",
       "independently_verified": false,
@@ -639,7 +640,7 @@
       "claim_text": "Two projectiles hit a tanker east of Ras Al Khafji.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-02T01:46:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "UKMTO source reports projectiles and crew accounted for, but does not identify attacker or precise hull and does not prove final damage/repair.",
       "independently_verified": false,
@@ -666,7 +667,7 @@
       "claim_text": "Al Mayeda had Iranian clearance and was nevertheless struck near Hormuz.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "Qatar company and JMIC establish incident reporting but no authenticated Iranian clearance record; location is 40 NM south of Lavan Island in Gulf, not established inside Strait.",
       "independently_verified": false,
@@ -694,7 +695,7 @@
       "claim_text": "Houthi ballistic missile and UAV intercepted in southern Saudi region.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01T21:53:00+03:00",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "Coalition's attributed report repeats a claim captured in prior noon locker; no independent launch or exact intercept geolocation.",
       "independently_verified": false,
@@ -721,7 +722,7 @@
       "claim_text": "Page labelled 23:13 UTC Nov1 includes a 04:07 UTC Nov2 oil quote.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01T23:13:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "Publication metadata precedes quoted observation by nearly five hours, suggesting later editing; record the discrepancy and do not treat original publication timestamp as proof quote was public then.",
       "independently_verified": false,
@@ -748,7 +749,7 @@
       "claim_text": "Two-day conditional reopening could normalize Hormuz shipping.",
       "occurrence_time": "2026-11-01_ACTOR_ASSERTION_OR_DATE_UNKNOWN",
       "publication_time": "2026-11-01_DATE_ONLY_TIME_UNVERIFIED",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "evidence_assessment": "Proposal is not an agreement or implemented routing notice; JMIC documented reduced traffic and serious risk, not normalization.",
       "independently_verified": false,
@@ -777,7 +778,7 @@
       "subject": "Maritime traffic / blockade enforcement",
       "occurrence_time": "2026-10-29_TO_2026-11-01T13:00:00Z",
       "publication_time": "2026-11-01T14:26:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "JMIC 110 reports 119 U.S.-facilitated Strait of Hormuz transits over Oct29-31, while separate S&P/SeaVision AIS cargo-vessel table shows four on Oct31. Different source populations and denominators; not 123 total. JMIC also reports approximately 490 vessels waiting outside Strait Nov1, explicitly an internal estimate excluding AIS-dark vessels. Source published before noon and discovered later.",
       "sources": [
@@ -803,7 +804,7 @@
       "subject": "Brent and WTI futures early November 2 observation",
       "occurrence_time": "2026-11-02T04:07:00Z",
       "publication_time": "2026-11-01T23:13:00Z",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Reuters article currently reports 04:07 UTC November 2 Brent $109.75/bbl and WTI $100.69/bbl, but webpage publication metadata 23:13 UTC Nov1 predates this observation. Treat as a time-stamped quote with contradictory page publication metadata, not official settlement or causally proven response to Doha talks.",
       "sources": [
@@ -830,7 +831,7 @@
       "subject": "OPEC+ December required targets",
       "occurrence_time": "2026-11-01_DATE_ONLY",
       "publication_time": "2026-11-01_DATE_ONLY",
-      "collection_time": "2026-11-02T04:59:03.147Z",
+      "collection_time": "2026-11-02T05:00:00.858Z",
       "evidence_horizon_time": "2026-11-02T00:00:00-05:00",
       "summary": "Seven-member OPEC+ decision to keep December production requirements at September levels was accepted into previous noon upstream locker. No second change or measured actual production inferred. Russia, Saudi Arabia, Iraq, Kuwait and Oman included in policy decision.",
       "sources": [
@@ -1343,6 +1344,6 @@
     "source_review_performed": true,
     "repository_validator_status": "PENDING_EXACT_HEAD_CI",
     "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
-    "completion_report": "Nov1 noon–Nov2 midnight EST: UKMTO 191-26 and 192-26 separate maritime reports; IRGC two-tanker mine claim remains unverified; Xi-Haitham Beijing meeting; JMIC 110 retrospective maritime, Al Mayeda and blockade reconciliation; Saudi Hodeidah medical-faculty actor claim; OFAC/IAEA/IMO/OPEC prior drawers checked; no canonical/public mutations, no fabricated geospatial points."
+    "completion_report": "Nov1 noon–Nov2 midnight EST: UKMTO 191-26 and 192-26 separate maritime reports; IRGC two-tanker mine claim remains unverified; Xi-Haitham Beijing meeting; JMIC 110 retrospective maritime, Al Mayeda and blockade reconciliation; Saudi Hodeidah medical-faculty actor claim; OFAC/IAEA/IMO/OPEC prior drawers checked; no canonical/public mutations, no fabricated geospatial points. Post-cutoff final source review performed; original pre-cutoff draft updated before canonical intake."
   }
 }
