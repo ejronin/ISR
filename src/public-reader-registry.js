@@ -622,6 +622,513 @@
       if(Number.isFinite(b)&&Number.isFinite(w)){
         const c=card(g,'Oil futures: dated settlement',`On November 2, Reuters reported Brent futures settled at ${b.toFixed(2)}/barrel and U.S. WTI at ${w.toFixed(2)}/barrel. These are contract settlements, not physical EIA Brent spot observations. Do not connect them into the protected physical-spot series or interpolate missing days.`,'NOV. 2 / FUTURES / USD PER BARREL');
         evidence(c,context,settlement);
+        const comparison=add(s,'div','market-futures-session-comparison');
+        comparison.dataset.marketSettlementScope='same-session-futures-only';
+        add(comparison,'h3','','November 2 crude futures settlement comparison');
+        add(comparison,'p','scope-note','Two different oil futures benchmarks on the same settlement date, both USD per barrel. This is not a trend, an EIA physical spot chart, a war-loss total or a comparison of the same crude grade.');
+        const top=Math.ceil(Math.max(b,w)/25)*25;
+        [['ICE Brent',b],['U.S. WTI',w]].forEach(([name,value])=>{
+          const line=add(comparison,'div','market-futures-session-row');
+          add(line,'span','market-futures-label',name+' · 
+    const o=card(g,'Gulf crude-flow shock','Kpler reported Gulf crude flows at a seven-day average of approximately 8.5 million barrels/day in the week before October 19, down from more than 20 million in the previous week. This provider-specific regional reading is not Iran-only production. Oil futures and EIA physical Brent spot are separate price series.','OCT. 19');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-CRUDE-KPLER-7DAY-20261019'));
+    const f=card(g,'Tanker freight pressure','The Baltic Exchange Gulf of Oman-to-China VLCC Worldscale assessment was about 776 on October 16, down from 841 the prior week while still near record highs. Worldscale is a freight rate index, not dollars per barrel or the Brent price series.','OCT. 16 / WORLDSCALE');evidence(f,context,er.find(r=>r.economic_id==='ECON-VLCC-GULF-OMAN-CHINA-WORLD-SCALE-20261016'));
+    card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
+    const fin=card(g,'Financial pressure','U.S. Treasury designated International Development Bank and related Iran-finance actors on October 15. On October 29, OFAC issued General License FF-1, replacing FF and authorizing narrow wind-down transactions until December 1. That does not remove sanctions or establish that blocked payments were released. FinCEN’s separate charity-compliance alert remains distinct.','OCT. 29 / AMENDED LICENSE');evidence(fin,context,{source_ids:er.filter(r=>r.economic_id==='ECON-OFAC-IDB-SHADOW-BANKS-20261015').flatMap(r=>r.source_ids||[])});
+    const hz=card(g,'Iran → Hezbollah funding','Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September for displaced Lebanese families. Intermediaries reportedly charged a 20% fee. Hezbollah confirmed that funds had been secured but did not identify the source; Iran did not acknowledge the transfer in the report.','SOURCE-REPORTED / COSTLY CHANNEL');evidence(hz,context,er.find(r=>r.economic_id==='ECON-IRAN-HEZBOLLAH-AID-TRANSFER-20261007'));
+    const latest=add(s,'aside','scope-note');
+    add(latest,'strong','','Later cost and market observations');
+    add(latest,'p','','The Pentagon estimated $47.1 billion in U.S. military war spending through October 16, published by AP on October 28. Reuters quoted Brent futures at $115.15 a barrel and WTI at $101.16 intraday on October 26. Separately, the U.S. Energy Department awarded roughly 40 million barrels of oil-borrowing contracts across October 13 and 28, within an existing 172 million-barrel commitment. These are estimates, market prices and contract awards, not directly interchangeable measures or proof of physical oil delivery.');
+    evidence(latest,context,{source_ids:er.filter(r=>['ECON-OCT26-BRENT-WTI-FUTURES-INTRADAY','ECON-OCT16-US-WAR-COST-PENTAGON-OCT28-REPORT','ECON-US-SPR-40M-LOAN-AWARDS-20261028'].includes(r.economic_id)).flatMap(r=>r.source_ids||[])});
+    const forecast=findSection(article,/^2026 growth forecasts$|economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);
+    if(forecast){
+      forecast.dataset.protectedEconomicChart='retained';
+      addClass(forecast,'guide-protected-economic-chart guide-phase1-primary-visual');
+      const badge=add(forecast,'p','card-kicker protected-chart-badge','PROTECTED BASELINE · existing calculation / series retained');
+      forecast.insertBefore(badge,forecast.firstChild);
+    }
+    const revision = forecastRevisionChart(article, context);
+    const compare=findSection(article,/^GCC and Iran: forecast changes$/i);
+    const events=findSection(article,/^Recorded economic effects$/i);
+    const modes=article.ownerDocument.createElement('div');
+    modes.className='economic-mode-controls visualization-mode-controls economic-analytic-selector';
+    modes.setAttribute('role','group');
+    modes.setAttribute('aria-label','Select an available economic analytical view');
+    const modeHeading=add(modes,'p','economic-mode-note','Choose a supported view. Forecast snapshots are comparisons, not dated economic observations.');
+    add(modes,'p','scope-note economic-forecast-scope-always-visible','These are forecasts, not realized GDP or a measure of military success.');
+    // Protected original forecast chart is required content, not an optional
+    // analytical mode. Keep it rendered while switching additive analyses.
+    if (forecast) {
+      forecast.hidden=false;
+      if (!forecast.id) forecast.id='economic-protected-baseline';
+      const baselineLink=add(modes,'a','inline-route-link economic-baseline-link','Original protected forecast chart ↓');
+      baselineLink.href='#'+forecast.id;
+      baselineLink.addEventListener('click',event=>{
+        event.preventDefault();
+        forecast.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    }
+    const viewItems=[
+      { label:'FORECAST REVISIONS',target:revision,kind:'compare' },
+      { label:'COMPARE · DETAIL',target:compare,kind:'compare' },
+      { label:'EVENT RECORD',target:events,kind:'chronology' }
+    ].filter(item=>item.target);
+    const selected=(item)=>{
+      viewItems.forEach(({target,button})=>{
+        const active=target===item.target;
+        target.hidden=!active;
+        if(button) {button.setAttribute('aria-pressed',String(active)); button.classList.toggle('is-active',active);}
+      });
+      modeHeading.textContent=item.kind==='chronology'
+        ? 'Event records provide chronology only; they do not establish an overlay or a causal effect on GDP forecasts.'
+        : item.kind==='compare'
+        ? 'Comparable 2026 growth forecast snapshots. Revisions are percentage points, not realized output.'
+        : 'Original economic calculations and renderer are retained without alteration.';
+    };
+    viewItems.forEach((item,i)=>{
+      const button=add(modes,'button','visualization-mode-button',item.label);
+      button.type='button';
+      button.setAttribute('aria-controls',item.target.id || (item.target.id='economic-view-'+i));
+      button.setAttribute('aria-pressed','false');
+      button.addEventListener('click',()=>selected(item));
+      item.button=button;
+    });
+    const unavailable=add(modes,'p','economic-mode-unavailable',
+      'A price-over-time chart needs approved dated prices. These GDP figures compare forecasts, so a price trend is not shown here yet.');
+    const introNode=article.querySelector('.page-intro');
+    if(introNode)introNode.after(modes);else article.prepend(modes);
+    if(viewItems.length)selected(viewItems[0]);
+    const transmission=add(article,'section','content-section economic-transmission-visual');
+    add(transmission,'h2','','Economic transmission: what is known, and what is only possible');
+    add(transmission,'p','section-note','Banking restrictions, reported economic effects and possible future effects are shown separately.');
+    const lanes=add(transmission,'div','economic-transmission-lanes');
+    const pathway=add(lanes,'article','economic-transmission-lane economic-mechanism');
+    add(pathway,'p','card-kicker','SUPPORTED MECHANISM');
+    add(pathway,'h3','','Banking and counterparty exposure');
+    add(pathway,'p','','U.S. sanctions rules create potential financial-access and compliance consequences for foreign institutions dealing with sanctioned Iranian financial institutions.');
+    evidence(pathway,context,{source_ids:['SRC-A2105A000019','SRC-A2105A00001A']});
+    const observed=add(lanes,'article','economic-transmission-lane economic-observed');
+    add(observed,'p','card-kicker','REPORTED OBSERVATION · NOT SOLE-CAUSE ATTRIBUTION');
+    add(observed,'h3','','Iranian-reported trade decline');
+    add(observed,'p','','President Pezeshkian reported foreign trade down roughly 35% and attributed difficulties to both sanctions and wartime effects. The figure is not independently audited and does not isolate sanctions as the cause.');
+    evidence(observed,context,{source_ids:['SRC-F550DDD51246','SRC-5D32C7182EFF']});
+    const potential=add(lanes,'article','economic-transmission-lane economic-watch');
+    add(potential,'p','card-kicker','POTENTIAL / WATCH · NOT AN OBSERVED RESULT');
+    add(potential,'h3','','Further counterparty withdrawal');
+    add(potential,'p','','Additional banks or shippers could withdraw from Iran-linked transactions if risks rise. This is a scenario to watch, not evidence that any particular route has stopped.');
+    add(transmission,'p','scope-note','The trade decline has several reported causes, including the war and sanctions.');
+  }
+
+  function hormuzTalks(article, context) {
+    const cutoff=context.model?.release?.current_osint_cutoff_display||'the latest accepted evidence cutoff';
+    const update=context.model?.chronology?.find?.(e=>e.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
+    intro(article,update?`The latest accepted talks evidence, through ${cutoff}, describes continuing mediated messages and a conditional two-day Hormuz proposal. The Doha talks produced no signed agreement. Proposals to exchange sanctions relief and reopening steps are not implemented concessions.`:`Through ${cutoff}, Iran and the United States remain apart on the sequencing of Hormuz access, sanctions relief and nuclear concessions. Negotiations and mediator activity are not a signed reopening or ceasefire agreement.`);
+    const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='On October 18, Tehran reaffirmed seven conditions for reopening Hormuz and said it was reviewing a U.S. response. The two sides still disagree on sequencing maritime and sanctions relief against nuclear concessions. No reopening agreement is confirmed.';
+    if(update&&s){const n=add(s,'p','scope-note','Later source-qualified mediation: Iran proposed a conditional two-day implementation outline, but Reuters reported no Doha breakthrough. No signed ceasefire, blockade removal or verified reopening is established.');evidence(s,context,update,'Source for the latest accepted talks state');}
+    if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said on Oct. 4 that Tehran had not entered nuclear discussions with Washington. On Oct. 6, Vice President JD Vance said the U.S. was negotiating with President Masoud Pezeshkian and Foreign Minister Abbas Araqchi and would require a meaningful reduction in enrichment capacity for an agreement. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The public descriptions differ and the substantive gap is explicit; no agreement is in force.');
+  }
+
+  function diplomacy(article, context) {
+    intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Negotiating claims do not become agreements by repetition.');
+    const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
+    const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
+    const update=context.model?.chronology?.find?.(e=>e.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
+    if(update){const c=card(g,'U.S.–Iran / Hormuz contacts','Qatari mediation continued November 2 but Doha discussions ended without a breakthrough. Iran described a conditional two-day Hormuz plan involving sanctions and blockade relief. No accepted proposal, implemented reopening or nuclear agreement is recorded.','NOV. 2 / NO AGREEMENT');evidence(c,context,update);}
+    else card(g,'U.S.–Iran / Hormuz contacts','Qatari mediators returned to Tehran on October 30. Iran rejected the latest proposals, while Washington continues to insist nuclear issues be addressed from the outset. No signed Hormuz or nuclear agreement exists.','OCT. 30 / NO AGREEMENT');
+    card(g,'Egypt / Saudi conditional defense aid','Egypt’s parliament approved defensive support for Saudi Arabia on October 27. Authorization is not evidence that Egyptian troops or aircraft have deployed or conducted combat operations.','OCT. 27 / AUTHORIZED');
+    card(g,'Eslami / IAEA conference','A UN sanctions travel exemption for Mohammad Eslami was not approved after a U.S. objection. This is not a new general sanctions package.','EXEMPTION NOT APPROVED');
+    card(g,'Israel–Lebanon talks','A U.S. official said Israel and Lebanon are expected to meet in Rome in October. That is an expected negotiation, not a completed meeting.','EXPECTED');
+  }
+
+  function mou(article) {
+    intro(article,'The June MOU was an interim bargain. It is no longer in force and no final arrangement has replaced it; current Hormuz, nuclear and regional terms have to be negotiated anew.');
+    const s=section(article,'What controls now?','The June MOU no longer controls either side. It remains the historical baseline for what each side previously accepted, obtained and failed to sustain, but it is not the current operating agreement.');routeLink(s,'hormuz.talks','See current Hormuz talks');routeLink(s,'talks.nuclear','See current nuclear talks');
+  }
+
+  function nuclear(article, context) {
+    const s=section(article,'Latest nuclear-diplomacy development','Vice President JD Vance said on Oct. 6 that any agreement ending the war would require Iran to make a meaningful reduction in enrichment capacity and take concrete action rather than offer promises. He said the U.S. is negotiating with President Masoud Pezeshkian, Foreign Minister Abbas Araqchi and other political officials. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The negotiating gap is explicit; no nuclear settlement is established.');routeLink(s,'talks.overview','See wider diplomacy');
+    const technical=section(article,'Current enrichment status','IAEA Director General Rafael Grossi told the Security Council on October 28 that inspectors have seen no evidence Iran has tried to reconstruct the nuclear facilities bombed in 2025–26. The agency still cannot verify Iran’s surviving enriched uranium stockpile because full access has not been restored. No observed rebuilding is not proof of permanent facility destruction or of an independently verified zero nuclear capability.');
+  }
+
+  function regional(article, context) {
+    intro(article,'Regional diplomacy is easiest to read through what actually changed—meetings held, proposals made, alignments tested and arrangements accepted or rejected. Participant lists and evidence about why those changes happened come afterward.');
+    const introBlock=article.querySelector('.page-intro');
+    if(introBlock)add(introBlock,'p','scope-note','The participant-state map identifies supporting states only; it does not identify capitals, headquarters, command nodes, deployments, or operating areas.');
+    const current=section(article,'Latest regional alignment','Turkey is now providing Saudi Arabia defensive and technical support against the Houthis, including equipment, intelligence sharing, air-defense-related assistance, drone operators, logistics and planning support. Turkish parliamentary ratification of the Mecca Joint Defence Agreement is still pending, so officials described much of the present support as bilateral.');
+    evidence(current,context,{source_ids:['SRC-A2107B000002']},'Source behind this update');
+    const support=section(article,'Iran–Hezbollah financial support','Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September for displaced Lebanese families. A Hezbollah official confirmed funds had been secured but did not identify the source; Iran did not acknowledge the transfer in the report. Intermediaries reportedly charged a 20% fee, showing the transfer channel was costly and constrained.');
+    evidence(support,context,{source_ids:['SRC-A2107C000002']},'Source behind this update');
+    const greece=section(article,'Conditional Hormuz support','Greek Foreign Minister George Gerapetritis said Greece was willing to cooperate with the United States and offer maritime aid in the Strait of Hormuz if a viable peace process emerges. This is a conditional policy offer, not an operational deployment.');
+    evidence(greece,context,{source_ids:['SRC-A2107D000002']},'Source behind this update');
+    const r=findSection(article,/14-state maritime support|roster/i);if(r)collapse(r,'Regional participation and roster detail');
+  }
+
+  function objectives(article, context) {
+    intro(article,'These are the goals each side publicly set, whether the current record shows they got them, and why. The two sides are shown together so the present result is easy to compare. A later, narrower goal does not erase an earlier unmet goal.');
+    const sourceData=modelData(context.model,'analysis.endgame_us_objectives')||{}, corrections=modelData(context.model,'analysis.endgame_objective_corrections')||{}, currentPositionData=modelData(context.model,'analysis.iran_messaging')||{};
+    const localPositionSources={...(sourceData.sources||{}),...(currentPositionData.sources||{})}; const publicSources=Array.isArray(context.model.sources&&context.model.sources.records)?context.model.sources.records:[];
+    const resolvePositionSource=id=>{const local=localPositionSources[id]||{};const registered=publicSources.find(source=>local.url&&source.url===local.url)||{};return {...local,title:registered.title||local.title||local.publisher||id};};
+    const sourceAttribution=id=>{const source=resolvePositionSource(id), haystack=txt(source.title)+' '+txt(source.supports)+' '+txt(source.quality); if(/Pezeshkian/i.test(haystack))return 'Masoud Pezeshkian — President of Iran'; if(/Aref/i.test(haystack))return 'Aref — Iranian vice president'; if(/STATE-MEDIA/i.test(haystack))return 'Iranian state media — stated strategic position'; return /FOREIGN MINISTRY|Foreign Ministry/i.test(haystack)?'Iranian Foreign Ministry':'Iranian public / official position';};
+    const applyOverrides=(records,overrides)=>records.map(record=>{const correction=(overrides||[]).find(item=>objectiveKey(record.objective).includes(objectiveKey(item.match)));return correction?{...record,...correction,objective:record.objective}:record;});
+    const accepted=[
+      ...applyOverrides(sourceData.us_objectives||[],corrections.us_overrides||[]).map(record=>({...record,actor:'United States'})),
+      ...applyOverrides(sourceData.iran_objectives||[],corrections.iran_overrides||[]).map(record=>({...record,actor:'Iran'}))
+    ];
+    const acceptedFor=(actor,goal)=>accepted.find(record=>record.actor===actor&&(objectiveKey(record.objective)===objectiveKey(goal)||objectiveKey(record.objective).includes(objectiveKey(goal))||objectiveKey(goal).includes(objectiveKey(record.objective))));
+    const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Goals and current results');
+    add(s,'p','section-note','Status color summarizes the public result: gray is open, amber is failing or partial, green is achieved, and red is failed or abandoned. Sources behind the accepted evidence remain available on every card.');
+    const legend=add(s,'div','objective-status-legend');[['not-yet','Open'],['partial','Failing / Partial'],['success','Achieved'],['failure','Failed / Abandoned']].forEach(([family,label])=>add(legend,'span',`objective-status objective-status-${family}`,label));
+    const split=add(s,'div','objective-split-grid');
+    ['United States','Iran'].forEach(actor=>{
+      const g=add(split,'section','objective-actor-group');g.dataset.objectiveActor=actor==='United States'?'united-states':'iran';
+      const heading=add(g,'h3','objective-actor-heading');heading.append(context.services.actorIdentity.create(context.documentObject,actor));
+      const acceptedRows=accepted.filter(record=>record.actor===actor);
+      const actorRows=acceptedRows.length?acceptedRows.map(record=>[actor,record.objective,record.status,record.assessment,record]):OBJECTIVES.filter(o=>o[0]===actor).map(row=>[...row,null]);
+      const presentations=actorRows.map(row=>publicObjectivePresentation(actor,row[1],row[2],row[3]));
+      const summaryCounts=presentations.reduce((acc,item)=>{const key=txt(item.label).toLowerCase();acc[key]=(acc[key]||0)+1;return acc;},{});
+      const summary=add(g,'p','objective-actor-summary');
+      summary.textContent=['achieved','partial','failing','open','failed','abandoned'].map(key=>summaryCounts[key]?`${summaryCounts[key]} ${key}`:'').filter(Boolean).join(' · ');
+      if(actor==='Iran'){
+        const walkbacks=(sourceData.iran_walkbacks||[]).slice();
+        const original=walkbacks.find(item=>/ORIGINAL BENCHMARK/i.test(txt(item.type)));
+        const downgrade=walkbacks.find(item=>/OBJECTIVE DOWNGRADE/i.test(txt(item.type)));
+        const currentSeries=(currentPositionData.series||[]).find(item=>/return to talks|who must move first/i.test(txt(item.issue)))||(currentPositionData.series||[])[0]||null;
+        const currentPosition=currentSeries&&currentSeries.shifted_to||null;
+        const chain=add(g,'aside','objective-position-history'); chain.dataset.positionHistory='iran';
+        add(chain,'h4','','Iran’s stated position — current to original');
+        add(chain,'p','section-note','This runs backward from the current public position to the earlier position it replaced, then to the original war-end benchmark. The step label comes from the accepted record; a later position does not erase the earlier objective.');
+        const list=add(chain,'ol','objective-position-chain');
+        const addPositionSource=(host,id,fallbackDate,attribution)=>{const source=resolvePositionSource(id);if(!source.url)return;const meta=add(host,'p','objective-position-source');add(meta,'strong','',attribution||sourceAttribution(id));meta.append(context.documentObject.createTextNode(' · '+(source.date||fallbackDate||'')+' · '));const link=add(meta,'a','',source.title||source.publisher||id);link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';};
+        if(currentPosition){
+          const item=add(list,'li','objective-position-step current'); item.dataset.positionStep='current';
+          add(item,'span','objective-position-marker','Current position');
+          add(item,'p','objective-position-copy',txt(currentPosition.text));
+          (currentPosition.source_ids||[]).forEach(id=>addPositionSource(item,id,currentPosition.date,'Speaker not named in accepted record — Iranian public negotiating position'));
+        }
+        if(currentSeries&&currentSeries.said&&currentPosition){
+          const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(currentSeries.assessment&&currentSeries.assessment.classification||currentSeries.status||'walkback');
+          const acceptedLabel=txt(currentSeries.assessment&&currentSeries.assessment.classification||currentSeries.status||'Walkback').split('/')[0].trim();
+          add(item,'span','objective-position-marker',acceptedLabel);
+          const move=add(item,'p','objective-position-copy'); add(move,'strong','','Moved from: '); move.append(context.documentObject.createTextNode(txt(currentSeries.said.text)));
+          const now=add(item,'p','objective-position-copy'); add(now,'strong','','To: '); now.append(context.documentObject.createTextNode(txt(currentPosition.text)));
+          if(currentSeries.assessment&&currentSeries.assessment.text)add(item,'p','objective-position-why',txt(currentSeries.assessment.text));
+          (currentSeries.said.source_ids||[]).forEach(id=>addPositionSource(item,id,currentSeries.said.date,txt(currentSeries.said.speaker)||'Iranian official position'));
+          (currentPosition.source_ids||[]).forEach(id=>addPositionSource(item,id,currentPosition.date,'Speaker not named in accepted record — later Iranian public negotiating position'));
+        }
+        {
+          const item=add(list,'li','objective-position-step change objective-position-reversal'); item.dataset.positionStep='june-mou-reversal';
+          add(item,'span','objective-position-marker','Position reversal');
+          const quote=add(item,'p','objective-position-copy'); add(quote,'strong','','July 18: '); quote.append(context.documentObject.createTextNode('Supreme Leader Mojtaba Khamenei said repeated U.S. breaches showed Trump’s signature on the June MOU was “worthless.”'));
+          const source=add(item,'p','objective-position-source'); add(source,'strong','','Reuters · 2026-07-18 · '); const link=add(source,'a','','Iran’s supreme leader says U.S. breaches show Trump’s signature is worthless'); link.href='https://www.reuters.com/world/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-is-worthless-2026-07-18/'; link.target='_blank'; link.rel='noopener noreferrer';
+          add(item,'p','objective-position-copy','After economic pressure intensified, Iranian officials repeatedly pressed to restore or reuse the June terms. By September, Foreign Minister Abbas Araqchi was again proposing Hormuz reopening if the United States took steps already contemplated in the June MOU.');
+          const laterSource=add(item,'p','objective-position-source'); add(laterSource,'strong','','Reuters reporting · 2026-09-25 · '); const laterLink=add(laterSource,'a','','Araqchi says it is up to the U.S. to accept Iran’s seven-day plan'); laterLink.href='https://www.investing.com/news/commodities-news/irans-araqchi-says-now-up-to-us-to-accept-7day-plan-4918113'; laterLink.target='_blank'; laterLink.rel='noopener noreferrer';
+        }
+        if(downgrade){
+          const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(downgrade.type);
+          add(item,'span','objective-position-marker',txt(downgrade.type).replaceAll('_',' ').replace(/verified /i,''));
+          const move=add(item,'p','objective-position-copy'); add(move,'strong','','Moved from: '); move.append(context.documentObject.createTextNode(txt(downgrade.from)));
+          const now=add(item,'p','objective-position-copy'); add(now,'strong','','To: '); now.append(context.documentObject.createTextNode(txt(downgrade.to)));
+          if(downgrade.assessment)add(item,'p','objective-position-why',txt(downgrade.assessment));
+          (downgrade.source_ids||[]).forEach(id=>addPositionSource(item,id,downgrade.date));
+        }
+        if(original){
+          const item=add(list,'li','objective-position-step original'); item.dataset.positionStep='original';
+          add(item,'span','objective-position-marker','Original claim / objective');
+          add(item,'p','objective-position-copy',txt(original.from));
+          (original.source_ids||[]).forEach(id=>addPositionSource(item,id,original.date));
+        }
+      }
+      const l=add(g,'div','objective-card-list');
+      actorRows.forEach(row=>{
+        const [side,goal,status,why,rowRecord]=row, acceptedRecord=rowRecord||acceptedFor(side,goal);
+        const presentation=publicObjectivePresentation(side,goal,status,why), family=presentation.family, label=presentation.label;
+        const c=add(l,'article','provenance-card objective-result');c.dataset.objectiveStatus=family;c.dataset.objectiveGoal=objectiveKey(goal);c.dataset.objectivePublicState=objectiveKey(presentation.status);
+        const top=add(c,'div','objective-card-head');add(top,'span',`objective-status objective-status-${family}`,label);add(top,'span','objective-finding-detail',txt(presentation.status).replaceAll('_',' '));
+        add(c,'h4','',presentation.goal);
+        if(acceptedRecord&&acceptedRecord.origin){const origin=add(c,'p','objective-origin');add(origin,'strong','','Originally stated as: ');origin.append(context.documentObject.createTextNode?context.documentObject.createTextNode(txt(acceptedRecord.origin)):node(context.documentObject,'span','',txt(acceptedRecord.origin)));}
+        add(c,'strong','','Why / what changed');add(c,'p','',presentation.why);
+        if(acceptedRecord) evidence(c,context,acceptedRecord,'Objective record & sources',sourceData.sources||{});
+      });
+    });
+    article.querySelector('.page-intro')?.after(s);
+    for(const [pattern,label] of [[/^Original and wartime objectives$/i,'Supporting goal evidence'],[/^Negotiating demands and later changes$/i,'Full position-change record'],[/^Outcomes by level$/i,'Wider outcome evidence']]){const x=findSection(article,pattern);if(x)collapse(x,label);}
+  }
+
+  function positions(article) {
+    intro(article,'This is the before-and-after record of negotiating positions: what each side demanded earlier, what changed, and what it later accepted, proposed or did. Goal results are shown separately.');
+    const m=findSection(article,/^What changed$/i);if(m)collapse(m,'Messaging context related to these position changes');
+  }
+
+  function iranMessaging(stage, article) {
+    intro(article,'This page follows Iranian rhetoric, threats, contradictions and narrative changes over time. It does not duplicate the objective scorecard or treat every changed phrase as a policy concession.');
+  }
+
+  function claimChecks(article) {
+    article.querySelectorAll('.unresolved-box').forEach(b=>{if(![...b.querySelectorAll('li')].some(li=>txt(li.textContent)))b.remove();});
+    article.classList.add('guide-claim-checks-page','guide-forensics-page');
+    const cases=[...article.querySelectorAll(':scope > .claim-case')];
+    cases.forEach((section,index)=>{
+      section.classList.add('guide-forensic-record');
+      section.dataset.guideRecord=String(index+1).padStart(2,'0');
+    });
+    if(cases[0]){
+      cases[0].dataset.guideSection='claim-checks';
+      cases[0].id='claim-checks';
+    }
+  }
+
+  function sourceLibrary(article) {
+    article.classList.add('guide-source-library-page','guide-collection-page');
+    const sourceContext=findSection(article,/^How source context works$/i);
+    if(sourceContext){
+      sourceContext.classList.add('guide-source-context');
+      sourceContext.dataset.guideSection='source-context';
+      sourceContext.id='source-context';
+    }
+    const controls=article.querySelector(':scope > .source-controls');
+    if(controls){
+      controls.classList.add('guide-filter-rail');
+      controls.dataset.guideSection='browse-sources';
+      controls.id='browse-sources';
+    }
+    article.querySelector(':scope > .source-directory')?.classList.add('guide-dense-directory');
+  }
+
+  function information(stage, article, route) {
+    intro(article,'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
+    if(route?.params?.case) return;
+    addClass(article,'guide-migrated-page guide-collection-page guide-lie-ledger-collection');
+    const ledger=article.querySelector(':scope > .reader-lie-ledger');
+    if(ledger){
+      ledger.dataset.guideSection='ledger-cases';
+      ledger.id='ledger-cases';
+      addClass(ledger,'guide-collection-group');
+    }
+    addClass(article.querySelector('.reader-ledger-controls'),'guide-filter-rail');
+    article.querySelectorAll('.reader-ledger-chain-card').forEach(card=>addClass(card,'guide-collection-record'));
+  }
+
+  function webOfLiesCollection(article, route) {
+    if(route?.params?.dossier === 'actor') return;
+    addClass(article,'guide-migrated-page guide-collection-page guide-wol-collection');
+    const network=findSection(article,/^Web of Lies network$|^Explore the connection web$/i);
+    if(network){
+      network.dataset.guideSection='wol-network';
+      network.id='wol-network';
+      addClass(network,'guide-structural-panel');
+    }
+    const hall=findSection(article,/Hall of Shame|Bullshitter awardees/i);
+    if(hall){
+      hall.dataset.guideSection='hall-of-shame';
+      hall.id='hall-of-shame';
+      addClass(hall,'guide-collection-group');
+    }
+    const trails=findSection(article,/^Claim trails$/i);
+    if(trails){
+      trails.dataset.guideSection='claim-trails';
+      trails.id='claim-trails';
+      addClass(trails,'guide-collection-group');
+    }
+    article.querySelectorAll('.wol-hall-grid,.wol-family-list,.wol-source-events').forEach(list=>addClass(list,'guide-dense-directory'));
+    addClass(article.querySelector('.wol-semantic-legend'),'guide-status-key');
+    const graph=article.querySelector('.wol-cytoscape-host');
+    if(graph)graph.dataset.layoutSemantics='presentation-only';
+  }
+
+  function archive(article) {
+    addClass(article,'guide-migrated-page guide-collection-page guide-archive-page');
+    const editions=findSection(article,/^Archived editions$/i);
+    if(editions){
+      editions.dataset.guideSection='archived-editions';
+      editions.id='archived-editions';
+      addClass(editions,'guide-collection-group');
+      addClass(editions.querySelector('.record-list'),'guide-dense-directory');
+    }
+  }
+
+  function finalizePublicProduct(stage, route, routeRuntime, doc) {
+    const article=stage.querySelector('.public-page');if(!article||!route)return;article.dataset.publicProduct=PRODUCT_VERSION;const context=accessContext(routeRuntime,route,doc);
+    const k=route.key;
+    if(k==='start.overview')overview(article,context); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
+    if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article,context); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
+    if(k==='hormuz.overview')hormuzOverview(article,context); if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article,context);
+    if(k==='talks.overview')diplomacy(article,context); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article,context);
+    if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
+    if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
+    connectMappedCards(article,k);
+  }
+
+  function connectMappedCards(article, routeKey) {
+    if (['start.overview','evidence.information','evidence.web_of_lies'].includes(routeKey)) return;
+    const maps=[...article.querySelectorAll('.context-map')].filter(map=>typeof map._atlasHasRecord==='function'&&typeof map._atlasFocusRecord==='function');
+    if(!maps.length)return;
+    const cards=[...article.querySelectorAll('[data-facility-id],[data-loss-id],[data-damage-observation-id],[data-casualty-id],[data-movement-id],[data-strike-effect-id]')];
+    cards.forEach(card=>{
+      const key=card.dataset.facilityId||card.dataset.lossId||card.dataset.damageObservationId||card.dataset.casualtyId||card.dataset.movementId||card.dataset.strikeEffectId;
+      if(!key)return;
+      const map=maps.find(candidate=>candidate._atlasHasRecord(key));if(!map)return;
+      let actions=card.querySelector(':scope > .record-actions');if(!actions)actions=add(card,'div','record-actions');
+      if(actions.querySelector?.('[data-map-record-link]'))return;
+      const button=add(actions,'button','inline-map-link','Show on map');button.type='button';button.dataset.mapRecordLink=key;
+      button.addEventListener('click',()=>{map.scrollIntoView?.({behavior:'smooth',block:'start'});map._atlasFocusRecord(key);});
+    });
+  }
+
+  function quiesceMaps(node) {
+    if (!node || typeof node.querySelectorAll !== 'function') return;
+    [node, ...node.querySelectorAll('*')].forEach(candidate => {
+      const map = candidate && (candidate._atlasMapLibre || candidate._atlasMap);
+      if (map) {
+        if (typeof map.stop === 'function') try { map.stop(); } catch (_) {}
+        if (map._animatingZoom) map._animatingZoom = false;
+      }
+      const chart = candidate && candidate._atlasChart;
+      if (chart && typeof chart.resize === 'function') try { chart.resize(); } catch (_) {}
+    });
+  }
+  function removeMaps(node) {
+    if (!node || typeof node.querySelectorAll !== 'function') return;
+    [node, ...node.querySelectorAll('*')].forEach(candidate => {
+      const map=candidate&&(candidate._atlasMapLibre||candidate._atlasMap);if(map&&typeof map.remove==='function')try{map.remove();}catch(_){}
+      const chart=candidate&&candidate._atlasChart;if(chart&&typeof chart.dispose==='function')try{chart.dispose();}catch(_){}
+    });
+  }
+  function retireVisibleNodes(doc, rootElement, nodes) {
+    if (!nodes?.length) return; const host=doc.createElement('div');host.dataset.atlasReaderRetirement=VERSION;host.setAttribute('aria-hidden','true');
+    Object.assign(host.style,{position:'fixed',left:'-100000px',top:'0',width:'1px',height:'1px',visibility:'hidden',pointerEvents:'none',overflow:'hidden'});
+    (doc.body||doc.documentElement||rootElement).append(host);nodes.forEach(n=>host.append(n));nodes.forEach(removeMaps);host.remove();
+  }
+  function createStagingHost(doc, rootElement, win) {
+    const host=doc.createElement('div');host.dataset.atlasReaderStaging=VERSION;host.setAttribute('aria-hidden','true');
+    Object.assign(host.style,{position:'fixed',left:'-100000px',top:'0',width:`${Math.max(1024,Number(win?.innerWidth)||1280)}px`,minHeight:'100vh',visibility:'hidden',pointerEvents:'none',overflow:'hidden'});
+    (doc.body||doc.documentElement||rootElement).append(host);invariant(host.isConnected!==false,'READER_STAGE_DISCONNECTED','Reader staging host must remain connected during finalization.');return host;
+  }
+  function validateFinalizedStage(stage, readerSupportRuntime) {
+    const app=stage.querySelector?.('.atlas-app'),article=stage.querySelector?.('.public-page'),heading=article?.querySelector?.('h1');
+    invariant(app&&article&&heading,'READER_FINALIZATION_INCOMPLETE','The staged route is missing the qualified reader shell.');
+    invariant(article.dataset&&article.dataset.readerLayer===readerSupportRuntime.READER_SUPPORT_VERSION,'READER_PROJECTION_MISSING','The staged route did not complete reader projection.');
+    invariant(!INTERNAL_TEXT.test(String(stage.innerText||stage.textContent||'')),'READER_INTERNAL_LEAK','The staged route contains internal review text.');
+    return {app,article,heading};
+  }
+  const copyRouteState=(target,staged)=>['routeKey','pageOwner','primarySection','secondaryPage'].forEach(k=>{target[k]=staged[k];});
+  function emitRouteFailure(win,state,error){state.readerError={code:error.code||'READER_FINALIZATION_FAILED'};root.console?.error?.('Atlas reader route finalization failed',error);if(win?.CustomEvent&&win.dispatchEvent)win.dispatchEvent(new win.CustomEvent('atlasreadererror',{detail:{code:state.readerError.code}}));}
+
+  function revealRailItem(link) {
+    const rail = link?.closest?.('nav');
+    if (!rail || !link) return;
+    const left = Number(link.offsetLeft);
+    const width = Number(link.offsetWidth);
+    const railWidth = Number(rail.clientWidth);
+    if (![left, width, railWidth].every(Number.isFinite) || railWidth <= 0) return;
+    const target = Math.max(0, left - Math.max(0, railWidth - width) / 2);
+    if (typeof rail.scrollTo === 'function') rail.scrollTo({ left: target, behavior: 'auto' });
+    else rail.scrollLeft = target;
+  }
+
+  function revealCurrentNavigation(app) {
+    app?.querySelectorAll?.('.primary-nav a[aria-current="page"], .context-route[aria-current="page"]').forEach(revealRailItem);
+  }
+
+  function activateGuideSections(app, route, win) {
+    const definitions = typeof base.pageSectionsFor === 'function' ? base.pageSectionsFor(route) : [];
+    if (!definitions.length) return () => {};
+    const links = [...app.querySelectorAll('[data-section-id]')];
+    const setActive = id => {
+      let activeLink = null;
+      links.forEach(link => {
+        const active = link.dataset.sectionId === id;
+        if (active) { link.setAttribute('aria-current', 'location'); activeLink = link; }
+        else if (link.getAttribute?.('aria-current') === 'location') link.removeAttribute?.('aria-current');
+      });
+      if (activeLink) revealRailItem(activeLink);
+    };
+    const requested = definitions.find(item => item.id === route.params?.section);
+    if (requested) {
+      setActive(requested.id);
+      const target = app.querySelector(`[data-guide-section="${requested.id}"]`);
+      target?.scrollIntoView?.({ block: 'start' });
+    }
+    if (typeof win?.IntersectionObserver !== 'function') return () => {};
+    const defaultSectionId = definitions[0]?.id || '';
+    let activeId = requested?.id || null;
+    let sectionParam = route.params?.section || '';
+    const observer = new win.IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((left, right) => Math.abs(left.boundingClientRect?.top || 0) - Math.abs(right.boundingClientRect?.top || 0));
+      const id = visible[0]?.target?.dataset?.guideSection;
+      if (!id || id === activeId) return;
+      activeId = id;
+      setActive(id);
+      if (id === defaultSectionId) {
+        if (!sectionParam) return;
+        const params = { ...(route.params || {}) };
+        delete params.section;
+        sectionParam = '';
+        win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
+        return;
+      }
+      if (sectionParam === id) return;
+      const params = { ...(route.params || {}), section: id };
+      sectionParam = id;
+      win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.01] });
+    definitions.forEach(definition => {
+      const target = app.querySelector(`[data-guide-section="${definition.id}"]`);
+      if (target) observer.observe(target);
+    });
+    return () => observer.disconnect();
+  }
+
+  function mount(options) {
+    const settings=options||{},doc=settings.documentObject||root.document,win=settings.windowObject||root,rootElement=settings.rootElement,routeRuntime=settings.routeRuntime,state=settings.state||{};
+    const baseRuntime=settings.baseRuntime||base,readerSupportRuntime=settings.readerSupportRuntime||readerSupport;
+    invariant(doc&&rootElement&&routeRuntime&&typeof routeRuntime.forRoute==='function','READER_REGISTRY_INVALID','Reader registry requires a document, root element, and guarded route runtime.');
+    invariant(baseRuntime&&typeof baseRuntime.parseRoute==='function'&&baseRuntime.AppShell&&baseRuntime.PublicNavigation&&baseRuntime.PAGE_OWNERS,'READER_BASE_SUPPORT_UNAVAILABLE','Reader render primitives are unavailable.');
+    invariant(readerSupportRuntime&&typeof readerSupportRuntime.projectShell==='function'&&readerSupportRuntime.READER_SUPPORT_VERSION,'READER_SUPPORT_UNAVAILABLE','Reader projection support is unavailable.');
+    rootElement.__atlasRouteController?.destroy?.();
+    let destroyed=false,previousRouteKey=null,currentServices=null,disposeSectionTracking=()=>{};
+    const stageRoute=(focusHeading,propagateFailure=false)=>{
+      invariant(!destroyed,'READER_REGISTRY_DESTROYED','Reader registry is no longer active.');
+      const previousTitle=doc.title,previousVisible=Array.from(rootElement.children||[]).filter(n=>!n.dataset?.atlasReaderStaging),hasQualified=rootElement.dataset?.status==='ready'&&previousVisible.length>0,stagedState={...state},stage=createStagingHost(doc,rootElement,win);
+      try {
+        const route=baseRuntime.parseRoute(win.location&&win.location.hash),access=routeRuntime.forRoute(route),context={documentObject:doc,windowObject:win,model:access.model,services:access.services,state:stagedState,route};
+        currentServices=access.services;
+        if(!route.canonical&&win.history&&win.location)win.history.replaceState(null,'',baseRuntime.routeHref(route.key,route.params));
+        const shell=baseRuntime.AppShell.create(doc);stage.replaceChildren(shell.app);
+        shell.primaryHost.replaceChildren(baseRuntime.PublicNavigation.renderPrimary(doc,route));
+        shell.contextHost.replaceChildren(baseRuntime.PublicNavigation.renderContext(doc,route));
+        const contents=baseRuntime.PublicNavigation.renderContentsRail(doc,route);
+        shell.contentsHost.replaceChildren(...(contents?[contents]:[]));
+        const owner=baseRuntime.PAGE_OWNERS[route.owner];invariant(typeof owner==='function','READER_PAGE_OWNER_MISSING',`Reader page owner is unavailable: ${route.owner}`);
+        const page=owner(context);shell.main.replaceChildren(page);
+        shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the latest evidence date'}. `);
+        const archive=add(shell.footer,'a','','Archive');archive.href=baseRuntime.routeHref('evidence.archive');
+        stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · The 2026 Iran War Guide`;
+        readerSupportRuntime.projectShell(shell.app,context);
+        finalizePublicProduct(stage,route,routeRuntime,doc);
+        const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;finalized.app.dataset.routeKey=route.key;finalized.app.dataset.layoutScope=PROTECTED_LAYOUT_ROUTES.has(route.key)?'protected':'adaptive-wide';
+        previousVisible.forEach(quiesceMaps);disposeSectionTracking();rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
+        rootElement.className='atlas-ready';rootElement.dataset.status='ready';rootElement.setAttribute('aria-busy','false');copyRouteState(state,stagedState);delete state.readerError;
+        revealCurrentNavigation(finalized.app);
+        disposeSectionTracking=activateGuideSections(finalized.app,route,win);
+        if(focusHeading&&previousRouteKey&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route.key;return route;
+      } catch(error) {
+        stage.remove();doc.title=previousTitle;
+        const failure=error instanceof ReaderRegistryError?error:new ReaderRegistryError(error?.code||'READER_FINALIZATION_FAILED','Reader rendering or finalization failed.',error);
+        if(hasQualified){emitRouteFailure(win,state,failure);if(propagateFailure)throw failure;return null;} root.console?.error?.('Atlas initial reader finalization failed', failure, failure.cause || error); throw failure;
+      }
+    };
+    const onHashChange=()=>stageRoute(true,false);win?.addEventListener?.('hashchange',onHashChange);let initialRoute;
+    try{initialRoute=stageRoute(false,false);}catch(error){win?.removeEventListener?.('hashchange',onHashChange);throw error;}
+    const controller=Object.freeze({render:()=>stageRoute(false,true),current:()=>baseRuntime.parseRoute(win.location&&win.location.hash),services:()=>currentServices,destroy:()=>{destroyed=true;disposeSectionTracking();win?.removeEventListener?.('hashchange',onHashChange);},initialRoute});
+    rootElement.__atlasRouteController=controller;return controller;
+  }
+
+  return Object.freeze({...base,mount,READER_REGISTRY_VERSION:VERSION,ReaderRegistryError,validateFinalizedStage});
+}));
++value.toFixed(2)+'/bbl');
+          const meter=add(line,'meter','market-futures-meter');
+          meter.min=0;meter.max=top;meter.value=value;
+          meter.setAttribute('aria-label',name+' settlement, '+value.toFixed(2)+' U.S. dollars per barrel');
+        });
       }
     }
     const o=card(g,'Gulf crude-flow shock','Kpler reported Gulf crude flows at a seven-day average of approximately 8.5 million barrels/day in the week before October 19, down from more than 20 million in the previous week. This provider-specific regional reading is not Iran-only production. Oil futures and EIA physical Brent spot are separate price series.','OCT. 19');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-CRUDE-KPLER-7DAY-20261019'));
