@@ -629,7 +629,13 @@
         const top=Math.ceil(Math.max(b,w)/25)*25;
         [['ICE Brent',b],['U.S. WTI',w]].forEach(([name,value])=>{
           const line=add(comparison,'div','market-futures-session-row');
-          add(line,'span','market-futures-label',name+' · 
+          add(line,'span','market-futures-label',name+' — USD '+value.toFixed(2)+'/bbl');
+          const meter=add(line,'meter','market-futures-meter');
+          meter.min=0;meter.max=top;meter.value=value;
+          meter.setAttribute('aria-label',name+' settlement, '+value.toFixed(2)+' U.S. dollars per barrel');
+        });
+      }
+    }
     const o=card(g,'Gulf crude-flow shock','Kpler reported Gulf crude flows at a seven-day average of approximately 8.5 million barrels/day in the week before October 19, down from more than 20 million in the previous week. This provider-specific regional reading is not Iran-only production. Oil futures and EIA physical Brent spot are separate price series.','OCT. 19');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-CRUDE-KPLER-7DAY-20261019'));
     const f=card(g,'Tanker freight pressure','The Baltic Exchange Gulf of Oman-to-China VLCC Worldscale assessment was about 776 on October 16, down from 841 the prior week while still near record highs. Worldscale is a freight rate index, not dollars per barrel or the Brent price series.','OCT. 16 / WORLDSCALE');evidence(f,context,er.find(r=>r.economic_id==='ECON-VLCC-GULF-OMAN-CHINA-WORLD-SCALE-20261016'));
     card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
