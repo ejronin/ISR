@@ -121,6 +121,22 @@ def main() -> int:
         for ring in rings(feature.get("geometry") or {}):
             for lon, lat, *_ in ring:
                 require(-180 <= lon <= 180 and -90 <= lat <= 90, "reference coordinate is out of range")
+    # Explicit map eligibility for the 18 accepted sequence-37/38 chronology events.
+    # This guards against inventing precise pins for region-only reports while
+    # keeping their original event IDs and source links available to readers.
+    audit_path = ROOT / "data/evidence-integration/accepted-geography-disposition-seq37-38.json"
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    accepted = []
+    for packet_name in ("UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json", "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION.json"):
+        packet = json.loads((ROOT / "data/canonical-updates" / packet_name).read_text(encoding="utf-8"))
+        accepted.extend(packet["events"])
+    source_ids = {event["event_id"] for event in accepted}
+    dispositions = audit["rows"]
+    require(len(accepted) == 18 and len(dispositions) == 18, "seq37/38 eligibility inventory length changed")
+    require({row["event_id"] for row in dispositions} == source_ids, "seq37/38 map eligibility missing or inventing accepted events")
+    require(all(row["map_eligibility"] in {"NONSPATIAL", "REGION_ONLY", "PLOT_READY", "UNLOCATED_NEEDS_SOURCE"} for row in dispositions), "invalid map eligibility")
+    require(all(not row["point_marker_authorized"] and not row["canonical_location_ids"] for row in dispositions), "seq37/38 has a fabricated point or location ID")
+    require(audit["eligible_exact_point_markers"] == 0, "seq37/38 point marker gate changed without qualified location evidence")
     maritime = validate_maritime(routes, geography)
     print(f"public-geography: PASS - {len(geography['features'])} regional features; {GEOGRAPHY_PATH.stat().st_size} bytes; {maritime} maritime route(s) clear packaged land")
     return 0
