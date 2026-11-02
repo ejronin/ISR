@@ -1,0 +1,928 @@
+{
+  "schema_version": "1.0-noncanonical",
+  "artifact_role": "EVIDENCE_INTEGRATION_SOURCE_REVIEW_NOT_ACCEPTANCE",
+  "status": "REVIEWED_PENDING_CANONICAL_REGISTRATION",
+  "main_sha_at_review": "f14a0e68ef740a1e09de29826313f5925bc00304",
+  "reviewed_window": {
+    "start": "2026-11-02T00:00:00-05:00",
+    "end": "2026-11-02T12:00:00-05:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-11-02T12:00:14-05:00"
+  },
+  "accepted_baseline": {
+    "sequence": 38,
+    "evidence_cutoff": "2026-10-30T08:38:30-04:00"
+  },
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261030T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261031T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261101T1200ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261102T1200ET.json"
+    ],
+    "latest_locker_blob_sha": "838f021ffb982e10c2a3dae24451bde3fcfb8c61",
+    "prior_six": "Prior noncanonical reviews PR #326 #328 #330 #332 #334 #336. All remain unconsumed; no inferred acceptance."
+  },
+  "intake_qualification": {
+    "intake_pr": 337,
+    "exact_head_sha": "e002715476d71b46cb369c531e5abbcb7dd913f7",
+    "ci_run": "https://github.com/ejronin/ISR/actions/runs/41487224262",
+    "ci_result": "SUCCESS_INCLUDING_INTAKE_TEMPORAL_BROWSER_ACCESSIBILITY",
+    "merged_main_sha": "f14a0e68ef740a1e09de29826313f5925bc00304",
+    "pages_run": "https://github.com/ejronin/ISR/actions/runs/41488836664",
+    "pages_result": "INTAKE_ONLY_DETERMINISTIC_NOOP_NO_DEPLOYMENT"
+  },
+  "source_checks": [
+    {
+      "url": "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T07:22:42Z",
+      "note": "Article read; later coalition announcement timing not independently established."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T07:18:29Z",
+      "note": "Rolling article currently four deaths; later Gaza City incident's exact revision clock unresolved."
+    },
+    {
+      "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T09:45:05Z",
+      "note": "Separate Beijing meetings and future envoy announcement verified as reported, not signed agreement."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/displaced-palestinians-return-damaged-hebron-quarter-israeli-troops-withdraw-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T14:26:43Z",
+      "note": "Reported withdrawal from ten-day operation, not total regional withdrawal."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T15:17:17Z",
+      "note": "Four military sources; unverified video and territorial control."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T09:33:02Z",
+      "note": "No breakthrough; conditional two-day Iranian proposal only."
+    },
+    {
+      "url": "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T06:38:37Z",
+      "note": "ADNOC CEO claims, not independently audited inventory totals."
+    },
+    {
+      "url": "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T15:55:12Z",
+      "note": "OPEC/IEA different definitions and ADNOC explicit dispute."
+    },
+    {
+      "url": "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf",
+      "original_article_timestamp": "2026-11-02_DATE_ONLY",
+      "note": "Houthi-affiliated injury report, Yemeni army 1272/500/170 unverified; Sunday drone vs Monday missile."
+    },
+    {
+      "url": "https://apnews.com/article/8722c8b5a9deb228e7a188d4760ea8ed",
+      "original_article_timestamp": "2026-11-02_DATE_ONLY",
+      "note": "IOM displacement repeated; Taiz market allegations not independently verified."
+    },
+    {
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx",
+      "original_article_timestamp": "INDEX_UNDATED",
+      "note": "Primary index confirms latest incidents list updated Oct30; no newly published Nov2 total."
+    },
+    {
+      "url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+      "original_article_timestamp": "2026-11-01_DATE_ONLY",
+      "note": "Official production requirement, not actual output."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-drones-towards-saudi-arabias-dammam-airport-2026-11-02/",
+      "original_article_timestamp": "2026-11-02T16:16:00Z",
+      "note": "Before 17:00Z horizon despite misleading POST-CUTOFF intake ID; actor claim only."
+    },
+    {
+      "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+      "original_article_timestamp": "2026-11-01T23:13:00Z",
+      "note": "Original article timestamp not valid publication time for later 2026-11-02T13:57Z intraday quotes."
+    }
+  ],
+  "records": [
+    {
+      "intake_id": "ROOK-20261102-NOON-SAUDI-SOUTHERN-MISSILE",
+      "record_class": "new_reported_event",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_MORNING_LOCAL_TIME_UNSPECIFIED",
+      "public_available_time_upstream": "2026-11-02T07:22:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_ATTRIBUTED_REPORT",
+      "reason": "Reuters initial Nov2 07:22:42Z confirms civil-defence alerts and later coalition interception statement; later coalition statement cannot automatically inherit 07:22:42Z. Separate Nov1 drone/missile pair. Need original coalition timestamp, missile debris, launch/impact evidence. No independently confirmed interception or Houthi launch.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "REGION_ONLY_MULTIPLE_ALERT_LOCALITIES",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-GAZA-SOUTHERN-STRIKES",
+      "record_class": "new_reported_event",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_EARLY_MORNING_TIME_UNSPECIFIED",
+      "public_available_time_upstream": "2026-11-02T07:18:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_ATTRIBUTED_REPORT",
+      "reason": "Reuters original 07:18:29Z, later revised four-death article. Medics attribute two deaths/six wounded to TWO separate Khan Younis strikes. Do not count two strikes as one occurrence; request site/time/medical records and original version. No independent militant identification.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "CITY_LEVEL_MULTIPLE_STRIKES",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-GAZA-ALMUSSADAR",
+      "record_class": "new_reported_event",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_EARLY_MORNING_TIME_UNSPECIFIED",
+      "public_available_time_upstream": "2026-11-02T07:18:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_ATTRIBUTED_REPORT",
+      "reason": "Reuters same rolling article describes separate Al-Mussadar strike and one reported fatality; distinct from two Khan Younis strikes, but same source not a separate independent casualty confirmation. Later Tel Al-Hawa death must not be backdated.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "TOWN_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-CHINA-ENVOY-PLAN",
+      "record_class": "new_reported_event",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T09:45:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_ANNOUNCEMENT",
+      "reason": "Reuters Nov2 09:45:05Z confirms announced future envoy trip. Announcement only; no visit, agreement, Oman shipping approval or signed peace accord.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-CHINA-IRAN-SAUDI-MEETINGS",
+      "record_class": "new_reported_event",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_BEIJING_DATE_TIME_UNSPECIFIED",
+      "public_available_time_upstream": "2026-11-02T09:45:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_REPORTED_MEETINGS",
+      "reason": "Reuters Nov2 09:45:05Z and cited Xinhua/Chinese Foreign Ministry confirm separate meetings and Saudi letter; no evidence Iranian and Saudi delegations met each other. Distinguish meeting occurrence from later policy projections.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-HEBRON-OPERATION-END",
+      "record_class": "new_reported_event",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY_TIME_UNSPECIFIED",
+      "public_available_time_upstream": "2026-11-02T14:26:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/displaced-palestinians-return-damaged-hebron-quarter-israeli-troops-withdraw-2026-11-02/"
+      ],
+      "source_review_disposition": "RECLASSIFY_AS_EXISTING_OPERATION_UPDATE",
+      "reason": "Reuters Nov2 14:26:43Z reports withdrawal after Oct23 operation; UN 3,000+ displaced during operation. Parent event ID unresolved, so do not register as fresh military operation or imply complete withdrawal.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "CITY_AND_NEIGHBORHOOD_AREA_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-DOHA-NO-BREAKTHROUGH",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "occurrence_time_upstream": "2026-11-02_PUBLIC_STATEMENTS_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T09:33:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_NO_AGREEMENT_UPDATE",
+      "reason": "Reuters Nov2 09:33:02Z confirms Iran said mediation continues without breakthrough. Iran two-day proposal conditional, not an implemented ceasefire, Hormuz opening or sanctions waiver.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-HOUTHI-ADEN-APPROACH",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "YEMEN_2026_TAIZ_ADEN_HOUTHI_OFFENSIVE",
+      "occurrence_time_upstream": "2026-10-30_TO_2026-11-02_TIME_UNSPECIFIED",
+      "public_available_time_upstream": "2026-11-02T15:17:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/"
+      ],
+      "source_review_disposition": "HOLD_TERRITORIAL_CONTROL_PENDING_RECONCILIATION",
+      "reason": "Reuters Nov2 15:17:17Z cites four military sources, describes Al-Maqatirah and Tur al-Bahah. Reported territorial control not independently mapped; Houthi video unverified. Need military source identity, geospatial and prior front-line event match.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "DISTRICT_AND_APPROACH_REGION",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-IRAN-NUCLEAR-NPT",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "IAEA bombed-site inspections / uranium / Iran nuclear doctrine",
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T13:21:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://timesofindia.indiatimes.com/world/middle-east/iran-calls-us-biggest-threat-to-npt-warns-of-stronger-defence-push/articleshow/135463488.cms"
+      ],
+      "source_review_disposition": "SOURCE_QUALIFIED_ATTRIBUTED_STATEMENT",
+      "reason": "Times of India/ANI 13:21Z secondary spokesperson report; NPT membership and asserted peaceful program are separate propositions. No IAEA safeguards access or stockpile proof; seek original ministry transcript.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-YEMEN-DISPLACEMENT",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "YEMEN_2026_TAIZ_WESTERN_DISPLACEMENT",
+      "occurrence_time_upstream": "2026-11-02_REPORTING_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02_DATE_ONLY",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "AP Nov2 repeats IOM >300,000 displaced; previous locker already contains same magnitude. Source/date and geography denominators must be reconciled before changing series.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-IMO-REGISTRY",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "occurrence_time_upstream": "2026-11-02_REVIEW_AS_OF_NOON",
+      "public_available_time_upstream": "2026-11-02_INDEX_UNDATED",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "IMO primary index currently labels confirmed incidents list updated Oct30. No new Nov2 confirmed incident count. Do not add UKMTO warnings or JMIC 167 mixed incidents to IMO 122 confirmed population.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-OFAC",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "OFAC_IRAN_SANCTIONS_FF1",
+      "occurrence_time_upstream": "2026-11-02_REVIEW_AS_OF_NOON",
+      "public_available_time_upstream": "2026-11-02_INDEX_UNDATED",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "OFAC recent-actions index inspected; absence of newer indexed Iran license is not proof no sanctions activity. Prior Oct29 FF-1 accepted, no new discrete event.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-IAEA",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "IAEA bombed-site inspections / uranium / Iran nuclear doctrine",
+      "occurrence_time_upstream": "2026-11-02_REVIEW_AS_OF_NOON",
+      "public_available_time_upstream": "2026-11-02_INDEX_UNDATED",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.iaea.org/news?type=718"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "IAEA public news index reviewed; no new publicly confirmed bombed-site access. Index absence does not establish nuclear condition or compliance.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-SAUDI-PRIOR-PAIR",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "ROOK-20261102-MIDNIGHT-SAUDI-INTERCEPTIONS",
+      "occurrence_time_upstream": "2026-11-01_EVENING_TO_2026-11-02_MORNING",
+      "public_available_time_upstream": "2026-11-02_DATE_ONLY",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "source_review_disposition": "DEDUP_EXISTING_SUNDAY_EVENT",
+      "reason": "Al Jazeera Nov2 distinguishes Sunday drone from Monday missile. Link Sunday drone to previous midnight locker, do not count again.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "REGION_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-HEBRON-DAMAGE",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "HEBRON_OCT23_2026_OPERATION_REFERENCE_PENDING_CANONICAL_MATCH",
+      "occurrence_time_upstream": "2026-10-23_TO_2026-11-02",
+      "public_available_time_upstream": "2026-11-02T14:26:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/displaced-palestinians-return-damaged-hebron-quarter-israeli-troops-withdraw-2026-11-02/"
+      ],
+      "source_review_disposition": "HOLD_PARENT_EVENT_ID_AND_DAMAGE_DENOMINATOR",
+      "reason": "Reuters 14:26:43Z describes damaged homes/shops/roads and UN displacement estimate; link Oct23 operation parent before accepting a new update. No verified precise facility loss count.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "CITY_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-UKMTO-PRIOR-WARNINGS",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "ROOK-20261102-MIDNIGHT-UKMTO-191",
+      "occurrence_time_upstream": "2026-11-01_EXISTING_INCIDENTS",
+      "public_available_time_upstream": "2026-11-02_NO_NEW_OFFICIAL_PUBLICATION_FOUND",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.ukmto.org/"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "No new verified hull identities or attacker for UKMTO 191/192; do not re-count warning as fresh incident or treat missing independent BDA as zero.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-OPEC-DECEMBER",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "ROOK-20261101-NOON-OPEC-DECEMBER-TARGETS",
+      "occurrence_time_upstream": "2026-11-01_DECISION_DATE",
+      "public_available_time_upstream": "2026-11-01_DATE_ONLY",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "Official OPEC Nov1 statement confirms seven members maintain September required production for December; this is policy target, not measured output.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-CHINA-OMAN",
+      "record_class": "later_evidence_update",
+      "updates_existing_ref": "ROOK-20261102-MIDNIGHT-CHINA-OMAN-LEADERS",
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T09:45:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "China/Oman dialogue already in prior midnight locker; new Reuters story supports envoy/meetings but not a second signed China-Oman treaty or navigation agreement.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-IRAN-TWO-DAY",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T09:33:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Iran's proposed two-day implementation is conditional forward-looking feasibility assertion. No US acceptance, signed text or executed opening. Preserve verbatim original speaker and time.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-SAUDI-MISSILE-ATTRIBUTION",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_MORNING",
+      "public_available_time_upstream": "2026-11-02T07:22:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Coalition claims Houthi missile intercepted; independently corroborated as statement only. Need original release and physical evidence before factual BDA.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "REGION_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-HODEIDAH-PORT-INJURIES",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_OR_EARLIER_UNRESOLVED",
+      "public_available_time_upstream": "2026-11-02_DATE_ONLY",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Al Jazeera explicitly attributes 4 Ras Isa + 3 Bajil injuries to Houthi-affiliated outlet; Saudi coalition did not comment. Different sites; no independently verified casualty or attribution.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "NAMED_SITES_ACTOR_CLAIM",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-TAIZ-MARKET",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02_DATE_ONLY",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "AP Nov2 reports alleged three killed (including two children), eight injured, attributed Saudi responsibility; not independently verified. Seek hospital/civil-defence site records, exact locality and alternative attribution.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "GOVERNORATE_ONLY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-YEMEN-1272-OPERATIONS",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-01_PRIOR_24_HOURS",
+      "public_available_time_upstream": "2026-11-02_DATE_ONLY",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Al Jazeera quotes Yemeni army spokesman: 1,272 operations, ~500 fighters killed, ~170 equipment; outlet cannot independently verify. Distinguish operation count, persons, assets and 24h denominator. Request strike logs and independent BDA.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "MULTI_GOVERNORATE_CLAIM",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-GAZA-TARGET-IDENTITY",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_EARLY_MORNING",
+      "public_available_time_upstream": "2026-11-02T07:18:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "IDF says militants targeted but Reuters article supplies no identities or independent corroboration. Medical fatalities do not establish combatant status.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "MULTI_LOCALITY",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-IRAN-NPT",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T13:21:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://timesofindia.indiatimes.com/world/middle-east/iran-calls-us-biggest-threat-to-npt-warns-of-stronger-defence-push/articleshow/135463488.cms"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Iran spokesperson NPT membership, peaceful intent and unchanged doctrine are separable claims; seek official text and IAEA safeguards evidence. No independent verification of peaceful intent.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-ADNOC-INVENTORY",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_ADIPEC_REMARKS",
+      "public_available_time_upstream": "2026-11-02T06:38:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Reuters 06:38:37Z attributes ~1bn bbl inventory draw, 600 bcf LNG gap, 5%->30% logistics share to ADNOC CEO. No independent global accounting; request methodology and period.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-ADNOC-DATA-DISPUTE",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T15:55:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Reuters 15:55:12Z reports ADNOC disputes OPEC/IEA numbers but supplies no replacements; preserve source conflict and category differences, do not declare any side false.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-POST-CUTOFF-HOUTHI-DRONES",
+      "record_class": "actor_claim",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_DATE_ONLY",
+      "public_available_time_upstream": "2026-11-02T16:16:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-drones-towards-saudi-arabias-dammam-airport-2026-11-02/"
+      ],
+      "source_review_disposition": "CLAIMS_FORENSICS_REFERRAL",
+      "reason": "Despite ID label POST-CUTOFF, Reuters first publication 16:16Z is BEFORE 17:00Z noon EST horizon. Claim only: launches alleged, no Saudi confirmation, impact, radar/aircraft damage or verified coordinates. Preserve label mismatch as intake quality debt.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "region-only",
+        "source_precision": "NAMED_TARGETS_CLAIM",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": null,
+      "claims_forensics_referral": "ISSUE_320"
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-ADNOC-BUFFERS",
+      "record_class": "economic_observation",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_ADIPEC_SPEECH",
+      "public_available_time_upstream": "2026-11-02T06:38:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/"
+      ],
+      "source_review_disposition": "TEXT_ONLY_ATTRIBUTED_ECONOMIC_STATEMENT",
+      "reason": "Reuters 06:38:37Z reports ADNOC CEO's nearly 1bn bbl, 600 bcf and 5-to-30% logistics assertions. Distinct measures, missing audited baseline and dates; no sanctioned chart series.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": "NO_SANCTIONED_SERIES_ADVANCEMENT",
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-UAE-OPEC-IEA-PRODUCTION",
+      "record_class": "economic_observation",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-09_MEASURED_PERIOD_WITH_NOV2_DISCLOSURE",
+      "public_available_time_upstream": "2026-11-02T15:55:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/"
+      ],
+      "source_review_disposition": "TEXT_ONLY_CONTESTED_NUMERIC_SOURCES",
+      "reason": "Reuters 15:55:12Z reports OPEC secondary-source 3.917m bpd crude Sep; IEA 4.4m bpd crude and 5.3m bpd all liquids Sep; ADNOC disputes report without alternative. Not comparable denominators; retain all providers, period and units.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": "NO_SANCTIONED_SERIES_ADVANCEMENT",
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-OIL-1357Z",
+      "record_class": "economic_observation",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02T13:57:00Z",
+      "public_available_time_upstream": "2026-11-01T23:13:00Z",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "source_review_disposition": "HOLD_PUBLICATION_REVISION_CLOCK",
+      "reason": "Reuters current page reports Brent $106.65/bbl and WTI $97.75/bbl observed 13:57Z Nov2; original Nov1 23:13Z publication predates these quotes. Later edit timestamp not established; intraday futures not close or spot. No chart promotion.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": "NO_SANCTIONED_SERIES_ADVANCEMENT",
+      "claims_forensics_referral": null
+    },
+    {
+      "intake_id": "ROOK-20261102-NOON-MARITIME-TRAFFIC",
+      "record_class": "economic_observation",
+      "updates_existing_ref": null,
+      "occurrence_time_upstream": "2026-11-02_REVIEW",
+      "public_available_time_upstream": "2026-11-02_REFERENCE_MATERIAL_UNDATED",
+      "collection_time": "2026-11-02T12:00:14-05:00",
+      "evidence_cutoff_upstream": "2026-11-02T12:00:00-05:00",
+      "source_urls": [
+        "https://help.kpler.com/en/articles/14012671-strait-of-hormuz-transit-identification"
+      ],
+      "source_review_disposition": "NO_MATERIAL_DELTA",
+      "reason": "IMO Oct30 confirmed count and JMIC Nov1 mixed incidents have different denominators. Kpler help documentation explains transit identification categories but is not current throughput observation. No chart promotion.",
+      "canonical_action": "NOT_REGISTERED_NOT_CONSUMED",
+      "location": {
+        "map_eligibility": "nonspatial",
+        "source_precision": "NOT_APPLICABLE",
+        "canonical_location_id": null,
+        "latitude": null,
+        "longitude": null,
+        "marker_action": "NO_NEW_EXACT_POINT"
+      },
+      "chart_action": "NO_SANCTIONED_SERIES_ADVANCEMENT",
+      "claims_forensics_referral": null
+    }
+  ],
+  "downstream_routing": {
+    "public_product": "No newly accepted canonical physical event; source-supported location IDs/precision unavailable for Saudi interception, Gaza strikes, Hebron, Yemeni frontline and Houthi alleged targets. Region-only/unlocated; do not invent map points. No sanctioned numeric chart advance; preserve provider, unit, benchmark, observed time and denominator.",
+    "claims_forensics": "Ten actor-claim records referred to Issue #320; no WOL/Lie Ledger verdict edits.",
+    "source_review": "Issue #315; original source clocks and unresolved primary evidence requests.",
+    "collection_gaps": "Issue #296; historical gaps unresolved, seven completed sweeps unconsumed.",
+    "mapping_debt": "Issue #324; marker/chart parity remains unqualified."
+  },
+  "blockers": [
+    "No complete local Git checkout: github.com DNS unavailable in runtime; Gate 3 registrar cannot execute. GitHub CI on intake does not substitute for evidence-level acceptance.",
+    "Parent canonical event ID unresolved for Hebron and Yemen territorial claims; Reuters rolling revision clocks and actor-only BDA unresolved.",
+    "Six earlier completed unconsumed sweeps require independent canonical adjudication; historical collection gaps remain unreconciled."
+  ],
+  "canonical_manifest_advanced": false,
+  "accepted_packet_created": false,
+  "release_identity_changed": false,
+  "production_live_attestation_for_new_canonical_release": false
+}
