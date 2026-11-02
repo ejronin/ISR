@@ -9,7 +9,7 @@
         "brent_session_change_percent": -7.63,
         "date": "2026-11-02",
         "economic_id": "ECON-NOV02-BRENT-WTI-FUTURES-SETTLEMENT",
-        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
         "metric": "ICE Brent and NYMEX WTI futures settlement prices in USD per barrel",
         "observed_state": "Nov2 Reuters reported futures settlements Brent $104.77/bbl and WTI $96.46/bbl, both sharply lower on talks-related expectations. Futures quotes are distinct from EIA physical spot; do not add percent changes or plot against incompatible providers/contract vintages.",
         "source_ids": [
@@ -28,7 +28,7 @@
         "aggregation_type": "INDIVIDUAL_HULL_WITHIN_IMO_125_CUMULATIVE_NOT_ADDITIVE",
         "date": "2026-10-29",
         "imo_number": "9249075",
-        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
         "observed_state": "IMO lists RITI as damaged in Strait of Hormuz on October 29. No pollution reported. The IMO entry does not identify an attacker or precise impact point; not a military equipment loss.",
         "shipping_id": "SHIP-IMO-RITI-DAMAGE-20261029",
         "source_ids": [
@@ -46,7 +46,7 @@
         "aggregation_type": "INDIVIDUAL_HULL_WITHIN_IMO_125_CUMULATIVE_NOT_ADDITIVE",
         "date": "2026-10-30",
         "imo_number": "9397298",
-        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
         "observed_state": "IMO records AL MAYEDA as damaged on October 30, about 40 nautical miles south of Lavan Island, Iran, with no pollution. An approximate location is not a qualified strike coordinate, and the perpetrator remains unidentified. This is merchant-vessel damage, not military equipment attrition.",
         "shipping_id": "SHIP-IMO-AL-MAYEDA-DAMAGE-20261030",
         "source_ids": [
@@ -78,7 +78,7 @@
         "confirmed_incident_count": 125,
         "confirmed_seafarer_fatalities": 24,
         "date": "2026-11-02",
-        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "knowledge_time": "2026-11-02T16:12:33-05:00",
         "metric": "IMO cumulative confirmed maritime incidents in Strait of Hormuz and wider Middle East",
         "observed_state": "IMO's source-specific confirmed incidents register reached 125 by Nov2, up from 122 at the Oct30 snapshot because three retrospectively confirmed October hull events were added. No assertion of three Nov2 attacks. Not additive to JMIC, UKMTO, Kpler, or IRGC attack totals.",
         "shipping_id": "SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102",
@@ -210,8 +210,8 @@
       "summary": "The IMO November 2 retrospective confirmed-incident register newly identified RITI (IMO 9249075) and LOUISE 1 (IMO 9290323) as damaged on October 29, and AL MAYEDA (IMO 9397298) as damaged on October 30. Those three previously dated incidents are included in IMO's cumulative 125; they are not three attacks carried out on November 2. The IMO does not identify an attacker or certify total commercial-vessel losses across all sources."
     }
   ],
-  "evidence_cutoff": "2026-11-02T13:23:00-05:00",
-  "known_at": "2026-11-02T13:23:59-05:00",
+  "evidence_cutoff": "2026-11-02T16:12:00-05:00",
+  "known_at": "2026-11-02T16:12:33-05:00",
   "narrative_claims": [],
   "packet_id": "UPD-20261102-SOURCE-VERIFIED-CURRENT-SNAPSHOT",
   "schema_version": "2.0",
@@ -278,6 +278,7 @@
     "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
     "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
     "map_parity_debt": "https://github.com/ejronin/ISR/issues/324",
+    "review_clock_note": "Known-at and evidence cutoff moved forward to Nov2 16:12 EST because the Nov2 oil-futures settlement and late Doha mediation reporting were added after the initial 13:23 reviewed candidate; no source is backdated into the original cutoff.",
     "scope": "SELECTIVE_QUALIFIED_SOURCES_NOT_FULL_SWEEP_ACCEPTANCE"
   }
 }
