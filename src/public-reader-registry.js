@@ -207,10 +207,11 @@
   }
 
   function overview(article, context) {
-    intro(article, 'Iran remains under military and economic pressure while attacks against ships near Hormuz continue. The latest October 29 tanker attack has no verified perpetrator. Qatar resumed mediation October 30; no signed U.S.–Iran reopening or ceasefire agreement is in force.');
-    const s=section(article,'Where does it stand now?', 'The October 29 limpet-mine attack on a tanker and other maritime incidents show that trade remains at risk. Iran claims authority over passage routes, but that claim is not established as international law. Qatar has returned to Tehran for talks; both sides remain apart over sanctions, the blockade and nuclear terms.');
+    const acceptedCutoff=context.model?.release?.current_osint_cutoff_display||context.model?.release?.current_osint_cutoff||'the latest accepted evidence date';
+    intro(article, `This public record contains evidence accepted through ${acceptedCutoff}. Ships face continued danger around Hormuz. A reported attack is not the same as independently verified damage or attribution, and a negotiating proposal is not a signed agreement.`);
+    const s=section(article,'Where does it stand now?', 'The accepted record documents pressure on merchant shipping, contested routes through Hormuz and diplomatic proposals. Read each event by its source and date: maritime warnings do not identify an attacker, claims of military damage require corroboration, and talks do not establish a ceasefire or reopened trade route.');
     s.dataset.overviewCurrentPosition = 'accepted-evidence';
-    add(s,'p','', "Iran hasn't capitulated. But its negotiating position increasingly looks like a country trying to get the best deal it can from a bad position, rather than a country deciding what the final deal will be. That's a long way from where Iran said this war was going.");
+    add(s,'p','', "Iran hasn't capitulated. It is trying to get the best deal it can through negotiations while keeping some demands in place. That is not the same as obtaining an agreement, securing its stated war aims, or ending the conflict.");
     add(s,'p','', 'Recent evidence places commercial shipping at the center of Iran’s immediate pressure campaign. Merchant-vessel attacks can disrupt trade and raise costs even without forcing a U.S. military withdrawal or proving that American bases are out of action. That describes the current evidence, not a claim that Iran has stopped all military-target attacks.');
     const eventEvidence = (host, ids) => {
       const selected = context.model.chronology.filter(item => ids.includes(item.event_id));
