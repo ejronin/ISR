@@ -146,8 +146,8 @@
       "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
     }
   ],
-  "status": "ACCEPTED",
-  "summary": "Selective source-qualified status through November 2: primary IMO cumulative maritime register, UKMTO reports distinguished from confirmed incidents, Iraqi parliament appointment, CAR-sourced Houthi procurement investigation, Iranian conditional Hormuz plan, Chinese diplomacy and UN-reported Yemen displacement. Plain-language actor/observation distinction and no synthetic military BDA, current coordinates, chart merging, new claim adjudication or blanket historical 12-hour sweep recovery. The recent evidence intake backlog remains partially unconsumed.",
+  "status": "REVIEWED",
+  "summary": "Reviewed source-qualified candidate (not yet registered): selective status through November 2: primary IMO cumulative maritime register, UKMTO reports distinguished from confirmed incidents, Iraqi parliament appointment, CAR-sourced Houthi procurement investigation, Iranian conditional Hormuz plan, Chinese diplomacy and UN-reported Yemen displacement. Plain-language actor/observation distinction and no synthetic military BDA, current coordinates, chart merging, new claim adjudication or blanket historical 12-hour sweep recovery. The recent evidence intake backlog remains partially unconsumed.",
   "upstream_provenance": {
     "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
     "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
