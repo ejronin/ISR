@@ -1,5 +1,95 @@
 {
-  "entities": [],
+  "entities": [
+    {
+      "entity_id": "ECON-NOV02-BRENT-WTI-FUTURES-SETTLEMENT",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "brent_futures_settlement_usd_bbl": 104.77,
+        "brent_session_change_percent": -7.63,
+        "date": "2026-11-02",
+        "economic_id": "ECON-NOV02-BRENT-WTI-FUTURES-SETTLEMENT",
+        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "metric": "ICE Brent and NYMEX WTI futures settlement prices in USD per barrel",
+        "observed_state": "Nov2 Reuters reported futures settlements Brent $104.77/bbl and WTI $96.46/bbl, both sharply lower on talks-related expectations. Futures quotes are distinct from EIA physical spot; do not add percent changes or plot against incompatible providers/contract vintages.",
+        "source_ids": [
+          "SRC-18CDB7900ACB"
+        ],
+        "status": "REUTERS_REPORTED_SESSION_SETTLEMENT_NOT_EIA_PHYSICAL_SPOT",
+        "wti_futures_settlement_usd_bbl": 96.46,
+        "wti_session_change_percent": -7.36
+      }
+    },
+    {
+      "entity_id": "SHIP-IMO-RITI-DAMAGE-20261029",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "aggregation_type": "INDIVIDUAL_HULL_WITHIN_IMO_125_CUMULATIVE_NOT_ADDITIVE",
+        "date": "2026-10-29",
+        "imo_number": "9249075",
+        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "observed_state": "IMO lists RITI as damaged in Strait of Hormuz on October 29. No pollution reported. The IMO entry does not identify an attacker or precise impact point; not a military equipment loss.",
+        "shipping_id": "SHIP-IMO-RITI-DAMAGE-20261029",
+        "source_ids": [
+          "SRC-18CDB7900AC1"
+        ],
+        "status": "IMO_CONFIRMED_DAMAGE_NO_POLLUTION_ATTACKER_UNKNOWN",
+        "vessel_name": "RITI"
+      }
+    },
+    {
+      "entity_id": "SHIP-IMO-AL-MAYEDA-DAMAGE-20261030",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "aggregation_type": "INDIVIDUAL_HULL_WITHIN_IMO_125_CUMULATIVE_NOT_ADDITIVE",
+        "date": "2026-10-30",
+        "imo_number": "9397298",
+        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "observed_state": "IMO records AL MAYEDA as damaged on October 30, about 40 nautical miles south of Lavan Island, Iran, with no pollution. An approximate location is not a qualified strike coordinate, and the perpetrator remains unidentified. This is merchant-vessel damage, not military equipment attrition.",
+        "shipping_id": "SHIP-IMO-AL-MAYEDA-DAMAGE-20261030",
+        "source_ids": [
+          "SRC-18CDB7900AC1"
+        ],
+        "status": "IMO_CONFIRMED_DAMAGE_NO_POLLUTION_ATTACKER_UNKNOWN",
+        "vessel_name": "AL MAYEDA"
+      }
+    },
+    {
+      "entity_id": "SHIP-LOUISE1-HORMUZ-LIMPET-20261029",
+      "entity_type": "shipping",
+      "mode": "update",
+      "record": {
+        "imo_number": "9290323",
+        "observed_state": "IMO confirms LOUISE 1 (IMO 9290323) damaged on October 29 about 25 nautical miles northeast of Khasab. Reuters/UKMTO described attached explosive devices and an engine-room fire; the vessel later continued its voyage. No perpetrator identified, no exact impact coordinate, and not a separate new November 2 attack.",
+        "source_ids": [
+          "SRC-D1901CB5F6AC",
+          "SRC-18CDB7900AC1"
+        ],
+        "status": "IMO_CONFIRMED_DAMAGE_REUTERS_UKMTO_REPORTED_LIMPET_MECHANISM_ATTACKER_UNKNOWN"
+      }
+    },
+    {
+      "entity_id": "SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "confirmed_incident_count": 125,
+        "confirmed_seafarer_fatalities": 24,
+        "date": "2026-11-02",
+        "knowledge_time": "2026-11-02T13:23:59-05:00",
+        "metric": "IMO cumulative confirmed maritime incidents in Strait of Hormuz and wider Middle East",
+        "observed_state": "IMO's source-specific confirmed incidents register reached 125 by Nov2, up from 122 at the Oct30 snapshot because three retrospectively confirmed October hull events were added. No assertion of three Nov2 attacks. Not additive to JMIC, UKMTO, Kpler, or IRGC attack totals.",
+        "shipping_id": "SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102",
+        "source_ids": [
+          "SRC-18CDB7900AC1"
+        ],
+        "source_scope": "IMO_CONFIRMED_INCIDENT_REGISTER",
+        "status": "SOURCE_VERIFIED_CUMULATIVE_NOT_ADDITIVE"
+      }
+    }
+  ],
   "events": [
     {
       "event_class": "RELATED_THEATER_CONTEXT",
@@ -41,11 +131,14 @@
       "event_date": "2026-11-02",
       "event_id": "EVT-20261102-UKMTO-192-TANKER-PROJECTILE-REPORT",
       "event_time_precision": "DATE_ONLY",
+      "event_type": "SOURCE_DISCLOSURE",
+      "incident_occurred_utc": "2026-11-01T23:47:00Z",
+      "publication_date": "2026-11-02",
       "source_ids": [
         "SRC-18CDB7900AC2"
       ],
       "strike_countable": false,
-      "summary": "UKMTO published notice 192 concerning a tanker reportedly struck by two unidentified projectiles about 72 nautical miles east of Ras al-Khafji, Saudi Arabia. The crew was reported accounted for and no environmental impact reported. The warning does not identify the attacker, exact vessel or verified site of impact."
+      "summary": "UKMTO published warning 192 on November 2 about a tanker reportedly struck by two unidentified projectiles in an incident recorded at 23:47 UTC on November 1, approximately 72 nautical miles east of Ras al-Khafji, Saudi Arabia. The crew was reported accounted for. This November 2 record is the warning publication, not a claim the attack occurred on November 2; vessel identity, perpetrator and independent impact assessment were unresolved."
     },
     {
       "event_class": "STATE_SNAPSHOT",
@@ -64,10 +157,11 @@
       "event_id": "EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN",
       "event_time_precision": "DATE_ONLY",
       "source_ids": [
-        "SRC-18CDB7900AC7"
+        "SRC-18CDB7900AC7",
+        "SRC-18CDB7900ACA"
       ],
       "strike_countable": false,
-      "summary": "Iranian officials said a proposed Hormuz reopening and resumption of US nuclear talks could occur within two days if Washington accepted Iran's conditions, including sanctions and blockade relief. No US acceptance, reopened shipping route or implemented ceasefire was established in the report."
+      "summary": "Iranian and Qatari officials continued indirect contacts about a proposed Hormuz reopening and renewed nuclear talks, including a conditional two-day implementation outline. Reuters reported on November 2 that the Doha discussions had ended without a breakthrough and the draft was still being circulated. Iran demanded blockade and sanctions relief before further nuclear concessions; there was no signed deal or verified reopening."
     },
     {
       "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
@@ -92,6 +186,28 @@
       ],
       "strike_countable": false,
       "summary": "The UN migration agency said more than 300,000 Yemenis had been displaced by renewed fighting. This is a source-reported cumulative displacement estimate, not a count of people newly displaced on November 2 or a casualty tally; geographic and timeframe comparability with earlier estimates remains limited."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-ICE-NYMEX-CRUDE-FUTURES-SETTLEMENT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900ACB"
+      ],
+      "strike_countable": false,
+      "summary": "Reuters reported November 2 futures settlements of $104.77 per barrel for ICE Brent (down 7.63%) and $96.46 per barrel for U.S. WTI (down 7.36%). These are separately denominated exchange-traded futures settlements on a dated market session, not EIA physical spot, Gulf lifting volumes, wartime financial damage or a basis for interpolating missing days."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-11-02",
+      "event_id": "EVT-20261102-IMO-LATE-CONFIRMED-OCT29-30-HULLS",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-18CDB7900AC1"
+      ],
+      "strike_countable": false,
+      "summary": "The IMO November 2 retrospective confirmed-incident register newly identified RITI (IMO 9249075) and LOUISE 1 (IMO 9290323) as damaged on October 29, and AL MAYEDA (IMO 9397298) as damaged on October 30. Those three previously dated incidents are included in IMO's cumulative 125; they are not three attacks carried out on November 2. The IMO does not identify an attacker or certify total commercial-vessel losses across all sources."
     }
   ],
   "evidence_cutoff": "2026-11-02T13:23:00-05:00",
@@ -144,10 +260,20 @@
       "source_id": "SRC-18CDB7900AC9",
       "source_role": "Reuters November 2 China-Oman leader meeting and 20-point statement urging navigation and diplomacy; no new enforcement agreement",
       "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACA",
+      "source_role": "Reuters November 2 later report: Qatar mediation ended without breakthrough, Iran and US indirect contacts continue, conditional Hormuz reopening plan and sequencing demands; source reports parties' claims but no settlement.",
+      "url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACB",
+      "source_role": "Reuters November 2 ICE Brent and NYMEX WTI futures session settlement quotes in USD/bbl, down 7.63% and 7.36%; not EIA physical spot, not realized damages and not a synthetic daily history.",
+      "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
     }
   ],
   "status": "REVIEWED",
-  "summary": "Reviewed source-qualified candidate (not yet registered): selective status through November 2: primary IMO cumulative maritime register, UKMTO reports distinguished from confirmed incidents, Iraqi parliament appointment, CAR-sourced Houthi procurement investigation, Iranian conditional Hormuz plan, Chinese diplomacy and UN-reported Yemen displacement. Plain-language actor/observation distinction and no synthetic military BDA, current coordinates, chart merging, new claim adjudication or blanket historical 12-hour sweep recovery. The recent evidence intake backlog remains partially unconsumed.",
+  "summary": "Reviewed, not yet registered: selective source-qualified additions for Oct14-Nov2 Houthi procurement, Iraqi appointments, confirmed shipping hulls and cumulative IMO counts, two UKMTO notices, US-Iran mediated talks, Chinese outreach, Yemen displacement and exact-contract Nov2 oil-futures settlements. Distinguishes merchant losses from military attrition and futures settlement from EIA physical spot; no exhaustive historical sweep consumption, strike BDA, new WOL verdict, exact marker, or chart overwrite.",
   "upstream_provenance": {
     "claims_referrals": "https://github.com/ejronin/ISR/issues/320",
     "historical_sweep_gap": "https://github.com/ejronin/ISR/issues/296",
