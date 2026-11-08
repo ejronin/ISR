@@ -1,0 +1,171 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-07T12:00:00-05:00",
+    "window_end": "2026-11-08T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-08T00:00:00-05:00",
+    "collection_time": "2026-11-08T00:02:43-05:00",
+    "evidence_horizon_time": "2026-11-08T00:00:00-05:00",
+    "collection_mode": "PARTIAL_RECOVERY_NOT_FULL_SWEEP"
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261108-MIDNIGHT-YEMEN-BANI-HUSHAYSH",
+      "event_type": "REPORTED_AIRSTRIKE_CASUALTIES",
+      "actor": "Houthi-run health ministry / Saudi government investigating",
+      "occurrence_time": "2026-11-07_DATE_ONLY",
+      "publication_time": "2026-11-07T19:13:00Z",
+      "collection_time": "2026-11-08T00:02:43-05:00",
+      "evidence_horizon_time": "2026-11-08T00:00:00-05:00",
+      "summary": "Houthi authorities allege Saudi strikes killed 33 and wounded 39 in Bani Hushaysh; Reuters unable to independently verify; Saudi government said investigating. Not independently verified casualty or attribution data.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/houthi-run-health-ministry-says-airstrikes-it-blames-saudi-arabia-kill-27-near-2026-11-07/"
+      ],
+      "evidence_class": "ATTRIBUTED_CLAIM",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Bani Hushaysh east of Sanaa, Yemen; exact strike sites unknown",
+        "location_precision": "LOCALITY_ONLY_NOT_IMPACT_POINT",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/houthi-run-health-ministry-says-airstrikes-it-blames-saudi-arabia-kill-27-near-2026-11-07/"
+      }
+    },
+    {
+      "event_id": "ROOK-20261108-MIDNIGHT-US-IRON-GATE",
+      "event_type": "US_INTERAGENCY_TASK_FORCE_ANNOUNCEMENT",
+      "actor": "US CENTCOM",
+      "occurrence_time": "2026-11-07_DATE_ONLY",
+      "publication_time": "2026-11-07T13:36:00Z",
+      "collection_time": "2026-11-08T00:02:43-05:00",
+      "evidence_horizon_time": "2026-11-08T00:00:00-05:00",
+      "summary": "CENTCOM announced Task Force Iron Gate based in Tampa to coordinate restrictions on Iranian land/Caspian sanctioned trade. No verified interdiction outcome or physical deployment established. CENTCOM $25 billion prevented crude export estimate is an actor estimate, not independently audited.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/expanding-naval-blockade-us-military-looks-restrict-iranian-land-commerce-2026-11-07/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "event_id": "ROOK-20261108-MIDNIGHT-QESHM-EXPLOSION-REPORT",
+      "event_type": "REPORTED_EXPLOSION_SOUNDS",
+      "actor": "Iranian state television / Tasnim",
+      "occurrence_time": "2026-11-07_EVENING_LOCAL_UNSPECIFIED",
+      "publication_time": "2026-11-07T20:20:00Z",
+      "collection_time": "2026-11-08T00:02:43-05:00",
+      "evidence_horizon_time": "2026-11-08T00:00:00-05:00",
+      "summary": "Iranian media reported explosion sounds in southern Iran including Qeshm. No confirmed missile strike, attacker, or BDA. Later Sunday IRGC tanker-mine statement on rolling Reuters page is not retroactively qualified within this horizon.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/explosions-heard-irans-qeshm-island-iranian-media-reports-2026-11-07/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Qeshm Island and unspecified areas of southern Iran; exact explosion location unknown",
+        "location_precision": "LOCALITY_ONLY_NOT_IMPACT_POINT",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/explosions-heard-irans-qeshm-island-iranian-media-reports-2026-11-07/"
+      }
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261108-MIDNIGHT-YEMEN-ATTRIBUTION",
+      "claim": "Saudi strikes caused 33 deaths and 39 injuries",
+      "claimant": "Houthi-run authorities",
+      "publication_time": "2026-11-07T19:13:00Z",
+      "collection_time": "2026-11-08T00:02:43-05:00",
+      "evidence_horizon_time": "2026-11-08T00:00:00-05:00",
+      "verification_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/houthi-run-health-ministry-says-airstrikes-it-blames-saudi-arabia-kill-27-near-2026-11-07/"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261108-MIDNIGHT-CENTCOM-25B",
+      "claim": "Naval blockade prevented more than $25 billion in Iranian crude exports",
+      "claimant": "US CENTCOM",
+      "publication_time": "2026-11-07T13:36:00Z",
+      "collection_time": "2026-11-08T00:02:43-05:00",
+      "evidence_horizon_time": "2026-11-08T00:00:00-05:00",
+      "verification_status": "ACTOR_ESTIMATE_NOT_INDEPENDENTLY_AUDITED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/expanding-naval-blockade-us-military-looks-restrict-iranian-land-commerce-2026-11-07/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Qeshm explosions and earlier strikes",
+      "decision": "UPDATE_PENDING",
+      "reason": "New explosion sounds; cannot yet establish relationship to earlier Qeshm strike reports"
+    },
+    {
+      "topic": "Iran trade interdiction and blockade",
+      "decision": "UPDATE_PENDING",
+      "reason": "Task force announced; implementation/interdiction unverified"
+    },
+    {
+      "topic": "Yemen casualty chronology",
+      "decision": "NO MATERIAL CHANGE TO ACCEPTED RECORDS",
+      "reason": "New attributed casualty claim not yet reconciled to canonical event identity"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": "Reuters reports on Yemen casualties, US task force and Qeshm explosion sounds; repository intake script and one earlier drawer sampled",
+    "not_comprehensively_reviewed": [
+      "Iran leadership",
+      "Israel",
+      "GCC states",
+      "Iraq",
+      "Lebanon",
+      "Gaza",
+      "Syria",
+      "Pakistan/Turkiye",
+      "China/Russia/Europe",
+      "UN/IAEA/IMO",
+      "UKMTO and AIS",
+      "OFAC and sanctions",
+      "commodity settlements",
+      "independent OSINT",
+      "humanitarian agency primary publications"
+    ]
+  },
+  "unresolved_questions": [
+    "Exact Bani Hushaysh impact sites and independent casualty confirmation",
+    "Whether Qeshm explosions relate to military exercises, strikes or maritime incidents",
+    "Task Force Iron Gate implementation and measured interdictions",
+    "Full prior drawer deduplication and publication chronology"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/houthi-run-health-ministry-says-airstrikes-it-blames-saudi-arabia-kill-27-near-2026-11-07/",
+    "https://www.reuters.com/world/middle-east/expanding-naval-blockade-us-military-looks-restrict-iranian-land-commerce-2026-11-07/",
+    "https://www.reuters.com/world/middle-east/explosions-heard-irans-qeshm-island-iranian-media-reports-2026-11-07/"
+  ],
+  "geospatial_handoff": {
+    "projection_readiness": "NOT_PLOT_READY",
+    "reason": "No independently sourced impact coordinates; locality-level records only"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_SOURCE_COVERAGE_AND_VALIDATION_NOT_PASSED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "validator_status": "NOT_VALIDATED_COMPLETED_UNCONSUMED",
+    "report": "Partial source-backed recovery only. Do not consume as completed sweep. No canonical or public mutation."
+  }
+}
