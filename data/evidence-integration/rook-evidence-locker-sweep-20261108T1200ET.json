@@ -1,0 +1,199 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-08T00:00:00-05:00",
+    "window_end": "2026-11-08T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-08T12:00:00-05:00",
+    "collection_time": "2026-11-08T11:56:33-05:00",
+    "evidence_horizon_time": "2026-11-08T11:56:33-05:00",
+    "collection_mode": "PARTIAL_EARLY_RECOVERY_NOT_FULL_SWEEP"
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261108-NOON-SAUDI-ARAMCO-DEBRIS",
+      "event_type": "REPORTED_MISSILE_INTERCEPTION_AND_DEBRIS_DAMAGE",
+      "actor": "Saudi authorities / Houthis",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-08T11:56:33-05:00",
+      "evidence_horizon_time": "2026-11-08T11:56:33-05:00",
+      "summary": "Saudi authorities reported intercepted missiles and debris damage to Aramco Tower windows in Riyadh, no casualties. Houthis claimed responsibility; airport-targeting claim not independently confirmed.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/loud-booms-heard-saudi-capital-riyadh-after-early-warning-alert-issued-2026-11-08/",
+        "https://apnews.com/article/090d96e25872f5c63e105b9dd3e5dc60"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Aramco Tower, Riyadh financial district; debris damage reported, precise impact point not established",
+        "location_precision": "NAMED_BUILDING_NOT_IMPACT_COORDINATE",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/loud-booms-heard-saudi-capital-riyadh-after-early-warning-alert-issued-2026-11-08/"
+      }
+    },
+    {
+      "event_id": "ROOK-20261108-NOON-IRAN-EXECUTIONS",
+      "event_type": "REPORTED_EXECUTIONS",
+      "actor": "Iran judiciary",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-08T11:56:33-05:00",
+      "evidence_horizon_time": "2026-11-08T11:56:33-05:00",
+      "summary": "Iranian state media reported execution of three men convicted in January unrest; alleged foreign links are judicial accusations, not independently established.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-executes-three-men-convicted-over-armed-unrest-during-january-2026-protests-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261108-NOON-QESHM-ATTRIBUTION-UPDATE",
+      "updates_existing_ref": "ROOK-20261108-MIDNIGHT-QESHM-EXPLOSION-REPORT",
+      "relationship": "UPDATE_UNRESOLVED_ATTRIBUTION",
+      "occurrence_time": "2026-11-07_EVENING",
+      "publication_time": "2026-11-08T09:18:00-05:00",
+      "collection_time": "2026-11-08T11:56:33-05:00",
+      "evidence_horizon_time": "2026-11-08T11:56:33-05:00",
+      "summary": "Reuters reports Iranian state TV suggested blasts may relate to Iranian military activity; officials did not confirm missile strikes. This does not resolve earlier Qeshm explosions or prove cause.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Qeshm Island and southern Iran, exact sites unresolved",
+        "latitude": null,
+        "longitude": null,
+        "projection_readiness": "NOT_PLOT_READY"
+      }
+    },
+    {
+      "update_id": "ROOK-20261108-NOON-HORMUZ-VESSELS",
+      "updates_existing_ref": "2026-11-05 Hormuz tanker incident reports",
+      "relationship": "UPDATE_REPORTED_ADDITIONAL_SHIPPING_INCIDENTS_UNVERIFIED",
+      "occurrence_time": "2026-11-07_TO_2026-11-08_UNRESOLVED",
+      "publication_time": "2026-11-08T09:18:00-05:00",
+      "collection_time": "2026-11-08T11:56:33-05:00",
+      "evidence_horizon_time": "2026-11-08T11:56:33-05:00",
+      "summary": "US says it disabled commercial vessel in Gulf of Oman over blockade; Iran claims two tankers struck mines and third burned. Vessel identities, positions, attribution and damage not independently verified.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/",
+        "https://apnews.com/article/bc902d3400cb5d022f8bafd247ef975b"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Gulf of Oman / Strait of Hormuz; no verified coordinates",
+        "latitude": null,
+        "longitude": null,
+        "projection_readiness": "NOT_PLOT_READY"
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261108-NOON-IRAN-MINE-CLAIM",
+      "claimant": "Iran military",
+      "claim": "Two tankers struck mines and a third caught fire",
+      "verification_status": "UNVERIFIED_ACTOR_CLAIM",
+      "publication_time": "2026-11-08T09:18:00-05:00",
+      "collection_time": "2026-11-08T11:56:33-05:00",
+      "evidence_horizon_time": "2026-11-08T11:56:33-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Qeshm explosion sounds",
+      "decision": "UPDATE",
+      "reason": "Later Iranian state-TV explanation does not establish attribution"
+    },
+    {
+      "topic": "Hormuz shipping incidents",
+      "decision": "UPDATE",
+      "reason": "Additional reported incidents, vessel identity and damage unresolved"
+    },
+    {
+      "topic": "Task Force Iron Gate",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently confirmed interdiction outcomes in reviewed material"
+    },
+    {
+      "topic": "Saudi Yemen casualty chronology",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independent reconciliation completed"
+    },
+    {
+      "topic": "Supersession review",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No source-qualified supersession established"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Iran/Hormuz/Qeshm",
+      "Reuters Saudi/Yemen",
+      "AP maritime and Saudi",
+      "Reuters Iranian executions",
+      "Reuters US sanctions task force",
+      "Qatar proposal press reporting"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership primary releases",
+      "Israel",
+      "GCC Oman UAE Kuwait Bahrain",
+      "Iraq",
+      "Lebanon Hezbollah",
+      "Gaza Hamas",
+      "Syria",
+      "Pakistan Turkiye",
+      "China Russia EU",
+      "UN IAEA IMO",
+      "maritime aviation primary advisories and AIS",
+      "OFAC sanctions",
+      "commodity and freight data",
+      "humanitarian agencies",
+      "independent OSINT"
+    ]
+  },
+  "unresolved_questions": [
+    "Noon cutoff not yet reached at collection time",
+    "Exact publication timestamps for most November 8 stories",
+    "Vessel IMO IDs and precise incident positions",
+    "Saudi interception coordinates and attribution",
+    "Independent Qeshm cause and BDA",
+    "Full prior drawer and source class reconciliation"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/",
+    "https://www.reuters.com/world/middle-east/loud-booms-heard-saudi-capital-riyadh-after-early-warning-alert-issued-2026-11-08/",
+    "https://apnews.com/article/090d96e25872f5c63e105b9dd3e5dc60",
+    "https://www.reuters.com/world/middle-east/iran-executes-three-men-convicted-over-armed-unrest-during-january-2026-protests-2026-11-08/"
+  ],
+  "geospatial_handoff": {
+    "projection_readiness": "NOT_PLOT_READY",
+    "reason": "Only locality or region information; no verified impact points"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_EARLY_COLLECTION_NOT_VALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "validator_status": "NOT_VALIDATED_COMPLETED_UNCONSUMED",
+    "report": "Partial early-window evidence collection. Noon cutoff had not occurred when collection began. Not eligible for completed intake. Preserve as append-only recovery record."
+  }
+}
