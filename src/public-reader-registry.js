@@ -208,10 +208,10 @@
 
   function overview(article, context) {
     const acceptedCutoff=context.model?.release?.current_osint_cutoff_display||context.model?.release?.current_osint_cutoff||'the latest accepted evidence date';
-    intro(article, `This public record contains evidence accepted through ${acceptedCutoff}. Ships face continued danger around Hormuz. A reported attack is not the same as independently verified damage or attribution, and a negotiating proposal is not a signed agreement.`);
-    const s=section(article,'Where does it stand now?', 'The accepted record documents pressure on merchant shipping, contested routes through Hormuz and diplomatic proposals. Read each event by its source and date: maritime warnings do not identify an attacker, claims of military damage require corroboration, and talks do not establish a ceasefire or reopened trade route.');
+    intro(article, `This public record contains evidence accepted through ${acceptedCutoff}. Shipping near Hormuz remains hazardous. Negotiations continue.`);
+    const s=section(article,'Where does it stand now?', 'The accepted record documents pressure on merchant shipping, contested routes through Hormuz and diplomatic proposals. The record is organized by event date, source, and outcome.');
     s.dataset.overviewCurrentPosition = 'accepted-evidence';
-    add(s,'p','', "Iran hasn't capitulated. It is trying to get the best deal it can through negotiations while keeping some demands in place. That is not the same as obtaining an agreement, securing its stated war aims, or ending the conflict.");
+    add(s,'p','', "Iran hasn't capitulated. It is still negotiating for the best deal it can obtain. Its original war aims remain unsettled.");
     add(s,'p','', 'Recent evidence places commercial shipping at the center of Iran’s immediate pressure campaign. Merchant-vessel attacks can disrupt trade and raise costs even without forcing a U.S. military withdrawal or proving that American bases are out of action. That describes the current evidence, not a claim that Iran has stopped all military-target attacks.');
     const eventEvidence = (host, ids) => {
       const selected = context.model.chronology.filter(item => ids.includes(item.event_id));
@@ -301,12 +301,12 @@
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
     const pressureNote=add(summary,'aside','scope-note');
     add(pressureNote,'strong','','Where Iran is applying pressure');
-    add(pressureNote,'p','','In the latest accepted October record, merchant shipping near Hormuz has become a prominent pressure point. The attacks impose trade and insurance costs, but they do not by themselves show that Iran defeated U.S. forces or compelled U.S. withdrawal. Iran also retains military attack capabilities, so this is not a claim that military targets are no longer threatened.');
+    add(pressureNote,'p','','In the latest accepted October record, merchant shipping near Hormuz has become a prominent pressure point. The attacks have increased trade and insurance costs. U.S. forces remain engaged, and Iran retains strike capabilities.');
     routeLink(summary,'military.facilities','See authoritative facility status');
 
     const guard=article.querySelector('.guide-phase1-campaign-guardrail')||add(summary,'aside','scope-note guide-phase1-campaign-guardrail');
     if(!guard.querySelector('strong')) add(guard,'strong','','HIT ≠ DAMAGED ≠ DESTROYED ≠ INEFFECTIVE');
-    if(!guard.querySelector('p')) add(guard,'p','','Each step requires independent support in the accepted record; the visualization does not collapse them into one state.');
+    if(!guard.querySelector('p')) add(guard,'p','','The record separates damage, operational effects, and military outcomes.');
 
     const coverage=findSection(article,/^At a glance$/i);
     if(coverage) collapse(coverage,'Record coverage');
@@ -394,8 +394,8 @@
     const full=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility assessments$/i); if(full) collapse(full,`Browse full facility records (${map.size})`);
   }
 
-  function losses(article) {
-    intro(article,'Casualties and equipment losses are separate. Some numbers are exact or minimum counts, but the evidence does not support one reliable equipment-loss total for the whole war.');
+  function losses(article, context) {
+    intro(article,'Military casualties and equipment losses are shown only from the accepted record. Merchant-vessel damage belongs in Shipping, not military equipment losses. Counts, claims and unknowns are separate.');
     addClass(article,'guide-migrated-page guide-phase1-losses');
     const s=section(article,'No single reliable total','There is no reliable single number covering every side and every kind of equipment loss. Only matching, non-duplicate physical counts are added. Claims, estimates, mixed categories and unknown quantities stay separate.');
     addClass(s,'guide-summary-strip');
@@ -403,6 +403,24 @@
     card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');
     card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');
     card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
+    add(s,'p','scope-note','Merchant-vessel damage is recorded under Shipping. Military equipment losses are counted separately.');
+    routeLink(s,'hormuz.shipping','Read the merchant-vessel loss evidence');
+    const casualties=records(context.model,'current.chronology');
+    const reportedCivilianEvents=[
+      casualties.find(e=>e.event_id==='EVT-20261106-YEMEN-TAIZ-MARKET-STRIKE-CASUALTY-CLAIM'),
+      casualties.find(e=>e.event_id==='EVT-20261107-YEMEN-AL-SHARIYA-HOMES-CASUALTY-CLAIM')
+    ].filter(Boolean);
+    if(reportedCivilianEvents.length){
+      const civilian=section(article,'Recent civilian casualties in Yemen','Houthi health authorities reported deaths and injuries during November fighting.');
+      const facts=add(civilian,'div','orientation-grid');
+      reportedCivilianEvents.forEach(e=>{
+        const isMarket=e.event_id.includes('TAIZ-MARKET');
+        const label=isMarket?'Nov. 6 · al-Hadara market':'Nov. 7 · al-Shariya';
+        const body=isMarket?'Houthi health officials reported at least 30 killed and eight wounded.':'Houthi-run health authorities reported 27 killed and 36 wounded.';
+        const c=card(facts,label,body,'HEALTH-MINISTRY REPORT');
+        evidence(c,context,e);
+      });
+    }
 
     const material=findSection(article,/^Equipment$/i);
     if(material){
@@ -454,7 +472,7 @@
   }
 
   function weapons(article) {
-    intro(article,'Read weapons by incident: what was launched, what was intercepted or reached a target, and what damage followed. The evidence does not support one whole-war effectiveness percentage.');
+    intro(article,'Weapons are organized by incident: launches, interceptions, impacts, and damage.');
     const s=section(article,'No single whole-war percentage','Launches, interceptions, penetrations, impacts and damage come from different incidents, sources and time periods. Those numbers are not one shared total.');
     card(s,'Sep. 8 Jordan-base attack','Jordan reported 20 ballistic missiles launched and 18 intercepted; it initially said two fell in unpopulated areas. Later U.S.-sourced reporting established real aircraft damage, so this is not a clean 18-of-20 interception-to-zero-hit chain.','EVENT-LEVEL CHAIN');
     const m=findSection(article,/^What counts mean$/i);if(m)collapse(m,'How weapon counts are kept compatible');
@@ -497,24 +515,35 @@
       map.before(strip);
       const note=add(article,'aside','scope-note hormuz-temporal-note');
       add(note,'strong','','Cross-highlight = shared accepted context');
-      add(note,'p','','Shared date or geography does not establish causation unless the underlying evidence does.');
+      add(note,'p','','The timeline and economic indicators use their own source records.');
       map.after(note);
     }
   }
 
   function shipping(article, context) {
     addClass(article, 'guide-migrated-page guide-shipping-page');
-    intro(article,'Shipping through Hormuz remains dangerous. October 19 Kpler regional crude-flow figures document an earlier downturn; the October 29 Louise 1 tanker attack adds a later independently reported incident with the attacker unidentified. Iran separately claims multiple mine strikes. Do not treat those Iranian counts as confirmed or add them to other providers’ totals.');
+    const shippingCutoff=context.model?.release?.current_osint_cutoff_display||'the accepted evidence cutoff';
+    intro(article,'Shipping in Hormuz remains dangerous. The record is accepted through '+shippingCutoff+'. Confirmed vessel damage, incident totals and military statements are listed by source and date.');
 
     const summary=section(article,'Current maritime picture','Tracked traffic, physical passage and commercial or legal acceptance are separate facts.');
     addClass(summary,'guide-summary-strip');
     const g=add(summary,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
-    const h=card(g,'Hormuz: renewed shipping disruption','Kpler reported at least ten commercial-vessel incidents in its latest reporting week and regional crude flows averaging about 8.5 million barrels/day. The container ship GFS Pride also sank October 14. Do not add these counts to separate IMO, UKMTO or previous-period incident tallies.','OCT. 19 / SOURCE-REPORTED');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019'));
-    const b=card(g,'Bab el-Mandeb: battlefield control contested','Saudi-backed forces remain on the offensive around Dhubab and the hills east of the coastal plain, but Reuters reported that the earlier claim of reaching Mocha was premature. The Houthis dispute government gains and continue long-range attacks. The battlefield change does not by itself establish closure of general commercial passage.','COUNTEROFFENSIVE / CONTESTED');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
+    const imoSnapshot=rows.find(r=>r.shipping_id==='SHIP-IMO-MARITIME-INCIDENTS-ASOF-20261102');
+    if(imoSnapshot){
+      const count=Number(imoSnapshot.confirmed_incident_count),fatalities=Number(imoSnapshot.confirmed_seafarer_fatalities);
+      if(Number.isFinite(count)&&Number.isFinite(fatalities)){
+        const imoCard=card(g,'IMO: confirmed incident register','As of November 2: '+count+' cumulative confirmed maritime incidents and '+fatalities+' seafarer fatalities. The latest additions were October vessel incidents.','IMO / CUMULATIVE / NOV. 2');
+        evidence(imoCard,context,imoSnapshot);
+      }
+    }
+    const claim=rows.find(r=>r.shipping_id==='SHIP-IRAN-TANKER-MINE-CLAIMS-20261108');
+    if(claim){const c=card(g,'Iranian naval report · November 8','Iran reported two tankers striking mines near Hormuz and a third tanker catching fire.','IRANIAN NAVAL STATEMENT');evidence(c,context,claim);}
+    const h=card(g,'Hormuz: renewed shipping disruption','Kpler reported at least ten commercial-vessel incidents in its latest reporting week and regional crude flows averaging about 8.5 million barrels/day. The container ship GFS Pride also sank October 14.','OCT. 19 / SOURCE-REPORTED');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019'));
+    const b=card(g,'Bab el-Mandeb: battlefield control contested','Saudi-backed forces remain on the offensive around Dhubab and the hills east of the coastal plain, but Reuters reported that the earlier claim of reaching Mocha was premature. The Houthis dispute government gains and continue long-range attacks.','COUNTEROFFENSIVE / CONTESTED');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
     const a=card(g,'Iran’s 77-vessel list','Iran announced possible fines, detention or confiscation and warned maritime service providers. External legal recognition, enforceability and insurer/P&I/classification-society compliance are not established.','IRANIAN ANNOUNCEMENT');evidence(a,context,rows.find(r=>r.shipping_id==='SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'));
     const pressure=add(summary,'aside','scope-note');
     add(pressure,'strong','','Why merchant vessels are being attacked');
-    add(pressure,'p','','Iran is trying to make passage on routes it does not approve expensive and dangerous. Its demand does not establish lawful control over those routes. The accepted record now includes the October 29 Louise 1 limpet-mine attack, which caused temporary machinery damage but has no verified attacker. Iran’s separate multi-tanker mine statements are claims pending vessel-level reconciliation. Shipping losses are not proof of disabled U.S. military forces.');
+    add(pressure,'p','','Iran is pressuring shipping on routes it contests. Louise 1 sustained engine-room damage on October 29 and subsequently resumed its voyage. Iranian naval officials also reported mine strikes involving additional tankers.');
     const shippingIds=['SHIP-KPLER-GULF-COMMERCIAL-INCIDENT-20261019','SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914','SHIP-LOUISE1-HORMUZ-LIMPET-20261029'];
     evidence(pressure,context,{source_ids:rows.filter(r=>shippingIds.includes(r.shipping_id)).flatMap(r=>r.source_ids||[])});
 
@@ -551,7 +580,7 @@
     if (!rows.length || rows.some(r => !r.country || !Number.isFinite(r.prewar) || !Number.isFinite(r.current) || !Number.isFinite(r.delta))) return null;
     if (rows.some(r => Math.abs((r.current - r.prewar) - r.delta) > 1e-7)) return null;
     const host = section(article, '2026 growth forecast revisions',
-      'Compare two estimates for the same 2026 real-GDP growth measure. Each line connects the prewar forecast to the current forecast; it does not represent a time series, realized GDP or financial loss.');
+      'Compare prewar and current forecasts for 2026 real-GDP growth.');
     host.classList.add('economic-forecast-revision');
     host.dataset.forecastRevisionChart = 'accepted-ledger';
     const note = add(host, 'p', 'forecast-scope-note',
@@ -600,13 +629,45 @@
 
   function economy(article, context) {
     intro(article,'Iran and the Gulf are under severe wartime economic pressure. The current picture comes from sanctions, trade and oil-flow evidence, damaged energy infrastructure, freight costs and shipping disruption—not one forecast chart.');
-    const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
+    const economyCutoff=context.model?.release?.current_osint_cutoff_display||'the accepted evidence cutoff';
+    const s=section(article,'Current economic condition','Evidence accepted through '+economyCutoff+' shows financial sanctions and uneven trade, production, shipping and energy conditions. Forecasts, spot prices, oil futures, volume and war costs are not interchangeable.'),g=add(s,'div','orientation-grid');
     const p=card(g,'Iran’s own figure','President Masoud Pezeshkian acknowledged sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage comes from the Iranian president and is not an independently audited figure.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
     const er=records(context.model,'gate3.economics');
+    const nov9=er.find(r=>r.economic_id==='ECON-NOV09-BRENT-WTI-FUTURES-0830UTC');
+    const future=nov9||er.find(r=>r.economic_id==='ECON-NOV02-BRENT-WTI-FUTURES-SETTLEMENT');
+    if(future){
+      const latest=Boolean(nov9);
+      const b=Number(latest?future.brent_futures_usd_bbl:future.brent_futures_settlement_usd_bbl);
+      const w=Number(latest?future.wti_futures_usd_bbl:future.wti_futures_settlement_usd_bbl);
+      if(Number.isFinite(b)&&Number.isFinite(w)&&b>=0&&w>=0){
+        const when=latest?'November 9, 08:30 UTC':'November 2 closing settlement';
+        const c=card(g,'Crude futures · '+when,'ICE Brent USD '+b.toFixed(2)+'/barrel; U.S. WTI USD '+w.toFixed(2)+'/barrel.','FUTURES / USD PER BARREL');
+        evidence(c,context,future);
+        const chart=add(s,'section','market-futures-session-comparison');
+        chart.dataset.marketSettlementScope='same-day-benchmarks-only';
+        add(chart,'h3','','Crude futures · '+when);
+        const ymax=Math.ceil(Math.max(b,w)/25)*25;
+        [['ICE Brent',b],['U.S. WTI',w]].forEach(pair=>{
+          const row=add(chart,'div','market-futures-row');
+          add(row,'span','market-futures-label',pair[0]+' · USD '+pair[1].toFixed(2)+'/bbl');
+          const meter=add(row,'meter','market-futures-meter');
+          meter.min=0;meter.max=ymax;meter.value=pair[1];
+          meter.setAttribute('aria-label',pair[0]+' in U.S. dollars per barrel');
+        });
+      }
+    }
     const o=card(g,'Gulf crude-flow shock','Kpler reported Gulf crude flows at a seven-day average of approximately 8.5 million barrels/day in the week before October 19, down from more than 20 million in the previous week. This provider-specific regional reading is not Iran-only production. Oil futures and EIA physical Brent spot are separate price series.','OCT. 19');evidence(o,context,er.find(r=>r.economic_id==='ECON-GULF-CRUDE-KPLER-7DAY-20261019'));
     const f=card(g,'Tanker freight pressure','The Baltic Exchange Gulf of Oman-to-China VLCC Worldscale assessment was about 776 on October 16, down from 841 the prior week while still near record highs. Worldscale is a freight rate index, not dollars per barrel or the Brent price series.','OCT. 16 / WORLDSCALE');evidence(f,context,er.find(r=>r.economic_id==='ECON-VLCC-GULF-OMAN-CHINA-WORLD-SCALE-20261016'));
     card(g,'Saudi East-West pipeline','The line has restarted and is carrying material bypass volume. Saudi Arabia said 5.8 million barrels had been pumped by Oct. 6, and Reuters reported roughly 4 million bpd was being rerouted toward Yanbu; full rated capacity is not yet established.','DAMAGED / OPERATING');
-    const fin=card(g,'Financial pressure','U.S. Treasury designated International Development Bank and related Iran-finance actors on October 15. On October 29, OFAC issued General License FF-1, replacing FF and authorizing narrow wind-down transactions until December 1. That does not remove sanctions or establish that blocked payments were released. FinCEN’s separate charity-compliance alert remains distinct.','OCT. 29 / AMENDED LICENSE');evidence(fin,context,{source_ids:er.filter(r=>r.economic_id==='ECON-OFAC-IDB-SHADOW-BANKS-20261015').flatMap(r=>r.source_ids||[])});
+    const productionPolicy=er.find(r=>r.economic_id==='ECON-OPEC-DECEMBER-2026-REQUIRED-PRODUCTION-TARGET');
+    if(productionPolicy){const c=card(g,'OPEC+: December target policy','Seven OPEC+ states decided November 1 to maintain their September required production targets for December. The target schedule remains at September levels.','NOV. 1 / TARGETS NOT OUTPUT');evidence(c,context,productionPolicy);}
+    const fleet=er.find(r=>r.economic_id==='ECON-OFAC-IRAN-SHADOW-FLEET-20261021');
+    if(fleet){const c=card(g,'OFAC shadow-fleet designations','October 21: OFAC newly listed five individuals, four organizations and nine vessels linked to the Iran shadow-fleet sanctions action. Licenses GG and HH allow specified wind-down and safety/offloading activities; designations are not seized or destroyed ships.','OCT. 21 / LEGAL DESIGNATIONS');evidence(c,context,fleet);}
+    const ofacNov6=er.find(r=>r.economic_id==='ECON-OFAC-CANADA-MSB-8-20261106');
+    if(ofacNov6){const c=card(g,'November 6 · Treasury sanctions','Treasury designated eight Canada-based money-services businesses facilitating Iran-linked financial transfers.','EIGHT BUSINESSES');evidence(c,context,ofacNov6);}
+    const ofacNov4=er.find(r=>r.economic_id==='ECON-OFAC-IRAN-SHADOW-FLEET-20261104');
+    if(ofacNov4){const c=card(g,'November 4 · Maritime sanctions','Treasury targeted false ship registries, aviation support and portable air-defense procurement networks.','OFAC DESIGNATIONS');evidence(c,context,ofacNov4);}
+    const fin=card(g,'Financial pressure','U.S. Treasury designated International Development Bank and related Iran-finance actors on October 15. On October 29, OFAC issued General License FF-1, replacing FF and authorizing narrow wind-down transactions until December 1. FinCEN also issued a separate charity-compliance alert.','OCT. 29 / AMENDED LICENSE');evidence(fin,context,{source_ids:er.filter(r=>r.economic_id==='ECON-OFAC-IDB-SHADOW-BANKS-20261015').flatMap(r=>r.source_ids||[])});
     const hz=card(g,'Iran → Hezbollah funding','Reuters reported, citing two people with direct knowledge, that Hezbollah received $200 million from Iran in September for displaced Lebanese families. Intermediaries reportedly charged a 20% fee. Hezbollah confirmed that funds had been secured but did not identify the source; Iran did not acknowledge the transfer in the report.','SOURCE-REPORTED / COSTLY CHANNEL');evidence(hz,context,er.find(r=>r.economic_id==='ECON-IRAN-HEZBOLLAH-AID-TRANSFER-20261007'));
     const latest=add(s,'aside','scope-note');
     add(latest,'strong','','Later cost and market observations');
@@ -652,7 +713,7 @@
         if(button) {button.setAttribute('aria-pressed',String(active)); button.classList.toggle('is-active',active);}
       });
       modeHeading.textContent=item.kind==='chronology'
-        ? 'Event records provide chronology only; they do not establish an overlay or a causal effect on GDP forecasts.'
+        ? 'The event list follows the chronology.'
         : item.kind==='compare'
         ? 'Comparable 2026 growth forecast snapshots. Revisions are percentage points, not realized output.'
         : 'Original economic calculations and renderer are retained without alteration.';
@@ -682,7 +743,7 @@
     const observed=add(lanes,'article','economic-transmission-lane economic-observed');
     add(observed,'p','card-kicker','REPORTED OBSERVATION · NOT SOLE-CAUSE ATTRIBUTION');
     add(observed,'h3','','Iranian-reported trade decline');
-    add(observed,'p','','President Pezeshkian reported foreign trade down roughly 35% and attributed difficulties to both sanctions and wartime effects. The figure is not independently audited and does not isolate sanctions as the cause.');
+    add(observed,'p','','President Pezeshkian reported foreign trade down roughly 35% and attributed difficulties to both sanctions and wartime effects. Pezeshkian cited sanctions and war conditions.');
     evidence(observed,context,{source_ids:['SRC-F550DDD51246','SRC-5D32C7182EFF']});
     const potential=add(lanes,'article','economic-transmission-lane economic-watch');
     add(potential,'p','card-kicker','POTENTIAL / WATCH · NOT AN OBSERVED RESULT');
@@ -691,18 +752,23 @@
     add(transmission,'p','scope-note','The trade decline has several reported causes, including the war and sanctions.');
   }
 
-  function hormuzTalks(article) {
-    intro(article,'On October 18, Iran reiterated its earlier seven-condition Hormuz reopening offer and acknowledged reviewing U.S. comments. Washington continues to seek nuclear concessions; no signed reopening arrangement exists.');
-    const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='On October 18, Tehran reaffirmed seven conditions for reopening Hormuz and said it was reviewing a U.S. response. The two sides still disagree on sequencing maritime and sanctions relief against nuclear concessions. No reopening agreement is confirmed.';
+  function hormuzTalks(article, context) {
+    const latestTalks=records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS')||records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
+    const talksCutoff=context.model?.release?.current_osint_cutoff_display||'the accepted cutoff';
+    intro(article,latestTalks?'Iran is demanding the lifting of U.S. sanctions and the naval blockade before talks. Washington has rejected those conditions. Negotiations remain stalled as of '+talksCutoff+'.':'The United States and Iran remain divided over sanctions, Hormuz passage and nuclear concessions.');
+    const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent=latestTalks?'Iran wants U.S. sanctions and blockade relief before resuming talks. Rubio rejected those terms.':'Iran wants sanctions and blockade relief; Washington wants nuclear restrictions.';
+    if(latestTalks&&s)evidence(s,context,latestTalks,'Negotiation sources');
     if(s)add(s,'p','scope-note','Iran’s Foreign Ministry said on Oct. 4 that Tehran had not entered nuclear discussions with Washington. On Oct. 6, Vice President JD Vance said the U.S. was negotiating with President Masoud Pezeshkian and Foreign Minister Abbas Araqchi and would require a meaningful reduction in enrichment capacity for an agreement. On Oct. 7, a senior Iranian official said Washington’s nuclear requests and ideas were at odds with Tehran’s demands. The public descriptions differ and the substantive gap is explicit; no agreement is in force.');
   }
 
-  function diplomacy(article) {
-    intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Negotiating claims do not become agreements by repetition.');
+  function diplomacy(article, context) {
+    intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Implementation follows signed agreements.');
     const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
     const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
-    card(g,'U.S.–Iran / Hormuz contacts','Qatari mediators returned to Tehran on October 30. Iran rejected the latest proposals, while Washington continues to insist nuclear issues be addressed from the outset. No signed Hormuz or nuclear agreement exists.','OCT. 30 / NO AGREEMENT');
-    card(g,'Egypt / Saudi conditional defense aid','Egypt’s parliament approved defensive support for Saudi Arabia on October 27. Authorization is not evidence that Egyptian troops or aircraft have deployed or conducted combat operations.','OCT. 27 / AUTHORIZED');
+    const laterMediation=records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS')||records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
+    if(laterMediation){const nov9=laterMediation.event_id.includes('20261109');const c=card(g,'U.S.–Iran / Hormuz contacts',nov9?'November 9: Iran demanded sanctions and blockade relief before talks. Secretary of State Rubio rejected the conditions.':'Doha contacts continued November 2 without a breakthrough.','LATEST TALKS');evidence(c,context,laterMediation);}
+    else card(g,'U.S.–Iran / Hormuz contacts','Qatari mediators returned to Tehran on October 30. Iran rejected the latest proposals, while Washington continues to insist nuclear issues be addressed from the outset. No signed Hormuz or nuclear agreement exists.','OCT. 30 / NO AGREEMENT');
+    card(g,'Egypt / Saudi conditional defense aid','Egypt’s parliament authorized defensive support for Saudi Arabia on October 27.','OCT. 27 / AUTHORIZED');
     card(g,'Eslami / IAEA conference','A UN sanctions travel exemption for Mohammad Eslami was not approved after a U.S. objection. This is not a new general sanctions package.','EXEMPTION NOT APPROVED');
     card(g,'Israel–Lebanon talks','A U.S. official said Israel and Lebanon are expected to meet in Rome in October. That is an expected negotiation, not a completed meeting.','EXPECTED');
   }
@@ -917,9 +983,9 @@
     const article=stage.querySelector('.public-page');if(!article||!route)return;article.dataset.publicProduct=PRODUCT_VERSION;const context=accessContext(routeRuntime,route,doc);
     const k=route.key;
     if(k==='start.overview')overview(article,context); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
-    if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
-    if(k==='hormuz.overview')hormuzOverview(article,context); if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
-    if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article,context);
+    if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article,context); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
+    if(k==='hormuz.overview')hormuzOverview(article,context); if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article,context);
+    if(k==='talks.overview')diplomacy(article,context); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article,context);
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
     connectMappedCards(article,k);
