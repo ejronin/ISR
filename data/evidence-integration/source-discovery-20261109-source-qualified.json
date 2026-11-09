@@ -1,0 +1,117 @@
+{
+  "artifact_role": "EVIDENCE_LOCKER_SOURCE_DISCOVERY_DELTA",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "collection_cutoff": "2026-11-09T09:33:00-05:00",
+  "discovery_count": 21,
+  "preservation_rule": "Append discoveries; do not remove older standing sources.",
+  "schema_version": "1.0",
+  "scope_note": "Targeted documentary source discovery and qualification, not a completed 12-hour ROOK sweep. Original incomplete lockers remain incomplete.",
+  "source_count": 21,
+  "sources": [
+    {
+      "source_id": "SRC-18CDB7900AC1",
+      "source_name": "IMO primary as-of November 2 confirmed incident list: 125 cumulative confirmed incidents, 24 seafarer fatalities; retrospective confirmations do not imply three November 2 attacks",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC2",
+      "source_name": "UKMTO primary incident notices 191 and 192; initially relayed/reported observations, unknown projectiles and unknown perpetrators; no established incident identity with IMO counts",
+      "url": "https://www.ukmto.org/recent-incidents"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC3",
+      "source_name": "Iraqi Council of Representatives primary appointment record October 15: Laith Hadi al-Khazali deputy prime minister",
+      "url": "https://iq.parliament.iq/en/2026/10/15/the-council-of-representatives-votes-on-deputy-prime-ministers-and-eleven-cabinet-members/"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC4",
+      "source_name": "AP contemporaneous October 15 profile of al-Khazali, historical US sanctions and Iran-aligned militia leadership; appointment does not establish intelligence transfer",
+      "url": "https://apnews.com/article/5b602c6e33a4fefe1abb53277de44263"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC5",
+      "source_name": "Conflict Armament Research October 14 missile manufacturing supply-chain investigation; recovered/identified components and prospective Houthi production, not proven government-directed transfer or active factory",
+      "url": "https://storymaps.arcgis.com/stories/1637a6eef3d2418abbcdd3efa47c256b"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC6",
+      "source_name": "AP reporting on CAR research into Chinese-sourced Houthi missile-manufacturing components; supplied designs do not establish complete weapons",
+      "url": "https://apnews.com/article/2ad930f312484954bcc21cca7e94e571"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC7",
+      "source_name": "AP November 2 running report; Iranian conditional two-day plan, IOM displacement total and China special envoy; dated publication snapshot rather than verified agreement",
+      "url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC8",
+      "source_name": "Reuters November 2 reporting of Wang Yi meetings with Saudi and Iranian officials; diplomatic statements, not verified US-Iran deal",
+      "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900AC9",
+      "source_name": "Reuters November 2 China-Oman leader meeting and 20-point statement urging navigation and diplomacy; no new enforcement agreement",
+      "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACA",
+      "source_name": "Reuters November 2 later report: Qatar mediation ended without breakthrough, Iran and US indirect contacts continue, conditional Hormuz reopening plan and sequencing demands; source reports parties' claims but no settlement.",
+      "url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACB",
+      "source_name": "Reuters November 2 ICE Brent and NYMEX WTI futures session settlement quotes in USD/bbl, down 7.63% and 7.36%; not EIA physical spot, not realized damages and not a synthetic daily history.",
+      "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACC",
+      "source_name": "Primary OFAC Oct21 SDN listing: five Iran-related individuals, four legal entities and nine vessels newly designated, plus two narrowly scoped wind-down/safety and offloading general licenses. Distinguish from unrelated Belarus/North Korea removals.",
+      "url": "https://ofac.treasury.gov/recent-actions/20261021"
+    },
+    {
+      "source_id": "SRC-18CDB7900ACD",
+      "source_name": "OPEC primary Nov1 published decision of seven participating states; December required production targets unchanged from September, not a verified production/output observation or global physical supply forecast.",
+      "url": "https://www.opec.org/pr-detail/620-1-november-2026.html"
+    },
+    {
+      "source_id": "SRC-9A0900000001",
+      "source_name": "OFAC official November 4 Iran designations, shadow fleet false-flag alert, and MANPADS-related enforcement",
+      "url": "https://ofac.treasury.gov/recent-actions/20261104"
+    },
+    {
+      "source_id": "SRC-9A0900000002",
+      "source_name": "OFAC official November 6 action sanctioning eight Canada-based money services businesses",
+      "url": "https://ofac.treasury.gov/recent-actions/20261106"
+    },
+    {
+      "source_id": "SRC-9A0900000003",
+      "source_name": "Treasury November 6 public announcement: eight Canada-based money services businesses supporting Iran-linked financial networks",
+      "url": "https://home.treasury.gov/news/press-releases/sb0686"
+    },
+    {
+      "source_id": "SRC-9A0900000004",
+      "source_name": "Reuters November 8 report of Trump statements, Task Force Iron Gate announcement, Qeshm reports and competing maritime claims",
+      "url": "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/"
+    },
+    {
+      "source_id": "SRC-9A0900000005",
+      "source_name": "Reuters November 9 report quoting Baghaei and Rubio about Iran talks conditions and US rejection",
+      "url": "https://www.reuters.com/world/iran-defends-two-day-proposal-peace-talks-after-us-rejects-conditions-2026-11-09/"
+    },
+    {
+      "source_id": "SRC-9A0900000006",
+      "source_name": "Reuters November 9 time-stamped Brent and WTI futures quotations at 08:30 UTC",
+      "url": "https://live.euronext.com/en/financial-news/oil-falls-trump-signals-restraint-iran-despite-fresh-shipping-attacks"
+    },
+    {
+      "source_id": "SRC-9A0900000007",
+      "source_name": "AP November 6 Yemen Taiz al-Hadara market strike civilian casualty figures attributed to Houthi authorities",
+      "url": "https://apnews.com/article/bcc2409ada0398125173d84261bd1fff"
+    },
+    {
+      "source_id": "SRC-9A0900000008",
+      "source_name": "AP November 7 al-Shariya civilian casualties as reported by Houthi-run health ministry",
+      "url": "https://apnews.com/article/1b5aef5b86be2e96e1cd8a18165afaf6"
+    }
+  ]
+}
