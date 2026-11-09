@@ -575,7 +575,7 @@ async function route(cdp, hash, key) {
     assert.equal(phase10Effects.cards, 7);
     assert.match(phase10Effects.text, /Damage is not the same as effect/);
     assert.match(phase10Effects.text, /The attack, the physical damage and what it changed are separate findings/i);
-    assert.match(phase10Effects.text, /Facility claims, imagery, damage and operating status/i);
+    assert.match(phase10Effects.text, /Facility impacts and operating condition by site/i);
     assertCampaignEventCountSemanticBoundary(phase10Effects.drilldown);
 
     await route(cdp, '#/military/losses', 'military.losses');
