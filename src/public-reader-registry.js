@@ -405,7 +405,7 @@
     card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
     add(s,'p','scope-note','Merchant-vessel damage is recorded under Shipping. Military equipment losses are counted separately.');
     routeLink(s,'hormuz.shipping','Read the merchant-vessel loss evidence');
-    const casualties=context.model?.chronology||[];
+    const casualties=records(context.model,'current.chronology');
     const reportedCivilianEvents=[
       casualties.find(e=>e.event_id==='EVT-20261106-YEMEN-TAIZ-MARKET-STRIKE-CASUALTY-CLAIM'),
       casualties.find(e=>e.event_id==='EVT-20261107-YEMEN-AL-SHARIYA-HOMES-CASUALTY-CLAIM')
@@ -753,7 +753,7 @@
   }
 
   function hormuzTalks(article, context) {
-    const latestTalks=context.model?.chronology?.find(r=>r.event_id==='EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS')||context.model?.chronology?.find(r=>r.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
+    const latestTalks=records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS')||records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
     const talksCutoff=context.model?.release?.current_osint_cutoff_display||'the accepted cutoff';
     intro(article,latestTalks?'Iran is demanding the lifting of U.S. sanctions and the naval blockade before talks. Washington has rejected those conditions. Negotiations remain stalled as of '+talksCutoff+'.':'The United States and Iran remain divided over sanctions, Hormuz passage and nuclear concessions.');
     const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent=latestTalks?'Iran wants U.S. sanctions and blockade relief before resuming talks. Rubio rejected those terms.':'Iran wants sanctions and blockade relief; Washington wants nuclear restrictions.';
@@ -765,7 +765,7 @@
     intro(article,'Diplomacy is shown as concrete changes: meetings held, meetings postponed, proposals made, exemptions denied, positions changed and agreements actually reached. Implementation follows signed agreements.');
     const c=article.querySelector('[data-diplomatic-state="current"]'),p=c?.querySelector('.lead-copy,p');if(p)p.textContent='The June MOU no longer controls either side. Mediated U.S.-Iran contacts continue, but Iran says additional points remain unresolved and no signed Hormuz reopening arrangement has replaced it.';
     const s=section(article,'Latest diplomatic changes','The latest record distinguishes active mediation from agreements that have actually taken effect.'),g=add(s,'div','orientation-grid');
-    const laterMediation=context.model?.chronology?.find(r=>r.event_id==='EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS')||context.model?.chronology?.find(r=>r.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
+    const laterMediation=records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS')||records(context.model,'current.chronology').find(r=>r.event_id==='EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN');
     if(laterMediation){const nov9=laterMediation.event_id.includes('20261109');const c=card(g,'U.S.–Iran / Hormuz contacts',nov9?'November 9: Iran demanded sanctions and blockade relief before talks. Secretary of State Rubio rejected the conditions.':'Doha contacts continued November 2 without a breakthrough.','LATEST TALKS');evidence(c,context,laterMediation);}
     else card(g,'U.S.–Iran / Hormuz contacts','Qatari mediators returned to Tehran on October 30. Iran rejected the latest proposals, while Washington continues to insist nuclear issues be addressed from the outset. No signed Hormuz or nuclear agreement exists.','OCT. 30 / NO AGREEMENT');
     card(g,'Egypt / Saudi conditional defense aid','Egypt’s parliament authorized defensive support for Saudi Arabia on October 27.','OCT. 27 / AUTHORIZED');
