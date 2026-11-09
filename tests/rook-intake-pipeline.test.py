@@ -300,4 +300,47 @@ with tempfile.TemporaryDirectory() as name:
 
 
 
+with tempfile.TemporaryDirectory() as name:
+    temp = Path(name)
+    configure(temp)
+    past_path = "data/evidence-integration/rook-evidence-locker-sweep-historical.json"
+    write_json(temp / past_path, sweep(
+        "2026-11-01T00:00:00-04:00",
+        "2026-11-01T12:00:00-05:00",
+        "PRIOR-UNCONSUMED",
+    ))
+    source_path = "data/evidence-integration/source-discovery-qualified.json"
+    write_json(temp / source_path, {
+        "artifact_role": mod.SOURCE_DISCOVERY_ROLE,
+        "authority": "ROOK_UPSTREAM_COLLECTION",
+        "collection_cutoff": "2026-11-09T09:33:00-05:00",
+        "source_count": 1,
+        "discovery_count": 1,
+        "preservation_rule": "Append discoveries; do not remove prior standing sources",
+        "sources": [{"source_name": "New primary document", "url": "https://example.test/nov09"}],
+    })
+    accepted_path = "data/canonical-updates/UPD-20261109-SELECTIVE.json"
+    accepted_packet( temp / accepted_path, "UPD-20261109-SELECTIVE",
+        "2026-11-09T09:33:00-05:00", source_path)
+    accepted = json.loads((temp / accepted_path).read_text(encoding="utf-8"))
+    accepted["upstream_provenance"]["scope"] = "SELECTIVE_DOCUMENTARY_ACCEPTANCE"
+    write_json(temp / accepted_path, accepted)
+    write_json(temp / "data/canonical-ledger/manifest-v2.json", {
+        "current_evidence_cutoff": "2026-11-09T09:33:00-05:00",
+        "accepted_updates": [{"path": accepted_path}],
+    })
+    report = mod.validate_repository(as_of=datetime(2026, 11, 9, 18, 0, tzinfo=timezone.utc))
+    assert report["valid"], report["errors"]
+    assert len(report["historical_unconsumed_sweeps"]) == 1
+    assert report["completed_sweeps"][0]["consumed"] is False
+    assert len(report["source_discovery_deltas"]) == 1
+    assert any("historical completed sweep remains UNCONSUMED" in x for x in report["warnings"])
+    # A missing qualified source artifact cannot bypass the original gate.
+    accepted["upstream_provenance"]["locker_artifacts"] = ["data/evidence-integration/missing.json"]
+    write_json(temp / accepted_path, accepted)
+    rejected = mod.validate_repository(as_of=datetime(2026, 11, 9, 18, 0, tzinfo=timezone.utc))
+    assert not rejected["valid"]
+
+
+
 print("ROOK intake pipeline: PASS")
