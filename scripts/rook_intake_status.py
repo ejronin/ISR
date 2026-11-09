@@ -425,6 +425,44 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
         "data/canonical-ledger/manifest-v2.json current_evidence_cutoff",
     )
 
+    # Selectively qualified evidence may be accepted today while past full
+    # ROOK sweeps remain unconsumed. Preserve those sweeps as visible debt.
+    # Accept this exception only for an explicitly registered documentary
+    # source-discovery packet, never an unqualified draft or intake-only file.
+    selective_cutoffs: list[datetime] = []
+    for entry in accepted_updates:
+        packet_path = entry.get("path")
+        if not isinstance(packet_path, str) or not (ROOT / packet_path).is_file():
+            continue
+        packet = load_json(ROOT / packet_path)
+        provenance = packet.get("upstream_provenance") or {}
+        if packet.get("status") != "ACCEPTED" or provenance.get("scope") != "SELECTIVE_DOCUMENTARY_ACCEPTANCE":
+            continue
+        artifacts = provenance.get("locker_artifacts")
+        if not isinstance(artifacts, list) or not artifacts:
+            errors.append(f"{packet_path}: selective acceptance missing source-discovery provenance")
+            continue
+        valid_discovery = True
+        for source_path in artifacts:
+            if not isinstance(source_path, str) or not source_path.startswith("data/evidence-integration/source-discovery-"):
+                valid_discovery = False
+                break
+            artifact_file = ROOT / source_path
+            if not artifact_file.is_file():
+                valid_discovery = False
+                break
+            artifact = load_json(artifact_file)
+            if artifact.get("artifact_role") != SOURCE_DISCOVERY_ROLE or not (artifact.get("sources") or []):
+                valid_discovery = False
+                break
+        if not valid_discovery:
+            errors.append(f"{packet_path}: selective acceptance requires a nonempty source-discovery artifact")
+            continue
+        try:
+            selective_cutoffs.append(parse_timestamp(packet.get("evidence_cutoff"), f"{packet_path} evidence_cutoff"))
+        except ValueError as exc:
+            errors.append(str(exc))
+
     sweep_rows: list[dict[str, Any]] = []
     for sweep in sweeps:
         consumers = packet_consumers(sweep, accepted_updates)
@@ -460,6 +498,11 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
                         f"{sweep.path}: retrospective gap recovery predates accepted canonical cutoff "
                         f"and awaits Evidence Integration consumption"
                     )
+            elif any(cutoff >= sweep.end for cutoff in selective_cutoffs):
+                warnings.append(
+                    f"{sweep.path}: historical completed sweep remains UNCONSUMED "
+                    f"after selective documentary acceptance through {latest_cutoff.isoformat()}"
+                )
             else:
                 errors.append(
                     f"{sweep.path}: completed sweep ends at/before accepted canonical cutoff "
@@ -492,6 +535,10 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
             for item in sorted(partial_sweeps, key=lambda item: (item.start, item.end, item.path))
         ],
         "unconsumed_sweeps": [row for row in sweep_rows if row["unconsumed"]],
+        "historical_unconsumed_sweeps": [
+            row for row in sweep_rows
+            if row["unconsumed"] and parse_timestamp(row["window_end"], "window_end") <= latest_cutoff
+        ],
         "source_registry_deltas": [
             {**item, "start": item["start"].isoformat(), "end": item["end"].isoformat()}
             for item in registries
@@ -513,6 +560,7 @@ def render_text(report: dict[str, Any]) -> str:
         f"Completed ROOK sweeps: {len(report['completed_sweeps'])}",
         f"Unconsumed completed sweeps: {len(report['unconsumed_sweeps'])}",
         f"Incomplete recovery records: {len(report['partial_collections'])}",
+        f"Historical unconsumed sweeps: {len(report['historical_unconsumed_sweeps'])}",
     ]
     for row in report["completed_sweeps"]:
         state = "CONSUMED" if row["consumed"] else "UNCONSUMED"
