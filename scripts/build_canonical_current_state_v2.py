@@ -39,6 +39,11 @@ def legacy_source(state,label,url,eid):
     ensure_source(state,r,{"kind":"GATE3_LEGACY_SOURCE","legacy_event_id":eid},f"legacy:{eid}:{i}"); return i
 def chron(event,prov,key):
     e=copy.deepcopy(event); e["record_class"]=e.get("record_class") or e.get("event_class"); d=date.fromisoformat(e["event_date"]); s=list(dict.fromkeys(e.get("source_ids") or [])); e["source_ids"]=s
+    # A documentary acceptance timestamp is the latest guaranteed record clock
+    # for a source-qualified event; it is not an invented first-public time.
+    # Preserve original clocks if supplied by the source packet.
+    if prov.get("kind") == "GATE3_ACCEPTED_PACKET" and prov.get("known_at"):
+        e.setdefault("known_at", prov["known_at"])
     t={"event_id":e["event_id"],"date":e["event_date"],"day":e["event_date"],"year":d.year,"month":e["event_date"][:7],"iso_week":f"{d.isocalendar().year}-W{d.isocalendar().week:02d}","time":e.get("event_time"),"time_precision":e.get("event_time_precision") or "DATE_ONLY","hour_bucket":None,"summary":e.get("summary"),"event_type":e.get("event_type"),"record_class":e["record_class"],"source_ids":s,"first_reported":e.get("public_available_time"),"first_verified":e.get("game_knowledge_time"),"claim_refs":[],"facility_refs":[],"map_refs":[]}
     return {"event_id":e["event_id"],"event":e,"timeline":t,"source_ids":s,"source_references":[{"source_id":x,"variant_key":f"{key}:{x}"} for x in s],"actor_ids":[],"location_ids":[],"claim_ids":[],"provenance":[prov],"revisions":[]}
 def dispositions(spec):
@@ -168,7 +173,7 @@ def apply_packet(root,state,p,path):
         if miss: raise ValueError(f"unresolved event sources {miss}")
         if e.get("event_class") in {"RELATED_THEATER_CONTEXT","PERIOD_ASSESSMENT","STATE_SNAPSHOT","DIPLOMATIC_OR_POLICY_EVENT"} and e.get("strike_countable"): raise ValueError(f"non-strike class counted as strike {e['event_id']}")
         temporal.validate_event_temporal_semantics(e,label=f"event {e['event_id']}")
-        state["chronology"].append(chron(e,{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"],"path":path},p["packet_id"])); ids.add(e["event_id"])
+        state["chronology"].append(chron(e,{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"],"path":path,"known_at":p["known_at"]},p["packet_id"])); ids.add(e["event_id"])
     for ent in p.get("entities") or []:
         et=ent["entity_type"]
         if et not in PLURAL: raise ValueError(f"unsupported v2 entity type {et}")
