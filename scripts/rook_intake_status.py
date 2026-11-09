@@ -138,8 +138,8 @@ def validate_sweep(
         if legacy_sweep:
             if "COMPLETE" not in status.upper():
                 errors.append(f"{rel}: legacy completion.status does not identify a completed sweep")
-        elif not status.startswith("COMPLETE"):
-            errors.append(f"{rel}: completion.status does not identify a completed sweep")
+        elif not (status.startswith("COMPLETE") or status.startswith("INCOMPLETE")):
+            errors.append(f"{rel}: completion.status must identify a completed or incomplete collection")
         if legacy_sweep:
             for key in ("canonical_bytes_modified", "generated_public_state_modified", "release_artifacts_modified", "release_manifests_modified"):
                 if completion.get(key) is True:
@@ -328,6 +328,7 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
     added_intake_paths = validate_append_only_compare(compare_rows, errors) if compare_rows else set()
 
     sweeps: list[Sweep] = []
+    partial_sweeps: list[Sweep] = []
     registries: list[dict[str, Any]] = []
     discoveries: list[dict[str, Any]] = []
     for path, data in iter_intake_artifacts():
@@ -342,7 +343,14 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
                 require_modern_contract=rel in added_intake_paths,
             )
             if sweep:
-                sweeps.append(sweep)
+                # A preserved incomplete locker is an audit artifact, not a
+                # certified full sweep and not a missing-canonical-evidence error.
+                completion = data.get("completion")
+                status = str(completion.get("status") or "") if isinstance(completion, dict) else ""
+                if status.startswith("INCOMPLETE"):
+                    partial_sweeps.append(sweep)
+                else:
+                    sweeps.append(sweep)
         elif role == SOURCE_REGISTRY_ROLE:
             window = validate_source_registry(path, data, as_of, errors)
             if window:
@@ -472,6 +480,17 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
         "artifact_role": "ROOK_INTAKE_DISCOVERY_REPORT",
         "latest_accepted_canonical_evidence_cutoff": latest_cutoff.isoformat(),
         "completed_sweeps": sweep_rows,
+        "partial_collections": [
+            {
+                "path": item.path,
+                "window_start": item.start.isoformat(),
+                "window_end": item.end.isoformat(),
+                "status": item.data["completion"]["status"],
+                "consumed": False,
+                "eligible_as_completed_sweep": False,
+            }
+            for item in sorted(partial_sweeps, key=lambda item: (item.start, item.end, item.path))
+        ],
         "unconsumed_sweeps": [row for row in sweep_rows if row["unconsumed"]],
         "source_registry_deltas": [
             {**item, "start": item["start"].isoformat(), "end": item["end"].isoformat()}
@@ -493,12 +512,15 @@ def render_text(report: dict[str, Any]) -> str:
         f"Latest accepted canonical evidence cutoff: {report['latest_accepted_canonical_evidence_cutoff']}",
         f"Completed ROOK sweeps: {len(report['completed_sweeps'])}",
         f"Unconsumed completed sweeps: {len(report['unconsumed_sweeps'])}",
+        f"Incomplete recovery records: {len(report['partial_collections'])}",
     ]
     for row in report["completed_sweeps"]:
         state = "CONSUMED" if row["consumed"] else "UNCONSUMED"
         lines.append(f"- {state}: {row['window_start']} -> {row['window_end']}  {row['path']}")
         for consumer in row["consumers"]:
             lines.append(f"  accepted by {consumer['packet_id']} ({consumer['mode']})")
+    for row in report["partial_collections"]:
+        lines.append(f"- INCOMPLETE: {row['window_start']} -> {row['window_end']}  {row['path']}  ({row['status']})")
     for warning in report["warnings"]:
         lines.append(f"WARNING: {warning}")
     for error in report["errors"]:
