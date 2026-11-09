@@ -1,0 +1,199 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-09T00:00:00-05:00",
+    "window_end": "2026-11-09T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-09T12:00:00-05:00",
+    "collection_time": "2026-11-09T12:02:11-05:00",
+    "evidence_horizon_time": "2026-11-09T12:02:11-05:00",
+    "collection_mode": "PARTIAL_SOURCE_DISCOVERY"
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261109-NOON-SAUDI-RIYADH-ALERT",
+      "updates_existing_ref": "ROOK-20261109-MIDNIGHT-SAUDI-ARAMCO",
+      "relationship": "UPDATE_FOLLOWUP_ALERT_NOT_NEW_STRIKE",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T12:02:11-05:00",
+      "evidence_horizon_time": "2026-11-09T12:02:11-05:00",
+      "summary": "Saudi civil defence issued and then cleared a new Riyadh warning Monday. Reuters links context to Sunday Houthi attack debris damage at Aramco Tower, but this alert does not independently establish a fresh strike or casualties.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-arabia-says-danger-passed-riyadh-after-alert-day-after-houthi-attack-2026-11-09/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Riyadh city warning; no verified new strike location",
+        "location_precision": "LOCALITY_ONLY_NO_EVENT_COORDINATES",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/saudi-arabia-says-danger-passed-riyadh-after-alert-day-after-houthi-attack-2026-11-09/"
+      }
+    },
+    {
+      "update_id": "ROOK-20261109-NOON-YEMEN-CASUALTY-REVISION",
+      "updates_existing_ref": "2026-11-07_BANI_HUSHAYSH_HOUTHI_CASUALTY_REPORT",
+      "relationship": "UPDATE_ATTRIBUTED_CASUALTY_TOLL_NOT_INDEPENDENT_BDA",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T12:02:11-05:00",
+      "evidence_horizon_time": "2026-11-09T12:02:11-05:00",
+      "summary": "AP reports Houthi health authorities raised reported deaths from Saturday strikes east of Sanaa to 44 (including 21 children and 10 women), 40 wounded. This supersedes earlier Houthi-reported 33 killed/39 wounded as a CLAIMED toll only. Saudi attribution not independently established.",
+      "sources": [
+        "https://apnews.com/article/9b6fa963ea4766a08956e53506494468"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "al-Shariya / Bani Hushaysh area east of Sanaa; exact impact sites unverified",
+        "location_precision": "LOCALITY_ONLY_NO_EVENT_COORDINATES",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://apnews.com/article/9b6fa963ea4766a08956e53506494468"
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261109-NOON-QATAR-NEGOTIATION",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T12:02:11-05:00",
+      "evidence_horizon_time": "2026-11-09T12:02:11-05:00",
+      "claimant": "US and Gulf officials quoted by Reuters",
+      "claim": "Qatar prime minister expected to meet Trump and Vance; US-Iran settlement not imminent; Iranian proposal links port blockade and sanctions relief to Hormuz reopening.",
+      "verification_status": "DIPLOMATIC_POSITIONS_AND_PROSPECTIVE_MEETING_NOT_IMPLEMENTED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/trump-meet-iran-war-mediator-qatar-no-imminent-deal-seen-end-war-2026-11-09/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "claim_id": "ROOK-20261109-NOON-YEMEN-REVISED-TOLL",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T12:02:11-05:00",
+      "evidence_horizon_time": "2026-11-09T12:02:11-05:00",
+      "claimant": "Houthi-run health authorities",
+      "claim": "44 killed and 40 wounded in Saturday airstrikes blamed on Saudi Arabia",
+      "verification_status": "ATTRIBUTED_CASUALTY_AND_ATTRIBUTION_CLAIM_NOT_INDEPENDENTLY_VERIFIED",
+      "sources": [
+        "https://apnews.com/article/9b6fa963ea4766a08956e53506494468"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Bani Hushaysh / al-Shariya locality east of Sanaa",
+        "location_precision": "LOCALITY_ONLY_NO_EVENT_COORDINATES",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://apnews.com/article/9b6fa963ea4766a08956e53506494468"
+      }
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261109-NOON-BRENT-WTI-SNAPSHOT",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09T05:26:00-05:00_REUTERS_SYNDICATION_LAST_MODIFIED",
+      "collection_time": "2026-11-09T12:02:11-05:00",
+      "evidence_horizon_time": "2026-11-09T12:02:11-05:00",
+      "summary": "Reuters market snapshot at 10:11 UTC: Brent $97.57/bbl, WTI $90.45/bbl. Intraday quote, not settlement. Oil down amid diplomacy expectations, while Hormuz maritime risks persist; price movement does not establish shipping normalization.",
+      "sources": [
+        "https://uk.marketscreener.com/news/oil-steadies-after-trump-signals-restraint-on-iran-hormuz-risks-persist-ce785fd3d988f42d"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Riyadh Aramco debris",
+      "decision": "UPDATE",
+      "reason": "Follow-up alert cleared; no new verified impact"
+    },
+    {
+      "topic": "Bani Hushaysh casualties",
+      "decision": "SUPERSEDE",
+      "reason": "Replace earlier attributed Houthi toll with later attributed 44/40, not independently verified"
+    },
+    {
+      "topic": "Hormuz ship strikes",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new independently verified IMO identities or ship-grade coordinates"
+    },
+    {
+      "topic": "Qeshm explosions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified fresh BDA or attribution"
+    },
+    {
+      "topic": "US-Iran Qatar mediation",
+      "decision": "UPDATE",
+      "reason": "Meeting expected, no agreement or implemented blockade changes"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters US Iran Qatar UAE diplomacy",
+      "Reuters Saudi Riyadh alerts",
+      "AP Yemen humanitarian and casualty claims",
+      "Reuters syndicated energy futures"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary leadership and military channels",
+      "Israel",
+      "GCC primary advisories Oman UAE Kuwait Bahrain",
+      "Iraq",
+      "Lebanon Hezbollah Gaza Hamas",
+      "Syria Pakistan Turkiye China Russia Europe EU",
+      "UN IAEA IMO primary",
+      "UKMTO AIS Kpler LSEG primary shipping and aviation",
+      "OFAC sanctions",
+      "Human-impact agency primary",
+      "independent geospatial OSINT"
+    ],
+    "source_review_limitation": "Selected fresh reporting, not theater-wide exhaustive collection; no local repository validator execution"
+  },
+  "unresolved_questions": [
+    "Exact timestamps and publication cutoff for AP and Reuters reports",
+    "Saudi Riyadh warning trigger",
+    "Independent Yemen casualty and attribution verification",
+    "Hormuz vessel IMO and AIS tracks",
+    "Diplomatic implementation and nuclear inspections",
+    "Repository validator acceptance"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/trump-meet-iran-war-mediator-qatar-no-imminent-deal-seen-end-war-2026-11-09/",
+    "https://www.reuters.com/world/middle-east/saudi-arabia-says-danger-passed-riyadh-after-alert-day-after-houthi-attack-2026-11-09/",
+    "https://apnews.com/article/9b6fa963ea4766a08956e53506494468",
+    "https://uk.marketscreener.com/news/oil-steadies-after-trump-signals-restraint-on-iran-hormuz-risks-persist-ce785fd3d988f42d"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_SOURCE_DISCOVERY_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial append-only upstream evidence. No canonical or public mutations; intake completion not certified."
+  }
+}
