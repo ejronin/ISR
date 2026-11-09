@@ -1,0 +1,229 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-08T12:00:00-05:00",
+    "window_end": "2026-11-09T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-09T00:00:00-05:00",
+    "collection_time": "2026-11-09T00:01:27-05:00",
+    "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+    "collection_mode": "PARTIAL_SOURCE_DISCOVERY"
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261109-MIDNIGHT-SAUDI-ARAMCO",
+      "updates_existing_ref": "ROOK-20261108-NOON-SAUDI-ARAMCO-DEBRIS",
+      "relationship": "UPDATE_REPORTED_DAMAGE_AND_ATTRIBUTED_CLAIMS",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "summary": "Reuters reports debris damage to several floors of Aramco Tower in Riyadh financial district after Saudi interceptions. Saudi energy ministry says limited damage and no casualties. Houthis claim responsibility; airport-target claim unconfirmed. Saudi coalition also claims launcher strikes near Saada and Sanaa, without independently verified BDA.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/loud-booms-heard-saudi-capital-riyadh-after-early-warning-alert-issued-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Aramco Tower, Riyadh financial district; no independently verified debris impact coordinates",
+        "location_precision": "LOCALITY_OR_REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/loud-booms-heard-saudi-capital-riyadh-after-early-warning-alert-issued-2026-11-08/"
+      }
+    },
+    {
+      "update_id": "ROOK-20261109-MIDNIGHT-HORMUZ",
+      "updates_existing_ref": "ROOK-20261108-NOON-HORMUZ-VESSELS",
+      "relationship": "UPDATE_DIPLOMATIC_AND_SHIPPING_CLAIMS_UNRESOLVED",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "summary": "Reuters reports continued Iranian claims of mine-struck tankers and US account of disabling a commercial vessel. No independently verified IMO identities, precise coordinates or BDA established in this collection. Trump states further strikes highly unlikely conditional on agreement; Qatar says talks continue.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Strait of Hormuz / Gulf of Oman; no ship-grade positions",
+        "location_precision": "LOCALITY_OR_REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/"
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261109-MIDNIGHT-US-STRIKE-CONDITIONAL",
+      "claimant": "US President Donald Trump",
+      "claim": "Further strikes on Iran highly unlikely if negotiations progress and strong agreement reached",
+      "verification_status": "ATTRIBUTED_POLICY_STATEMENT_NOT_CEASEFIRE",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-suggests-blasts-are-not-us-attacks-both-sides-report-ships-hit-2026-11-08/",
+        "https://www.reuters.com/business/energy/oil-falls-open-trump-says-fresh-iran-attacks-unlikely-2026-11-08/"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261109-MIDNIGHT-SYRIA-FORCE-PROPOSAL",
+      "claimant": "Unnamed officials cited by AP; Syrian diplomatic source previously denied Yemen deployment plans",
+      "claim": "About 600 Syrian special forces personnel could be sent to Saudi Arabia; advisory personnel reportedly already present",
+      "verification_status": "PROPOSED_NOT_DEPLOYED_INDEPENDENTLY",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "sources": [
+        "https://apnews.com/article/d436bdc81a8e6b28bb99c417aaeaf8b6",
+        "https://www.reuters.com/world/asia-pacific/syria-denies-plans-send-troops-yemen-saudi-military-ties-deepen-2026-11-07/"
+      ],
+      "geospatial": {
+        "map_eligibility": "unlocated pending source",
+        "geolocation_status": "UNRESOLVED",
+        "projection_readiness": "NOT_PLOT_READY"
+      }
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261109-MIDNIGHT-IRAQ-EXPORT-ROUTE",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08T14:25:25-05:00",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "summary": "Iraqi Foreign Minister Fuad Hussein says Iraq and US reached understanding for Iraqi crude exports via Hormuz lane near Oman; reported losses $60bn. October exports approximately 3.5m bpd versus September 2.65m bpd per Iraqi energy officials. Agreement claim does not establish completed vessel transit.",
+      "sources": [
+        "https://www.reuters.com/business/energy/iraq-has-reached-understandings-with-us-allow-oil-exports-through-hormuz-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "economic_id": "ROOK-20261109-MIDNIGHT-OIL-OPEN",
+      "occurrence_time": "2026-11-08_EVENING_EST",
+      "publication_time": "2026-11-08T18:50:00-05:00_REPORTED_BY_SYNDICATION",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "summary": "Reuters reports oil futures lower at Monday Asian opening after Trump remarks; Brent roughly $97.48-97.67 and WTI $90.51. These are snapshots, not daily settlements.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-open-trump-says-fresh-iran-attacks-unlikely-2026-11-08/",
+        "https://ca.investing.com/news/commodities-news/oil-falls-on-open-as-trump-says-fresh-iran-attacks-unlikely-4941555"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "economic_id": "ROOK-20261109-MIDNIGHT-IRAQ-BORDER-REQUEST",
+      "occurrence_time": "2026-11-08_DATE_ONLY",
+      "publication_time": "2026-11-08_TIME_UNVERIFIED",
+      "collection_time": "2026-11-09T00:01:27-05:00",
+      "evidence_horizon_time": "2026-11-09T00:01:27-05:00",
+      "summary": "Iraqi Foreign Minister says US Treasury requested closure of all but two Iraq-Iran border crossings; discussions ongoing, not implemented wholesale closure.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-asks-iraq-shut-most-iran-border-crossings-iraqi-foreign-minister-says-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Saudi Aramco Riyadh debris",
+      "decision": "UPDATE",
+      "reason": "Later reporting specifies damaged floors and Saudi no-casualty assessment"
+    },
+    {
+      "topic": "Hormuz ship incidents",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independent vessel ID, position, mine contact or BDA established"
+    },
+    {
+      "topic": "Qeshm explosions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified attribution or impact coordinate in reviewed material"
+    },
+    {
+      "topic": "Syria-Saudi deployment",
+      "decision": "UPDATE",
+      "reason": "AP prospective force reporting contrasts with prior Syrian denial; no deployment confirmed"
+    },
+    {
+      "topic": "Task Force Iron Gate",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No newly verified interdiction outcomes"
+    },
+    {
+      "topic": "Supersession",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently substantiated correction sufficient to supersede existing packet"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters US-Iran negotiations and Hormuz",
+      "Reuters Saudi/Yemen",
+      "Reuters Iraq border and exports",
+      "Reuters oil futures",
+      "AP Syria-Saudi"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership primary channels",
+      "Israel",
+      "Oman Qatar UAE Kuwait Bahrain primary advisories",
+      "Yemen and Saudi military primary",
+      "Lebanon Hezbollah Gaza Hamas",
+      "Pakistan Turkiye China Russia Europe EU",
+      "UN IAEA IMO",
+      "maritime AIS Kpler LSEG and aviation advisories",
+      "OFAC and sanctions registers",
+      "human-impact agencies and independent OSINT"
+    ],
+    "source_review_limitation": "Search results and selected reporting only; not exhaustive actor/source-class sweep"
+  },
+  "unresolved_questions": [
+    "Vessel IMO IDs and precise positions",
+    "Saudi interception and launcher strike BDA",
+    "Exact publication timestamps for several November 8 reports",
+    "Syria force deployment decision and destination",
+    "Implementation of Iraq-US Hormuz route and border crossing requests",
+    "IAEA/IMO primary confirmation and independent maritime corroboration"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/business/energy/iraq-has-reached-understandings-with-us-allow-oil-exports-through-hormuz-2026-11-08/",
+    "https://www.reuters.com/world/middle-east/us-asks-iraq-shut-most-iran-border-crossings-iraqi-foreign-minister-says-2026-11-08/",
+    "https://www.reuters.com/business/energy/oil-falls-open-trump-says-fresh-iran-attacks-unlikely-2026-11-08/",
+    "https://apnews.com/article/d436bdc81a8e6b28bb99c417aaeaf8b6"
+  ],
+  "geospatial_handoff": {
+    "projection_readiness": "NOT_PLOT_READY",
+    "reason": "No sourced event-specific impact or vessel coordinates; no protected geometry touched"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_SOURCE_REVIEW",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "validator_status": "NOT_CERTIFIED_COMPLETED_UNCONSUMED",
+    "report": "Partial evidence and reconciliation only; source class completeness and intake validator completion cannot be certified."
+  }
+}
