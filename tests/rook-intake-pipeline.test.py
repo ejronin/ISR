@@ -267,4 +267,37 @@ with tempfile.TemporaryDirectory() as name:
     assert any("awaits Evidence Integration consumption" in item for item in gap_report["warnings"])
 
 
+with tempfile.TemporaryDirectory() as name:
+    temp = Path(name)
+    configure(temp)
+    partial_path = "data/evidence-integration/rook-evidence-locker-sweep-partial.json"
+    partial = sweep(
+        "2026-11-08T12:00:00-05:00",
+        "2026-11-09T00:00:00-05:00",
+        "PARTIAL-RECOVERY",
+    )
+    partial["completion"]["status"] = "INCOMPLETE_PARTIAL_SOURCE_REVIEW"
+    partial["completion"]["validator_status"] = "NOT_CERTIFIED_COMPLETED_UNCONSUMED"
+    write_json(temp / partial_path, partial)
+    write_json(temp / "data/canonical-ledger/manifest-v2.json", {
+        "current_evidence_cutoff": "2026-10-30T08:38:30-04:00",
+        "accepted_updates": [],
+    })
+    report = mod.validate_repository(as_of=datetime(2026, 11, 9, 15, 0, tzinfo=timezone.utc))
+    assert report["valid"], report["errors"]
+    assert report["completed_sweeps"] == []
+    assert report["unconsumed_sweeps"] == []
+    assert len(report["partial_collections"]) == 1
+    assert report["partial_collections"][0]["path"] == partial_path
+    assert report["partial_collections"][0]["eligible_as_completed_sweep"] is False
+    assert "Incomplete recovery records: 1" in mod.render_text(report)
+    # A mislabeled failed sweep is still a validation error.
+    partial["completion"]["status"] = "UNKNOWN_NOT_VALIDATED"
+    write_json(temp / partial_path, partial)
+    rejected = mod.validate_repository(as_of=datetime(2026, 11, 9, 15, 0, tzinfo=timezone.utc))
+    assert not rejected["valid"]
+    assert any("completed or incomplete collection" in x for x in rejected["errors"])
+
+
+
 print("ROOK intake pipeline: PASS")
