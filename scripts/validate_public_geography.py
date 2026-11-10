@@ -168,7 +168,7 @@ def main() -> int:
     import re
     js = (ROOT / "js/public-ia.js").read_text(encoding="utf-8")
     for group in ("military", "maritime"):
-        match = re.search(r"\\b" + group + r": Object\\.freeze\\((\\[[^\\n]*\\])\\)", js)
+        match = re.search(r"\b" + group + r": Object\.freeze\((\[[^\n]*\])\)", js)
         require(match is not None, f"missing public map group {group}")
         require(json.loads(match.group(1)) == visible[group], f"public map group {group} differs from accepted event audit")
         require(f"renderUnplottedRegionalEvents(frame.article, context, '{group}')" in js, f"{group} map reader omits unplotted observations")
