@@ -93,7 +93,7 @@
         ],
         "source_fidelity": "Iranian Navy's reported wording identified an enemy unmanned vessel east of Hormuz; CENTCOM rejected any U.S. unmanned surface vessel loss. Distinguish Iranian military claim's exact target description from journalistic U.S.-vessel characterization."
       },
-      "current_source_actor": "Iranian Navy (source statement attributed to the regular Navy; not independently established as IRGC Navy)",
+      "current_source_actor": "Iranian Navy (regular Navy in IRNA/Tasnim attribution; IRGC organizational authorship not established)",
       "current_truth": "UNSUBSTANTIATED original unspecified enemy USV destruction; U.S.-operator interpretation OFFICIALLY_DISPUTED, not independently disproven from operator-specific evidence alone",
       "truth_knowledge_change": "SOURCE_FIDELITY_REFINEMENT_ONLY_NO_FRESH_FALSE_OR_LIE",
       "index_source_report": "data/claims-forensics/irgc-nov04-source-clock-addendum-20261110.noncanonical.json",
@@ -165,7 +165,7 @@
     {
       "case_id": "CF-20261030-03",
       "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
-      "source_actor": "Iranian Navy (source statement attributed to the regular Navy; not independently established as IRGC Navy)",
+      "source_actor": "Iranian Navy (regular Navy in IRNA/Tasnim attribution; IRGC organizational authorship not established)",
       "claim_family_ref": null,
       "prior_membership": [
         "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906"
