@@ -1,0 +1,205 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261110-OFFICIAL-IG-CENTCOM-AIRCRAFT-LOSSES",
+  "known_at": "2026-11-10T16:26:00-05:00",
+  "evidence_cutoff": "2026-11-09T21:52:00-05:00",
+  "summary": "Append six distinct itemized U.S. military aircraft loss/damage classes from the September Lead Inspector General synthesis and May CENTCOM admission: 4 AH-6 deliberately destroyed, 1 A-10 destroyed, 1 AH-64 shot down, 1 F-35A damaged, 1 HH-60W damaged, 1 MQ-1 shot down. Preserve imprecise event dates and all 41 prior accepted packets.",
+  "sources": [
+    {
+      "source_id": "SRC-015E1C260F8E",
+      "url": "https://oig.usaid.gov/sites/default/files/2026-09/Lead_IG_OEF_Q3_Final_Report_0.pdf",
+      "source_role": "Official September 2026 Lead Inspector General report to Congress, Table 5 on printed page 18 (PDF page index 19): detailed aircraft loss/damage disposition; source table derives from May CRS and Aug24 CENTCOM vetting",
+      "outlet": "U.S. Department of Defense Lead Inspector General / USAID OIG hosted",
+      "title": "Operation Epic Fury, Report to Congress, April 1-June 30, 2026",
+      "published_date": "2026-09-14",
+      "source_class": "OFFICIAL_GOVERNMENT_INSPECTOR_GENERAL_SYNTHESIS"
+    },
+    {
+      "source_id": "SRC-E7F8EA6396CE",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4504919/us-defends-disables-threats-in-response-to-iranian-aggression/",
+      "source_role": "CENTCOM May 31 original statement confirms Iran shot down a U.S. MQ-1 operating over international waters; no exact event timestamp given",
+      "outlet": "U.S. Central Command",
+      "title": "U.S. Defends, Disables Threats in Response to Iranian Aggression",
+      "published_date": "2026-05-31",
+      "source_class": "OFFICIAL_MILITARY_ADMISSION"
+    }
+  ],
+  "events": [],
+  "entities": [
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-AH6-IRAN-CSAR-SELFDESTROYED-202604",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-AH6-IRAN-CSAR-SELFDESTROYED-202604",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Armed Forces",
+        "event_date": null,
+        "event_date_range": "2026-04-02/2026-04-05",
+        "event_time_precision": "DATE_UNRESOLVED_WITHIN_RANGE",
+        "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+        "item": "AH-6 Little Bird helicopters",
+        "quantity": 4,
+        "status": "DESTROYED",
+        "disposition": "Four unrecoverable AH-6 helicopters deliberately destroyed by U.S. forces during combat search and rescue; not four enemy shootdowns",
+        "loss_mechanism": "SELF_DESTRUCTION_UNRECOVERABLE_IN_CSAR",
+        "aggregation_type": "FOUR_DISTINCT_HELICOPTERS_ONE_RESCUE_OPERATION",
+        "confidence": "HIGH_FOR_REPORTED_LOSS_STATUS_NOT_PRECISE_EVENT_TIME",
+        "source_ids": [
+          "SRC-015E1C260F8E"
+        ],
+        "knowledge_time": "2026-11-10T16:26:00-05:00",
+        "cost_status": "UNPRICED",
+        "note": "Lead IG Table 5 lists four AH-6 destroyed by U.S. forces after deemed unrecoverable in CSAR. Specific individual tail numbers and destruction day(s) are not in this source. Do not combine with MC-130J self-destruction, non-AH6 helicopters, or Iranian kinetic BDA."
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-A10-IRAN-CSAR-RETURN-JETTISONED-202604",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-A10-IRAN-CSAR-RETURN-JETTISONED-202604",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Armed Forces",
+        "event_date": null,
+        "event_date_range": "2026-04-02/2026-04-06",
+        "event_time_precision": "DATE_UNRESOLVED_WITHIN_RANGE",
+        "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+        "item": "A-10 Thunderbolt II attack aircraft",
+        "quantity": 1,
+        "status": "DESTROYED",
+        "disposition": "One A-10 destroyed after damage during return from CSAR mission",
+        "loss_mechanism": "JETTISONED_DUE_TO_DAMAGE_ON_RETURN_FROM_CSAR",
+        "aggregation_type": "DISTINCT_SINGLE_AIRFRAME_WITH_NO_SERIAL_REPORTED",
+        "confidence": "HIGH_FOR_REPORTED_LOSS_STATUS_NOT_PRECISE_EVENT_TIME",
+        "source_ids": [
+          "SRC-015E1C260F8E"
+        ],
+        "knowledge_time": "2026-11-10T16:26:00-05:00",
+        "cost_status": "UNPRICED",
+        "note": "Lead IG Table 5: one A-10 destroyed, jettisoned due to damage on return from CSAR. Specific adversary causing prior damage not identified by this cited table; do not tag as a confirmed Iranian shootdown. Distinct from later damaged A-10 cited by October CRS."
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-AH64-HORMUZ-SHOTDOWN-2026H1",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-AH64-HORMUZ-SHOTDOWN-2026H1",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Armed Forces",
+        "event_date": null,
+        "event_date_range": "2026-02-28/2026-06-30",
+        "event_time_precision": "DATE_UNRESOLVED_WITHIN_RANGE",
+        "accounting_category": "DURABLE_MATERIAL_LOST",
+        "item": "AH-64 Apache attack helicopter",
+        "quantity": 1,
+        "status": "SHOT_DOWN_LOST_REPORTED",
+        "disposition": "One AH-64 shot down over Strait of Hormuz; specific date, perpetrator and recovery status not in Lead IG Table 5",
+        "loss_mechanism": "SHOT_DOWN_OVER_STRAIT_OF_HORMUZ",
+        "aggregation_type": "DISTINCT_SINGLE_AIRFRAME_WITH_NO_SERIAL_REPORTED",
+        "confidence": "HIGH_FOR_REPORTED_LOSS_STATUS_NOT_PRECISE_EVENT_TIME",
+        "source_ids": [
+          "SRC-015E1C260F8E"
+        ],
+        "knowledge_time": "2026-11-10T16:26:00-05:00",
+        "cost_status": "UNPRICED",
+        "note": "The September Lead IG Table 5 confirms one AH-64 shot down over SoH but does not provide date or detailed shooter attribution. Preserve lost status rather than claiming independently surveyed wreckage/destruction. Do not conflate with AH-6 rescue aircraft."
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-F35A-IRAN-COMBAT-DAMAGED-2026H1",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-F35A-IRAN-COMBAT-DAMAGED-2026H1",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Armed Forces",
+        "event_date": null,
+        "event_date_range": "2026-02-28/2026-06-30",
+        "event_time_precision": "DATE_UNRESOLVED_WITHIN_RANGE",
+        "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+        "item": "F-35A Lightning II fighter aircraft",
+        "quantity": 1,
+        "status": "DAMAGED",
+        "disposition": "One F-35A damaged by enemy fire over Iran, not destroyed or shot down",
+        "loss_mechanism": "ENEMY_FIRE_OVER_IRAN",
+        "aggregation_type": "DISTINCT_SINGLE_AIRFRAME_WITH_NO_SERIAL_REPORTED",
+        "confidence": "HIGH_FOR_REPORTED_LOSS_STATUS_NOT_PRECISE_EVENT_TIME",
+        "source_ids": [
+          "SRC-015E1C260F8E"
+        ],
+        "knowledge_time": "2026-11-10T16:26:00-05:00",
+        "cost_status": "UNPRICED",
+        "note": "Lead IG Table 5 says one F-35A damaged due to enemy fire over Iran. Recovery/return-to-service status not in cited table. Do not turn the airframe into a destroyed F-35 in the Lie Ledger or blend it with the April F-15E losses."
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-HH60W-IRAN-CSAR-DAMAGED-202604",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-HH60W-IRAN-CSAR-DAMAGED-202604",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Armed Forces",
+        "event_date": null,
+        "event_date_range": "2026-04-02/2026-04-05",
+        "event_time_precision": "DATE_UNRESOLVED_WITHIN_RANGE",
+        "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+        "item": "HH-60W Jolly Green II search-and-rescue helicopter",
+        "quantity": 1,
+        "status": "DAMAGED",
+        "disposition": "One HH-60W damaged during CSAR operation; no confirmed destroyed airframe",
+        "loss_mechanism": "DAMAGE_DURING_CSAR",
+        "aggregation_type": "DISTINCT_SINGLE_AIRFRAME_WITH_NO_SERIAL_REPORTED",
+        "confidence": "HIGH_FOR_REPORTED_LOSS_STATUS_NOT_PRECISE_EVENT_TIME",
+        "source_ids": [
+          "SRC-015E1C260F8E"
+        ],
+        "knowledge_time": "2026-11-10T16:26:00-05:00",
+        "cost_status": "UNPRICED",
+        "note": "Lead IG Table 5 corroborates one HH-60W damaged during aircrew rescue. Damage cause, repair and serial not specified by table. Do not count as an Iranian direct shootdown."
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-MQ1-IRAN-CENTCOM-20260531",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-MQ1-IRAN-CENTCOM-20260531",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Armed Forces",
+        "event_date": null,
+        "event_date_range": "2026-05-30/2026-05-31",
+        "event_time_precision": "DATE_UNRESOLVED_WITHIN_RANGE",
+        "accounting_category": "DURABLE_MATERIAL_LOST",
+        "item": "MQ-1 Predator uncrewed aircraft",
+        "quantity": 1,
+        "status": "SHOT_DOWN_LOST_CONFIRMED",
+        "disposition": "One U.S. MQ-1 shot down by Iranian forces while operating over waters described by CENTCOM as international",
+        "loss_mechanism": "IRANIAN_SHOOTDOWN_AS_OFFICIALLY_ADMITTED_BY_CENTCOM",
+        "aggregation_type": "DISTINCT_SINGLE_AIRFRAME_WITH_NO_SERIAL_REPORTED",
+        "confidence": "HIGH_FOR_ONE_MQ1_LOSS_AND_US_ACKNOWLEDGEMENT",
+        "source_ids": [
+          "SRC-E7F8EA6396CE"
+        ],
+        "knowledge_time": "2026-11-10T16:26:00-05:00",
+        "cost_status": "UNPRICED",
+        "note": "CENTCOM May 31 confirms U.S. MQ-1 downed by Iran, but does not provide exact crash time or airframe serial. The 2026-05-31 suffix denotes U.S. announcement date, not a verified incident minute. Iran separately claims territorial waters, so exact sea jurisdiction is DISPUTED. This is ONE of CRS's three MQ-1 reported losses as of Oct5, not a fourth MQ-1 or an MQ-9."
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/aircraft-loss-crs-wikipedia-crosswalk-20261110.noncanonical.json"
+    ]
+  }
+}
