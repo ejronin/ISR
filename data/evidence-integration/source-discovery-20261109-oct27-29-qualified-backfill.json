@@ -3,7 +3,7 @@
   "authority": "ROOK_UPSTREAM_COLLECTION",
   "collection_cutoff": "2026-11-09T21:52:00-05:00",
   "discovery_count": 5,
-  "preservation_rule": "Add source-backed leads while preserving previous collection gaps and source records",
+  "preservation_rule": "Append discoveries; do not remove prior standing sources",
   "schema_version": "1.0",
   "scope_note": "Source-qualified retrospective Oct27-29 documentary review; not a certified full twelve-hour ROOK sweep.",
   "source_count": 5,
