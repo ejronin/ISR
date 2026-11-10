@@ -345,7 +345,8 @@ with tempfile.TemporaryDirectory() as name:
 # The public evidence cutoff can be newer than complete 12-hour source coverage.
 # The schedule matrix must expose that debt rather than invent a no-delta sweep.
 import sys
-sys.path.insert(0, str(ROOT / "scripts"))
+from datetime import date, timedelta
+sys.path.insert(0, str(REPO / "scripts"))
 import rook_collection_window_matrix as scheduled
 sample_report = {
     "latest_accepted_canonical_evidence_cutoff": "2026-11-09T09:33:00-05:00",
