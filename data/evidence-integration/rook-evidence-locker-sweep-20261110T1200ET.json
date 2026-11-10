@@ -1,0 +1,129 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-10T00:00:00-05:00",
+    "window_end": "2026-11-10T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-10T12:00:00-05:00",
+    "collection_time": "2026-11-10T11:59:56-05:00",
+    "evidence_horizon_time": "2026-11-10T11:59:56-05:00",
+    "collection_mode": "PARTIAL_SOURCE_DISCOVERY_PRE_CUTOFF"
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261110-NOON-RIYADH-INSPECTION",
+      "updates_existing_ref": "ROOK-20261109-MIDNIGHT-SAUDI-ARAMCO",
+      "relationship": "UPDATE_FOLLOWUP_INSPECTION_NO_NEW_STRIKE",
+      "occurrence_time": "2026-11-10_DATE_ONLY",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T11:59:56-05:00",
+      "evidence_horizon_time": "2026-11-10T11:59:56-05:00",
+      "summary": "Reuters reports Riyadh deputy governor inspected Aramco office damaged in prior Houthi-claimed attack. Saudi authorities report limited damage and no casualties; inspection is not a new strike or independent BDA.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-official-inspects-aramco-riyadh-office-after-houthi-attack-2026-11-10/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Aramco administrative building, Riyadh; exact damage location not independently established",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/saudi-official-inspects-aramco-riyadh-office-after-houthi-attack-2026-11-10/"
+      }
+    },
+    {
+      "update_id": "ROOK-20261110-NOON-GEM-NO2",
+      "updates_existing_ref": "OCTOBER_2026_GEM_NO_2_TANKER_INCIDENT",
+      "relationship": "UPDATE_CARGO_RECOVERY_AND_DISPOSITION_NOT_NEW_ATTACK",
+      "occurrence_time": "2026-11-10_DATE_ONLY",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T11:59:56-05:00",
+      "evidence_horizon_time": "2026-11-10T11:59:56-05:00",
+      "summary": "Reuters reports UAE tender for up to 1.87m barrels of Saudi Arab Light recovered from Gem No. 2, previously struck off UAE coast. Planned ship-to-ship transfer November 10-20, not proof transfer occurred. Attribution remains unknown.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/uae-is-selling-saudi-oil-rare-move-document-shows-2026-11-10/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Off UAE coast, specific vessel incident coordinates not supplied",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://www.reuters.com/world/middle-east/uae-is-selling-saudi-oil-rare-move-document-shows-2026-11-10/"
+      }
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Riyadh Aramco office",
+      "decision": "UPDATE",
+      "reason": "Follow-up official inspection, not new impact"
+    },
+    {
+      "topic": "Gem No. 2 vessel",
+      "decision": "UPDATE",
+      "reason": "Reported recovery and sale tender, no verified completed transfer"
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified new impact or exact location beyond prior drawer"
+    },
+    {
+      "topic": "Qatar mediation",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified implemented agreement in checked sources"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Saudi Aramco inspection",
+      "Reuters Gem No. 2 cargo disposition",
+      "Reuters US-Iran diplomacy background"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership and military",
+      "US Israel primary",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Yemen Lebanon Gaza Syria",
+      "Pakistan Turkiye China Russia Europe",
+      "UN IAEA IMO maritime aviation",
+      "sanctions energy AIS Kpler LSEG",
+      "human-impact independent OSINT"
+    ],
+    "source_review_limitation": "Cutoff not yet reached at collection; source publication clock times not verified; theater-wide and prior drawer review incomplete."
+  },
+  "unresolved_questions": [
+    "Precise publication time of Reuters articles",
+    "Gem No. 2 IMO number, strike coordinates, completed cargo transfer",
+    "Saudi building independent damage verification",
+    "All unreviewed actor/source classes",
+    "Repository validator acceptance"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/saudi-official-inspects-aramco-riyadh-office-after-houthi-attack-2026-11-10/",
+    "https://www.reuters.com/world/middle-east/uae-is-selling-saudi-oil-rare-move-document-shows-2026-11-10/"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_SOURCE_DISCOVERY_PRE_CUTOFF_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial upstream collection before scheduled cutoff; not a completed unconsumed sweep. No canonical/public mutation."
+  }
+}
