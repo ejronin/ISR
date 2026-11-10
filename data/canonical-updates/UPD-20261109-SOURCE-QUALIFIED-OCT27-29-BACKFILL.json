@@ -1,0 +1,154 @@
+{
+  "entities": [
+    {
+      "entity_id": "ECON-REUTERS-IRAN-MOD-IMPORT-NETWORK-20261029",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "date": "2026-10-29",
+        "economic_id": "ECON-REUTERS-IRAN-MOD-IMPORT-NETWORK-20261029",
+        "knowledge_time": "2026-11-09T21:53:00-05:00",
+        "metric": "Reuters documented military-relevant procurement entities and import records",
+        "observed_state": "Reuters documented over 5,000 MOD-linked procurement agencies and at least $2 billion of imported equipment since January 2025. The reported import records are source-defined; no separate additive total is assigned to any MOD unit.",
+        "reported_agency_count_lower_bound": 5000,
+        "reported_imports_period_start": "2025-01-01",
+        "reported_total_imports_usd_lower_bound": 2000000000,
+        "source_ids": [
+          "SRC-9F7A10292604"
+        ],
+        "status": "REUTERS_INVESTIGATIVE_SOURCE_DERIVED"
+      }
+    },
+    {
+      "entity_id": "ECON-QATAR-LNG-PURCHASES-20261029",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "contracted_lng_mtpa": 7,
+        "date": "2026-10-29",
+        "economic_id": "ECON-QATAR-LNG-PURCHASES-20261029",
+        "facility_repair_estimate_years": 3,
+        "knowledge_time": "2026-11-09T21:53:00-05:00",
+        "metric": "QatarEnergy contracted LNG purchases, million metric tons per annum",
+        "observed_state": "QatarEnergy reported about 7 million metric tons per year of purchased LNG under long-term agreements, alongside an estimated three-year repair horizon for two damaged Ras Laffan trains.",
+        "source_ids": [
+          "SRC-9F7A10292605"
+        ],
+        "status": "QATARENERGY_CEO_REPORTED_CONTRACTS"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_class": "CORE_WARTIME_EVENT",
+      "event_date": "2026-10-27",
+      "event_id": "EVT-20261027-HOUTHI-RAS-TANURA-MISSILE-CLAIM",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9F7A10272601"
+      ],
+      "strike_countable": false,
+      "summary": "Houthi military spokesman Yahya Saree claimed a ballistic missile struck Saudi Arabia's Ras Tanura oil refinery and caused a fire. Saudi authorities had not confirmed the reported strike in Reuters' October 27 account."
+    },
+    {
+      "event_class": "CORE_WARTIME_EVENT",
+      "event_date": "2026-10-27",
+      "event_id": "EVT-20261027-SAUDI-COALITION-3-MISSILES-4-DRONES",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9F7A10272602"
+      ],
+      "strike_countable": false,
+      "summary": "The Saudi-led coalition reported intercepting three ballistic missiles toward Saudi Arabia's Eastern Region and four drones toward its Southern Region. Civil Defense separately issued and cleared regional alerts."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-10-28",
+      "event_id": "EVT-20261028-QATAR-NEW-IRAN-WAR-END-DRAFT",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9F7A10282603"
+      ],
+      "strike_countable": false,
+      "summary": "Qatari mediators presented a proposed war-ending arrangement to Iran. A senior Iranian official said the ideas on offer were unacceptable; no agreement was announced."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-10-29",
+      "event_id": "EVT-20261029-REUTERS-MOD-PROCUREMENT-NETWORK",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9F7A10292604"
+      ],
+      "strike_countable": false,
+      "summary": "Reuters identified a network of more than 5,000 Iranian Defense Ministry-associated procurement agencies and traced at least $2 billion in imported military-relevant equipment since January 2025 from banking, company and shipping records."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-10-29",
+      "event_id": "EVT-20261029-QATARENERGY-LNG-PURCHASE-CONTRACTS",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9F7A10292605"
+      ],
+      "strike_countable": false,
+      "summary": "QatarEnergy CEO Saad Sherida Al-Kaabi said the company signed long-term purchases totaling about seven million metric tons of LNG annually, including contracts involving Woodside and Cheniere."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-10-29",
+      "event_id": "EVT-20261029-QATAR-RASLAFFAN-LNG-REPAIR-OUTLOOK",
+      "event_time_precision": "DATE_ONLY",
+      "source_ids": [
+        "SRC-9F7A10292605"
+      ],
+      "strike_countable": false,
+      "summary": "QatarEnergy's chief executive said damage to two Ras Laffan LNG production trains would take around three years to repair. The reported purchase contracts serve future supply periods."
+    }
+  ],
+  "evidence_cutoff": "2026-11-09T21:52:00-05:00",
+  "known_at": "2026-11-09T21:53:00-05:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "source_id": "SRC-9F7A10272601",
+      "source_role": "Reuters October 27: Houthi spokesman Yahya Saree claimed a ballistic missile struck Ras Tanura refinery and caused a fire; Saudi officials had not confirmed",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-an-attack-saudi-ras-tanura-oil-refinery-2026-10-27/"
+    },
+    {
+      "source_id": "SRC-9F7A10272602",
+      "source_role": "Reuters October 27: Saudi-led coalition said three ballistic missiles toward Eastern Province and four drones toward the southern region were intercepted; civil-defence alerts",
+      "url": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepted-houthi-missiles-drones-attacking-kingdom-2026-10-27/"
+    },
+    {
+      "source_id": "SRC-9F7A10282603",
+      "source_role": "Reuters October 28: Qatari mediated draft offered for Iran to review; Iranian official declined terms; proposal-only diplomatic phase",
+      "url": "https://www.reuters.com/world/asia-pacific/qatari-mediators-present-iran-with-new-deal-end-war-official-says-2026-10-28/"
+    },
+    {
+      "source_id": "SRC-9F7A10292604",
+      "source_role": "Reuters October 29 investigative procurement study based on Iranian banking and trade data; more than five thousand MOD procurement agencies and at least two billion dollars of described imports since January 2025",
+      "url": "https://www.reuters.com/world/iran/irans-hidden-web-military-agencies-is-slipping-hardware-past-us-blockade-2026-10-29/"
+    },
+    {
+      "source_id": "SRC-9F7A10292605",
+      "source_role": "Reuters October 29 direct QatarEnergy CEO interview: 7 million metric tons/year long-term LNG purchase deals, damage to two Ras Laffan trains and expected repair duration around three years",
+      "url": "https://www.reuters.com/business/energy/qatarenergy-buys-us-other-lng-hedge-future-hormuz-disruptions-2026-10-29/"
+    }
+  ],
+  "status": "ACCEPTED",
+  "summary": "Six source-qualified October 27–29 developments admitted retrospectively in November 9 review: Saudi coalition reported interceptions, Houthi Ras Tanura claim, Qatari mediation draft, Reuters investigation of Iranian military procurement agencies and QatarEnergy's LNG supply and Ras Laffan repair report. Original source clocks and actor attribution preserved.",
+  "upstream_provenance": {
+    "issue_refs": [
+      "https://github.com/ejronin/ISR/issues/315",
+      "https://github.com/ejronin/ISR/issues/296"
+    ],
+    "locker_artifacts": [
+      "data/evidence-integration/source-discovery-20261109-oct27-29-qualified-backfill.json"
+    ],
+    "note": "Historical scheduled ROOK collection coverage remains governed by collection matrix and #296; this packet does not certify the missing full-sweep windows",
+    "scope": "SELECTIVE_DOCUMENTARY_ACCEPTANCE"
+  }
+}
