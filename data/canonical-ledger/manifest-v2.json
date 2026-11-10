@@ -444,12 +444,12 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "evidence_cutoff": "2026-11-09T21:52:00-05:00",
       "known_at": "2026-11-10T16:10:00-05:00",
-      "lineage_sha256": "b22b9fcaa4cbcc2e051462fb2017fcf814c508c4c7eaa7c833ec0d96ee6f1675",
+      "lineage_sha256": "1b9266a9f6f4a348139474ed40938f3a3200fc9603dd8b79de14b22adce2f691",
       "packet_id": "UPD-20261110-CENTCOM-CONFIRMED-F15E-LOSSES",
       "path": "data/canonical-updates/UPD-20261110-CENTCOM-CONFIRMED-F15E-LOSSES.json",
       "previous_lineage_sha256": "e3b9bd95731bae39d50fcc3a65eeb483153edd897ea641dfe0a7d3af80d599cf",
       "sequence": 41,
-      "sha256": "b72d4896a0972b62c377031b2715779dc7c2a795675b28a869d67262cee6a1d7"
+      "sha256": "8c8b5642bd7b1f5ec64744ba6f34b2403931f53ee4c534b4d8947a36adfe745a"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
