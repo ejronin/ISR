@@ -385,6 +385,32 @@ const PRESERVED_FACILITY_IDS = [
     assert.equal(keyboard.opened, true, 'imagery selection did not open a readable card');
     assert.equal(keyboard.closed, true, 'Escape did not close the map card');
 
+    // Every accepted region-level incident must remain visible with its
+    // source drawer beside the appropriate map; no source-less point pins.
+    for (const [routeKey, group, minimum] of [
+      ['military.campaigns', 'military', 7],
+      ['hormuz.shipping', 'maritime', 6]
+    ]) {
+      await setRoute(cdp, routeKey);
+      await waitFor(cdp, `Boolean(document.querySelector('[data-map-unplotted-group="${group}"]'))`);
+      const parity = await cdp.eval(`(() => {
+        const panel = document.querySelector('[data-map-unplotted-group="${group}"]');
+        const cards = [...(panel?.querySelectorAll('[data-map-unplotted-event]') || [])];
+        return {
+          count: cards.length,
+          unique: new Set(cards.map(card => card.dataset.mapUnplottedEvent)).size,
+          sourceDrawers: cards.filter(card => card.querySelector('details.evidence-drawer')).length,
+          linkedChronology: cards.filter(card => card.querySelector('a[href*="events"]')).length,
+          sourceIds: cards.map(card => card.dataset.mapUnplottedEvent)
+        };
+      })()`);
+      assert.equal(parity.count, minimum, `Missing source-linked regional observations on ${routeKey}: ${JSON.stringify(parity)}`);
+      assert.equal(parity.unique, minimum);
+      assert.equal(parity.sourceDrawers, minimum);
+      assert.equal(parity.linkedChronology, minimum);
+    }
+    await setRoute(cdp, 'hormuz.overview');
+
     for (const width of [320, 390, 768, 1440]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width < 768 });
       await setRoute(cdp, 'hormuz.overview');
