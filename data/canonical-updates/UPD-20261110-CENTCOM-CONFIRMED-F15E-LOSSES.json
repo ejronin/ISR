@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261110-CENTCOM-CONFIRMED-F15E-LOSSES",
+  "known_at": "2026-11-10T16:10:00-05:00",
+  "evidence_cutoff": "2026-11-09T21:52:00-05:00",
+  "summary": "Append two distinct officially confirmed U.S. F-15E aircraft-loss events (three Kuwaiti friendly-fire airframes in March and one aircraft shot down over Iran in April, with shooter attribution left unresolved in the cited CENTCOM release) without duplicating legacy operational loss seeds or expanding the reviewed evidence horizon.",
+  "sources": [
+    {
+      "source_id": "SRC-04D9A5DF648E",
+      "url": "https://www.centcom.mil/MEDIA/STATEMENTS/Statements-View/Article/4418568/three-us-f-15s-involved-in-friendly-fire-incident-in-kuwait-pilots-safe/",
+      "source_role": "CENTCOM primary confirmation March 2 of three U.S. F-15E aircraft shot down by Kuwaiti friendly fire; all six aircrew recovered",
+      "outlet": "U.S. Central Command",
+      "title": "Three U.S. F-15s Involved in Friendly Fire Incident in Kuwait; Pilots Safe",
+      "published_date": "2026-03-02",
+      "source_class": "OFFICIAL_MILITARY_STATEMENT"
+    }
+  ],
+  "events": [],
+  "entities": [
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-F15E-KUWAIT-20260302-FRIENDLYFIRE",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-F15E-KUWAIT-20260302-FRIENDLYFIRE",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Air Force",
+        "event_date": "2026-03-02",
+        "event_time_precision": "DATE_ONLY",
+        "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+        "item": "F-15E Strike Eagle fighter aircraft",
+        "quantity": 3,
+        "status": "DESTROYED",
+        "disposition": "Shot down over Kuwait in Kuwaiti friendly-fire incident",
+        "loss_mechanism": "FRIENDLY_FIRE_KUWAITI_AIR_DEFENSE",
+        "aggregation_type": "THREE_DISTINCT_AIRFRAMES_SINGLE_CONFIRMED_EVENT",
+        "confidence": "HIGH",
+        "source_ids": [
+          "SRC-04D9A5DF648E"
+        ],
+        "knowledge_time": "2026-11-10T16:10:00-05:00",
+        "note": "CENTCOM March 2 official statement reports shotdown at 23:03 ET March 1 (04:03 UTC March 2). Event date is March 2 in Kuwait. All six aircrew recovered. Tail/serial numbers were not published in the verified statement. Do not count as three Iranian hostile-fire aircraft kills or duplicate a future individual tail-number decomposition.",
+        "cost_status": "UNPRICED"
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-USA-F15E-IRAN-20260402-SHOOTDOWN",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-USA-F15E-IRAN-20260402-SHOOTDOWN",
+        "side": "U.S./COALITION",
+        "owner": "United States",
+        "service": "U.S. Air Force",
+        "event_date": "2026-04-02",
+        "event_time_precision": "DATE_ONLY",
+        "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+        "item": "F-15E Strike Eagle fighter aircraft",
+        "quantity": 1,
+        "status": "DESTROYED",
+        "disposition": "Shot down over Iran on a combat mission; two aircrew recovered April 4",
+        "loss_mechanism": "COMBAT_SHOOTDOWN_CONFIRMED_PER_CENTCOM__SHOOTER_UNSPECIFIED_BY_CITED_RELEASE",
+        "aggregation_type": "ONE_DISTINCT_AIRFRAME",
+        "confidence": "HIGH",
+        "source_ids": [
+          "SRC-694207959BE5"
+        ],
+        "knowledge_time": "2026-11-10T16:10:00-05:00",
+        "note": "CENTCOM April 5 release states aircraft was shot down April 2, with both personnel recovered April 4. Do not substitute April 3 publication/capture-story dates for the official aircraft-loss occurrence date. Distinct from three friendly-fire F-15Es in Kuwait.",
+        "cost_status": "UNPRICED"
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/aircraft-loss-crs-wikipedia-crosswalk-20261110.noncanonical.json"
+    ]
+  }
+}

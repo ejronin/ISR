@@ -222,6 +222,25 @@ class Gate3V2RegistrationTests(unittest.TestCase):
             registrar.register_v2_packet(self.root, relative)
         self.assert_manifest_unchanged(before)
 
+    def test_accepted_tip_matches_real_registrar_replay(self) -> None:
+        """The tracked accepted tip must be the exact output of the production registrar."""
+        tracked = manifest(self.root)
+        tip = tracked["accepted_updates"][-1]
+        self.assertGreater(tip["sequence"], registrar.MIGRATED_ACCEPTED_PREFIX_LENGTH)
+        previous = json.loads(json.dumps(tracked))
+        previous["accepted_updates"].pop()
+        previous["current_evidence_cutoff"] = previous["accepted_updates"][-1]["evidence_cutoff"]
+        (self.root / registrar.MANIFEST_PATH).write_bytes(registrar.canonical_json_bytes(previous))
+
+        replayed = registrar.register_v2_packet(self.root, tip["path"])
+        self.assertEqual(replayed, tip, "Accepted tip differs from registrar's append operation")
+        self.assertEqual(manifest(self.root), tracked, "Accepted manifest differs from registrar replay")
+        self.assertEqual(
+            (self.root / registrar.MANIFEST_PATH).read_bytes(),
+            registrar.canonical_json_bytes(tracked),
+            "Accepted manifest bytes are not the canonical registrar serialization",
+        )
+
     def test_midway_atomic_replace_failure_rolls_back_manifest(self) -> None:
         packet = packet_for(self.root, "ATOMICFAIL")
         relative = write_packet(self.root, packet)
