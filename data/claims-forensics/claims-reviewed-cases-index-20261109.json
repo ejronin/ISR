@@ -1,0 +1,1324 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_REVIEW_CLOSURE_INDEX",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "review_as_of": "2026-11-09",
+  "status": "SOURCE_CASE_RECONCILIATION_WITH_PENDING_CANONICAL_ADJUDICATION",
+  "controlling_contract": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "source_document_count": 8,
+  "reviewed_case_count": 55,
+  "case_report_paths": [
+    {
+      "path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "cases": 13,
+      "original_status": "CANDIDATE_REFERRAL_NOT_ACCEPTED_NOT_PUBLIC"
+    },
+    {
+      "path": "data/claims-forensics/claims-noon-source-clock-addendum-20261030-v1.noncanonical.json",
+      "cases": 0,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION"
+    },
+    {
+      "path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261031-v1.noncanonical.json",
+      "cases": 0,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION"
+    },
+    {
+      "path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "cases": 7,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION"
+    },
+    {
+      "path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "cases": 9,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_CANONICAL_ADJUDICATION_OR_PUBLICATION"
+    },
+    {
+      "path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "cases": 8,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION"
+    },
+    {
+      "path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "cases": 8,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION"
+    },
+    {
+      "path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "cases": 10,
+      "original_status": "CANDIDATE_REFERRAL_ONLY_NO_ADJUDICATION_OR_PUBLICATION"
+    }
+  ],
+  "case_revisions": [
+    {
+      "case_id": "CF-20261030-03",
+      "evidence_added": [
+        {
+          "type": "OFFICIAL_DENIAL",
+          "actor": "U.S. CENTCOM",
+          "statement_date": "2026-10-30",
+          "statement": "All U.S. military unmanned surface vessels in the Middle East were accounted for.",
+          "source": "https://www.aa.com.tr/en/us-israel-iran-war/us-denies-irans-claim-that-it-destroyed-us-sea-drone-in-strait-of-hormuz/4106878"
+        },
+        {
+          "type": "CONTEMPORANEOUS_MULTI_ACTOR_REPORTING",
+          "date": "2026-10-30",
+          "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+        }
+      ],
+      "truth": "UNSUBSTANTIATED_AND_OFFICIALLY_DISPUTED",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "proposed_evidence_relation": "CONTRADICTION_OF_U_S_VESSEL_LOSS_AS_ASSERTED_BY_US_REPORTING",
+      "current_denominator_effect": 0,
+      "finding": "Iranian military reported a destroyed unmanned vessel; CENTCOM reported every U.S. unmanned surface vessel accounted for. The specific hull and physical loss were not independently established."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "CF-20261030-01",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Rear Admiral Jalil Moghadam, Iranian Army Navy coordinating deputy",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CHAIN-CL-LINCOLN",
+        "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+        "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905"
+      ],
+      "statement_clock": "2026-10-29",
+      "atomic_propositions": [
+        ">20 Iranian Navy operations against U.S. warships during the 40-day conflict beginning 2026-02-28",
+        "Approximately 300 additional operations against U.S. interests at multiple locations, including missile/drone actions",
+        "USS Abraham Lincoln allegedly suspended flight operations for three days after an Iranian cruise-missile targeting",
+        "U.S. destroyer DDG-103 and three other destroyers allegedly targeted"
+      ],
+      "source_urls": [
+        "https://en.irna.ir/news/86306716/Exclusive-Iranian-Navy-carried-out-more-than-20-operations",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for operation totals and claimed carrier flight suspension; targeting is not independently proven impact or loss",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; institutional naval records could be relevant but are not supplied",
+      "relation": "New dated assertion and potential repetition/mutation of established carrier narrative; not a second unique Lincoln lie by default",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW",
+      "source_fidelity": "Moghadam's 20-plus warship operations and approximately 300 U.S.-interest operations concern the initial 40-day conflict, not a cumulative eight-month campaign. Publisher reuse of the IRNA interview is an amplification, not multiple independent operation ledgers.",
+      "source_link": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.presstv.co.uk/Detail/2026/10/29/779488/iranian-navy-conducted-over-20-successful-operations-against-us-warships-army-commander"
+      ]
+    },
+    {
+      "case_id": "CF-20261030-02",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "IRGC Navy / Iranian Navy",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+        "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909"
+      ],
+      "statement_clock": "2026-10-29 to 2026-10-30",
+      "atomic_propositions": [
+        "IRGC Oct29 said three tankers struck naval mines while using the unauthorized southern Hormuz route",
+        "Iranian Navy later described additional damaged tanker(s); Reuters Oct30 quoted two vessels stopped south of Hormuz"
+      ],
+      "source_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/",
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for claimed three/four-vessel sea-mine count and mechanism; Louise 1 is separately reported hit by two attached limpet mines, with perpetrator unknown",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "New Oct29 incident family, not a replay of September tanker events; Oct30 two-vessel count may be subset/update, not a proved correction",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW",
+      "source_fidelity": "The IRGC's stated count evolved through October 30 to four tankers. The UKMTO incident carriers remain separately recorded pending unique-hull matches.",
+      "source_link": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ]
+    },
+    {
+      "case_id": "CF-20261030-03",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "IRGC Navy",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906"
+      ],
+      "statement_clock": "2026-10-30",
+      "atomic_propositions": [
+        "Iran destroyed a U.S. unmanned maritime vessel in eastern Hormuz"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED; U.S. confirmation, hull identity and independent recovery absent",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "Same target category, different asserted incident/date; link as narrative family but do not merge physical occurrences or increment a unique-lie denominator",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW",
+      "source_fidelity": "Iranian Navy's reported wording identified an enemy unmanned vessel east of Hormuz; CENTCOM rejected any U.S. unmanned surface vessel loss. Distinguish Iranian military claim's exact target description from journalistic U.S.-vessel characterization.",
+      "new_evidence": [
+        {
+          "type": "OFFICIAL_DENIAL",
+          "actor": "U.S. CENTCOM",
+          "statement_date": "2026-10-30",
+          "statement": "All U.S. military unmanned surface vessels in the Middle East were accounted for.",
+          "source": "https://www.aa.com.tr/en/us-israel-iran-war/us-denies-irans-claim-that-it-destroyed-us-sea-drone-in-strait-of-hormuz/4106878"
+        },
+        {
+          "type": "CONTEMPORANEOUS_MULTI_ACTOR_REPORTING",
+          "date": "2026-10-30",
+          "source": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+        }
+      ]
+    },
+    {
+      "case_id": "CF-20261030-04",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Saudi-led coalition and Houthi military spokesman Yahya Saree",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CH-HOUTHI-SAUDI-ATTACKS-20260913-14"
+      ],
+      "statement_clock": "2026-10-30",
+      "atomic_propositions": [
+        "Coalition says a Houthi drone was intercepted near Mecca",
+        "Saree denies an operation against Saudi territory; denial of intending to strike Mecca is a separate proposition"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/",
+        "https://apnews.com/article/7f7f34ceb62f294a450e48ace0bd56e0"
+      ],
+      "reviewed_truth": "CONFLICTING_ATTRIBUTED_ACCOUNTS; interception does not prove intended target or origin, and denial does not disprove an interception",
+      "reviewed_knowledge": "NOT_ASSESSABLE without launch/track records",
+      "relation": "October 30 incident separate from September Mecca-area interception; no same-event merge",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-05",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Houthi-run health ministry",
+      "claim_family_ref": null,
+      "prior_membership": [],
+      "statement_clock": "2026-10-29",
+      "atomic_propositions": [
+        "Initial ministry statement reported 12 dead and 3 critically injured in al-Barah, Maqbana, Taiz",
+        "Later reporting cited at least 13 killed and attributed the strike to Saudi forces"
+      ],
+      "source_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://apnews.com/article/172666b6c90fc3f0ed8a161f2457be2c"
+      ],
+      "reviewed_truth": "PROVISIONAL_ATTRIBUTED_CASUALTY_AND_PERPETRATOR; no independently verified total or strike attribution",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "12-to-at-least-13 is an evolving preliminary count of one incident, not two events or proven deception/correction",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-06",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "AURORAH Geosignal Intelligence / AP-cited Saudi and Houthi officials",
+      "claim_family_ref": null,
+      "prior_membership": [],
+      "statement_clock": "2026-10-27 to 2026-10-28",
+      "atomic_propositions": [
+        "Russian satellite passes correlated with sites in 40 Saudi attacks between July 1 and October 19",
+        "Officials alleged Russian intelligence benefited Iranian-aligned attackers, potentially via Iranian intermediaries"
+      ],
+      "source_urls": [
+        "https://apnews.com/article/0989403fb38ccd9d7c9ad11a16e28d24",
+        "https://www.washingtonpost.com/world/2026/10/27/russia-iran-satellite-intelligence-houthis-iraqi-militias/ec0b73a2-d218-11f1-9931-2a41b76fc976_story.html"
+      ],
+      "reviewed_truth": "REPORTED_CORRELATION_AND_ATTRIBUTED_TESTIMONY; orbital correlation is not a demonstrated specific intelligence transmission",
+      "reviewed_knowledge": "NOT_ASSESSABLE for any Russian, Iranian or proxy individual",
+      "relation": "Distinct evidence/influence lead, not proof of a verified Russia-to-Houthi sensor-to-shooter edge",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-07",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Mohammad Reza Naqdi, senior IRGC adviser",
+      "claim_family_ref": null,
+      "prior_membership": [],
+      "statement_clock": "2026-10-18",
+      "atomic_propositions": [
+        "Claimed undetonated GBU-57 material and technical analysis of alloys/circuits",
+        "Claimed Iran acquired GBU-57-related technology; operational Iranian manufacture or deployment is a stronger claim not established by the source"
+      ],
+      "source_urls": [
+        "https://www.tabnak.ir/fa/news/1399312/",
+        "https://www.khabaronline.ir/news/2290093/",
+        "https://charter97.org/en/news/2026/10/18/702336/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for recovered material and reverse-engineering capability; no independent working weapon demonstration",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "October 18 original lead; secondary translations and MOAB/MOP headlines must not be counted as independent claims or conflated with GBU-43/B",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-08",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "IRGC Navy and U.S. CENTCOM spokesman Capt. Tim Hawkins",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CH-AIRCRAFT-KILL-AGGREGATES"
+      ],
+      "statement_clock": "2026-10-29",
+      "atomic_propositions": [
+        "IRGC said its EW unit took control of an American MQM-170 Outlaw and landed it intact west of Hormuz",
+        "IRGC alleged the aircraft was on an air-defense reconnaissance mission and launched from a southern Gulf state",
+        "CENTCOM explicitly rejected the capture claim"
+      ],
+      "source_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.twz.com/news-features/lets-talk-about-the-u-s-target-drone-iran-claims-to-have-recovered-intact",
+        "https://www.aa.com.tr/tr/dunya/iran-devrim-muhafizlari-hurmuz-bogazinda-abdye-ait-mqm-170-tipi-iha-saglam-sekilde-ele-gecirildi/4104733"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED AND OFFICIALLY DISPUTED; published imagery may show an MQM-170-family aircraft but does not establish ownership, EW takeover, mission, provenance or landing mechanism",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE for IRGC deception; U.S. denial is counterclaim, not independently dispositive",
+      "relation": "New MQM-170 capture proposition, not a repeat of MQ-9 shootdown ordinals or 2011 RQ-170 case",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-09",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Iranian Armed Forces, reported by Anadolu Agency",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CH-AIRCRAFT-KILL-AGGREGATES"
+      ],
+      "statement_clock": "2026-10-29",
+      "atomic_propositions": [
+        "Claimed cumulative 14 MQ-1 and 54 MQ-9 UAVs shot down"
+      ],
+      "source_urls": [
+        "https://www.aa.com.tr/tr/dunya/iran-devrim-muhafizlari-hurmuz-bogazinda-abdye-ait-mqm-170-tipi-iha-saglam-sekilde-ele-gecirildi/4104733"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED exact cumulative accounting without individual loss ledger",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "Later cumulative count belongs to existing aircraft-kill narrative; no automatic new unique proposition/lie, no inference that 54 contradicts earlier 52nd/53rd ordinals",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-10",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Abdul Malik al-Houthi",
+      "claim_family_ref": null,
+      "prior_membership": [],
+      "statement_clock": "2026-10-29",
+      "atomic_propositions": [
+        "Denied that Taiz was under siege",
+        "Said access for food and humanitarian needs was open"
+      ],
+      "source_urls": [
+        "https://apnews.com/article/172666b6c90fc3f0ed8a161f2457be2c",
+        "https://www.wfp.org/news/wfp-warns-escalating-yemen-conflict-cutting-life-saving-assistance-city-taiz",
+        "https://www.reuters.com/world/middle-east/yemens-hospitals-buckle-fighting-escalates-2026-10-29/"
+      ],
+      "reviewed_truth": "MATERIALLY CONTRADICTED IN ORDINARY BROAD READING by WFP's October 14 contemporaneous report that 600,000+ Taiz aid-dependent people were inaccessible; some other corridors remained open, so exact categorical scope and alternative readings require original Arabic review before final FALSE/MISLEADING split",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE for personal knowing deception; Houthi leadership control and October 14 public correction opportunity are relevant, not conclusive",
+      "relation": "Potential new claim chain; WFP is independent contrary evidence, not an amplifier of the Houthi denial",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-11",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Benjamin Netanyahu / Likud",
+      "claim_family_ref": null,
+      "prior_membership": [],
+      "statement_clock": "2026-10-28 to 2026-10-29",
+      "atomic_propositions": [
+        "Alleged Arab-led parties stole Israel's election by bribery/fraud/foreign financing",
+        "Linked alleged foreign influence to Qatar/Turkey in political messaging"
+      ],
+      "source_urls": [
+        "https://www.jta.org/2026/10/30/israel/israel-probes-alleged-qatari-election-meddling-in-arab-vote-as-netanyahu-claims-election-stolen",
+        "https://www.jpost.com/israel-election-2026/article-913187",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED; election committee opened a limited investigation without substantiating an election-wide theft or identifying the parties as responsible",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; officials' statements that no systemic irregularity was known are contrary evidence but not proof of what Netanyahu knew",
+      "relation": "Novel political-election claim family, not a verified Iran-war strike event; assess product scope before canonical membership",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-12",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "Houthi spokesman Yahya Saree",
+      "claim_family_ref": null,
+      "prior_membership": [
+        "CH-HOUTHI-SAUDI-ATTACKS-20260913-14"
+      ],
+      "statement_clock": "2026-10-29",
+      "atomic_propositions": [
+        "Claimed missile/drone strikes against Saudi oil sites, airports and military installations caused impacts/casualties"
+      ],
+      "source_urls": [
+        "https://apnews.com/article/mideast-iran-israel-elections-netanyahu-october-282026-c11dac838a072af25ba8d0eb81d01035",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED specific BDA and casualties; Saudi interception evidence does not establish impact at named sites",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "October 29 operational claims require event-date and target deduplication; same source/target class does not prove same physical occurrence",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261030-13",
+      "prior_review_path": "data/claims-forensics/claims-source-chain-review-20261030-v1.noncanonical.json",
+      "source_actor": "IRGC spokesperson Hossein Mohebbi / unidentified online laser-weapon claimants",
+      "claim_family_ref": null,
+      "prior_membership": [],
+      "statement_clock": "2026-09-21; October recirculation",
+      "atomic_propositions": [
+        "IRGC spokesman warned of unnamed new strategic weapons and wider future targeting",
+        "Specific Iranian operational laser-weapon deployment has no source-qualified claimant or observed demonstration in reviewed intake"
+      ],
+      "source_urls": [
+        "https://www.tasnimnews.ir/en/news/2026/09/21/3701995/irgc-warns-of-wider-war-theater-if-iran-faces-new-aggression",
+        "https://www.criticalthreats.org/analysis/iran-update-october-13-2026"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED capability claim; no attributable October operational laser deployment verified",
+      "reviewed_knowledge": "NOT_ASSESSABLE for anonymous third-party posts",
+      "relation": "September 21 deterrence statement repeated in October is not an October deployment or independent new source",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N01",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "Mojtaba Khamenei, statement attributed to his office",
+      "claim_family_ref": "IRAN_LEADERSHIP_CONDITIONAL_RETALIATION_ORDER",
+      "prior_membership": null,
+      "statement_clock": "2026-10-31; original official post minute not authenticated",
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://www.dawn.com/news/2041187",
+        "https://www.axios.com/2026/10/31/irans-supreme-leader-maximum-response-us-attack",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4",
+        "https://saba.ye/en/news3823476.htm"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_ATTRIBUTED_PUBLIC_STATEMENT; military execution NOT_ESTABLISHED; future conditional threat not adjudicable as present-tense false operational result",
+      "reviewed_knowledge": "NOT_ASSESSABLE for prospective threat; no falsified present-tense operational proposition established",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N02",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "Saudi coalition spokesman Major General Turki al-Malki",
+      "claim_family_ref": "SAUDI_COALITION_RIYADH_EASTERN_SOUTHERN_INTERCEPT_CLAIMS",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://en.royanews.tv/news/75506/Saudi-led-coalition-says-intercepted-Houthi-drone-over-Riyadh",
+        "https://www.aljazeera.net/amp/news/2026/10/31/%D8%A7%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%81-%D9%8A%D8%B9%D9%84%D9%86-%D8%AA%D8%AF%D9%85%D9%8A%D8%B1-%D9%85%D8%B3%D9%8A%D8%B1%D8%A9-%D9%85%D8%B9%D8%A7%D8%AF%D9%8A%D8%A9-%D9%81%D9%8A",
+        "https://www.sobranews.com/sobra/419043/",
+        "https://www.timesofisrael.com/liveblog_entry/saudi-coalition-says-intercepted-drone-over-riyadh-region-missile-in-south/",
+        "https://www.arabnews.com/saudi-arabia/saudi-led-coalition-intercepts-houthi-drone-over-riyadh-missile-in-south-3009043",
+        "https://english.aawsat.com/gulf/5335721-coalition-downs-2-drones-fired-saudi-arabia"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_DISTINCT_DATED_ATTRIBUTED_STATEMENTS; physical interception BDA and launcher UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; coalition radar/launch/debris and corrections not available; no proven knowingly false statement",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N03",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "Iranian Foreign Minister Abbas Araghchi",
+      "claim_family_ref": "ARAGHCHI_TWO_DAY_CONDITIONAL_HORMUZ_PROPOSAL",
+      "prior_membership": null,
+      "statement_clock": "2026-10-31; Iran International live carrier 13:42 UTC, original Al Jazeera interview clock not authenticated",
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_ATTRIBUTED_CONDITIONAL_PROPOSAL; actual implementation NOT_ESTABLISHED",
+      "reviewed_knowledge": "NOT_ASSESSABLE for future conditional outcome; no evidence of false present-tense completion claim",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N04",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "UNNAMED_IN_REVIEW",
+      "claim_family_ref": "DOHA_DIRECT_US_IRAN_TALKS_RUMOR_VERSUS_DENIAL",
+      "prior_membership": null,
+      "statement_clock": "2026-10-31; Tasnim secondary live carrier 12:53 UTC; Al-Araby original publication clock not authenticated",
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "reviewed_truth": "FUTURE_POSSIBILITY_NOT_ESTABLISHED; direct meeting UNSUBSTANTIATED, not proven FALSE from denial alone",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; anonymous-source access and original records not established",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N05",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "Jordan Armed Forces",
+      "claim_family_ref": "JORDAN_SYRIA_FOURTEEN_CROSSERS_AND_UNSPECIFIED_CASUALTIES",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/10/31/jordan-stops-fighters-attempting-to-enter-from-syria-armed-forces-say",
+        "https://www.thenationalnews.com/news/mena/2026/10/31/jordan-repels-armed-infiltration-from-syria-amid-heightened-border-tensions/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for exact 14 and physical casualty outcomes beyond actor attribution",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; own-force engagement reports may exist but not produced; no correction evidence",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N06",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "UNNAMED_IN_REVIEW",
+      "claim_family_ref": "ISRAEL_ARAB_PARTY_SEAT_COUNT_SOURCE_VARIANT",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://www.gov.il/en/pages/time--table-26",
+        "https://apnews.com/article/israel-election-raam-segalovitz-abbas-d62c5c982880985c7c0a1f6543c3",
+        "https://www.washingtonpost.com/world/2026/10/30/israel-elections-netanyahu-results-eisenkot-arabs/f7aa6aee-d432-11f1-9931-2a41b76fc976_story.html",
+        "https://www.israelielections.com/2026/results/"
+      ],
+      "reviewed_truth": "UNRESOLVED_SOURCE_VARIANT for pre-certification seat totals; official final outcome NOT_YET_PUBLISHED_AS_OF_REVIEW",
+      "reviewed_knowledge": "No evidence that either reporter or Netanyahu knew a cited figure was false; his separate fraud accusation remains UNSUBSTANTIATED",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261031-N07",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261031-v1.noncanonical.json",
+      "source_actor": "Khaama Press attributing to Al Jazeera and unidentified maritime security data",
+      "claim_family_ref": "HORMUZ_OCTOBER_THIRTY_FIVE_ATTACK_AGGREGATE",
+      "prior_membership": null,
+      "statement_clock": "2026-10-31 date-only",
+      "atomic_propositions": [],
+      "source_urls": [
+        "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+        "https://www.reuters.com/business/energy/ship-attacks-strait-hormuz-hit-record-high-october-2026-10-23/",
+        "https://www.al-monitor.com/originals/2026/10/ship-attacks-strait-hormuz-hit-record-high-october",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for 35 as exact source-qualified count; no affirmative FALSE finding",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE for source awareness of discrepancies; no documented correction opportunity",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M01",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Donald Trump, US president",
+      "claim_family_ref": "TRUMP_IRAN_NUCLEAR_BDA_AND_PICKAXE_THREAT",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Past US action has disabled an unspecified scope of Iran's nuclear capability (vague BDA assertion, not an exact asset count)",
+        "One or two remaining sites are potential future targets (speaker estimate, not an executed strike)",
+        "US could destroy them in ten minutes (prospective capability claim, not observed effect)"
+      ],
+      "source_urls": [
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+        "https://apnews.com/article/ab585e99b346e02843b858ff5d6523b8"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_BDA; CONDITIONAL_FUTURE_THREAT_NOT_A_COMPLETED_STRIKE",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE: President has possible classified BDA access, but actual briefing, damage reports and awareness of contradictions before Oct31 are not in record.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M02",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Mohsen Rezaei, Iran Supreme National Security Council secretary",
+      "claim_family_ref": "IRAN_NUCLEAR_DOCTRINE_DEBATE",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Some Iranians have called for revisiting the nuclear-weapons ban if hostilities resume",
+        "Rezaei says no change has been decided as of his Oct31 interview"
+      ],
+      "source_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_REPORTED_DECLARATORY_STATUS; no independently authenticated Iranian policy change or operational nuclear weapon",
+      "reviewed_knowledge": "NOT_ASSESSABLE for deception absent contrary signed decision and speaker access; SNSC position gives potential access but not affirmative contradiction.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M03",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Mohsen Rezaei, Iranian SNSC secretary",
+      "claim_family_ref": "IRAN_OMAN_HORMUZ_PROPOSED_CORRIDOR",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Rezaei says an Iran-Oman route had been agreed (claim of bilateral understanding, not independently authenticated consent)",
+        "On reopening, every ship would travel under Iranian management (proposed condition, not observed operating regime)",
+        "Strait reopening remains conditional on US meeting Iranian demands (not an executed reopening)"
+      ],
+      "source_urls": [
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.marketscreener.com/news/iran-sets-conditions-for-reopening-strait-of-hormuz-top-security-official-rezaei-says-ce7858dfd989f42d",
+        "https://www.reuters.com/world/middle-east/oman-presented-regional-mechanism-hormuz-iran-source-says-2026-07-28/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_BILATERAL_AGREEMENT_AND_OPERATION; SUPPORTED_AS_REPORTED_CONDITIONAL_IRANIAN_POSITION",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE: Iranian negotiating access does not show what Oman formally accepted or what Rezaei knew was false.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M04",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Mohsen Rezaei, Iranian SNSC secretary",
+      "claim_family_ref": "US_IRAN_DIPLOMATIC_PROPOSAL_ACCOUNTING",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Washington supplied three proposals/responses in the diplomatic channel",
+        "Second was more favorable and third remains ambiguous",
+        "Iran awaits US reply to its latest position"
+      ],
+      "source_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_EXACT_THREE_DOCUMENT_COUNT_AND_US_INTENT; SUPPORTED_AS_REPORTED_IRANIAN_NEGOTIATING_DESCRIPTION",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE: Rezaei's SNSC position implies possible access to diplomatic correspondence but no authenticated proposal archive, receipt log or contradiction is available.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M05",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Houthi authorities, specific original speaker and date not established in this intake",
+      "claim_family_ref": "HOUTHI_UN_NGO_ESPIONAGE_ALLEGATIONS",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Detained UN/NGO staff worked as US/Israeli spies (earlier Houthi allegation)",
+        "UN staff member Mohammad al-Shami died in Houthi custody (UN disclosure; distinct from spy allegation)",
+        "Cause/date/responsibility for the death remain unknown in public medical record"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.nationaltribune.com.au/death-in-custody-of-un-human-rights-staff-member-in-yemen-devastating-turk-demands-investigation/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_ESPIONAGE; CUSTODY_DEATH_REPORTED_BY_UN; CAUSE_AND_RESPONSIBILITY_NOT_ADJUDICATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE: Houthi custodial access could matter to detention facts, but no detainee-specific espionage file, statement-date knowledge or evidence of intentional fabrication was reviewed.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M06",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Likud/Netanyahu (Oct28-29 original allegation); Oct31 rally supporters; Deputy Minister Almog Cohen named Oct31 speaker",
+      "claim_family_ref": "ISRAEL_2026_ELECTION_THEFT_NARRATIVE",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Likud/Netanyahu alleged Arab-party election theft and possible hostile foreign assistance (earlier factual accusation)",
+        "Oct31 demonstrators repeated the election-was-stolen accusation (speaker identities mostly unverified)",
+        "Almog Cohen's actual Oct31 quoted 'won't let' sentence is future resistance rhetoric, not by itself an exact new assertion of completed election fraud"
+      ],
+      "source_urls": [
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://www.timesofisrael.com/liveblog_entry/hundreds-rally-in-tel-aviv-to-demand-a-jewish-arab-government-counterprotest-also-expected/",
+        "https://www.washingtonpost.com/business/2026/10/29/israel-elections-netanyahu-eisenkot-arab-results/ccb52284-d360-11f1-9931-2a41b76fc976_story.html"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_ELECTION_THEFT_AND_FOREIGN_CULPABILITY; DOCUMENTED_PARTISAN_REPETITION_AND_DISTINCT_FUTURE_RHETORIC",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE: identify who possessed election intelligence, saw CEC correction and knowingly repeated the same factual allegation after it.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M07",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Anonymous sources described by Wall Street Journal; Trump and Netanyahu are reported call participants, NOT confirmed speakers of a strike authorization",
+      "claim_family_ref": "US_ISRAEL_OCT31_CALL_AND_FUTURE_STRIKE_PLANNING",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Trump and Netanyahu reportedly held a call",
+        "The call occurred amid US planning for possible strikes",
+        "No source in this review establishes that the call authorized a strike or that an order was executed"
+      ],
+      "source_urls": [
+        "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+        "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "reviewed_truth": "REPORTED_CALL_NOT_INDEPENDENTLY_AUTHENTICATED; STRIKE_AUTHORIZATION_UNSUBSTANTIATED",
+      "reviewed_knowledge": "NOT_ASSESSABLE for unnamed sources' deception without identity, transcript or authenticated readouts.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M08",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Mohsen Rezaei, reported Oct31 X post; not the Sept21 Mohebbi speaker",
+      "claim_family_ref": "IRAN_UNSPECIFIED_NEW_WEAPONS_RETALIATION_THREAT",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Conditional threat of future use of unspecified 'new weapons' if attacked",
+        "No named operational system, laser capability, field test or actual use asserted by this quotation"
+      ],
+      "source_urls": [
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.criticalthreats.org/analysis/iran-update-october-13-2026"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_ATTRIBUTED_THREAT; OPERATIONAL_NEW_WEAPON_CAPABILITY_UNSUBSTANTIATED",
+      "reviewed_knowledge": "NOT_ASSESSABLE: no system identity, access record, launch or false technical demonstration.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-M09",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Mohsen Rezaei, Iranian SNSC secretary",
+      "claim_family_ref": "IRAN_NUCLEAR_NON_DIVERSION_ASSURANCE",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Past extensive inspection history (partly supported historically)",
+        "Present categorical assurance that no nuclear material has been diverted (requires inventory and access basis)"
+      ],
+      "source_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://h.aa.com.tr/en/americas/un-nuclear-watchdog-chief-urges-iran-to-grant-iaea-access-to-verify-nuclear-material/4102705",
+        "https://vienna.mission.gov.au/vien/BoG2026_September_Iran.html"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_PRESENT_NO_DIVERSION_ASSURANCE; HISTORICAL_INSPECTIONS_PARTLY_SUPPORTED; NOT_FALSE_ON_NONVERIFICATION_ALONE",
+      "reviewed_knowledge": "POSSIBLE_ACCESS_TO_NATIONAL_RECORDS_BUT_INSUFFICIENT_EVIDENCE_OF_KNOWING_FALSEHOOD; public IAEA warnings are documented correction opportunities, not proof Rezaei read or concealed actual diversion.",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N01",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Qatar Gas Transport Company (Nakilat)",
+      "claim_family_ref": "AL_MAYEDA_20261030_UNIDENTIFIED_OBJECTS",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Company reported an Oct30 vessel impact involving unidentified objects (SUPPORTED as original company statement)",
+        "No injuries, pollution, or loss of operation (company-account status, not independently surveyed)",
+        "Iran/Houthis attacked the vessel, it was struck at Hormuz, or it was disabled (NOT CLAIMED by company; no attributable basis)"
+      ],
+      "source_urls": [
+        "https://nakilat.com/al-mayeda-vessel-incident-in-the-arabian-gulf/",
+        "https://thepeninsulaqatar.com/article/01/11/2026/qatar-gas-transport-company-announces-attack-on-one-of-its-vessels-in-arabian-gulf",
+        "https://www.aljazeera.com/news/2026/11/1/qatar-lng-carrier-struck-by-unidentified-objects-in-gulf"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_PRIMARY_COMPANY_REPORT; independent incident mechanism/attribution UNSUBSTANTIATED",
+      "reviewed_knowledge": "NOT_ASSESSABLE for alleged perpetrator; no false company proposition established",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N02",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Coalition spokesman Major General Turki al-Malki",
+      "claim_family_ref": "SAUDI_COALITION_YEMEN_STRIKES_BDA",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Coalition officially asserted a Sunday morning operation (SUPPORTED as actor statement)",
+        "Operation was precision-targeted and neutralized specific vital resources (UNSUBSTANTIATED effect/BDA)",
+        "Houthi assets were used for the specified attacks (specific facility/weapon links UNSUBSTANTIATED)"
+      ],
+      "source_urls": [
+        "https://www.spa.gov.sa/N2715448",
+        "https://gulfnews.com/world/gulf/saudi/saudi-led-coalition-launches-military-operation-targeting-houthi-resources-1.500731798",
+        "https://gulfnews.com/world/gulf/saudi/saudi-coalition-releases-footage-of-military-strikes-on-houthi-sites-in-yemen-1.500731901"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_OFFICIAL_OPERATION_ANNOUNCEMENT; neutralization and targeting basis UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; coalition likely has own-force tasking and BDA access but those records/imagery are not authenticated",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N03",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Gaza Interior Ministry versus Israel Defense Forces; Reuters carries both",
+      "claim_family_ref": "GAZA_20261101_KHAN_YOUNIS_TARGET_CLASSIFICATION",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Five people killed at western Khan Younis and three separately at Gaza City (Reuters reports two distinct incidents, not one eight-person strike)",
+        "Five killed were police officers (ministry attribution; identity independently unverified)",
+        "IDF targets were militants (IDF attribution; combatant status independently unverified)",
+        "Gaza City strike was the same IDF claim (NOT asserted by IDF, which had no immediate comment)"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/",
+        "https://www.investing.com/news/world-news/israeli-strikes-kill-eight-people-in-gaza--medics-say-4989738"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_CONFLICTING_ATTRIBUTED_STATEMENTS; individual police/militant status UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE for both actors; casualty rolls, unit assignments, targeting intelligence and speaker access missing",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N04",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "IRNA English X account (state news agency), not authenticated Houthi operational claimant",
+      "claim_family_ref": "IRNA_DAMMAM_20261101_YEMENI_STRIKE_FIRE",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Industrial complex in Dammam experienced a large fire Sunday (UNSUBSTANTIATED independent facility identity/incident)",
+        "Fire was caused by a Yemeni strike (UNSUBSTANTIATED mechanism and attribution)",
+        "Image/video depicts the named place and time (UNAUTHENTICATED media provenance)"
+      ],
+      "source_urls": [
+        "https://tribune.com.pk/story/2638101/strike-at-industrial-complex-in-saudi-arabias-dammam-causes-huge-fire-iranian-state-media",
+        "https://thursdaytimes.com/2026/11/01/saudi/dammam-industrial-complex-fire-reported-yemeni-strike-saudi-arabia/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; no verified IRNA sourcing, geolocation, internal editorial or Houthi command knowledge",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N05",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Iranian defense/IRGC spokespeople, exact speaker in Nov1 secondary report not independently isolated",
+      "claim_family_ref": "IRAN_CONDITIONAL_UNRESTRICTED_RETALIATION",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Iranian officials described deterrent readiness and possible wider retaliation (SUPPORTED as attributed rhetoric)",
+        "Iran has already executed unrestricted-range strikes or expanded operational targets (NOT asserted as completed by cited rhetoric)",
+        "Iran possesses particular newly deployed laser/MOP technology (NOT established by these remarks)"
+      ],
+      "source_urls": [
+        "https://tribune.com.pk/story/2638074/irgc-commander-says-military-fully-prepared-for-any-scenario-enemy-may-devise",
+        "https://www.iranintl.com/en/liveblog/202610312594"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_ATTRIBUTED_CONDITIONAL_POSTURE; operational capability UNSUBSTANTIATED",
+      "reviewed_knowledge": "NOT_ASSESSABLE for prospective warning; no falsified present-tense deployment proposition",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N06",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Major General Turki al-Malki for Saudi-led coalition",
+      "claim_family_ref": "SAUDI_COALITION_INTERCEPT_ACCOUNTING",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Two separate dated Nov1 official statement documents exist (SUPPORTED by SPA)",
+        "Two different physical weapons were intercepted/destroyed (UNSUBSTANTIATED without independent debris/radar)",
+        "Houthis launched each (Saudi official attribution, independently unverified)",
+        "These are different from the Oct31 Southern UAV and Oct29 Eastern missile occurrences (NOT yet established)"
+      ],
+      "source_urls": [
+        "https://www.spa.gov.sa/en/N2715553",
+        "https://www.spa.gov.sa/en/N2715558",
+        "https://www.spa.gov.sa/fr/N2714429",
+        "https://www.spa.gov.sa/en/N2713108"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_TWO_DISTINCT_OFFICIAL_STATEMENTS; physical BDA/launch attribution UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; coalition own-force records likely accessible but original radar/debris/flight tracks unavailable",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N07",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Iran Foreign Ministry (state-run IRNA/Anadolu carriers)",
+      "claim_family_ref": "IRAN_UK_DESIGNATION_AND_PARTICIPATION_ALLEGATION",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Iran announced a unilateral designation of named UK entities effective Nov1 (SUPPORTED as official decision report, not internationally binding finding)",
+        "UK provided military/logistical facilities to the war as Iran alleges (UNSUBSTANTIATED in the reviewed claim packet)",
+        "The designations prove Royal Navy/RAF committed terrorist acts (DOES_NOT_FOLLOW from a unilateral legal/political label)"
+      ],
+      "source_urls": [
+        "https://m.aa.com.tr/en/middle-east/iran-designates-british-navy-air-force-as-terrorist-organizations/4107764",
+        "https://www.dawn.com/news/2041372/iran-designates-british-navy-air-force-as-terrorist-organisations",
+        "https://www.iranintl.com/en/202611018474"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_REPORTED_UNILATERAL_DESIGNATION; underlying UK participation allegations UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE on asserted UK actions; original ministry intelligence, legal finding and contrary official records not available",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261101-N08",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261101-v1.noncanonical.json",
+      "source_actor": "Likud/Netanyahu broad allegation; police, Shin Bet, election authorities and court as separate sources",
+      "claim_family_ref": "ISRAEL_2026_ELECTION_STOLEN_VOTE_NARRATIVE",
+      "prior_membership": null,
+      "statement_clock": null,
+      "atomic_propositions": [
+        "Individual voter bribery suspicions are under investigation (SUPPORTED as investigation, not conviction)",
+        "Arab-led parties stole the national election/systemically compromised results (UNSUBSTANTIATED; election officials/police state no supporting basis)",
+        "Nov1 judicial release exonerates all allegations (NOT established; individual procedural rulings are narrower)"
+      ],
+      "source_urls": [
+        "https://www.timesofisrael.com/election-committee-director-rejects-claims-of-widespread-fraud-as-baseless/",
+        "https://apnews.com/article/a3df86ebfbe5c64306f21f33e69208e0",
+        "https://www.reuters.com/world/middle-east/netanyahu-risk-losing-power-steps-up-attacks-israels-arab-parties-2026-10-29/",
+        "https://www.jpost.com/israel-election-2026/article-913293"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_BROAD_STOLEN_ELECTION_CLAIM_WITH_AFFIRMATIVE_OFFICIAL_COUNTEREVIDENCE; no formal FALSE promotion pending exact primary record",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE for Netanyahu/Likud knowing falsity; timing of Shin Bet/CEC briefing, police records, original party evidence and corrections incomplete",
+      "relation": "REVIEW_FAMILY_PLACEMENT_REQUIRED",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M01",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "IRGC Navy spokesperson, state-media channel; personal name not recovered",
+      "claim_family_ref": "IRGC_HORMUZ_MINE_TANKER_CUMULATIVE",
+      "prior_membership": "REPEATED/MUTATED existing Oct29 three-to-four tanker family, not two new confirmed hulls, not six cumulative; membership requires original incident list",
+      "statement_clock": "Reuters Nov1 20:12Z indexed; underlying Iranian state-media release minute not recovered; Nov1 2026 statement, not established attack time",
+      "atomic_propositions": [
+        "IRGC issued the claim: supported as attributed statement",
+        "Two separately identified tankers struck naval mines and exploded: UNSUBSTANTIATED",
+        "The vessels used an unauthorized route and turned off AIS: UNSUBSTANTIATED",
+        "One supertanker remained ablaze: UNSUBSTANTIATED secondary quote"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-exploded-after-hitting-mines-hormuz-2026-11-01/",
+        "https://www.jpost.com/middle-east/iran-news/article-913514",
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/",
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287",
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_EFFECT_AND_EXACT_COUNT; NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "REPEATED/MUTATED existing Oct29 three-to-four tanker family, not two new confirmed hulls, not six cumulative; membership requires original incident list",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M02",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Houthi-run Education Ministry via Al Masirah; individual official unidentified",
+      "claim_family_ref": "HODEIDAH_UNIVERSITY_ALLEGED_SAUDI_STRIKES",
+      "prior_membership": "NOVEL site-specific target allegation; potential same-day occurrence family as Saudi Nov1 coalition operation, not proven same target",
+      "statement_clock": "Europa Press published Nov1 16:16 Madrid CET = 15:16Z; alleged strikes earlier Nov1, exact occurrence and original Al Masirah release minute unknown",
+      "atomic_propositions": [
+        "The Houthi ministry made the allegation: supported as attributed report",
+        "Two Saudi strikes physically hit the named faculty: UNSUBSTANTIATED",
+        "Civilian facility damage or casualties: NOT ESTABLISHED by report"
+      ],
+      "source_urls": [
+        "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b",
+        "https://www.spa.gov.sa/N2715448"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_SITE_SPECIFIC_ATTRIBUTION; NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NOVEL site-specific target allegation; potential same-day occurrence family as Saudi Nov1 coalition operation, not proven same target",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M03",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Unidentified originator of Mayday; merchant master relaying it to UKMTO",
+      "claim_family_ref": "UKMTO_191_26_THIRD_PARTY_ATTACK_ATTRIBUTION",
+      "prior_membership": "NOVEL warning identity, not independently a novel actor-deception proposition; may overlap IRGC mine narrative, identity unproven",
+      "statement_clock": "Incident Nov1 15:09Z; UKMTO source product 191-26; upstream 18:22Z publication unverified from PDF metadata",
+      "atomic_propositions": [
+        "UKMTO received relay: supported by primary warning",
+        "Attacker was Iran or identified proxy: NOT CLAIMED by UKMTO and UNSUBSTANTIATED",
+        "Crew deaths, hull identity, total loss: NOT ESTABLISHED"
+      ],
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_REPORT_RECEIPT_ONLY; ATTRIBUTION_UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NOVEL warning identity, not independently a novel actor-deception proposition; may overlap IRGC mine narrative, identity unproven",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M04",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Tanker master via UKMTO; unidentified attacker",
+      "claim_family_ref": "UKMTO_192_26_PROJECTILE_HIT",
+      "prior_membership": "NOVEL UKMTO 192-26 warning; distinct clock/region from 191-26, not an additional confirmed IRGC mine incident",
+      "statement_clock": "Incident Nov1 23:47Z; upstream UKMTO social posting approx Nov2 01:46Z; primary PDF URL known but independent retrieval unavailable",
+      "atomic_propositions": [
+        "Master's report relayed through UKMTO: supported by official posting and secondary account",
+        "Two physical impacts and final damage: attributed report, independently unverified",
+        "Attacker, weapon origin or Iranian responsibility: UNSUBSTANTIATED"
+      ],
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "reviewed_truth": "SUPPORTED_AS_ATTRIBUTED_MASTER_REPORT_ONLY; PERPETRATOR_UNSUBSTANTIATED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NOVEL UKMTO 192-26 warning; distinct clock/region from 191-26, not an additional confirmed IRGC mine incident",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M05",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Secondary Qatar press account; Iranian clearance authority unnamed",
+      "claim_family_ref": "AL_MAYEDA_20261030_CLEARANCE_AND_ATTACKER",
+      "prior_membership": "REPEAT of Al Mayeda Oct30 family; not a Nov1 second strike or UKMTO 191/192 duplicate",
+      "statement_clock": "Nakilat original page labelled Oct30; Doha News Nov1 date-only; JMIC Update 110 ICOD Nov1 13:00Z; clearance document/time unavailable",
+      "atomic_propositions": [
+        "Oct30 vessel incident reported by company and JMIC: supported as attributed company/monitor report",
+        "Iranian navigation clearance existed: UNSUBSTANTIATED",
+        "Iran caused the strike because clearance existed: INVALID INFERENCE / UNSUBSTANTIATED",
+        "Incident was in the Strait of Hormuz: not established; JMIC approximately 40 NM south of Lavan Island"
+      ],
+      "source_urls": [
+        "https://nakilat.com/al-mayeda-vessel-incident-in-the-arabian-gulf/",
+        "https://dohanews.co/qatar-condemns-reckless-and-irresponsible-attack-on-lng-carrier-in-arabian-gulf/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_CLEARANCE_AND_PERPETRATOR; NO_FALSE_OR_LIE_FINDING",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "REPEAT of Al Mayeda Oct30 family; not a Nov1 second strike or UKMTO 191/192 duplicate",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M06",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Saudi coalition / spokesperson al-Malki as carried by Saudi Gazette",
+      "claim_family_ref": "SAUDI_NOV1_SOUTHERN_MISSILE_AND_UAV",
+      "prior_membership": "REPEAT of Nov1 noon source family, not additional physical missile/UAV counts",
+      "statement_clock": "Primary SPA N2715553 and N2715558 dated Nov1; UAV reported 16:05Z; Saudi Gazette Nov1 21:53 +03:00 = 18:53Z, later relay",
+      "atomic_propositions": [
+        "Saudi official interception statements exist: supported",
+        "Actual interceptions, physical debris, launch origin: UNSUBSTANTIATED independently",
+        "Saudi Gazette later report establishes new additional interceptions: FALSE AS AN INFERENCE, not an actor lie"
+      ],
+      "source_urls": [
+        "https://www.spa.gov.sa/en/N2715553",
+        "https://www.spa.gov.sa/en/N2715558",
+        "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_EFFECT_AND_LAUNCH_ATTRIBUTION; NO_KNOWING_DECEPTION",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "REPEAT of Nov1 noon source family, not additional physical missile/UAV counts",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M07",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Reuters article/editorial metadata, not a military claimant",
+      "claim_family_ref": "REUTERS_OIL_PRICE_SOURCE_VERSION_CLOCK",
+      "prior_membership": "NOVEL source-version anomaly, not a unique military lie or 89-denominator proposition",
+      "statement_clock": "Original Reuters/syndicated Nov1 23:13Z with 23:03Z quotes; later revised text has Nov2 04:07Z quotes; source page may retain earlier initial published timestamp",
+      "atomic_propositions": [
+        "Both version-specific price quotations are time-scoped reported observations",
+        "04:07Z quote was publicly available at 23:13Z: NOT SUPPORTED; chronology impossible for unchanged contemporaneous copy",
+        "Editorial deceptive stealth edit: NOT ESTABLISHED"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "reviewed_truth": "SOURCE_CLOCK_CORRECTION_REFERRAL_NOT_A_FALSE_ACTOR_VERDICT",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NOVEL source-version anomaly, not a unique military lie or 89-denominator proposition",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-M08",
+      "prior_review_path": "data/claims-forensics/claims-midnight-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Iranian foreign ministry / mediators as attributed by Reuters",
+      "claim_family_ref": "IRAN_DOHA_TWO_DAY_CONDITIONAL_HORMUZ_PROPOSAL",
+      "prior_membership": "REPEAT of Oct31 Rezaei/Araghchi reopening proposal family, no new executed agreement",
+      "statement_clock": "Reuters Nov1 date-only article; original Araghchi and mediator remarks exact hour unavailable; JMIC Nov1 13:00Z risk assessment",
+      "atomic_propositions": [
+        "Negotiations and proposal reported: supported as attributed reporting",
+        "A signed agreement or actual Hormuz normalization: NOT ESTABLISHED",
+        "119 US-facilitated Oct29-31 transits equal full commercial normalization: INVALID COMPARISON"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_IMPLEMENTATION; CONDITIONAL_PROPOSAL_NOT_FALSE",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "REPEAT of Oct31 Rezaei/Araghchi reopening proposal family, no new executed agreement",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N01",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Esmaeil Baghaei (Nov 2 Reuters attribution) and Abbas Araghchi (Oct 31 Al Jazeera quote relayed Nov 2)",
+      "claim_family_ref": "IRAN_DOHA_CONDITIONAL_HORMUZ_REOPENING",
+      "prior_membership": "REPEAT/MUTATION of Sep25 seven-day Araghchi proposal and Oct31/Nov1 two-day Doha family; no new completed agreement, no unique lie",
+      "statement_clock": "Reuters Nov 2 09:33Z initial article; Baghaei Monday date-only; Araghchi two-day statement quoted from Saturday Oct31; original Persian minutes not recovered",
+      "atomic_propositions": [
+        "Iran offered conditional faster reopening: attributed statement SUPPORTED",
+        "Baghaei personally stated the exact two-day promise: NOT ESTABLISHED by Reuters attribution",
+        "US accepted, signed or executed reopening: NOT ESTABLISHED"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+        "https://www.reuters.com/world/middle-east/irans-araqchi-says-now-up-us-accept-7-day-plan-2026-09-25/",
+        "https://www.theguardian.com/world/2026/nov/01/negotiators-braced-for-worst-over-us-iran-talks-to-reopen-strait-of-hormuz"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "REPEAT/MUTATION of Sep25 seven-day Araghchi proposal and Oct31/Nov1 two-day Doha family; no new completed agreement, no unique lie",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N02",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Saudi-led coalition spokesman Turki al-Maliki (Al Jazeera attribution); Saudi Civil Defence separate alerts",
+      "claim_family_ref": "SAUDI_HOUTHI_SOUTHERN_INTERCEPTION_STATEMENTS",
+      "prior_membership": "NEW MONDAY SPEAKER INSTANCE in ongoing Saudi-Houthi interception family; do not duplicate Sunday missile/UAV report or add verified interception counts",
+      "statement_clock": "Reuters original Nov2 07:22:42Z; Monday coalition statement is described as later than the all-clear; original SPA/X post minute not established",
+      "atomic_propositions": [
+        "Civil-defence warnings/all-clear were issued: reported by Reuters",
+        "One Houthi ballistic missile was launched, intercepted and destroyed: UNSUBSTANTIATED physical result and attribution",
+        "Sunday drone and Monday missile are two separately dated official statements, not automatically independently proven events"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/",
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW MONDAY SPEAKER INSTANCE in ongoing Saudi-Houthi interception family; do not duplicate Sunday missile/UAV report or add verified interception counts",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N03",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Houthi-affiliated outlet (not named individual), relayed by Al Jazeera",
+      "claim_family_ref": "HOUTHI_SAUDI_YEMEN_FACILITY_STRIKE_CASUALTY_ALLEGATIONS",
+      "prior_membership": "NOVEL site-specific alleged injury locations; may share operational family with Nov1 Hodeidah medical-faculty allegation, but distinct sites, no forced merge or duplicate casualty tally",
+      "statement_clock": "Al Jazeera Nov2 date-only; underlying Houthi outlet original posting time and occurrence date not recovered",
+      "atomic_propositions": [
+        "Seven casualties across two named locations: UNSUBSTANTIATED",
+        "Saudi aircraft caused the injuries: UNSUBSTANTIATED attribution",
+        "Two independently established strikes or verified site damage: NOT ESTABLISHED"
+      ],
+      "source_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NOVEL site-specific alleged injury locations; may share operational family with Nov1 Hodeidah medical-faculty allegation, but distinct sites, no forced merge or duplicate casualty tally",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N04",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Anees al-Asbahi, Houthi-run health ministry spokesperson (AP attribution)",
+      "claim_family_ref": "YEMEN_TAIZ_MARKET_EXPLOSION_CASUALTY_ATTRIBUTION",
+      "prior_membership": "NEW market-specific allegation; distinct from Oct29 Taiz airstrike casualty and Oct31/Nov1 Hodeidah site claims pending site/incident identity",
+      "statement_clock": "AP Nov2 rolling report date-only for allegation; market location and exact occurrence time not identified",
+      "atomic_propositions": [
+        "Market explosion: UNVERIFIED occurrence/site",
+        "Three dead including two children and eight wounded: UNSUBSTANTIATED exact counts",
+        "Saudi responsibility: UNSUBSTANTIATED attribution"
+      ],
+      "source_urls": [
+        "https://apnews.com/article/8722c8b5a9deb228e7a188d4760ea8ed"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW market-specific allegation; distinct from Oct29 Taiz airstrike casualty and Oct31/Nov1 Hodeidah site claims pending site/incident identity",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N05",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Colonel Majed Abdullah al-Nazili, Yemeni government army spokesman",
+      "claim_family_ref": "YEMEN_GOVERNMENT_24H_OPERATION_AND_BDA_CLAIMS",
+      "prior_membership": "NEW exact-count claim instance for Yemeni government offensive; do not treat 1,272 as geolocated strikes or add 500/170 to accepted physical totals",
+      "statement_clock": "Al Jazeera Nov2 cites Sunday evening Nov1 statement about previous 24 hours; original military release timestamp unavailable",
+      "atomic_propositions": [
+        "1,272 operations in one 24h window: UNSUBSTANTIATED exact operational accounting",
+        "Approximately 500 Houthi killed: UNSUBSTANTIATED casualty BDA",
+        "Approximately 170 items destroyed/disabled: UNSUBSTANTIATED mixed asset and effect categories"
+      ],
+      "source_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW exact-count claim instance for Yemeni government offensive; do not treat 1,272 as geolocated strikes or add 500/170 to accepted physical totals",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N06",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Israel Defense Forces",
+      "claim_family_ref": "IDF_GAZA_STRIKE_TARGET_IDENTITIES_NOV2",
+      "prior_membership": "NEW Nov2 strike-specific target assertions; separate from Nov1 Gaza strikes; preserve Khan Younis, Al-Mussadar and later Tel Al-Hawa occurrences without aggregating incompatible article versions",
+      "statement_clock": "Reuters Nov2 initial 07:18:29Z; same URL later updated to add Tel Al-Hawa vehicle strike, revised exact time not recovered",
+      "atomic_propositions": [
+        "IDF issued targeting statements: SUPPORTED as attributed",
+        "Killed individuals were militants: UNSUBSTANTIATED without identities",
+        "Initial three deaths and later at-least-four deaths are different article versions and separate strike localities, not contradictory proof of fabrication"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW Nov2 strike-specific target assertions; separate from Nov1 Gaza strikes; preserve Khan Younis, Al-Mussadar and later Tel Al-Hawa occurrences without aggregating incompatible article versions",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N07",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Esmaeil Baghaei, Iranian Foreign Ministry spokesperson",
+      "claim_family_ref": "IRAN_NPT_PEACEFUL_PROGRAM_AND_NUCLEAR_DOCTRINE",
+      "prior_membership": "REPEAT/MUTATION of ongoing Iranian peaceful-intent, IAEA access and nuclear doctrine claim family; distinct from Oct18 Naqdi MOP/laser claims in #312",
+      "statement_clock": "Nov2 statement, Times of India 13:21Z indexed; original Iranian transcript and exact speech time missing",
+      "atomic_propositions": [
+        "Iran's NPT legal status and obligations: separately verifiable from treaty records, not adjudicated here",
+        "Full safeguards compliance and exclusively peaceful purpose: NOT established by spokesperson's assertion",
+        "Nuclear doctrine discussions: reported rhetoric, not an operational weapon decision"
+      ],
+      "source_urls": [
+        "https://timesofindia.indiatimes.com/world/middle-east/iran-calls-us-biggest-threat-to-npt-warns-of-stronger-defence-push/articleshow/135463488.cms",
+        "https://www.iaea.org/newscenter"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "REPEAT/MUTATION of ongoing Iranian peaceful-intent, IAEA access and nuclear doctrine claim family; distinct from Oct18 Naqdi MOP/laser claims in #312",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N08",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Sultan Al Jaber, ADNOC CEO, ADIPEC remarks",
+      "claim_family_ref": "ADNOC_GLOBAL_INVENTORY_AND_LOGISTICS_ASSERTIONS",
+      "prior_membership": "NEW exact economic assertion set; not a military strike count or proof of specific supply destruction; separate from ADNOC denial of Reuters UAE production data",
+      "statement_clock": "Reuters original Nov2 06:38:37Z; speech Monday at ADIPEC, exact spoken minute not established",
+      "atomic_propositions": [
+        "Nearly 1bn barrels global inventory draw: UNSUBSTANTIATED independent reconciliation",
+        "35-year seasonal diesel lows and 600 bcf LNG supply gap: UNSUBSTANTIATED geographic/methodological comparability",
+        "Logistics share rose from 5% to 30%: UNSUBSTANTIATED denominator and period"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW exact economic assertion set; not a military strike count or proof of specific supply destruction; separate from ADNOC denial of Reuters UAE production data",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N09",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "ADNOC spokesperson, responding to Reuters",
+      "claim_family_ref": "ADNOC_REUTERS_OPEC_IEA_UAE_PRODUCTION_DISPUTE",
+      "prior_membership": "NEW data-dispute speaker instance; keep separate from Al Jaber global inventory figures and do not count competing estimate as a falsehood by fiat",
+      "statement_clock": "Reuters original Nov2 15:55:12Z; ADNOC response time within Reuters reporting cycle not specified",
+      "atomic_propositions": [
+        "ADNOC issued denial: SUPPORTED as reported",
+        "All disputed Reuters/OPEC/IEA values are wrong: UNSUBSTANTIATED categorical challenge absent itemization",
+        "OPEC secondary-source September crude 3.917m bpd, IEA crude 4.4m bpd, IEA total liquids 5.3m bpd are distinct estimates/categories, not a single arithmetic contradiction"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW data-dispute speaker instance; keep separate from Al Jaber global inventory figures and do not count competing estimate as a falsehood by fiat",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    },
+    {
+      "case_id": "CF-20261102-N10",
+      "prior_review_path": "data/claims-forensics/claims-noon-source-clock-addendum-20261102-v1.noncanonical.json",
+      "source_actor": "Houthi movement, original military spokesperson not identified by Reuters",
+      "claim_family_ref": "HOUTHI_SAUDI_DRONE_TARGETING_CLAIMS_NOV2",
+      "prior_membership": "NEW Nov2 dated launch claim; do not merge with Nov1 Dammam industrial fire allegation or October Saudi air-defense reports without incident identifiers; no verified target losses",
+      "statement_clock": "Reuters original Nov2 16:16Z, before noon EST/17:00Z horizon; occurrence Nov2 date-only; original Houthi release time unavailable",
+      "atomic_propositions": [
+        "Houthi launch assertion: SUPPORTED as actor statement",
+        "Drones actually launched toward three targets: UNSUBSTANTIATED independent tracking",
+        "Dammam airport/radar/transport aircraft hit or damaged: NOT CLAIMED IN REUTERS and NOT VERIFIED"
+      ],
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-drones-towards-saudi-arabias-dammam-airport-2026-11-02/"
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED_UNLESS_SPECIFIED_NOT_FALSE_ESTABLISHED",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE_FOR_KNOWING_DECEPTION",
+      "relation": "NEW Nov2 dated launch claim; do not merge with Nov1 Dammam industrial fire allegation or October Saudi air-defense reports without incident identifiers; no verified target losses",
+      "outcome": "SOURCE_REVIEW_RECORDED_NO_AUTOMATIC_LEDGER_PUBLIC_VERDICT",
+      "publication_status": "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+    }
+  ],
+  "invariant": {
+    "new_public_verdicts": 0,
+    "new_unique_lie_propositions": 0,
+    "existing_canonical_ledger_mutated": false,
+    "existing_wol_scoring_mutated": false,
+    "source_carrier_correction": "IRNA origin vs Press TV/CBS relays",
+    "source_adversarial_counterstatement": "CENTCOM 2026-10-30 all USVs accounted for",
+    "pending_origin_material": "Original Persian/Arabic claimant texts, per-hull and military loss/telemetry records where not supplied"
+  },
+  "status_meaning": "All existing documented Claims Forensics cases are individually indexed; source fidelity and one official counterstatement are reconciled. Source incompleteness stays an open review item, and no new unique-lie or institutional-knowledge conclusion is asserted without claimant-specific evidence."
+}
