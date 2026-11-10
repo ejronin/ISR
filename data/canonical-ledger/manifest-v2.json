@@ -450,6 +450,17 @@
       "previous_lineage_sha256": "e3b9bd95731bae39d50fcc3a65eeb483153edd897ea641dfe0a7d3af80d599cf",
       "sequence": 41,
       "sha256": "8c8b5642bd7b1f5ec64744ba6f34b2403931f53ee4c534b4d8947a36adfe745a"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-09T21:52:00-05:00",
+      "known_at": "2026-11-10T16:26:00-05:00",
+      "lineage_sha256": "4cbdeecd226b43ad4d426062c276b73e8b474b67a2539813545e9c7a651f62d4",
+      "packet_id": "UPD-20261110-OFFICIAL-IG-CENTCOM-AIRCRAFT-LOSSES",
+      "path": "data/canonical-updates/UPD-20261110-OFFICIAL-IG-CENTCOM-AIRCRAFT-LOSSES.json",
+      "previous_lineage_sha256": "1b9266a9f6f4a348139474ed40938f3a3200fc9603dd8b79de14b22adce2f691",
+      "sequence": 42,
+      "sha256": "0536fe4c7f0ffc98bdb80933422e9eb115dd5a4212bd8e89097cd904b0dbd886"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
