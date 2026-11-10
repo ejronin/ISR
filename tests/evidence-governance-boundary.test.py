@@ -338,3 +338,29 @@ if "data/canonical-updates/UPD-20260920-CLAIMS-SOURCE-PROMOTIONS.json" in change
         "source-promotion commit modified Web-of-Lies derived semantics"
     )
 
+
+# November 9 claim-source review: preserves all 55 case identities and keeps
+# discovery/propagation receipts outside the sealed verdict denominators.
+claims_review = json.loads((ROOT / "data/claims-forensics/claims-reviewed-cases-index-20261109.json").read_text(encoding="utf-8"))
+assert claims_review["reviewed_case_count"] == len(claims_review["cases"]) == 55
+assert len({case["case_id"] for case in claims_review["cases"]}) == 55
+assert claims_review["invariant"]["new_public_verdicts"] == 0
+assert claims_review["invariant"]["new_unique_lie_propositions"] == 0
+assert claims_review["invariant"]["existing_canonical_ledger_mutated"] is False
+assert claims_review["invariant"]["existing_wol_scoring_mutated"] is False
+assert all((ROOT / case["prior_review_path"]).is_file() for case in claims_review["cases"])
+assert {row["case_id"] for row in claims_review["case_revisions"]} == {"CF-20261030-03"}
+assert any("CENTCOM" in row["actor"] for row in claims_review["case_revisions"][0]["evidence_added"])
+native_wol = json.loads((ROOT / "data/web-of-lies/native-discoveries.json").read_text(encoding="utf-8"))
+queue_wol = json.loads((ROOT / "data/web-of-lies/discovery-queue.json").read_text(encoding="utf-8"))
+assert len(native_wol["items"]) == 13
+assert {row["discovery_id"] for row in native_wol["items"]} <= {row["discovery_id"] for row in queue_wol["items"]}
+queue_by_id = {row["discovery_id"]: row for row in queue_wol["items"]}
+for native_row in native_wol["items"]:
+    queued = queue_by_id[native_row["discovery_id"]]
+    assert queued["status"] == "AWAITING_CANONICAL_CLAIM_FAMILY"
+    assert queued["claim_family_ref"] is None
+    assert queued["observations"] == native_row["observations"]
+    assert queued["public_receipts"] == native_row["public_receipts"]
+    assert queued["attribution_scope"] == native_row["attribution_scope"]
+assert queue_wol["as_of"] == native_wol["as_of"]
