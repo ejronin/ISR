@@ -35,19 +35,22 @@
       ]
     },
     {
-      "id": "IRGC-20261030-UNMANNED-SURFACE-VESSEL",
+      "id": "IRANIAN-REGULAR-NAVY-20261030-UNMANNED-SURFACE-VESSEL",
       "date": "2026-10-30",
-      "statement": "IRGC said it destroyed a U.S. military unmanned surface vessel east of Hormuz.",
+      "statement": "Iranian Navy (regular Artesh Navy), in a statement carried by IRNA, claimed to have destroyed an unidentified 'enemy unmanned vessel' east of the Strait of Hormuz; the claim did not identify vessel operator or class.",
       "prior_case_id": "CF-20261030-03",
-      "counterevidence": "CENTCOM publicly said every U.S. military unmanned surface vessel in the Middle East was accounted for.",
-      "truth": "UNSUBSTANTIATED_AND_OFFICIALLY_DISPUTED",
-      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "counterevidence": "CENTCOM: all U.S. military unmanned surface vessels in Middle East accounted for. Relevant to US-asset interpretation; not affirmative disproof of an unspecified enemy unmanned vessel.",
+      "truth": "UNSUBSTANTIATED_ORIGINAL_UNSPECIFIED_ENEMY_VESSEL; US_OPERATOR_INFERENCE_OFFICIALLY_DISPUTED",
+      "knowledge": "INSUFFICIENT_EVIDENCE_FOR_ORIGINAL_IRANIAN_NAVY_SPEAKER",
       "verdict_change": false,
-      "needed": "Exact target hull/membership and independent loss proof or disproving whole-inventory accounting, plus original Iranian statement and records supporting organizational knowledge.",
+      "needed": "Original IRNA/Farsi transcript and speaker military service; claimed target identity or wreckage; independent evidence of destruction; whether Iranian 'enemy' means U.S. vessel in context; reconcile original case CF-20261030-03 actor and proposition scope.",
       "urls": [
-        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "https://www.aa.com.tr/en/us-israel-iran-war/iran-says-navy-destroyed-enemy-unmanned-vessel-2-tankers-damaged-in-strait-of-hormuz/4106306",
         "https://www.aa.com.tr/en/us-israel-iran-war/us-denies-irans-claim-that-it-destroyed-us-sea-drone-in-strait-of-hormuz/4106878"
-      ]
+      ],
+      "original_statement_actor": "Iranian regular Navy, not established as IRGC Navy",
+      "speaker_origin_source": "https://www.aa.com.tr/en/us-israel-iran-war/iran-says-navy-destroyed-enemy-unmanned-vessel-2-tankers-damaged-in-strait-of-hormuz/4106306",
+      "source_fidelity_correction": "The Oct30 original Iranian Navy statement did NOT explicitly identify the destroyed unmanned vessel as U.S.-operated. CENTCOM replied that all U.S. military unmanned surface vessels were accounted for. That refutes a U.S.-vessel version but does not alone falsify the original unspecified-operator statement. In the same reporting, the separate IRGC Navy statement concerned two stopped tankers, NOT the unmanned vessel."
     },
     {
       "id": "IRGC-20261104-MQ9-56TH-CLAIM",
@@ -92,5 +95,16 @@
   ],
   "next_action": "Only Claims Forensics can authorize fresh atomized FALSE and knowledge verdicts. Do not convert denied or unsupported propositions into Lie-count increments without an evidentiary judgment under controlling contract.",
   "existing_case_index": "data/claims-forensics/claims-reviewed-cases-index-20261109.json",
-  "updated_claim_status": "SOURCE_RECONCILIATION_COMPLETE_FOR_LISTED_CANDIDATES; CANONICAL_TRUTH_KNOWLEDGE_AND_PUBLICATION_PENDING"
+  "updated_claim_status": "SOURCE_RECONCILIATION_COMPLETE_FOR_LISTED_CANDIDATES; CANONICAL_TRUTH_KNOWLEDGE_AND_PUBLICATION_PENDING",
+  "source_fidelity_correction": {
+    "priority": "HIGH",
+    "finding": "Oct30 unmanned vessel allegation belongs to regular Iranian Navy in the available IRNA-attributed report, while IRGC Navy's Oct30 claim concerned tanker passage/stoppage.",
+    "prior_index_case": "CF-20261030-03",
+    "prior_index_issue": "Actor and operator in that case may be over-specified as IRGC and U.S.; re-open original wording attribution before any final truth or knowledge judgment.",
+    "status": "SOURCE_FIDELITY_CORRECTION_REQUIRED_BEFORE_CANONICAL_ADJUDICATION",
+    "sources": [
+      "https://www.aa.com.tr/en/us-israel-iran-war/iran-says-navy-destroyed-enemy-unmanned-vessel-2-tankers-damaged-in-strait-of-hormuz/4106306",
+      "https://www.aa.com.tr/en/us-israel-iran-war/us-denies-irans-claim-that-it-destroyed-us-sea-drone-in-strait-of-hormuz/4106878"
+    ]
+  }
 }
