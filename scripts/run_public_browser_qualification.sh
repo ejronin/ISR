@@ -66,33 +66,68 @@ trap cleanup EXIT
 mapfile -t browsers < <(for name in chromium google-chrome-stable google-chrome chromium-browser; do command -v "$name" 2>/dev/null || true; done | awk '!seen[$0]++')
 [ "${#browsers[@]}" -gt 0 ] || { echo 'FAIL: no Chrome/Chromium executable available.' >&2; exit 1; }
 
+# Chrome startup is an infrastructure prerequisite, not a public-reader test.
+# Retry only a failed CDP bootstrap; NEVER rerun or suppress a failed browser assertion.
+ATLAS_BROWSER_BOOT_TIMEOUT_SEC="${ATLAS_BROWSER_BOOT_TIMEOUT_SEC:-20}"
+ATLAS_BROWSER_BOOT_ATTEMPTS="${ATLAS_BROWSER_BOOT_ATTEMPTS:-2}"
+
+report_browser_boot_failure(){
+  local candidate="$1" attempt="$2" reason="$3"
+  echo "Chrome CDP startup failed: candidate=$candidate attempt=$attempt reason=$reason pid=${browser_pid:-none} profile=${browser_profile:-none} debug=$DEBUG_URL" >&2
+  if [ -n "${browser_pid:-}" ]; then
+    ps -o pid,ppid,stat,etime,cmd -p "$browser_pid" >&2 || true
+  fi
+  echo "--- CDP diagnostic (/json/version) ---" >&2
+  curl --silent --show-error --connect-timeout 1 --max-time 2 "$DEBUG_URL/json/version" >&2 || true
+  echo "" >&2
+  echo "--- Chrome startup log (last 70 lines) ---" >&2
+  tail -n 70 /tmp/atlas-chrome.log >&2 || true
+  echo "--- HTTP server log (last 25 lines) ---" >&2
+  tail -n 25 /tmp/atlas-http.log >&2 || true
+}
+
 start_browser(){
-  local candidate deadline ready=0
+  local candidate attempt deadline ready reason
   terminate_browser || true
   browser_profile=''
+  if ! curl -fsS --connect-timeout 2 --max-time 3 "${SITE_URL%/}/index.html" >/dev/null; then
+    echo "FAIL: Atlas site did not respond before Chrome startup: $SITE_URL" >&2
+    tail -n 35 /tmp/atlas-http.log >&2 || true
+    return 1
+  fi
   for candidate in "${browsers[@]}"; do
-    browser_profile="$(mktemp -d /tmp/atlas-chrome-profile.XXXXXX)"
-    profile_dirs+=("$browser_profile")
-    "$candidate" --headless --no-sandbox --enable-unsafe-swiftshader --use-gl=swiftshader --disable-dev-shm-usage --no-first-run --no-default-browser-check \
-      --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins='*' \
-      --user-data-dir="$browser_profile" "${SITE_URL}#/start/overview" >/tmp/atlas-chrome.log 2>&1 &
-    browser_pid=$!
-    deadline=$((SECONDS + 15))
-    while [ "$SECONDS" -lt "$deadline" ]; do
-      if curl -fsS --connect-timeout 1 --max-time 1 "$DEBUG_URL/json/version" >/tmp/atlas-cdp-version.json 2>/dev/null; then
-        ready=1
-        break
+    for ((attempt=1; attempt<=ATLAS_BROWSER_BOOT_ATTEMPTS; attempt++)); do
+      browser_profile="$(mktemp -d /tmp/atlas-chrome-profile.XXXXXX)"
+      profile_dirs+=("$browser_profile")
+      echo "Starting Chromium CDP candidate=$candidate attempt=$attempt/$ATLAS_BROWSER_BOOT_ATTEMPTS" >&2
+      "$candidate" --headless --no-sandbox --enable-unsafe-swiftshader --use-gl=swiftshader --disable-dev-shm-usage --no-first-run --no-default-browser-check \
+        --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins='*' \
+        --user-data-dir="$browser_profile" "${SITE_URL}#/start/overview" >/tmp/atlas-chrome.log 2>&1 &
+      browser_pid=$!
+      deadline=$((SECONDS + ATLAS_BROWSER_BOOT_TIMEOUT_SEC))
+      ready=0
+      reason="CDP readiness timeout"
+      while [ "$SECONDS" -lt "$deadline" ]; do
+        if curl -fsS --connect-timeout 1 --max-time 1 "$DEBUG_URL/json/version" >/tmp/atlas-cdp-version.json 2>/dev/null; then
+          ready=1
+          break
+        fi
+        if ! process_is_running "$browser_pid"; then
+          reason="Chromium process exited before CDP readiness"
+          break
+        fi
+        sleep 0.25
+      done
+      if [ "$ready" -eq 1 ] && process_is_running "$browser_pid"; then
+        echo "Chromium CDP ready: candidate=$candidate attempt=$attempt pid=$browser_pid" >&2
+        return 0
       fi
-      if ! process_is_running "$browser_pid"; then break; fi
-      sleep 0.25
+      report_browser_boot_failure "$candidate" "$attempt" "$reason"
+      terminate_browser || true
+      browser_profile=''
     done
-    [ "$ready" -eq 1 ] && return 0
-    terminate_browser || true
-    browser_profile=''
   done
-  cat /tmp/atlas-http.log >&2 || true
-  cat /tmp/atlas-chrome.log >&2 || true
-  echo 'FAIL: no Chrome/Chromium candidate exposed the CDP endpoint.' >&2
+  echo "FAIL: all Chrome/Chromium CDP boot attempts exhausted; browser assertions were NOT executed." >&2
   return 1
 }
 
