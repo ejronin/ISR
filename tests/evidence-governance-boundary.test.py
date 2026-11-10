@@ -339,11 +339,18 @@ if "data/canonical-updates/UPD-20260920-CLAIMS-SOURCE-PROMOTIONS.json" in change
     )
 
 
-# November 9 claim-source review: preserves all 55 case identities and keeps
-# discovery/propagation receipts outside the sealed verdict denominators.
+# November 10 source review: the original 55 case identities are preserved;
+# three newly reviewed IRGC source cases remain outside public truth/knowledge
+# adjudications. This is an explicit versioned count, not a relaxed guard.
 claims_review = json.loads((ROOT / "data/claims-forensics/claims-reviewed-cases-index-20261109.json").read_text(encoding="utf-8"))
-assert claims_review["reviewed_case_count"] == len(claims_review["cases"]) == 55
-assert len({case["case_id"] for case in claims_review["cases"]}) == 55
+assert claims_review["reviewed_case_count"] == len(claims_review["cases"]) == 58
+assert claims_review["source_document_count"] == len(claims_review["case_report_paths"]) == 9
+assert sum(row["cases"] for row in claims_review["case_report_paths"]) == 58
+assert len({case["case_id"] for case in claims_review["cases"]}) == 58
+assert len([case for case in claims_review["cases"] if not case["case_id"].startswith("CF-20261110-IRGC-")]) == 55
+assert {case["case_id"] for case in claims_review["cases"] if case["case_id"].startswith("CF-20261110-IRGC-")} == {
+    "CF-20261110-IRGC-01", "CF-20261110-IRGC-02", "CF-20261110-IRGC-03"
+}
 assert claims_review["invariant"]["new_public_verdicts"] == 0
 assert claims_review["invariant"]["new_unique_lie_propositions"] == 0
 assert claims_review["invariant"]["existing_canonical_ledger_mutated"] is False
@@ -351,6 +358,12 @@ assert claims_review["invariant"]["existing_wol_scoring_mutated"] is False
 assert all((ROOT / case["prior_review_path"]).is_file() for case in claims_review["cases"])
 assert {row["case_id"] for row in claims_review["case_revisions"]} == {"CF-20261030-03"}
 assert any("CENTCOM" in row["actor"] for row in claims_review["case_revisions"][0]["evidence_added"])
+assert claims_review["case_revisions"][-1]["public_denominator_delta"] == 0
+original_usv = next(case for case in claims_review["cases"] if case["case_id"] == "CF-20261030-03")
+assert "Iranian Navy" in original_usv["source_actor"] and "IRGC Navy" not in original_usv["source_actor"]
+assert "operator" in original_usv["source_fidelity"] and "UNSUBSTANTIATED" in original_usv["reviewed_truth"]
+assert all(case["publication_status"] == "NO_NEW_PUBLIC_CLAIM_VERDICT_FROM_SOURCE_REVIEW"
+           for case in claims_review["cases"] if case["case_id"].startswith("CF-20261110-IRGC-"))
 native_wol = json.loads((ROOT / "data/web-of-lies/native-discoveries.json").read_text(encoding="utf-8"))
 queue_wol = json.loads((ROOT / "data/web-of-lies/discovery-queue.json").read_text(encoding="utf-8"))
 assert len(native_wol["items"]) == 13

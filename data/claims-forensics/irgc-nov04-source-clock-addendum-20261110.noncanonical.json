@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_SOURCE_CLOCK_AND_ATOMIC_PROPOSITION_ADDENDUM_NONCANONICAL",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "review_date": "2026-11-10",
+  "review_as_of": "2026-11-10T15:51:00-05:00",
+  "baseline_main_sha": "2a42a7df7bceb2f92c5a73cf1e932a89555e4d85",
+  "status": "REVIEWED_SOURCE_FIDELITY_NO_PUBLIC_VERDICT",
+  "invariants": {
+    "public_claim_denominator_change": 0,
+    "new_lies": 0,
+    "prior_sealed_verdicts_changed": 0,
+    "canonical_mutation": false
+  },
+  "source_qualification": {
+    "origin": "IRGC Public Relations office, official public assertion distributed through Tasnim",
+    "origin_date": "2026-11-04",
+    "publication_clock": "Tasnim displayed 2026-11-04 08:13; timezone not independently specified by source page; do not impute UTC",
+    "origin_url": "https://www.tasnimnews.ir/en/news/2026/11/04/3739846/4-oil-tankers-destroyed-mq-9-drone-downed-irgc",
+    "independent_quote_not_independent_bda": "https://www.iranintl.com/en/202611045349",
+    "secondary_source": "https://www.intellinews.com/iran-s-irgc-says-four-more-tankers-hit-mines-in-hormuz-56th-us-drone-downed-481702/",
+    "source_qualification_boundary": "Publisher correctly quotes a military operational claim; separate non-Iranian physical evidence of drone downing / four distinct tanker losses is not established by repetition."
+  },
+  "cases": [
+    {
+      "id": "CF-20261110-IRGC-01",
+      "claim_family_ref": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "actor": "IRGC Public Relations office attributing claimed engagement to IRGC Aerospace Force air-defense personnel",
+      "statement_date": "2026-11-04",
+      "statement_time_precision": "DATE_ONLY",
+      "propositions": [
+        "One U.S.-operated MQ-9 Reaper was shot down over the Strait of Hormuz at approximately 04:30 local time on November 4, 2026.",
+        "The alleged November 4 aircraft was the 56th U.S. MQ-9 of its model downed by Iranian forces over the conflict."
+      ],
+      "atomic_truth": [
+        {
+          "proposition_index": 0,
+          "status": "UNSUBSTANTIATED_AS_PHYSICAL_LOSS",
+          "support": "Attributable IRGC public statement",
+          "gap": "No uniquely identified airframe, U.S. inventory confirmation or independently authenticated crash proof"
+        },
+        {
+          "proposition_index": 1,
+          "status": "UNSUBSTANTIATED_EXACT_CUMULATIVE_ORDINAL",
+          "support": "IRGC asserted the ordinal",
+          "gap": "No auditable per-event 1–56 MQ-9 ledger, and potential overlap with November 3/4 Wikipedia claim-only entries"
+        }
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED; no individual verified November 4 loss or exact 56th cumulative identification",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; IRGC Aerospace has presumed engagement records but they have not been authenticated or matched against U.S. inventory",
+      "prior_membership": [
+        "CH-AIRCRAFT-KILL-AGGREGATES"
+      ],
+      "relation": "NEW_ORIGIN_STATEMENT__DO_NOT_DUPLICATE_NOV3_4_HULLS",
+      "source_urls": [
+        "https://www.tasnimnews.ir/en/news/2026/11/04/3739846/4-oil-tankers-destroyed-mq-9-drone-downed-irgc",
+        "https://www.everycrsreport.com/reports/IN12692.html"
+      ],
+      "publication_status": "HOLD_NO_PUBLIC_FALSE_OR_LIE",
+      "required_discriminator": "Distinct November 3 vs November 4 US MQ-9 airframe evidence and original IRGC cumulative event log"
+    },
+    {
+      "id": "CF-20261110-IRGC-02",
+      "claim_family_ref": "CH-HORMUZ-TANKER-MINE-CLAIMS",
+      "actor": "IRGC Public Relations office attributing tanker action to IRGC Navy",
+      "statement_date": "2026-11-04",
+      "statement_time_precision": "DATE_ONLY",
+      "propositions": [
+        "Four distinct oil tankers were destroyed by naval mines while transiting the prohibited southern Hormuz route.",
+        "The four tankers remained burning as of the November 4 military statement.",
+        "Each allegedly destroyed tanker was violating an Iranian-designated prohibition on the southern route."
+      ],
+      "atomic_truth": [
+        {
+          "proposition_index": 0,
+          "status": "UNSUBSTANTIATED_EXACT_FOUR_HULLS_AND_CAUSE",
+          "gap": "No four vessel names, IMO numbers or independent destruction proof; mine type not individually established"
+        },
+        {
+          "proposition_index": 1,
+          "status": "UNSUBSTANTIATED_CURRENT_FIRE_STATUS",
+          "gap": "No independent same-time per-hull heat/fire or operational-state observations"
+        },
+        {
+          "proposition_index": 2,
+          "status": "ACTOR_AUTHORIZATION_POLICY_CLAIM_NOT_INDEPENDENT_NAVIGATION_LEGALITY",
+          "gap": "Iran's route designation is an actor claim, not proof of internationally recognized shipping illegality"
+        }
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for four distinct mined/destroyed hulls, mechanism, and simultaneous fire status",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE; institutional marine incident/traffic logs may exist but no identified four-hull inventory, corrections or internal speaker-access record yet",
+      "relation": "POTENTIAL_REPETITION_OR_INCREMENT_OF_OCT29_NOV3_IRGC_TANKER_STORIES__PENDING_IDENTITY",
+      "source_urls": [
+        "https://www.tasnimnews.ir/en/news/2026/11/04/3739846/4-oil-tankers-destroyed-mq-9-drone-downed-irgc",
+        "https://www.intellinews.com/iran-s-irgc-says-four-more-tankers-hit-mines-in-hormuz-56th-us-drone-downed-481702/"
+      ],
+      "publication_status": "HOLD_NO_PUBLIC_FALSE_OR_LIE",
+      "required_discriminator": "Four separate ship IMO numbers, event times, mine/explosion causation, and distinction from prior stopped/damaged vessels"
+    },
+    {
+      "id": "CF-20261110-IRGC-03",
+      "claim_family_ref": "CH-HORMUZ-TANKER-STOPPED-CLAIMS",
+      "actor": "IRGC Public Relations office attributing maritime interdictions to IRGC Navy",
+      "statement_date": "2026-11-04",
+      "statement_time_precision": "DATE_ONLY",
+      "propositions": [
+        "Two additional vessels were intercepted and halted in the Strait of Hormuz.",
+        "Those two vessels were committing alleged route violations."
+      ],
+      "atomic_truth": [
+        {
+          "proposition_index": 0,
+          "status": "UNSUBSTANTIATED_TWO_HULL_IDENTITIES_AND_TIMES",
+          "gap": "No names, IMO identities, port-state or AIS corroboration"
+        },
+        {
+          "proposition_index": 1,
+          "status": "ACTOR_POLICY_DESCRIPTION_ONLY",
+          "gap": "No independent verified internationally binding route-prohibition basis"
+        }
+      ],
+      "reviewed_truth": "UNSUBSTANTIATED for physically stopped vessel identities; must not be added to four tankers destroyed",
+      "reviewed_knowledge": "INSUFFICIENT_EVIDENCE",
+      "relation": "SAME_STATEMENT_DISTINCT_PHYSICAL_STATUS_FROM_FOUR_DESTROYED_TANKERS",
+      "source_urls": [
+        "https://www.tasnimnews.ir/en/news/2026/11/04/3739846/4-oil-tankers-destroyed-mq-9-drone-downed-irgc"
+      ],
+      "publication_status": "HOLD_NO_PUBLIC_FALSE_OR_LIE",
+      "required_discriminator": "Two identifiable vessel movements, captures/interdictions and confirmed subsequent outcomes"
+    }
+  ],
+  "corrections": [
+    {
+      "case_id": "CF-20261030-03",
+      "new_evidence_origin": "https://newsmedia.tasnimnews.ir/en/news/2026/10/30/3735982/iranian-navy-destroys-hostile-drone-vessel-in-strait-of-hormuz",
+      "new_evidence_independent_origin_attribution": "https://aa.com.tr/en/us-israel-iran-war/us-denies-irans-claim-that-it-destroyed-us-sea-drone-in-strait-of-hormuz/4106878",
+      "source_speaker": "Iranian Navy (regular Navy per contemporaneous independent comparison), NOT independently sourced IRGC Navy",
+      "exact_original_target": "enemy unmanned surface vessel, operator NOT named",
+      "media_mutation": "Reuters and follow-on U.S. commentary presented U.S. vessel interpretation; this is a distinct attribution/claim-carrier proposition",
+      "official_denial": "CENTCOM asserted all U.S. military USVs in the Middle East accounted for; materially contradicts a U.S. military USV loss, not every hypothetical unnamed enemy USV",
+      "truth_knowledge_boundary": "Original enemy-USV destruction unsubstantiated, U.S.-operator version officially disputed; no proved original Iranian Navy knowingly falsehood",
+      "status": "CURRENT_INDEX_SOURCE_AND_PROPOSITION_FIDELITY_CORRECTION"
+    }
+  ],
+  "acceptance": "Claims Forensics source review only; does not alter sealed governance, public WOL, lie denominator or prior official outcomes."
+}
