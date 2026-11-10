@@ -388,7 +388,7 @@ const PRESERVED_FACILITY_IDS = [
     // Every accepted region-level incident must remain visible with its
     // source drawer beside the appropriate map; no source-less point pins.
     for (const [routeKey, group, minimum] of [
-      ['military.campaigns', 'military', 7],
+      ['military.campaigns', 'military', 9],
       ['hormuz.shipping', 'maritime', 6]
     ]) {
       await setRoute(cdp, routeKey);
