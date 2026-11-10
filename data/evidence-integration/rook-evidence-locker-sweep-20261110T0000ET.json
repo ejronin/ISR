@@ -1,0 +1,193 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-09T12:00:00-05:00",
+    "window_end": "2026-11-10T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-10T00:00:00-05:00",
+    "collection_time": "2026-11-10T00:04:14-05:00",
+    "evidence_horizon_time": "2026-11-10T00:04:14-05:00",
+    "collection_mode": "PARTIAL_POST_CUTOFF_SOURCE_DISCOVERY"
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261110-MIDNIGHT-SAUDI-EAST-WEST-PIPELINE",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T00:04:14-05:00",
+      "evidence_horizon_time": "2026-11-10T00:04:14-05:00",
+      "summary": "Saudi state reporting described a new attack and fire on the East-West pipeline in western Madinah region. Authorities reported fire extinguished, no injuries and no operational disruption; attribution and exact strike location unresolved. Treat reported outcomes as authority claims pending independent confirmation.",
+      "evidence_classification": "SAUDI_AUTHORITY_REPORT_WITH_SECONDARY_MEDIA_COVERAGE",
+      "sources": [
+        "https://www.ft.com/content/45dce79e-2758-43f2-a06c-3c56db392f39",
+        "https://www.aljazeera.com/news/2026/11/9/saudi-arabia-reports-new-attack-on-key-east-west-pipeline"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Saudi East-West pipeline, western Madinah region; precise November 9 strike segment not independently identified. September Al Dhekra imagery is NOT a November 9 location.",
+        "location_precision": "REGION_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "NOT_PLOT_READY",
+        "source_url": "https://www.ft.com/content/45dce79e-2758-43f2-a06c-3c56db392f39"
+      }
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261110-MIDNIGHT-QATAR-MEDIATION",
+      "updates_existing_ref": "ROOK-20261109-NOON-QATAR-NEGOTIATION",
+      "relationship": "UPDATE_MEETING_AND_PUBLIC_POSITIONS_NO_VERIFIED_SETTLEMENT",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T00:04:14-05:00",
+      "evidence_horizon_time": "2026-11-10T00:04:14-05:00",
+      "summary": "AP reports Trump met Qatar's prime minister and described the war as militarily effectively over; blockade remains in force and no final agreement is independently established. Distinguish presidential characterization from military or legal end of hostilities.",
+      "sources": [
+        "https://apnews.com/article/c38770b168faf5e094e96c1e1e212cff"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261110-MIDNIGHT-IRAN-PEACE-OFFER",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09T04:15:00-05:00_REUTERS_INITIAL",
+      "collection_time": "2026-11-10T00:04:14-05:00",
+      "evidence_horizon_time": "2026-11-10T00:04:14-05:00",
+      "claimant": "Iranian government and US Secretary of State Marco Rubio",
+      "claim": "Iran defended a two-day restart proposal; Rubio rejected conditions as outrageous and ridiculous. Positions do not establish agreement or implementation.",
+      "verification_status": "ATTRIBUTED_CONFLICTING_NEGOTIATING_POSITIONS",
+      "sources": [
+        "https://www.reuters.com/world/iran-defends-two-day-proposal-peace-talks-after-us-rejects-conditions-2026-11-09/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "claim_id": "ROOK-20261110-MIDNIGHT-TRUMP-WAR-STATUS",
+      "occurrence_time": "2026-11-09_DATE_ONLY",
+      "publication_time": "2026-11-09_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T00:04:14-05:00",
+      "evidence_horizon_time": "2026-11-10T00:04:14-05:00",
+      "claimant": "US President Donald Trump",
+      "claim": "War with Iran is militarily effectively over and further strikes unlikely conditional on agreement.",
+      "verification_status": "ATTRIBUTED_POLITICAL_ASSESSMENT_NOT_CEASEFIRE_OR_OPERATIONAL_TERMINATION",
+      "sources": [
+        "https://apnews.com/article/c38770b168faf5e094e96c1e1e212cff"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261110-MIDNIGHT-OIL-SETTLEMENT",
+      "occurrence_time": "2026-11-09_US_MARKET_SETTLEMENT",
+      "publication_time": "2026-11-09_DATE_ONLY_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T00:04:14-05:00",
+      "evidence_horizon_time": "2026-11-10T00:04:14-05:00",
+      "summary": "Reuters reported Brent settlement $92.57/bbl (-$5.75, -5.85%) and WTI $86.85/bbl (-$3.98, -4.38%); subsequent after-settlement trading lower. Distinguish settlement from later quotes; price action does not prove Hormuz normalization.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-open-trump-says-fresh-iran-attacks-unlikely-2026-11-08/"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Qatar mediation",
+      "decision": "UPDATE",
+      "reason": "Meeting reported as occurred and presidential assessment changed; no agreement implemented"
+    },
+    {
+      "topic": "Saudi East-West pipeline September attack",
+      "decision": "UPDATE",
+      "reason": "New November 9 reported attack on same infrastructure, separate incident, not duplicate September geolocation"
+    },
+    {
+      "topic": "Bani Hushaysh casualties",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independent verification beyond prior attributed revised 44/40 tally in reviewed sources"
+    },
+    {
+      "topic": "Qeshm explosions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new independently verified BDA or attribution in reviewed sources"
+    },
+    {
+      "topic": "Hormuz ship incidents",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new IMO-linked vessel confirmation in reviewed sources"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Iran-US-Qatar diplomatic reporting",
+      "AP US-Qatar diplomatic reporting",
+      "FT and Al Jazeera Saudi pipeline reporting",
+      "Reuters oil market settlement reporting",
+      "AP Yemen regional roundup"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary political military security channels",
+      "US CENTCOM and Treasury primary",
+      "Israel and Gaza Hamas",
+      "GCC Oman UAE Kuwait Bahrain primary",
+      "Iraq",
+      "Yemen Houthis primary",
+      "Lebanon Hezbollah",
+      "Syria",
+      "Pakistan Turkiye",
+      "China Russia EU",
+      "UN IAEA IMO",
+      "UKMTO aviation authorities",
+      "AIS Kpler LSEG commercial shipping",
+      "sanctions primary",
+      "human impact agency primary",
+      "independent geospatial OSINT"
+    ],
+    "source_review_limitation": "Focused fresh-source discovery only; no comprehensive primary-source or prior drawer audit; some article publication clock times unverified; no local repository validator executed."
+  },
+  "unresolved_questions": [
+    "Exact strike point, perpetrator, and independent damage confirmation on Saudi East-West pipeline",
+    "Independent verification of reported absence of pipeline flow disruption",
+    "Whether diplomatic statements lead to actual blockade or sanctions changes",
+    "IMO identities and AIS tracks for earlier Hormuz vessel claims",
+    "Exact publication timestamps for window qualification",
+    "ROOK intake validator acceptance and completed-unconsumed status"
+  ],
+  "source_discovery_additions": [
+    "https://www.ft.com/content/45dce79e-2758-43f2-a06c-3c56db392f39",
+    "https://www.reuters.com/business/energy/oil-falls-open-trump-says-fresh-iran-attacks-unlikely-2026-11-08/",
+    "https://www.reuters.com/world/iran-defends-two-day-proposal-peace-talks-after-us-rejects-conditions-2026-11-09/",
+    "https://apnews.com/article/c38770b168faf5e094e96c1e1e212cff",
+    "https://www.aljazeera.com/news/2026/11/9/saudi-arabia-reports-new-attack-on-key-east-west-pipeline"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_SOURCE_DISCOVERY_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Append-only partial upstream evidence only. No claim of complete theater coverage or validated unconsumed status."
+  }
+}
