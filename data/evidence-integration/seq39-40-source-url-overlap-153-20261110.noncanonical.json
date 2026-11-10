@@ -1,0 +1,2000 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_POST_INDEX_SOURCE_URL_PARITY_AUDIT",
+  "authority": "EVIDENCE_INTEGRATION_SOURCE_ACCOUNTING_ONLY",
+  "review_date": "2026-11-10",
+  "baseline_main": "4554fbb7a15b9ca9a27fc7bde7dee3f60d84f528",
+  "source_review_index": "data/evidence-integration/review-disposition-index-153-20261102.noncanonical.json",
+  "indexed_review_rows": 153,
+  "indexed_review_windows": 7,
+  "compared_accepted_sequences": [
+    39,
+    40
+  ],
+  "total_sequence39_40_source_url_identities": 26,
+  "rows_with_exact_source_url_match": 23,
+  "counts_by_original_triage": {
+    "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION": {
+      "rows": 61,
+      "matched_source_url_rows": 11,
+      "not_matched_source_url_rows": 50
+    },
+    "SOURCE_OR_IDENTITY_HOLD": {
+      "rows": 44,
+      "matched_source_url_rows": 4,
+      "not_matched_source_url_rows": 40
+    },
+    "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED": {
+      "rows": 25,
+      "matched_source_url_rows": 6,
+      "not_matched_source_url_rows": 19
+    },
+    "CLAIMS_LANE_REFERRAL": {
+      "rows": 20,
+      "matched_source_url_rows": 2,
+      "not_matched_source_url_rows": 18
+    },
+    "SPECIALIST_DECISION_REQUIRED": {
+      "rows": 3,
+      "matched_source_url_rows": 0,
+      "not_matched_source_url_rows": 3
+    }
+  },
+  "rule": "Same URL accepted later is only a source-registration overlap indicator. It does NOT establish that the reviewed event identity, dates, claims, losses, truth, knowledge, or entire sweep were consumed. For mutable live IMO lists, URL equality does not prove the same as-of snapshot. Prior accepted sequences 1-38 not evaluated here.",
+  "canonical_sweep_consumption_change": 0,
+  "claim_denominator_change": 0,
+  "loss_count_change": 0,
+  "rows": [
+    {
+      "source_record_ref": "ROOK-20261030-ISRAEL-ELECTION-COUNT",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-G20-PHOTO-CANCELLATION",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://apnews.com/article/g20-rubio-russia-ukraine-iran-war-ed4ab8ad9fedd628c39ac05bc5092cac"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-TAIZ-GOVERNOR-ACCESS-METRICS",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-LOUISE1-UKMTO-FOLLOWUP",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/tanker-strait-hormuz-hit-by-limpet-mines-security-sources-say-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-SA-MECCA-DRONE-DENIAL-RECHECK",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-deny-launching-drone-after-coalition-reports-interception-mecca-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-QATAR-MEDIATION-RECHECK",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/qatari-mediators-return-tehran-push-us-iran-deal-official-says-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-US-DCAS-CASUALTY-ACCOUNTING",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.washingtonpost.com/politics/2026/10/29/two-us-service-members-die-amid-iran-war-pentagon-tally-shows/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-IRGC-THREE-TANKERS-FRIDAY",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.cbsnews.com/live-updates/iran-war-donald-trump-qatar-mediators-new-proposal-end-war/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-IRGC-US-UNMANNED-SHIP",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 8,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-HOUTHI-MECCA-DENIAL",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 9,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-TAIZ-SIEGE-CONTRADICTION",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 10,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.theguardian.com/world/2026/oct/30/houthis-taiz-stone-age-yemen-city-siege"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-ISRAEL-FRAUD-CLAIM-RECHECK",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 11,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://apnews.com/article/israel-elections-netanyahu-results-eisenkot-arabs-3a793c0d07fdfe515390524b849d8674"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-BRENT-WTI-1236UTC",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 12,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-OIL-MONTHLY-PROJECTION",
+      "review_path": "data/evidence-integration/evidence-review-20261030T1200ET.noncanonical.json",
+      "review_row_index": 13,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-LAVAN-UKMTO188-PROJECTILE",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://regulasshipping.com/blog/ukmto-188-26-records-a-projectile-hit-40-nm-south-of-lavan-island/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-SA-EAST-SOUTH-DRONE-COALITION-REPORTS",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.al-monitor.com/originals/2026/10/saudi-led-coalition-says-it-downs-drone-over-oil-rich-eastern-region"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-US-SA-EMBASSY-DEPARTURE-DISCLOSURE",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://travel.state.gov/en/international-travel/travel-advisories/saudi-arabia.html"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-PAK-MECCA-PACT-SPOKESMAN",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.marketscreener.com/news/pakistan-military-cautiously-optimistic-on-iran-us-mediation-ce785fdbd18df424"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-IMO-122-CONFIRMED",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-OIL-FINAL-SETTLEMENT",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-HEZBOLLAH-TRUCK-COURT-CHARGES",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://apnews.com/article/hezbollah-israel-lebanon-explosives-court-charges-truck-42fd2e524f77fe033bfb0088e2003c47"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261030-IRGC-FOUR-TANKERS",
+      "review_path": "data/evidence-integration/evidence-review-20261031T0000ET.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-IRAN-KHAMENEI-UNRESTRICTED-RESPONSE-ORDER",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-SA-RIYADH-DRONE-INTERCEPTION-CLAIM",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://saudigazette.com.sa/article/665883/saudi-arabia/saudi-air-defenses-intercept-drone-over-riyadh-no-injuries-reported",
+        "https://www.arabnews.com/saudi-arabia/coalition-intercepts-houthi-drones-over-riyadh-and-madinah-missile-in-south-3009043",
+        "https://www.ndtv.com/world-news/saudi-coalition-says-intercepted-drone-over-riyadh-missile-in-south-12261198"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-JORDAN-SYRIA-14-ARMED-CROSSING-REPORT",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/jordan-stops-fighters-attempting-enter-syria-armed-forces-say-2026-10-31/",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/10/31/jordan-stops-fighters-attempting-to-enter-from-syria-armed-forces-say"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-KUWAIT-SOUTH-LIVEFIRE-ANNOUNCEMENT",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://kuwaittimes.com/article/52723/kuwait/army-to-hold-live-fire-exercises-in-south-from-sunday/",
+        "https://www.arabtimesonline.com/news/army-units-to-hold-live-ammunition-drills-in-southern-kuwait/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-MANAMA-ARAB-DEESCALATION-STATEMENTS",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/egypt-fears-escalation-iran-war-would-be-more-destructive-foreign-minister-says-2026-10-31/",
+        "https://www.aol.com/articles/egypt-fears-escalation-iran-war-082028000.html"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-SYRIA-JORDAN-SECURITY-TALKS-PACT-REVIEW",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4",
+        "https://www.aa.com.tr/en/middle-east/syria-says-discussions-underway-on-joining-mecca-pact/4107245"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-DOHA-MEDIATION-TWO-DAY-CONDITIONAL-PLAN",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-IMO-122-24-UNCHANGED",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-HORMUZ-OCTOBER-35-ATTACKS-SECONDARY",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 8,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.khaama.com/strait-hormuz-ship-attacks-record-october/",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-OIL-WEEKEND-NO-NEW-SETTLEMENT",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 9,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-rises-supply-concerns-houthis-attack-saudi-arabia-2026-10-30/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-IRAN-TWO-DAY-OPENING-CONDITIONAL",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 10,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://apnews.com/article/15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-ISRAEL-ELECTION-NO-COALITION",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 11,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://apnews.com/article/3a793c0d07fdfe515390524b849d8674",
+        "https://www.cbsnews.com/news/israel-election-exit-polls-stalemate/",
+        "https://www.washingtonpost.com/world/2026/10/30/final-vote-count-confirms-uncertainty-after-israeli-election/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-IAEA-IRAN-ACCESS-HOLD",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 12,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-OFAC-IRAN-GL-HOLD",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 13,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-IRGC-FOUR-TANKER-CLAIM-HOLD",
+      "review_path": "data/evidence-integration/evidence-review-20261031T1200ET.noncanonical.json",
+      "review_row_index": 14,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+        "https://www.aljazeera.com/news/liveblog/2026/10/31/iran-war-live-oil-tankers-hit-in-hormuz-trump-says-conflict-will-end-soon"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-US-TRUMP-PICKAXE-MOUNTAIN-REMARKS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+        "https://www.timesofisrael.com/liveblog_entry/trump-says-talks-with-iran-going-fine-but-islamic-republic-not-very-reliable/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-US-ISRAEL-LEADER-PHONE-CALL-DISCLOSURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+        "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-YEMEN-UN-STAFF-CUSTODY-DEATH-DISCLOSURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "https://ca.marketscreener.com/news/un-says-yemeni-staff-member-dies-in-houthi-custody-demands-investigation-ce785fd8db80f32c",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-ISRAEL-TELAVIV-POSTELECTION-RALLIES",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-G20-ATLANTA-CHAIR-STATEMENT-NO-COMMUNIQUE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+        "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "IAEA bombed-site inspections / uranium / Iran nuclear doctrine",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.jpost.com/middle-east/iran-news/article-913416",
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-DOHA-MEDIATION-TWO-DAY-CONDITIONAL-PLAN",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://www.iranintl.com/en/202610317760"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261031-IRAN-KHAMENEI-UNRESTRICTED-RESPONSE-ORDER",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 8,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "SOUTH_LEBANON_20261031_REPORTED_STRIKES_CANONICAL_ID_NOT_YET_MATCHED",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 9,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://today.lorientlejour.com/article/1552822/israeli-strikes-hit-southern-lebanon-as-army-continues-demolitions.html",
+        "https://today.lorientlejour.com/article/1552838/6-pm-update-khamenei-warns-us-of-response-with-no-geographical-limits-rajji-says-lebanon-will-not-be-used-to-threaten-arab-countries.html",
+        "https://www.timesofisrael.com/liveblog_entry/idf-says-reported-israeli-strike-in-southern-lebanon-was-controlled-detonation/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "IMO-MIDDLE-EAST-CONFIRMED-INCIDENT-REGISTRY",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 10,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "US_IRAN_POST_MIDTERMS_STRIKE_POSTURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 11,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/",
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ISRAEL_2026_ELECTION_COALITION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 12,
+      "triage_bucket": "SPECIALIST_DECISION_REQUIRED",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/",
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "OFAC_IRAN_SANCTIONS_FF1",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 13,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-TRUMP-IRAN-NUCLEAR-KNOCKED-OUT",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 14,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.rferl.org/a/iran-live-blog-trump-middle-east/33803414.html",
+        "https://www.iaea.org/news?type=718"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-REZAEI-NUCLEAR-BAN-DEBATE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 15,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.jpost.com/middle-east/iran-news/article-913416",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-REZAEI-OMAN-HORMUZ-ROUTE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 16,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-REZAEI-US-THREE-PROPOSALS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 17,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/202610317760",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-HOUTHI-UN-STAFF-ESPIONAGE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 18,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/un-says-yemeni-staff-member-dies-houthi-custody-demands-investigation-2026-10-31/",
+        "https://ca.marketscreener.com/news/un-says-yemeni-staff-member-dies-in-houthi-custody-demands-investigation-ce785fd8db80f32c",
+        "https://apnews.com/article/mideast-news-october-31-2026-15c0556b92c8c23beb9b8854b4c124f4"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-ISRAEL-STOLEN-ELECTION-ALLEGATION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 19,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog_entry/right-wing-protesters-rail-at-arab-parties-during-tel-aviv-rally-against-stolen-election/",
+        "https://www.timesofisrael.com/liveblog_entry/some-2000-protesters-march-through-tel-aviv-to-demand-jewish-arab-government/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-US-ISRAEL-CALL-STRIKE-DECISION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 20,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.wsj.com/livecoverage/midterm-election-news-2026/card/trump-speaks-with-netanyahu-amid-iran-war-planning-997Gvwvp7DvqXAjexoIg",
+        "https://www.timesofisrael.com/liveblog_entry/trump-held-call-with-netanyahu-amid-preparations-to-renew-strikes-on-iran-wsj/",
+        "https://www.reuters.com/world/middle-east/iranian-envoys-meet-qatari-mediators-threat-looms-us-strikes-after-midterms-2026-10-31/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-OIL-OCTOBER-FRIDAY-CLOSE-CONTEXT",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 21,
+      "triage_bucket": "SPECIALIST_DECISION_REQUIRED",
+      "reviewed_urls": [
+        "https://m.economictimes.com/markets/commodities/news/oil-prices-soar-14-in-october-to-end-at-6-month-high-as-us-weighs-fresh-attacks-after-midterm-elections-more-upside-ahead/articleshow/135388221.cms"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-HORMUZ-IMO-CUMULATIVE-NO-NEW-SNAPSHOT",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 22,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-G20-ENERGY-FREEDOM-OF-NAVIGATION-POLICY",
+      "review_path": "data/evidence-integration/evidence-review-20261101T0000ET.noncanonical.json",
+      "review_row_index": 23,
+      "triage_bucket": "SPECIALIST_DECISION_REQUIRED",
+      "reviewed_urls": [
+        "https://www.ksl.com/article/51642699/g20-foreign-ministers-in-atlanta-meeting-head-to-an-ending-without-consensus-on-key-issues",
+        "https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-AL-MAYEDA-DISCLOSURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://thepeninsulaqatar.com/article/01/11/2026/qatar-gas-transport-company-announces-attack-on-one-of-its-vessels-in-arabian-gulf",
+        "https://www.aljazeera.com/news/2026/11/1/qatar-lng-carrier-struck-by-unidentified-objects-in-gulf"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-SAUDI-COALITION-YEMEN-OPERATION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://gulfnews.com/world/gulf/saudi/saudi-led-coalition-launches-military-operation-targeting-houthi-resources-1.500731798",
+        "https://gulfnews.com/world/gulf/saudi/saudi-coalition-releases-footage-of-military-strikes-on-houthi-sites-in-yemen-1.500731901",
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-GAZA-CITY-THREE-REPORTED-KILLED",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-KHAN-YOUNIS-FIVE-REPORTED-KILLED",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-IRAN-UK-FORCES-DESIGNATIONS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/202611018474",
+        "https://www.iranintl.com/en/liveblog/202610312594"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-SOMALI-AZINI-PIRACY-DISCLOSURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.actionnewsjax.com/news/business/somali-pirates-seize/V2RPIIOZCEZEHJAGGOUM3SBK4I/?outputType=amp",
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-YEMEN-IOM-DISPLACEMENT-DISCLOSURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog-november-1-2026/",
+        "https://www.khaleejtimes.com/world/mena/us-israel-iran-saudi-arabia-yemen-war-live-updates-november-1-2026"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-ISRAEL-COALITION-TALKS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-DOHA-THIRD-DAY",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 8,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-IRAN-DEFENSE-POSTURE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 9,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://tribune.com.pk/story/2638074/irgc-commander-says-military-fully-prepared-for-any-scenario-enemy-may-devise",
+        "https://www.iranintl.com/en/liveblog/202610312594"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-IMO-122-24",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 10,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-OFAC-NO-CHANGE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 11,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-IAEA-NO-NEW-ACCESS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 12,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.iaea.org/news?type=718"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-SAUDI-INTERCEPTIONS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 13,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.khaleejtimes.com/world/mena/us-israel-iran-saudi-arabia-yemen-war-live-updates-november-1-2026"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-ISRAEL-ELECTION-COALITION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 14,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-YEMEN-DISPLACEMENT-RECONCILE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 15,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-LEBANON-PRIOR-STRIKES",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 16,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-MECCA-PAKISTAN-TURKIYE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 17,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.jpost.com/middle-east/article-913499"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-HORMUZ-REOPENING",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 18,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC1",
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "review_url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "warning": "MUTABLE_LIVE_SOURCE_RESOURCE__AS_OF_SNAPSHOT_MAY_DIFFER"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-QATAR-ATTACK-ATTRIBUTION",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 19,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://thepeninsulaqatar.com/article/01/11/2026/qatar-gas-transport-company-announces-attack-on-one-of-its-vessels-in-arabian-gulf",
+        "https://www.aljazeera.com/news/2026/11/1/qatar-lng-carrier-struck-by-unidentified-objects-in-gulf"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-COALITION-BDA",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 20,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://gulfnews.com/world/gulf/saudi/saudi-led-coalition-launches-military-operation-targeting-houthi-resources-1.500731798",
+        "https://gulfnews.com/world/gulf/saudi/saudi-coalition-releases-footage-of-military-strikes-on-houthi-sites-in-yemen-1.500731901"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-GAZA-POLICE-MILITANTS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 21,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-DAMMAM-IRNA-FIRE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 22,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://tribune.com.pk/story/2638101/strike-at-industrial-complex-in-saudi-arabias-dammam-causes-huge-fire-iranian-state-media"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-IRAN-DEFENSE-GEOGRAPHY",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 23,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://tribune.com.pk/story/2638074/irgc-commander-says-military-fully-prepared-for-any-scenario-enemy-may-devise",
+        "https://www.iranintl.com/en/liveblog/202610312594"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-SAUDI-MISSILE-DRONE",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 24,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/liveblog/202610312594",
+        "https://www.khaleejtimes.com/world/mena/us-israel-iran-saudi-arabia-yemen-war-live-updates-november-1-2026"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-IRAN-UK-TERROR-LABEL",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 25,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.iranintl.com/en/202611018474"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-ISRAEL-VOTE-ALLEGATIONS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 26,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.timesofisrael.com/liveblog-november-1-2026/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-OPEC-DECEMBER-TARGETS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 27,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html",
+        "https://www.reuters.com/business/energy/opec-set-keep-oil-output-targets-steady-sources-say-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACD",
+          "url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "review_url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-GULF-EQUITIES",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 28,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/qatar-surges-bucking-gulf-market-slide-iran-war-concerns-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261101-NOON-QATAR-LNG-VESSEL-STATUS",
+      "review_path": "data/evidence-integration/evidence-review-20261101T1200EST.noncanonical.json",
+      "review_row_index": 29,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://thepeninsulaqatar.com/article/01/11/2026/qatar-gas-transport-company-announces-attack-on-one-of-its-vessels-in-arabian-gulf"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-UKMTO-191",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-UKMTO-192",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-CHINA-OMAN-LEADERS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC9",
+          "url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/",
+          "review_url": "https://www.reuters.com/world/china/deeper-china-oman-ties-strategic-both-sides-xi-says-2026-11-02/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-JMIC110-REGISTRY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a",
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-ALMAYEDA-JMIC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-AZINI-JMIC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a",
+        "https://apnews.com/article/dd4d404235781a3b871668c353540e4c"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-HODEIDAH-UNIVERSITY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-US-BLOCKADE-JMIC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-SAUDI-INTERCEPTIONS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 8,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region",
+        "https://www.ft.com/content/efaa2962-1acb-45cf-afb4-d0088f0a1046"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-QATAR-ALMAYEDA-CONDEMNATION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 9,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://dohanews.co/qatar-condemns-reckless-and-irresponsible-attack-on-lng-carrier-in-arabian-gulf/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-DOHA",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 10,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-IAEA",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 11,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.iaea.org/news?type=718"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-OFAC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 12,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-IMO",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 13,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx",
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287",
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-OPEC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 14,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html",
+        "https://www.reuters.com/business/energy/opec-set-keep-oil-output-targets-steady-sources-say-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACD",
+          "url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "review_url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-GAZA",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 15,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b",
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-eight-people-gaza-medics-say-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-MECCA",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 16,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://apnews.com/article/b75b3e02240f55d364b3072c2300ad36"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-LEBANON",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 17,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.ft.com/content/efaa2962-1acb-45cf-afb4-d0088f0a1046"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-YEMEN-DISPLACEMENT",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 18,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-IRGC-TWO-TANKERS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 19,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-exploded-after-hitting-mines-hormuz-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-HOUTHI-MEDICAL-FACULTY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 20,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.europapress.es/internacional/noticia-denuncian-dos-ataques-aviacion-saudi-contra-facultad-medicina-universidad-hodeida-20261101161623.html",
+        "https://apnews.com/article/b918f44d8f212d7daf7f2f9a98c91a0b"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-MARITIME-191-ATTRIBUTION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 21,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261101-ukmto_warning_191_26.pdf?rev=d4620238ffd446959c914049b1474287"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-MARITIME-192-ATTRIBUTION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 22,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261102-ukmto_warning-192-26.pdf?rev=c10444e50bd94bb7b822cb1220ca09c3"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-ALMAYEDA-IRAN-CLEARANCE",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 23,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://dohanews.co/qatar-condemns-reckless-and-irresponsible-attack-on-lng-carrier-in-arabian-gulf/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-SA-INTERCEPTION-ATTRIBUTION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 24,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://saudigazette.com.sa/article/665913/saudi-arabia/ballistic-missile-and-uav-fired-by-houthi-militia-intercepted-over-southern-region"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-OIL-MARKET-TIMESTAMP",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 25,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACB",
+          "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+          "review_url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-IRAN-ROUTE-NORMALIZATION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 26,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-negotiators-doha-continue-talks-end-us-iran-war-official-says-2026-11-01/",
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-JMIC-TRAFFIC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 27,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_110_01-nov-1.pdf?rev=d2be223caff04f09bbf58d94c9aa8e0a"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-OIL-0407",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 28,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACB",
+          "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+          "review_url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-MIDNIGHT-OPEC-NO-NEW",
+      "review_path": "data/evidence-integration/evidence-review-20261102T0000EST.noncanonical.json",
+      "review_row_index": 29,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACD",
+          "url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "review_url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-SAUDI-SOUTHERN-MISSILE",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 0,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-GAZA-SOUTHERN-STRIKES",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 1,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-GAZA-ALMUSSADAR",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 2,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-CHINA-ENVOY-PLAN",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 3,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC8",
+          "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+          "review_url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-CHINA-IRAN-SAUDI-MEETINGS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 4,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC8",
+          "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+          "review_url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-HEBRON-OPERATION-END",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 5,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/displaced-palestinians-return-damaged-hebron-quarter-israeli-troops-withdraw-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-DOHA-NO-BREAKTHROUGH",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 6,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACA",
+          "url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+          "review_url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-HOUTHI-ADEN-APPROACH",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 7,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-IRAN-NUCLEAR-NPT",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 8,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://timesofindia.indiatimes.com/world/middle-east/iran-calls-us-biggest-threat-to-npt-warns-of-stronger-defence-push/articleshow/135463488.cms"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-YEMEN-DISPLACEMENT",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 9,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC7",
+          "url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed",
+          "review_url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-IMO-REGISTRY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 10,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-OFAC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 11,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://ofac.treasury.gov/recent-actions"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-IAEA",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 12,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.iaea.org/news?type=718"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-SAUDI-PRIOR-PAIR",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 13,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-HEBRON-DAMAGE",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 14,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/displaced-palestinians-return-damaged-hebron-quarter-israeli-troops-withdraw-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-UKMTO-PRIOR-WARNINGS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 15,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.ukmto.org/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-OPEC-DECEMBER",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 16,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.opec.org/pr-detail/620-1-november-2026.html"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACD",
+          "url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "review_url": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-CHINA-OMAN",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 17,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC8",
+          "url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+          "review_url": "https://www.reuters.com/world/china/chinas-foreign-minister-pushes-dialogue-resolve-middle-east-conflict-2026-11-02/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-IRAN-TWO-DAY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 18,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACA",
+          "url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+          "review_url": "https://www.reuters.com/world/middle-east/iranians-have-left-doha-talks-draft-proposal-us-deal-being-circulated-official-2026-11-02/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-SAUDI-MISSILE-ATTRIBUTION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 19,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sounds-all-clear-after-alerts-southern-cities-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-HODEIDAH-PORT-INJURIES",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 20,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-TAIZ-MARKET",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 21,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900AC7",
+          "url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed",
+          "review_url": "https://apnews.com/article/mideast-news-november-2-2026-8722c8b5a9deb228e7a188d4760ea8ed",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-YEMEN-1272-OPERATIONS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 22,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.aljazeera.com/news/2026/11/2/saudi-led-coalition-intercepts-a-missile-as-fighting-rages-in-yemens-al-jawf"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-GAZA-TARGET-IDENTITY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 23,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-IRAN-NPT",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 24,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://timesofindia.indiatimes.com/world/middle-east/iran-calls-us-biggest-threat-to-npt-warns-of-stronger-defence-push/articleshow/135463488.cms"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-ADNOC-INVENTORY",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 25,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-ADNOC-DATA-DISPUTE",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 26,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-POST-CUTOFF-HOUTHI-DRONES",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 27,
+      "triage_bucket": "CLAIMS_LANE_REFERRAL",
+      "reviewed_urls": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-launched-drones-towards-saudi-arabias-dammam-airport-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-ADNOC-BUFFERS",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 28,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/nearly-1-billion-oil-barrels-drained-global-inventories-since-hormuz-disruption-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-UAE-OPEC-IEA-PRODUCTION",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 29,
+      "triage_bucket": "SOURCE_REVIEWED_AWAITING_CANONICAL_DISPOSITION",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/freed-opec-quotas-uae-says-oil-exports-have-risen-it-hosts-industry-event-2026-11-02/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-OIL-1357Z",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 30,
+      "triage_bucket": "SOURCE_OR_IDENTITY_HOLD",
+      "reviewed_urls": [
+        "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/"
+      ],
+      "sequence39_40_accepted_source_url_matches": [
+        {
+          "sequence": 39,
+          "packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+          "source_id": "SRC-18CDB7900ACB",
+          "url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+          "review_url": "https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/",
+          "warning": "URL_MATCH_ONLY_NOT_EVENT_IDENTITY"
+        }
+      ],
+      "source_match_disposition": "SOURCE_LINK_MATCH__NO_CLAIM_OR_EVENT_CLOSURE"
+    },
+    {
+      "source_record_ref": "ROOK-20261102-NOON-MARITIME-TRAFFIC",
+      "review_path": "data/evidence-integration/evidence-review-20261102T1200EST.noncanonical.json",
+      "review_row_index": 31,
+      "triage_bucket": "NO_NEW_DISTINCT_FACT_OR_ALREADY_RECORDED",
+      "reviewed_urls": [
+        "https://help.kpler.com/en/articles/14012671-strait-of-hormuz-transit-identification"
+      ],
+      "sequence39_40_accepted_source_url_matches": [],
+      "source_match_disposition": "NO_EXACT_SOURCE_LINK_MATCH_IN_SEQ39_OR_SEQ40"
+    }
+  ]
+}
