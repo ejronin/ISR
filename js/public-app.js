@@ -57,7 +57,7 @@
     'military.losses': freezeContract('military_record', ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties', 'current.chronology']),
     'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities']),
     'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'analysis.sanctions_network', 'ledger.shipping', 'gate3.shipping']),
-    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping']),
+    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping', 'current.chronology']),
     'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics']),
     'hormuz.sanctions': freezeContract('hormuz_economy', ['analysis.sanctions_network', 'ledger.economics', 'gate3.economics', 'current.chronology']),
     'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'analysis.hormuz']),
