@@ -1,0 +1,37 @@
+{
+  "artifact_role": "EVIDENCE_LOCKER_SOURCE_DISCOVERY_DELTA",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "collection_cutoff": "2026-11-09T21:52:00-05:00",
+  "discovery_count": 5,
+  "preservation_rule": "Append discoveries; do not remove prior standing sources",
+  "schema_version": "1.0",
+  "scope_note": "Source-qualified retrospective Oct27-29 documentary review; not a certified full twelve-hour ROOK sweep.",
+  "source_count": 5,
+  "sources": [
+    {
+      "source_id": "SRC-9F7A10272601",
+      "source_name": "Reuters October 27: Houthi spokesman Yahya Saree claimed a ballistic missile struck Ras Tanura refinery and caused a fire; Saudi officials had not confirmed",
+      "url": "https://www.reuters.com/business/energy/yemens-houthis-say-they-launched-an-attack-saudi-ras-tanura-oil-refinery-2026-10-27/"
+    },
+    {
+      "source_id": "SRC-9F7A10272602",
+      "source_name": "Reuters October 27: Saudi-led coalition said three ballistic missiles toward Eastern Province and four drones toward the southern region were intercepted; civil-defence alerts",
+      "url": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepted-houthi-missiles-drones-attacking-kingdom-2026-10-27/"
+    },
+    {
+      "source_id": "SRC-9F7A10282603",
+      "source_name": "Reuters October 28: Qatari mediated draft offered for Iran to review; Iranian official declined terms; proposal-only diplomatic phase",
+      "url": "https://www.reuters.com/world/asia-pacific/qatari-mediators-present-iran-with-new-deal-end-war-official-says-2026-10-28/"
+    },
+    {
+      "source_id": "SRC-9F7A10292604",
+      "source_name": "Reuters October 29 investigative procurement study based on Iranian banking and trade data; more than five thousand MOD procurement agencies and at least two billion dollars of described imports since January 2025",
+      "url": "https://www.reuters.com/world/iran/irans-hidden-web-military-agencies-is-slipping-hardware-past-us-blockade-2026-10-29/"
+    },
+    {
+      "source_id": "SRC-9F7A10292605",
+      "source_name": "Reuters October 29 direct QatarEnergy CEO interview: 7 million metric tons/year long-term LNG purchase deals, damage to two Ras Laffan trains and expected repair duration around three years",
+      "url": "https://www.reuters.com/business/energy/qatarenergy-buys-us-other-lng-hedge-future-hormuz-disruptions-2026-10-29/"
+    }
+  ]
+}
