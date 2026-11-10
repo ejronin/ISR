@@ -702,7 +702,7 @@
     },
     {
       "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_IDENTITY; BODY_TRANSCRIPT_NOT_YET_CAPTURED",
-      "attribution_scope": "The receipts establish the intentional-allowance wording in the publisher title. They do not establish which bases, intercept systems, engagement windows, rules of engagement, or operational rationale the body discussed.",
+      "attribution_scope": "The publisher title establishes that Valenti said the U.S. military 'allows' Iranian missiles to hit bases. Subsequent evidence review shows the literal proposition that commanders sometimes deliberately declined interception of low-value trajectories is not inherently unsupported. The distinct body-level motive claim reported by project-owner direct review—that the U.S. did not care / permissively let strikes occur to provoke anger or political reaction—requires transcript/timestamp preservation before WOL scores it.",
       "claim_family_ref": null,
       "content_body_evidence": {
         "body_claims": [],
@@ -713,7 +713,7 @@
       },
       "discovery_id": "WOL-DISC-VALENTI-US-MILITARY-ALLOWED-IRAN-MISSILES-20260727",
       "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
-      "downstream_note": "Do not map this automatically to ordinary BDA or interception-failure families. 'Missiles hit bases' and 'the U.S. military intentionally allowed them to hit' are separate factual/causal propositions. Claims Forensics must atomize the alleged intentional non-interception before WOL can score it.",
+      "downstream_note": "Do not score the title alone as bullshit. Separate (1) documented interceptor rationing/threat-based non-interception from (2) the stronger alleged motive/permission theory in the spoken body. The latter remains a transcript-capture target.",
       "observations": [
         {
           "date": "2026-07-27",
