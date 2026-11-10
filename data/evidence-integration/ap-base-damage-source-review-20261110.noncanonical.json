@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_INDEPENDENT_SATELLITE_BDA_SOURCE_REVIEW",
+  "authority": "EVIDENCE_INTEGRATION_REVIEW_CANDIDATE",
+  "review_date": "2026-11-10",
+  "reviewed_base_sha": "4554fbb7a15b9ca9a27fc7bde7dee3f60d84f528",
+  "canonical_mutation": false,
+  "source": {
+    "publisher": "Associated Press",
+    "title": "Iran targeted US air defenses then hit aircraft and buildings on Mideast bases, AP analysis finds",
+    "url": "https://apnews.com/article/iran-war-us-base-damage-trump-26e0f05e01d6f56ff46f7c1a14384f7c",
+    "source_class": "INDEPENDENT_SATELLITE_IMAGERY_ANALYSIS_WITH_REGIONAL_OFFICIAL_INTERVIEWS",
+    "event_coverage_through": "2026-08",
+    "publication_date": "2026-11_DATE_FROM_LIVE_SITE_NOT_INDIVIDUALLY_REVERIFIED",
+    "knowledge_time": "2026-11-10",
+    "disclaimer": "November reporting of historical damage is not a new November attack; reported attack count is not itemized destroyed-materiel count."
+  },
+  "reported_aggregate": {
+    "min_strikes_damaging_us_sites": "MORE_THAN_115",
+    "count_sites": 26,
+    "coverage": "Iran-claimed/Iran-aligned drone or missile strikes assessed through August 2026",
+    "unit": "strike incidents that damaged/destroyed structures",
+    "duplicate_control": "Do not sum with earlier Washington Post or AP site observations; overlapping time windows and sites."
+  },
+  "facility_updates": [
+    {
+      "facility": "Ali Al Salem Air Base",
+      "host": "Kuwait",
+      "event_window": "2026-02-28_TO_2026-08",
+      "strikes_min": 30,
+      "hangars_damaged_or_destroyed_min": 15,
+      "other_damage": "Numerous warehouses and 10 buildings near a residential area damaged/destroyed",
+      "evidence_class": "SATELLITE_IMAGE_CORROBORATED_AP_REPORTING",
+      "crosswalk_existing": "US-ALISALEM, MAT-USA-ALISALEM-AD",
+      "predecessor_baseline": "Earlier March 1 imagery review established more than 12 damaged structures incl >=4 aircraft shelters",
+      "disposition": "NEW_LOWER_BOUND_ON_HANGAR_DAMAGE_WITH_PRIOR_EVENT_OVERLAP; NOT_15_ADDITIONAL_HANGARS",
+      "confidence": "HIGH_FOR_PHYSICAL_DAMAGE_NOT_DISTINCT_STRIKE_IDENTITIES"
+    },
+    {
+      "facility": "Camp Buehring",
+      "host": "Kuwait",
+      "event_window": "2026-03_TO_2026-08",
+      "structures_damaged_or_destroyed_min": 30,
+      "other_damage": "Most hangars inoperable; gym destroyed; PX/store hit late July; garage and dining room severely damaged per regional officials",
+      "evidence_class": "SATELLITE_IMAGE_CORROBORATED_WITH_ADDITIONAL_OFFICIAL_TESTIMONY",
+      "crosswalk_existing": "US-BUEHRING",
+      "disposition": "MATERIAL_INCREASE_IN_IDENTIFIABLE_INFRASTRUCTURE_DAMAGE; DISTINGUISH_DESTROYED_GYM_FROM_DAMAGED_UNREPAIRED_OR_INOPERABLE_STRUCTURES",
+      "confidence": "HIGH_FOR_DAMAGE_WITH_SOME_COMPONENT_EFFECTS_OFFICIAL_ATTRIBUTED"
+    },
+    {
+      "facility": "NSA Bahrain / Fifth Fleet",
+      "host": "Bahrain",
+      "imagery_date": "2026-07-23",
+      "other_damage": "Satellite communications systems and warehouses extensively damaged",
+      "crosswalk_existing": "US-NSA-BHR, MAT-USA-NSA-BHR-RADOMES",
+      "disposition": "CORROBORATES_EXTENDS_DATED_HISTORICAL_SITE_DAMAGE; NO_ADDITIVE_COUNTS",
+      "confidence": "HIGH"
+    },
+    {
+      "facility": "Al Dhafra",
+      "host": "United Arab Emirates",
+      "imagery_date": "2026-03-11",
+      "other_damage": "Three significantly damaged hangars in photographed sector",
+      "crosswalk_existing": "US-ALDHAFRA",
+      "disposition": "QUALIFIES_HANGAR_DAMAGE_COUNT_WITH_FOOTPRINT_RECONCILIATION_NEEDED",
+      "confidence": "HIGH"
+    },
+    {
+      "facility": "Muwaffaq Salti",
+      "host": "Jordan",
+      "imagery_date": "2026-07-20",
+      "other_damage": "Multiple housing structures destroyed in July; THAAD radar site struck in March, satellite photo March 2",
+      "crosswalk_existing": "US-MUWAFFAQ, MAT-USA-MUWAFFAQ-AD",
+      "disposition": "SEPARATE_MARCH_RADAR_DAMAGE_AND_JULY_HOUSING_DAMAGE_IN_CHRONOLOGY",
+      "confidence": "HIGH"
+    },
+    {
+      "facility": "Prince Sultan Air Base",
+      "host": "Saudi Arabia",
+      "imagery_date": "2026-05-01",
+      "other_damage": "Destroyed facility visible in AP published imagery, facility asset role not established in provided caption",
+      "crosswalk_existing": "US-PRINCESULTAN",
+      "disposition": "UPDATE_VISUAL_INFRASTRUCTURE_BDA_ONLY_WITHOUT_ASSIGNING_EQUIPMENT_TYPE",
+      "confidence": "HIGH_FOR_STRUCTURE_DAMAGE"
+    },
+    {
+      "facility": "Jabal ad Dukhan radar facility",
+      "host": "Bahrain",
+      "claimed_strike_date": "2026-06-11",
+      "imagery_date": "2026-07-13",
+      "other_damage": "Early warning radar radome remains shown after reported Iranian ballistic-missile impact",
+      "crosswalk_existing": null,
+      "disposition": "POTENTIAL_NEW_NAMED_SITE_RECORD; VERIFY_ASSET_OWNER_AND_SOURCE_EVENT_BEFORE_CANONICAL_PROMOTION",
+      "confidence": "HIGH_FOR_DAMAGED_STRUCTURE"
+    }
+  ],
+  "accounting_rules": [
+    "November publication date does not become attack date.",
+    "More than 115 damaging strike incidents across 26 locations are not 115 destroyed assets.",
+    "A damaged facility is not a destroyed base; hangar damage does not prove aircraft damaged inside.",
+    "Named site-level and dated photo observations qualify BDA even if precise missile dates and total operational effect are unknown.",
+    "Do not double count Washington Post 2026-05-06 and prior AP March imagery.",
+    "Qualify any new named site (Jabal ad Dukhan) through source registry and the canonical location / facility authority path; no fabricated map point."
+  ],
+  "outcome": "SOURCE_QUALIFIED_CANDIDATE_FOR_APPEND_ONLY_FACILITY_BDA_AND_LOSS_DRAWER; NOT_REGISTERED_OR_PUBLIC",
+  "required_next_steps": [
+    "Crosswalk named structures to existing canonical asset/facility IDs",
+    "Promote source identity and distinct event dates through Evidence Integration",
+    "Register accepted Gate3 append on exact production head",
+    "Run exact-SHA qualification and live readers before public tally increment"
+  ]
+}
