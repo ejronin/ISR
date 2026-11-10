@@ -1,0 +1,669 @@
+{
+  "schema_version": "1.2",
+  "artifact_role": "ACCEPTED_EVENT_MAP_ELIGIBILITY_AND_READER_PARITY",
+  "accepted_packet_sequences": [
+    37,
+    38,
+    39,
+    40
+  ],
+  "source_manifest": "data/canonical-ledger/manifest-v2.json",
+  "source_packets": [
+    "data/canonical-updates/UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION.json",
+    "data/canonical-updates/UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION.json",
+    "data/canonical-updates/UPD-20261109-SOURCE-QUALIFIED-CURRENT.json",
+    "data/canonical-updates/UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL.json"
+  ],
+  "record_count": 44,
+  "eligible_exact_point_markers": 0,
+  "region_only": 15,
+  "nonspatial": 29,
+  "publication_effect": "ACCEPTED_SOURCE_LINKED_REGIONAL_OBSERVATIONS_NO_SYNTHETIC_COORDINATES",
+  "region_reader_group_ids": {
+    "military": [
+      "EVT-20261027-HOUTHI-RAS-TANURA-MISSILE-CLAIM",
+      "EVT-20261027-SAUDI-COALITION-3-MISSILES-4-DRONES",
+      "EVT-20261028-RUSSIAN-SATELLITE-CORRELATION",
+      "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "EVT-20261029-TAIZ-SA-AIRSTRIKE-REPORT",
+      "EVT-20261030-IRGC-US-DRONE-DESTROYED-CLAIM",
+      "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "EVT-20261106-YEMEN-TAIZ-MARKET-STRIKE-CASUALTY-CLAIM",
+      "EVT-20261107-YEMEN-AL-SHARIYA-HOMES-CASUALTY-CLAIM"
+    ],
+    "maritime": [
+      "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "EVT-20261029-LOUISE1-LIMPET-ATTACK",
+      "EVT-20261101-UKMTO-191-RELAYED-MAYDAY",
+      "EVT-20261102-UKMTO-192-TANKER-PROJECTILE-REPORT",
+      "EVT-20261102-IMO-LATE-CONFIRMED-OCT29-30-HULLS",
+      "EVT-20261108-HORMUZ-MARITIME-COMPETING-CLAIMS"
+    ]
+  },
+  "rows": [
+    {
+      "event_id": "EVT-20261014-CAR-HOUTHI-MISSILE-SUPPLY-REVIEW",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-10-14",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC5",
+        "SRC-18CDB7900AC6"
+      ]
+    },
+    {
+      "event_id": "EVT-20261015-IRAQ-KHAZALI-DEPUTY-PM-APPOINTMENT",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-10-15",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC3",
+        "SRC-18CDB7900AC4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261021-OFAC-IRAN-SHADOW-FLEET-SDNLIST",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-10-21",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900ACC"
+      ]
+    },
+    {
+      "event_id": "EVT-20261021-SA-DEFENSIVE-PARTNERS",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-21",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-7AEDCE5DF3A5"
+      ]
+    },
+    {
+      "event_id": "EVT-20261023-UAE-MARKETS-ENERGY",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-23",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-F3BE284F724E"
+      ]
+    },
+    {
+      "event_id": "EVT-20261026-BRENT-FUTURES-QUOTE",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-26",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-AC0F15D71DA4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261026-TEHRAN-REGIONAL-TALKS",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-5180B33CE2A0"
+      ]
+    },
+    {
+      "event_id": "EVT-20261027-EGYPT-SAUDI-AUTHORIZATION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-27",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-0DB5BB34A4AA"
+      ]
+    },
+    {
+      "event_id": "EVT-20261027-HOUTHI-RAS-TANURA-MISSILE-CLAIM",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "event_date": "2026-10-27",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Claim names Ras Tanura refinery, but an independently established October 27 impact point is absent. A known refinery coordinate would falsely imply a confirmed strike.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9F7A10272601"
+      ]
+    },
+    {
+      "event_id": "EVT-20261027-SAUDI-COALITION-3-MISSILES-4-DRONES",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "event_date": "2026-10-27",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Coalition reported interceptions across two Saudi regions, not independently verified individual intercept points or seven geolocatable impacts.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9F7A10272602"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-IAEA-RECONSTRUCTION-INSPECTION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-28",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-E20CE2667B88"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-QATAR-NEW-IRAN-WAR-END-DRAFT",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "event_date": "2026-10-28",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Procurement, diplomatic proposal, LNG contract or facility repair estimate is not a distinct geolocated attack.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9F7A10282603"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-RUSSIAN-SATELLITE-CORRELATION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-28",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-8857A29EE4F5"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-US-SPR-LOAN-CONTRACT-AWARDS",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-28",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-689903B48338"
+      ]
+    },
+    {
+      "event_id": "EVT-20261028-US-WAR-COST-ESTIMATE",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-28",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-3C66EFC26D93"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-ADIPEC-OIL-MAJOR-EXECUTIVE-TRIPS",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-29",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-4E6610436CEE"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-29",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-059AD04D57CC",
+        "SRC-91C370966DB4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-LOUISE1-LIMPET-ATTACK",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-29",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-D1901CB5F6AC"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-OFAC-GL-FF1-SUPERSEDES-FF",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-29",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-4ECE6B69D8B2",
+        "SRC-E097193B8EDB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-QATAR-RASLAFFAN-LNG-REPAIR-OUTLOOK",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "event_date": "2026-10-29",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Procurement, diplomatic proposal, LNG contract or facility repair estimate is not a distinct geolocated attack.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9F7A10292605"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-QATARENERGY-LNG-PURCHASE-CONTRACTS",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "event_date": "2026-10-29",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Procurement, diplomatic proposal, LNG contract or facility repair estimate is not a distinct geolocated attack.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9F7A10292605"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-REUTERS-MOD-PROCUREMENT-NETWORK",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "event_date": "2026-10-29",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Procurement, diplomatic proposal, LNG contract or facility repair estimate is not a distinct geolocated attack.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9F7A10292604"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-TAIZ-HOSPITAL-HUMANITARIAN-ACCESS",
+      "accepted_packet_id": "UPD-20261030-ROOK-MIDNIGHT-SWEEP-CONSUMPTION",
+      "event_date": "2026-10-29",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-E15C3FAAE481"
+      ]
+    },
+    {
+      "event_id": "EVT-20261029-TAIZ-SA-AIRSTRIKE-REPORT",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-29",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-1653AEC36AEB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-IRGC-US-DRONE-DESTROYED-CLAIM",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-30",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-91C370966DB4"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-30",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Policy, economy, diplomacy, aggregate estimate, or multisite context is not an exact physical strike location.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-42818A9D55F8"
+      ]
+    },
+    {
+      "event_id": "EVT-20261030-SA-MECCA-DRONE-INTERCEPTION",
+      "accepted_packet_id": "UPD-20261030-SOURCE-QUALIFIED-RECONCILIATION",
+      "event_date": "2026-10-30",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Narrative establishes a region, broad corridor, proposed target, or approximate distance but not a verified point for the physical occurrence.",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-A261F7C5D403"
+      ]
+    },
+    {
+      "event_id": "EVT-20261101-OPEC-PLUS-DECEMBER-REQUIRED-TARGETS",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-01",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900ACD"
+      ]
+    },
+    {
+      "event_id": "EVT-20261101-UKMTO-191-RELAYED-MAYDAY",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-01",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Relayed Mayday in the Strait of Hormuz; affected hull unidentified",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC2"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-CHINA-IRAN-SAUDI-OMAN-DIPLOMATIC-OUTREACH",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC7",
+        "SRC-18CDB7900AC8",
+        "SRC-18CDB7900AC9"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-ICE-NYMEX-CRUDE-FUTURES-SETTLEMENT",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900ACB"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-IMO-CONFIRMED-SHIPPING-CUMULATIVE",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC1"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-IMO-LATE-CONFIRMED-OCT29-30-HULLS",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Three separately dated and located merchant vessels summarized in one register update",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC1"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-IOM-YEMEN-DISPLACEMENT-SNAPSHOT",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC7"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-IRAN-CONDITIONAL-TWO-DAY-HORMUZ-PLAN",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC7",
+        "SRC-18CDB7900ACA"
+      ]
+    },
+    {
+      "event_id": "EVT-20261102-UKMTO-192-TANKER-PROJECTILE-REPORT",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-02",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Approximately 72 nautical miles east of Ras al-Khafji; report of a November 1 incident published November 2",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-18CDB7900AC2"
+      ]
+    },
+    {
+      "event_id": "EVT-20261104-OFAC-IRAN-MARITIME-ARMS-DESIGNATIONS",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-04",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000001"
+      ]
+    },
+    {
+      "event_id": "EVT-20261106-OFAC-CANADA-EIGHT-MONEY-SERVICES",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-06",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000002",
+        "SRC-9A0900000003"
+      ]
+    },
+    {
+      "event_id": "EVT-20261106-YEMEN-TAIZ-MARKET-STRIKE-CASUALTY-CLAIM",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-06",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Al-Hadara market, al-Waziyah district, Taiz; exact independently established impact coordinate absent",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000007"
+      ]
+    },
+    {
+      "event_id": "EVT-20261107-YEMEN-AL-SHARIYA-HOMES-CASUALTY-CLAIM",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-07",
+      "event_class": "CORE_WARTIME_EVENT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Near al-Shariya northeast of Sanaa; local incident area only",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000008"
+      ]
+    },
+    {
+      "event_id": "EVT-20261108-HORMUZ-MARITIME-COMPETING-CLAIMS",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-08",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "map_eligibility": "REGION_ONLY",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Several separate vessels described in competing accounts; identity and incident coordinates unresolved",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000004"
+      ]
+    },
+    {
+      "event_id": "EVT-20261108-US-IRON-GATE-TASK-FORCE-ANNOUNCED",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-08",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000004"
+      ]
+    },
+    {
+      "event_id": "EVT-20261109-BRENT-WTI-FUTURES-INTRADAY",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-09",
+      "event_class": "STATE_SNAPSHOT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000006"
+      ]
+    },
+    {
+      "event_id": "EVT-20261109-IRAN-US-REJECTED-TALKS-CONDITIONS",
+      "accepted_packet_id": "UPD-20261109-SOURCE-QUALIFIED-CURRENT",
+      "event_date": "2026-11-09",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "map_eligibility": "NONSPATIAL",
+      "point_marker_authorized": false,
+      "canonical_location_ids": [],
+      "precision_reason": "Economic, diplomatic, policy, supply-chain or aggregate regional record without an individually mapped physical incident",
+      "visibility_requirement": "KEEP_IN_ACCEPTED_CHRONOLOGY_AND_SOURCE_DRAWER",
+      "source_ids": [
+        "SRC-9A0900000005"
+      ]
+    }
+  ]
+}
