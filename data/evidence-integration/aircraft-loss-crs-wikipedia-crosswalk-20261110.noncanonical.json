@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_LOSS_SOURCE_CROSSWALK",
+  "authority": "EVIDENCE_INTEGRATION_REVIEW_CANDIDATE",
+  "review_date": "2026-11-10",
+  "reviewed_base_sha": "4554fbb7a15b9ca9a27fc7bde7dee3f60d84f528",
+  "canonical_mutation": false,
+  "outcome": "SOURCE_CROSSWALK_PREPARED_ITEM_IDENTITY_AND_EVENT_QUALIFICATION_NOT_COMPLETE",
+  "source_distinction": "CRS is a Congressional research synthesis based on official and news reporting; Wikipedia is a tertiary discovery index. Neither aggregate is a count of destroyed aircraft. Neither may be added to canonical loss counts without item identity, overlap and loss/damage classification.",
+  "crs": {
+    "report_id": "IN12692",
+    "publication_date": "2026-10-05",
+    "url": "https://www.everycrsreport.com/reports/IN12692.html",
+    "reported_us_aircraft_lost_or_damaged": 81,
+    "coverage": "Since 2026-02-28 through the report's reviewed evidence; CRS warns damaged assets may have returned to service.",
+    "type_rows": [
+      {
+        "type": "F-15E Strike Eagle",
+        "reported_lost_or_damaged": 12,
+        "classification_notes": "4 destroyed (3 Kuwaiti friendly fire; 1 over Iran), 8 damaged/returned to service"
+      },
+      {
+        "type": "F-35A Lightning II",
+        "reported_lost_or_damaged": 1,
+        "classification_notes": "1 combat-damaged; not destroyed"
+      },
+      {
+        "type": "A-10 Thunderbolt II",
+        "reported_lost_or_damaged": 2,
+        "classification_notes": "1 destroyed by hostile fire; 1 severely damaged"
+      },
+      {
+        "type": "KC-135 Stratotanker",
+        "reported_lost_or_damaged": 7,
+        "classification_notes": "1 crashed; 1 emergency landed; 5 ground-damaged"
+      },
+      {
+        "type": "E-3 Sentry",
+        "reported_lost_or_damaged": 1,
+        "classification_notes": "1 reported damaged/direct hit; not classified destroyed by CRS"
+      },
+      {
+        "type": "MC-130J Commando II",
+        "reported_lost_or_damaged": 2,
+        "classification_notes": "2 intentionally destroyed during rescue"
+      },
+      {
+        "type": "HH-60W Jolly Green II",
+        "reported_lost_or_damaged": 1,
+        "classification_notes": "1 damaged during rescue"
+      },
+      {
+        "type": "MQ-4C Triton",
+        "reported_lost_or_damaged": 1,
+        "classification_notes": "1 mishap/crash"
+      },
+      {
+        "type": "MQ-1 Predator",
+        "reported_lost_or_damaged": 3,
+        "classification_notes": "3 reported downed (1 CENTCOM-confirmed; >=2 U.S.-official reported)"
+      },
+      {
+        "type": "MQ-9 Reaper",
+        "reported_lost_or_damaged": 45,
+        "classification_notes": ">=45 reported lost through August; not a date-specific November inventory"
+      },
+      {
+        "type": "AH-64 Apache",
+        "reported_lost_or_damaged": 1,
+        "classification_notes": "1 reportedly shot down over Hormuz; Lead IG"
+      },
+      {
+        "type": "AH-6 Little Bird",
+        "reported_lost_or_damaged": 4,
+        "classification_notes": "4 destroyed during rescue; Lead IG"
+      },
+      {
+        "type": "MH-60 Seahawk",
+        "reported_lost_or_damaged": 1,
+        "classification_notes": "1 crash; Lead IG"
+      }
+    ],
+    "sum_check": 81,
+    "official_primary_cross_checks": [
+      "https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/",
+      "https://www.everycrsreport.com/reports/IN12692.html"
+    ]
+  },
+  "wikipedia": {
+    "page": "https://en.wikipedia.org/wiki/List_of_aviation_shootdowns_and_accidents_during_the_2026_Iran_war",
+    "fixed_revision": "https://en.wikipedia.org/w/index.php?title=List_of_aviation_shootdowns_and_accidents_during_the_2026_Iran_war&oldid=1384306664",
+    "revision_last_edited_utc": "2026-11-07T17:15:00Z",
+    "listed_military_aircraft_by_side": {
+      "Iran": 43,
+      "Israel": 24,
+      "United_States": 105,
+      "Others": 8
+    },
+    "us_type_rows": [
+      {
+        "type": "AH-64 Apache",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "CH-47 Chinook",
+        "wikipedia_listed_lost_or_damaged": 2
+      },
+      {
+        "type": "E-3 Sentry",
+        "wikipedia_listed_lost_or_damaged": 2
+      },
+      {
+        "type": "KC-135",
+        "wikipedia_listed_lost_or_damaged": 8
+      },
+      {
+        "type": "KC-46 Pegasus",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "A-10",
+        "wikipedia_listed_lost_or_damaged": 2
+      },
+      {
+        "type": "MQ-1C Gray Eagle",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "MQ-1 Predator",
+        "wikipedia_listed_lost_or_damaged": 5
+      },
+      {
+        "type": "MQ-9 Reaper",
+        "wikipedia_listed_lost_or_damaged": 52
+      },
+      {
+        "type": "F-35 Lightning II",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "MC-130J",
+        "wikipedia_listed_lost_or_damaged": 2
+      },
+      {
+        "type": "F-15E",
+        "wikipedia_listed_lost_or_damaged": 12
+      },
+      {
+        "type": "MQ-4C Triton",
+        "wikipedia_listed_lost_or_damaged": 2
+      },
+      {
+        "type": "CH-53E",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "HH-60 Pave Hawk",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "SH-60 Seahawk",
+        "wikipedia_listed_lost_or_damaged": 1
+      },
+      {
+        "type": "UH-60 Black Hawk",
+        "wikipedia_listed_lost_or_damaged": 4
+      },
+      {
+        "type": "MH-6 Little Bird",
+        "wikipedia_listed_lost_or_damaged": 4
+      },
+      {
+        "type": "Unidentified UCAV",
+        "wikipedia_listed_lost_or_damaged": 2
+      },
+      {
+        "type": "Tiguar M",
+        "wikipedia_listed_lost_or_damaged": 1
+      }
+    ],
+    "sum_us_type_rows": 105,
+    "note": "Aggregate mixes damaged, destroyed, crashed and claimed shootdowns. Other-side civilian aviation totals tracked separately; do not conflate those or merchant hulls with military aircraft.",
+    "specifically_unqualified_recent_entries": [
+      {
+        "date": "2026-11-03",
+        "claimed_type": "MQ-9 Reaper",
+        "problem": "Page's cited Reuters Connect reference is explicitly a story that IRGC says it downed a drone; actor assertion is not independent confirmation.",
+        "disposition": "HOLD_AS_ACTOR_CLAIM"
+      },
+      {
+        "date": "2026-11-04",
+        "claimed_type": "MQ-9 Reaper",
+        "problem": "Aviation Safety Network incident listing alone does not establish U.S. operator admission, independently authenticated wreckage/identity or a distinct second hull.",
+        "disposition": "HOLD_PENDING_HULL_AND_SOURCE_INDEPENDENCE_CHECK"
+      }
+    ],
+    "iran_type_rows": [
+      {
+        "type": "Airbus A321",
+        "list_count": 1
+      },
+      {
+        "type": "Airbus A340",
+        "list_count": 1
+      },
+      {
+        "type": "An-74",
+        "list_count": 3
+      },
+      {
+        "type": "Bell 214",
+        "list_count": 1
+      },
+      {
+        "type": "Boeing 707",
+        "list_count": 2
+      },
+      {
+        "type": "Boeing 747",
+        "list_count": 1
+      },
+      {
+        "type": "Chengdu J-7",
+        "list_count": 10
+      },
+      {
+        "type": "F-14 Tomcat",
+        "list_count": 3
+      },
+      {
+        "type": "Harbin Y-12",
+        "list_count": 1
+      },
+      {
+        "type": "Il-76",
+        "list_count": 4
+      },
+      {
+        "type": "C-130 Hercules",
+        "list_count": 5
+      },
+      {
+        "type": "P-3 Orion",
+        "list_count": 1
+      },
+      {
+        "type": "F-4 Phantom II",
+        "list_count": 1
+      },
+      {
+        "type": "F-5",
+        "list_count": 2
+      },
+      {
+        "type": "Su-22",
+        "list_count": 2
+      },
+      {
+        "type": "Su-24",
+        "list_count": 3
+      },
+      {
+        "type": "Yak-130",
+        "list_count": 1
+      },
+      {
+        "type": "Unidentified military aircraft",
+        "list_count": 1
+      }
+    ],
+    "israel_type_rows": [
+      {
+        "type": "Hermes 450",
+        "list_count": 4
+      },
+      {
+        "type": "Hermes 900",
+        "list_count": 9
+      },
+      {
+        "type": "IAI Eitan",
+        "list_count": 4
+      },
+      {
+        "type": "IAI Heron",
+        "list_count": 6
+      },
+      {
+        "type": "Unidentified military aircraft",
+        "list_count": 1
+      }
+    ],
+    "others_type_rows": [
+      {
+        "type": "An-32 (Iraqi)",
+        "list_count": 1
+      },
+      {
+        "type": "Wing Loong II (UAE/Saudi)",
+        "list_count": 2
+      },
+      {
+        "type": "Eurofighter Typhoon (Italian; damaged)",
+        "list_count": 2
+      },
+      {
+        "type": "MQ-9 Reaper (Italian)",
+        "list_count": 1
+      },
+      {
+        "type": "Unidentified helicopters (UAE/Qatari)",
+        "list_count": 2
+      }
+    ],
+    "all_side_row_sum_checks": {
+      "Iran": 43,
+      "Israel": 24,
+      "United_States": 105,
+      "Others": 8
+    },
+    "listed_civilian_aircraft_by_side": {
+      "Iran": 18,
+      "Israel": 3,
+      "United_States": 0,
+      "Others": 5
+    },
+    "confirmation_rule": "Wikipedia's advertised 'visual evidence or official self-admission' methodology is not automatically satisfied by all entries: verify every individual citation for unique hull/serial, source independence and photo provenance before promoting; November IRGC reports need special checking."
+  },
+  "overlap_rules": [
+    "Never sum 81 and 105: CRS and Wikipedia share underlying incidents and are different-time/different-scope snapshots.",
+    "Do not infer that the difference 24 consists of 24 newly confirmed losses.",
+    "Do not treat 'damaged' or 'returned to service' as destroyed.",
+    "Do not count rescue-destroyed U.S. aircraft as enemy shootdowns or award the opponent kinetic BDA without distinct evidence.",
+    "Count individual aircraft by airframe/serial or uniquely identifiable incident; aggregate claims are reference envelopes only.",
+    "Preserve distinct event_date, announcement_date, knowledge_time, confidence, attribution and disposition."
+  ],
+  "repository_gap": {
+    "legacy_loss_file": "data/losses.json",
+    "legacy_asset_rows": 15,
+    "current_material_loss_file": "data/integration-v1.2/material-losses.json",
+    "canonical_source": "data/canonical-ledger/manifest-v2.json",
+    "observed_defect": "Legacy material-loss records are not a complete current U.S. aircraft itemization. Expand event-level accounting through Evidence Integration, not a retroactive rewrite of prior accepted packets.",
+    "source_review_backlog": "data/evidence-integration/review-disposition-index-153-20261102.noncanonical.json",
+    "source_review_rows": 153,
+    "source_review_windows": 7,
+    "action": "Reconcile CRS item groups against existing canonical loss IDs and other loss drawers; promote only individually supported additions/corrections in append-only Gate3 release, then test public loss reader."
+  },
+  "forbidden_promotions": [
+    "81 destroyed aircraft",
+    "105 confirmed destroyed aircraft",
+    "two additional verified Nov 3/4 MQ-9 kills",
+    "153 accepted new events"
+  ],
+  "examples_requiring_primary_source_citation_before_promotion": [
+    {
+      "item": "Iranian Su-22 aircraft at Shiraz, 2026-03-02",
+      "wikipedia_count": 2,
+      "source_claim": "CENTCOM-released visual strike footage",
+      "promotion_condition": "Authenticate CENTCOM original footage and individual airframes, check overlap with another aircraft list."
+    },
+    {
+      "item": "Iranian Su-24 shot down by Qatari forces, 2026-03-02",
+      "wikipedia_count": 2,
+      "source_claim": "Qatari government statement; at least one wreckage video",
+      "promotion_condition": "Primary Qatari announcement and both distinct airframes."
+    },
+    {
+      "item": "U.S. F-15Es lost to Kuwaiti friendly fire, 2026-03-02",
+      "wikipedia_count": 3,
+      "source_claim": "CENTCOM acknowledgment",
+      "promotion_condition": "Already included in CRS 12; never double count."
+    }
+  ]
+}
