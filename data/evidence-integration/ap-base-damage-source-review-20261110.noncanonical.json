@@ -92,6 +92,33 @@
       "crosswalk_existing": null,
       "disposition": "POTENTIAL_NEW_NAMED_SITE_RECORD; VERIFY_ASSET_OWNER_AND_SOURCE_EVENT_BEFORE_CANONICAL_PROMOTION",
       "confidence": "HIGH_FOR_DAMAGED_STRUCTURE"
+    },
+    {
+      "facility": "Prince Sultan Air Base",
+      "host": "Saudi Arabia",
+      "event_window": "2026-03",
+      "other_damage": "AP reports rear fuselage damage to an E-3 Sentry and at least two KC-135 tankers damaged, along with other aircraft according to a regional official",
+      "crosswalk_existing": "US-PRINCESULTAN",
+      "disposition": "AIRFRAME_DAMAGE_RECONCILIATION_CRUCIAL: compare directly with CRS 1 E-3 and 5 KC-135 damaged in March; never add AP count on top without identifying unique airframes",
+      "confidence": "AP_REGIONAL_OFFICIAL_ATTRIBUTION_PLUS_SATELLITE_FOR_FACILITY"
+    },
+    {
+      "facility": "Al Dhafra Air Base",
+      "host": "United Arab Emirates",
+      "event_window": "2026-03",
+      "other_damage": "AP regional official separately identifies early-warning radar and surveillance drone damage beyond hangar impacts",
+      "crosswalk_existing": "US-ALDHAFRA",
+      "disposition": "VERIFY_SPECIFIC_EQUIPMENT_IDENTITIES_BEFORE_NEW_LOSS_COUNT",
+      "confidence": "OFFICIAL_ATTRIBUTION_NOT_ITEM_BY_ITEM_VISUAL_CERTIFICATION"
+    },
+    {
+      "facility": "Camp Arifjan and Naval Support Activity Bahrain",
+      "host": "Kuwait and Bahrain",
+      "event_window": "2026-02-28_TO_2026-03-01",
+      "other_damage": "AP describes destroyed radar-protective enclosures in first two days of conflict",
+      "crosswalk_existing": "US-ARIFJAN,US-NSA-BHR",
+      "disposition": "PROTECTIVE_STRUCTURE_DAMAGE; RADAR_EQUIPMENT_DESTRUCTION_MUST_BE_SEPARATELY_EVIDENCED",
+      "confidence": "AP_INDEPENDENT_BDA"
     }
   ],
   "accounting_rules": [
@@ -107,6 +134,7 @@
     "Crosswalk named structures to existing canonical asset/facility IDs",
     "Promote source identity and distinct event dates through Evidence Integration",
     "Register accepted Gate3 append on exact production head",
-    "Run exact-SHA qualification and live readers before public tally increment"
+    "Run exact-SHA qualification and live readers before public tally increment",
+    "At Prince Sultan, cross-reference AP's E-3 and KC-135 damage with the already itemized CRS 81-aircraft table so same airframes are not double counted."
   ]
 }
