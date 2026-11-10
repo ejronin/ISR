@@ -193,7 +193,138 @@
         "problem": "Aviation Safety Network incident listing alone does not establish U.S. operator admission, independently authenticated wreckage/identity or a distinct second hull.",
         "disposition": "HOLD_PENDING_HULL_AND_SOURCE_INDEPENDENCE_CHECK"
       }
-    ]
+    ],
+    "iran_type_rows": [
+      {
+        "type": "Airbus A321",
+        "list_count": 1
+      },
+      {
+        "type": "Airbus A340",
+        "list_count": 1
+      },
+      {
+        "type": "An-74",
+        "list_count": 3
+      },
+      {
+        "type": "Bell 214",
+        "list_count": 1
+      },
+      {
+        "type": "Boeing 707",
+        "list_count": 2
+      },
+      {
+        "type": "Boeing 747",
+        "list_count": 1
+      },
+      {
+        "type": "Chengdu J-7",
+        "list_count": 10
+      },
+      {
+        "type": "F-14 Tomcat",
+        "list_count": 3
+      },
+      {
+        "type": "Harbin Y-12",
+        "list_count": 1
+      },
+      {
+        "type": "Il-76",
+        "list_count": 4
+      },
+      {
+        "type": "C-130 Hercules",
+        "list_count": 5
+      },
+      {
+        "type": "P-3 Orion",
+        "list_count": 1
+      },
+      {
+        "type": "F-4 Phantom II",
+        "list_count": 1
+      },
+      {
+        "type": "F-5",
+        "list_count": 2
+      },
+      {
+        "type": "Su-22",
+        "list_count": 2
+      },
+      {
+        "type": "Su-24",
+        "list_count": 3
+      },
+      {
+        "type": "Yak-130",
+        "list_count": 1
+      },
+      {
+        "type": "Unidentified military aircraft",
+        "list_count": 1
+      }
+    ],
+    "israel_type_rows": [
+      {
+        "type": "Hermes 450",
+        "list_count": 4
+      },
+      {
+        "type": "Hermes 900",
+        "list_count": 9
+      },
+      {
+        "type": "IAI Eitan",
+        "list_count": 4
+      },
+      {
+        "type": "IAI Heron",
+        "list_count": 6
+      },
+      {
+        "type": "Unidentified military aircraft",
+        "list_count": 1
+      }
+    ],
+    "others_type_rows": [
+      {
+        "type": "An-32 (Iraqi)",
+        "list_count": 1
+      },
+      {
+        "type": "Wing Loong II (UAE/Saudi)",
+        "list_count": 2
+      },
+      {
+        "type": "Eurofighter Typhoon (Italian; damaged)",
+        "list_count": 2
+      },
+      {
+        "type": "MQ-9 Reaper (Italian)",
+        "list_count": 1
+      },
+      {
+        "type": "Unidentified helicopters (UAE/Qatari)",
+        "list_count": 2
+      }
+    ],
+    "all_side_row_sum_checks": {
+      "Iran": 43,
+      "Israel": 24,
+      "United_States": 105,
+      "Others": 8
+    },
+    "listed_civilian_aircraft_by_side": {
+      "Iran": 18,
+      "Israel": 3,
+      "United_States": 0,
+      "Others": 5
+    },
+    "confirmation_rule": "Wikipedia's advertised 'visual evidence or official self-admission' methodology is not automatically satisfied by all entries: verify every individual citation for unique hull/serial, source independence and photo provenance before promoting; November IRGC reports need special checking."
   },
   "overlap_rules": [
     "Never sum 81 and 105: CRS and Wikipedia share underlying incidents and are different-time/different-scope snapshots.",
@@ -219,5 +350,25 @@
     "105 confirmed destroyed aircraft",
     "two additional verified Nov 3/4 MQ-9 kills",
     "153 accepted new events"
+  ],
+  "examples_requiring_primary_source_citation_before_promotion": [
+    {
+      "item": "Iranian Su-22 aircraft at Shiraz, 2026-03-02",
+      "wikipedia_count": 2,
+      "source_claim": "CENTCOM-released visual strike footage",
+      "promotion_condition": "Authenticate CENTCOM original footage and individual airframes, check overlap with another aircraft list."
+    },
+    {
+      "item": "Iranian Su-24 shot down by Qatari forces, 2026-03-02",
+      "wikipedia_count": 2,
+      "source_claim": "Qatari government statement; at least one wreckage video",
+      "promotion_condition": "Primary Qatari announcement and both distinct airframes."
+    },
+    {
+      "item": "U.S. F-15Es lost to Kuwaiti friendly fire, 2026-03-02",
+      "wikipedia_count": 3,
+      "source_claim": "CENTCOM acknowledgment",
+      "promotion_condition": "Already included in CRS 12; never double count."
+    }
   ]
 }
