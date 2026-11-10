@@ -4,7 +4,7 @@
   "packet_id": "UPD-20261110-CENTCOM-CONFIRMED-F15E-LOSSES",
   "known_at": "2026-11-10T16:10:00-05:00",
   "evidence_cutoff": "2026-11-09T21:52:00-05:00",
-  "summary": "Append two distinct officially confirmed U.S. F-15E aircraft-loss events (three Kuwaiti friendly-fire airframes in March and one Iranian combat shootdown in April) without duplicating legacy operational loss seeds or expanding the reviewed evidence horizon.",
+  "summary": "Append two distinct officially confirmed U.S. F-15E aircraft-loss events (three Kuwaiti friendly-fire airframes in March and one aircraft shot down over Iran in April, with shooter attribution left unresolved in the cited CENTCOM release) without duplicating legacy operational loss seeds or expanding the reviewed evidence horizon.",
   "sources": [
     {
       "source_id": "SRC-04D9A5DF648E",
