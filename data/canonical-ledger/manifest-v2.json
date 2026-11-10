@@ -428,11 +428,22 @@
       "previous_lineage_sha256": "5c7edc97b16b69975771d0c8324c425eb79895c25ba9bb573d80352af3430e86",
       "sequence": 39,
       "sha256": "4a3a1584cc70f5e2d2d20662c0c78060878dd1c761db93f9756a892ceed52155"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-09T21:52:00-05:00",
+      "known_at": "2026-11-09T21:53:00-05:00",
+      "lineage_sha256": "01dbee03e3349911da7f1fedaaaf846b2dd7d405aa9b5e260be644a2a7250e1a",
+      "packet_id": "UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL",
+      "path": "data/canonical-updates/UPD-20261109-SOURCE-QUALIFIED-OCT27-29-BACKFILL.json",
+      "previous_lineage_sha256": "67691516b89db9196a0fded3598afbf570c0aa62e8cfb5ce3683cc2a9f0d0475",
+      "sequence": 40,
+      "sha256": "239a81b003566cb7b3554222643897206a6d68cf32881c6ecc339339491cf862"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-11-09T09:33:00-05:00",
+  "current_evidence_cutoff": "2026-11-09T21:52:00-05:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
