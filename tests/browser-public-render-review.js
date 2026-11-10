@@ -110,6 +110,45 @@ async function waitFor(cdp, expression, timeout = 30000) {
   throw new Error(`timeout: ${expression}`);
 }
 
+// Preserve the route/deep-link assertion and expose enough current reader state
+// to distinguish a route bug, wrong actor selection and a dead Chromium context.
+async function assertWolActorDossier(cdp, sourceId, phase) {
+  const expected = `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.web_of_lies' && document.querySelector('.guide-wol-dossier')?.dataset?.dossierSource === ${JSON.stringify(sourceId)}`;
+  try {
+    await waitFor(cdp, expected, 30000);
+  } catch (cause) {
+    const observed = await cdp.eval(`(() => {
+      const app = window.ATLAS_PUBLIC_STATE || {};
+      const page = document.querySelector('.guide-wol-dossier');
+      const host = document.querySelector('.wol-cytoscape-host');
+      const selected = document.querySelector('.wol-node-picker')?.value || null;
+      const params = new URLSearchParams(location.hash.split('?')[1] || '');
+      return {
+        url: location.href,
+        hash: location.hash,
+        appStatus: app.status || null,
+        appRoute: app.routeKey || null,
+        dossierSource: page?.dataset?.dossierSource || null,
+        dossierPresent: Boolean(page),
+        selectedNode: selected,
+        graphState: host?.dataset?.graphState || null,
+        paramSource: params.get('source'),
+        paramDossier: params.get('dossier'),
+        title: document.title,
+        shellText: document.querySelector('.public-page')?.textContent?.slice(0, 280) || null
+      };
+    })()`).catch(error => ({ diagnosticError: String(error) }));
+    throw new Error(`WOL actor dossier verification failed phase=${phase} expectedSource=${sourceId}; ${cause.message}; observed=${JSON.stringify(observed)}`);
+  }
+  const actual = await cdp.eval(`(() => ({
+    source: document.querySelector('.guide-wol-dossier')?.dataset?.dossierSource || '',
+    hash: location.hash,
+    route: window.ATLAS_PUBLIC_STATE?.routeKey || ''
+  }))()`);
+  assert.equal(actual.source, sourceId, `WOL dossier source mismatch in ${phase}`);
+  assert.equal(actual.route, 'evidence.web_of_lies', `WOL dossier route mismatch in ${phase}`);
+}
+
 async function route(cdp, routeKey) {
   const hash = ia.routeHref(routeKey);
   const ready = `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(routeKey)}`;
@@ -590,16 +629,25 @@ async function captureElement(cdp, selector, filename, maxHeight = 1400) {
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
     await route(cdp, 'evidence.web_of_lies');
     await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
-    const wolActorId = await cdp.eval(`(() => {
-      const awardee = document.querySelector('.wol-awardee-button[data-source-id]')?.dataset.sourceId;
-      if (awardee) return awardee;
+    const wolActorIds = await cdp.eval(`(() => {
+      const awardees = [...document.querySelectorAll('.wol-awardee-button[data-source-id]')]
+        .map(node => node.dataset.sourceId);
       const picker = document.querySelector('.wol-node-picker');
-      return [...(picker?.options || [])].find(option => option.value)?.value || '';
+      const choices = [...(picker?.options || [])].map(option => option.value);
+      return [...new Set([...awardees, ...choices].filter(Boolean))].slice(0, 2);
     })()`);
-    assert(wolActorId, 'No WOL actor is available for dossier review');
+    assert(wolActorIds.length, 'No WOL actor is available for dossier review');
+    // Verify parameterized deep links for distinct actor identities in a live
+    // session, then independently test a cold-page deep link below.
+    for (const sourceId of wolActorIds) {
+      const hash = ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: sourceId });
+      await cdp.eval(`location.hash=${JSON.stringify(hash)};true`);
+      await assertWolActorDossier(cdp, sourceId, 'same-document-deep-link');
+    }
+    const wolActorId = wolActorIds[0];
     const wolDossierHash = ia.routeHref('evidence.web_of_lies', { dossier: 'actor', source: wolActorId });
     await cdp.call('Page.navigate', { url: `${SITE}${wolDossierHash}` });
-    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.web_of_lies' && document.querySelector('.guide-wol-dossier')?.dataset?.dossierSource === ${JSON.stringify(wolActorId)}`, 30000);
+    await assertWolActorDossier(cdp, wolActorId, 'cold-page-deep-link');
     await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
     await cdp.eval(`(() => {
       document.querySelector('[data-wol-mode="full"]')?.click();
