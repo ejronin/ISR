@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_IRGC_CLAIM_RECONCILIATION",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION_REVIEW_CANDIDATE",
+  "review_date": "2026-11-10",
+  "reviewed_base_sha": "4554fbb7a15b9ca9a27fc7bde7dee3f60d84f528",
+  "canonical_mutation": false,
+  "public_lie_denominator_delta": 0,
+  "controlling_contracts": [
+    "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md"
+  ],
+  "accounting_invariants": [
+    "FALSE != LIE",
+    "IRGC published claim is not verified BDA",
+    "Official denial is strong counterevidence, not independent corroboration",
+    "Ordinals require reconstructable individual item ledger",
+    "Actor institutional knowledge and individual knowledge separate",
+    "Old chain membership and distinct claim occurrence must be preserved"
+  ],
+  "case_reviews": [
+    {
+      "id": "IRGC-20260909-US-WARSHIPS-RECHECK",
+      "date": "2026-09-09",
+      "statement": "IRGC said two U.S. destroyers were struck and heavily damaged.",
+      "prior_membership": "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+      "counterevidence": "CENTCOM publicly said no U.S. Navy warship was struck and IRGC attempts failed.",
+      "state": "EXISTING_CLAIM_CHAIN_RECHECK_NO_DUPLICATE",
+      "truth": "PRIOR_ADJUDICATION_CONTROLS",
+      "knowledge": "PRIOR_ADJUDICATION_CONTROLS",
+      "action": "Cross-check already sealed verdict, sources, corrections and knowledge before any re-adjudication; do not insert another unique proposition.",
+      "urls": [
+        "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4593050/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship/",
+        "https://www.aa.com.tr/en/us-israel-iran-war/us-rejects-iranian-claim-of-strikes-on-navy-destroyers/4052236"
+      ]
+    },
+    {
+      "id": "IRGC-20261030-UNMANNED-SURFACE-VESSEL",
+      "date": "2026-10-30",
+      "statement": "IRGC said it destroyed a U.S. military unmanned surface vessel east of Hormuz.",
+      "prior_case_id": "CF-20261030-03",
+      "counterevidence": "CENTCOM publicly said every U.S. military unmanned surface vessel in the Middle East was accounted for.",
+      "truth": "UNSUBSTANTIATED_AND_OFFICIALLY_DISPUTED",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "verdict_change": false,
+      "needed": "Exact target hull/membership and independent loss proof or disproving whole-inventory accounting, plus original Iranian statement and records supporting organizational knowledge.",
+      "urls": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/",
+        "https://www.aa.com.tr/en/us-israel-iran-war/us-denies-irans-claim-that-it-destroyed-us-sea-drone-in-strait-of-hormuz/4106878"
+      ]
+    },
+    {
+      "id": "IRGC-20261104-MQ9-56TH-CLAIM",
+      "date": "2026-11-04",
+      "statement": "IRGC claimed it had shot down the 56th U.S. MQ-9 drone.",
+      "truth": "EXACT_ORDINAL_UNSUBSTANTIATED",
+      "knowledge": "NOT_YET_ADJUDICATED",
+      "verdict_change": false,
+      "specificity": "56th of exact aircraft model, not a fungible cumulative all-drone count.",
+      "needed": "IRGC individual 1–56 log; distinguish MQ-1/MQM-170/MQ-9, duplicate photos, loss dates, U.S. admissions, distinct November hull ID and authenticated imagery.",
+      "note": "CRS had >=45 MQ-9 losses by Aug. 13; this does not by itself falsify an alleged 56th by November.",
+      "urls": [
+        "https://www.iranintl.com/en/202611045349",
+        "https://www.everycrsreport.com/reports/IN12692.html"
+      ]
+    },
+    {
+      "id": "IRGC-20261104-FOUR-TANKERS-MINES",
+      "date": "2026-11-04",
+      "statement": "IRGC said four tankers were destroyed by naval mines while using prohibited southern Hormuz route.",
+      "truth": "UNSUBSTANTIATED_EXACT_FOUR_HULL_COUNT_AND_CAUSE",
+      "knowledge": "NOT_YET_ADJUDICATED",
+      "verdict_change": false,
+      "needed": "Names/IMO numbers and casualty/disablement evidence for each hull; separate limpet mine from anchored mine, stopped vs burned vs destroyed, and confirm no double count with Oct. 29–30 reports.",
+      "urls": [
+        "https://www.iranintl.com/en/202611045349",
+        "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-two-tankers-stopped-south-hormuz-after-incidents-2026-10-30/"
+      ]
+    },
+    {
+      "id": "IRGC-20261109-UNAUTHORIZED-OVERNIGHT-TRANSITS",
+      "date": "2026-11-09",
+      "statement": "Unnamed IRGC Navy official said no unauthorized vessels transited the Strait overnight after navigation aids were destroyed.",
+      "truth": "ATTRIBUTED_TIME_SCOPED_CLAIM_UNVERIFIED",
+      "knowledge": "NOT_YET_ADJUDICATED",
+      "verdict_change": false,
+      "needed": "Exact overnight clock, scope of 'unauthorized', ship/voyage identifiers, AIS and port/UKMTO corroboration and source of destroyed-aids claim.",
+      "urls": [
+        "https://www.reuters.com/world/iran-says-no-unauthorised-vessels-transited-strait-hormuz-overnight-after-2026-11-09/"
+      ]
+    }
+  ],
+  "next_action": "Only Claims Forensics can authorize fresh atomized FALSE and knowledge verdicts. Do not convert denied or unsupported propositions into Lie-count increments without an evidentiary judgment under controlling contract.",
+  "existing_case_index": "data/claims-forensics/claims-reviewed-cases-index-20261109.json",
+  "updated_claim_status": "SOURCE_RECONCILIATION_COMPLETE_FOR_LISTED_CANDIDATES; CANONICAL_TRUTH_KNOWLEDGE_AND_PUBLICATION_PENDING"
+}
