@@ -90,8 +90,22 @@ start_browser(){
   local candidate attempt deadline ready reason
   terminate_browser || true
   browser_profile=''
-  if ! curl -fsS --connect-timeout 2 --max-time 3 "${SITE_URL%/}/index.html" >/dev/null; then
-    echo "FAIL: Atlas site did not respond before Chrome startup: $SITE_URL" >&2
+  # The Python HTTP server starts asynchronously a few lines above.
+  # A bounded probe avoids falsely rejecting a healthy server still binding.
+  local server_deadline=$((SECONDS + 8)) server_ready=0
+  while [ "$SECONDS" -lt "$server_deadline" ]; do
+    if curl -fsS --connect-timeout 1 --max-time 1 "${SITE_URL%/}/index.html" >/dev/null 2>&1; then
+      server_ready=1
+      break
+    fi
+    if ! process_is_running "$server_pid"; then
+      echo "FAIL: Atlas HTTP server exited before readiness (pid=$server_pid)" >&2
+      break
+    fi
+    sleep 0.2
+  done
+  if [ "$server_ready" -ne 1 ]; then
+    echo "FAIL: Atlas site failed bounded HTTP readiness probe: $SITE_URL" >&2
     tail -n 35 /tmp/atlas-http.log >&2 || true
     return 1
   fi
