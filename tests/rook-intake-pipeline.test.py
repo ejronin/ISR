@@ -342,5 +342,29 @@ with tempfile.TemporaryDirectory() as name:
     assert not rejected["valid"]
 
 
+# The public evidence cutoff can be newer than complete 12-hour source coverage.
+# The schedule matrix must expose that debt rather than invent a no-delta sweep.
+import sys
+sys.path.insert(0, str(ROOT / "scripts"))
+import rook_collection_window_matrix as scheduled
+sample_report = {
+    "latest_accepted_canonical_evidence_cutoff": "2026-11-09T09:33:00-05:00",
+    "completed_sweeps": [
+        {"path": "sweep-1.json", "window_end": "2026-09-27T00:00:00-04:00", "consumed": True},
+        {"path": "sweep-2.json", "window_end": "2026-09-27T12:00:00-04:00", "consumed": False},
+    ],
+    "partial_collections": [
+        {"path": "partial.json", "window_end": "2026-09-28T00:00:00-04:00"},
+    ],
+}
+matrix = scheduled.build(sample_report, through=date(2026, 9, 28),
+                         as_of=datetime(2026, 9, 28, 12, 0, tzinfo=timezone(timedelta(hours=-4))))
+assert matrix["window_count"] == 4
+assert [r["status"] for r in matrix["windows"]] == [
+    "COMPLETED_CONSUMED", "COMPLETED_UNCONSUMED",
+    "INCOMPLETE_COLLECTION", "NO_RECOVERABLE_FULL_SWEEP",
+]
+assert matrix["totals"]["NO_RECOVERABLE_FULL_SWEEP"] == 1
+
 
 print("ROOK intake pipeline: PASS")
