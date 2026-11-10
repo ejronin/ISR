@@ -137,10 +137,10 @@ def main() -> int:
     require(all(row["map_eligibility"] in {"NONSPATIAL", "REGION_ONLY", "PLOT_READY", "UNLOCATED_NEEDS_SOURCE"} for row in dispositions), "invalid map eligibility")
     require(all(not row["point_marker_authorized"] and not row["canonical_location_ids"] for row in dispositions), "seq37/38 has a fabricated point or location ID")
     require(audit["eligible_exact_point_markers"] == 0, "seq37/38 point marker gate changed without qualified location evidence")
-    # Gate3 accepted events in sequences 37–39: one disposition per source event,
+    # Gate3 accepted events in sequences 37–40: one disposition per source event,
     # and one public map-reader card per region-only observation without a point.
     # A point may be enabled only after an accepted, source-qualified location.
-    eligibility_path = ROOT / "data/evidence-integration/accepted-map-eligibility-seq37-39.json"
+    eligibility_path = ROOT / "data/evidence-integration/accepted-map-eligibility-seq37-40.json"
     eligibility = json.loads(eligibility_path.read_text(encoding="utf-8"))
     source_event_by_id = {}
     for source_path in eligibility["source_packets"]:
@@ -150,11 +150,11 @@ def main() -> int:
             source_event_by_id[event["event_id"]] = event
     rows = eligibility["rows"]
     recorded = {row["event_id"]: row for row in rows}
-    require(len(recorded) == len(rows) == len(source_event_by_id) == 38, "accepted seq37-39 map audit cardinality mismatch")
-    require(set(recorded) == set(source_event_by_id), "accepted seq37-39 event missing map disposition")
+    require(len(recorded) == len(rows) == len(source_event_by_id) == 44, "accepted seq37-40 map audit cardinality mismatch")
+    require(set(recorded) == set(source_event_by_id), "accepted seq37-40 event missing map disposition")
     region_ids = {r["event_id"] for r in rows if r["map_eligibility"] == "REGION_ONLY"}
-    require(len(region_ids) == eligibility["region_only"] == 13, "regional map eligibility tally mismatch")
-    require(eligibility["nonspatial"] == 25 and eligibility["eligible_exact_point_markers"] == 0, "accepted map eligibility totals changed")
+    require(len(region_ids) == eligibility["region_only"] == 15, "regional map eligibility tally mismatch")
+    require(eligibility["nonspatial"] == 29 and eligibility["eligible_exact_point_markers"] == 0, "accepted map eligibility totals changed")
     for event_id, event in source_event_by_id.items():
         row = recorded[event_id]
         require(row["source_ids"] == event["source_ids"], f"map audit source IDs drifted: {event_id}")
@@ -164,7 +164,7 @@ def main() -> int:
         require(not any(k in event for k in ("lat", "lon", "latitude", "longitude", "coordinate", "location_id", "location_ids")), f"accepted event requires fresh spatial review: {event_id}")
     visible = eligibility["region_reader_group_ids"]
     visible_ids = visible["military"] + visible["maritime"]
-    require(len(visible_ids) == len(set(visible_ids)) == 13 and set(visible_ids) == region_ids, "reader misses regional map observations")
+    require(len(visible_ids) == len(set(visible_ids)) == 15 and set(visible_ids) == region_ids, "reader misses regional map observations")
     import re
     js = (ROOT / "js/public-ia.js").read_text(encoding="utf-8")
     for group in ("military", "maritime"):
