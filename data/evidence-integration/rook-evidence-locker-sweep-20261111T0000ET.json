@@ -1,0 +1,212 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-10T12:00:00-05:00",
+    "window_end": "2026-11-11T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-11T00:00:00-05:00",
+    "collection_time": "2026-11-10T23:57:32-05:00",
+    "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+    "collection_mode": "PARTIAL_PRE_CUTOFF"
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261111-MIDNIGHT-DIDAMAR-EXPLOSION",
+      "summary": "Reporting describes explosion on Omani Didamar Island; Iranian actor claim of strike and rationale are not independently verified. Omani official reportedly confirmed explosion, not full attribution or BDA.",
+      "occurrence_time": "2026-11-10_DATE_ONLY",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.wsj.com/world/middle-east/u-s-iran-exchange-strikes-on-islands-as-they-fight-for-control-of-strait-895801e5"
+      ],
+      "geospatial": {
+        "source_location_description": "Didamar Island, Oman; exact impact site unresolved",
+        "location_precision": "ISLAND_LEVEL",
+        "geolocation_status": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261111-MIDNIGHT-SAUDI-INTERCEPTIONS",
+      "updates_existing_ref": "SAUDI_HOUTHI_AERIAL_EXCHANGES_NOVEMBER_2026",
+      "relationship": "UPDATE_ADDITIONAL_INTERCEPTION_CLAIMS",
+      "summary": "Saudi-led coalition reported interception of Houthi missiles directed toward Riyadh and southern Saudi Arabia and drone in eastern Saudi Arabia. Houthi spokesperson claimed strikes on airport and Abqaiq facility; independent impacts unverified.",
+      "occurrence_time": "2026-11-10_DATE_ONLY",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepts-two-houthi-missiles-fired-towards-riyadh-2026-11-10/"
+      ],
+      "geospatial": {
+        "source_location_description": "Riyadh, southern and eastern Saudi Arabia; interception/impact coordinates not sourced",
+        "geolocation_status": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY"
+      }
+    },
+    {
+      "update_id": "ROOK-20261111-MIDNIGHT-HORMUZ-SHIPPING",
+      "updates_existing_ref": "HORMUZ_NOVEMBER_2026_SHIPPING_ATTACKS",
+      "relationship": "UPDATE_SHIPPING_INCIDENT_REPORTS_NOT_INDEPENDENT_ATTRIBUTION",
+      "summary": "Reuters reviewed evidence of tanker fires and continuing shipping attacks; specific vessels and incident coordinates require separate vessel-by-vessel verification.",
+      "occurrence_time": "2026-11-10_OR_EARLIER_UNRESOLVED",
+      "publication_time": "2026-11-10T19:14:00Z",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/tankers-continue-burn-middle-east-despite-hopes-de-escalation-2026-11-10/"
+      ],
+      "geospatial": {
+        "source_location_description": "Strait of Hormuz and surrounding waterways, vessel-specific positions unresolved",
+        "geolocation_status": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY"
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261111-MIDNIGHT-HOUTHI-TARGETS",
+      "claim": "Houthi spokesperson claimed attacks against King Khalid International Airport and Abqaiq oil facility; reported interception does not confirm impact.",
+      "claimant": "Houthi spokesperson Yahya Saree",
+      "independent_verification": "NOT_ESTABLISHED",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepts-two-houthi-missiles-fired-towards-riyadh-2026-11-10/"
+      ]
+    },
+    {
+      "claim_id": "ROOK-20261111-MIDNIGHT-IRAN-NEGOTIATIONS",
+      "claim": "Iranian security official Mohsen Rezaei said there were currently no Tehran-Washington negotiations; distinguish this statement from earlier Qatar-mediated contacts.",
+      "claimant": "Mohsen Rezaei",
+      "independent_verification": "ATTRIBUTED_STATEMENT_NOT_INDEPENDENT_NEGOTIATION_STATUS",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-trump-downplays-prospect-escalation-with-iran-2026-11-10/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261111-MIDNIGHT-OIL-SETTLEMENT",
+      "summary": "Reuters reported November 10 Brent settlement $91.49/bbl and WTI $86.04/bbl, two-month lows; market prices do not establish conflict normalization.",
+      "occurrence_time": "2026-11-10_US_MARKET_SETTLEMENT",
+      "publication_time": "2026-11-10_TIME_UNVERIFIED",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-trump-downplays-prospect-escalation-with-iran-2026-11-10/"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "economic_id": "ROOK-20261111-MIDNIGHT-ORLEN-QATAR-LNG",
+      "summary": "Orlen announced termination of one QatarEnergy long-term LNG contract after delivery force majeure; contract covers approximately one million metric tons per year, with 60-day effective period. Second contract continues.",
+      "occurrence_time": "2026-11-10_DATE_ONLY",
+      "publication_time": "2026-11-10T22:04:00Z",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/polands-orlen-ends-long-term-qatarenergy-lng-contract-over-delivery-failure-2026-11-10/"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "economic_id": "ROOK-20261111-MIDNIGHT-HORMUZ-LNG-OCTOBER",
+      "summary": "S&P Global Energy vessel tracking cited by Reuters: 31 laden LNG tankers exited Hormuz in October (23 Ras Laffan, 8 Das Island), up from 23 September; historical monthly comparison not evidence of unrestricted transit.",
+      "occurrence_time": "2026-10_MONTH",
+      "publication_time": "2026-11-10T04:26:00Z",
+      "collection_time": "2026-11-10T23:57:32-05:00",
+      "evidence_horizon_time": "2026-11-10T23:57:32-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/hormuz-lng-traffic-hits-highest-october-since-iran-war-began-2026-11-10/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Saudi Houthi exchanges",
+      "decision": "UPDATE",
+      "reason": "New interception and target claims; no verified impact"
+    },
+    {
+      "topic": "Hormuz vessel incidents",
+      "decision": "UPDATE",
+      "reason": "Additional tanker-fire reporting; individual coordinates unresolved"
+    },
+    {
+      "topic": "Qatar mediation",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified implemented agreement; contradictory public statements preserved as claims"
+    },
+    {
+      "topic": "Gem No. 2 cargo tender",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified transfer completion beyond earlier drawer"
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified change in operational status"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Saudi/Yemen aerial claims",
+      "Reuters Hormuz tanker reporting",
+      "Reuters energy and LNG",
+      "Reuters Orlen/QatarEnergy",
+      "WSJ Oman Didamar report"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran political/military/security primary",
+      "US Israel primary",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Yemen Lebanon Gaza Syria",
+      "Pakistan Turkiye China Russia Europe",
+      "UN IAEA IMO aviation sanctions",
+      "AIS Kpler LSEG primary",
+      "humanitarian primary and independent OSINT"
+    ],
+    "source_review_limitation": "Collection began before scheduled midnight cutoff; broad source-class review and complete prior drawer reconciliation not achieved; publication clock times for some articles unverified."
+  },
+  "unresolved_questions": [
+    "Didamar impact coordinates and independent attribution/BDA",
+    "Saudi missile/drone interception evidence and claimed target impacts",
+    "Individual tanker identifiers, IMO numbers, AIS tracks, casualties and incident coordinates",
+    "Whether Orlen termination has entered into effect",
+    "Publication times of date-only sources",
+    "Unreviewed actor and source classes",
+    "Durable ROOK intake validation as completed unconsumed sweep"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/business/energy/polands-orlen-ends-long-term-qatarenergy-lng-contract-over-delivery-failure-2026-11-10/",
+    "https://www.reuters.com/business/energy/tankers-continue-burn-middle-east-despite-hopes-de-escalation-2026-11-10/"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_PRE_CUTOFF_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Upstream source-backed partial intake. Cutoff not yet reached at collection and repository validator not executed. No protected state changed."
+  }
+}
