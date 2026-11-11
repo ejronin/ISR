@@ -1,0 +1,187 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-11T00:00:00-05:00",
+    "window_end": "2026-11-11T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-11T12:00:00-05:00",
+    "collection_time": "2026-11-11T12:02:28-05:00",
+    "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+    "collection_mode": "PARTIAL_POST_CUTOFF"
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261111-NOON-SAUDI-CRUISE-INTERCEPTIONS",
+      "updates_existing_ref": "SAUDI_HOUTHI_AERIAL_EXCHANGES_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Saudi-led coalition claimed interception of three Houthi cruise missiles aimed at Riyadh region on November 11. No independent verification of missile tracks, launch positions, impact sites or BDA.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T12:02:28-05:00",
+      "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-air-defences-intercept-three-houthi-cruise-missiles-launched-toward-riyadh-2026-11-11/"
+      ],
+      "geospatial": {
+        "source_location_description": "Riyadh region, Saudi Arabia; interception locations not supplied",
+        "location_precision": "REGION_LEVEL",
+        "geolocation_status": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261111-NOON-IRAN-ENRICHED-MATERIAL",
+      "claim": "Mohsen Rezaei stated Iran would not allow enriched nuclear material to leave the country and threatened retaliation for new US strikes. Statement does not establish location or quantity of surviving stockpile.",
+      "claimant": "Mohsen Rezaei",
+      "independent_verification": "ATTRIBUTED_STATEMENT",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11T10:26:00Z",
+      "collection_time": "2026-11-11T12:02:28-05:00",
+      "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+      "sources": [
+        "https://www.aol.com/articles/iran-not-allow-enriched-nuclear-102614000.html"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "claim_id": "ROOK-20261111-NOON-IRAN-GAS-SHORTFALL",
+      "claim": "Iranian government spokesperson forecast domestic gas shortfall of 430 million cubic meters, and said four processing plants had been damaged with partial capacity restored. No plant-specific independent damage verification.",
+      "claimant": "Iranian government spokesperson Fatemeh Mohajerani",
+      "independent_verification": "ATTRIBUTED_ESTIMATE_NOT_INDEPENDENT_BDA",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T12:02:28-05:00",
+      "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/iran-warns-domestic-gas-shortages-war-this-winter-2026-11-11/"
+      ],
+      "geospatial": {
+        "source_location_description": "Four unspecified gas-processing plants in Iran; exact facilities not named in reviewed report",
+        "geolocation_status": "UNRESOLVED",
+        "map_eligibility": "unlocated pending source",
+        "projection_readiness": "NOT_PLOT_READY"
+      }
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261111-NOON-IRAN-GAS-SUPPLY",
+      "summary": "Iranian officials warned of winter gas shortages, citing forecast 430 million cubic meters shortfall and incomplete recovery of war-damaged processing capacity; figures attributed, not audited.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T12:02:28-05:00",
+      "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/iran-warns-domestic-gas-shortages-war-this-winter-2026-11-11/"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "economic_id": "ROOK-20261111-NOON-OIL-INTRADAY",
+      "summary": "Reuters reported Brent $92.71 and WTI $87.13 at 14:12 UTC November 11; intraday quote, not settlement.",
+      "occurrence_time": "2026-11-11T14:12:00Z",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T12:02:28-05:00",
+      "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+      "sources": [
+        "https://www.marketscreener.com/news/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes-ce785edbd981f725"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "economic_id": "ROOK-20261111-NOON-OPEC-OUTPUT",
+      "summary": "WSJ reported OPEC October output 27.16 million bpd versus prewar 28.63 million bpd; Saudi output 10.56 million bpd. Publication time unverified and source figures not independently audited.",
+      "occurrence_time": "2026-10_MONTH",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T12:02:28-05:00",
+      "evidence_horizon_time": "2026-11-11T12:02:28-05:00",
+      "sources": [
+        "https://www.wsj.com/business/energy-oil/opecs-oil-production-nears-prewar-levels-on-saudi-rebound-70ffcc13"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Saudi Houthi aerial exchanges",
+      "decision": "UPDATE",
+      "reason": "New November 11 interception claim, no verified strike impact"
+    },
+    {
+      "topic": "Iran nuclear negotiations",
+      "decision": "UPDATE",
+      "reason": "New enriched-material position attributed to Rezaei; no implemented agreement"
+    },
+    {
+      "topic": "Hormuz tanker fires",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No vessel-specific independent disposition in reviewed sources"
+    },
+    {
+      "topic": "Didamar Island explosion",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified impact coordinates or independent BDA in reviewed sources"
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified repair-status change in reviewed sources"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Saudi/Houthi Reuters",
+      "Iran nuclear/security Reuters syndication",
+      "Iran domestic gas Reuters",
+      "oil intraday Reuters",
+      "OPEC production WSJ"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership primary",
+      "US and Israel primary",
+      "GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Lebanon Gaza Syria",
+      "Pakistan Turkiye China Russia Europe",
+      "UN IAEA IMO",
+      "maritime aviation and sanctions authorities",
+      "AIS Kpler LSEG",
+      "humanitarian agencies and independent OSINT"
+    ],
+    "source_review_limitation": "Five source leads only; publication times of multiple reports unresolved; full theater-wide review and comprehensive prior drawer reconciliation not achieved."
+  },
+  "unresolved_questions": [
+    "Publication time of Saudi interception report relative to noon cutoff",
+    "Independent missile interception verification and locations",
+    "Iranian gas facility names and independent damage evidence",
+    "Nuclear stockpile disposition",
+    "Unreviewed source classes",
+    "Durable intake validator completed-unconsumed certification"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/saudi-air-defences-intercept-three-houthi-cruise-missiles-launched-toward-riyadh-2026-11-11/",
+    "https://www.reuters.com/business/energy/iran-warns-domestic-gas-shortages-war-this-winter-2026-11-11/",
+    "https://www.aol.com/articles/iran-not-allow-enriched-nuclear-102614000.html",
+    "https://www.marketscreener.com/news/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes-ce785edbd981f725",
+    "https://www.wsj.com/business/energy-oil/opecs-oil-production-nears-prewar-levels-on-saudi-rebound-70ffcc13"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial upstream evidence; no accepted or public mutation. Validator not executed; not a completed unconsumed sweep."
+  }
+}
