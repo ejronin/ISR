@@ -1,0 +1,267 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-11T12:00:00-05:00",
+    "window_end": "2026-11-12T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-12T00:00:00-05:00",
+    "collection_time": "2026-11-11T23:57:08-05:00",
+    "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+    "collection_mode": "PARTIAL_PRE_CUTOFF",
+    "caveat": "Collection began before scheduled cutoff; future reporting not assumed."
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261112-MIDNIGHT-DIDAMAR-NAV",
+      "updates_existing_ref": "DIDAMAR_ISLAND_EXPLOSION_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Reuters reports three sources attributing attack on Didamar Island navigation systems to Iran; video smoke and satellite thermal observations do not independently prove system destruction, perpetrator or BDA.",
+      "occurrence_time": "2026-11-11_OR_EARLIER_UNRESOLVED",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-attacks-shipping-navigation-systems-omans-didamar-island-sources-say-2026-11-11/"
+      ],
+      "geospatial": {
+        "source_location_description": "Didamar Island, Oman; precise system and impact location not verified",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "SOURCE_LOCALITY_ONLY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "update_id": "ROOK-20261112-MIDNIGHT-SAUDI-INTERCEPT",
+      "updates_existing_ref": "SAUDI_HOUTHI_AERIAL_EXCHANGES_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Reuters expands November 11 Saudi coalition claim to seven intercepted Houthi weapons: three cruise missiles toward Riyadh, two drones toward Mecca/south, and two missiles westward. Houthi spokesperson denies targeting Mecca and separately claims Yanbu pumping station attack; no independent impact or interception BDA.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-air-defences-intercept-three-houthi-cruise-missiles-launched-toward-riyadh-2026-11-11/"
+      ],
+      "geospatial": {
+        "source_location_description": "Riyadh, Mecca, western and southern Saudi Arabia; individual interception locations unreported",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "SOURCE_LOCALITY_ONLY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "update_id": "ROOK-20261112-MIDNIGHT-GAZA-HUMANITARIAN",
+      "updates_existing_ref": "GAZA_CEASEFIRE_HUMANITARIAN_ACCESS_2026",
+      "relationship": "UPDATE",
+      "summary": "AP reports UN assertion that over 150,000 tents and water pumps await Israeli authorization; Netanyahu disputes responsibility for flooded camps. AP reports three Palestinians killed by Israeli strikes Wednesday. Attribution and humanitarian access claims require agency/source reconciliation.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://apnews.com/article/50075bc97e07d41fa3b66fc28858c06b"
+      ],
+      "geospatial": {
+        "source_location_description": "Gaza Strip; specific strike sites not reported",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "SOURCE_LOCALITY_ONLY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "update_id": "ROOK-20261112-MIDNIGHT-YEMEN-FRONT",
+      "updates_existing_ref": "YEMEN_GOVERNMENT_HOUTHI_GROUND_FIGHTING_2026",
+      "relationship": "UPDATE",
+      "summary": "Yemeni government claims 190 rebel fighters killed or wounded in renewed fighting; Houthi side claims losses inflicted on government forces. Neither side's casualty counts independently verified.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/11/11/yemeni-forces-houthis-exchange-attacks-claim-to-inflict-heavy-losses"
+      ],
+      "geospatial": {
+        "source_location_description": "Yemen, specific engagement positions unresolved",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "SOURCE_LOCALITY_ONLY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261112-MIDNIGHT-YANBU",
+      "claim": "Houthi spokesperson claims an attack on a pumping station at Yanbu; Saudi confirmation absent in reviewed report.",
+      "claimant": "Houthi military spokesperson Yahya Saree",
+      "independent_verification": "NOT_ESTABLISHED",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-air-defences-intercept-three-houthi-cruise-missiles-launched-toward-riyadh-2026-11-11/"
+      ],
+      "geospatial": {
+        "source_location_description": "Yanbu area, Saudi Arabia; specific pumping station not independently identified",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "SOURCE_LOCALITY_ONLY",
+        "map_eligibility": "unlocated pending source",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "claim_id": "ROOK-20261112-MIDNIGHT-IRAN-STRIKE-WARNING",
+      "claim": "Iranian officials describe possible future US strikes or tighter sanctions and threatened response; not evidence of a decision, actual strike or intent.",
+      "claimant": "Iranian officials cited by The Guardian",
+      "independent_verification": "ATTRIBUTED_FORECAST",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11_TIME_UNVERIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.theguardian.com/world/2026/nov/11/trump-planning-military-assault-or-tighter-sanctions-iranian-officials"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261112-MIDNIGHT-OIL-SETTLEMENT",
+      "summary": "Reuters syndicated November 11 settlement: Brent $92.76/bbl (+$1.27), WTI $86.53/bbl (+$0.49). Settlement figures not intraday quotes.",
+      "occurrence_time": "2026-11-11_MARKET_SETTLEMENT",
+      "publication_time": "2026-11-11T15:09:00-05:00_SYNDICATION_MODIFIED",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.marketscreener.com/news/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes-ce785edbd981f725"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "economic_id": "ROOK-20261112-MIDNIGHT-HORMUZ-TRAFFIC",
+      "summary": "Reuters Gulf Currents discusses increasing Hormuz traffic alongside continued attacks; numerical vessel counts and independent AIS verification not extracted in this partial pass.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-11T16:12:00Z",
+      "collection_time": "2026-11-11T23:57:08-05:00",
+      "evidence_horizon_time": "2026-11-11T23:57:08-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/hormuz-traffic-is-up-so-are-attacks-2026-11-11/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Didamar Island explosion",
+      "decision": "UPDATE",
+      "reason": "New source attribution and target-class description; no independent BDA or point location"
+    },
+    {
+      "topic": "Saudi-Houthi aerial exchanges",
+      "decision": "UPDATE",
+      "reason": "Expanded weapon count and Houthi Yanbu claim; not a new confirmed strike"
+    },
+    {
+      "topic": "Gaza humanitarian access",
+      "decision": "UPDATE",
+      "reason": "New UN access claim and AP-reported casualties; precise sites unlocated"
+    },
+    {
+      "topic": "Yemen ground fighting",
+      "decision": "UPDATE",
+      "reason": "New competing casualty claims, no independently verified count"
+    },
+    {
+      "topic": "Iran nuclear negotiations",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No implemented settlement independently established"
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified repair change in reviewed sources"
+    },
+    {
+      "topic": "Hormuz tanker fires",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified vessel-specific disposition in reviewed sources"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Saudi Arabia/Houthis Reuters",
+      "Oman Didamar Reuters",
+      "Gaza AP",
+      "Yemen Al Jazeera",
+      "Iran diplomacy Guardian",
+      "Oil settlement Reuters syndication",
+      "Hormuz Reuters newsletter"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran political/military primary",
+      "US Israel primary",
+      "GCC Qatar UAE Kuwait Bahrain primary",
+      "Iraq Lebanon Syria",
+      "Pakistan Turkiye China Russia EU",
+      "UN IAEA IMO primary",
+      "maritime aviation sanctions primary",
+      "AIS Kpler LSEG public data",
+      "humanitarian agencies primary",
+      "independent geospatial OSINT"
+    ],
+    "source_review_limitation": "Seven source leads; collection before cutoff; primary authority and full theater-wide review incomplete."
+  },
+  "unresolved_questions": [
+    "Post-cutoff reporting not yet reviewed",
+    "Didamar navigation-system damage and attribution",
+    "Saudi interceptions independent confirmation and locations",
+    "Yanbu pumping station claim",
+    "Yemen casualty corroboration",
+    "Gaza strike locality and aid authorization",
+    "AIS vessel-specific incidents",
+    "Publication timestamps for several leads",
+    "Durable intake validator certification"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/saudi-air-defences-intercept-three-houthi-cruise-missiles-launched-toward-riyadh-2026-11-11/",
+    "https://www.reuters.com/world/middle-east/iran-attacks-shipping-navigation-systems-omans-didamar-island-sources-say-2026-11-11/",
+    "https://apnews.com/article/50075bc97e07d41fa3b66fc28858c06b",
+    "https://www.aljazeera.com/news/2026/11/11/yemeni-forces-houthis-exchange-attacks-claim-to-inflict-heavy-losses",
+    "https://www.marketscreener.com/news/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes-ce785edbd981f725",
+    "https://www.reuters.com/world/middle-east/hormuz-traffic-is-up-so-are-attacks-2026-11-11/",
+    "https://www.theguardian.com/world/2026/nov/11/trump-planning-military-assault-or-tighter-sanctions-iranian-officials"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_PRE_CUTOFF_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial pre-cutoff collection. No completed-unconsumed certification. No protected mutations."
+  }
+}
