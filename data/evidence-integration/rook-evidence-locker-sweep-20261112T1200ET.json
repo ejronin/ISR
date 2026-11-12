@@ -1,0 +1,110 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-12T00:00:00-05:00",
+    "window_end": "2026-11-12T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-12T12:00:00-05:00",
+    "collection_time": "2026-11-12T11:59:22-05:00",
+    "evidence_horizon_time": "2026-11-12T11:59:22-05:00",
+    "collection_mode": "PARTIAL_PRE_CUTOFF",
+    "caveat": "Collection initiated 38 seconds before cutoff; no post-cutoff information represented as collected."
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261112-NOON-MECCA-DEBRIS",
+      "updates_existing_ref": "SAUDI_HOUTHI_AERIAL_EXCHANGES_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Reuters 00:21 UTC reports Saudi civil defence assertion two ballistic missiles intercepted; Saudi state TV names debris localities Sabuhah village and Wadi al-Maghmas. Attribution and intercept BDA not independently established; do not equate debris locations to target or launch points.",
+      "occurrence_time": "2026-11-11_DATE_ONLY",
+      "publication_time": "2026-11-12T00:21:00Z",
+      "collection_time": "2026-11-12T11:59:22-05:00",
+      "evidence_horizon_time": "2026-11-12T11:59:22-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-arabia-says-debris-intercepted-missiles-falls-mecca-region-2026-11-12/"
+      ],
+      "geospatial": {
+        "source_location_description": "Sabuhah village ~35 km northeast of Grand Mosque in Mecca; Wadi al-Maghmas ~21 km east of Grand Mosque; debris locations only",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "NAMED_LOCALITY_AND_APPROXIMATE_DISTANCE",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Saudi-Houthi aerial exchanges",
+      "decision": "UPDATE",
+      "reason": "Two named debris localities add geography to earlier claims; interception remains actor-attributed"
+    },
+    {
+      "topic": "Didamar navigation systems",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified BDA or precise location in this pass"
+    },
+    {
+      "topic": "Iran nuclear negotiations",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No implemented agreement established in reviewed sources"
+    },
+    {
+      "topic": "Hormuz tanker incidents",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No vessel-specific independent disposition verified in this pass"
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified repair-status change in reviewed sources"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Saudi civil-defence claims via Reuters",
+      "Saudi/Houthi and Iran diplomatic background via Reuters",
+      "Oil price Reuters syndication background"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran political/military/security primary",
+      "US and Israel primary",
+      "GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Lebanon Hezbollah Gaza Hamas Syria",
+      "Pakistan Turkiye China Russia Europe EU",
+      "UN IAEA IMO maritime aviation sanctions primary",
+      "Energy commodity markets and AIS Kpler LSEG",
+      "Humanitarian agencies and independently published geospatial OSINT"
+    ],
+    "source_review_limitation": "Pre-cutoff narrow Reuters-led collection; one admissible sourced update; other November 12 articles lacked confirmed pre-cutoff publication or were published after cutoff and excluded."
+  },
+  "unresolved_questions": [
+    "Independent confirmation of missile interceptions and debris locations",
+    "Source-grade coordinates for named localities, not inferred coordinates",
+    "Attribution and BDA",
+    "Complete theater-wide primary source review",
+    "Post-cutoff evidence horizon",
+    "Durable validator completed-unconsumed recognition"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/saudi-arabia-says-debris-intercepted-missiles-falls-mecca-region-2026-11-12/"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_PRE_CUTOFF_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial pre-cutoff source review; no completed-unconsumed certification; protected artifacts untouched."
+  }
+}
