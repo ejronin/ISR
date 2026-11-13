@@ -1,0 +1,169 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-13T00:00:00-05:00",
+    "window_end": "2026-11-13T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-13T12:00:00-05:00",
+    "collection_time": "2026-11-13T11:58:19-05:00",
+    "evidence_horizon_time": "2026-11-13T11:58:19-05:00",
+    "collection_mode": "PARTIAL_PRE_CUTOFF",
+    "caveat": "Collection initiated before noon cutoff; publication times and full source-class coverage not exhaustively verified. No post-horizon information asserted as within horizon."
+  },
+  "new_events": [
+    {
+      "event_id": "ROOK-20261113-BAHRAIN-DRONE-CLAIM",
+      "summary": "IRGC claimed strike on US early-warning radar in Bahrain; US military denied damage and reported intercepting two Iranian one-way attack drones. Actor claims are contradictory, no independent BDA.",
+      "occurrence_time": null,
+      "publication_time": "2026-11-13T02:51:00+00:00",
+      "collection_time": "2026-11-13T11:58:19-05:00",
+      "evidence_horizon_time": "2026-11-13T11:58:19-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-guards-say-they-targeted-us-early-warning-radar-bahrain-2026-11-13/"
+      ],
+      "geospatial": {
+        "source_location_description": "Bahrain; specific radar site and drone interception positions not sourced",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "COUNTRY_ONLY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261113-IAEA-ISFAHAN",
+      "updates_existing_ref": "IRAN_NUCLEAR_SAFEGUARDS_INSPECTION_ACCESS",
+      "relationship": "UPDATE",
+      "summary": "IAEA confidential report seen by Reuters expresses increased concern about Isfahan enrichment plant declared last year but not inspected. This is an access/safeguards update, not evidence of new strike or confirmed operational status.",
+      "occurrence_time": null,
+      "publication_time": "2026-11-13T09:23:00+00:00",
+      "collection_time": "2026-11-13T11:58:19-05:00",
+      "evidence_horizon_time": "2026-11-13T11:58:19-05:00",
+      "sources": [
+        "https://www.reuters.com/world/china/iaea-increasingly-concerned-about-iranian-enrichment-plant-its-report-says-2026-11-13/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261113-IRGC-BAHRAIN-RADAR",
+      "claimant": "IRGC",
+      "claim": "US early-warning radar in Bahrain attacked",
+      "assessment": "DISPUTED_BY_US_MILITARY_NO_INDEPENDENT_BDA",
+      "occurrence_time": null,
+      "publication_time": "2026-11-13T02:51:00+00:00",
+      "collection_time": "2026-11-13T11:58:19-05:00",
+      "evidence_horizon_time": "2026-11-13T11:58:19-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-guards-say-they-targeted-us-early-warning-radar-bahrain-2026-11-13/"
+      ],
+      "map_eligibility": "region-only"
+    },
+    {
+      "claim_id": "ROOK-20261113-US-BAHRAIN-INTERCEPT",
+      "claimant": "US military",
+      "claim": "Two Iranian one-way attack drones intercepted en route Bahrain without damage",
+      "assessment": "ACTOR_STATEMENT_NOT_INDEPENDENTLY_VERIFIED",
+      "occurrence_time": null,
+      "publication_time": "2026-11-13T02:51:00+00:00",
+      "collection_time": "2026-11-13T11:58:19-05:00",
+      "evidence_horizon_time": "2026-11-13T11:58:19-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-guards-say-they-targeted-us-early-warning-radar-bahrain-2026-11-13/"
+      ],
+      "map_eligibility": "region-only"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261113-IEA-4Q-SURPLUS",
+      "summary": "IEA projects Q4 global oil supply exceeding demand by approximately 1.7 million barrels/day as Gulf exports recover; forecast, not realized final quarter outcome.",
+      "occurrence_time": null,
+      "publication_time": "2026-11-13T09:13:00+00:00",
+      "collection_time": "2026-11-13T11:58:19-05:00",
+      "evidence_horizon_time": "2026-11-13T11:58:19-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/world-oil-market-is-returning-surplus-gulf-exports-recover-iea-says-2026-11-13/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Iran-US military exchanges",
+      "decision": "UPDATE",
+      "reason": "Contradictory Bahrain radar strike and interception claims newly reported; no independent BDA"
+    },
+    {
+      "topic": "Iran IAEA safeguards access",
+      "decision": "UPDATE",
+      "reason": "New IAEA report identifies continuing Isfahan inspection gap"
+    },
+    {
+      "topic": "Saudi-Houthi pipeline incidents",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently corroborated change established in limited review"
+    },
+    {
+      "topic": "Hormuz tanker explosions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No vessel-specific verified new BDA in reviewed sources"
+    },
+    {
+      "topic": "Prior geospatial unresolved incidents",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No defensible new coordinates identified"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Iran/US military claims Reuters",
+      "IAEA safeguards Reuters",
+      "IEA oil market Reuters",
+      "Hormuz and Saudi context Reuters"
+    ],
+    "not_comprehensively_reviewed": [
+      "Israel",
+      "Saudi/GCC/Oman/Qatar/UAE/Kuwait/Bahrain primary",
+      "Iraq Yemen Lebanon Gaza Syria",
+      "Pakistan Turkiye China Russia EU",
+      "UN IMO maritime aviation sanctions",
+      "AIS Kpler LSEG shipping",
+      "Human impact agencies",
+      "Independent geospatial OSINT",
+      "Prior drawers full enumeration"
+    ],
+    "source_review_limitation": "Targeted discovery; no exhaustive theater-wide primary-source verification; sweep began before window cutoff."
+  },
+  "unresolved_questions": [
+    "Independent imagery or US/Bahrain radar-site corroboration",
+    "Precise location and interception chronology in Bahrain",
+    "Isfahan inspection-access chronology and primary IAEA report",
+    "Shipping vessel identities and AIS traces",
+    "Full theater-wide source review",
+    "Completed-unconsumed validator status"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/irans-guards-say-they-targeted-us-early-warning-radar-bahrain-2026-11-13/",
+    "https://www.reuters.com/world/china/iaea-increasingly-concerned-about-iranian-enrichment-plant-its-report-says-2026-11-13/",
+    "https://www.reuters.com/business/energy/world-oil-market-is-returning-surplus-gulf-exports-recover-iea-says-2026-11-13/"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_PRE_CUTOFF_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Preserved partial evidence before noon cutoff. Cannot certify complete or unconsumed without repository validator and full coverage. No protected state modified."
+  }
+}
