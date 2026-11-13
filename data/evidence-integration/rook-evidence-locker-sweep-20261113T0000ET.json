@@ -1,0 +1,186 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-12T12:00:00-05:00",
+    "window_end": "2026-11-13T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-13T00:00:00-05:00",
+    "collection_time": "2026-11-13T00:00:04-05:00",
+    "evidence_horizon_time": "2026-11-13T00:00:04-05:00",
+    "collection_mode": "PARTIAL_POST_CUTOFF",
+    "caveat": "Publication timing not independently established for every November 12 report; these are collected as updates or claims, not asserted as new occurrence within window."
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261113-MIDNIGHT-SAUDI-HOUTHI",
+      "updates_existing_ref": "SAUDI_HOUTHI_AERIAL_EXCHANGES_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Reuters November 12 reports Houthi claims of strikes against East-West pipeline pumping station, Yanbu oil facility and Riyadh Aramco building without occurrence times. Saudi-led coalition says two drones intercepted near Riyadh and in Eastern Province. No independent BDA or attribution verification; no proof pipeline disruption.",
+      "occurrence_time": null,
+      "publication_time": "2026-11-12_DATE_ONLY",
+      "collection_time": "2026-11-13T00:00:04-05:00",
+      "evidence_horizon_time": "2026-11-13T00:00:04-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-pumping-station-saudi-arabias-east-west-oil-2026-11-12/"
+      ],
+      "geospatial": {
+        "source_location_description": "Saudi Riyadh region and Eastern Province for claimed drone interceptions; Yanbu and East-West pipeline locations for Houthi target claims, not verified impacts",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "REGION_ONLY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "update_id": "ROOK-20261113-MIDNIGHT-HORMUZ-TANKERS",
+      "updates_existing_ref": "HORMUZ_TANKER_INCIDENTS_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Iranian military claimed four oil tankers struck by explosions after ignoring warnings. Reuters could not verify the Iranian account. Vessel identities, positions, damage, timing and attribution unresolved.",
+      "occurrence_time": null,
+      "publication_time": "2026-11-12_DATE_ONLY",
+      "collection_time": "2026-11-13T00:00:04-05:00",
+      "evidence_horizon_time": "2026-11-13T00:00:04-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-drop-more-than-1-hopes-iran-ukraine-peace-talks-pressure-markets-2026-11-12/"
+      ],
+      "geospatial": {
+        "source_location_description": "Strait of Hormuz, no vessel-specific coordinates",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "STRAIT_LEVEL",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261113-MIDNIGHT-TRUMP-DEAL",
+      "claimant": "Donald Trump",
+      "claim": "US does not need a deal with Iran",
+      "assessment": "ACTOR_POSITION_NOT_IMPLEMENTED_AGREEMENT",
+      "occurrence_time": "2026-11-12_DATE_ONLY",
+      "publication_time": "2026-11-12_DATE_ONLY",
+      "collection_time": "2026-11-13T00:00:04-05:00",
+      "evidence_horizon_time": "2026-11-13T00:00:04-05:00",
+      "sources": [
+        "https://gulfnews.com/world/mena/we-dont-need-a-deal-with-iran-says-trump-is-the-middle-east-stuck-in-no-war-no-peace-1.500745347"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "claim_id": "ROOK-20261113-MIDNIGHT-HOUTHI-MECCA",
+      "claimant": "Houthi representatives",
+      "claim": "Denied targeting Mecca or Medina",
+      "assessment": "DENIAL_NOT_INDEPENDENT_ATTRIBUTION_FINDING",
+      "occurrence_time": null,
+      "publication_time": "2026-11-12_DATE_ONLY",
+      "collection_time": "2026-11-13T00:00:04-05:00",
+      "evidence_horizon_time": "2026-11-13T00:00:04-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-arabia-says-debris-intercepted-missiles-falls-mecca-region-2026-11-12/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "update_id": "ROOK-20261113-MIDNIGHT-OIL-SETTLEMENT",
+      "summary": "Reuters November 12 reported Brent settlement $95.82/bbl (+$3.06, 3.3%) and WTI $88.74/bbl (+$2.21, 2.6%). These are settlement figures, not post-midnight quotes.",
+      "occurrence_time": "2026-11-12_DATE_ONLY",
+      "publication_time": "2026-11-12_DATE_ONLY",
+      "collection_time": "2026-11-13T00:00:04-05:00",
+      "evidence_horizon_time": "2026-11-13T00:00:04-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-drop-more-than-1-hopes-iran-ukraine-peace-talks-pressure-markets-2026-11-12/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Saudi-Houthi aerial exchanges and East-West pipeline",
+      "decision": "UPDATE",
+      "reason": "November 12 new actor claims and interception report; no independently verified damage"
+    },
+    {
+      "topic": "Hormuz tanker incidents",
+      "decision": "UPDATE",
+      "reason": "Iranian military claims four vessels affected; unverified and not mapped"
+    },
+    {
+      "topic": "Didamar navigation systems",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new corroborated BDA located in this partial review"
+    },
+    {
+      "topic": "Iran-US negotiation",
+      "decision": "UPDATE",
+      "reason": "Trump publicly rejects need for deal; no settlement implemented"
+    },
+    {
+      "topic": "Mecca debris claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independent confirmation of launch origin or impact target"
+    },
+    {
+      "topic": "Saudi pipeline operational state",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently confirmed new outage or repair disposition"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Saudi-Houthi Reuters reports",
+      "Iranian maritime military claim via Reuters",
+      "US-Iran diplomatic position via Gulf News",
+      "Oil settlement via Reuters",
+      "EU designation proposal via Reuters",
+      "G7/IAEA via secondary reporting",
+      "Marine environmental OSINT via Guardian"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran political military security primary",
+      "United States Israel primary",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Lebanon Hezbollah Gaza Hamas Syria",
+      "Pakistan Turkiye China Russia Europe EU",
+      "UN IAEA IMO maritime aviation sanctions primary",
+      "AIS Kpler LSEG vessel-by-vessel records",
+      "Humanitarian agencies and independent geospatial verification"
+    ],
+    "source_review_limitation": "Targeted multi-source discovery only; no exhaustive primary-source review, source-specific publication timestamps, or comprehensive prior drawer enumeration."
+  },
+  "unresolved_questions": [
+    "Independent vessel identification and AIS evidence for four alleged Hormuz tanker explosions",
+    "Houthi claimed impact sites, occurrence times, and Saudi independent damage reporting",
+    "Pipeline operational status",
+    "Precise sourced locations and BDA",
+    "Complete theater-wide source-class and prior-drawer review",
+    "Completed-unconsumed intake validator result"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-pumping-station-saudi-arabias-east-west-oil-2026-11-12/",
+    "https://www.reuters.com/world/middle-east/saudi-arabia-puts-pressure-eu-label-yemens-houthis-terrorist-group-2026-11-12/",
+    "https://www.theguardian.com/world/2026/nov/12/oil-slicks-seen-from-space-the-devastating-impact-of-boat-strikes-on-fragile-gulf-ecosystems"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_COVERAGE_VALIDATOR_NOT_EXECUTED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial sourced collection; no completed-unconsumed certification. Protected canonical and public artifacts untouched."
+  }
+}
