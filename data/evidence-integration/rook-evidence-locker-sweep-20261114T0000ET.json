@@ -1,0 +1,198 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-13T12:00:00-05:00",
+    "window_end": "2026-11-14T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-14T00:00:00-05:00",
+    "collection_time": "2026-11-14T00:01:57-05:00",
+    "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL",
+    "caveat": "Publication dates verified as Nov 13 but exact publication times not established; some sources may precede 12:00 EST. Retained as discovery with time eligibility unresolved."
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261114-HORMUZ-MINES",
+      "updates_existing_ref": "HORMUZ_TANKER_INCIDENTS_2026_NOVEMBER",
+      "relationship": "UPDATE",
+      "summary": "IRGC Navy reported two tankers struck mines and burned. Vessel identities, casualty counts, actual impacts and whether distinct from earlier four-tanker claims unresolved; not independently corroborated.",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T00:01:57-05:00",
+      "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-says-two-tankers-hit-sea-mines-hormuz-2026-11-13/"
+      ],
+      "geospatial": {
+        "source_location_description": "Strait of Hormuz only",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "STRAIT_REGION",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "update_id": "ROOK-20261114-JAZAN",
+      "updates_existing_ref": "SAUDI_HOUTHI_CROSS_BORDER_EXCHANGES",
+      "relationship": "UPDATE",
+      "summary": "Houthis said two ballistic missiles fired toward Saudi forces at Al-Tuwal, Jazan; Saudi authorities separately said danger passed. Connection to earlier warning and impacts unverified.",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T00:01:57-05:00",
+      "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-says-danger-passed-jazan-2026-11-13/"
+      ],
+      "geospatial": {
+        "source_location_description": "Al-Tuwal, Jazan Province, Saudi Arabia; claimed target locality only, not impact point",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "LOCALITY_CLAIM",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261114-IRGC-MINE-CLAIM",
+      "claimant": "IRGC Navy",
+      "claim": "Two tankers hit mines and caught fire in Hormuz",
+      "assessment": "ACTOR_CLAIM_UNCORROBORATED_DISTINCTNESS_UNRESOLVED",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T00:01:57-05:00",
+      "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-irgc-says-two-tankers-hit-sea-mines-hormuz-2026-11-13/"
+      ],
+      "map_eligibility": "region-only"
+    },
+    {
+      "claim_id": "ROOK-20261114-HOUTHI-JAZAN",
+      "claimant": "Houthis",
+      "claim": "Two ballistic missiles fired at Saudi forces in Al-Tuwal",
+      "assessment": "ACTOR_CLAIM_NO_SAUDI_CONFIRMATION",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T00:01:57-05:00",
+      "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-says-danger-passed-jazan-2026-11-13/"
+      ],
+      "map_eligibility": "region-only"
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261114-JONES-WAIVER",
+      "summary": "US extended Jones Act shipping waiver by 90 days; case-by-case treatment retained; White House says waiver enabled 90 million barrels of additional petroleum movements since March. Policy and volume claim distinguished.",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T00:01:57-05:00",
+      "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/us/us-extends-shipping-law-waiver-90-days-allow-freer-movement-oil-commodities-2026-11-13/"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "economic_id": "ROOK-20261114-IEA-RELEASE",
+      "summary": "IEA reported emergency oil stock releases expected to increase through February; timing and realized volume require primary IEA reconciliation.",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T00:01:57-05:00",
+      "evidence_horizon_time": "2026-11-14T00:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-releases-iea-emergency-stocks-pick-up-through-february-agency-says-2026-11-13/"
+      ],
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "Hormuz tanker incidents November 12",
+      "decision": "UPDATE",
+      "reason": "Nov 13 IRGC mine claims; distinctness and independent corroboration unresolved"
+    },
+    {
+      "topic": "Saudi-Houthi aerial exchanges",
+      "decision": "UPDATE",
+      "reason": "Al-Tuwal claim; not established as new confirmed impact"
+    },
+    {
+      "topic": "Bahrain radar claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new independently verified BDA from reviewed reporting"
+    },
+    {
+      "topic": "IAEA Isfahan safeguards",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new primary access evidence established in this limited review"
+    },
+    {
+      "topic": "Saudi pipeline damage",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No newly verified repair status found"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Iran IRGC shipping claims Reuters",
+      "Saudi Yemen Jazan Reuters",
+      "US shipping sanctions-policy adjacent Reuters",
+      "IEA energy Reuters",
+      "AP regional humanitarian and diplomacy summary"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary political and military",
+      "Israel primary",
+      "All GCC primary",
+      "Iraq Lebanon Syria",
+      "Gaza Hamas primary and human-impact agencies",
+      "Pakistan Turkiye China Russia EU",
+      "UN IAEA IMO aviation and maritime primary",
+      "Sanctions authorities",
+      "AIS Kpler LSEG public shipping",
+      "Independent geospatial OSINT",
+      "Prior drawers full enumeration"
+    ],
+    "source_review_limitation": "Targeted source discovery only, publication timestamps not exhaustively checked; not a full theater sweep."
+  },
+  "unresolved_questions": [
+    "Exact article publication timestamps versus window start",
+    "Whether mine claims refer to same tankers as Nov 12 claim",
+    "Tanker names and AIS track corroboration",
+    "Jazan warning chronology and impact evidence",
+    "Primary IEA release schedule",
+    "Full source-class and drawer reconciliation",
+    "Repository completed-unconsumed validator execution"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/irans-irgc-says-two-tankers-hit-sea-mines-hormuz-2026-11-13/",
+    "https://www.reuters.com/world/middle-east/saudi-civil-defence-says-danger-passed-jazan-2026-11-13/",
+    "https://www.reuters.com/world/us/us-extends-shipping-law-waiver-90-days-allow-freer-movement-oil-commodities-2026-11-13/",
+    "https://www.reuters.com/business/energy/oil-releases-iea-emergency-stocks-pick-up-through-february-agency-says-2026-11-13/",
+    "https://apnews.com/article/5d73a23b5b8647d2515c35b267b36c08",
+    "https://www.reuters.com/business/energy/oil-prices-set-second-weekly-decline-trump-stay-with-iran-blockade-2026-11-13/"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Append-only partial collection; source times not exhaustively qualified; repository validator not executed; do not consume as completed sweep."
+  }
+}
