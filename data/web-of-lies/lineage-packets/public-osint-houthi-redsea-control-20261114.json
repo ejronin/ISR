@@ -8,7 +8,7 @@
     "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json",
     "data/canonical-updates/UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE.json"
   ],
-  "generation_mode": "MANUAL_SOURCE_VERIFIED_PUBLIC_OSINT",
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
   "notes": "One Red Sea/Bab el-Mandeb maritime-control claim family; Sept 11 Al Jazeera wording and independently archived Reddit public repost. These are not evidence of first social-media origin, Facebook prevalence, direct group affiliation, or knowing deception. No unverified source classification, amplification edge, Hall award or extra unique proposition.",
   "source_profiles": [
     {
