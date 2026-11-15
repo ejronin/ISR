@@ -7,8 +7,8 @@ source scripts/public_browser_diagnostic_inventory.sh
 diagnostic_failures=()
 node(){
   case "$1" in
-    fixture-bad-a.js) return 7 ;;
-    fixture-bad-b.js) return 19 ;;
+    fixture-bad-a.js) echo 'AssertionError: synthetic first failure' >&2; return 7 ;;
+    fixture-bad-b.js) echo 'Error: synthetic second failure' >&2; return 19 ;;
     *) return 0 ;;
   esac
 }
@@ -17,8 +17,8 @@ diagnostic_run_suite fixture-good.js
 diagnostic_run_suite fixture-bad-b.js
 if diagnostic_report >/dev/null 2>&1; then echo 'FAIL: broken suites produced pass' >&2; exit 1; fi
 [ "${#diagnostic_failures[@]}" -eq 2 ]
-[[ "${diagnostic_failures[0]}" == 'suite:fixture-bad-a.js(exit=7)' ]]
-[[ "${diagnostic_failures[1]}" == 'suite:fixture-bad-b.js(exit=19)' ]]
+[[ "${diagnostic_failures[0]}" == 'suite:fixture-bad-a.js [AssertionError: synthetic first failure](exit=7)' ]]
+[[ "${diagnostic_failures[1]}" == 'suite:fixture-bad-b.js [Error: synthetic second failure](exit=19)' ]]
 # Execute the actual protected suite sequence under a stub browser/Node runner.
 # A failure in its first suite must stop before any later suite starts.
 fixture_script="$(mktemp)"
