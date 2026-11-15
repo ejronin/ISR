@@ -59,7 +59,12 @@ def main() -> int:
         tip_known = registrar.parse_datetime(baseline_entries[-1]["known_at"], "tip known")
         tip_cutoff = registrar.parse_datetime(baseline_manifest["current_evidence_cutoff"], "tip cutoff")
         evidence_cutoff = tip_cutoff + timedelta(days=1)
-        known_at = evidence_cutoff + timedelta(days=1, hours=9)
+        # The current evidence horizon can lag the latest accepted knowledge clock.
+        # Exercise the delayed-evidence invariant without backdating authority.
+        known_at = max(
+            evidence_cutoff + timedelta(days=1, hours=9),
+            tip_known + timedelta(seconds=1),
+        )
         if known_at - evidence_cutoff < timedelta(days=1):
             raise AssertionError("delayed canary gap is less than one calendar day")
         cutoff_text = evidence_cutoff.isoformat()
