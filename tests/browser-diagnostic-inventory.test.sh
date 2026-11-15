@@ -43,7 +43,7 @@ release=Path("scripts/run_public_browser_qualification.sh").read_text()
 diag=Path("scripts/run_public_browser_diagnostics.sh").read_text()
 boundary="# Core reader behavior."
 cut="source scripts/public_browser_diagnostic_inventory.sh"
-assert release.split(boundary)[0] == diag.split(cut)[0], "diagnostic bootstrap drifted from protected runner"
+assert release.split(boundary)[0] == diag.split("# Diagnostic-only continuation of exact protected bootstrap.")[0], "diagnostic bootstrap drifted from protected runner"
 protected=release.split(boundary)[1]
 suites=re.findall(r'node (tests/browser-public-[a-z0-9-]+\.js)',protected)
 diagnostic=re.findall(r'tests/browser-public-[a-z0-9-]+\.js',diag.split(cut)[1])
