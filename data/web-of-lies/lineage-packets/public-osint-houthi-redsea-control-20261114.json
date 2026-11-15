@@ -83,7 +83,7 @@
       "behavior_findings": [],
       "revenue_findings": [],
       "independently_sourced": false,
-      "independence_status": "DIRECT_REPORTER_ASSERTION",
+      "independence_status": "NOT_APPLICABLE",
       "assertion_kind": "FACTUAL_ASSERTION",
       "plain_english_verdict": "False comprehensive control of international shipping asserted in a September 11 report, despite genuine Houthi coastal gains. Knowing deception by the reporter is not established.",
       "public_receipts": [
@@ -128,13 +128,13 @@
       "behavior_findings": [],
       "revenue_findings": [],
       "independently_sourced": false,
-      "independence_status": "REPOST_OF_WSJ_NOT_INDEPENDENT_CORROBORATION",
-      "assertion_kind": "REPOSTED_HEADLINE",
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
       "plain_english_verdict": "A documented Reddit repost of a Wall Street Journal control headline, not an independent confirmation, not proof of origin or affiliation, and not a separate unique proposition.",
       "public_receipts": [
         {
           "receipt_id": "WOL-RCPT-HOUTHI-REDSEA-REDDIT-20260911",
-          "surface": "WEBSITE",
+          "surface": "REDDIT",
           "url": "https://www.reddit.com/r/geopolitics/comments/1wdcssx/iranbacked_houthis_take_effective_control_of_bab/",
           "provenance_status": "ORIGINAL_URL",
           "deletion_status": "AVAILABLE",
