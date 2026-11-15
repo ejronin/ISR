@@ -19,6 +19,23 @@ if diagnostic_report >/dev/null 2>&1; then echo 'FAIL: broken suites produced pa
 [ "${#diagnostic_failures[@]}" -eq 2 ]
 [[ "${diagnostic_failures[0]}" == 'suite:fixture-bad-a.js(exit=7)' ]]
 [[ "${diagnostic_failures[1]}" == 'suite:fixture-bad-b.js(exit=19)' ]]
+# Execute the actual protected suite sequence under a stub browser/Node runner.
+# A failure in its first suite must stop before any later suite starts.
+fixture_script="$(mktemp)"
+fixture_log="$(mktemp)"
+trap 'rm -f "$fixture_script" "$fixture_log"' EXIT
+{
+  printf '%s\n' 'set -euo pipefail'
+  printf '%s\n' 'start_browser(){ :; }'
+  printf '%s\n' 'node(){ printf "%s\n" "$1" >> "$ATLAS_DIAGNOSTIC_FIXTURE_LOG"; return 23; }'
+  sed -n '/^# Core reader behavior\./,$p' scripts/run_public_browser_qualification.sh
+} > "$fixture_script"
+if ATLAS_DIAGNOSTIC_FIXTURE_LOG="$fixture_log" bash "$fixture_script" >/dev/null 2>&1; then
+  echo 'FAIL: protected qualifier did not stop on the first failing suite' >&2
+  exit 1
+fi
+[[ "$(cat "$fixture_log")" == 'tests/browser-public-boot-smoke.js' ]]
+
 python - <<'PY'
 from pathlib import Path
 import re
