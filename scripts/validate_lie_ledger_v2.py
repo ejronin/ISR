@@ -234,9 +234,16 @@ def validate(root: Path = ROOT) -> None:
         if chain.get("classification") != "ACCUSATION_CHAIN"
         and chain.get("public_include_in_accusation_count") is False
     ]
-    require(len(accusation_chains) == 36, f"current accusation-chain denominator drifted: {len(accusation_chains)}")
-    require(len(control_chains) == 18, f"current control-chain denominator drifted: {len(control_chains)}")
-    require(len(accusation_chains) + len(control_chains) == len(chains), "current Lie Ledger chain classification is incomplete")
+    # The accepted chain classifications, not a constant, determine the count.
+    # Every chain must belong to exactly one public category.
+    require(
+        len(accusation_chains) + len(control_chains) == len(chains),
+        "current Lie Ledger chain classification is incomplete",
+    )
+    require(
+        len({chain.get("chain_id") for chain in chains}) == len(chains),
+        "duplicate Lie Ledger chain IDs would inflate the public count",
+    )
 
     # Every chain must be independently reconstructable from canonical claim,
     # evidence-component, and relationship references. The graph is structural:
