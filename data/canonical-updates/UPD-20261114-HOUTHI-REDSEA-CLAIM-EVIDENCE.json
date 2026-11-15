@@ -4,7 +4,7 @@
   "packet_id": "UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE",
   "known_at": "2026-11-14T19:18:00-05:00",
   "evidence_cutoff": "2026-11-12T13:00:00+00:00",
-  "summary": "Add first-party and independently attributable sources for the September Houthi coast/Bab el-Mandeb control narrative, Reddit propagation, Saudi-led 14-state maritime defense declaration, October counteroffensive and US/European defensive support, and Nov 12 JMIC current maritime access. Source-only intake: no new invented combat event, territorial adjudication, legal authority or knowing-lie finding.",
+  "summary": "Source-qualified backfill of a single linked Red Sea/Bab el-Mandeb shipping-control claim family: original September media assertions and recorded Reddit repost; July 30 fourteen-state Saudi-led maritime coalition declaration and subsequent official status; September coastal gains, October Saudi-backed Yemen counteroffensive and reported U.S. intelligence/European defensive support; November 12 JMIC open-transit and still-contested-control evidence. This source packet makes no knowing-deception inference, asserts no legal enforcement authority beyond official documents, and does not misstate social-platform origin or traffic metrics.",
   "sources": [
     {
       "source_id": "SRC-A91126000001",
@@ -16,27 +16,27 @@
     },
     {
       "source_id": "SRC-A91126000002",
-      "url": "https://www.reddit.com/r/unusual_whales/comments/1wde6uf/breaking_yemenbacked_houthis_took_control_of_the/",
-      "outlet": "Reddit / r/unusual_whales",
-      "published_date": "2026-09-11",
-      "title": "Breaking: Yemen-backed Houthis took control of the Bab al-Mandab Strait",
-      "source_role": "PUBLIC_SOCIAL_POST_DIRECT_CONTROL_ASSERTION"
+      "url": "https://www.maritime.dot.gov/msci/2026-013-red-sea-bab-el-mandeb-strait-gulf-aden-arabian-sea-and-somali-basin-houthi-attacks",
+      "outlet": "U.S. Maritime Administration",
+      "published_date": "2026-08-27",
+      "title": "U.S. Maritime Advisory 2026-013: Houthi Attacks on Commercial Vessels",
+      "source_role": "PRIMARY_MARITIME_GUIDANCE; Houthi directives are threats, not recognized authority over international shipping"
     },
     {
       "source_id": "SRC-A91126000003",
-      "url": "https://www.reddit.com/r/Military/comments/1wdthuc/strikes_shut_down_key_saudi_pipeline_as/",
-      "outlet": "Reddit / r/Military",
-      "published_date": "2026-09-11",
-      "title": "Strikes shut down key Saudi pipeline as Iran-backed Houthis tighten grip on crucial shipping lane",
-      "source_role": "PUBLIC_SOCIAL_THREAD_COMMENT_CLAIM"
+      "url": "https://www.spa.gov.sa/en/N2715604",
+      "outlet": "Saudi Press Agency / Saudi Armed Forces",
+      "published_date": "2026-10-31",
+      "title": "Deputy Chief of General Staff at Manama Dialogue: Maritime Security Is a Shared International Responsibility",
+      "source_role": "PRIMARY_OFFICIAL_UPDATE; official said coalition has been joined by 14 countries by October/November; does not establish full operational deployment"
     },
     {
       "source_id": "SRC-A91126000004",
       "url": "https://www.reddit.com/r/geopolitics/comments/1wdcssx/iranbacked_houthis_take_effective_control_of_bab/",
-      "outlet": "Reddit / r/geopolitics",
+      "outlet": "Reddit r/geopolitics / Wall Street Journal quoted by user",
       "published_date": "2026-09-11",
       "title": "Iran-backed Houthis Take Effective Control of Bab al-Mandeb Chokepoint",
-      "source_role": "PUBLIC_SOCIAL_THREAD_TITLE_CLAIM"
+      "source_role": "SOCIAL_MEDIA_AMPLIFICATION_OF_WSJ_ATTRIBUTED_CLAIM; title says effective control Bab el-Mandeb; repost/carrier is not independent verification"
     },
     {
       "source_id": "SRC-A91126000005",
@@ -44,7 +44,7 @@
       "outlet": "Saudi Press Agency / Saudi Ministry of Defense",
       "published_date": "2026-07-30",
       "title": "Ministry of Defense Hosts International Meeting on Saudi Initiative to Establish Multinational Maritime Defense Alliance",
-      "source_role": "PRIMARY_OFFICIAL_JOINT_DECLARATION; July 30 political support by 14 named states, not proof all charter or military units operational"
+      "source_role": "PRIMARY_OFFICIAL_JOINT_SUPPORT_DECLARATION; 14 July 30 endorsing states listed (Nigeria included, not Comoros); founding procedures still to be completed"
     },
     {
       "source_id": "SRC-A91126000006",
@@ -60,7 +60,7 @@
       "outlet": "Reuters / Defense News syndication",
       "published_date": "2026-10-02",
       "title": "Saudis plan assault on Houthis to break Red Sea chokehold",
-      "source_role": "WIRE_REPUBLISHED; U.S. intelligence aid to Riyadh and European/regional mainly defensive aid, causation not quantified"
+      "source_role": "REUTERS_SYNDICATED_REPORT; U.S. intelligence and European/regional mainly defensive support confirmed as contemporaneous context; not demonstrated specific strike causation"
     },
     {
       "source_id": "SRC-A91126000008",
@@ -68,7 +68,7 @@
       "outlet": "Reuters",
       "published_date": "2026-10-05",
       "title": "Yemeni government forces seize strategic strait from Houthis",
-      "source_role": "WIRE_BATTLEFIELD_REPORT; coalition gains attributed to military sources and Saudi air support; extent disputed"
+      "source_role": "REUTERS_MULTISOURCE_COASTAL_COUNTEROFFENSIVE_REPORT; government said recaptured most September areas, Reuters could not independently verify full extent and Houthis disputed"
     },
     {
       "source_id": "SRC-A91126000009",
@@ -76,7 +76,7 @@
       "outlet": "UK Ministry of Defence",
       "published_date": "2026-10-20",
       "title": "Operational update 20 October – UK military support to the Kingdom of Saudi Arabia",
-      "source_role": "PRIMARY_OFFICIAL_DEFENSIVE_SUPPORT; RAF Typhoon defensive sorties, A400M materiel movement and advisers; no Houthi offensive strikes"
+      "source_role": "PRIMARY_UK_MOD_DEFENSIVE_SUPPORT; RAF Typhoon protective missions, A400M logistics and extension of tanker-refuelling support; explicitly no UK offensive strikes"
     },
     {
       "source_id": "SRC-A9112600000A",
@@ -88,11 +88,11 @@
     },
     {
       "source_id": "SRC-A9112600000B",
-      "url": "https://amp.dw.com/en/fact-check-how-disinformation-fuels-houthi-saudi-conflict/a-79307257",
-      "outlet": "Deutsche Welle Fact Check",
+      "url": "https://www.criticalthreats.org/analysis/iran-update-september-17-2026",
+      "outlet": "Institute for the Study of War / Critical Threats Project",
       "published_date": "2026-09-17",
-      "title": "Fact check: How disinformation fuels Houthi-Saudi conflict",
-      "source_role": "INDEPENDENT_SOCIAL_MEDIA_DISINFORMATION_CONTEXT; verifies recycled battle footage, not direct Red Sea control claim"
+      "title": "Iran Update, September 17, 2026",
+      "source_role": "INDEPENDENT_SECURITY_ANALYSIS; distinguishes Houthi territorial control from attempted illegal authority over strait shipping"
     },
     {
       "source_id": "SRC-A9112600000C",
