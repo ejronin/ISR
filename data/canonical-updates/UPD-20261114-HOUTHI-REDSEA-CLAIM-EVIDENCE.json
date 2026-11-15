@@ -1,0 +1,109 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE",
+  "known_at": "2026-11-14T19:18:00-05:00",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "Source-qualified backfill of a single linked Red Sea/Bab el-Mandeb shipping-control claim family: original September media assertions and recorded Reddit repost; July 30 fourteen-state Saudi-led maritime coalition declaration and subsequent official status; September coastal gains, October Saudi-backed Yemen counteroffensive and reported U.S. intelligence/European defensive support; November 12 JMIC open-transit and still-contested-control evidence. This source packet makes no knowing-deception inference, asserts no legal enforcement authority beyond official documents, and does not misstate social-platform origin or traffic metrics.",
+  "sources": [
+    {
+      "source_id": "SRC-A91126000001",
+      "url": "https://www.aljazeera.com/news/2026/9/11/houthis-take-control-of-yemens-red-sea-coast-key-shipping-route",
+      "outlet": "Al Jazeera / AFP / Reuters",
+      "published_date": "2026-09-11",
+      "title": "Houthis control key shipping route after gains along Yemen’s Red Sea coast",
+      "source_role": "MEDIA_HEADLINE_CLAIM_CARRIER; September coastal control story, not proof of whole-sea control"
+    },
+    {
+      "source_id": "SRC-A91126000002",
+      "url": "https://www.maritime.dot.gov/msci/2026-013-red-sea-bab-el-mandeb-strait-gulf-aden-arabian-sea-and-somali-basin-houthi-attacks",
+      "outlet": "U.S. Maritime Administration",
+      "published_date": "2026-09-23",
+      "title": "U.S. Maritime Advisory 2026-013: Houthi Attacks on Commercial Vessels",
+      "source_role": "PRIMARY_MARITIME_GUIDANCE; Houthi directives are threats, not recognized authority over international shipping"
+    },
+    {
+      "source_id": "SRC-A91126000003",
+      "url": "https://www.spa.gov.sa/en/N2715604",
+      "outlet": "Saudi Press Agency / Saudi Armed Forces",
+      "published_date": "2026-10-31",
+      "title": "Deputy Chief of General Staff at Manama Dialogue: Maritime Security Is a Shared International Responsibility",
+      "source_role": "PRIMARY_OFFICIAL_UPDATE; official said coalition has been joined by 14 countries by October/November; does not establish full operational deployment"
+    },
+    {
+      "source_id": "SRC-A91126000004",
+      "url": "https://www.reddit.com/r/geopolitics/comments/1wdcssx/iranbacked_houthis_take_effective_control_of_bab/",
+      "outlet": "Reddit r/geopolitics / Wall Street Journal quoted by user",
+      "published_date": "2026-09-11",
+      "title": "Iran-backed Houthis Take Effective Control of Bab al-Mandeb Chokepoint",
+      "source_role": "SOCIAL_MEDIA_AMPLIFICATION_OF_WSJ_ATTRIBUTED_CLAIM; title says effective control Bab el-Mandeb; repost/carrier is not independent verification"
+    },
+    {
+      "source_id": "SRC-A91126000005",
+      "url": "https://ww.spa.gov.sa/en/N2644909",
+      "outlet": "Saudi Press Agency / Saudi Ministry of Defense",
+      "published_date": "2026-07-30",
+      "title": "Ministry of Defense Hosts International Meeting on Saudi Initiative to Establish Multinational Maritime Defense Alliance",
+      "source_role": "PRIMARY_OFFICIAL_JOINT_SUPPORT_DECLARATION; 14 July 30 endorsing states listed (Nigeria included, not Comoros); founding procedures still to be completed"
+    },
+    {
+      "source_id": "SRC-A91126000006",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_113_12-nov.pdf?rev=7fe7908661f24d2ebb037b750628f240",
+      "outlet": "Joint Maritime Information Center / UKMTO",
+      "published_date": "2026-11-12",
+      "title": "JMIC Update 113 to Advisory Note: 01 March – 12 November 2026",
+      "source_role": "PRIMARY_MARITIME_OPERATIONS_REPORT; 92 Bab el-Mandeb commercial transits Nov 8-11, substantial threat, no independently confirmed stable approach control"
+    },
+    {
+      "source_id": "SRC-A91126000007",
+      "url": "https://www.defensenews.com/global/mideast-africa/2026/10/02/saudis-plan-assault-on-houthis-to-break-red-sea-chokehold/",
+      "outlet": "Reuters / Defense News syndication",
+      "published_date": "2026-10-02",
+      "title": "Saudis plan assault on Houthis to break Red Sea chokehold",
+      "source_role": "REUTERS_SYNDICATED_REPORT; U.S. intelligence and European/regional mainly defensive support confirmed as contemporaneous context; not demonstrated specific strike causation"
+    },
+    {
+      "source_id": "SRC-A91126000008",
+      "url": "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/",
+      "outlet": "Reuters",
+      "published_date": "2026-10-05",
+      "title": "Yemeni government forces seize strategic strait from Houthis",
+      "source_role": "REUTERS_MULTISOURCE_COASTAL_COUNTEROFFENSIVE_REPORT; government said recaptured most September areas, Reuters could not independently verify full extent and Houthis disputed"
+    },
+    {
+      "source_id": "SRC-A91126000009",
+      "url": "https://www.gov.uk/government/news/operational-update-20-october-uk-military-support-to-the-kingdom-of-saudi-arabia",
+      "outlet": "UK Ministry of Defence",
+      "published_date": "2026-10-20",
+      "title": "Operational update 20 October – UK military support to the Kingdom of Saudi Arabia",
+      "source_role": "PRIMARY_UK_MOD_DEFENSIVE_SUPPORT; RAF Typhoon protective missions, A400M logistics and extension of tanker-refuelling support; explicitly no UK offensive strikes"
+    },
+    {
+      "source_id": "SRC-A9112600000A",
+      "url": "https://www.thenationalnews.com/news/mena/2026/10/15/how-is-europe-helping-saudi-arabia-france-begins-deploying-military-means/",
+      "outlet": "The National",
+      "published_date": "2026-10-15",
+      "title": "How is Europe helping Saudi Arabia? France begins deploying military means",
+      "source_role": "REPORT_OF_EUROPEAN_DEFENSIVE_SUPPORT; France began military deployment, UK/Italy offers; no specific battlefield causation established"
+    },
+    {
+      "source_id": "SRC-A9112600000B",
+      "url": "https://www.criticalthreats.org/analysis/iran-update-september-17-2026",
+      "outlet": "Institute for the Study of War / Critical Threats Project",
+      "published_date": "2026-09-17",
+      "title": "Iran Update, September 17, 2026",
+      "source_role": "SECURITY_ANALYSIS_CONTEXT; source inaccessible on direct fetch; not used as standalone proof of legal or operational control"
+    },
+    {
+      "source_id": "SRC-A9112600000C",
+      "url": "https://www.aljazeera.com/news/2026/9/11/can-the-houthis-close-the-red-sea-after-seizing-the-yemen-coast",
+      "outlet": "Al Jazeera",
+      "published_date": "2026-09-11",
+      "title": "Can the Houthis close the Red Sea after seizing the Yemen coast?",
+      "source_role": "CONTEMPORANEOUS_MEDIA_EXPLAINER; distinguishes claimed coastal gains from question of closing shipping lane"
+    }
+  ],
+  "events": [],
+  "entities": [],
+  "narrative_claims": []
+}

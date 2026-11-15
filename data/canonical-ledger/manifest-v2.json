@@ -450,11 +450,22 @@
       "previous_lineage_sha256": "e3b9bd95731bae39d50fcc3a65eeb483153edd897ea641dfe0a7d3af80d599cf",
       "sequence": 41,
       "sha256": "8c8b5642bd7b1f5ec64744ba6f34b2403931f53ee4c534b4d8947a36adfe745a"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+      "known_at": "2026-11-14T19:18:00-05:00",
+      "lineage_sha256": "cb5d9fb0494fb0d96b75f55cf36351d25d83d15a4cae1e70d6c54e9779bf0f58",
+      "packet_id": "UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE",
+      "path": "data/canonical-updates/UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE.json",
+      "previous_lineage_sha256": "1b9266a9f6f4a348139474ed40938f3a3200fc9603dd8b79de14b22adce2f691",
+      "sequence": 42,
+      "sha256": "170e09f3c57836a73402f222b4eb29927d34e9e644e878b7956ef16fa2d44386"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-11-09T21:52:00-05:00",
+  "current_evidence_cutoff": "2026-11-12T13:00:00+00:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",

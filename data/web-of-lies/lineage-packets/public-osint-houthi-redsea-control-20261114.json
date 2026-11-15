@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-HOUTHI-REDSEA-CONTROL-20261114",
+  "claim_family_id": "CH-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+  "as_of": "2026-11-14T19:18:00-05:00",
+  "basis_paths": [
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json",
+    "data/canonical-updates/UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "One Red Sea/Bab el-Mandeb maritime-control claim family; Sept 11 Al Jazeera wording and independently archived Reddit public repost. These are not evidence of first social-media origin, Facebook prevalence, direct group affiliation, or knowing deception. No unverified source classification, amplification edge, Hall award or extra unique proposition.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-HOUTHI-REDSEA-ALJAZEERA",
+      "display_name": "Al Jazeera",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": "Qatar",
+      "primary_platform": "WEBSITE",
+      "canonical_source_ids": [
+        "SRC-A91126000001"
+      ],
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-HOUTHI-REDSEA-REDDIT-POSTER",
+      "display_name": "Reddit r/geopolitics original poster (John3262005)",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "ACCOUNT",
+      "primary_platform": "REDDIT",
+      "canonical_source_ids": [
+        "SRC-A91126000004"
+      ],
+      "identity_confidence": "HIGH"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-HOUTHI-REDSEA-ALJAZEERA-20260911",
+      "claim_family_id": "CH-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+      "source_id": "WOL-SRC-HOUTHI-REDSEA-ALJAZEERA",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-09-11",
+      "first_observed_at": "2026-09-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The Houthis have the strong hand now. They have the leverage, and they have control of Bab al-Mandeb and the shipping traffic going through the Red Sea.",
+      "originating_claimant": "Yousef Mawry, Al Jazeera correspondent",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911-P01",
+        "CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+        "PROP-HOUTHI-REDSEA-BAB-EL-MANDEB-TRAFFIC-CONTROL-20260911"
+      ],
+      "evidence_source_ids": [
+        "SRC-A91126000001"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-A91126000006",
+        "SRC-A91126000008"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "plain_english_verdict": "False comprehensive control of international shipping asserted in a September 11 report, despite genuine Houthi coastal gains. Knowing deception by the reporter is not established.",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-HOUTHI-REDSEA-AJ-20260911",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/news/2026/9/11/houthis-take-control-of-yemens-red-sea-coast-key-shipping-route",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Yousef Mawry / Al Jazeera"
+        }
+      ]
+    },
+    {
+      "event_id": "WOL-EVT-HOUTHI-REDSEA-REDDIT-20260911",
+      "claim_family_id": "CH-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+      "source_id": "WOL-SRC-HOUTHI-REDSEA-REDDIT-POSTER",
+      "event_type": "AMPLIFIES",
+      "published_at": "2026-09-11",
+      "first_observed_at": "2026-09-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "REPORTED",
+      "exact_statement": "Iran-Backed Houthis Take Effective Control of Bab al-Mandeb Chokepoint",
+      "originating_claimant": "Reddit r/geopolitics post relaying a Wall Street Journal article",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911-P01",
+        "CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+        "PROP-HOUTHI-REDSEA-BAB-EL-MANDEB-TRAFFIC-CONTROL-20260911"
+      ],
+      "evidence_source_ids": [
+        "SRC-A91126000004"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-A91126000006"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "plain_english_verdict": "A documented Reddit repost of a Wall Street Journal control headline, not an independent confirmation, not proof of origin or affiliation, and not a separate unique proposition.",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-HOUTHI-REDSEA-REDDIT-20260911",
+          "surface": "REDDIT",
+          "url": "https://www.reddit.com/r/geopolitics/comments/1wdcssx/iranbacked_houthis_take_effective_control_of_bab/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Reddit r/geopolitics / Wall Street Journal"
+        }
+      ]
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

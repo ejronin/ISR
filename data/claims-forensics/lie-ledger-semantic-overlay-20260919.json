@@ -1,10 +1,10 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260920-10",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20261114-11",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
-  "effective_date": "2026-09-20",
+  "effective_date": "2026-11-14",
   "purpose": "Apply the completed full-ledger Claims Forensics adjudication after source qualification, including Sep. 20 source-promotion consumption for three previously held control cases, without reopening unrelated adjudications.",
   "rules": {
     "top_level_unit": "NARRATIVE_CHAIN",
@@ -551,6 +551,43 @@
       "open_evidence_gaps": [
         "Primary context defining the exact measurement window and denominator intended by the zero-barrels assertion.",
         "Independent tanker, customs, loading, or other export reconciliation matched to that same defined scope."
+      ]
+    },
+    "CH-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Houthis control the Red Sea and Bab el-Mandeb",
+      "public_finding": {
+        "label": "False — comprehensive shipping control",
+        "key": "false"
+      },
+      "lie_ledger_accusation": true,
+      "public_include_in_accusation_count": true,
+      "event_title": "September Houthi coastal gains, maritime-control claims and October counteroffensive",
+      "event_baseline": "In September 2026 the Houthis seized major sections of Yemen’s western coast, including positions around Mocha, Dhubab and Perim/Mayun Island. Those territorial gains increased their ability to threaten shipping at Bab el-Mandeb. They did not establish exclusive authority over the international sea route.",
+      "terminal_event_state": "Saudi-backed Yemeni forces reported retaking much of the September coastal gain in October, backed by Saudi air power, while the extent of battlefield control remained disputed. The U.S. supplied intelligence; the UK and other European partners supplied defensive and logistics assistance. JMIC reported the strait open to commercial traffic with 92 qualifying ship transits during November 8–11, and said stable full control of key approaches and islands was not independently established.",
+      "plain_english_summary": "The Houthis gained strategically important Yemeni coastline in September but did not thereby gain comprehensive control over the Red Sea or authority to regulate all ships passing Bab el-Mandeb. A September 11 media report described them as controlling the strait and shipping traffic; that claim was repeated in social-media discussion. Saudi-backed Yemeni forces subsequently reported major coastal recaptures, and independent November maritime reporting confirms ships still transit the strait. The Saudi-led 14-state maritime defense declaration and U.S./European support further document active opposition to Houthi maritime coercion, but neither a declaration nor an individual deployment proves that the coalition controls every mile of the sea. The categorical shipping-control claim is false; evidence that its identifiable publishers knowingly deceived their audiences has not been established.",
+      "how_we_know": [
+        "September 10–12: Reuters and Al Jazeera reported real Houthi control of substantial Yemeni coastal territory and islands. Al Jazeera’s September 11 article includes an explicit claim of Houthi control over Bab el-Mandeb and shipping traffic, not merely a prediction of future leverage.",
+        "A September 11 Reddit geopolitics thread reproduced a Wall Street Journal report framed as effective control of the strait. It demonstrates circulation, but not the earliest social-media origin, a Facebook circulation count or the political sympathies of the people reposting it.",
+        "July 30: Saudi Arabia and thirteen partners issued a joint declaration supporting a multinational maritime defense alliance to deter threats to the Red Sea, Bab el-Mandeb and Gulf of Aden. The original Saudi roster includes Nigeria; member-state support and later formal accession must not be mistaken for a deployed fleet or law-enforcement jurisdiction.",
+        "October 2: Reuters reported U.S. intelligence support to Riyadh and mainly defensive aid from regional and European partners. October 5: Saudi-backed Yemeni forces launched a counteroffensive, with heavy Saudi air support, and reported retaking significant coastal positions. Reuters could not confirm the full extent and the Houthis disputed the claims.",
+        "October 20: The UK Ministry of Defence confirmed RAF defensive air missions, an A400M for materiel transport, advisers and extended air-refuelling support for Saudi defensive operations. It expressly excluded UK offensive airstrikes on the Houthis.",
+        "November 12: Joint Maritime Information Center counted 92 commercial Bab el-Mandeb transits November 8–11 (about 23 daily) and said commercial passage remained open but dangerous. The 96-hour report found no confirmed attack or disruption in that sector.",
+        "The same JMIC report described the shore approaches and nearby islands as contested, without independent confirmation of complete Houthi or Yemeni-government control. U.S. MARAD tells U.S.-flagged vessels not to obey Houthi diversion or information demands. Coercive attack capability is not comprehensive sea control or recognized legal authority."
+      ],
+      "branches": [
+        "SINGLE_LINKED_REDSEA_BAB_EL_MANDEB_MARITIME_CONTROL",
+        "SEPTEMBER_HOUTHI_TERRITORIAL_ADVANCE",
+        "OCTOBER_SAUDI_BACKED_COUNTEROFFENSIVE",
+        "INTERNATIONAL_DEFENSIVE_SUPPORT",
+        "NOVEMBER_MARITIME_TRAFFIC_AND_LEGAL_AUTHORITY",
+        "SOCIAL_PROPAGATION_WITH_ORIGIN_UNRESOLVED"
+      ],
+      "open_evidence_gaps": [
+        "The first social-media post making the categorical whole-Red-Sea claim, including any original Facebook account, has not been authenticated; recovered Reddit posts are propagation, not proof of origination or ideological affiliation.",
+        "The precise November 2026 territorial line around the Khaboub range, Mocha, islands and approach roads remains contested and unconfirmed.",
+        "The source record does not establish how much of the October coastal counteroffensive can be causally attributed to particular U.S. intelligence products or European support deliveries.",
+        "No claimant-specific evidence presently establishes that the September media speaker knew the broad traffic-control claim was false when made."
       ]
     }
   },
@@ -5107,6 +5144,110 @@
       "publication_status": "PUBLIC_READY",
       "publication_blockers": [],
       "rationale": "PR #164 cleared the source-provenance hold; exact zero wording and its undefined window/denominator are preserved without semantic sharpening."
+    },
+    {
+      "claim_id": "CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+      "claim_instance_id": "CI-CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911-P01",
+      "original_claim_id": "CLM-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+      "proposition_id": "PROP-HOUTHI-REDSEA-BAB-EL-MANDEB-TRAFFIC-CONTROL-20260911",
+      "chain_id": "CH-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911",
+      "actor": "Yousef Mawry, Al Jazeera correspondent; later public social-media carriers",
+      "claimant_type": "MEDIA_REPORTER",
+      "actor_role": "ORIGINATOR",
+      "claim": "They have the leverage, and they have control of Bab al-Mandeb and the shipping traffic going through the Red Sea.",
+      "source_proposition": "They have the leverage, and they have control of Bab al-Mandeb and the shipping traffic going through the Red Sea.",
+      "proposition": "Houthis exercised effective or exclusive authority over maritime passage through Bab el-Mandeb and the connected Red Sea shipping corridor after their September 2026 coastal advance.",
+      "proposition_axis": "MARITIME_OPERATIONAL_CONTROL",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "CATEGORICAL_CONTROL_OF_SEA_TRAFFIC_NOT_ESTABLISHED_AND_CONTRADICTED_BY_OPEN_TRANSIT_AND_COMPETING_FORCES;_SEPTEMBER_TERRITORIAL_GAINS_REAL",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE COMPREHENSIVE SEA-CONTROL ASSERTION — KNOWING FALSEHOOD NOT ESTABLISHED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The September Houthi advance captured important Yemeni coast and island positions near Bab el-Mandeb, but that establishes territorial leverage and sea-denial threat rather than exclusive sea-lane governance.",
+        "Reuters October 5 reported substantial Saudi-backed Yemeni government counteroffensive gains with heavy Saudi air support, but could not independently establish the full extent of the gains and the Houthis contested them.",
+        "A Saudi-led multinational maritime defense initiative had 14 July 30 joint-declaration signatories; that agreement is political/organizational opposition to Houthi maritime coercion, not proof of completed coalition deployment.",
+        "Reuters reported U.S. intelligence and mainly defensive European/regional military support, while UK MOD later confirmed protective missions, logistics and refuelling support.",
+        "JMIC reported 92 commercial transits November 8–11, open but risky shipping, and no independently established stable complete control of the approaches or major islands.",
+        "MARAD advised U.S.-flagged vessels to disregard Houthi attempts to redirect or gather information about voyages; no recognized Houthi international shipping authority is established.",
+        "The Al Jazeera September 11 article and reproduced September 11 Reddit thread demonstrate source-specific claims and propagation; no verified first Facebook origin or prevalence denominator is in the record."
+      ],
+      "analytic_inference": "The September claim used 'control' for maritime traffic, rather than merely Houthi control of Yemeni coast or ability to launch attacks. Observed continued independent passage, explicit resistance to Houthi passage directives, the October Saudi-backed counteroffensive and absence of verified complete approach control materially contradict the comprehensive control proposition. Threat/sea denial, territorial control and exclusive regulation of shipping are distinct. Knowledge at assertion time cannot be established merely because the proposition is false.",
+      "credible_alternatives": [
+        {
+          "alternative": "The speaker may have meant short-lived de facto local coercive leverage near the chokepoint, not exclusive or internationally recognized authority over all Red Sea traffic.",
+          "comparative_weight": "LESS_PLAUSIBLE",
+          "basis": "Contemporaneous territorial gains were real; the statement specifically added 'shipping traffic' control and later reporting does not support complete continuing control."
+        }
+      ],
+      "comparative_assessment": "Attributable operational and diplomatic records refute comprehensive maritime control but allow real September land/island gains and continuing sea-denial capability. Neither the role of the first social-media poster nor the media speaker's knowing deception is evidenced.",
+      "narrative_function": "September territorial victory inflated into whole-route maritime control and later reposted as a categorical claim.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Independently verifiable, time-scoped operational evidence that the Houthis continuously determined or enforced passage for commercial vessels across the Bab el-Mandeb/Red Sea corridor, with identifiable vessel-level compliance and exclusion records."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-A91126000001",
+          "SRC-A91126000004"
+        ],
+        "factual_baseline": [
+          "SRC-A9112600000C",
+          "SRC-A91126000008"
+        ],
+        "contemporaneous_state": [
+          "SRC-A91126000007",
+          "SRC-A91126000008",
+          "SRC-A91126000005"
+        ],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-A91126000006",
+          "SRC-A91126000002",
+          "SRC-A91126000008",
+          "SRC-A9112600000B"
+        ],
+        "corrections": [],
+        "repetitions": [
+          "SRC-A91126000004"
+        ],
+        "credible_alternative": [
+          "SRC-A9112600000C"
+        ],
+        "comparative_inference": [
+          "SRC-A91126000006",
+          "SRC-A91126000009",
+          "SRC-A91126000003"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-A91126000001",
+        "SRC-A91126000002",
+        "SRC-A91126000003",
+        "SRC-A91126000004",
+        "SRC-A91126000005",
+        "SRC-A91126000006",
+        "SRC-A91126000007",
+        "SRC-A91126000008",
+        "SRC-A91126000009",
+        "SRC-A9112600000A",
+        "SRC-A9112600000B",
+        "SRC-A9112600000C"
+      ],
+      "statement_date": "2026-09-11",
+      "event_time": "2026-09-11",
+      "knowledge_time": "2026-11-14T19:18:00-05:00",
+      "assessment_time": "2026-11-14",
+      "statement_precision": "DATE_ONLY",
+      "relation_type": "ORIGINATION",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "One linked maritime traffic-control proposition spanning Red Sea and Bab el-Mandeb. Counts once; September ground control not negated; FALSE independent of knowledge finding; no invented Facebook or partisan origin."
     }
   ],
   "maintenance_sweep_path": "data/claims-forensics/claims-source-promotion-consumption-20260920.json",

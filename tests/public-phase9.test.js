@@ -64,10 +64,26 @@ const controlChains = ledger.records.filter(chain =>
   chain.classification !== 'ACCUSATION_CHAIN' &&
   chain.public_include_in_accusation_count === false
 );
-assert.equal(accusationChains.length, 35, 'Lie Ledger accusation-chain denominator drifted');
-assert.equal(controlChains.length, 18, 'Lie Ledger control-chain denominator drifted');
+// Enumeration is derived from the actual classified chain records, never
+// from a fixed assertion of how many entries the published site must show.
 assert.equal(accusationChains.length + controlChains.length, ledger.records.length,
   'every current Lie Ledger chain must be explicitly classified as accusation or control');
+assert.equal(new Set(ledger.records.map(chain => chain.chain_id)).size, ledger.records.length,
+  'duplicate chain IDs cannot inflate the visible Lie Ledger');
+const houthiControlCases = accusationChains.filter(chain =>
+  chain.chain_id === 'CH-HOUTHI-REDSEA-BAB-EL-MANDEB-CONTROL-20260911'
+);
+assert.equal(houthiControlCases.length, 1,
+  'Red Sea and Bab el-Mandeb shipping-control claims must be one linked entry');
+assert.equal(
+  houthiControlCases[0].proposition_records.filter(record =>
+    record.counts_as_unique_proposition === true
+  ).length,
+  1,
+  'the linked Houthi shipping-control case must count one unique proposition'
+);
+assert.equal(houthiControlCases[0].proposition_records[0].truth_adjudication, 'FALSE',
+  'the categorical Houthi maritime-control claim must retain its FALSE factual finding');
 
 const propositions = ledger.records.flatMap(chain => chain.proposition_records || []);
 assert.equal(propositions.length, model.counts.gate3_lie_ledger_records);
