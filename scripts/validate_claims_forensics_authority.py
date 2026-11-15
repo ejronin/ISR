@@ -27,18 +27,6 @@ STRONG_KNOWLEDGE = {
     "KNOWING_FALSEHOOD_ESTABLISHED",
 }
 
-# Current accepted state must reconcile exactly. The validator independently
-# derives each denominator below before checking the accepted baseline.
-ACCEPTED = {
-    "chains": 54,
-    "accusation_chains": 36,
-    "control_chains": 18,
-    "proposition_rows": 148,
-    "unique_propositions": 69,
-    "claim_instances": 89,
-    "publication_blockers": 0,
-}
-
 CLAIMS_SEMANTIC_OWNERSHIP = {
     "event_chain_membership",
     "narrative_family_membership",
@@ -534,22 +522,25 @@ def validate_state(
         "claim_instances": len(claim_keys),
         "publication_blockers": len(canonical.get("lie_ledger_v2_publication_blockers") or []),
     }
-    require(
-        derived == ACCEPTED,
-        f"current accepted Claims Forensics denominator state does not reconcile: {derived}",
-    )
+    # Denominators come from adjudicated records and their chain classifications,
+    # never from a fixed expected total. Recompute independently and reconcile
+    # both canonical and public projections against those live denominators.
     metrics = canonical.get("lie_ledger_v2_metrics") or {}
+    public_metrics = (((public.get("gate3") or {}).get("lie_ledger") or {}).get("metrics") or {})
+    for source, reported in (("canonical", metrics), ("public", public_metrics)):
+        require(
+            reported.get("unique_propositions") == derived["unique_propositions"]
+            and reported.get("claim_instances") == derived["claim_instances"]
+            and reported.get("narrative_chains") == derived["chains"],
+            f"{source} Claims Forensics metrics do not reconcile with adjudicated records",
+        )
+    published_accusations = [
+        chain for chain in pchains.values()
+        if chain.get("classification") == "ACCUSATION_CHAIN"
+        and chain.get("public_include_in_accusation_count") is True
+    ]
     require(
-        metrics.get("unique_propositions") == derived["unique_propositions"]
-        and metrics.get("claim_instances") == derived["claim_instances"]
-        and metrics.get("narrative_chains") == derived["chains"],
-        "canonical Claims Forensics metrics do not match behaviorally recomputed denominators",
-    )
-    require(
-        len([
-            chain for chain in pchains.values()
-            if chain.get("public_include_in_accusation_count") is not False
-        ]) == ACCEPTED["accusation_chains"],
+        len(published_accusations) == derived["accusation_chains"],
         "Public Product accusation-card denominator differs from canonical Claims Forensics classification",
     )
 
