@@ -6,13 +6,23 @@ diagnostic_record_failure(){
   echo "DIAGNOSTIC FAILURE: $label (exit=$exit_code)" >&2
 }
 diagnostic_run_suite(){
-  local suite="${1:?missing suite}" exit_code
-  if node "$suite"; then
+  local suite="${1:?missing suite}" exit_code assertion_line log_file
+  log_file="$(mktemp /tmp/atlas-browser-diagnostic.XXXXXX)"
+  if node "$suite" >"$log_file" 2>&1; then
+    cat "$log_file"
     echo "DIAGNOSTIC PASS: $suite" >&2
   else
     exit_code=$?
-    diagnostic_record_failure "suite:$suite" "$exit_code"
+    cat "$log_file"
+    assertion_line="$(grep -Em1 "AssertionError|Error:|FAIL:|TimeoutError|ERR_ASSERTION" "$log_file" || true)"
+    assertion_line="${assertion_line:0:220}"
+    if [ -n "$assertion_line" ]; then
+      diagnostic_record_failure "suite:$suite [$assertion_line]" "$exit_code"
+    else
+      diagnostic_record_failure "suite:$suite" "$exit_code"
+    fi
   fi
+  rm -f -- "$log_file"
   return 0
 }
 diagnostic_report(){
