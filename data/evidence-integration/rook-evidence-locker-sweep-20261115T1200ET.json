@@ -1,0 +1,116 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-15T00:00:00-05:00",
+    "window_end": "2026-11-15T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-15T12:00:00-05:00",
+    "collection_time": "2026-11-15T11:58:15-05:00",
+    "evidence_horizon_time": "2026-11-15T11:58:15-05:00",
+    "collection_mode": "PARTIAL_PRE_CUTOFF",
+    "caveat": "Collected before noon cutoff. Excludes reporting first published after evidence horizon; no claim of comprehensive source review."
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ROOK-20261115T1200-GULF-EQUITIES",
+      "summary": "Reuters reported Gulf equity markets declined amid Hormuz tensions and Houthi attacks; market direction is a published market observation, not independent verification of claimed attacks.",
+      "occurrence_time": "2026-11-15 trading session (local market hours; exact snapshots unverified)",
+      "publication_time": "2026-11-15T13:31:00+00:00",
+      "collection_time": "2026-11-15T11:58:15-05:00",
+      "evidence_horizon_time": "2026-11-15T11:58:15-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/gulf-bourses-slide-hormuz-tensions-houthi-strikes-rattle-traders-2026-11-15/"
+      ],
+      "map_eligibility": "nonspatial",
+      "confidence": "SOURCE_REPORTED_MARKET_DIRECTION"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "November 14 Hormuz three-tanker mine claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independent vessel identities, IMO identifiers, AIS fixes, BDA, or overlap adjudication established before cutoff."
+    },
+    {
+      "topic": "Bahrain radar/drone claims November 13-15",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Sunday reporting discovered but source publication-time qualification and independent damage assessment incomplete; retained as unresolved discovery."
+    },
+    {
+      "topic": "Saudi-Houthi interceptions and Yemen front lines",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "New Sunday coverage found but full pre-cutoff chronology and prior drawer comparison not completed; no certified update."
+    },
+    {
+      "topic": "Gaza Jabaliya casualties and Hamas commander reports",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "New reporting discovered but exact publication time and relationship to prior events not qualified."
+    },
+    {
+      "topic": "Iran nuclear IAEA Isfahan",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified safeguards change established."
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters November 15 Gulf equities market report (13:31 UTC)",
+      "Reuters November 15 regional conflict report discovered but 15:56 UTC publication after collection horizon",
+      "AP November 15 regional roundup discovered but publication clock time not established",
+      "November 14 midnight ROOK drawer on main",
+      "Contextual Hormuz and Yemen reporting"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran political/military/security primary",
+      "United States primary",
+      "Israel primary",
+      "Saudi/GCC/Oman/Qatar/UAE/Kuwait/Bahrain primary",
+      "Iraq/Yemen/Houthis/Lebanon/Hezbollah/Gaza/Hamas/Syria primary",
+      "Pakistan/Turkiye/China/Russia/EU",
+      "UN/IAEA/IMO",
+      "Maritime aviation and sanctions authorities",
+      "Energy/commodity primary",
+      "AIS/Kpler/LSEG commercial shipping",
+      "Humanitarian agencies",
+      "Independent OSINT imagery",
+      "Full prior drawer reconciliation"
+    ],
+    "source_review_limitation": "Targeted searches only; broad primary source and chronology verification not completed."
+  },
+  "unresolved_questions": [
+    "Verify Bahrain drone strike occurrence and independent BDA before cutoff",
+    "Verify Yemen withdrawal and locations against prior drawer and primary statements",
+    "Verify Saudi interception counts and precise debris sites",
+    "Identify and correlate Hormuz tankers by IMO and AIS without fabricated positions",
+    "Qualify AP November 15 publication time and subsequent corrections",
+    "Complete all required source classes and intake validator completed-unconsumed status"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/gulf-bourses-slide-hormuz-tensions-houthi-strikes-rattle-traders-2026-11-15/",
+    "https://www.reuters.com/world/middle-east/anti-houthi-forces-retreat-yemen-iran-strikes-bahrain-2026-11-15/",
+    "https://apnews.com/article/mideast-news-israel-gaza-iran-november-15-2026-3b4adde832dadd333451fd2f7a51908c"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 1,
+    "notes": "No new physical event promoted to plot-ready. Physical incident reporting discovered requires publication-time qualification and sourced geolocation. No geometry mutated."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_PRE_CUTOFF_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial market evidence retained; pre-cutoff collection, incomplete theater coverage and no local repository intake validation. No protected state intentionally modified."
+  }
+}
