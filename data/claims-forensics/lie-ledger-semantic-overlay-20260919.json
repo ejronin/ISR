@@ -5158,7 +5158,7 @@
       "source_proposition": "They have the leverage, and they have control of Bab al-Mandeb and the shipping traffic going through the Red Sea.",
       "proposition": "Houthis exercised effective or exclusive authority over maritime passage through Bab el-Mandeb and the connected Red Sea shipping corridor after their September 2026 coastal advance.",
       "proposition_axis": "MARITIME_OPERATIONAL_CONTROL",
-      "proposition_fidelity": "SOURCE_EQUIVALENT_WITH_EXPLICIT_SCOPE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
       "truth_adjudication": "FALSE",
       "truth_qualifier": "CATEGORICAL_CONTROL_OF_SEA_TRAFFIC_NOT_ESTABLISHED_AND_CONTRADICTED_BY_OPEN_TRANSIT_AND_COMPETING_FORCES;_SEPTEMBER_TERRITORIAL_GAINS_REAL",
       "knowledge_judgment": "NOT_ASSESSABLE",
@@ -5184,7 +5184,7 @@
       ],
       "comparative_assessment": "Attributable operational and diplomatic records refute comprehensive maritime control but allow real September land/island gains and continuing sea-denial capability. Neither the role of the first social-media poster nor the media speaker's knowing deception is evidenced.",
       "narrative_function": "September territorial victory inflated into whole-route maritime control and later reposted as a categorical claim.",
-      "confidence": "HIGH_FOR_NO_COMPREHENSIVE_SEA_CONTROL;_MODERATE_FOR_SEPTEMBER_LOCAL_PRACTICAL_LEVERAGE",
+      "confidence": "HIGH",
       "falsifier": [
         "Independently verifiable, time-scoped operational evidence that the Houthis continuously determined or enforced passage for commercial vessels across the Bab el-Mandeb/Red Sea corridor, with identifiable vessel-level compliance and exclusion records."
       ],
