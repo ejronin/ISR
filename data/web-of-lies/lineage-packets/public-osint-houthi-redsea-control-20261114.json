@@ -48,7 +48,7 @@
       "canonical_source_ids": [
         "SRC-A91126000004"
       ],
-      "identity_confidence": "ACCOUNT_HANDLE_ONLY"
+      "identity_confidence": "HIGH"
     }
   ],
   "information_events": [
