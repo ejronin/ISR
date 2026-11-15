@@ -1,0 +1,109 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE",
+  "known_at": "2026-11-14T19:18:00-05:00",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "Add first-party and independently attributable sources for the September Houthi coast/Bab el-Mandeb control narrative, Reddit propagation, Saudi-led 14-state maritime defense declaration, October counteroffensive and US/European defensive support, and Nov 12 JMIC current maritime access. Source-only intake: no new invented combat event, territorial adjudication, legal authority or knowing-lie finding.",
+  "sources": [
+    {
+      "source_id": "SRC-A91126000001",
+      "url": "https://www.aljazeera.com/news/2026/9/11/houthis-take-control-of-yemens-red-sea-coast-key-shipping-route",
+      "outlet": "Al Jazeera / AFP / Reuters",
+      "published_date": "2026-09-11",
+      "title": "Houthis control key shipping route after gains along Yemen’s Red Sea coast",
+      "source_role": "MEDIA_HEADLINE_CLAIM_CARRIER; September coastal control story, not proof of whole-sea control"
+    },
+    {
+      "source_id": "SRC-A91126000002",
+      "url": "https://www.reddit.com/r/unusual_whales/comments/1wde6uf/breaking_yemenbacked_houthis_took_control_of_the/",
+      "outlet": "Reddit / r/unusual_whales",
+      "published_date": "2026-09-11",
+      "title": "Breaking: Yemen-backed Houthis took control of the Bab al-Mandab Strait",
+      "source_role": "PUBLIC_SOCIAL_POST_DIRECT_CONTROL_ASSERTION"
+    },
+    {
+      "source_id": "SRC-A91126000003",
+      "url": "https://www.reddit.com/r/Military/comments/1wdthuc/strikes_shut_down_key_saudi_pipeline_as/",
+      "outlet": "Reddit / r/Military",
+      "published_date": "2026-09-11",
+      "title": "Strikes shut down key Saudi pipeline as Iran-backed Houthis tighten grip on crucial shipping lane",
+      "source_role": "PUBLIC_SOCIAL_THREAD_COMMENT_CLAIM"
+    },
+    {
+      "source_id": "SRC-A91126000004",
+      "url": "https://www.reddit.com/r/geopolitics/comments/1wdcssx/iranbacked_houthis_take_effective_control_of_bab/",
+      "outlet": "Reddit / r/geopolitics",
+      "published_date": "2026-09-11",
+      "title": "Iran-backed Houthis Take Effective Control of Bab al-Mandeb Chokepoint",
+      "source_role": "PUBLIC_SOCIAL_THREAD_TITLE_CLAIM"
+    },
+    {
+      "source_id": "SRC-A91126000005",
+      "url": "https://ww.spa.gov.sa/en/N2644909",
+      "outlet": "Saudi Press Agency / Saudi Ministry of Defense",
+      "published_date": "2026-07-30",
+      "title": "Ministry of Defense Hosts International Meeting on Saudi Initiative to Establish Multinational Maritime Defense Alliance",
+      "source_role": "PRIMARY_OFFICIAL_JOINT_DECLARATION; July 30 political support by 14 named states, not proof all charter or military units operational"
+    },
+    {
+      "source_id": "SRC-A91126000006",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_113_12-nov.pdf?rev=7fe7908661f24d2ebb037b750628f240",
+      "outlet": "Joint Maritime Information Center / UKMTO",
+      "published_date": "2026-11-12",
+      "title": "JMIC Update 113 to Advisory Note: 01 March – 12 November 2026",
+      "source_role": "PRIMARY_MARITIME_OPERATIONS_REPORT; 92 Bab el-Mandeb commercial transits Nov 8-11, substantial threat, no independently confirmed stable approach control"
+    },
+    {
+      "source_id": "SRC-A91126000007",
+      "url": "https://www.defensenews.com/global/mideast-africa/2026/10/02/saudis-plan-assault-on-houthis-to-break-red-sea-chokehold/",
+      "outlet": "Reuters / Defense News syndication",
+      "published_date": "2026-10-02",
+      "title": "Saudis plan assault on Houthis to break Red Sea chokehold",
+      "source_role": "WIRE_REPUBLISHED; U.S. intelligence aid to Riyadh and European/regional mainly defensive aid, causation not quantified"
+    },
+    {
+      "source_id": "SRC-A91126000008",
+      "url": "https://www.reuters.com/world/yemeni-government-forces-seize-district-by-bab-el-mandeb-military-sources-say-2026-10-05/",
+      "outlet": "Reuters",
+      "published_date": "2026-10-05",
+      "title": "Yemeni government forces seize strategic strait from Houthis",
+      "source_role": "WIRE_BATTLEFIELD_REPORT; coalition gains attributed to military sources and Saudi air support; extent disputed"
+    },
+    {
+      "source_id": "SRC-A91126000009",
+      "url": "https://www.gov.uk/government/news/operational-update-20-october-uk-military-support-to-the-kingdom-of-saudi-arabia",
+      "outlet": "UK Ministry of Defence",
+      "published_date": "2026-10-20",
+      "title": "Operational update 20 October – UK military support to the Kingdom of Saudi Arabia",
+      "source_role": "PRIMARY_OFFICIAL_DEFENSIVE_SUPPORT; RAF Typhoon defensive sorties, A400M materiel movement and advisers; no Houthi offensive strikes"
+    },
+    {
+      "source_id": "SRC-A9112600000A",
+      "url": "https://www.thenationalnews.com/news/mena/2026/10/15/how-is-europe-helping-saudi-arabia-france-begins-deploying-military-means/",
+      "outlet": "The National",
+      "published_date": "2026-10-15",
+      "title": "How is Europe helping Saudi Arabia? France begins deploying military means",
+      "source_role": "REPORT_OF_EUROPEAN_DEFENSIVE_SUPPORT; France began military deployment, UK/Italy offers; no specific battlefield causation established"
+    },
+    {
+      "source_id": "SRC-A9112600000B",
+      "url": "https://amp.dw.com/en/fact-check-how-disinformation-fuels-houthi-saudi-conflict/a-79307257",
+      "outlet": "Deutsche Welle Fact Check",
+      "published_date": "2026-09-17",
+      "title": "Fact check: How disinformation fuels Houthi-Saudi conflict",
+      "source_role": "INDEPENDENT_SOCIAL_MEDIA_DISINFORMATION_CONTEXT; verifies recycled battle footage, not direct Red Sea control claim"
+    },
+    {
+      "source_id": "SRC-A9112600000C",
+      "url": "https://www.aljazeera.com/news/2026/9/11/can-the-houthis-close-the-red-sea-after-seizing-the-yemen-coast",
+      "outlet": "Al Jazeera",
+      "published_date": "2026-09-11",
+      "title": "Can the Houthis close the Red Sea after seizing the Yemen coast?",
+      "source_role": "CONTEMPORANEOUS_MEDIA_EXPLAINER; distinguishes claimed coastal gains from question of closing shipping lane"
+    }
+  ],
+  "events": [],
+  "entities": [],
+  "narrative_claims": []
+}
