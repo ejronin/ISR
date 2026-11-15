@@ -43,3 +43,10 @@ The following standalone workflows were removed after their unique protections w
 ## Non-negotiable release invariants
 
 Never trade green CI for weaker evidence. Preserve accepted evidence bytes/hashes, source variants, temporal/knowledge distinctions, stable IDs, unknown-vs-zero, denominator integrity, False != Lie, canonical/public semantic fidelity, accessibility, deterministic generation, content addressing, closed-artifact enforcement, and exact-head deployment identity.
+
+
+## Diagnostic-only browser failure inventory
+
+For migration diagnostics after assembling `_site`, run `bash scripts/run_public_browser_diagnostics.sh`. It reuses the exact protected browser bootstrap, keeps the seven core browser suites sharing one session and each heavyweight audit in its own browser lifetime, and reports all suite failures at the end. It returns a nonzero exit code when any failure is recorded.
+
+This manual command is **not release qualification**. It cannot qualify a SHA, authorize merge, create Pages artifacts, deploy or attest. The protected release workflow invokes only `run_public_browser_qualification.sh`, which remains strictly fail-fast. The offline regression test simulates two separate failing browser suites and asserts that the diagnostic and protected bootstrap and suite topology remain in sync.

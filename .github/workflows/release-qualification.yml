@@ -217,6 +217,10 @@ jobs:
           python scripts/validate_public_deployment.py --site-root _site --require-build-info
           python scripts/validate.py
 
+      - name: Check nonauthorizing browser diagnostics
+        shell: bash
+        run: bash tests/browser-diagnostic-inventory.test.sh
+
       - name: Exercise full current reader and accessibility behavior
         shell: bash
         run: bash scripts/run_public_browser_qualification.sh
