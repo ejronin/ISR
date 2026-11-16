@@ -1,0 +1,151 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-16T00:00:00-05:00",
+    "window_end": "2026-11-16T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-16T12:00:00-05:00",
+    "collection_time": "2026-11-16T11:55:13-05:00",
+    "evidence_horizon_time": "2026-11-16T11:55:13-05:00",
+    "collection_mode": "PRE_CUTOFF_PARTIAL_SOURCE_DISCOVERY",
+    "caveat": "Collection started before scheduled noon cutoff; post-11:55:13 EST reports not examined. Discovery-only items not promoted without exact publication and occurrence clock verification."
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Yemen Bab el-Mandeb/Dhubab withdrawal",
+      "decision": "UPDATE",
+      "reason": "Reuters November 16 reports Saudi coalition command replacement and Houthi advances toward Aden, building on November 15 withdrawal; exact publication time and independent ground control unresolved; retained in discovery only."
+    },
+    {
+      "topic": "Bahrain radar/drone claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "November 15 claims previously preserved; no new independently corroborated BDA."
+    },
+    {
+      "topic": "Hormuz tanker mine allegations",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "November 16 reporting of three alleged mine incidents may overlap November 13-15 claims; IMO identities and AIS crosschecks unresolved."
+    },
+    {
+      "topic": "Gaza commander death",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No corroborated new material disposition reviewed."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "url": "https://www.reuters.com/world/middle-east/houthis-seize-ground-yemens-southern-coast-edge-closer-aden-2026-11-16/",
+      "title": "After Yemen setback, Saudi Arabia replaces military commander",
+      "publication_time": "2026-11-16; exact clock unqualified",
+      "temporal_qualification": "UNRESOLVED"
+    },
+    {
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/war-torn-present-clouds-saudi-arabias-post-oil-future-2026-11-16/",
+      "title": "War-torn present clouds Saudi Arabia's post-oil future",
+      "publication_time": "2026-11-16T07:00:00Z",
+      "temporal_qualification": "IN_WINDOW; COMMENTARY_NOT_EVENT"
+    },
+    {
+      "url": "https://www.thenationalnews.com/news/mena/2026/11/16/iran-war-live-uss-theodore-roosevelt-middle-east/",
+      "title": "Middle East latest: tanker struck by unknown projectile, UKMTO cited",
+      "publication_time": "2026-11-16; live updates individual timestamps unqualified",
+      "temporal_qualification": "UNRESOLVED"
+    },
+    {
+      "url": "https://apnews.com/article/8830a880160d69e2d7f1fd654207a121",
+      "title": "Houthis accuse Saudi Arabia of strikes that killed 3 including a child",
+      "publication_time": "2026-11-16; exact clock unqualified",
+      "temporal_qualification": "UNRESOLVED"
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/anti-houthi-forces-retreat-yemen-iran-strikes-bahrain-2026-11-15/",
+      "title": "Anti-Houthi forces retreat in Yemen as Iran strikes Bahrain",
+      "publication_time": "2026-11-15T15:56:00Z",
+      "temporal_qualification": "PRIOR_WINDOW_SOURCE"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Yemen November 16",
+      "Reuters Saudi energy commentary November 16",
+      "AP Middle East November 16 roundup",
+      "The National live updates November 16",
+      "Reuters November 15 prior drawer",
+      "Repository ROOK intake validator source"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary leadership and security",
+      "US and Israel primary",
+      "Saudi/GCC/Oman/Qatar/UAE/Kuwait/Bahrain primary",
+      "Iraq/Yemen/Lebanon/Gaza/Syria primary",
+      "Pakistan/Turkiye/China/Russia/EU",
+      "UN/IAEA/IMO",
+      "Maritime and aviation authorities",
+      "Sanctions authorities",
+      "Oil/commodity markets and commercial AIS/Kpler/LSEG",
+      "Humanitarian agencies",
+      "Independent geospatial OSINT",
+      "All previous evidence drawers"
+    ],
+    "reason": "Pre-cutoff execution and targeted discovery only; theater-wide source matrix not completed."
+  },
+  "unresolved_questions": [
+    "Exact publication and occurrence clocks for November 16 Yemeni front-line reporting",
+    "Whether command replacement was announced within this window",
+    "Independent evidence for Houthi territorial control near Khor Omairh and Aden",
+    "Vessel IMO numbers, projectile or mine attribution and UKMTO incident identifiers",
+    "Whether November 16 alleged tanker incidents duplicate prior claims",
+    "Yemen strike casualty corroboration and precise localities",
+    "Independent BDA for Bahrain radar claim"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Yemen front-line movements near Khor Omairh and Aden",
+        "map_eligibility": "region-only",
+        "geolocation": "UNRESOLVED",
+        "precision": "Locality reported, no validated point coordinates",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/houthis-seize-ground-yemens-southern-coast-edge-closer-aden-2026-11-16/"
+      },
+      {
+        "topic": "Hormuz tanker incident",
+        "map_eligibility": "unlocated pending source",
+        "geolocation": "UNRESOLVED",
+        "precision": "Strait-level only",
+        "projection_ready": false,
+        "source": "https://www.thenationalnews.com/news/mena/2026/11/16/iran-war-live-uss-theodore-roosevelt-middle-east/"
+      },
+      {
+        "topic": "Yemen alleged Saudi strikes",
+        "map_eligibility": "unlocated pending source",
+        "geolocation": "UNRESOLVED",
+        "precision": "Country-level only",
+        "projection_ready": false,
+        "source": "https://apnews.com/article/8830a880160d69e2d7f1fd654207a121"
+      }
+    ],
+    "notes": "No map-grade coordinate inferred; protected geometry unchanged."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Pre-cutoff partial discovery preserved; publication/occurrence verification and comprehensive theater-wide review incomplete; validator not run, no completed-unconsumed certification."
+  }
+}
