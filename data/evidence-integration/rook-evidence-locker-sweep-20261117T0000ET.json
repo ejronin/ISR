@@ -1,0 +1,175 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-16T12:00:00-05:00",
+    "window_end": "2026-11-17T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-17T00:00:00-05:00",
+    "collection_time": "2026-11-16T23:56:14-05:00",
+    "evidence_horizon_time": "2026-11-16T23:56:14-05:00",
+    "collection_mode": "PRE_CUTOFF_PARTIAL_SOURCE_DISCOVERY",
+    "caveat": "Execution before midnight; source clock qualification incomplete, no post-horizon evidence included."
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Yemen Bab el-Mandeb withdrawal and Houthi front",
+      "decision": "UPDATE",
+      "reason": "November 16 Reuters and AP developments warrant later reconciliation; precise control and occurrence time unverified; no duplicate event promoted."
+    },
+    {
+      "topic": "Hormuz tanker mine/projectile claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "AP reiterates Iranian mine claims and British maritime monitor projectile report; vessel identifiers and incident deduplication unresolved."
+    },
+    {
+      "topic": "Bahrain radar interception allegations",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new independently verified battle damage assessment."
+    },
+    {
+      "topic": "US naval deployments",
+      "decision": "UPDATE",
+      "reason": "Third carrier Theodore Roosevelt reportedly entered CENTCOM area November 15; assess as prior-window occurrence with later reporting, without inferring operational position."
+    },
+    {
+      "topic": "Bahrain mass trial",
+      "decision": "UPDATE",
+      "reason": "November 16 reporting of 64 life sentences and five 15-year sentences; government allegations and rights-group counterclaims remain separate; exact publication time unresolved."
+    },
+    {
+      "topic": "Oil market freight rates",
+      "decision": "UPDATE",
+      "reason": "Reuters reports November 13 VLCC benchmark about WS308 vs October 8 WS841; historical comparison reported November 16, not new physical incident."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "url": "https://apnews.com/article/8830a880160d69e2d7f1fd654207a121",
+      "title": "AP Middle East roundup November 16",
+      "publication_time": "2026-11-16 clock unqualified",
+      "temporal_qualification": "DATE_ONLY_UNRESOLVED",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://www.reuters.com/business/energy/supertanker-rates-plunge-more-than-60-record-highs-2026-11-16/",
+      "title": "Reuters VLCC freight rates November 16",
+      "publication_time": "2026-11-16 clock unqualified",
+      "temporal_qualification": "DATE_ONLY_UNRESOLVED",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://www.ft.com/content/675941c1-d4e9-4407-8d1f-1ea8d358522a",
+      "title": "FT Bahrain mass trial November 16",
+      "publication_time": "2026-11-16 clock unqualified",
+      "temporal_qualification": "DATE_ONLY_UNRESOLVED",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/houthis-seize-ground-yemens-southern-coast-edge-closer-aden-2026-11-16/",
+      "title": "Reuters Yemen front November 16",
+      "publication_time": "2026-11-16 clock unqualified",
+      "temporal_qualification": "DATE_ONLY_UNRESOLVED",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://www.wsj.com/finance/commodities-futures/oil-edges-lower-as-supply-surplus-prospects-offset-mideast-tensions-9105d9bf",
+      "title": "WSJ oil settlements November 16",
+      "publication_time": "2026-11-16 clock unqualified",
+      "temporal_qualification": "DATE_ONLY_UNRESOLVED",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://gulfnews.com/world/americas/us-aircraft-carrier-uss-theodore-roosevelt-enters-mid-east-as-iran-blockade-expands-1.500748546",
+      "title": "Gulf News USS Theodore Roosevelt deployment November 16",
+      "publication_time": "2026-11-16 clock unqualified",
+      "temporal_qualification": "DATE_ONLY_UNRESOLVED",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters November 16 freight",
+      "AP November 16 Middle East",
+      "FT Bahrain trial",
+      "Reuters Yemen",
+      "WSJ energy",
+      "Gulf News US naval deployment",
+      "Prior November 16 noon drawer"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership and security primary",
+      "US and Israel primary",
+      "GCC state agencies",
+      "Iraq Yemen Lebanon Gaza Syria primary",
+      "Pakistan Turkiye China Russia Europe",
+      "UN IAEA IMO maritime aviation",
+      "Sanctions authorities",
+      "Commercial AIS Kpler LSEG",
+      "Human-impact agencies",
+      "Independent OSINT",
+      "All prior drawers"
+    ],
+    "reason": "Targeted discovery and prior drawer sampling, not theater-wide source-class coverage."
+  },
+  "unresolved_questions": [
+    "Exact publication clocks and event occurrence times for discovered sources",
+    "Carrier precise location and independent deployment corroboration",
+    "Yemen front control and locality-level geolocation",
+    "IMO identifiers and UKMTO incident reference for tanker claims",
+    "Bahrain case court records and allegations independently tested",
+    "Independent casualty and BDA evidence",
+    "Full prior drawer deduplication"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Yemen force movements near Bab el-Mandeb and Aden",
+        "map_eligibility": "region-only",
+        "geolocation": "UNRESOLVED",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/houthis-seize-ground-yemens-southern-coast-edge-closer-aden-2026-11-16/"
+      },
+      {
+        "topic": "Hormuz vessel incidents",
+        "map_eligibility": "unlocated pending source",
+        "geolocation": "UNRESOLVED",
+        "projection_ready": false,
+        "source": "https://apnews.com/article/8830a880160d69e2d7f1fd654207a121"
+      },
+      {
+        "topic": "USS Theodore Roosevelt theater entry",
+        "map_eligibility": "region-only",
+        "geolocation": "UNRESOLVED",
+        "projection_ready": false,
+        "source": "https://gulfnews.com/world/americas/us-aircraft-carrier-uss-theodore-roosevelt-enters-mid-east-as-iran-blockade-expands-1.500748546"
+      },
+      {
+        "topic": "Bahrain trial and energy prices",
+        "map_eligibility": "nonspatial",
+        "projection_ready": false
+      }
+    ],
+    "notes": "No fabricated coordinates or protected geometry mutations."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Pre-cutoff partial discovery only. Exact publication time and source-class coverage unresolved; repository validator not yet executed."
+  }
+}
