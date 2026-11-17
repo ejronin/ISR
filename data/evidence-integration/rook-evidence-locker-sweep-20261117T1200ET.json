@@ -1,0 +1,152 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-17T00:00:00-05:00",
+    "window_end": "2026-11-17T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-17T12:00:00-05:00",
+    "collection_time": "2026-11-17T12:04:29-05:00",
+    "evidence_horizon_time": "2026-11-17T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW",
+    "caveat": "Some reporting updated after cutoff; no post-cutoff assertions promoted without timestamp qualification."
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Bahrain US radar drone incidents",
+      "decision": "UPDATE",
+      "reason": "Reuters November 17 reports new IRGC claim of targeting Sheikh Isa radar; Bahrain reports interception and no casualties/damage. Prior Al-Rifaa incident not automatically merged; independent BDA unresolved."
+    },
+    {
+      "topic": "Hormuz tanker mine/projectile incidents",
+      "decision": "UPDATE",
+      "reason": "New November 17 tanker reports and missing crew require IMO identifiers and chronology matching; do not count distinct vessels until corroborated."
+    },
+    {
+      "topic": "Yemen Bab el-Mandeb front",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "November 15-16 retreat remains prior-window event; November 17 AP follow-on requires publication clock and local geolocation."
+    },
+    {
+      "topic": "Iran Qatar Oman mediation",
+      "decision": "UPDATE",
+      "reason": "Reuters reports ongoing ministerial discussions; no signed settlement or implementation verified."
+    },
+    {
+      "topic": "Oil tanker freight and supply",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Reuters reports oil-price response and recovering supply, but precise settlement values and timestamps not yet qualified."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "url": "https://www.reuters.com/world/middle-east/oman-iran-foreign-ministers-discuss-safeguarding-maritime-corridors-2026-11-17/",
+      "publication_time": "2026-11-17T05:45:00Z initial; subsequent updates not independently timestamp-qualified",
+      "promotion": "UNPROMOTED",
+      "topics": [
+        "Bahrain drone interception",
+        "Hormuz tanker crew",
+        "Oman Qatar mediation"
+      ]
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/bahrain-says-it-intercepts-iranian-air-attacks-irgc-says-it-targets-us-radar-2026-11-17/",
+      "publication_time": "2026-11-17 date only, exact clock unresolved",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://www.reuters.com/business/energy/oil-slips-supply-surplus-outlook-despite-gulf-tensions-2026-11-17/",
+      "publication_time": "2026-11-17T01:37:00Z initial; subsequent updates not qualified",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://apnews.com/article/36dc900f45aa414a1b8544dce7de53fc",
+      "publication_time": "2026-11-17 date only, exact clock unresolved",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/major-gulf-equities-mixed-amid-shipping-security-concerns-2026-11-17/",
+      "publication_time": "2026-11-17T08:48:00Z initial; subsequent updates not qualified",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Iran/Bahrain/Hormuz",
+      "Reuters energy and Gulf equities",
+      "AP Yemen/Iraq/maritime regional roundup",
+      "Previous November 17 midnight drawer"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership primary",
+      "US and Israel primary",
+      "Saudi Arabia and GCC primary",
+      "Iraq Yemen Lebanon Gaza Syria primary",
+      "Pakistan Turkiye China Russia EU",
+      "UN IAEA IMO aviation",
+      "Sanctions authorities",
+      "Commercial AIS Kpler LSEG",
+      "Human-impact agencies",
+      "Independent geospatial OSINT",
+      "Full prior drawers"
+    ],
+    "reason": "Limited targeted discovery and publication-time uncertainty; theater-wide review not completed."
+  },
+  "unresolved_questions": [
+    "Bahrain incident exact occurrence time and independent radar BDA",
+    "Tanker IMO identifiers, missing crew count and incident deduplication",
+    "Yemen front coordinates and independent control confirmation",
+    "Oman Qatar diplomatic text and implementation",
+    "Source updates after noon cutoff",
+    "Full prior-drawer adjudication and validator certification"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Sheikh Isa radar drone claim",
+        "source": "https://www.reuters.com/world/middle-east/bahrain-says-it-intercepts-iranian-air-attacks-irgc-says-it-targets-us-radar-2026-11-17/",
+        "location_description": "Sheikh Isa Air Base, Bahrain, target locality only; interception point unverified",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false
+      },
+      {
+        "topic": "Hormuz tanker incident",
+        "source": "https://www.reuters.com/world/middle-east/oman-iran-foreign-ministers-discuss-safeguarding-maritime-corridors-2026-11-17/",
+        "location_description": "Strait of Hormuz, exact vessel position unresolved",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "unlocated pending source",
+        "projection_ready": false
+      },
+      {
+        "topic": "Yemen defensive movement",
+        "source": "https://apnews.com/article/36dc900f45aa414a1b8544dce7de53fc",
+        "location_description": "Tur al-Baha area, Yemen, reported approximately 85 km from Aden",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false
+      }
+    ],
+    "notes": "No protected route or public map mutation."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial source discovery. Full theater coverage and exact publication/update clocks unresolved. Intake validator not executed; not certified completed unconsumed."
+  }
+}
