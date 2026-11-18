@@ -1,0 +1,149 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-18T00:00:00-05:00",
+    "window_end": "2026-11-18T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-18T12:00:00-05:00",
+    "collection_time": "2026-11-18T12:04:16-05:00",
+    "evidence_horizon_time": "2026-11-18T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Hormuz vessel casualty reporting",
+      "decision": "UPDATE",
+      "reason": "ADNOC L&S Nov 18 statement adds 11 injured and one missing to Tuesday vessel incident; exact vessel identity and prior locker cross-reference not established, so retained unpromoted."
+    },
+    {
+      "topic": "Bahrain Iranian aerial attacks",
+      "decision": "UPDATE",
+      "reason": "Nov 18 Bahrain interceptions reported; independently verified strike damage and exact event matching unresolved."
+    },
+    {
+      "topic": "Yemen Bab el-Mandeb front",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No sufficiently qualified new control-line evidence in this partial collection."
+    },
+    {
+      "topic": "Iran-U.S. diplomacy",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified implemented settlement."
+    },
+    {
+      "topic": "Saudi East-West pipeline Houthi claim",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Nov 17 claim remains attributed, no independently verified damage."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "url": "https://www.reuters.com/world/middle-east/uaes-adnoc-ls-says-one-crew-member-missing-after-attack-its-vessel-hormuz-2026-11-18/",
+      "publication_time": "2026-11-18T07:41:00Z",
+      "collection_time": "2026-11-18T12:04:16-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Prior incident cross-reference and vessel identity not resolved",
+      "summary": "ADNOC L&S said one missing and 11 injured after Tuesday Hormuz attack."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/bahrain-warns-potential-threat-urges-residents-seek-safety-2026-11-17/",
+      "publication_time": "2026-11-17T23:15:00Z initial; update time unresolved",
+      "collection_time": "2026-11-18T12:04:16-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Initial publication precedes window; updated assertions not separately timestamp-qualified."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/trumps-board-peace-faults-israel-hamas-failure-end-gaza-war-2026-11-18/",
+      "publication_time": "2026-11-18T11:19:00Z",
+      "collection_time": "2026-11-18T12:04:16-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Document not independently reviewed",
+      "summary": "Board of Peace report attributed violations to Israel and Hamas; not independent adjudication."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-fall-us-iran-hostilities-escalate-2026-11-18/",
+      "publication_time": "2026-11-18T08:33:00Z",
+      "collection_time": "2026-11-18T12:04:16-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Closing values may reflect post-cutoff updates; no snapshot-qualified prices."
+    },
+    {
+      "url": "https://www.reuters.com/world/middle-east/israeli-military-begins-new-thrust-gaza-kills-three-people-2026-11-18/",
+      "publication_time": "2026-11-18T13:01:00Z",
+      "promotion": "UNPROMOTED",
+      "reason": "Within window initial publication but event chronology and independent claims require review."
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters Bahrain Kuwait Iran overview",
+      "Reuters ADNOC maritime casualty statement",
+      "Reuters Gaza and Board of Peace",
+      "Reuters Gulf equities",
+      "Prior November 17 drawer"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran political military primary",
+      "US Israel primary",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Yemen Lebanon Gaza Syria primary",
+      "Pakistan Turkiye China Russia EU",
+      "UN IAEA IMO maritime aviation authorities",
+      "Sanctions",
+      "Energy commodity and commercial AIS Kpler LSEG",
+      "Human impact agencies",
+      "Independent OSINT",
+      "Full prior drawer reconciliation"
+    ],
+    "reason": "Targeted discovery only; comprehensive independent multi-source review and temporal verification not achieved."
+  },
+  "unresolved_questions": [
+    "ADNOC vessel IMO and precise incident position, casualty status, deduplication",
+    "Kuwait and Bahrain interceptions occurrence clocks and independent damage evidence",
+    "Gaza chronology and separately attributed casualty figures",
+    "Oil and Gulf equity price snapshots within horizon",
+    "Prior drawer exact event references and validator certification"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "ADNOC vessel Hormuz incident",
+        "source": "https://www.reuters.com/world/middle-east/uaes-adnoc-ls-says-one-crew-member-missing-after-attack-its-vessel-hormuz-2026-11-18/",
+        "location_description": "Strait of Hormuz; vessel coordinates unavailable",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "unlocated pending source",
+        "projection_ready": false
+      },
+      {
+        "topic": "Bahrain and Kuwait interceptions",
+        "source": "https://www.reuters.com/world/middle-east/bahrain-warns-potential-threat-urges-residents-seek-safety-2026-11-17/",
+        "location_description": "Bahrain and Kuwait, interception points unknown",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false
+      }
+    ],
+    "notes": "No protected geometry or public marker mutation."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial post-cutoff discovery only. Not a certified full sweep; no event promotion. GitHub validator execution not yet confirmed."
+  }
+}
