@@ -1,0 +1,203 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-18T12:00:00-05:00",
+    "window_end": "2026-11-19T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-19T00:00:00-05:00",
+    "collection_time": "2026-11-19T00:02:18-05:00",
+    "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Hormuz ADNOC vessel casualty incident",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "November 18 reports concern earlier Tuesday occurrence, without new independently established casualty revision after previous drawer."
+    },
+    {
+      "topic": "Bahrain Kuwait air-defense reports",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Reports reviewed describe earlier November 18 claims; no newly corroborated BDA."
+    },
+    {
+      "topic": "Yemen Bab el-Mandeb control",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "November 18 explainer is contextual; control descriptions not independently geolocated."
+    },
+    {
+      "topic": "Gaza central ground operation",
+      "decision": "UPDATE",
+      "reason": "Reuters reporting adds central Gaza movement and displacement allegations; source published before window start, later revisions not timestamp qualified, retained unpromoted."
+    },
+    {
+      "topic": "US Iran maritime blockade policy",
+      "decision": "UPDATE",
+      "reason": "Reuters reports a new ship-to-ship cargo advisory, exact publication and primary advisory text require confirmation."
+    },
+    {
+      "topic": "US Iran settlement",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Analysis provides no verified implemented settlement."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/us-tightens-iran-blockade-with-curbs-oil-transfers-sea-advisory-shows-2026-11-18/",
+      "summary": "US maritime blockade advisory expanded treatment of ship-to-ship transfers; legal-policy implementation subject to primary advisory verification",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/gulf-conflict-end-date-depends-who-you-ask-2026-11-18/",
+      "summary": "Analysis of conflicting diplomatic end-state expectations; not implemented settlement",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/israeli-military-begins-new-thrust-gaza-kills-three-people-2026-11-18/",
+      "summary": "Central Gaza ground operation reported; Israeli infrastructure-target claim and medics casualty reports separately attributed",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-prices-fall-higher-us-crude-stocks-temper-supply-risks-2026-11-18/",
+      "summary": "Oil settlement reporting; verify final timestamp and quoted price snapshot",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/asia-pacific/untangling-yemens-complex-civil-war-2026-11-18/",
+      "summary": "Yemen conflict explainer; analytical descriptions of control not independent geospatial adjudication",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/f72d5aa085500412989183e606bfadfd",
+      "summary": "Carrier presence changes reported; not independently verified force positions",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "The National",
+      "url": "https://www.thenationalnews.com/business/energy/2026/11/18/adnoc-ls-ship-attacked-at-strait-of-hormuz-with-one-crew-member-missing/",
+      "summary": "ADNOC and Tara Gas casualty reports relate to Tuesday incidents; no duplicate new event",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-fall-us-iran-hostilities-escalate-2026-11-18/",
+      "summary": "Gulf equity and oil market snapshots; publication prior to window, possible later update not qualified",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "collection_time": "2026-11-19T00:02:18-05:00",
+      "evidence_horizon_time": "2026-11-19T00:00:00-05:00",
+      "promotion": "UNPROMOTED",
+      "reason": "Exact window-qualified publication or update time and independent prior-drawer reconciliation incomplete"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 8,
+    "reviewed": [
+      "Reuters energy maritime policy",
+      "Reuters Gaza",
+      "Reuters Gulf diplomacy",
+      "Reuters Yemen",
+      "Reuters oil and equity markets",
+      "AP US naval presence",
+      "The National shipping casualty coverage",
+      "Prior November 18 noon drawer"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran official political military security sources",
+      "US Israel primary sources",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary sources",
+      "Iraq Yemen Lebanon Gaza Syria primary sources",
+      "Pakistan Turkiye China Russia Europe",
+      "UN IAEA IMO maritime aviation authorities",
+      "Sanctions authorities and full primary legal texts",
+      "Public AIS Kpler LSEG shipping",
+      "Humanitarian agencies",
+      "Independent geospatial OSINT",
+      "Complete prior drawers"
+    ],
+    "reason": "Limited post-cutoff discovery; not theater-wide exhaustive collection"
+  },
+  "unresolved_questions": [
+    "Exact publication and revision timestamps for all discovered reporting",
+    "Primary US maritime advisory wording and effective time",
+    "Central Gaza chronology, casualties and independent corroboration",
+    "ADNOC and Tara Gas vessel IMO and incident coordinates",
+    "Prior drawer canonical IDs and supersession eligibility",
+    "Full theater-wide negative coverage"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Central Gaza ground operation",
+        "source": "https://www.reuters.com/world/middle-east/israeli-military-begins-new-thrust-gaza-kills-three-people-2026-11-18/",
+        "location_description": "Central Gaza, Salahudeen road, no sourced exact coordinates",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false
+      },
+      {
+        "topic": "ADNOC/Tara Gas incidents",
+        "source": "https://www.thenationalnews.com/business/energy/2026/11/18/adnoc-ls-ship-attacked-at-strait-of-hormuz-with-one-crew-member-missing/",
+        "location_description": "Strait of Hormuz, exact incident coordinates unresolved",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "unlocated pending source",
+        "projection_ready": false
+      }
+    ],
+    "notes": "No geometry or marker mutations; analytical shipping and naval presence not plot-ready"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial post-cutoff OSINT discovery. No qualified event promotion. Validator execution not available in this run; cannot claim completed-unconsumed."
+  }
+}
