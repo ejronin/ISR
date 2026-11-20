@@ -1,0 +1,164 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-19T12:00:00-05:00",
+    "window_end": "2026-11-20T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-20T00:00:00-05:00",
+    "collection_time": "2026-11-20T00:03:59-05:00",
+    "evidence_horizon_time": "2026-11-20T00:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Riyadh PIF tower strike",
+      "decision": "UPDATE",
+      "reason": "New November 19 reporting of physical damage; competing impact/debris explanations; no independent BDA adjudication or canonical ID match"
+    },
+    {
+      "topic": "Iran nuclear inspections",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Western diplomatic demand without confirmed resumed inspection access"
+    },
+    {
+      "topic": "Hormuz maritime export flows",
+      "decision": "UPDATE",
+      "reason": "New tanker loading report; AIS and shipment confirmation unresolved"
+    },
+    {
+      "topic": "Gulf escalation diplomacy",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Reported consultations do not establish agreement"
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/houthi-missile-threat-towards-riyadh-causes-damage-saudi-led-coalition-says-2026-11-19/",
+      "topic": "PIF tower damage Riyadh; Saudi civil defence reports damage/no injuries; coalition debris account differs from direct-impact sourcing",
+      "publication_time": "2026-11-19T03:19:00Z",
+      "map_eligibility": "region-only",
+      "geolocation": "UNRESOLVED exact impact point",
+      "promotion": "UNPROMOTED",
+      "collection_time": "2026-11-20T00:03:59-05:00",
+      "evidence_horizon_time": "2026-11-20T00:00:00-05:00",
+      "occurrence_time": "UNRESOLVED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/china/west-presses-iran-iaea-let-inspections-resume-bombed-nuclear-sites-2026-11-19/",
+      "topic": "Western powers urge Iran to resume IAEA inspections; safeguards access unresolved",
+      "publication_time": "2026-11-19T12:37:00Z",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED",
+      "collection_time": "2026-11-20T00:03:59-05:00",
+      "evidence_horizon_time": "2026-11-20T00:00:00-05:00",
+      "occurrence_time": "UNRESOLVED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-prices-steady-supply-surplus-softens-sentiment-though-gulf-war-supports-2026-11-19/",
+      "topic": "Oil price settlement and Hormuz disruption",
+      "publication_time": "2026-11-19T02:47:00Z",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED",
+      "collection_time": "2026-11-20T00:03:59-05:00",
+      "evidence_horizon_time": "2026-11-20T00:00:00-05:00",
+      "occurrence_time": "UNRESOLVED"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/b1f0b530cffe951e6fcc1e27b2e1af94",
+      "topic": "Gulf Pakistan Türkiye diplomacy to avert escalation; reporting timing not exact-qualified",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED",
+      "collection_time": "2026-11-20T00:03:59-05:00",
+      "evidence_horizon_time": "2026-11-20T00:00:00-05:00",
+      "occurrence_time": "UNRESOLVED"
+    },
+    {
+      "publisher": "Iran International",
+      "url": "https://www.iranintl.com/en/202611192862",
+      "topic": "Tanker loading Iranian crude, export restart speculation; independently unconfirmed",
+      "publication_time": "2026-11-19T18:21:00Z",
+      "map_eligibility": "unlocated pending source",
+      "geolocation": "UNRESOLVED",
+      "promotion": "UNPROMOTED",
+      "collection_time": "2026-11-20T00:03:59-05:00",
+      "evidence_horizon_time": "2026-11-20T00:00:00-05:00",
+      "occurrence_time": "UNRESOLVED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 5,
+    "reviewed": [
+      "Reuters Saudi Arabia",
+      "Reuters IAEA",
+      "Reuters energy",
+      "AP regional diplomacy",
+      "Iran International maritime"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership primary sources",
+      "US and Israel military primary sources",
+      "GCC Iraq Lebanon Gaza Syria",
+      "China Russia EU UN IMO",
+      "Sanctions and aviation authorities",
+      "AIS Kpler LSEG",
+      "Humanitarian agencies",
+      "Independent OSINT",
+      "Complete prior drawers"
+    ],
+    "reason": "Limited post-cutoff source discovery and no exhaustive source-class reconciliation"
+  },
+  "unresolved_questions": [
+    "PIF tower direct strike versus intercept debris and exact damage footprint",
+    "Primary IAEA statements and safeguards chronology",
+    "Iran tanker IMO, AIS and verified loading",
+    "Exact publication time of AP diplomatic story",
+    "All prior canonical drawer references"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Riyadh PIF tower",
+        "source": "https://www.reuters.com/world/middle-east/houthi-missile-threat-towards-riyadh-causes-damage-saudi-led-coalition-says-2026-11-19/",
+        "location_description": "PIF Tower, King Abdullah Financial District, Riyadh, Saudi Arabia; exact damage point unresolved",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false
+      },
+      {
+        "topic": "Iranian crude loading",
+        "source": "https://www.iranintl.com/en/202611192862",
+        "location_description": "Persian Gulf; vessel and coordinates unresolved",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "unlocated pending source",
+        "projection_ready": false
+      }
+    ],
+    "notes": "No geometry or public markers modified"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial post-cutoff discovery, no promoted events; full theater coverage and validator certification outstanding."
+  }
+}
