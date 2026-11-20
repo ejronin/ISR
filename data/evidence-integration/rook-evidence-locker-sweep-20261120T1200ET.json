@@ -1,0 +1,171 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-20T00:00:00-05:00",
+    "window_end": "2026-11-20T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-20T12:00:00-05:00",
+    "collection_time": "2026-11-20T12:04:06-05:00",
+    "evidence_horizon_time": "2026-11-20T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Hormuz blockade ship-to-ship transfers",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "New explanatory coverage of prior advisory, no verified new implementation"
+    },
+    {
+      "topic": "Saudi Houthi cross-border attacks",
+      "decision": "UPDATE",
+      "reason": "Reported new interceptions, unqualified exact time and no independently verified location or BDA"
+    },
+    {
+      "topic": "Oil market and Gulf export flows",
+      "decision": "UPDATE",
+      "reason": "Reuters new daily market report; revised quotes may postdate horizon"
+    },
+    {
+      "topic": "Iraq militia governance and security",
+      "decision": "UPDATE",
+      "reason": "Reported security deployment; prior canonical event ID not matched"
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-prices-edge-higher-houthi-attacks-riyadh-raise-supply-concerns-2026-11-20/",
+      "topic": "Oil futures weekly decline; source first published 02:00 UTC but later intraday price quotes must be excluded pending revision timestamp",
+      "publication_time": "2026-11-20T02:00:00Z",
+      "occurrence_time": "MARKET_SNAPSHOT_UNRESOLVED",
+      "map_eligibility": "nonspatial",
+      "qualification": "PARTIAL_REVISED_AFTER_HORIZON_POSSIBLE",
+      "collection_time": "2026-11-20T12:04:06-05:00",
+      "evidence_horizon_time": "2026-11-20T12:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepted-houthi-missile-targeting-southern-region-2026-11-20/",
+      "topic": "Saudi coalition claim of intercepted Houthi missile, Jazan Abha Khamis Mushait alerts; exact time and independent confirmation unresolved",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "occurrence_time": "UNRESOLVED",
+      "map_eligibility": "region-only",
+      "geolocation": "UNRESOLVED strike/intercept point",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-20T12:04:06-05:00",
+      "evidence_horizon_time": "2026-11-20T12:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/iraqi-security-forces-deploy-iran-backed-militia-stronghold-security-officials-2026-11-20/",
+      "topic": "Iraqi security entry into Jurf al-Sakhar reported; implementation and precise chronology unresolved",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "occurrence_time": "UNRESOLVED",
+      "map_eligibility": "region-only",
+      "geolocation": "Jurf al-Sakhar locality, Iraq; no point adjudicated",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-20T12:04:06-05:00",
+      "evidence_horizon_time": "2026-11-20T12:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/bcbb331cd6c847bf5d0bcb7446344714",
+      "topic": "US Senate Iran war powers resolution reported 48-51; legislative primary record pending",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "occurrence_time": "2026-11-19_UNRESOLVED_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-20T12:04:06-05:00",
+      "evidence_horizon_time": "2026-11-20T12:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/11/20/us-targets-irans-ship-to-ship-transfers-can-tehran-break-the-blockade",
+      "topic": "Analysis of earlier CENTCOM ship-to-ship transfer advisory; not a new blockade action",
+      "publication_time": "2026-11-20_UNRESOLVED_HOUR",
+      "occurrence_time": "EARLIER_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-20T12:04:06-05:00",
+      "evidence_horizon_time": "2026-11-20T12:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 5,
+    "reviewed": [
+      "Reuters energy",
+      "Reuters Saudi/Yemen",
+      "Reuters Iraq",
+      "AP US legislature",
+      "Al Jazeera maritime analysis"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership",
+      "Israel",
+      "GCC primary authorities",
+      "Lebanon Gaza Syria",
+      "Pakistan Türkiye China Russia EU",
+      "UN IAEA IMO",
+      "Maritime AIS Kpler LSEG",
+      "Aviation sanctions",
+      "Humanitarian agencies",
+      "Independent OSINT",
+      "Complete prior drawers"
+    ],
+    "reason": "Post-cutoff brief discovery; publication-time and event reconciliation incomplete"
+  },
+  "unresolved_questions": [
+    "Exact source publication timestamps and whether content existed before noon EST",
+    "Saudi interception location, independently verified attribution and casualties",
+    "Jurf al-Sakhar deployment implementation and canonical event match",
+    "Market data snapshots strictly before cutoff",
+    "Complete primary-source coverage"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Saudi missile/drone alerts",
+        "location_description": "Jazan, Abha, Khamis Mushait areas, Saudi Arabia",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepted-houthi-missile-targeting-southern-region-2026-11-20/"
+      },
+      {
+        "topic": "Iraq security deployment",
+        "location_description": "Jurf al-Sakhar, Iraq; area-level only",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/iraqi-security-forces-deploy-iran-backed-militia-stronghold-security-officials-2026-11-20/"
+      }
+    ],
+    "notes": "No protected geometry or public marker changes"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Partial source discovery only. Cutoff qualification, comprehensive coverage, prior-drawer matching and validator certification outstanding."
+  }
+}
