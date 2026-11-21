@@ -1,0 +1,213 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-20T12:00:00-05:00",
+    "window_end": "2026-11-21T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-21T00:00:00-05:00",
+    "collection_time": "2026-11-21T14:34:52.552Z",
+    "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+    "collection_mode": "RETROSPECTIVE_PARTIAL_RECOVERY_NOT_FULL_THEATER"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Iranian crude oil export attempts and reported success",
+      "decision": "UPDATE",
+      "reason": "November 20 specialist shipping tracking distinguishes no tracked successful Iranian crude departure from approximately 12 small LPG tankers reported to pass the line; cannot certify all-vessel absence"
+    },
+    {
+      "topic": "Iranian ship-to-ship transfers and OLYM to HAO FAN",
+      "decision": "UPDATE",
+      "reason": "November 17 satellite-observed transfer reported; not proof crude departed and no double counting of Nov 18 transfers permitted"
+    },
+    {
+      "topic": "US November 18 ship-to-ship blockade enforcement advisory",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Prior midweek advisory requires incorporation as earlier-window event after prior drawer match, not a new November 20 action"
+    },
+    {
+      "topic": "November 20 Treasury oil-trustees designations",
+      "decision": "UPDATE",
+      "reason": "Primary-source official action reported after noon local; event chronology and sanctions category need canonical comparison"
+    },
+    {
+      "topic": "US facilitated neutral Hormuz transits",
+      "decision": "UPDATE",
+      "reason": "UANI November 20 source reports 106 transits during Nov 15-18 and 3630 campaign transits, but count is provider-specific and not a crude-export measure"
+    },
+    {
+      "topic": "Reported 14 tankers positioned to test blockade",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Uncorroborated single-outlet report; no verified cargo, vessel IDs, positioning/time, or actual blockade breach"
+    },
+    {
+      "topic": "Possible ZYRA container ship breach",
+      "decision": "UPDATE",
+      "reason": "UANI says possibly; vessel is a container ship and not evidence of successful crude tanker exit"
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "U.S. Department of the Treasury",
+      "url": "https://home.treasury.gov/news/press-releases/sb0697",
+      "topic": "November 20 sanctions on four Iranian oil trustees; direct U.S. government action",
+      "publication_time": "2026-11-20_UNRESOLVED_EXACT_HOUR",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-sanctions-iranian-trustees-collecting-oil-revenues-2026-11-20/",
+      "topic": "November 20 Treasury designations with named individuals, quote distinction",
+      "publication_time": "2026-11-20T21:47:52Z",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "United Against Nuclear Iran",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "topic": "Tracked Iranian crude versus LPG departure, 54 laden tankers, 58 loadings, 106 Nov 15-18 facilitated transits, OLYM/HAO FAN STS transfer",
+      "publication_time": "2026-11-20_UNRESOLVED_HOUR",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "SPECIALIST_TRACKING_UNPROMOTED",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/us-tightens-iran-blockade-with-curbs-oil-transfers-sea-advisory-shows-2026-11-18/",
+      "topic": "Prior November 18 CENTCOM/NAVCENT advisory: ships receiving Iranian-loaded transshipments may be blockaded",
+      "publication_time": "2026-11-18T16:35:15Z",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIOR_WINDOW_SOURCE_FOR_BACKFILL",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "JMIC/UKMTO",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/jmic-advisory-note-01726-blockade-update.pdf?rev=ca07d9284c0d484db848d59387f671d0",
+      "topic": "Primary maritime advisory 017-26, Nov 18. Full PDF text/issue time must be cross-checked",
+      "publication_time": "2026-11-18_UNRESOLVED_EXACT_HOUR",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIMARY_PRIOR_WINDOW_BACKFILL",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "United Against Nuclear Iran",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-18-2026/",
+      "topic": "Earlier ship-to-ship crude and fuel transfer reporting; deduplicate Nov 17 vessel transfer",
+      "publication_time": "2026-11-18_UNRESOLVED_HOUR",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIOR_WINDOW_SOURCE_FOR_BACKFILL",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "House of Saud",
+      "url": "https://houseofsaud.com/iran-kharg-tanker-convoy-tests-us-oil-blockade/",
+      "topic": "14-tanker convoy claim published November 21, after this window, single-source unconfirmed. Do not count as observed November 20 event",
+      "publication_time": "2026-11-21_AFTER_HORIZON",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "EXCLUDED_POST_HORIZON_AND_UNCORROBORATED",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "United Against Nuclear Iran",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-19-2026",
+      "topic": "Earlier maritime tracking of OLYM, HAO FAN, Iran-flagged ships near Sri Lanka; potential ZYRA investigation",
+      "publication_time": "2026-11-19_UNRESOLVED_HOUR",
+      "occurrence_time": "UNRESOLVED_OR_PRIOR_EVENT",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIOR_WINDOW_SOURCE_FOR_BACKFILL",
+      "collection_time": "2026-11-21T14:34:52.552Z",
+      "evidence_horizon_time": "2026-11-21T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 8,
+    "reviewed": [
+      "Treasury Nov 20 official designation",
+      "Reuters Nov 20 financial sanctions",
+      "UANI Nov 20 maritime tracking",
+      "UANI Nov 18-19 source lineage",
+      "JMIC Nov 18 advisory",
+      "Unverified convoy report as later lead"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership and IRGC primary statements",
+      "US and Israeli full military situation",
+      "Saudi/GCC/Iraq/Yemen/Lebanon/Syria/Gaza security agencies",
+      "Pakistan Türkiye China Russia EU and UN/IAEA/IMO primary source completeness",
+      "Maritime AIS and independent Kpler/LSEG or port records",
+      "Commercial aviation and civilian casualties",
+      "Energy pricing complete time series",
+      "Independent imagery and forensic BDA",
+      "All previous partial lockers and canonical event IDs",
+      "All 12-hour prior drawers"
+    ],
+    "reason": "Manual selected-source recovery, not theater-wide full-window coverage; publication timestamps for several November 20 articles not qualified."
+  },
+  "unresolved_questions": [
+    "Obtain authenticated actor statements for any categorical claim that Iranian crude tankers have cleared blockade; source attribution and actor knowledge unresolved.",
+    "Whether OLYM/HAO FAN cargo later cleared the blockade; STS transfer alone does not establish transit.",
+    "Exact publication time and horizon eligibility of UANI November 20 and Treasury primary press release.",
+    "Identity, cargo and route of vessels in alleged 14-tanker convoy; November 21 story beyond current cutoff.",
+    "Independent validation of facilitated transit numbers, vessel flags and loading origin.",
+    "Backfill Nov 12-20 source/packet gaps without changing accepted history or double-counting maritime events."
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "OLYM HAO FAN alleged STS transfer",
+        "location_description": "South of Kharg Island, Persian Gulf, Iran (area only)",
+        "geolocation": "UNRESOLVED_EXACT_COORDINATES",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026"
+      }
+    ],
+    "notes": "No generated map marker, ship movement or public shipping chart edited."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Retrospective partial source recovery of missing Nov 20 noon to Nov 21 midnight locker. No canonical acceptance, exact event deduplication, third-party shipment confirmation, Claims Forensics adjudication, release qualification or live deployment. NOT A COMPLETED SWEEP."
+  }
+}
