@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_SOURCE_REVIEW_AND_CLAIMS_REFERRAL",
+  "review_date": "2026-11-21",
+  "authority": "EVIDENCE_DISCOVERY_ONLY",
+  "repository_baseline_sha": "3ffaec26a76f13d73fffe1799732eb3862d41ebc",
+  "coverage": {
+    "accepted_evidence_cutoff_at_review": "2026-11-12T08:00:00-05:00",
+    "latest_known_accepted_packet": "UPD-20261114-HOUTHI-REDSEA-CLAIM-EVIDENCE",
+    "review_scope": "Selected maritime blockade, oil exports, shipping and sanctions leads through November 20, 2026",
+    "status": "PARTIAL_SOURCE_REVIEW_NOT_A_COMPLETED_ROOK_WINDOW",
+    "excluded_claims": "No assertion of theater-wide or chronological-gap completeness; no source is promoted to canonical status by this artifact",
+    "pending": "Full ROOK post-cutoff sweep, source-time qualification, antecedent-event matching and accepted Gate 3 packet registration"
+  },
+  "findings": [
+    {
+      "id": "MARITIME-BLOCKADE-20261120-UANI-EXPORT-STATUS",
+      "event_date": "2026-11-20",
+      "evidence_type": "SPECIALIST_SHIPPING_TRACKING",
+      "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "reported": "UANI reported no tanker carrying Iranian crude successfully departing the Gulf of Oman and avoiding U.S. blockade enforcement since July 12, before July 14 reinstatement; approximately 12 small tankers carrying Iranian LPG passed the blockade line after reinstatement.",
+      "interpretation_guardrail": "This is UANI's tracked sample and commodity-specific finding. Do not infer an absolute impossibility of unobserved departures or conflate crude with LPG/jet fuel.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "MARITIME-BLOCKADE-20261120-UANI-TANKER-POOL",
+      "event_date": "2026-11-20",
+      "evidence_type": "SPECIALIST_SHIPPING_SNAPSHOT",
+      "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "reported": "UANI identified at least 54 tankers laden with Iranian oil and other petroleum products along the Iranian coastline, and at least 58 oil/petrochemical loadings since July 14, of which eight were at Kharg Island.",
+      "interpretation_guardrail": "A loading or stationary laden tanker is neither an export nor a successful blockade transit. Snapshot populations must not be added across reporting days.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "MARITIME-BLOCKADE-20261117-OLYM-HAOFAN-STS",
+      "event_date": "2026-11-17",
+      "evidence_type": "SPECIALIST_SATELLITE_SHIPPING_OBSERVATION",
+      "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "reported": "UANI reports tanker OLYM (IMO 9212759) transferred approximately 200,000 barrels of Iranian crude to HAO FAN (IMO 9258167) south of Kharg Island; HAO FAN's AIS location was reportedly spoofed near Shinas.",
+      "interpretation_guardrail": "UANI explicitly says the transfer may indicate an effort to export and breach the blockade but other explanations remain possible. No confirmed post-transfer export or blockade passage.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "MARITIME-BLOCKADE-20261118-STS-ACTIVITY",
+      "event_date": "2026-11-18",
+      "evidence_type": "SPECIALIST_SATELLITE_SHIPPING_OBSERVATION",
+      "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-18-2026/",
+      "reported": "UANI reported satellite-confirmed ship-to-ship crude and fuel transfers in or near the Strait of Hormuz.",
+      "interpretation_guardrail": "Reconcile vessel IDs and dates to avoid duplicate counting with November 17 OLYM/HAO FAN and related reporting. Transfer is not proof of passage.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "MARITIME-BLOCKADE-20261118-CENTCOM-ENFORCEMENT-ADDENDUM",
+      "event_date": "2026-11-18",
+      "evidence_type": "OFFICIAL_MARITIME_ADVISORY",
+      "sources": [
+        "https://www.ukmto.org/-/media/ukmto/products/jmic-advisory-note-01726-blockade-update.pdf?rev=ca07d9284c0d484db848d59387f671d0",
+        "https://www.reuters.com/business/energy/us-tightens-iran-blockade-with-curbs-oil-transfers-sea-advisory-shows-2026-11-18/"
+      ],
+      "reported": "CENTCOM/NAVCENT advisory extends potential enforcement to recipients of Iranian-loaded ship-to-ship cargo, including vessels that never enter Iranian ports. Neutral passage to/from non-Iranian destinations is separately addressed.",
+      "interpretation_guardrail": "Advisory is an enforcement policy change, not evidence every involved vessel was seized or that neutral commercial Hormuz transits ceased.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "HORMUZ-20261115-18-TRANSITS",
+      "event_window": "2026-11-15/2026-11-18",
+      "evidence_type": "PROVIDER_REPORTED_TRANSIT_COUNTS",
+      "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "reported": "UANI reported 106 U.S.-facilitated commercial Hormuz transits during November 15–18; 541 total month-to-date over 18 days and 3,630 across a 152-day observed campaign.",
+      "interpretation_guardrail": "Provider-labelled facilitated transits are not a complete independently verified census. Transits include non-Iranian traffic and must not be used to infer Iranian crude exports.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "IRAN-SANCTIONS-20261120-OIL-TRUSTEES",
+      "event_date": "2026-11-20",
+      "evidence_type": "U_S_TREASURY_PRIMARY_SOURCE",
+      "sources": [
+        "https://home.treasury.gov/news/press-releases/sb0697",
+        "https://www.reuters.com/world/middle-east/us-treasury-sanctions-iranian-trustees-collecting-oil-revenues-2026-11-20/"
+      ],
+      "reported": "U.S. Treasury designated four Iranian individuals described as oil trustees. This establishes the U.S. administrative action and the government's allegations, not independent proof of every predicate alleged.",
+      "interpretation_guardrail": "Register as sanctions action, not as successful Iranian oil-export volume.",
+      "public_projection": "NOT_READY"
+    },
+    {
+      "id": "MARITIME-BLOCKADE-20261120-ZYRA-CONTAINER-LEAD",
+      "event_window": "2026-11-17/2026-11-20",
+      "evidence_type": "SPECIALIST_SHIPPING_INFERENCE",
+      "source": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "reported": "UANI assessed that container ship ZYRA (IMO 9237084) possibly breached the blockade while AIS-dark after anchoring near Jask.",
+      "interpretation_guardrail": "POSSIBLE rather than established, a container vessel rather than an Iranian-crude-laden tanker, and not evidence for crude-oil blockade breach.",
+      "public_projection": "NOT_READY"
+    }
+  ],
+  "unverified_leads": [
+    {
+      "topic": "Media report of a staged 14-tanker convoy at Kharg Island",
+      "url": "https://houseofsaud.com/iran-kharg-tanker-convoy-tests-us-oil-blockade/",
+      "status": "SINGLE_OUTLET_UNCORROBORATED",
+      "action": "Seek independently sourced vessel identities, imagery, location, dates, and official confirmation; do not publish 14 as established"
+    },
+    {
+      "topic": "Iranian claims to have downed U.S. drones on November 21",
+      "url": "https://www.aljazeera.com/news/2026/11/21/irans-irgc-downs-us-drone-over-hormuz-as-efforts-to-end-war-remain-stalled",
+      "status": "ACTOR_CLAIM_UNADJUDICATED",
+      "action": "Obtain exact IRGC statement and U.S. operational corroboration before loss or Lie Ledger adjudication"
+    }
+  ],
+  "claims_forensics_referral": {
+    "domain": "LIE_LEDGER",
+    "proposition_candidates": [
+      {
+        "proposition": "Iranian crude tankers are successfully getting through the U.S. blockade",
+        "current_evidence_assessment": "NOT_SUBSTANTIATED_BY_UANI_TRACKING_AS_OF_NOV20",
+        "exact_speaker_statement": "NOT_SUPPLIED",
+        "knowledge_adjudication": "NOT_PERFORMED"
+      },
+      {
+        "proposition": "Iran has positioned or transferred crude for a potential attempt to evade blockade enforcement",
+        "current_evidence_assessment": "SHIP_TO_SHIP_TRANSFER_REPORTED; MOTIVE_AND_SUCCESS_UNRESOLVED",
+        "exact_speaker_statement": "NOT_SUPPLIED",
+        "knowledge_adjudication": "NOT_PERFORMED"
+      },
+      {
+        "proposition": "No Iranian petroleum-related vessel or shipment has ever passed the U.S. blockade since July",
+        "current_evidence_assessment": "CONTRADICTED_BY_REPORTED_SMALL_LPG_DEPARTURES",
+        "exact_speaker_statement": "NOT_SUPPLIED",
+        "knowledge_adjudication": "NOT_PERFORMED"
+      }
+    ],
+    "instructions": "Trace exact original quotation, claimant/date, context, actor/source custody, correction and repetition history; deduplicate event chains; adjudicate truth separately from knowledge. Do not create a new Lie Ledger verdict or denominator entry from a generic paraphrase.",
+    "preserve_current_protected_state": true
+  },
+  "next_actions": [
+    "Recover missing ROOK 2026-11-20 12:00 to 2026-11-21 00:00 EST completed locker and all earlier unconsumed windows",
+    "Resolve all post-November-12 canonical chronology gaps and source/temporal qualifications",
+    "Adjudicate candidate tanker events, export estimates, U.S.-facilitated traffic and sanctions on distinct accounting bases",
+    "Refer authenticated actor statements, not news headlines, to Claims Forensics",
+    "Build canonical append-only packets only after evidence qualification and Gate 3 sequence uniqueness check",
+    "Update generated shipping/economic/claims/timeline/map products from accepted data, run exact-head CI, deploy Pages and attest served bytes"
+  ],
+  "publication_disposition": "NOT_ACCEPTED_NOT_LIVE"
+}
