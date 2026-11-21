@@ -1,0 +1,216 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-21T00:00:00-05:00",
+    "window_end": "2026-11-21T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-21T12:00:00-05:00",
+    "collection_time": "2026-11-21T12:01:07-05:00",
+    "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Iran tanker convoy/blockade-running claims",
+      "decision": "UPDATE",
+      "reason": "New Iranian hardliner proposal reported, not evidence of completed transit"
+    },
+    {
+      "topic": "Iranian aircraft shootdown/damage allegations",
+      "decision": "UPDATE",
+      "reason": "New allegation and direct CENTCOM denial; independently unverified"
+    },
+    {
+      "topic": "Hormuz tanker incidents",
+      "decision": "UPDATE",
+      "reason": "Fresh reports of projectile strikes and Iranian mine assertion; vessel identities and distinct incidents unresolved"
+    },
+    {
+      "topic": "Saudi-Houthi interception",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Prior-day report, no independently qualified new occurrence in this window"
+    },
+    {
+      "topic": "Iranian oil sanctions",
+      "decision": "UPDATE",
+      "reason": "Treasury sanctions and compliance diplomacy reported; primary sanctions designation not checked"
+    },
+    {
+      "topic": "Oil settlement",
+      "decision": "UPDATE",
+      "reason": "Friday settlement reported, no intraday real-time quote inferred"
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/aerospace-defense/us-denies-iranian-account-that-missile-damaged-f-16-over-gulf-2026-11-21/",
+      "topic": "Iranian media claim of F-16 damage; CENTCOM denial",
+      "source_class": "claims",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "occurrence_time": "2026-11-20_UNRESOLVED_HOUR",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75",
+      "topic": "UKMTO-reported two projectile-hit vessels and separate Iranian mine claim; IRGC launcher announcement; Gaza casualties",
+      "source_class": "maritime_and_humanitarian",
+      "publication_time": "UNRESOLVED_EXACT_TIMESTAMP",
+      "occurrence_time": "UNRESOLVED",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "region-only",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Iran International",
+      "url": "https://www.iranintl.com/en/202611204994",
+      "topic": "Iran hardliners advocating tanker convoy; proposal not completed blockade transit",
+      "source_class": "claims",
+      "publication_time": "2026-11-21T02:29:00Z",
+      "occurrence_time": "UNRESOLVED",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-sanctions-iranian-trustees-collecting-oil-revenues-2026-11-20/",
+      "topic": "US Treasury sanctions four Iranian oil-revenue intermediaries",
+      "source_class": "sanctions",
+      "publication_time": "2026-11-20_UNRESOLVED_HOUR",
+      "occurrence_time": "UNRESOLVED",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/asia-pacific/us-treasury-presses-singapore-malaysia-iran-sanctions-compliance-2026-11-20/",
+      "topic": "US Treasury engagement Singapore Malaysia sanctions compliance",
+      "source_class": "sanctions",
+      "publication_time": "2026-11-20T14:27:00Z",
+      "occurrence_time": "2026-11-20_UNRESOLVED_HOUR",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-intercepted-houthi-missile-targeting-southern-region-2026-11-20/",
+      "topic": "Saudi claims interception southern Saudi Arabia; previously reported, no confirmed new incident",
+      "source_class": "prior_drawer",
+      "publication_time": "2026-11-20_UNRESOLVED_HOUR",
+      "occurrence_time": "2026-11-20_UNRESOLVED_HOUR",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "region-only",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.asiaone.com/world/oil-gains-iran-war-worries-and-short-covering-ahead-thanksgiving-holiday",
+      "topic": "November 20 oil settlement Brent 92.57 WTI 83.98; syndicated Reuters",
+      "source_class": "energy",
+      "publication_time": "2026-11-21T09:44:00+08:00",
+      "occurrence_time": "2026-11-20_MARKET_CLOSE",
+      "collection_time": "2026-11-21T12:01:07-05:00",
+      "evidence_horizon_time": "2026-11-21T12:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED_PUBLICATION_OR_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 7,
+    "reviewed": [
+      "Iran claims",
+      "US CENTCOM denial",
+      "US sanctions secondary reporting",
+      "Saudi Yemen secondary reporting",
+      "Hormuz maritime secondary reporting",
+      "Gaza secondary reporting",
+      "Oil markets"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary leadership",
+      "Israel primary authorities",
+      "GCC Oman Qatar UAE Kuwait Bahrain primary authorities",
+      "Iraq",
+      "Lebanon Hezbollah",
+      "Syria",
+      "Pakistan Türkiye China Russia Europe EU",
+      "UN IAEA IMO primary",
+      "UKMTO primary advisories",
+      "AIS Kpler LSEG",
+      "Aviation primary",
+      "Human-impact primary agencies",
+      "Independent geospatial OSINT",
+      "Full prior drawer"
+    ],
+    "reason": "Search results insufficient for full theater-wide source-by-source adjudication; source publication timestamps and primary documents not all qualified"
+  },
+  "unresolved_questions": [
+    "Were the two UKMTO-reported vessels and Iranian mine-claimed vessel distinct? Confirm IMO identifiers and UTC incident times.",
+    "Does any independent source substantiate the F-16 allegation?",
+    "Were tanker convoy proposals implemented or merely advocated?",
+    "Verify Treasury primary designation IDs and effective time.",
+    "Determine Gaza food-truck strike location and independent casualty confirmation.",
+    "Reconcile with canonical event IDs and earlier lockers."
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Hormuz tanker incidents",
+        "location_description": "Strait of Hormuz / near Oman, no map-grade locality independently checked",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75"
+      },
+      {
+        "topic": "Gaza food-truck strike",
+        "location_description": "Gaza City, area-level only",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75"
+      }
+    ],
+    "notes": "No operational base, public marker or protected geometry changes"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Seven source discoveries preserved, no event promotion; full coverage, source qualification, primary corroboration and validator certification outstanding."
+  }
+}
