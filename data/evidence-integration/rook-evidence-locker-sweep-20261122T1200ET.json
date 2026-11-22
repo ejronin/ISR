@@ -1,0 +1,215 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-22T00:00:00-05:00",
+    "window_end": "2026-11-22T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-22T12:00:00-05:00",
+    "collection_time": "2026-11-22T12:01:06-05:00",
+    "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Bahrain industrial facility and Iranian radar claims",
+      "decision": "UPDATE",
+      "reason": "November 22 follow-up reporting; Iranian claims not independently verified; avoid duplicate strike event"
+    },
+    {
+      "topic": "Hormuz tanker incidents and mine claim",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "New reporting recaps prior-day incidents; vessel identifiers and UTC occurrence unresolved"
+    },
+    {
+      "topic": "Iran F-16 damage allegation",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Previously preserved allegation and CENTCOM denial; no new independent BDA"
+    },
+    {
+      "topic": "Gaza food truck vehicle strike",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Prior-day incident, no new independently reconciled casualty or location evidence"
+    },
+    {
+      "topic": "West Bank arson near Ramallah",
+      "decision": "UPDATE",
+      "reason": "Sunday reporting identifies attacks and investigation; precise locality not verified"
+    },
+    {
+      "topic": "Gulf equity market retreat",
+      "decision": "UPDATE",
+      "reason": "Sunday Reuters market report; exact market snapshots not extracted"
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-retreat-sporadic-attacks-continue-2026-11-22/",
+      "topic": "Gulf equity markets declined Sunday amid regional incidents",
+      "source_class": "economic_energy",
+      "map_eligibility": "nonspatial",
+      "publication_time": "2026-11-22_EXACT_TIME_UNRESOLVED_OR_PRIOR_DAY",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-22T12:01:06-05:00",
+      "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+      "qualification": "UNPROMOTED_EXACT_PUBLICATION_AND_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf",
+      "topic": "Bahrain Sitra industrial fire, Iranian radar destruction claim, US F-16 denial, Hormuz maritime incidents and Iranian drone claims; retrospective article",
+      "source_class": "claims_and_corrections",
+      "map_eligibility": "region-only",
+      "publication_time": "2026-11-22_EXACT_TIME_UNRESOLVED_OR_PRIOR_DAY",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-22T12:01:06-05:00",
+      "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+      "qualification": "UNPROMOTED_EXACT_PUBLICATION_AND_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "The National",
+      "url": "https://www.thenationalnews.com/news/mena/2026/11/22/live-bahrain-attack-iran-war/",
+      "topic": "Bahrain civilian industrial facility injuries and Gulf reactions; rolling live coverage",
+      "source_class": "regional_reporting",
+      "map_eligibility": "region-only",
+      "publication_time": "2026-11-22_EXACT_TIME_UNRESOLVED_OR_PRIOR_DAY",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-22T12:01:06-05:00",
+      "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+      "qualification": "UNPROMOTED_EXACT_PUBLICATION_AND_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/israels-eisenkot-condemns-arson-attacks-by-jewish-settlers-west-bank-2026-11-22/",
+      "topic": "Reported West Bank arson attacks near Ramallah; Israeli political condemnation and police investigation",
+      "source_class": "human_impact",
+      "map_eligibility": "region-only",
+      "publication_time": "2026-11-22_EXACT_TIME_UNRESOLVED_OR_PRIOR_DAY",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-22T12:01:06-05:00",
+      "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+      "qualification": "UNPROMOTED_EXACT_PUBLICATION_AND_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/world/2026/nov/22/briton-lewis-pugh-swims-strait-of-hormuz-environment-war",
+      "topic": "Environmental effects of maritime conflict; earlier Tara Gas incident contextual reporting",
+      "source_class": "environmental_human_impact",
+      "map_eligibility": "nonspatial",
+      "publication_time": "2026-11-22_EXACT_TIME_UNRESOLVED_OR_PRIOR_DAY",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-22T12:01:06-05:00",
+      "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+      "qualification": "UNPROMOTED_EXACT_PUBLICATION_AND_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75",
+      "topic": "Prior-day tanker strikes, Iranian mine allegation, Gaza vehicle strike and Lebanese diplomacy",
+      "source_class": "prior_drawer",
+      "map_eligibility": "region-only",
+      "publication_time": "2026-11-22_EXACT_TIME_UNRESOLVED_OR_PRIOR_DAY",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-22T12:01:06-05:00",
+      "evidence_horizon_time": "2026-11-22T12:00:00-05:00",
+      "qualification": "UNPROMOTED_EXACT_PUBLICATION_AND_EVENT_RECONCILIATION_PENDING",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 6,
+    "reviewed": [
+      "Iranian claims secondary reporting",
+      "US CENTCOM denial retrospective",
+      "Bahrain and Gulf reactions",
+      "Hormuz shipping secondary",
+      "Gulf equities",
+      "Israel West Bank incidents",
+      "Gaza and Lebanon retrospective",
+      "Environmental impact"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary leadership and military",
+      "US primary statements",
+      "Israel primary security",
+      "Saudi/GCC/Oman/Qatar/UAE/Kuwait primary",
+      "Iraq",
+      "Yemen Houthis primary",
+      "Lebanon Hezbollah",
+      "Gaza Hamas primary",
+      "Syria",
+      "Pakistan Türkiye China Russia EU",
+      "UN IAEA IMO primary",
+      "Maritime UKMTO and aviation primary",
+      "Sanctions primary",
+      "AIS Kpler LSEG",
+      "Humanitarian primary",
+      "Independent OSINT geolocation",
+      "Full canonical drawer reconciliation"
+    ],
+    "reason": "Time-limited partial source discovery; no complete primary-source qualification or full theater review"
+  },
+  "unresolved_questions": [
+    "Identify vessels and exact UTC times for November 21 maritime incidents; distinguish projectile hits from mine allegation",
+    "Verify Bahrain Sitra facility location and injury count independently; no radar BDA inferred",
+    "Qualify November 22 Reuters article publication timestamp within 00:00-12:00 EST",
+    "Determine named localities and source precision for West Bank arson",
+    "Reconcile source discoveries with canonical event IDs and earlier lockers",
+    "Check primary energy, maritime, humanitarian and military releases"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Bahrain industrial facility fire",
+        "location_description": "Sitra, Bahrain, locality-level only",
+        "geolocation": "UNRESOLVED_PRECISE_SITE",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf"
+      },
+      {
+        "topic": "West Bank arson",
+        "location_description": "Villages near Ramallah, West Bank, exact villages unresolved",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/israels-eisenkot-condemns-arson-attacks-by-jewish-settlers-west-bank-2026-11-22/"
+      },
+      {
+        "topic": "Hormuz vessel incidents",
+        "location_description": "Strait of Hormuz near Oman, exact vessel positions unresolved",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75"
+      }
+    ],
+    "notes": "No protected route, operational base or public marker mutation"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Six source discoveries and six provisional prior-drawer decisions preserved; comprehensive review and validator certification outstanding."
+  }
+}
