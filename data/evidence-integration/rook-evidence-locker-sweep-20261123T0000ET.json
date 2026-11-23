@@ -1,0 +1,156 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-22T12:00:00-05:00",
+    "window_end": "2026-11-23T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-23T00:00:00-05:00",
+    "collection_time": "2026-11-23T15:58:36.714Z",
+    "evidence_horizon_time": "2026-11-23T00:00:00-05:00",
+    "collection_mode": "RETROSPECTIVE_POST_CUTOFF_PARTIAL_SOURCE_REVIEW",
+    "caveat": "Expected scheduled midnight locker was absent. This recovery preserves a small verified public-source subset; it does not retroactively certify a full 12-hour collection."
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "November 22 Houthi Petro Rabigh refinery direct-hit claim",
+      "decision": "UPDATE",
+      "reason": "Reuters Nov22 17:52 UTC quoted a Houthi claimed hit; no Saudi official response or independent refinery damage proof in reviewed source. Preserve as attributed claim and do not mark facility damaged/inoperable."
+    },
+    {
+      "topic": "Iranian vessel Khat Shekan phantom AIS signal",
+      "decision": "UPDATE",
+      "reason": "Iran International Nov22 04:14 UTC and Euronews Nov22 09:54 UTC (both earlier scheduled Nov22 noon sweep window) cite TankerTrackers satellite cross-check rejecting synthetic tanker AIS signal. This is a retrospective correction, NOT a Nov22 evening physical transit."
+    },
+    {
+      "topic": "Iran 14-tanker convoy and OLYM to HAO FAN November17 STS",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Previous UANI Nov20 research documents a transfer but no verified tanker crossing of the U.S. blockade. Do not combine with spoofed Khat Shekan claim or count as successful crude export."
+    },
+    {
+      "topic": "November 22 Gulf equities",
+      "decision": "UPDATE",
+      "reason": "Reuters reports Sunday movements in selected indexes; retain source/provider, local trading date and specific index definitions; no comparable Friday oil futures observation is a Sunday energy-market price."
+    },
+    {
+      "topic": "Hormuz recent tanker projectile and alleged mine incidents",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Earlier UKMTO/Reuters claims need unique hull identifiers and UTC date normalization. Do not count each re-report as a new attack."
+    },
+    {
+      "topic": "Bahrain civilian industrial facility and Patriot radar claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Separate verified civilian-fire reports from IRGC radar damage claims. No corroborated military battle-damage change."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-saudi-rabigh-oil-refinery-2026-11-22/",
+      "topic": "Nov22 Houthi original claimed refinery strike, no immediate Saudi response or confirmed damage",
+      "publication_time": "2026-11-22T17:52:00Z",
+      "occurrence_time": "2026-11-22_DAY_UNRESOLVED_HOUR",
+      "collection_time": "2026-11-23T15:58:36.714Z",
+      "window_class": "INSIDE_WINDOW",
+      "source_status": "SECONDARY_REPORT_OF_ACTOR_CLAIM_NOT_INDEPENDENT_DAMAGE_CONFIRMATION",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-retreat-sporadic-attacks-continue-2026-11-22/",
+      "topic": "Sunday Gulf stock indexes reported to decline amid regional incidents, source timestamps/market close details still to reconcile",
+      "publication_time": "2026-11-22_UNRESOLVED_PUBLICATION_TIME",
+      "occurrence_time": "2026-11-22_MARKET_DAY",
+      "collection_time": "2026-11-23T15:58:36.714Z",
+      "window_class": "DATE_MATCHES_WINDOW_TIME_UNRESOLVED",
+      "source_status": "REUTERS_MARKET_REPORT_NOT_NORMALIZED_FOR_CHART",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Iran International",
+      "url": "https://www.iranintl.com/en/202611211549",
+      "topic": "TankerTrackers rejects spoofed Khat Shekan vessel AIS; no confirmed vessel",
+      "publication_time": "2026-11-22T04:14:00Z",
+      "occurrence_time": "FAKE_AIS_SIGNAL_NOT_PHYSICAL_TRANSIT",
+      "collection_time": "2026-11-23T15:58:36.714Z",
+      "window_class": "EARLIER_NOV22_WINDOW_REVIEW_BACKFILL",
+      "source_status": "ATTRIBUTED_SPECIALIST_SATELLITE_REVIEW_NEEDS_ORIGINAL_STATEMENT_FOR_LIE_LEDGER",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Euronews",
+      "url": "https://www.euronews.com/2026/11/22/tracking-site-says-iranian-tanker-reportedly-sailing-through-strait-of-hormuz-does-not-exi",
+      "topic": "Independent republisher of TankerTrackers correction; not a second physical observation",
+      "publication_time": "2026-11-22T09:54:00Z",
+      "occurrence_time": "FAKE_AIS_SIGNAL_NOT_PHYSICAL_TRANSIT",
+      "collection_time": "2026-11-23T15:58:36.714Z",
+      "window_class": "EARLIER_NOV22_WINDOW_REVIEW_BACKFILL",
+      "source_status": "SECONDARY_REPEAT_OF_SAME_TANKERTRACKERS_FINDING",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "UANI",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "topic": "November20 source bounded tracked Iranian crude none clearing line since July12, about 12 smaller LPG tankers crossed, OLYM/HAO FAN STS not proven export",
+      "publication_time": "2026-11-20_UNKNOWN_EXACT_HOUR",
+      "occurrence_time": "MULTIPLE_EARLIER_SHIPPING_SNAPSHOTS",
+      "collection_time": "2026-11-23T15:58:36.714Z",
+      "window_class": "EARLIER_REPORT_CONTEXT",
+      "source_status": "SPECIALIST_TRACKING_REPORT_NOT_ALL_CARRIERS_EXHAUSTIVE",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "INCOMPLETE",
+    "source_discoveries": 5,
+    "review_categories": [
+      "Saudi Houthi strike allegation",
+      "selected regional equity market claims",
+      "Iranian blockade tanker AIS hoax correction",
+      "UANI preexisting maritime tracking"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran and US military original releases",
+      "Israeli and Palestinian ground and humanitarian sources",
+      "Saudi Yemen military interception and facility damage primary sources",
+      "Bahrain Kuwait Oman Qatar UAE and Iraq military and civilian sources",
+      "Lebanon Syria Russia China Turkey EU Pakistan developments",
+      "IAEA UN IMO official reporting",
+      "Every unique commercial vessel incident and AIS vessel positions",
+      "Full per-market economic data and energy settlements",
+      "All historical interrupted ROOK windows"
+    ],
+    "prior_drawer_reconciliation_complete": false,
+    "full_theater_coverage_complete": false,
+    "notes": "Source discovery only. The absence of a complete sweep does not imply no relevant theater events occurred."
+  },
+  "unresolved_questions": [
+    "Does Saudi Aramco or Petro Rabigh identify physical damage/production impact from the claimed Nov22 operation?",
+    "What primary TankerTrackers post and precise fake AIS identity pair authenticate the Khat Shekan spoof?",
+    "Do UKMTO/IMO identify distinct vessel IMO and precise attack timestamps?",
+    "Does the source endpoint registry probe include valid article links with publication clocks and durable fetch results?",
+    "Have all 2026-11-12 to Nov23 12-hour windows been cross-referenced with accepted canonical IDs?"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 1,
+    "unlocated_pending_source": 2,
+    "nonspatial": 2,
+    "notes": "Only geographically locate Rabigh as claim-target locality. No map-grade target impact geometry or damage classification. No physical Khat Shekan vessel path, no AIS-track-derived marker, no new U.S./Bahrain base status changes."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Late retrospective recovery of missing Nov22 noon–Nov23 midnight locker. Five bounded source discoveries, no completed full theater coverage, no event/claims/economics promotion. Does not qualify as a consumed/accepted ROOK full sweep."
+  }
+}
