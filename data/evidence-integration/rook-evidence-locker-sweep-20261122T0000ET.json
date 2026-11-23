@@ -1,0 +1,240 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-21T12:00:00-05:00",
+    "window_end": "2026-11-22T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-22T00:00:00-05:00",
+    "collection_time": "2026-11-23T01:55:17.634Z",
+    "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+    "collection_mode": "RETROSPECTIVE_PARTIAL_RECOVERY_NOT_FULL_THEATER"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "November 21 Hormuz merchant vessel strikes",
+      "decision": "UPDATE",
+      "reason": "Reuters/UKMTO described two projectile-hit tankers near Khasab. Unique hull IMO, attack times and possible overlap with previous Iranian mine claim unresolved; cannot count three losses."
+    },
+    {
+      "topic": "Iranian tanker-convoy blockade story",
+      "decision": "UPDATE",
+      "reason": "Iran-linked Fars advocacy became reporting of 14 vessel convoy; TankerTrackers publicly rejected claimed imminent convoy interpretation. Ship-to-ship OLYM/HAO FAN transfer is not an export or confirmed U.S. blockade breach."
+    },
+    {
+      "topic": "November 21 Bahrain radar and industrial attacks",
+      "decision": "UPDATE",
+      "reason": "Bahrain Interior Ministry reports a Sitra industrial facility fire and material damage, initial no injuries. IRGC reports Patriot sites struck; U.S. source denies military impacts. These are separate propositions, and facilities cannot be rated inoperable from claims."
+    },
+    {
+      "topic": "IRGC claim of U.S. F-16 damaged",
+      "decision": "UPDATE",
+      "reason": "Reuters records CENTCOM public denial and assertion all fighters accounted for, but original Iranian statement and independent damage evidence require forensic qualification."
+    },
+    {
+      "topic": "Iranian-Qatari mediation and negotiations",
+      "decision": "UPDATE",
+      "reason": "Iran official describes two hours of Qatar-hosted Tehran discussions on Friday, announced Saturday. No new accepted U.S.-Iran agreement or Iranian abandonment of original demands."
+    },
+    {
+      "topic": "November 21 Houthis and Saudi air-defense reports",
+      "decision": "UPDATE",
+      "reason": "Saudi authorities separately report intercepting missiles toward Riyadh, avoid duplicating November 20/21 time zone events."
+    },
+    {
+      "topic": "Iran's new dual-missile launcher",
+      "decision": "UPDATE",
+      "reason": "AP-reported Iranian broadcast shows/display claims of underground dual liquid-fuel launcher. Footage alone does not establish new production quantities, range or fielded capability."
+    },
+    {
+      "topic": "November 20 oil futures settlement and Sunday markets",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Brent USD 92.57, WTI USD 83.98 are Friday Nov20 futures settlements, not Saturday live market prices. Do not project November 21/22 new energy data points."
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters/UKMTO",
+      "url": "https://www.reuters.com/business/energy/tanker-hit-by-unknown-projectile-near-omans-khasab-ukmto-says-2026-11-21/",
+      "topic": "Two separately reported November 21 projectile-struck tankers near Khasab, no verified IMO; distinguish Nov20 incident",
+      "publication_time": "2026-11-21T07:57:07Z",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIMARY_UKMTO_CARRIED_BY_REUTERS_UNPROMOTED",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters/CENTCOM",
+      "url": "https://www.reuters.com/business/aerospace-defense/us-denies-iranian-account-that-missile-damaged-f-16-over-gulf-2026-11-21/",
+      "topic": "CENTCOM denies Iranian F-16 strike/damage account; separate factual and knowledge adjudication needed",
+      "publication_time": "2026-11-21_UNRESOLVED_EXACT_HOUR",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "CBS/AFP",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-trump-tehran-denies-chemical-weapons/",
+      "topic": "Bahrain Sitra industrial facility fire and material damage, U.S. official denies impacts on U.S. military sites, Qatar mediation, Iran conditions, Iranian launcher state footage",
+      "publication_time": "2026-11-21_ROLLING_REPORT",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "ROLLING_SOURCE_ORIGINAL_ITEM_TIMES_MUST_BE_PRESERVED",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "ISW/CTP",
+      "url": "https://understandingwar.org/research/middle-east/iran-update-november-21-2026/",
+      "topic": "Contemporaneous theater assessment of Hormuz projectile incidents, Saudi air defenses, Houthi Yemen Lahij operations; author interpretation not primary evidence",
+      "publication_time": "2026-11-21_UNRESOLVED_EXACT_HOUR",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "SECONDARY_ANALYSIS_NOT_AUTOMATIC_PROMOTION",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "ABC News",
+      "url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto?id=138171071",
+      "topic": "Iranian claims of Bahrain Patriot radar strikes, U.S. denials and November 21 maritime incidents; rolling updates, de-duplicate individual events",
+      "publication_time": "2026-11-21_ROLLING_REPORT",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "ROLLING_SOURCE_ORIGINAL_ITEM_TIMES_MUST_BE_PRESERVED",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "The Maritime Executive",
+      "url": "https://maritime-executive.com/article/reports-claim-iran-is-preparing-oil-convoy-to-test-u-s-blockade",
+      "topic": "Fars-linked 14 tanker convoy allegation contrasted with TankerTrackers public clarification, no proven blockade crossing",
+      "publication_time": "2026-11-20T13:06:00_UNSPECIFIED_OFFSET",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIOR_WINDOW_CONTEXT_SOURCE",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75",
+      "topic": "November 21 merchant-vessel attacks, Iranian new missile launcher broadcast, and Gaza losses; separate events and evidentiary status",
+      "publication_time": "2026-11-21_UNRESOLVED_EXACT_HOUR",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "UNPROMOTED",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Iran International",
+      "url": "https://www.iranintl.com/en/liveblog/202611214578",
+      "topic": "November 21 Bahrain and Iran armed-force statement reporting, UKMTO 263 weekly transits, convoy rhetoric; rolling source",
+      "publication_time": "2026-11-21_ROLLING_REPORT",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "ROLLING_SOURCE_UNPROMOTED",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters/AP",
+      "url": "https://apnews.com/article/8fd6dcd6dc4a1a77437cedc4567fbee8",
+      "topic": "Trump policy statement demanding acceptable deal, mediation, Iran conditions; Friday Nov20 context not new Saturday agreement",
+      "publication_time": "2026-11-20T21:54:52Z",
+      "occurrence_time": "UNRESOLVED_UTC_HOUR",
+      "map_eligibility": "nonspatial",
+      "qualification": "PRIOR_WINDOW_SOURCE_FOR_BACKFILL",
+      "collection_time": "2026-11-23T01:55:17.634Z",
+      "evidence_horizon_time": "2026-11-22T00:00:00-05:00",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 9,
+    "reviewed": [
+      "UKMTO / Reuters shipping",
+      "ISW / CTP 21 Nov security review",
+      "CBS / AFP Bahrain and diplomacy",
+      "Reuters / CENTCOM F-16 denial",
+      "ABC rolling Bahrain radar claims",
+      "Iran International and maritime convoy coverage",
+      "AP launcher and Gaza humanitarian story"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran official original Arabic/Persian and English releases",
+      "All US CENTCOM and DoD original statements",
+      "Independent commercial AIS/SAR and tanker identifiers",
+      "Israel military and Palestine humanitarian complete update",
+      "Bahrain Kuwait Qatar Oman UAE Saudi primary source full sweep",
+      "Yemen claims military primary and civilian casualty verification",
+      "Iraq Syria Lebanon complete review",
+      "China Russia Pakistan Türkiye EU and UN IAEA IMO full sweep",
+      "Energy/equity official comparables and timestamps",
+      "Historic ROOK catchup gaps and precise prior event identities"
+    ],
+    "reason": "Retrospective web-source triage; initial scheduled locker absent. Not a fully qualified full-theater 12h review."
+  },
+  "unresolved_questions": [
+    "Authenticate Bahrain original state material damage statement and reconcile facility type/location with competing IRGC military-target claims.",
+    "Obtain UKMTO warnings, IMO names and incident numbers for alleged Nov21 multiple tankers; identify repetitions.",
+    "Authenticate exact original Iranian F-16 assertion and U.S. denial; no known BDA supporting claimed damage.",
+    "Verify primary Fars piece and original TankerTrackers statements; 14 crewed tankers not established as departing blockade.",
+    "Verify Qatar mediator visit statement and meeting date against original Iranian/ Qatari diplomatic records.",
+    "Verify new launcher physical capabilities and fielded inventory independent of controlled display.",
+    "Backfill complete 21 Nov afternoon theater source classes."
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Two tanker projectile incidents",
+        "location_description": "Near Khasab, Oman, in Strait of Hormuz, UAE/Oman region",
+        "geolocation": "UNRESOLVED_EXACT_POSITION_AND_HULL",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/business/energy/tanker-hit-by-unknown-projectile-near-omans-khasab-ukmto-says-2026-11-21/"
+      },
+      {
+        "topic": "Bahrain Sitra industrial fire",
+        "location_description": "Sitra Island, Bahrain (exact site unresolved)",
+        "geolocation": "UNRESOLVED_FACILITY_AND_POINT",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.cbsnews.com/live-updates/iran-war-trump-tehran-denies-chemical-weapons/"
+      }
+    ],
+    "notes": "Do not alter base operational-status colors, war map pins, maritime route lines or damage totals pending site-precision qualification."
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Late missing 21 Nov noon–22 Nov midnight ROOK window recovered as an explicitly incomplete source-discovery artifact only. No accepted canonical changes, claims adjudication, map/chart mutations, or publication."
+  }
+}
