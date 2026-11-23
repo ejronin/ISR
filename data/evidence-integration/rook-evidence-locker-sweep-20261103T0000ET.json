@@ -1,0 +1,405 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-02T12:00:00-05:00",
+    "window_end": "2026-11-03T00:00:00-05:00",
+    "scheduled_window_end": "2026-11-03T00:00:00-05:00",
+    "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+    "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+    "collection_mode": "ROUTINE_UPSTREAM_OSINT_LIMITED_PUBLIC_SOURCE_RECOVERY",
+    "source_publication_rule": "Exact publication timestamps unavailable for some rolling reports; post-cutoff reports do not prove in-window publication or occurrence.",
+    "boundary_note": "Contiguous Nov2 noon to Nov3 midnight EST."
+  },
+  "new_events": [
+    {
+      "occurrence_time": "2026-11-02_DATE_ONLY_TIME_UNVERIFIED",
+      "publication_time": "2026-11-02_DATE_ONLY_EXACT_TIME_UNVERIFIED",
+      "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+      "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+      "event_id": "ROOK-20261103-MIDNIGHT-QESHM-US-STRIKES",
+      "event_type": "REPORTED_US_DEFENSIVE_STRIKES",
+      "actor": "United States military / Iranian forces",
+      "summary": "U.S. officials acknowledged limited strikes on Iran's Qeshm Island, described as defensive following reported Iranian surface-to-air missile activity against U.S. assets. Iranian state media reported explosions. No independently verified target-level BDA, casualties or exact impact coordinates. Reports published Nov 3 may contain post-cutoff disclosures; event date Nov 2 reported, exact occurrence/publication clocks unresolved.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/",
+        "https://apnews.com/article/183b3d32d9bf5241f744abb917e6713e",
+        "https://www.washingtonpost.com/national-security/2026/11/02/us-forces-launch-new-defensive-strikes-iran-eve-election/"
+      ],
+      "evidence_class": "ATTRIBUTED_OFFICIAL_STATEMENTS_AND_NEWS_REPORTS",
+      "disposition": "NEW_REPORTED_EVENT_NOT_INDEPENDENT_BDA",
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Qeshm Island, Strait of Hormuz; specific sites unverified",
+        "location_precision": "ISLAND_LEVEL",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No source-grounded strike coordinates or independently confirmed BDA",
+        "source_url": "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/"
+      },
+      "temporal_caveat": "Nov3 publication may be after midnight EST; retain as post-cutoff discovery pending original item clock, not proven in-window publication."
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "occurrence_time": "2026-11-02_DATE_ONLY_TIME_UNVERIFIED",
+      "publication_time": "2026-11-02_DATE_ONLY_EXACT_TIME_UNVERIFIED",
+      "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+      "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+      "update_id": "ROOK-20261103-MIDNIGHT-YEMEN-ADEN",
+      "updates_existing_ref": "ROOK-20261102-NOON-HOUTHI-ADEN-APPROACH",
+      "disposition": "NO MATERIAL CHANGE",
+      "prior_drawer_decision": "NO MATERIAL CHANGE",
+      "summary": "Reuters reported fighting near Tur al-Bahah and capture of Al-Maqatirah; already registered in previous noon locker. No independent new geolocated frontline, casualties or force disposition established.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Al-Maqatirah and Tur al-Bahah district-level only",
+        "location_precision": "DISTRICT_ONLY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No source-grounded strike coordinates or independently confirmed BDA",
+        "source_url": "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/"
+      }
+    },
+    {
+      "occurrence_time": "2026-11-02_DATE_ONLY_TIME_UNVERIFIED",
+      "publication_time": "2026-11-02_DATE_ONLY_EXACT_TIME_UNVERIFIED",
+      "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+      "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+      "update_id": "ROOK-20261103-MIDNIGHT-DOHA",
+      "updates_existing_ref": "EVT-20261030-QATAR-TEHRAN-MEDIATION",
+      "disposition": "UPDATE",
+      "prior_drawer_decision": "UPDATE",
+      "summary": "Public reporting on Nov2 described U.S. Vice President Vance's optimism and Iran's ongoing mediated contacts; no signed Hormuz reopening agreement or implemented transit authorization established.",
+      "sources": [
+        "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial",
+        "projection_readiness": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "occurrence_time": "2026-11-02_DATE_ONLY_TIME_UNVERIFIED",
+      "publication_time": "2026-11-02_DATE_ONLY_EXACT_TIME_UNVERIFIED",
+      "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+      "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+      "claim_id": "ROOK-20261103-MIDNIGHT-US-DEFENSIVE-CLAIM",
+      "claimant": "Unnamed U.S. officials",
+      "claim": "Qeshm strikes were defensive responses to Iranian surface-to-air missile activity",
+      "assessment": "ATTRIBUTED_CLAIM_NOT_INDEPENDENTLY_VERIFIED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/",
+        "https://apnews.com/article/183b3d32d9bf5241f744abb917e6713e"
+      ],
+      "geospatial": {
+        "map_eligibility": "region-only",
+        "geolocation_status": "UNRESOLVED",
+        "source_location_description": "Qeshm Island, exact launcher and impact points unknown",
+        "location_precision": "ISLAND_LEVEL",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null,
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "uncertainty_note": "No source-grounded strike coordinates or independently confirmed BDA",
+        "source_url": "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/"
+      }
+    },
+    {
+      "occurrence_time": "2026-11-02_DATE_ONLY_TIME_UNVERIFIED",
+      "publication_time": "2026-11-02_DATE_ONLY_EXACT_TIME_UNVERIFIED",
+      "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+      "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+      "claim_id": "ROOK-20261103-MIDNIGHT-VANCE-OPTIMISM",
+      "claimant": "U.S. Vice President JD Vance",
+      "claim": "Negotiations with Iran were positive and a settlement was possible",
+      "assessment": "ATTRIBUTED_DIPLOMATIC_ASSESSMENT_NOT_SIGNED_AGREEMENT",
+      "sources": [
+        "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial"
+      }
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "occurrence_time": "2026-11-02_DATE_ONLY_TIME_UNVERIFIED",
+      "publication_time": "2026-11-02_DATE_ONLY_EXACT_TIME_UNVERIFIED",
+      "collection_time": "2026-11-03_POST_CUTOFF_REVIEW",
+      "evidence_horizon_time": "2026-11-03T00:00:00-05:00",
+      "update_id": "ROOK-20261103-MIDNIGHT-BRENT-MARKET",
+      "disposition": "UPDATE",
+      "summary": "Guardian Nov2 market report describes Brent falling more than 6.5% to approximately $105.55 amid negotiation optimism. Intraday quote, not settlement or physical Hormuz normalization; precise observation timestamp unverified.",
+      "sources": [
+        "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war"
+      ],
+      "geospatial": {
+        "map_eligibility": "nonspatial"
+      }
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "US-Iran kinetic exchanges / Qeshm",
+      "decision": "UPDATE",
+      "reason": "New Nov2 strike reports; prior event matching pending"
+    },
+    {
+      "drawer": "Yemen Aden/Tur al-Bahah advance",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Same Nov2 Reuters report already in noon locker"
+    },
+    {
+      "drawer": "Doha negotiations and Hormuz reopening",
+      "decision": "UPDATE",
+      "reason": "Market and Vance optimism do not equal implemented agreement"
+    },
+    {
+      "drawer": "UKMTO 191/192",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new vessel identities or coordinates in sources reviewed"
+    },
+    {
+      "drawer": "Gaza and Hebron",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified new details in limited search"
+    },
+    {
+      "drawer": "OPEC/IEA and oil inventories",
+      "decision": "UPDATE",
+      "reason": "Nov2 intraday Brent market report"
+    },
+    {
+      "drawer": "IAEA and sanctions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new authenticated publication in limited search"
+    }
+  ],
+  "coverage": {
+    "method": "Limited public-source review of Reuters, AP, Washington Post, Guardian and prior ROOK locker. Not a completed theater-wide review. Source-class gaps explicitly disclosed; no paid AIS/Kpler/LSEG, original military telemetry, authenticated strike BDA or complete agency registers.",
+    "coverage_by_actor_and_source_class": [
+      {
+        "category": "Iran political/military/security",
+        "status": "PARTIAL_PUBLIC_SOURCE_REVIEW",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/",
+          "https://apnews.com/article/183b3d32d9bf5241f744abb917e6713e"
+        ]
+      },
+      {
+        "category": "United States",
+        "status": "PARTIAL_PUBLIC_SOURCE_REVIEW",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/",
+          "https://apnews.com/article/183b3d32d9bf5241f744abb917e6713e"
+        ]
+      },
+      {
+        "category": "Israel",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Saudi Arabia/GCC",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Oman",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Qatar",
+        "status": "PARTIAL_PUBLIC_SOURCE_REVIEW",
+        "sources": [
+          "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war"
+        ]
+      },
+      {
+        "category": "UAE",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Kuwait",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Bahrain",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Iraq",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Yemen/Houthis",
+        "status": "PARTIAL_PUBLIC_SOURCE_REVIEW",
+        "sources": [
+          "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/"
+        ]
+      },
+      {
+        "category": "Lebanon/Hezbollah",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Gaza/Hamas",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Syria",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Pakistan/Turkiye",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "China",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Russia",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Europe/EU",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "UN/IAEA/IMO",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Maritime/aviation authorities",
+        "status": "PARTIAL_PUBLIC_SOURCE_REVIEW",
+        "sources": []
+      },
+      {
+        "category": "Sanctions authorities",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Energy/commodity markets",
+        "status": "PARTIAL_PUBLIC_SOURCE_REVIEW",
+        "sources": [
+          "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war"
+        ]
+      },
+      {
+        "category": "Commercial AIS/Kpler/LSEG",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Human-impact agencies",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      },
+      {
+        "category": "Independent OSINT and claims",
+        "status": "NOT_INDEPENDENTLY_REVIEWED_IN_THIS_RUN",
+        "sources": []
+      }
+    ],
+    "coverage_complete": false,
+    "unique_source_urls": 5
+  },
+  "source_discovery_additions": [
+    {
+      "source_name": "q",
+      "url": "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/",
+      "publication_time": "DATE_ONLY_OR_UNVERIFIED",
+      "reason": "Follow up original publication clocks and independent corroboration"
+    },
+    {
+      "source_name": "a",
+      "url": "https://apnews.com/article/183b3d32d9bf5241f744abb917e6713e",
+      "publication_time": "DATE_ONLY_OR_UNVERIFIED",
+      "reason": "Follow up original publication clocks and independent corroboration"
+    },
+    {
+      "source_name": "w",
+      "url": "https://www.washingtonpost.com/national-security/2026/11/02/us-forces-launch-new-defensive-strikes-iran-eve-election/",
+      "publication_time": "DATE_ONLY_OR_UNVERIFIED",
+      "reason": "Follow up original publication clocks and independent corroboration"
+    },
+    {
+      "source_name": "o",
+      "url": "https://www.theguardian.com/business/2026/nov/02/oil-price-falls-amid-hope-of-a-breakthrough-to-end-iran-war",
+      "publication_time": "DATE_ONLY_OR_UNVERIFIED",
+      "reason": "Follow up original publication clocks and independent corroboration"
+    },
+    {
+      "source_name": "y",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-advance-within-80-km-aden-sources-say-2026-11-02/",
+      "publication_time": "DATE_ONLY_OR_UNVERIFIED",
+      "reason": "Follow up original publication clocks and independent corroboration"
+    }
+  ],
+  "unresolved_questions": [
+    "Determine original timestamps for Qeshm strike and reports relative to midnight EST cutoff.",
+    "Identify verified Qeshm target/impact coordinates and independently assessed damage; avoid promoting actor attribution to fact.",
+    "Determine whether other island explosions reported by AP are independent incidents or the same engagement.",
+    "Verify authenticated UKMTO notices, commercial hull identities, AIS and new shipping incidents.",
+    "Complete theater-wide official agency and humanitarian-source review across all 25 categories.",
+    "Confirm whether the proposed Hormuz agreement was signed or implemented; optimism is not acceptance.",
+    "Review all prior canonical drawers for duplicate event matches; this run only reconciled selected drawers."
+  ],
+  "geospatial_handoff": {
+    "review_rule": "No inferred coordinates from island/district/bearing descriptions; no protected route/public map changes.",
+    "reviewed_map_eligible_records": [
+      {
+        "record_id": "ROOK-20261103-MIDNIGHT-QESHM-US-STRIKES",
+        "disposition": "region-only",
+        "projection_readiness": "SOURCE_DEPENDENT_NOT_PLOT_READY",
+        "source_location": "Qeshm Island; exact sites unverified",
+        "source_url": "https://www.reuters.com/world/middle-east/us-struck-irans-qeshm-island-wall-street-journal-reports-2026-11-03/",
+        "location_precision": "ISLAND_LEVEL"
+      }
+    ],
+    "plot_ready_count": 0,
+    "region_only_count": 1,
+    "unlocated_pending_source_count": 0
+  },
+  "completion": {
+    "status": "INCOMPLETE_SOURCE_COVERAGE_AND_VALIDATOR_PENDING",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "material_delta": true,
+    "upstream_only": true,
+    "source_review_performed": true,
+    "repository_validator_status": "PENDING_EXACT_HEAD_CI",
+    "reconciliation_issue": "https://github.com/ejronin/ISR/issues/296",
+    "completion_report": "Partial Nov2 noon-Nov3 midnight EST collection: reported Qeshm strikes, diplomatic optimism, oil-price move; coverage across many mandatory actor/source classes incomplete, source publication clocks uncertain. Do not declare completed/unconsumed without durable validator."
+  }
+}
