@@ -1,0 +1,227 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-23T00:00:00-05:00",
+    "window_end": "2026-11-23T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-23T12:00:00-05:00",
+    "collection_time": "2026-11-23T12:15:52-05:00",
+    "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "November 21 Hormuz vessel incidents and Iranian mine allegation",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Monday transit counts concern flow, not independently established mine BDA; no new vessel identifiers"
+    },
+    {
+      "topic": "Iranian tanker-loading/blockade claims",
+      "decision": "UPDATE",
+      "reason": "November 23 Foreign Ministry statement distinguishes policy position and dismissal of loading reports; do not infer transit success"
+    },
+    {
+      "topic": "Gaza casualties and UNRWA staff death",
+      "decision": "UPDATE",
+      "reason": "November 23 reported new casualties require occurrence-time and prior-event ID matching"
+    },
+    {
+      "topic": "Hodeida Saudi-backed strike casualty allegation",
+      "decision": "UPDATE",
+      "reason": "Houthi official casualty allegation requires independent verification and locality before event promotion"
+    },
+    {
+      "topic": "November 20 US Treasury sanctions",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Earlier sanctions not a new window event; accepted seq44 reported in repository commit; do not duplicate"
+    },
+    {
+      "topic": "Hormuz commercial flow data",
+      "decision": "UPDATE",
+      "reason": "Kpler weekend transit observations may update traffic chronology, but denominator and later AIS backfill unresolved"
+    }
+  ],
+  "source_registry_probe": {
+    "status": "NOT_AVAILABLE_AT_EXPECTED_PATHS",
+    "attempted_paths": [
+      "data/evidence-integration/rook-source-registry-delta-20261123T1200ET-automated.json",
+      "data/evidence-integration/rook-source-registry-delta-20261123T0000ET-automated.json"
+    ],
+    "probe_gaps": [
+      "Expected automated 86-endpoint probe artifact not found on main at review time; no inference about endpoints' availability"
+    ],
+    "analytical_evidence_gaps": [
+      "No primary-source exhaustive theater review",
+      "No independent validation of candidate occurrence and exact publication timestamps"
+    ]
+  },
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-it-will-use-all-available-tools-confront-us-naval-blockade-2026-11-23/",
+      "topic": "Iran Foreign Ministry Baghaei blockade statements; tanker-loading reports explicitly disputed as speculation",
+      "source_class": "iran_diplomacy_claims",
+      "map_eligibility": "nonspatial",
+      "publication_time": "2026-11-23_DATE_ONLY_EXACT_TIME_UNVERIFIED_OR_EARLIER_AS_NOTED",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-23T12:15:52-05:00",
+      "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+      "qualification": "UNPROMOTED_PENDING_SOURCE_CLOCK_PRIMARY_CORROBORATION_AND_PRIOR_DRAWER_MATCH",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters via Gulf Times",
+      "url": "https://www.gulf-times.com/article/731298/shopping/shipping-slows-through-strait-of-hormuz-after-tanker-attacks",
+      "topic": "Kpler-reported Saturday five transits, Sunday zero registered versus 31 prior weekend; publication 13:32 Qatar time (05:32 EST), data basis requires direct qualification",
+      "source_class": "maritime_commercial_tracking",
+      "map_eligibility": "nonspatial",
+      "publication_time": "2026-11-23_DATE_ONLY_EXACT_TIME_UNVERIFIED_OR_EARLIER_AS_NOTED",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-23T12:15:52-05:00",
+      "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+      "qualification": "UNPROMOTED_PENDING_SOURCE_CLOCK_PRIMARY_CORROBORATION_AND_PRIOR_DRAWER_MATCH",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/israeli-strike-kills-worker-with-un-palestinian-agency-gaza-agency-says-2026-11-23/",
+      "topic": "UNRWA reports staff death near Jabalia water well; additional Gaza City vehicle strike; exact event and publication clocks unresolved",
+      "source_class": "human_impact",
+      "map_eligibility": "region-only",
+      "publication_time": "2026-11-23_DATE_ONLY_EXACT_TIME_UNVERIFIED_OR_EARLIER_AS_NOTED",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-23T12:15:52-05:00",
+      "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+      "qualification": "UNPROMOTED_PENDING_SOURCE_CLOCK_PRIMARY_CORROBORATION_AND_PRIOR_DRAWER_MATCH",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/c2cb6de3515f887a5786c1147e918489",
+      "topic": "Houthi official claims Saudi-backed strike in Hodeida province killed 11 and injured 19; Gaza and Russia Libya reports require independent checks",
+      "source_class": "yemen_human_impact",
+      "map_eligibility": "region-only",
+      "publication_time": "2026-11-23_DATE_ONLY_EXACT_TIME_UNVERIFIED_OR_EARLIER_AS_NOTED",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-23T12:15:52-05:00",
+      "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+      "qualification": "UNPROMOTED_PENDING_SOURCE_CLOCK_PRIMARY_CORROBORATION_AND_PRIOR_DRAWER_MATCH",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/environment/un-food-agency-chief-warns-wars-jeopardize-food-aid-73-million-more-people-2026-11-23/",
+      "topic": "WFP chief projected shipping disruptions could add $727m costs by mid-2027 and put aid for 7.3m at risk; forecast not realized losses",
+      "source_class": "un_humanitarian",
+      "map_eligibility": "nonspatial",
+      "publication_time": "2026-11-23_DATE_ONLY_EXACT_TIME_UNVERIFIED_OR_EARLIER_AS_NOTED",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-23T12:15:52-05:00",
+      "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+      "qualification": "UNPROMOTED_PENDING_SOURCE_CLOCK_PRIMARY_CORROBORATION_AND_PRIOR_DRAWER_MATCH",
+      "promotion": "UNPROMOTED"
+    },
+    {
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-sanctions-iranian-trustees-collecting-oil-revenues-2026-11-20/",
+      "topic": "November 20 Treasury sanctions prior-drawer context, not a November 23 new event",
+      "source_class": "sanctions_prior_drawer",
+      "map_eligibility": "nonspatial",
+      "publication_time": "2026-11-23_DATE_ONLY_EXACT_TIME_UNVERIFIED_OR_EARLIER_AS_NOTED",
+      "occurrence_time": "UNRESOLVED_SEPARATELY",
+      "collection_time": "2026-11-23T12:15:52-05:00",
+      "evidence_horizon_time": "2026-11-23T12:00:00-05:00",
+      "qualification": "UNPROMOTED_PENDING_SOURCE_CLOCK_PRIMARY_CORROBORATION_AND_PRIOR_DRAWER_MATCH",
+      "promotion": "UNPROMOTED"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "source_discoveries": 6,
+    "reviewed": [
+      "Iran Foreign Ministry secondary reporting",
+      "Hormuz Kpler secondary reporting",
+      "Gaza UNRWA/health secondary reporting",
+      "Yemen Houthi claims via AP",
+      "UN WFP secondary reporting",
+      "Treasury sanctions prior drawer",
+      "Repository intake validator and previous drawer"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran military/security primary",
+      "US CENTCOM and diplomatic primary",
+      "Israel military primary",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq security",
+      "Yemen Houthi and Saudi primary",
+      "Lebanon Hezbollah",
+      "Gaza Hamas primary",
+      "Syria",
+      "Pakistan Türkiye China Russia EU",
+      "UN IAEA IMO full primary",
+      "UKMTO maritime and aviation",
+      "OFAC current primary",
+      "AIS Kpler LSEG raw",
+      "Independent geolocation and BDA",
+      "Full canonical drawer reconciliation"
+    ],
+    "reason": "Time-limited source discovery; standing automated probe unavailable; exact time qualification and theater-wide primary coverage incomplete"
+  },
+  "unresolved_questions": [
+    "Confirm exact source publication timestamps relative to noon EST horizon",
+    "Obtain source registry probe artifact and distinguish fetch failures from coverage gaps",
+    "Confirm vessel identifiers and AIS backfill before asserting zero physical transits",
+    "Verify Hodeida casualty claim and strike locality independently",
+    "Verify Gaza occurrence chronology and UNRWA primary statement",
+    "Reconcile accepted seq44 and prior lockers to avoid duplicating accepted events"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "region_only": 0,
+    "unlocated_pending_source": 0,
+    "nonspatial": 0,
+    "discovered_unpromoted": [
+      {
+        "topic": "Jabalia UNRWA worker reported strike",
+        "location_description": "Near water well, Jabalia refugee camp, Gaza Strip",
+        "geolocation": "UNRESOLVED_EXACT_SITE",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/israeli-strike-kills-worker-with-un-palestinian-agency-gaza-agency-says-2026-11-23/"
+      },
+      {
+        "topic": "Western Gaza City vehicle strike",
+        "location_description": "Western Gaza City, Gaza Strip",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://www.reuters.com/world/middle-east/israeli-strike-kills-worker-with-un-palestinian-agency-gaza-agency-says-2026-11-23/"
+      },
+      {
+        "topic": "Hodeida reported strike",
+        "location_description": "Hodeida governorate, Yemen; no precise locality",
+        "geolocation": "UNRESOLVED",
+        "map_eligibility": "region-only",
+        "projection_ready": false,
+        "source": "https://apnews.com/article/c2cb6de3515f887a5786c1147e918489"
+      }
+    ],
+    "notes": "No protected geometry or public marker mutation"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Six unpromoted source discoveries, six provisional drawer decisions. Probe missing; full coverage and validator certification outstanding."
+  }
+}
