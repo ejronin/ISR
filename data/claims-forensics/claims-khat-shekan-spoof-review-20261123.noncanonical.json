@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_SOURCE_REVIEW_REFERRAL_NONCANONICAL",
+  "authority": "CLAIMS_FORENSICS_DISCOVERY_ONLY",
+  "status": "REFERRAL_NO_NEW_PUBLIC_ADJUDICATION",
+  "review_time": "2026-11-23T15:59:49.732Z",
+  "scope": {
+    "claim_family": "Iranian oil tanker convoy and alleged U.S. blockade breach",
+    "time_range": "2026-11-17/2026-11-23",
+    "parent_references": [
+      "https://github.com/ejronin/ISR/issues/320",
+      "https://github.com/ejronin/ISR/issues/296",
+      "https://github.com/ejronin/ISR/pull/364",
+      "data/evidence-integration/rook-source-review-addendum-20261122-cross-domain.noncanonical.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20261123T0000ET.json"
+    ],
+    "accepted_canonical_sequence_at_review": 43,
+    "accepted_global_evidence_cutoff": "2026-11-12T13:00:00+00:00"
+  },
+  "source_chain": [
+    {
+      "id": "S01",
+      "publisher": "Iran International",
+      "published_at": "2026-11-22T04:14:00Z",
+      "url": "https://www.iranintl.com/en/202611211549",
+      "type": "SECONDARY_CARRIES_TRACKING_CORRECTION",
+      "summary": "Maritime identifier conflict and apparent tanker Khat Shekan with spoofed AIS position. TankerTrackers says it does not exist and satellite imagery lacks corresponding physical ship. Nigeria destination and false arrival clock is evidence of impossible track, not genuine export."
+    },
+    {
+      "id": "S02",
+      "publisher": "Euronews Persian",
+      "published_at": "2026-11-22T09:54:00Z",
+      "url": "https://www.euronews.com/2026/11/22/tracking-site-says-iranian-tanker-reportedly-sailing-through-strait-of-hormuz-does-not-exi",
+      "type": "INDEPENDENT_NEWS_REPORT_REPEAT_OF_SAME_SOURCE",
+      "summary": "Carries TankerTrackers' social-platform correction of synthetic Khat-Shekan ship; one underlying specialist source, not two independent satellite verifications."
+    },
+    {
+      "id": "S03",
+      "publisher": "UANI maritime tracking",
+      "published_at": "2026-11-20_UNRESOLVED_EXACT_TIME",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "type": "SPECIALIST_MARITIME_REPORT",
+      "summary": "Tracked no successful Iran-crude tanker passage since July12 within its monitored coverage; separate ~12 smaller LPG tankers through line since July14; STS transfer OLYM→HAO FAN ~200k barrels on Nov17 south of Kharg, not proof cargo departed enforcement zone."
+    },
+    {
+      "id": "S04",
+      "publisher": "Reuters",
+      "published_at": "2026-11-23T08:03:00Z",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-it-will-use-all-available-tools-confront-us-naval-blockade-2026-11-23/",
+      "type": "REUTERS_CARRIES_ORIGINAL_IRANIAN_SPOKESPERSON",
+      "summary": "Foreign Ministry spokesman Esmaeil Baghaei says Iran will use all tools to confront blockade, describes shipping-loading reports as speculation. This is policy/intent and public-position record, not a confirmed attempt or successful crossing."
+    },
+    {
+      "id": "S05",
+      "publisher": "Reuters",
+      "published_at": "2026-11-22T17:52:00Z",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-saudi-rabigh-oil-refinery-2026-11-22/",
+      "type": "ACTOR_CLAIM_CONTEXT_UNRELATED_PHYSICAL_EFFECT",
+      "summary": "Houthi direct-hit claim against Petro Rabigh; at publication Reuters could not establish damage and Saudi did not immediately comment. Do not count as confirmed refinery shutdown or new Bab el-Mandeb blockade."
+    }
+  ],
+  "atomic_propositions": [
+    {
+      "id": "KHAT-SHEKAN-EXISTS-AND-SAILS-20261122",
+      "proposition": "A real Iranian oil tanker named Khat Shekan sailed near the Strait of Hormuz on November 22 to break the U.S. blockade.",
+      "attributed_carriers": [
+        "S01",
+        "S02"
+      ],
+      "evidence_assessment": "CONTRADICTED_BY_SPECIALIST_SATELLITE_AND_IDENTITY_CHECK_AS_REPORTED",
+      "truth_authority_status": "PENDING_CLAIMS_FORENSICS_FORMAL_ADJUDICATION",
+      "knowledge_assessment": "ORIGINAL_AIS_SPOOFER_IDENTITY_AND_INTENT_UNKNOWN",
+      "distinctness": "DIFFERENT_FROM_LARGER_CONVOY_PLAN",
+      "ship_identity": "NO_VALID_UNIQUE_IMO_HULL_IDENTIFICATION",
+      "physical_ship_track_eligible": false
+    },
+    {
+      "id": "FOURTEEN-TANKER-CONVOY-ALREADY-BREACHED-20261122",
+      "proposition": "More than 14 Iranian crude tankers have already crossed the U.S. blockade successfully.",
+      "attributed_carriers": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence_assessment": "NOT_VERIFIED_IN_TRACKED_SOURCES; CLAIM_OF_PREPARATION_OR_ASSEMBLY_NOT_PASSAGE",
+      "truth_authority_status": "PENDING_ORIGINAL_SPEAKER_AND_TRACK_VERIFICATION",
+      "knowledge_assessment": "NO_ORIGINAL_NAMED_ASSERTOR_OR_PROOF_OF_KNOWING_FALSEHOOD",
+      "distinctness": "CONVOY_PREPARATION_VS_COMPLETED_TRANSIT",
+      "ship_identity": "NO_VALIDATED_INDEPENDENT_HULL_LIST_OR_CROSSING_TIMES",
+      "physical_ship_track_eligible": false
+    },
+    {
+      "id": "STS-OLYM-HAO-FAN-NOV17",
+      "proposition": "A roughly 200,000-barrel ship-to-ship Iranian crude transfer south of Kharg on November 17 establishes blockade clearance.",
+      "attributed_carriers": [
+        "S03"
+      ],
+      "evidence_assessment": "STS_TRANSFER_TRACKED_BUT_EXPORT_DEPARTURE_NOT_ESTABLISHED",
+      "truth_authority_status": "INFERENCE_REJECTED_SUBJECT_TO_CANONICAL_EVIDENCE_REVIEW",
+      "knowledge_assessment": "NO_SPEAKER_INTENT_INFERRED",
+      "distinctness": "ACTUAL_TRANSFER_NOT_NEUTRAL_HORMUZ_PASSAGE",
+      "ship_identity": "OLYM IMO 9212759; HAO FAN IMO 9258167",
+      "physical_ship_track_eligible": false
+    },
+    {
+      "id": "IRAN-INTENDS-TO-CONFRONT-BLOCKADE-NOV23",
+      "proposition": "Iran's Foreign Ministry says it intends to confront the U.S. blockade using available means.",
+      "attributed_carriers": [
+        "S04"
+      ],
+      "evidence_assessment": "REUTERS_DOCUMENTS_OFFICIAL_POSITION; NO_RESULT_YET",
+      "truth_authority_status": "ATTRIBUTED_OFFICIAL_POSITION_NOT_INDEPENDENT_NAVAL_EVENT",
+      "knowledge_assessment": "INTENT_OR_THREAT_NOT_CURRENT_PHYSICAL_RESULT",
+      "distinctness": "SEPARATE_DIPLOMATIC_POSITION",
+      "ship_identity": null,
+      "physical_ship_track_eligible": false
+    }
+  ],
+  "controls": {
+    "no_existing_claims_changed": true,
+    "no_new_true_false_lie_verdicts": true,
+    "no_new_wol_edges": true,
+    "protected_proposition_count_before": 89,
+    "protected_proposition_count_after": 89,
+    "existing_sealed_rulings_unchanged": true,
+    "evidence_dedup": "An AIS ghost vessel creates no new hull count, voyage, route or tanker seizure. Khat Shekan is not a newly verified Iranian VLCC.",
+    "logic": "Contradicted synthetic movement, attributed correction, original spoof author/intent and knowing-falsehood are separate requirements; do not infer a lie from reporter error or an AIS spoof.",
+    "release": "NO_PUBLIC_CHANGE; any versioned Lie Ledger or WOL correction must be independently authorized in Claims Forensics then accepted into public via exact-SHA qualification."
+  },
+  "handoff": {
+    "claims_forensics": "Acquire archived primary TankerTrackers post/time, MarineTraffic listing identity and first carrier exact quoted claim, assign unique proposition family. Determine whether original claim was materially false or only provisional reporting. Speaker-knowledge test separate.",
+    "evidence_integration": "Treat Khat Shekan as AIS spoof, no real tanker crossing. Reuters Nov23 Iranian statement belongs diplomacy positions, not shipping exports.",
+    "public_product": "No ghost route or voyage; no visual map/counter/card change without independently accepted canonical/Claims Forensics record.",
+    "release_integrity": "Verify this new noncanonical referral does not mutate accepted packet history, WOL, Lie Ledger, source counts or public byte identity."
+  }
+}
