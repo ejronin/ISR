@@ -54,7 +54,7 @@ jobs:
             echo 'Source availability report already accepted on main. No new PR required.'
             exit 0
           fi
-          file="$(git diff --cached --name-only | grep -E '^data/evidence-integration/rook-source-registry-delta-[0-9]{8}T[0-9]{4}ET-automated\\.json$' | head -n 1)"
+          file="$(git diff --cached --name-only | grep -E '^data/evidence-integration/rook-source-registry-delta-[0-9]{8}T[0-9]{4}ET-automated\.json$' | head -n 1)"
           test -n "$file"
           branch="rook/${file##*/}"
           branch="${branch%.json}"
