@@ -1,0 +1,149 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261123-OFAC-IRAN-BLOCKADE-KPLER-SELECTIVE",
+  "known_at": "2026-11-23T16:31:20.064Z",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "Selective source-qualified append of Nov20 U.S. Treasury four-person oil trustee designations, Nov23 Iranian Foreign Ministry blockade conditions, and a Nov23 Reuters/Kpler comparison of source-defined Hormuz oil transit period averages. The full-theater ROOK sweep backlog remains incomplete; this does not certify November23 full coverage or modify Lie Ledger/WOL findings or existing public prose. Legal designations, Iranian statements and Kpler estimated oil flows are three distinct evidence types.",
+  "sources": [
+    {
+      "source_id": "SRC-B55FE5B6E3EE",
+      "url": "https://home.treasury.gov/news/press-releases/sb0697",
+      "source_role": "PRIMARY_OFFICIAL_SANCTIONS_DESIGNATIONS_NOT_AUTOMATIC_PROOF_OF_ALL_UNDERLYING_ALLEGATIONS",
+      "outlet": "US Department of the Treasury",
+      "published_date": "2026-11-20"
+    },
+    {
+      "source_id": "SRC-20421CE2A4DA",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-it-will-use-all-available-tools-confront-us-naval-blockade-2026-11-23/",
+      "source_role": "REUTERS_REPORT_OF_IRANIAN_FOREIGN_MINISTRY_PRESS_CONFERENCE_NOT_PROOF_OF_PHYSICAL_BLOCKADE_CROSSING",
+      "outlet": "Reuters",
+      "published_date": "2026-11-23"
+    },
+    {
+      "source_id": "SRC-974A7DBD2CA3",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/oils-iran-war-recovery-masks-stubborn-diesel-shortage-2026-11-23/",
+      "source_role": "SOURCE_DEFINED_COMMERCIAL_PROVIDER_PERIOD_AVERAGES_WITH_INCOMPATIBLE_PERIOD_LENGTHS",
+      "outlet": "Reuters Open Interest / Kpler",
+      "published_date": "2026-11-23"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261120-US-TREASURY-FOUR-IRAN-OIL-TRUSTEE-DESIGNATIONS",
+      "event_date": "2026-11-20",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "summary": "On November 20, the U.S. Treasury designated four named Iranian-linked oil-trustee and facilitator individuals under its Operation Economic Outcast authorities. The official designations are established government action; Treasury's broader allegations and claimed revenue effects are attributed, not independently measured outcomes.",
+      "source_ids": [
+        "SRC-B55FE5B6E3EE"
+      ],
+      "game_knowledge_time": "2026-11-23T16:31:20.064Z"
+    },
+    {
+      "event_id": "EVT-20261123-IRAN-MFA-REITERATES-BLOCKADE-OPPOSITION",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "summary": "Iranian Foreign Ministry spokesman Esmaeil Baghaei said on November 23 that Iran would use available means to confront the U.S. naval blockade, called reported tanker loading speculative, and linked reopening Hormuz to U.S. concessions. The comments express Iran's current public position; they do not establish a blockade breakout, reopened shipping, or a negotiated agreement.",
+      "source_ids": [
+        "SRC-20421CE2A4DA"
+      ],
+      "game_knowledge_time": "2026-11-23T16:31:20.064Z"
+    },
+    {
+      "event_id": "EVT-20261119-KPLER-HORMUZ-OIL-FLOW-PERIOD-SNAPSHOT",
+      "event_date": "2026-11-19",
+      "event_time_precision": "MEASUREMENT_PERIOD_END_DATE",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "summary": "Reuters reported Kpler estimates of oil flows through the Strait of Hormuz averaging approximately 9.5 million barrels per day for the ten days through November 19, versus approximately 12.2 million barrels per day averaged over October. These are provider-reported different-length period averages, not November 19 or November 23 daily actuals or Iranian crude exports.",
+      "source_ids": [
+        "SRC-974A7DBD2CA3"
+      ],
+      "game_knowledge_time": "2026-11-23T16:31:20.064Z"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OFAC-OIL-TRUSTEES-20261120",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OFAC-OIL-TRUSTEES-20261120",
+        "date": "2026-11-20",
+        "knowledge_time": "2026-11-23T16:31:20.064Z",
+        "metric": "U.S. Treasury November 20 Iran oil trustee individual designations",
+        "source_ids": [
+          "SRC-B55FE5B6E3EE"
+        ],
+        "status": "PRIMARY_OFAC_LEGAL_ACTION_CONFIRMED_UNDERLYING_CAUSAL_AND_FINANCIAL_EFFECTS_NOT_ESTABLISHED",
+        "designated_individual_count": 4,
+        "designated_individual_names": [
+          "Mohammad Javad Bavand",
+          "Majid Taj",
+          "Mohammadhossein Servati",
+          "Mojtaba Arabnejad"
+        ],
+        "observed_state": "U.S. Treasury on Nov20 designated four individuals tied by its official statement to Iranian oil receipts and oil/aviation procurement. This is a legal designation action. Claims of billions of dollars owed, vessels carrying no crude, financial impact and motivations remain Treasury-attributed and are not independently verified measurements."
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-BLOCKADE-POSITION-20261123",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAN-BLOCKADE-POSITION-20261123",
+        "date": "2026-11-23",
+        "knowledge_time": "2026-11-23T16:31:20.064Z",
+        "source_ids": [
+          "SRC-20421CE2A4DA"
+        ],
+        "status": "IRANIAN_FOREIGN_MINISTRY_REUTERS_ATTRIBUTED_POSITION_NO_COMPLETED_AGREEMENT",
+        "observed_state": "Iran's Foreign Ministry spokesperson Baghaei said Iran would use available tools to oppose the U.S. blockade and conditioned reopening Hormuz on U.S. action on hostilities, blockade and sanctions. He called tanker-loading reports speculative. This does not confirm an export transit, lifted blockade, signed agreement or new maritime closure."
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-KPLER-HORMUZ-OIL-FLOWS-20261119-PERIOD-COMPARISON",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-KPLER-HORMUZ-OIL-FLOWS-20261119-PERIOD-COMPARISON",
+        "date": "2026-11-19",
+        "knowledge_time": "2026-11-23T16:31:20.064Z",
+        "metric": "Kpler estimated oil transit via Strait of Hormuz, average million barrels per day",
+        "provider": "Kpler, carried by Reuters Open Interest Nov23",
+        "source_ids": [
+          "SRC-974A7DBD2CA3"
+        ],
+        "status": "PROVIDER_REPORTED_PERIOD_AVERAGES_NOT_DAILY_VALUES_NOT_IRANIAN_EXPORTS",
+        "periods": [
+          {
+            "start": "2026-10-01",
+            "end": "2026-10-31",
+            "period_type": "CALENDAR_MONTH_MEAN",
+            "million_barrels_per_day": 12.2
+          },
+          {
+            "start": "2026-11-10",
+            "end": "2026-11-19",
+            "period_type": "TEN_DAY_MEAN",
+            "million_barrels_per_day": 9.5
+          }
+        ],
+        "observed_state": "Reuters cites Kpler average oil flow through Hormuz of about 12.2m bpd across October and 9.5m bpd over the ten days ending November19. Different window durations; source-defined aggregate shipping flows, not one-date observations, Iran crude tanker exits, futures prices or source-verified total exports.",
+        "comparison_caveat": "Only one benchmark/provider for two different averaging windows; don't merge with prior US-facilitated transit counts or plot as same-granularity monthly daily point series."
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-source-review-addendum-20261123-maritime-energy-diplomacy.noncanonical.json"
+    ],
+    "scope": "SELECTIVE_DOCUMENTARY_ACCEPTANCE_NO_FULL_THEATER_SWEEP_CERTIFICATION",
+    "note": "Only three independently qualified and source-linked material developments; missing Nov12-Nov23 ROOK complete sweeps still open #296. This accepted packet does not authorize a global current-as-of Nov23 claim."
+  }
+}

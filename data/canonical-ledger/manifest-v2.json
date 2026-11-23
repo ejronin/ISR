@@ -472,6 +472,17 @@
       "previous_lineage_sha256": "cb5d9fb0494fb0d96b75f55cf36351d25d83d15a4cae1e70d6c54e9779bf0f58",
       "sequence": 43,
       "sha256": "a3b20864672c10247080e24e26949e5633b064f934300cce16633f2ac703719a"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+      "known_at": "2026-11-23T16:31:20.064Z",
+      "lineage_sha256": "0015f51e19bf4e472fb910315f7b9ef682a8531ecf2a17328388b02f9e3229da",
+      "packet_id": "UPD-20261123-OFAC-IRAN-BLOCKADE-KPLER-SELECTIVE",
+      "path": "data/canonical-updates/UPD-20261123-OFAC-IRAN-BLOCKADE-KPLER-SELECTIVE.json",
+      "previous_lineage_sha256": "c19c8573bbf42b5138def09f55e0e16196d8d3d4fa060e9364b89eb5ece9c1a2",
+      "sequence": 44,
+      "sha256": "a9077e24b5db9c41654eb830f406fcf040d936ae12e18420d237b2b3e49bf0ec"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
