@@ -461,6 +461,17 @@
       "previous_lineage_sha256": "1b9266a9f6f4a348139474ed40938f3a3200fc9603dd8b79de14b22adce2f691",
       "sequence": 42,
       "sha256": "170e09f3c57836a73402f222b4eb29927d34e9e644e878b7956ef16fa2d44386"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+      "known_at": "2026-11-23T14:21:39.232Z",
+      "lineage_sha256": "c19c8573bbf42b5138def09f55e0e16196d8d3d4fa060e9364b89eb5ece9c1a2",
+      "packet_id": "UPD-20261123-IG-CENTCOM-AIRCRAFT-ATTRITION",
+      "path": "data/canonical-updates/UPD-20261123-IG-CENTCOM-AIRCRAFT-ATTRITION.json",
+      "previous_lineage_sha256": "cb5d9fb0494fb0d96b75f55cf36351d25d83d15a4cae1e70d6c54e9779bf0f58",
+      "sequence": 43,
+      "sha256": "a3b20864672c10247080e24e26949e5633b064f934300cce16633f2ac703719a"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
