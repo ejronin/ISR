@@ -1,0 +1,199 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-14T00:00:00-05:00",
+    "window_end": "2026-11-14T12:00:00-05:00",
+    "scheduled_window_end": "2026-11-14T12:00:00-05:00",
+    "collection_time": "2026-11-14T12:04:53-05:00",
+    "evidence_horizon_time": "2026-11-14T12:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL",
+    "caveat": "Targeted source review; publication timestamps for some reports unresolved; only Reuters 11:03 UTC article firmly inside window."
+  },
+  "new_events": [],
+  "existing_event_updates": [
+    {
+      "update_id": "ROOK-20261114-NOON-US-IRAN-RESTRAINT",
+      "updates_existing_ref": "US_IRAN_ESCALATION_DIPLOMACY_NOVEMBER_2026",
+      "relationship": "UPDATE",
+      "summary": "Reuters reports three sources familiar with Trump's adviser discussions say he may hold off further strikes absent new Iranian or Houthi provocations. Conditional private deliberation, not implemented ceasefire or formal policy.",
+      "occurrence_time": null,
+      "publication_time": "2026-11-14T11:03:00Z",
+      "collection_time": "2026-11-14T12:04:53-05:00",
+      "evidence_horizon_time": "2026-11-14T12:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/trump-tells-advisers-he-may-hold-off-iran-attacks-barring-new-provocations-2026-11-14/"
+      ],
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "update_id": "ROOK-20261114-NOON-HORMUZ-TANKER",
+      "updates_existing_ref": "HORMUZ_TANKER_INCIDENTS_2026_NOVEMBER",
+      "relationship": "UPDATE",
+      "summary": "Iranian navy via state media claimed tanker fire after mine strike in eastern Hormuz Saturday morning; AP separately relayed Iranian TV's claim of three mine-struck tankers. Distinctness from prior two/four tanker claims unresolved; Reuters could not verify. No vessel IDs or confirmed BDA.",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T12:04:53-05:00",
+      "evidence_horizon_time": "2026-11-14T12:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-navy-says-oil-tanker-fire-after-hitting-mine-hormuz-2026-11-14/",
+        "https://apnews.com/article/ade76bebaf22135168aac6eb3016bc19"
+      ],
+      "geospatial": {
+        "source_location_description": "Eastern Strait of Hormuz; third reported vessel east of Strait, positions unspecified",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "STRAIT_REGION",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    },
+    {
+      "update_id": "ROOK-20261114-NOON-GAZA-JABALIYA",
+      "updates_existing_ref": "GAZA_POST_CEASEFIRE_STRIKES",
+      "relationship": "UPDATE",
+      "summary": "AP reports Shifa Hospital director said two Palestinians killed in Jabaliya drone strike and US field hospital reported other wounded; Israeli military said two Hamas militants targeted. Casualty and target identities attributed separately; no independent geolocated impact.",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T12:04:53-05:00",
+      "evidence_horizon_time": "2026-11-14T12:00:00-05:00",
+      "sources": [
+        "https://apnews.com/article/ade76bebaf22135168aac6eb3016bc19"
+      ],
+      "geospatial": {
+        "source_location_description": "Jabaliya, northern Gaza; precise strike site not reported",
+        "geolocation_status": "UNRESOLVED",
+        "location_precision": "LOCALITY",
+        "map_eligibility": "region-only",
+        "projection_readiness": "NOT_PLOT_READY",
+        "latitude": null,
+        "longitude": null,
+        "canonical_location_id": null
+      }
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "ROOK-20261114-NOON-IRAN-MINES",
+      "claimant": "Iranian Navy / Iranian state television",
+      "claim": "One tanker (Navy) or three tankers (state TV) reportedly struck mines and burned in/east of Hormuz",
+      "assessment": "ATTRIBUTED_UNVERIFIED; POSSIBLE_OVERLAP_WITH_PREVIOUS_CLAIMS",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T12:04:53-05:00",
+      "evidence_horizon_time": "2026-11-14T12:00:00-05:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/irans-navy-says-oil-tanker-fire-after-hitting-mine-hormuz-2026-11-14/",
+        "https://apnews.com/article/ade76bebaf22135168aac6eb3016bc19"
+      ],
+      "map_eligibility": "region-only"
+    },
+    {
+      "claim_id": "ROOK-20261114-NOON-ISRAEL-GAZA",
+      "claimant": "Israeli military",
+      "claim": "Targeted two Hamas militants in Jabaliya",
+      "assessment": "ACTOR_ATTRIBUTION_NOT_INDEPENDENTLY_VERIFIED",
+      "occurrence_time": null,
+      "publication_time": null,
+      "collection_time": "2026-11-14T12:04:53-05:00",
+      "evidence_horizon_time": "2026-11-14T12:00:00-05:00",
+      "sources": [
+        "https://apnews.com/article/ade76bebaf22135168aac6eb3016bc19"
+      ],
+      "map_eligibility": "region-only"
+    }
+  ],
+  "economic_energy_updates": [],
+  "prior_drawer_review": [
+    {
+      "topic": "Hormuz tanker incidents November 13",
+      "decision": "UPDATE",
+      "reason": "Additional Iranian reports; vessel identity and distinctness unresolved"
+    },
+    {
+      "topic": "US Iran negotiations / military restraint",
+      "decision": "UPDATE",
+      "reason": "Reuters conditional deliberations report; no implemented ceasefire"
+    },
+    {
+      "topic": "Gaza post-ceasefire casualties",
+      "decision": "UPDATE",
+      "reason": "AP reports Jabaliya deaths and competing attribution"
+    },
+    {
+      "topic": "Saudi Houthi Jazan",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No independently verified new BDA in limited review"
+    },
+    {
+      "topic": "Bahrain radar claims",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No corroborated BDA in limited review"
+    },
+    {
+      "topic": "IAEA Isfahan access",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No new primary IAEA documentation reviewed"
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "No verified repair-status update reviewed"
+    }
+  ],
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Reuters US Iran diplomacy",
+      "Reuters Iran Navy Hormuz",
+      "AP Gaza and Hormuz",
+      "UN seafarer casualty report via Al Jazeera",
+      "Gulf News morning digest",
+      "gCaptain IEA and UKMTO synthesis"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran primary political/military/security",
+      "US and Israel primary statements",
+      "Saudi GCC Oman Qatar UAE Kuwait Bahrain primary",
+      "Iraq Yemen Lebanon Gaza Syria primary",
+      "Pakistan Turkiye China Russia Europe",
+      "UN IAEA IMO primary records",
+      "maritime UKMTO and aviation authorities primary",
+      "sanctions and commodity market primary",
+      "AIS Kpler LSEG original public reporting",
+      "human-impact agencies original reports",
+      "independent geospatial OSINT",
+      "full prior drawers"
+    ],
+    "source_review_limitation": "Only targeted sources checked; no complete actor/source-class coverage or exhaustive publication-time qualification."
+  },
+  "unresolved_questions": [
+    "Exact AP and Iranian state TV publication timestamps and whether before noon cutoff",
+    "Vessel names, IMO IDs, AIS positions, whether tanker reports duplicate prior claims",
+    "Independent Jabaliya casualty verification and exact impact locality",
+    "Primary UN Security Council briefing casualty timeline",
+    "Comprehensive primary-source coverage and full drawer reconciliation",
+    "Repository intake validation against compare ref"
+  ],
+  "source_discovery_additions": [
+    "https://www.reuters.com/world/middle-east/trump-tells-advisers-he-may-hold-off-iran-attacks-barring-new-provocations-2026-11-14/",
+    "https://www.reuters.com/world/middle-east/irans-navy-says-oil-tanker-fire-after-hitting-mine-hormuz-2026-11-14/",
+    "https://apnews.com/article/ade76bebaf22135168aac6eb3016bc19",
+    "https://www.aljazeera.com/news/2026/11/14/un-says-25-seafarers-killed-in-around-hormuz-since-february",
+    "https://gcaptain.com/gulf-oil-exports-recover-as-hormuz-shipping-struggles/"
+  ],
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Preserved partial upstream evidence; cannot certify completed unconsumed without full sweep and validator."
+  }
+}
