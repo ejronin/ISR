@@ -11,7 +11,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from rook_source_probe import CandidateLinks, build_artifact, last_closed_window, load_sources, probe_one  # noqa: E402
+from rook_source_probe import CandidateLinks, HTTPSOnlyRedirects, build_artifact, last_closed_window, load_sources, probe_one  # noqa: E402
 
 ET = ZoneInfo("America/New_York")
 
@@ -107,6 +107,15 @@ class RookSourceProbeTests(unittest.TestCase):
         self.assertEqual(result["status"], "FETCH_FAILED")
         self.assertEqual(result["failure_type"], "URLError")
         self.assertEqual(result["url"], legacy["access_location"])
+
+    def test_https_redirect_to_http_is_rejected(self):
+        from urllib.error import URLError
+        from urllib.request import Request
+        with self.assertRaisesRegex(URLError, "insecure HTTP redirect rejected"):
+            HTTPSOnlyRedirects().redirect_request(
+                Request("https://example.com/news"), None, 302, "Found", {},
+                "http://example.com/redirected",
+            )
 
     def test_no_phantom_source_coverage(self):
         with self.assertRaisesRegex(ValueError, "counts differ"):
