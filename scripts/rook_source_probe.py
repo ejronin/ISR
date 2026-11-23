@@ -12,7 +12,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlsplit, urlunsplit
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener, urlopen
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,6 +55,15 @@ def load_sources(path: Path = SOURCE_UNIVERSE) -> list[dict]:
         # probe_one always attempts HTTPS and NEVER transmits over HTTP.
         seen.add(identity)
     return sources
+
+
+class HTTPSOnlyRedirects(HTTPRedirectHandler):
+    """Reject a server redirect that would downgrade a source probe to HTTP."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if urlsplit(newurl).scheme != "https":
+            raise URLError("insecure HTTP redirect rejected")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
 class CandidateLinks(HTMLParser):
@@ -113,8 +122,11 @@ def probe_one(source: dict, opener=urlopen) -> dict:
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
     }
     req = Request(probe_url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,application/rss+xml,*/*;q=0.4"})
+    # The default urllib opener follows HTTPS -> HTTP redirects. Disable that
+    # downgrade for repository-maintained standing sources.
+    fetch = build_opener(HTTPSOnlyRedirects()).open if opener is urlopen else opener
     try:
-        with opener(req, timeout=7) as response:
+        with fetch(req, timeout=7) as response:
             result["http_status"] = getattr(response, "status", 200)
             result["response_mime"] = response.headers.get("Content-Type", "").split(";")[0]
             blob = response.read(MAX_BYTES)
