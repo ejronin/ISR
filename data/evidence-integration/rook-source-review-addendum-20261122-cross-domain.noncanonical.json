@@ -1,0 +1,478 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CROSS_DOMAIN_SOURCE_REVIEW_AND_PUBLICATION_HANDOFF_NONCANONICAL",
+  "authority": "EVIDENCE_DISCOVERY_ONLY",
+  "status": "STAGED_UNACCEPTED_NOT_LIVE",
+  "review_time_utc": "2026-11-23T01:56:32.996Z",
+  "source_horizon": "2026-11-22T20:53:00-05:00",
+  "canonical_baseline": {
+    "branch_sha": "cf30dd750c2c6f651c2696710a9107c098376354",
+    "manifest_path": "data/canonical-ledger/manifest-v2.json",
+    "current_evidence_cutoff": "2026-11-12T13:00:00+00:00",
+    "accepted_sequence": 42,
+    "warning": "No recent partial ROOK locker is certified. Do not silently advance current evidence cutoff to this review horizon."
+  },
+  "scope": {
+    "theater": "2026 Iran war and proximate effects across Gulf, Red Sea, Yemen, Saudi, Bahrain, U.S., Israel/Palestine, Iraq, Lebanon and diplomatic/economic sanctions",
+    "source_verification": "Media/ISW/specialist cross-source triage, not all primary reports individually authenticated",
+    "excluded": [
+      "No global exhaustive verification since Nov12",
+      "No full original-source translations",
+      "No finalized latest total vessel/munitions/loss counts",
+      "No exact event coordinates or ship AIS route export"
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "Reuters",
+      "published_date": "2026-11-22",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-saudi-rabigh-oil-refinery-2026-11-22/",
+      "role": "Houthi Rabigh refining complex direct-hit claim, Saudi damage confirmation absent"
+    },
+    {
+      "id": "S02",
+      "publisher": "ISW / CTP",
+      "published_date": "2026-11-22",
+      "url": "https://understandingwar.org/research/middle-east/iran-update-november-22-2026/",
+      "role": "Claims for Rabigh and Wadi ad Dawasir, Saudi intercepts; analysis data cutoff 14:00 EST"
+    },
+    {
+      "id": "S03",
+      "publisher": "Al Jazeera",
+      "published_date": "2026-11-22",
+      "url": "https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf",
+      "role": "Bahrain attack background and maritime attacks; secondary news synthesis"
+    },
+    {
+      "id": "S04",
+      "publisher": "CBS News / AFP",
+      "published_date": "2026-11-22",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-trump-tehran-denies-chemical-weapons/",
+      "role": "Bahrain fire, U.S. denial of military impact, US and Iran statements and Qatar contacts; individual time-stamped updates"
+    },
+    {
+      "id": "S05",
+      "publisher": "ABC News",
+      "published_date": "2026-11-22",
+      "url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto?id=138171071",
+      "role": "Bahrain Patriot/radar Iranian claim, Gulf carrier arrival, UKMTO tanker strikes, CENTCOM denials"
+    },
+    {
+      "id": "S06",
+      "publisher": "Reuters / UKMTO",
+      "published_date": "2026-11-21",
+      "url": "https://www.reuters.com/business/energy/tanker-hit-by-unknown-projectile-near-omans-khasab-ukmto-says-2026-11-21/",
+      "role": "Two November 21 reports of tanker projectile damage near Khasab, potential separate hull events; naming/duplicate unresolved"
+    },
+    {
+      "id": "S07",
+      "publisher": "UANI Maritime Monitoring",
+      "published_date": "2026-11-20",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "role": "No tracked successful Iranian-crude blockade exit since July 12; STS transfer OLYM→HAO FAN Nov17, 54 loaded ships Nov20"
+    },
+    {
+      "id": "S08",
+      "publisher": "The Maritime Executive",
+      "published_date": "2026-11-20",
+      "url": "https://maritime-executive.com/article/reports-claim-iran-is-preparing-oil-convoy-to-test-u-s-blockade",
+      "role": "Original 14-tanker convoy narrative vs TankerTrackers rebuttal, Iranian FM remarks; source-to-claim lineage"
+    },
+    {
+      "id": "S09",
+      "publisher": "Reuters",
+      "published_date": "2026-11-22",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-retreat-sporadic-attacks-continue-2026-11-22/",
+      "role": "Gulf equity markets down Sunday, country and index comparisons require timestamped close data"
+    },
+    {
+      "id": "S10",
+      "publisher": "Reuters",
+      "published_date": "2026-11-22",
+      "url": "https://www.reuters.com/world/middle-east/israels-eisenkot-condemns-arson-attacks-by-jewish-settlers-west-bank-2026-11-22/",
+      "role": "Political reaction to reported West Bank arson, humanitarian/local historical crosswalk rather than Iran strike event"
+    },
+    {
+      "id": "S11",
+      "publisher": "Reuters / CENTCOM",
+      "published_date": "2026-11-21",
+      "url": "https://www.reuters.com/business/aerospace-defense/us-denies-iranian-account-that-missile-damaged-f-16-over-gulf-2026-11-21/",
+      "role": "Iran F-16 alleged damage; CENTCOM denial and inventory statement, no independent damage proof"
+    },
+    {
+      "id": "S12",
+      "publisher": "US Treasury",
+      "published_date": "2026-11-20",
+      "url": "https://home.treasury.gov/news/press-releases/sb0697",
+      "role": "Primary Treasury oil trustee sanctions announcement; designations vs claimed economic effects"
+    },
+    {
+      "id": "S13",
+      "publisher": "Reuters",
+      "published_date": "2026-11-20",
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-sanctions-iranian-trustees-collecting-oil-revenues-2026-11-20/",
+      "role": "Secondary confirmation/attribution of U.S. sanctions"
+    },
+    {
+      "id": "S14",
+      "publisher": "UKMTO",
+      "published_date": "2026-11-20",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/20261120-ukmto_vra_overview_u.pdf",
+      "role": "Maritime weekly report pre-Nov21, six earlier incidents and no reported sinkings; PDF should be screenshot/clock checked before source promotion"
+    },
+    {
+      "id": "S15",
+      "publisher": "Reuters",
+      "published_date": "2026-11-22",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-saudi-rabigh-oil-refinery-2026-11-22/",
+      "role": "Same Rabigh article reused as source for no independent Saudi confirmation, not an independent second source"
+    },
+    {
+      "id": "S16",
+      "publisher": "Associated Press",
+      "published_date": "2026-11-21",
+      "url": "https://apnews.com/article/29159a6f3365ff447c0ccbd1d7260f75",
+      "role": "Nov21 tanker impacts and Iranian missile launcher state broadcast and Gaza/Lebanon reporting, confirm exact claims in article"
+    },
+    {
+      "id": "S17",
+      "publisher": "U.S. CBS/AFP",
+      "published_date": "2026-11-22",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-trump-tehran-denies-chemical-weapons/#post-update-8701c514",
+      "role": "Trump Nov22 claims of missile/drone pace and no damage, numerical comparison and meaning of damage unresolved"
+    },
+    {
+      "id": "S18",
+      "publisher": "CBS/AFP",
+      "published_date": "2026-11-21",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-trump-tehran-denies-chemical-weapons/#post-update-f0342eea",
+      "role": "Iran deputy foreign minister Qatar-delegation talks announcement, formal deal not established"
+    },
+    {
+      "id": "S19",
+      "publisher": "Wall Street Journal",
+      "published_date": "2026-11-20",
+      "url": "https://www.wsj.com/finance/commodities-futures/oil-rises-amid-middle-east-tensions-cdf9de83",
+      "role": "Friday Brent $92.57/WTI $83.98 futures settlement, do not treat as Sunday quotes"
+    },
+    {
+      "id": "S20",
+      "publisher": "Iran International",
+      "published_date": "2026-11-21",
+      "url": "https://www.iranintl.com/en/liveblog/202611214578",
+      "role": "UKMTO-reported 263 transits week to Nov18, 65 percent below pre-war, 6 maritime attacks; secondary UKMTO-based"
+    },
+    {
+      "id": "S21",
+      "publisher": "Fox News",
+      "published_date": "2026-11-22",
+      "url": "https://www.foxnews.com/world/trump-dares-iran-breach-us-port-blockade-tehran-reportedly-readies-14-oil-tankers",
+      "role": "US presidential public statements and convoy narrative; source repeats earlier reports, not fresh tanker movement confirmation"
+    },
+    {
+      "id": "S22",
+      "publisher": "Reuters",
+      "published_date": "2026-11-15",
+      "url": "https://www.investing.com/news/world-news/yemen-government-forces-withdraw-from-area-near-babelmandeb-strait-houthis-in-control-5027740",
+      "role": "Reuters syndication, November15 Yemen government-aligned withdrawal from Dhubab/Bab el-Mandeb coast; documented reversal of October counteroffensive, not whole Red Sea blockade"
+    },
+    {
+      "id": "S23",
+      "publisher": "Reuters",
+      "published_date": "2026-11-18",
+      "url": "https://www.reuters.com/world/asia-pacific/untangling-yemens-complex-civil-war-2026-11-18/",
+      "role": "Reuters regional overview: renewed Houthi coastline hold and Aden/Taiz pressure; physical coastal control distinct from recognized maritime jurisdiction"
+    },
+    {
+      "id": "S24",
+      "publisher": "Associated Press",
+      "published_date": "2026-11-17",
+      "url": "https://apnews.com/article/36dc900f45aa414a1b8544dce7de53fc",
+      "role": "AP named Tur al-Baha deployment after Yemeni government withdrawal from Bab el-Mandeb coast; Aden defensive posture"
+    },
+    {
+      "id": "S25",
+      "publisher": "The Maritime Executive",
+      "published_date": "2026-11-15",
+      "url": "https://maritime-executive.com/article/houthis-recapture-positions-overlooking-the-bab-el-mandeb",
+      "role": "Secondary maritime security analysis of Houthi coastal positions overlooking the passage and reported withdrawal; doesn't prove all traffic interdicted"
+    },
+    {
+      "id": "S26",
+      "publisher": "Reuters",
+      "published_date": "2026-11-21",
+      "url": "https://www.reuters.com/world/middle-east/qatari-delegation-visits-tehran-talks-iranian-official-says-2026-11-21/",
+      "role": "Original timestamp Nov21 15:00:11 UTC, Iranian official confirmed Friday-night Qatar delegation, no agreement"
+    },
+    {
+      "id": "S27",
+      "publisher": "Reuters",
+      "published_date": "2026-11-22",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-retreat-sporadic-attacks-continue-2026-11-22/",
+      "role": "November22 Gulf index moves: Saudi TASI -2%, Qatar QSI -1.6%, Bahrain BAX -0.6%, Egypt EGX30 -2.9%; provider-reported snapshot, market-local close-time qualification required"
+    }
+  ],
+  "cross_domain_referrals": [
+    {
+      "domain": "military / Saudi Arabia",
+      "time": "2026-11-22",
+      "claim": "Houthis say they directly hit Petro Rabigh refinery and Wadi ad Dawasir radar",
+      "baseline": "Reuters Nov22 confirms original Houthi claim but says no Saudi damage report; ISW describes claim and distinct interceptions",
+      "observed": "Attribution as speaker claim; impact and functional effects unverified",
+      "source_refs": [
+        "S01",
+        "S02"
+      ],
+      "target": [
+        "timeline",
+        "claims",
+        "military campaigns",
+        "facilities if independent qualified target/location"
+      ],
+      "map": "RABIGH AREA ONLY; no exact impact site or target operability",
+      "chart": "No destruction, production-outage or casualty datapoint",
+      "identity": "Deduplicate against all November Rabigh prior events"
+    },
+    {
+      "domain": "Saudi defenses",
+      "time": "2026-11-21 to 2026-11-22",
+      "claim": "Saudi military reports a Western Saudi missile interception on Nov21 and two Houthi drones intercepted over Riyadh and South on Nov22",
+      "baseline": "ISW citing distinct Saudi coalition spokesperson source posts; independent radar evidence not examined",
+      "observed": "Source-attributed interception counts and dates, not confirmed missile impact or attack casualties",
+      "source_refs": [
+        "S02"
+      ],
+      "target": [
+        "timeline",
+        "weapons by claimed/intercepted class",
+        "military operations"
+      ],
+      "map": "REGION ONLY; intercept locations unknown",
+      "chart": "Provider-specific 'claimed interception' trend pending primary source reconciliation",
+      "identity": "avoid midnight UTC/EST duplicates and Nov20 three-missile Riyadh claim"
+    },
+    {
+      "domain": "Bahrain incident / U.S. facility BDA",
+      "time": "2026-11-21",
+      "claim": "Bahrain says an Iranian strike caused fire/material damage at civilian industrial site near Sitra; IRGC says it hit two Patriot air-defense sites; U.S. says no military impact",
+      "baseline": "Bahrain official report carried by CBS; IRGC account carried by ABC; no independently verified Patriot battle-damage photo",
+      "observed": "Civilian facility physical fire/damage statement is distinct from radar strike success",
+      "source_refs": [
+        "S04",
+        "S05",
+        "S03"
+      ],
+      "target": [
+        "timeline",
+        "facilities after unique site identity",
+        "military",
+        "claims",
+        "civilian/economic only after source-qualified costs"
+      ],
+      "map": "SITRA AREA ONLY; none of the specific Patriot base color legend should be touched",
+      "chart": "No radar attrition, personnel loss or economic production outage quantified",
+      "identity": "reconcile with previous Bahrain incidents Nov13-17 and November22 noon locker"
+    },
+    {
+      "domain": "U.S. F-16 allegation",
+      "time": "2026-11-20 to 2026-11-21",
+      "claim": "Iran asserted it struck/damaged U.S. F-16; CENTCOM denied jet attack",
+      "baseline": "Reuters records CENTCOM statement all fighter jets safe/accounted for, but aircraft identification, original Iranian speaker and military records not independently authenticated",
+      "observed": "Contradictory actor claims; no accepted new physical U.S. aircraft loss",
+      "source_refs": [
+        "S11",
+        "S05"
+      ],
+      "target": [
+        "claims",
+        "WOL only if authenticated amplification",
+        "military loss counter remains unchanged"
+      ],
+      "map": "NONE",
+      "chart": "No aircraft-attrition count change",
+      "identity": "Existing F-16 allegation chain; no duplicate proposition"
+    },
+    {
+      "domain": "Strait of Hormuz merchant attacks",
+      "time": "2026-11-20 to 2026-11-21",
+      "claim": "Two outbound merchant tankers hit by projectiles near Khasab, while Iranian accounts also mention mine attacks",
+      "baseline": "Reuters cites UKMTO; exact vessel identities/IMO and overlap with Friday reports unresolved",
+      "observed": "Reported damage occurrences may be distinct; Iran mine attribution is an actor claim and not confirmed mechanism",
+      "source_refs": [
+        "S06",
+        "S05",
+        "S14",
+        "S16"
+      ],
+      "target": [
+        "shipping",
+        "timeline",
+        "material losses if unique hull qualified",
+        "maps after approved UKMTO event coordinate"
+      ],
+      "map": "Use UKMTO published incident geometry ONLY after warnings matched to unique hull and no duplicate",
+      "chart": "Source-specific incident count qualified after dedup, not summed with UKMTO weekly 6",
+      "identity": "check UKMTO warning 212-216 lineage and IMO hull match"
+    },
+    {
+      "domain": "Blockade / tankers / trade",
+      "time": "2026-11-17 to 2026-11-22",
+      "claim": "14-vessel coordinated export attempt widely reported; original Fars-linked advocacy and satellite-loaded traffic don't establish departure; 200,000 bbl transferred STS on Nov17",
+      "baseline": "UANI direct tracking Nov20; Maritime Executive contemporaneous fact-check quotes TankerTrackers rejecting 'imminent convoy' conclusion",
+      "observed": "No authenticated independently tracked Iranian-crude blockade breakout through Nov22 in reviewed source set; this is NOT universal proof none occurred",
+      "source_refs": [
+        "S07",
+        "S08",
+        "S21"
+      ],
+      "target": [
+        "shipping current caveat",
+        "timeline as claim chronology",
+        "oil/sanctions",
+        "Claims Forensics candidate ledger chain"
+      ],
+      "map": "NO NEW TANKER TRAJECTORY; AIS spoofing/partial observation cannot yield route line",
+      "chart": "Separate laden vessel count, loadings, transshipments, crude departures, LPG crossings and neutral US-facilitated transits",
+      "identity": "OLYM IMO 9212759, HAO FAN IMO 9258167 existing PR #364; no second STS event"
+    },
+    {
+      "domain": "Diplomacy / Iran-US",
+      "time": "2026-11-21 to 2026-11-22",
+      "claim": "Qatari delegation met Iranian officials in Tehran; Iran again requested lifting blockade; Trump wants permanent deal and contemplates future action",
+      "baseline": "CBS quotes Iranian deputy foreign minister and Iranian foreign minister; policy statements not an agreement Reuters Nov21 (15:00:11 UTC) confirms Iranian official's account of previous-Friday Qatari delegation visit.",
+      "observed": "Separate procedural contact, position and outcome; June MOU still no controlling final settlement",
+      "source_refs": [
+        "S04",
+        "S18",
+        "S17",
+        "S26"
+      ],
+      "target": [
+        "diplomacy",
+        "position changes",
+        "goals and results"
+      ],
+      "map": "Nonspatial diplomatic record unless venue primary-confirmed; no military marker",
+      "chart": "No concession, blockade lifting or signed agreement should be counted"
+    },
+    {
+      "domain": "Economic / sanctions",
+      "time": "2026-11-20 to 2026-11-22",
+      "claim": "Nov20 primary Treasury sanctions; Gulf bourses decline Sunday; Friday futures Brent $92.57 WTI $83.98",
+      "baseline": "Treasury official release, Reuters gulf equities, WSJ futures closes",
+      "observed": "Administrative designations and source-reported price/market outcomes are separate from measurable economic damage; Sunday futures closed Reuters Nov22 reports Saudi TASI -2%, Qatar QSI -1.6%, Bahrain BAX -0.6%, Egypt EGX30 -2.9%, but exchange-local close timestamps require qualification.",
+      "source_refs": [
+        "S12",
+        "S13",
+        "S09",
+        "S19",
+        "S27"
+      ],
+      "target": [
+        "economic sanctions timeline",
+        "financial price time series once contract/clock aligned"
+      ],
+      "map": "Sanctions issuer country not target location of physical attack",
+      "chart": "Use individual exchange local closes and Friday oil futures date; no fresh Sunday oil settlement Source-reported index daily percent moves are eligible only after close-time and index price basis qualification, one observation per country/index."
+    },
+    {
+      "domain": "Other theater & information environment",
+      "time": "2026-11-21 to 2026-11-22",
+      "claim": "Iran new dual liquid-fuel missile launcher display, Gaza vehicle casualties, Israel/West Bank violence, Iraq/Lebanon/Houthi Yemen reports",
+      "baseline": "AP and Reuters separate regional accounts; ISW weekend report explicitly abbreviated",
+      "observed": "State imagery alone not platform inventory or stockpile availability; civilian incident attribution/time separately qualified",
+      "source_refs": [
+        "S16",
+        "S10",
+        "S02"
+      ],
+      "target": [
+        "timeline after territorial relevance",
+        "weapons specifications only with proof",
+        "human impacts separate conflict denominator",
+        "claims where exact speaker statements"
+      ],
+      "map": "No precise coordinates yet",
+      "chart": "No conflated Gulf vs Gaza civilian totals; avoid double counting"
+    },
+    {
+      "domain": "Yemen Bab el-Mandeb coastal control / Red Sea navigation",
+      "time": "2026-11-15 through 2026-11-22",
+      "claim": "Government-aligned forces withdrew from Dhubab Airport and Bab el-Mandeb coastal positions Nov15 as Houthis occupied coastal approaches; Red Sea shipping lane remains international and maritime access is separately evidenced",
+      "baseline": "Reuters Nov15 withdrawal, Reuters Nov18 overview, AP Nov17 new defensive positions around Tur al-Baha and Aden; Maritime Executive notes coastal positions overlooking strait. Do not repeat stale October government counteroffensive as current state.",
+      "observed": "Documented operational coastal control shift is materially relevant to Yemen map and diplomatic/military outcome; coastal possession does not prove control of all Red Sea waters, legally recognized toll rights, universal ship denials or zero transits.",
+      "source_refs": [
+        "S22",
+        "S23",
+        "S24",
+        "S25"
+      ],
+      "target": [
+        "military territorial situation, Yemen",
+        "regional chronology",
+        "Bab el-Mandeb maritime pressure and trade routing",
+        "Diplomacy & Outcome claims comparison",
+        "source-backed WOL/lie ledger contextual amendments"
+      ],
+      "map": "Named Dhubab and coastal approaches may be region polygon / named locality with source-confirmed boundaries only; do not fabricate front line polygon or retroactively erase October state.",
+      "chart": "Maritime traffic must use provider-specific reported transit counts, not inferred zero from physical coastal positions.",
+      "identity": "Update existing Bab el-Mandeb territorial control event family, not new unrelated 2026 Houthi sea closure proposition."
+    }
+  ],
+  "claim_forensics": {
+    "candidates": [
+      {
+        "claim": "Iran has already broken the U.S. crude-oil blockade with a convoy",
+        "test": "Exact original claimant and cargo/border crossing; separate intention, attempted departure, successful passage and commodity class",
+        "status": "NOT_ESTABLISHED_IN_SOURCE_SET",
+        "knowledge": "NOT_ADJUDICATED"
+      },
+      {
+        "claim": "IRGC destroyed both U.S. Patriot radar facilities in Bahrain",
+        "test": "Exact source statement and BDA of named two installations; fire at Sitra civilian property not radar damage proof",
+        "status": "ACTOR_ASSERTION_WITHOUT_INDEPENDENT_BDA",
+        "knowledge": "NOT_ADJUDICATED"
+      },
+      {
+        "claim": "Iran damaged a U.S. F-16",
+        "test": "Source statement, CENTCOM denial, flight logs/visual aircraft identification; no new physical loss based solely on opponent's denial",
+        "status": "CONTESTED_ACTOR_CLAIMS",
+        "knowledge": "NOT_ADJUDICATED"
+      },
+      {
+        "claim": "Houthis achieved a direct strike on Rabigh refinery",
+        "test": "Exact Houthi communique, Saudi industrial response and independent visual outage/damage indicators",
+        "status": "UNSUBSTANTIATED_EFFECT",
+        "knowledge": "NOT_ADJUDICATED"
+      },
+      {
+        "claim": "No Iranian missile or drone attacks damaged anything in the past week",
+        "test": "Context of Trump's November 22 statement: U.S. military equipment vs all civilian property; exact claim span, actor scope and date range",
+        "status": "CLAIM_SCOPE_AMBIGUOUS",
+        "knowledge": "NOT_ADJUDICATED"
+      }
+    ],
+    "denominator_change": 0,
+    "WOL_edges_verified": 0,
+    "prior_propositions_immutable": true,
+    "routing": "Claims Forensics only may adjudicate atomic truth and knowing-falsehood, with exact original claims and source network."
+  },
+  "visual_handoff": {
+    "maps": "No new exact event pins or tanker tracks qualified; when geography verified, add Bahrain industrial incident (different from U.S. base), Rabigh claim target, Saudi interception ranges, and UKMTO merchant hull locations, with event-vs-claim distinctions. Reconcile reported November15 Yemen control reversal around Dhubab/Bab el-Mandeb; don't depict entire Red Sea as Houthi sovereign territory.",
+    "facilities": "Do not mark al-Riffa or Sakhir Patriot sites damaged/inoperable from IRGC claim. Sitra civilian fire is not U.S. facility damage.",
+    "shipping": "Do not draw blockade breakthrough, merge company AIS snapshot into exact routes, or equate Iranian crude, LPG and neutral transits. A Houthi coastal approach position does not establish a closed Red Sea: preserve measured commercial Bab el-Mandeb traffic as a separate provider-specific time series.",
+    "economics": "Time-index Friday futures prices separately; sanctions source timestamps and policy effects separately; no invented Sunday exchange settlement.",
+    "losses": "Do not add F-16, Patriot equipment or Rabigh refinery downtime without unique quantified effects and attribution.",
+    "timeline": "Once validated, add source-attributed dated claims/physical reports as separate event records; preserve event vs known-by clocks.",
+    "WOL": "No verified actor-to-amplifier edges just from a linked article; forensic referrals only."
+  },
+  "required_recovery": [
+    "Complete source and actor class coverage for every unconsumed partial ROOK 12-hour window after Nov12 cutoff; reconcile historical prior drawer decisions.",
+    "Source authenticate exact primary claims, independent physical effect corroboration, chronology, unique identifiers, and source-time before acceptance.",
+    "Run rook_intake_status.py report and validate, then Gate3 v2 registrar on uniquely numbered accepted append-only packet, without reusing sequence 42.",
+    "Generate canonical/public read models; validate map, ships, economics, facilities, event counts, claim denominators and chronology.",
+    "Run exact-head CI and browser audits, deploy Pages and verify served bytes before stating site is LIVE/current."
+  ],
+  "public_deployment": false
+}
