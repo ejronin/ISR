@@ -126,6 +126,8 @@ class RookSourceProbeTests(unittest.TestCase):
         self.assertNotIn("git push origin HEAD:main", workflow)
         self.assertIn('git push origin "HEAD:refs/heads/$branch"', workflow)
         self.assertIn("actions/upload-artifact@", workflow)
+        self.assertIn("automated" + chr(92) + ".json$", workflow)
+        self.assertNotIn("automated" + chr(92) * 2 + ".json$", workflow)
 
     def test_no_phantom_source_coverage(self):
         with self.assertRaisesRegex(ValueError, "counts differ"):
