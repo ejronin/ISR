@@ -69,6 +69,7 @@ jobs:
           git cat-file -e "$base^{commit}"
           python scripts/rook_intake_status.py validate --compare-ref "$base"
           python tests/rook-intake-pipeline.test.py
+          python tests/test_rook_freshness_watchdog.py
           python tests/release-change-classification.test.py
 
       - name: Validate qualification topology and immutable authority
