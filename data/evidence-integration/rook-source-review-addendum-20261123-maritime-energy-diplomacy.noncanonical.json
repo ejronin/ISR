@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "SOURCE_QUALIFIED_CROSS_DOMAIN_REFERRAL_NONCANONICAL",
+  "authority": "EVIDENCE_INTEGRATION_REVIEW_SOURCE_HANDOFF",
+  "status": "STAGED_NO_CANONICAL_OR_PUBLIC_AUTHORITY",
+  "reviewed_at_utc": "2026-11-23T16:04:56.287Z",
+  "review_horizon_utc": "2026-11-23T15:00:00Z",
+  "source_publication_and_occurrence_clocks_separate": true,
+  "source_coverage": {
+    "review_categories": [
+      "Iran diplomacy and blockade rhetoric",
+      "crude/LPG tanker passage",
+      "Kpler Hormuz flow comparison",
+      "energy prices and Libya production restart",
+      "Saudi/Yemen Houthi claims",
+      "Bahrain and Gulf safety context",
+      "Gulf stocks",
+      "U.S. Treasury sanctions"
+    ],
+    "not_completed": [
+      "all Iran actor-language primary statements",
+      "individual Kpler dataset and original IMO vessel IDs",
+      "UKMTO vessel hull-ID matching and physical incidents",
+      "all regional ground operations and civilian casualty reports",
+      "full WOL source-amplifier chain verification",
+      "complete historical 12-hour ROOK catchup"
+    ]
+  },
+  "accepted_baseline": {
+    "manifest": "data/canonical-ledger/manifest-v2.json",
+    "accepted_sequence": 43,
+    "accepted_cutoff": "2026-11-12T13:00:00+00:00",
+    "accepted_historical_packets_and_language_untouched": true
+  },
+  "sources": [
+    {
+      "id": "R1",
+      "publisher": "Reuters",
+      "published": "2026-11-23T08:03:00Z",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-it-will-use-all-available-tools-confront-us-naval-blockade-2026-11-23/",
+      "role": "Iran official Baghaei statements on blockade, loading speculation, conditional opening of Hormuz",
+      "source_type": "MEDIA_DIRECT_ATTRIBUTED_OFFICIAL_QUOTE"
+    },
+    {
+      "id": "R2",
+      "publisher": "Reuters Open Interest / Kpler",
+      "published": "2026-11-23T07:00:30Z",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/oils-iran-war-recovery-masks-stubborn-diesel-shortage-2026-11-23/",
+      "role": "Kpler estimates oil flows through Hormuz around 9.5m barrels/day in ten days through Nov19 versus October average 12.2m bpd; distinct dates/period lengths. IEA-based estimated disruption and inventory context are separate upstream estimates.",
+      "source_type": "PROVIDER_ESTIMATE_CARRIED_BY_REUTERS_ANALYSIS"
+    },
+    {
+      "id": "R3",
+      "publisher": "Reuters",
+      "published": "2026-11-23T02:24:54Z",
+      "url": "https://www.reuters.com/business/energy/oil-prices-fall-amid-equity-selloff-though-iran-war-attacks-limit-losses-2026-11-23/",
+      "role": "Monday intraday oil price context, Libya Sharara pipeline resumption and weekend tanker/Houthi claims. Do not convert intraday benchmark to fixed settlement.",
+      "source_type": "MARKET_REPORT_WITH_LINKED_PROVIDER_AND_DATE"
+    },
+    {
+      "id": "R4",
+      "publisher": "Reuters",
+      "published": "2026-11-22T17:52:00Z",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-saudi-rabigh-oil-refinery-2026-11-22/",
+      "role": "Houthi claimed direct hit against Petro Rabigh; no proof Saudi facility damage or closure. Do not count Houthi assertion as verified strike outcome.",
+      "source_type": "ACTOR_CLAIM_CARRIED_BY_WIRE"
+    },
+    {
+      "id": "R5",
+      "publisher": "United Against Nuclear Iran",
+      "published": "2026-11-20_UNRESOLVED_EXACT_UTC",
+      "url": "https://www.unitedagainstnucleariran.com/analysis/iran-shipping-update-november-20-2026",
+      "role": "Iran-related tanker-loaded movements, UANI tracked no successful Iran-crude export tanker passing blockade after July12; around 12 smaller LPG tankers crossed. OLYM→HAO FAN approx 200,000 barrel STS on Nov17, not independently proof of blockade departure.",
+      "source_type": "COMMERCIAL_OR_SPECIALIST_SHIPPING_OBSERVATION_LIMITED_COVERAGE"
+    },
+    {
+      "id": "R6",
+      "publisher": "Iran International",
+      "published": "2026-11-22T04:14:00Z",
+      "url": "https://www.iranintl.com/en/202611211549",
+      "role": "A purported Khat Shekan physical tanker's AIS positions were spoofed according to TankerTrackers satellite and identity checks. Specialist source is carried, not independently replicated.",
+      "source_type": "SPECIALIST_CORRECTION_CARRIER"
+    },
+    {
+      "id": "R7",
+      "publisher": "Reuters",
+      "published": "2026-11-21_UNRESOLVED_EXACT_UTC",
+      "url": "https://www.reuters.com/world/middle-east/qatari-delegation-visits-tehran-talks-iranian-official-says-2026-11-21/",
+      "role": "Iranian official says Qatari delegation visited Tehran Nov20 for diplomacy. Meeting not synonymous with bilateral U.S./Iran deal or sanctions relief.",
+      "source_type": "DIPLOMATIC_ORIGINAL_SPEAKER_CARRIER"
+    },
+    {
+      "id": "R8",
+      "publisher": "Reuters",
+      "published": "2026-11-22_UNRESOLVED_EXACT_UTC",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-retreat-sporadic-attacks-continue-2026-11-22/",
+      "role": "Sunday Gulf share market index moves; exchange-local close timestamps, index definitions and comparative baseline must be checked before charts.",
+      "source_type": "MARKET_DATA_SECONDARY_REPORT"
+    },
+    {
+      "id": "R9",
+      "publisher": "United Kingdom Maritime Trade Operations",
+      "published": "2026-11-22_UNRESOLVED_EXACT_UTC",
+      "url": "https://www.ukmto.org/recent-incidents",
+      "role": "UKMTO warning 216-26 incident near Khasab Oman Nov21 0550 UTC; identity, source warning and unique event dedup need qualification before ship hull loss/track count.",
+      "source_type": "PRIMARY_INCIDENT_WARNING_INDEX"
+    },
+    {
+      "id": "R10",
+      "publisher": "Reuters",
+      "published": "2026-11-20_UNRESOLVED_EXACT_UTC",
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-sanctions-iranian-trustees-collecting-oil-revenues-2026-11-20/",
+      "role": "November20 Treasury four trustee designations; separate legal action, original allegation and measured actual revenue outcomes.",
+      "source_type": "GOVERNMENT_ACTION_SECONDARY_REPORT"
+    },
+    {
+      "id": "R11",
+      "publisher": "U.S. Treasury",
+      "published": "2026-11-20_UNRESOLVED_EXACT_UTC",
+      "url": "https://home.treasury.gov/news/press-releases/sb0697",
+      "role": "U.S. Treasury Nov20 official release; primary legal designation, no independently measured fiscal impact.",
+      "source_type": "PRIMARY_OFAC_POLICY"
+    }
+  ],
+  "referrals": [
+    {
+      "domain": "Diplomatic and blockade position",
+      "source_ids": [
+        "R1",
+        "R7"
+      ],
+      "date": "2026-11-23",
+      "statement": "Iran Foreign Ministry's Esmaeil Baghaei says Iran will use available means against U.S. blockade, describes reported oil loading speculation, conditions reopening on relief and other terms. Qatari contacts are separate from a signed deal.",
+      "eligible_on_adjudication": [
+        "diplomacy/position-changes",
+        "chronology"
+      ],
+      "not_supported": [
+        "successful oil export",
+        "signed US-Iran peace deal",
+        "oil shipping reopened",
+        "unilateral capitulation"
+      ],
+      "map_precision": "nonspatial"
+    },
+    {
+      "domain": "Maritime actual movement, counterexamples and AIS spoof",
+      "source_ids": [
+        "R5",
+        "R6",
+        "R9"
+      ],
+      "date": "2026-11-17 to 2026-11-23",
+      "statement": "UANI November20 tracking distinguishes no observed Iran-crude tanker exit in its set, ~12 LPG departures, actual Nov17 STS, possible container vessel departure. TankerTrackers disputes real Khat Shekan hull/AIS, UKMTO Nov21 projectile warning awaits precise vessel identity.",
+      "eligible_on_adjudication": [
+        "maritime timeline",
+        "shipping context",
+        "Lie Ledger candidate exact claim referral"
+      ],
+      "not_supported": [
+        "14-ship convoy broke line",
+        "OLYM/HAO FAN export successfully crossed",
+        "ghost tanker voyage",
+        "all ships banned or no Hormuz transit"
+      ],
+      "map_precision": "no new qualified lines or ship markers"
+    },
+    {
+      "domain": "Oil and energy financial comparisons",
+      "source_ids": [
+        "R2",
+        "R3",
+        "R5"
+      ],
+      "date": "2026-11-19 to 2026-11-23",
+      "statement": "Kpler data carried by Reuters: average Hormuz crude flows ~9.5m bpd for the 10 days to Nov19, ~12.2m bpd October mean. Quotes are provider period averages, not oil futures close or vessel count. Monday oil fell as reporting cited Libya pipeline resumption, Middle East flows and other drivers.",
+      "eligible_on_adjudication": [
+        "energy time series when comparable period/metric source acquired",
+        "economic narrative"
+      ],
+      "not_supported": [
+        "single-day Nov23 Hormuz oil volume of 9.5m",
+        "Nov23 session oil settlement",
+        "attributable precise loss based only on oil price change"
+      ],
+      "chart_requirements": {
+        "metric": "Crude flow through Strait of Hormuz",
+        "provider": "Kpler as reported by Reuters",
+        "unit": "million barrels per day",
+        "observations": [
+          {
+            "period": "2026-10-01/2026-10-31",
+            "period_type": "MONTHLY_AVERAGE",
+            "value": 12.2
+          },
+          {
+            "period": "2026-11-10/2026-11-19",
+            "period_type": "TEN_DAY_AVERAGE",
+            "value": 9.5
+          }
+        ],
+        "not_comparable_period_lengths": true,
+        "plot_direct_without_annotation": false
+      }
+    },
+    {
+      "domain": "Saudi refinery physical effects",
+      "source_ids": [
+        "R4"
+      ],
+      "date": "2026-11-22",
+      "statement": "Houthis said they directly hit Saudi Petro Rabigh; Reuters says damage unestablished and Saudi official confirmation absent at report time.",
+      "eligible_on_adjudication": [
+        "source-attributed claim chronology"
+      ],
+      "not_supported": [
+        "refinery destroyed",
+        "production halted",
+        "BDA strike-count increment"
+      ],
+      "map_precision": "Rabigh geographic region only; no impact pinpoint"
+    },
+    {
+      "domain": "Sanctions and Gulf financial markets",
+      "source_ids": [
+        "R8",
+        "R10",
+        "R11"
+      ],
+      "date": "2026-11-20 to 2026-11-22",
+      "statement": "November20 Treasury primary sanctions designation of Iranian-linked trustees and November22 Reuters reported Gulf market index declines are different factual record types.",
+      "eligible_on_adjudication": [
+        "financial sanctions timeline",
+        "qualifiable market index daily series"
+      ],
+      "not_supported": [
+        "specific cash seized",
+        "verified economic total lost to sanction",
+        "single market close across unrelated exchanges"
+      ],
+      "chart_requirements": {
+        "legal_designation_event_date": "2026-11-20",
+        "market_date": "2026-11-22",
+        "market_close_times": "SOURCE_REQUIRED",
+        "benchmark_per_market": "REQUIRED"
+      }
+    }
+  ],
+  "visual_and_forensic_preservation": {
+    "existing_public_prose_unchanged": true,
+    "existing_visual_design_and_spacing_unchanged": true,
+    "accepted_facility_status_colors_unchanged": true,
+    "accepted_military_loss_counts_unchanged": true,
+    "accepted_claims_and_web_of_lies_verdicts_unchanged": true,
+    "existing_89_proposition_denominator_unchanged": true,
+    "existing_43_gate3_entries_untouched": true,
+    "handoffs": [
+      "Evidence Integration: source-clock verification, dedup, source registration and canonical acceptance per engineering doctrine.",
+      "Claims Forensics: exact spoofed tanker source chain and knowledge assessment, not generic knowing-deception by default.",
+      "Public Product: only after accepted evidence, project position, cargo type, flow charts and qualified marker changes using unchanged public language contracts.",
+      "Release Integrity: exact SHA, map/chart integrity and deploy/served-byte attest before claiming LIVE."
+    ]
+  },
+  "notes": "Retrospective selective evidence intake from source review. This is NOT a full 12-hour ROOK coverage certification, does not advance the global canonical evidence cutoff, and does not backdate source observation as site knowledge."
+}
