@@ -17,6 +17,8 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+  actions: write
   issues: write
 
 concurrency:
@@ -41,27 +43,51 @@ jobs:
       - name: Contact standing public sources and record unverified link leads
         id: collect
         run: python scripts/rook_source_probe.py
-      - name: Append durable source availability report only
-        id: push
+      - name: Propose source availability through protected-branch PR
+        id: propose
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git add data/evidence-integration/rook-source-registry-delta-*.json
           if git diff --cached --quiet; then
-            echo 'No new report; append-only path already exists.'
+            echo 'Source availability report already accepted on main. No new PR required.'
+            exit 0
+          fi
+          file="$(git diff --cached --name-only | grep -E '^data/evidence-integration/rook-source-registry-delta-[0-9]{8}T[0-9]{4}ET-automated\\.json$' | head -n 1)"
+          test -n "$file"
+          branch="rook/${file##*/}"
+          branch="${branch%.json}"
+          echo "Proposing append-only source availability: $file via $branch"
+          if git ls-remote --exit-code --heads origin "$branch"; then
+            echo "Existing durable proposal branch $branch; will not overwrite or duplicate."
             exit 0
           fi
           git config user.name 'atlas-rook-source-probe[bot]'
           git config user.email 'atlas-rook-source-probe[bot]@users.noreply.github.com'
-          git commit -m "rook: append bounded standing-source availability report"
-          for attempt in 1 2 3; do
-            git pull --rebase origin main
-            if git push origin HEAD:main; then
-              echo 'Source availability report committed to main. No sweep acceptance implied.'
-              exit 0
-            fi
-          done
-          echo 'Failed to push after retries; no overwrite or forced update was attempted.' >&2
-          exit 1
+          git commit -m "rook: propose append-only standing-source availability"
+          git branch "$branch"
+          git push origin "HEAD:refs/heads/$branch"
+          # No direct push to protected main, no forced updates, no automatic
+          # acceptance of unreviewed sources. A PR starts the qualified route.
+          gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "ROOK intake: source availability for ${file##*/}" \
+            --body "Append-only public source availability snapshot for the specified 12-hour window. Fetch-only results and unverified same-domain article leads; no completed ROOK sweep, no canonical evidence, no public-language or map/chart changes. Preserve the approved 86-source universe and require exact-head CI plus Evidence Integration merge under docs/ROUTINE_UPDATE_PIPELINE.md. Related issue #296."
+          # GITHUB_TOKEN-created PRs may not themselves emit pull_request CI.
+          # Explicit workflow_dispatch is allowed to request the same exact-SHA
+          # qualification; protected branch checks remain required to merge.
+          gh workflow run validate.yml --ref "$branch"
+          echo "Qualification dispatched for $branch. Leave PR unmerged until checks pass."
+      - name: Upload bounded source probe result for failure recovery
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rook-source-probe-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/evidence-integration/rook-source-registry-delta-*-automated.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Report probe failure without inventing collection completion
         if: failure()
         env:
