@@ -117,6 +117,16 @@ class RookSourceProbeTests(unittest.TestCase):
                 "http://example.com/redirected",
             )
 
+    def test_workflow_never_pushes_directly_to_protected_main(self):
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/rook-standing-source-probe.yml").read_text(encoding="utf-8")
+        self.assertIn("gh pr create", workflow)
+        self.assertIn('gh workflow run validate.yml --ref "$branch"', workflow)
+        self.assertIn("pull-requests: write", workflow)
+        self.assertIn("actions: write", workflow)
+        self.assertNotIn("git push origin HEAD:main", workflow)
+        self.assertIn('git push origin "HEAD:refs/heads/$branch"', workflow)
+        self.assertIn("actions/upload-artifact@", workflow)
+
     def test_no_phantom_source_coverage(self):
         with self.assertRaisesRegex(ValueError, "counts differ"):
             build_artifact(self.sample, [], now=datetime(2026, 11, 23, 0, 20, tzinfo=ET))
