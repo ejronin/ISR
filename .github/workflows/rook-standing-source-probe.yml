@@ -1,0 +1,62 @@
+name: ROOK standing-source availability probe
+
+on:
+  schedule:
+    # Both DST offsets; Python resolves the last completed 00:00 / 12:00
+    # America/New_York evidence window and safely skips duplicate path writes.
+    - cron: '15 4,5,16,17 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: rook-standing-source-probe
+  cancel-in-progress: false
+
+jobs:
+  source-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - name: Validate probe logic without network
+        run: python tests/test_rook_source_probe.py
+      - name: Contact standing public sources and record unverified link leads
+        id: collect
+        run: python scripts/rook_source_probe.py
+      - name: Append durable source availability report only
+        id: push
+        run: |
+          set -euo pipefail
+          git add data/evidence-integration/rook-source-registry-delta-*.json
+          if git diff --cached --quiet; then
+            echo 'No new report; append-only path already exists.'
+            exit 0
+          fi
+          git config user.name 'atlas-rook-source-probe[bot]'
+          git config user.email 'atlas-rook-source-probe[bot]@users.noreply.github.com'
+          git commit -m "rook: append bounded standing-source availability report"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              echo 'Source availability report committed to main. No sweep acceptance implied.'
+              exit 0
+            fi
+          done
+          echo 'Failed to push after retries; no overwrite or forced update was attempted.' >&2
+          exit 1
+      - name: Report probe failure without inventing collection completion
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment 296 --body "ROOK standing-source availability probe failed for workflow run ${{ github.run_id }}. See job logs. No full sweep, event verification or canonical evidence acceptance is implied."
