@@ -45,8 +45,14 @@ def load_sources(path: Path = SOURCE_UNIVERSE) -> list[dict]:
         identity, url = source.get("collection_source_id"), source.get("access_location")
         if not isinstance(identity, str) or not identity or identity in seen:
             raise ValueError("missing or duplicated standing-source ID")
-        if not isinstance(url, str) or urlsplit(url).scheme != "https":
-            raise ValueError(f"non-HTTPS or missing URL for {identity}")
+        if not isinstance(url, str):
+            raise ValueError(f"non-HTTP(S) or missing URL for {identity}")
+        parsed_url = urlsplit(url)
+        if parsed_url.scheme not in {"http", "https"} or not parsed_url.hostname:
+            raise ValueError(f"non-HTTP(S) or missing URL for {identity}")
+        # Curated historical source entries may still publish an HTTP access
+        # location. Preserve that original URL as standing-source provenance;
+        # probe_one always attempts HTTPS and NEVER transmits over HTTP.
         seen.add(identity)
     return sources
 
@@ -81,12 +87,21 @@ class CandidateLinks(HTMLParser):
 
 
 def probe_one(source: dict, opener=urlopen) -> dict:
+    # The historical 86-source registry contains one explicit HTTP location
+    # (China Customs). Do not erase/rewrite it or abort the other 85 sources.
+    # Attempt a safe HTTPS upgrade and record the actual transport attempted.
     url = source["access_location"]
+    parsed_url = urlsplit(url)
+    if parsed_url.scheme not in {"http", "https"} or not parsed_url.hostname:
+        raise ValueError("probe source must be a validated HTTP(S) URL")
+    probe_url = urlunsplit(("https", parsed_url.netloc, parsed_url.path, parsed_url.query, "")) if parsed_url.scheme == "http" else url
     result = {
         "source_id": source["collection_source_id"],
         "publisher": source.get("source_identity"),
         "country": source.get("country"),
         "url": url,
+        "probe_url": probe_url,
+        "transport_policy": "HTTPS_UPGRADE_ATTEMPT_NO_HTTP_FALLBACK" if parsed_url.scheme == "http" else "DIRECT_HTTPS_ONLY",
         "source_class": source.get("source_class"),
         "status": "FETCH_FAILED",
         "http_status": None,
@@ -97,7 +112,7 @@ def probe_one(source: dict, opener=urlopen) -> dict:
         "failure_type": None,
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
     }
-    req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,application/rss+xml,*/*;q=0.4"})
+    req = Request(probe_url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,application/rss+xml,*/*;q=0.4"})
     try:
         with opener(req, timeout=7) as response:
             result["http_status"] = getattr(response, "status", 200)
@@ -106,7 +121,7 @@ def probe_one(source: dict, opener=urlopen) -> dict:
             result["first_bytes_sha256"] = hashlib.sha256(blob).hexdigest()
             result["status"] = "RETRIEVED_SAMPLE"
             if "html" in (result["response_mime"] or ""):
-                parser = CandidateLinks(url)
+                parser = CandidateLinks(probe_url)
                 parser.feed(blob.decode("utf-8", errors="replace"))
                 result["candidate_links_unverified"] = parser.links
     except HTTPError as exc:
@@ -139,7 +154,7 @@ def build_artifact(sources: list[dict], results: list[dict], *, now: datetime) -
         "sources": results,
         "qualification": {
             "status": "FETCH_ONLY_NOT_A_COMPLETED_ROOK_SWEEP",
-            "notes": "Source URL reachability and unverified same-domain link leads only. A response or content sample is neither article publication verification nor theater coverage nor factual adjudication.",
+            "notes": "Source URL reachability and unverified same-domain link leads only. Original HTTP access URLs are preserved as provenance but requested only via HTTPS upgrade (no intentional HTTP fallback). A response or content sample is neither article publication verification nor theater coverage nor factual adjudication.",
             "canonical_or_public_artifacts_mutated": False,
             "accepted_packet_bytes_or_hashes_mutated": False,
             "full_theater_coverage_complete": False,
