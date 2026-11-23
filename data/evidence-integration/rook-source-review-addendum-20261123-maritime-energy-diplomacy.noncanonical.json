@@ -173,7 +173,7 @@
         "R5"
       ],
       "date": "2026-11-19 to 2026-11-23",
-      "statement": "Kpler data carried by Reuters: average Hormuz crude flows ~9.5m bpd for the 10 days to Nov19, ~12.2m bpd October mean. Quotes are provider period averages, not oil futures close or vessel count. Monday oil fell as reporting cited Libya pipeline resumption, Middle East flows and other drivers.",
+      "statement": "Kpler data carried by Reuters: average Hormuz oil flows ~9.5m bpd for the 10 days to Nov19, ~12.2m bpd October mean. Quotes are provider period averages, not oil futures close or vessel count. Monday oil fell as reporting cited Libya pipeline resumption, Middle East flows and other drivers.",
       "eligible_on_adjudication": [
         "energy time series when comparable period/metric source acquired",
         "economic narrative"
@@ -184,7 +184,7 @@
         "attributable precise loss based only on oil price change"
       ],
       "chart_requirements": {
-        "metric": "Crude flow through Strait of Hormuz",
+        "metric": "Oil flow through Strait of Hormuz, provider scope as reported (not independently verified as crude-only)",
         "provider": "Kpler as reported by Reuters",
         "unit": "million barrels per day",
         "observations": [
