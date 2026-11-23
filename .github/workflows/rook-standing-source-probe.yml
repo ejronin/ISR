@@ -2,11 +2,13 @@ name: ROOK standing-source availability probe
 
 on:
   # On a qualified workflow change merged into main, run one immediate maintenance probe.
-  # Only this workflow path triggers the probe on push; data/ and public changes do not.
+  # Only the source probe workflow/code/tests trigger the probe on push; data/ and public changes do not.
   push:
     branches: [main]
     paths:
       - '.github/workflows/rook-standing-source-probe.yml'
+      - 'scripts/rook_source_probe.py'
+      - 'tests/test_rook_source_probe.py'
   schedule:
     # Both DST offsets; Python resolves the last completed 00:00 / 12:00
     # America/New_York evidence window and safely skips duplicate path writes.
