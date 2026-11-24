@@ -109,7 +109,7 @@
   ]);
 
   function acceptedRecordDate(record) {
-    const value = txt(record?.date || record?.event_date || '');
+    const value = txt(record?.date || record?.event_date || record?.timeline?.date || record?.event?.event_date || '');
     return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : '';
   }
 
