@@ -1885,20 +1885,38 @@
   }
 
   function renderUnplottedRegionalEvents(host, context, group) {
-    const ids = [...new Set([...(MAP_REGIONAL_EVENT_GROUPS[group] || []),
-      ...(RECENT_UNPLOTTED_REGION_GROUPS[group] || [])])];
-    const matching = ids.map(id => context.model.chronology.find(event => event.event_id === id)).filter(Boolean);
-    const unplotted = matching.filter(event => !pointFromRecord(event, context.services.locationResolver));
-    if (!unplotted.length) return;
+    const oldIds = MAP_REGIONAL_EVENT_GROUPS[group] || [];
+    const laterIds = RECENT_UNPLOTTED_REGION_GROUPS[group] || [];
+    const resolve = ids => ids.map(id => context.model.chronology.find(event => event.event_id === id))
+      .filter(Boolean).filter(event => !pointFromRecord(event, context.services.locationResolver))
+      .sort((a, b) => String(b.timeline?.date || b.event?.event_date || '')
+        .localeCompare(String(a.timeline?.date || a.event?.event_date || '')));
+    const historical = resolve(oldIds);
+    const latest = resolve(laterIds.filter(id => !oldIds.includes(id)));
+    if (!historical.length && !latest.length) return;
     const section = addSection(host, 'Regional incidents without exact map points');
     section.dataset.mapUnplottedGroup = group;
     append(section, 'p', 'section-note', 'Dated incident reports and their sources appear here. The map shows only source-qualified locations.');
-    const list = append(section, 'div', 'record-list two-column-list');
-    unplotted.sort((a, b) => String(b.timeline?.date || b.event?.event_date || '').localeCompare(String(a.timeline?.date || a.event?.event_date || '')));
-    unplotted.forEach(item => {
-      const card = renderEventCard(list, item, context, { detail: true });
-      card.dataset.mapUnplottedEvent = item.event_id;
-    });
+    // Preserve the original accepted regional list and its presentation.
+    if (historical.length) {
+      const list = append(section, 'div', 'record-list two-column-list');
+      historical.forEach(item => {
+        const card = renderEventCard(list, item, context, { detail: true });
+        card.dataset.mapUnplottedEvent = item.event_id;
+      });
+    }
+    // Recent accepted reports are available next to the map, but collapsed to
+    // avoid expanding established page spacing or overwhelming the map.
+    if (latest.length) {
+      const details = append(section, 'details', 'secondary-context');
+      details.dataset.mapUnplottedRecent = group;
+      append(details, 'summary', '', 'Recent regional reports without exact map locations (' + latest.length + ')');
+      const recentList = append(details, 'div', 'record-list two-column-list');
+      latest.forEach(item => {
+        const card = renderEventCard(recentList, item, context, { detail: true });
+        card.dataset.mapUnplottedEvent = item.event_id;
+      });
+    }
   }
 
   function renderRelatedLinks(host, context) {
