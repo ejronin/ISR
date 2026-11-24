@@ -1888,11 +1888,13 @@
     const oldIds = MAP_REGIONAL_EVENT_GROUPS[group] || [];
     const laterIds = RECENT_UNPLOTTED_REGION_GROUPS[group] || [];
     const resolve = ids => ids.map(id => context.model.chronology.find(event => event.event_id === id))
-      .filter(Boolean).filter(event => !pointFromRecord(event, context.services.locationResolver))
+      .filter(Boolean).filter(event => !pointFromRecord(event, context.services.locationResolver));
+    // The original accepted regional cards retain their prior order; only
+    // new post-cutoff reports sort newest-first inside their own details panel.
+    const historical = resolve(oldIds);
+    const latest = resolve(laterIds.filter(id => !oldIds.includes(id)))
       .sort((a, b) => String(b.timeline?.date || b.event?.event_date || '')
         .localeCompare(String(a.timeline?.date || a.event?.event_date || '')));
-    const historical = resolve(oldIds);
-    const latest = resolve(laterIds.filter(id => !oldIds.includes(id)));
     if (!historical.length && !latest.length) return;
     const section = addSection(host, 'Regional incidents without exact map points');
     section.dataset.mapUnplottedGroup = group;
