@@ -516,6 +516,17 @@
       "previous_lineage_sha256": "d3cc31efc1d34e8e5bf25aac3121d79daf1054a7b288262ba023f5701669433f",
       "sequence": 47,
       "sha256": "06f81a75ac789d4a4da44cf0f610784639f9759ea247740a4e147b23ece11d4a"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+      "known_at": "2026-11-24T20:15:00Z",
+      "lineage_sha256": "5f713a055f785c82d6b1514d508f91f3408915081ab35fe507983fc9af6bee89",
+      "packet_id": "UPD-20261124-HORMUZ-DIPLOMACY-JMIC",
+      "path": "data/canonical-updates/UPD-20261124-HORMUZ-DIPLOMACY-JMIC.json",
+      "previous_lineage_sha256": "7a1093aaf2e84923fd7c9def6a63724bec1853c702c2218e8bd35bc681450766",
+      "sequence": 48,
+      "sha256": "4a97bf7b97d348e11ec39899f3eaff1b4bbe94ef8d9db28017a4efb941ee8cd1"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
