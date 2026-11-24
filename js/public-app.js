@@ -48,7 +48,7 @@
    */
   const ROUTE_DATA_DEPENDENCIES = Object.freeze({
     'start.overview': freezeContract('start_here', ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.gaps']),
-    'start.actors': freezeContract('start_here', ['current.actors', 'current.chronology']),
+    'start.actors': freezeContract('start_here', ['current.actors']),
     'timeline.war': freezeContract('timeline', ['current.chronology', 'gate3.daily_coverage']),
     'timeline.chronology': freezeContract('timeline', ['current.chronology', 'gate3.daily_coverage']),
     'military.campaigns': freezeContract('military_record', ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities', 'gate3.movements']),
