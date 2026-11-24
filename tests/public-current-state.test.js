@@ -16,6 +16,30 @@ const normalizedHash = relativePath => {
 
 const state = json('data/public-current-state.json');
 const canonicalState = json('data/canonical-current-state-v2.json');
+
+/* Accepted Gate 3 updates must reach the actual public read model. Source
+ * collection alone and merged upstream PRs are not a reader publication. */
+const requiredAcceptedNovemberEvents = [
+  'EVT-20261120-US-TREASURY-FOUR-IRAN-OIL-TRUSTEE-DESIGNATIONS',
+  'EVT-20261123-IRAN-MFA-REITERATES-BLOCKADE-OPPOSITION',
+  'EVT-20261119-KPLER-HORMUZ-OIL-FLOW-PERIOD-SNAPSHOT'
+];
+for (const id of requiredAcceptedNovemberEvents) {
+  assert(state.chronology.some(item => item.event_id === id),
+    `accepted November event not visible in public chronology: ${id}`);
+}
+const economicRecords = state.datasets['gate3.economics'].payload.records;
+for (const id of [
+  'ECON-OFAC-OIL-TRUSTEES-20261120',
+  'ECON-KPLER-HORMUZ-OIL-FLOWS-20261119-PERIOD-COMPARISON'
+]) {
+  assert(economicRecords.some(item => item.economic_id === id),
+    `accepted economic observation missing from public route dataset: ${id}`);
+}
+assert(state.datasets['gate3.diplomacy'].payload.records.some(
+  item => item.diplomacy_id === 'DIP-IRAN-BLOCKADE-POSITION-20261123'
+), 'accepted Nov23 Iranian blockade position absent from public diplomatic data');
+
 assert.equal(state.schema_version, '2.0');
 assert.equal(state.artifact_role, 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL');
 assert.equal(state.release.repository, 'ejronin/ISR');

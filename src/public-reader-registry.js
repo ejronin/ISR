@@ -101,6 +101,75 @@
     const d = base.EvidenceDrawer.create(context, { source_ids: ids }, { localSources }); const summary = d.querySelector('summary'); if (summary) summary.textContent = label; host.append(d);
   }
 
+  // Additive source-linked updates from accepted public state. Never rewrite
+  // prior editorial analysis or promote an unaccepted ROOK/Claims source lead.
+  const RECENT_ACCEPTED_ROUTES = new Set([
+    'hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions',
+    'hormuz.talks', 'talks.overview', 'objectives.positions', 'objectives.iran'
+  ]);
+
+  function acceptedRecordDate(record) {
+    const value = txt(record?.date || record?.event_date || record?.timeline?.date || record?.event?.event_date || '');
+    return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : '';
+  }
+
+  function acceptedRecordId(record) {
+    return txt(record?.economic_id || record?.diplomacy_id || record?.event_id ||
+      record?.shipping_id || record?.entity_id || '');
+  }
+
+  function newestAcceptedRecords(model, routeKey) {
+    let rows = [];
+    if (routeKey === 'hormuz.shipping') {
+      rows = records(model, 'current.chronology')
+        .filter(item => /HORMUZ|KPLER|VESSEL|SHIP|TANKER|UKMTO|MARITIME/i.test(acceptedRecordId(item)));
+    } else if (routeKey === 'hormuz.economy') {
+      rows = records(model, 'gate3.economics');
+    } else if (routeKey === 'hormuz.sanctions') {
+      rows = records(model, 'gate3.economics')
+        .filter(item => /OFAC|TREASURY|SANCTION|DESIGNAT/i.test(
+          acceptedRecordId(item) + ' ' + txt(item.metric) + ' ' + txt(item.observed_state)));
+    } else if (['hormuz.talks','talks.overview','objectives.positions','objectives.iran'].includes(routeKey)) {
+      rows = records(model, 'gate3.diplomacy');
+    }
+    const seen = new Set();
+    return rows.filter(item => {
+      const date = acceptedRecordDate(item);
+      const id = acceptedRecordId(item);
+      const body = txt(item?.observed_state || item?.summary || item?.event?.summary || item?.timeline?.summary);
+      if (!date || !id || !body || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    }).sort((a, b) =>
+      acceptedRecordDate(b).localeCompare(acceptedRecordDate(a)) ||
+      acceptedRecordId(a).localeCompare(acceptedRecordId(b))
+    ).slice(0, 3);
+  }
+
+  function addRecentAcceptedEvidence(article, context, routeKey) {
+    if (!RECENT_ACCEPTED_ROUTES.has(routeKey)) return;
+    const selected = newestAcceptedRecords(context.model, routeKey);
+    if (!selected.length) return;
+    const cutoff = txt(context.model?.release?.current_osint_cutoff_display ||
+      context.model?.release?.current_osint_cutoff || '');
+    const lead = cutoff
+      ? 'These individual reports are accepted. Overall evidence coverage is through ' +
+        cutoff + '; newer accepted items do not mean every intervening report has been reviewed.'
+      : 'These individual reports are accepted. They do not imply complete coverage of all newer events.';
+    const panel = section(article, 'Recent accepted evidence', lead);
+    panel.dataset.recentAcceptedEvidence = 'source-linked';
+    panel.dataset.acceptedRoute = routeKey;
+    const grid = add(panel, 'div', 'orientation-grid');
+    for (const item of selected) {
+      const heading = txt(item.metric || item.title || item.event_class ||
+        (routeKey === 'hormuz.shipping' ? 'Maritime update' : 'Accepted update'));
+      const body = txt(item.observed_state || item.summary || item.event?.summary || item.timeline?.summary);
+      const content = card(grid, heading, body, acceptedRecordDate(item) + ' · ACCEPTED RECORD');
+      content.dataset.acceptedEvidenceId = acceptedRecordId(item);
+      evidence(content, context, item, 'Sources');
+    }
+  }
+
   const FACILITY_PUBLIC_STATE = Object.freeze({
     RED: ['Inoperable base (whole)', 'facility-red'],
     YELLOW: ['Damaged; parts inoperable', 'facility-yellow'],
@@ -988,6 +1057,7 @@
     if(k==='talks.overview')diplomacy(article,context); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article,context);
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
+    addRecentAcceptedEvidence(article,context,k);
     connectMappedCards(article,k);
   }
 
@@ -1085,7 +1155,20 @@
     const defaultSectionId = definitions[0]?.id || '';
     let activeId = requested?.id || null;
     let sectionParam = route.params?.section || '';
+    let disposed = false;
     const observer = new win.IntersectionObserver(entries => {
+      // An observer callback from an outgoing page can run after a new actor
+      // deep link changes location.hash, but before its hashchange handler
+      // replaces the old page. Never restore the old actor's query parameters.
+      if (disposed) return;
+      const currentRoute = base.parseRoute(win.location && win.location.hash);
+      if (!currentRoute || currentRoute.key !== route.key) return;
+      const expectedParams = { ...(route.params || {}) };
+      const activeParams = { ...(currentRoute.params || {}) };
+      delete expectedParams.section;
+      delete activeParams.section;
+      const keys = new Set([...Object.keys(expectedParams), ...Object.keys(activeParams)]);
+      if ([...keys].some(key => String(expectedParams[key] ?? '') !== String(activeParams[key] ?? ''))) return;
       const visible = entries.filter(entry => entry.isIntersecting).sort((left, right) => Math.abs(left.boundingClientRect?.top || 0) - Math.abs(right.boundingClientRect?.top || 0));
       const id = visible[0]?.target?.dataset?.guideSection;
       if (!id || id === activeId) return;
@@ -1093,14 +1176,14 @@
       setActive(id);
       if (id === defaultSectionId) {
         if (!sectionParam) return;
-        const params = { ...(route.params || {}) };
+        const params = { ...(currentRoute.params || {}) };
         delete params.section;
         sectionParam = '';
         win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
         return;
       }
       if (sectionParam === id) return;
-      const params = { ...(route.params || {}), section: id };
+      const params = { ...(currentRoute.params || {}), section: id };
       sectionParam = id;
       win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
     }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.01] });
@@ -1108,7 +1191,7 @@
       const target = app.querySelector(`[data-guide-section="${definition.id}"]`);
       if (target) observer.observe(target);
     });
-    return () => observer.disconnect();
+    return () => { disposed = true; observer.disconnect(); };
   }
 
   function mount(options) {

@@ -155,6 +155,26 @@ async function loadDirectRoute(cdp, route) {
       assert.equal(view.owner, route.owner, `wrong owner for ${route.key}`);
       assertFinalReaderHeading(route, view.h1, view.publicProductVersion, `heading structure failed for ${route.key}`);
       assert.deepEqual(view.machineTokens, [], `machine token exposed by ${route.key}`);
+      // The visible source-linked panel is populated from the newest accepted
+      // public records, so later append-only packets must not break this test
+      // merely by pushing November 23 records out of the top three cards.
+      const acceptedEvidenceRoutes = new Set([
+        'hormuz.economy', 'hormuz.sanctions', 'hormuz.shipping',
+        'hormuz.talks', 'talks.overview', 'objectives.positions', 'objectives.iran'
+      ]);
+      if (acceptedEvidenceRoutes.has(route.key)) {
+        const cards = await cdp.eval(`(() => ({
+          panel: document.querySelector('[data-recent-accepted-evidence="source-linked"]')?.dataset.acceptedRoute || '',
+          ids: [...document.querySelectorAll('[data-accepted-evidence-id]')].map(n => n.dataset.acceptedEvidenceId),
+          evidenceDrawerCount: document.querySelectorAll('[data-accepted-evidence-id] details').length,
+          text: document.querySelector('[data-recent-accepted-evidence="source-linked"]')?.innerText || ''
+        }))()`);
+        assert.equal(cards.panel, route.key, `recent accepted evidence panel absent from ${route.key}`);
+        assert(cards.ids.length >= 1 && cards.ids.length <= 3, `accepted records missing on ${route.key}`);
+        assert.equal(new Set(cards.ids).size, cards.ids.length, `duplicate public accepted record on ${route.key}`);
+        assert(cards.evidenceDrawerCount > 0, `source evidence missing from ${route.key}`);
+        assert(cards.text.includes('Overall evidence coverage'), `unqualified freshness implication on ${route.key}`);
+      }
       if (route.hiddenNav) {
         assert.equal(view.currentSecondary, undefined, `buried route leaked into secondary navigation: ${route.key}`);
       } else {
