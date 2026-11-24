@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_ROOK_CURRENT_SOURCE_REVIEW_HANDOFF",
+  "review_date": "2026-11-24",
+  "window": "2026-11-24 reporting since the November 23 midnight sweep",
+  "status": "PARTIAL_NEW_SOURCE_REVIEW_NOT_ACCEPTED",
+  "source_records": [
+    {
+      "outlet": "Associated Press",
+      "url": "https://apnews.com/article/mideast-iran-gaza-israel-houthis-libya-november-24-2026-ba01cb036a849ba69873da5000ee08d5",
+      "publication_date": "2026-11-24",
+      "role": "wire attribution of Iranian negotiator, IRGC statements and Gaza updates",
+      "clock_precision": "date"
+    },
+    {
+      "outlet": "Euronews / Euronews Persian",
+      "url": "https://www.euronews.com/2026/11/24/iran-orders-hormuz-closed-further-day-by-day-as-qatar-seeks-to-revive-peace-talks",
+      "publication_date": "2026-11-24",
+      "published_time_reported": "11:42 GMT+1",
+      "role": "reporting of Hatami, Ghalibaf, IRGC, JMIC, Qatar diplomatic contacts",
+      "clock_precision": "published timestamp shown, later update 11:48 GMT+1"
+    }
+  ],
+  "leads": [
+    {
+      "id": "NOV24-IRAN-SEVEN-CONDITIONS",
+      "date": "2026-11-24",
+      "category": "DIPLOMACY_ATTRIBUTED_POSITION",
+      "public_summary": "Iranian parliament speaker Mohammad Bagher Ghalibaf said talks with the United States would not resume until Tehran's seven conditions were met. Tehran has not publicly provided an authoritative full list. Iranian state media describes sanctions relief, ending the U.S. blockade and releasing seized assets among the conditions.",
+      "sources": [
+        0,
+        1
+      ],
+      "pending": "Obtain the speaker's original complete statement and reconcile the position against accepted November 20 and 23 diplomatic events. The statement is evidence of the negotiating position, not a signed deal.",
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "id": "NOV23-24-IRGC-THREE-MINED-TANKERS-CLAIM",
+      "date": "2026-11-23",
+      "reported_on": "2026-11-24",
+      "category": "MARITIME_DAMAGE_CLAIM_UNVERIFIED",
+      "public_summary": "The IRGC Navy said three oil tankers struck mines and caught fire under U.S. air escort in or near Hormuz. No independently confirmed vessel names, IMO numbers, impact sites or damage records were identified in the reviewed articles. Euronews quoted the Joint Maritime Information Centre describing mine-hit claims as unconfirmed.",
+      "sources": [
+        0,
+        1
+      ],
+      "pending": "Secure original IRGC announcement, JMIC reporting with exact covered dates, UKMTO warnings, vessel IMO identities, AIS positions, photographs and independent rescue/owner notices. Check overlap against existing November 16–23 cumulative incident reports before changing counts or adding map markers. Refer exact propositions to Claims Forensics for verdict review.",
+      "map_eligibility": "region-only, no pins"
+    },
+    {
+      "id": "NOV23-IRAN-HATAMI-ESCALATING-HORMUZ-ORDERS",
+      "date": "2026-11-23",
+      "reported_on": "2026-11-24",
+      "category": "MILITARY_POSTURE_ATTRIBUTED_STATEMENT",
+      "public_summary": "Iranian army commander Amir Hatami called for progressively tighter restrictions on Hormuz shipping until Iranian conditions are met, according to Euronews. Reported orders and threats have not been reconciled with independent shipping throughput, enforcement actions or any change in international recognition.",
+      "sources": [
+        1
+      ],
+      "pending": "Review the original commander statement and separately measure observed transit volume and enforcement. No new territorial-control status is inferred from the statement.",
+      "map_eligibility": "nonspatial"
+    },
+    {
+      "id": "NOV23-QATAR-VANCE-MEDIATION-REPORT",
+      "date": "2026-11-23",
+      "reported_on": "2026-11-24",
+      "category": "DIPLOMACY_FOLLOWUP",
+      "public_summary": "Euronews reported that Qatar's prime minister met U.S. Vice President JD Vance and Secretary of State Marco Rubio on November 23 to discuss renewed U.S.-Iran negotiations. The Rubio-Qatar diplomatic dialogue was already recorded in accepted sequence 47.",
+      "sources": [
+        1
+      ],
+      "pending": "Compare the Vance meeting against the accepted Rubio-Qatar event; amend the existing record only if independent sourcing establishes a materially distinct development.",
+      "map_eligibility": "nonspatial"
+    }
+  ],
+  "publication_decision": {
+    "new_accepted_events": 0,
+    "new_confirmed_tanker_losses": 0,
+    "new_precise_map_markers": 0,
+    "full_theater_sweep_complete": false,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_evidence_cutoff_advanced": false,
+    "claims_forensics_handoff_required": true,
+    "note": "These are current source-discovery leads, not an adjudication. Source wording is plain English for reviewer use, and the approved public record remains unchanged until the evidence integration checks and accepted packet registration succeed."
+  }
+}
