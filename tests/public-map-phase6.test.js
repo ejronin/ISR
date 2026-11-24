@@ -83,6 +83,29 @@ assert.deepEqual(manifest.application.stylesheets, [byRole.map_stylesheet.path, 
 assert.equal(manifest.application.stylesheet, byRole.stylesheet.path, 'reader CSS must augment rather than replace the primary shell stylesheet');
 
 const mapSource = fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8');
+const recentUnplottedAcceptedIds = [
+  'EVT-20261115-YEMEN-DHUBAB-BAB-MANDEB-GOV-REDEPLOYMENT',
+  'EVT-20261119-RIYADH-PIF-TOWER-MATERIAL-DAMAGE',
+  'EVT-20261121-BAHRAIN-CIVILIAN-INDUSTRIAL-FIRE-REPORTED',
+  'EVT-20261122-HOUTHI-RABIGH-REFINERY-DIRECT-HIT-CLAIM',
+  'EVT-20261122-SAUDI-INTERCEPTION-CLAIMS',
+  'EVT-20261120-SAUDI-COALITION-HODEIDAH-PORT-STRIKE',
+  'EVT-20261120-HOUTHI-JAZAN-PORTS-AIRSPACE-THREATS',
+  'EVT-20261119-ISRAEL-HEZBOLLAH-BEQAA-REBUILD-CLAIM',
+  'EVT-20261123-YEMEN-HODEIDAH-LAHJ-HOUTHI-CASUALTY-ALLEGATIONS',
+  'EVT-20261121-HORMUZ-KHASAB-TANKER-PROJECTILE-REPORTS',
+  'EVT-20261123-JMIC-SEVEN-HORMUZ-TANKER-INCIDENTS-SNAPSHOT'
+];
+for (const id of recentUnplottedAcceptedIds) {
+  const item = publicState.chronology.find(record => record.event_id === id);
+  assert(item, 'recent regional unplotted report missing from accepted chronology: '+id);
+  assert((item.source_ids || []).length > 0, 'region-only report is not source-linked: '+id);
+  assert(mapSource.includes("'"+id+"'"), 'accepted region-only incident not presented near maps: '+id);
+}
+assert(mapSource.includes('RECENT_UNPLOTTED_REGION_GROUPS'), 'later reports were inserted into old map eligibility authority');
+assert(mapSource.includes('matching.filter(event => !pointFromRecord(event, context.services.locationResolver))'),
+  'region-only reports may be converted to invented precise markers');
+
 for (const forbidden of ['bda-map-data.json', 'map-only source index', 'image_id ===', 'facility ===']) assert(!mapSource.includes(forbidden), `map runtime contains a separate or record-specific path: ${forbidden}`);
 assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSource), 'current MapView depends on an external tile or map API');
 assert(mapSource.includes('_atlasHasRecord'), 'MapView does not expose generic record-to-map matching');
