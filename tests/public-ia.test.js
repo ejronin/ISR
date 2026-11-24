@@ -244,6 +244,28 @@ assert(publicLabels.every(label => !/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/.test(lab
 
 const iaSource = fs.readFileSync(path.join(root, 'js', 'public-ia.js'), 'utf8');
 const appSource = fs.readFileSync(path.join(root, 'js', 'public-app.js'), 'utf8');
+
+const topicCode = iaSource.slice(iaSource.indexOf('  function eventType(item) {'), iaSource.indexOf('  function mappedChronology('));
+assert(topicCode.includes('function eventTopic(item)'), 'chronology eventTopic implementation missing');
+const topicForAcceptedEvent = new Function(topicCode + '\nreturn eventTopic;')();
+for (const [eventId, expectedTopic] of [
+  ['EVT-20261119-IAEA-IRAN-ACCESS-WESTERN-PRESSURE', 'Diplomacy'],
+  ['EVT-20261120-SAUDI-COALITION-HODEIDAH-PORT-STRIKE', 'Military'],
+  ['EVT-20261121-HORMUZ-KHASAB-TANKER-PROJECTILE-REPORTS', 'Hormuz'],
+  ['EVT-20261123-OIL-FUTURES-SETTLEMENT-AND-LIBYA-RESTART', 'Economy'],
+  ['EVT-20261121-IRAN-F16-CLAIM-CENTCOM-DENIAL', 'Military']
+]) {
+  const record = model.chronology.find(item => item.event_id === eventId);
+  assert(record, 'accepted source-qualified chronology event absent: ' + eventId);
+  assert.equal(topicForAcceptedEvent(record), expectedTopic,
+    'accepted source-qualified documentary event miscategorized: ' + eventId);
+}
+assert.equal(topicForAcceptedEvent({event_id:'LEGACY-TALK', event:{event_type:'DIPLOMACY'}}),
+  'Diplomacy', 'legacy event_type topic classification regressed');
+assert.equal(topicForAcceptedEvent({event_id:'UNKNOWN', event:{event_class:'STATE_SNAPSHOT'}}),
+  'Wider record', 'unsupported data was forced into a military/economic category');
+
+
 for (const forbidden of ['MutationObserver', 'setInterval(', 'setTimeout(']) {
   assert(!iaSource.includes(forbidden), `page registry uses forbidden repair mechanism: ${forbidden}`);
   assert(!appSource.includes(forbidden), `public app uses forbidden repair mechanism: ${forbidden}`);
