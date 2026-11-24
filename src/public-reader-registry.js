@@ -110,7 +110,7 @@
     'hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions',
     'hormuz.talks', 'talks.overview', 'talks.regional',
     'objectives.outcomes', 'objectives.positions', 'objectives.iran',
-    'evidence.sources'
+    'objectives.outcomes'
   ]);
 
   function acceptedRecordDate(record) {
