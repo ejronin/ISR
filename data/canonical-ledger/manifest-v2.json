@@ -505,6 +505,17 @@
       "previous_lineage_sha256": "bf7b35eec8ed0f3e7020ad103e71c23ffc372b873a8e3f524063527fbf76cbf9",
       "sequence": 46,
       "sha256": "35cf11880fbf37be325084f004a107ac89e61c64f1b6212770a16bb8a62c0617"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+      "known_at": "2026-11-24T01:54:37.709Z",
+      "lineage_sha256": "7a1093aaf2e84923fd7c9def6a63724bec1853c702c2218e8bd35bc681450766",
+      "packet_id": "UPD-20261123-SHADOW-BANKING-POWER-MARITIME-AVIATION-SELECTIVE",
+      "path": "data/canonical-updates/UPD-20261123-SHADOW-BANKING-POWER-MARITIME-AVIATION-SELECTIVE.json",
+      "previous_lineage_sha256": "d3cc31efc1d34e8e5bf25aac3121d79daf1054a7b288262ba023f5701669433f",
+      "sequence": 47,
+      "sha256": "06f81a75ac789d4a4da44cf0f610784639f9759ea247740a4e147b23ece11d4a"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
