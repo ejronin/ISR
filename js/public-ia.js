@@ -1813,6 +1813,28 @@
   maritime: Object.freeze(["EVT-20261029-HORMUZ-IRGC-MINE-CLAIMS","EVT-20261029-LOUISE1-LIMPET-ATTACK","EVT-20261101-UKMTO-191-RELAYED-MAYDAY","EVT-20261102-UKMTO-192-TANKER-PROJECTILE-REPORT","EVT-20261102-IMO-LATE-CONFIRMED-OCT29-30-HULLS","EVT-20261108-HORMUZ-MARITIME-COMPETING-CLAIMS"])
   });
 
+  // Additive later accepted events with region-only or unresolved geometry.
+  // Kept separate from the sealed pre-November regional eligibility registry
+  // so the earlier map adjudication and its one-to-one parity stay untouched.
+  // Every ID must resolve in accepted canonical chronology before displaying.
+  const RECENT_UNPLOTTED_REGION_GROUPS = Object.freeze({
+    military: Object.freeze([
+      'EVT-20261115-YEMEN-DHUBAB-BAB-MANDEB-GOV-REDEPLOYMENT',
+      'EVT-20261119-RIYADH-PIF-TOWER-MATERIAL-DAMAGE',
+      'EVT-20261121-BAHRAIN-CIVILIAN-INDUSTRIAL-FIRE-REPORTED',
+      'EVT-20261122-HOUTHI-RABIGH-REFINERY-DIRECT-HIT-CLAIM',
+      'EVT-20261122-SAUDI-INTERCEPTION-CLAIMS',
+      'EVT-20261120-SAUDI-COALITION-HODEIDAH-PORT-STRIKE',
+      'EVT-20261120-HOUTHI-JAZAN-PORTS-AIRSPACE-THREATS',
+      'EVT-20261119-ISRAEL-HEZBOLLAH-BEQAA-REBUILD-CLAIM',
+      'EVT-20261123-YEMEN-HODEIDAH-LAHJ-HOUTHI-CASUALTY-ALLEGATIONS'
+    ]),
+    maritime: Object.freeze([
+      'EVT-20261121-HORMUZ-KHASAB-TANKER-PROJECTILE-REPORTS',
+      'EVT-20261123-JMIC-SEVEN-HORMUZ-TANKER-INCIDENTS-SNAPSHOT'
+    ])
+  });
+
   function facilityActor(facility) {
     if (!facility || typeof facility !== 'object') return null; if (facility.actor || facility.owner) return facility.actor || facility.owner;
     if (/^US-/.test(String(facility.facility_id || facility.id || ''))) return 'United States'; const country = publicNarrative(facility.country || facility.host, ''); return country && country !== 'Regional' ? country : null;
@@ -1863,7 +1885,8 @@
   }
 
   function renderUnplottedRegionalEvents(host, context, group) {
-    const ids = MAP_REGIONAL_EVENT_GROUPS[group] || [];
+    const ids = [...new Set([...(MAP_REGIONAL_EVENT_GROUPS[group] || []),
+      ...(RECENT_UNPLOTTED_REGION_GROUPS[group] || [])])];
     const matching = ids.map(id => context.model.chronology.find(event => event.event_id === id)).filter(Boolean);
     const unplotted = matching.filter(event => !pointFromRecord(event, context.services.locationResolver));
     if (!unplotted.length) return;
