@@ -136,7 +136,7 @@
     return rows.filter(item => {
       const date = acceptedRecordDate(item);
       const id = acceptedRecordId(item);
-      const body = txt(item?.observed_state || item?.summary);
+      const body = txt(item?.observed_state || item?.summary || item?.event?.summary || item?.timeline?.summary);
       if (!date || !id || !body || seen.has(id)) return false;
       seen.add(id);
       return true;
@@ -163,7 +163,7 @@
     for (const item of selected) {
       const heading = txt(item.metric || item.title || item.event_class ||
         (routeKey === 'hormuz.shipping' ? 'Maritime update' : 'Accepted update'));
-      const body = txt(item.observed_state || item.summary);
+      const body = txt(item.observed_state || item.summary || item.event?.summary || item.timeline?.summary);
       const content = card(grid, heading, body, acceptedRecordDate(item) + ' · ACCEPTED RECORD');
       content.dataset.acceptedEvidenceId = acceptedRecordId(item);
       evidence(content, context, item, 'Sources');
