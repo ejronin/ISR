@@ -17,8 +17,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
-  actions: write
   issues: write
 
 concurrency:
@@ -43,7 +41,7 @@ jobs:
       - name: Contact standing public sources and record unverified link leads
         id: collect
         run: python scripts/rook_source_probe.py
-      - name: Propose source availability through protected-branch PR
+      - name: Preserve source availability branch and refer to Evidence Integration
         id: propose
         env:
           GH_TOKEN: ${{ github.token }}
@@ -61,6 +59,7 @@ jobs:
           echo "Proposing append-only source availability: $file via $branch"
           if git ls-remote --exit-code --heads origin "$branch"; then
             echo "Existing durable proposal branch $branch; will not overwrite or duplicate."
+            gh issue comment 296 --body "ROOK source availability remains on branch $branch; report $file. Run https://github.com/ejronin/ISR/actions/runs/${{ github.run_id }}. GitHub-app PR review pending; no full-sweep qualification implied."
             exit 0
           fi
           git config user.name 'atlas-rook-source-probe[bot]'
@@ -68,18 +67,11 @@ jobs:
           git commit -m "rook: propose append-only standing-source availability"
           git branch "$branch"
           git push origin "HEAD:refs/heads/$branch"
-          # No direct push to protected main, no forced updates, no automatic
-          # acceptance of unreviewed sources. A PR starts the qualified route.
-          gh pr create \
-            --base main \
-            --head "$branch" \
-            --title "ROOK intake: source availability for ${file##*/}" \
-            --body "Append-only public source availability snapshot for the specified 12-hour window. Fetch-only results and unverified same-domain article leads; no completed ROOK sweep, no canonical evidence, no public-language or map/chart changes. Preserve the approved 86-source universe and require exact-head CI plus Evidence Integration merge under docs/ROUTINE_UPDATE_PIPELINE.md. Related issue #296."
-          # GITHUB_TOKEN-created PRs may not themselves emit pull_request CI.
-          # Explicit workflow_dispatch is allowed to request the same exact-SHA
-          # qualification; protected branch checks remain required to merge.
-          gh workflow run validate.yml --ref "$branch"
-          echo "Qualification dispatched for $branch. Leave PR unmerged until checks pass."
+          # GITHUB_TOKEN cannot open PRs under this repository security setting.
+          # Leave the source branch durable and route it to Evidence Integration.
+          # The authorized GitHub app opens the protected PR; never weaken protection.
+          gh issue comment 296 --body "ROOK source availability ready for protected PR review. Branch: $branch. File: $file. Run: https://github.com/ejronin/ISR/actions/runs/${{ github.run_id }}. FETCH ONLY, not a completed full-theater sweep or accepted evidence. Evidence Integration must open a PR through the GitHub app, require exact-head CI, and merge only through the existing protection."
+          echo "Durable source branch written: $branch. GitHub-app PR handoff pending."
       - name: Upload bounded source probe result for failure recovery
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
