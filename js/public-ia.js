@@ -24,7 +24,7 @@
 
   const ROUTE_DEFINITIONS = Object.freeze([
     { key: 'start.overview', primary: 'home', slug: 'overview', path: "/", navOrder: 1, modelPage: 'start_here', archetype: 'overview', label: "Overview", title: "Overview", owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.gaps'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
-    { key: 'start.actors', primary: 'home', slug: 'actors', path: "/home/actors/", navOrder: 2, modelPage: 'start_here', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors', 'current.chronology'], related: ['timeline.war', 'evidence.sources'] },
+    { key: 'start.actors', primary: 'home', slug: 'actors', path: "/home/actors/", navOrder: 2, modelPage: 'start_here', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors'], related: ['timeline.war', 'evidence.sources'] },
 
     { key: 'timeline.war', primary: 'war', slug: 'war', path: "/war/timeline/", navOrder: 1, modelPage: 'timeline', label: "Timeline", title: "Timeline", owner: 'TimelinePage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
     { key: 'timeline.chronology', primary: 'war', slug: 'chronology', path: "/war/events/", navOrder: 2, modelPage: 'timeline', label: "All Events", title: "All Events", owner: 'ChronologyPage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
