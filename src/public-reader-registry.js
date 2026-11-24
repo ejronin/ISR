@@ -138,9 +138,13 @@
         /IAEA|NUCLEAR|ARAQCHI|ENRICH|IRAN-US/.test(
           acceptedRecordId(item) + ' ' + txt(item.metric || item.subject)));
     } else if (routeKey === 'talks.regional') {
-      rows = records(model, 'gate3.diplomacy').filter(item =>
+      const all = records(model, 'gate3.diplomacy');
+      const regional = all.filter(item =>
         /IRAQ|QATAR|YEMEN|BAHRAIN|REGIONAL|LEBANON|SYRIA|MILITIA/.test(
           acceptedRecordId(item) + ' ' + txt(item.metric || item.subject)));
+      // Preserve previously accepted regional reader coverage when the
+      // latest qualified regional packet has not yet been accepted.
+      rows = regional.length ? regional : all;
     } else if (['hormuz.talks','talks.overview','objectives.outcomes','objectives.positions','objectives.iran'].includes(routeKey)) {
       rows = records(model, 'gate3.diplomacy');
     } else {
