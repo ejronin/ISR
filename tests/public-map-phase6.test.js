@@ -109,6 +109,18 @@ assert(mapSource.includes("details.dataset.mapUnplottedRecent = group"),
   'recent region-only incidents must be collapsed, preserving earlier map presentation');
 assert(mapSource.includes("const historical = resolve(oldIds)"),
   'previously accepted map-context incident list was not preserved');
+assert(mapSource.includes("const latest = resolve(laterIds.filter(id => !oldIds.includes(id)))"),
+  'new region-only events must not alter the historical map-context lookup');
+const historicalMapBlock = mapSource.slice(
+  mapSource.indexOf('  function renderUnplottedRegionalEvents('),
+  mapSource.indexOf('  function renderRelatedLinks(')
+);
+assert(!historicalMapBlock.slice(
+  historicalMapBlock.indexOf('const resolve = ids =>'),
+  historicalMapBlock.indexOf('const historical = resolve(oldIds)')
+).includes('.sort('), 'historical regional incident order must not be resorted');
+assert(historicalMapBlock.slice(historicalMapBlock.indexOf('const latest = resolve(')).includes('.sort('),
+  'only new accepted regional reports should use recent-first ordering');
 
 for (const forbidden of ['bda-map-data.json', 'map-only source index', 'image_id ===', 'facility ===']) assert(!mapSource.includes(forbidden), `map runtime contains a separate or record-specific path: ${forbidden}`);
 assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSource), 'current MapView depends on an external tile or map API');
