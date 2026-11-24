@@ -1,6 +1,11 @@
 'use strict';
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const ia = require('../js/public-ia.js');
+const publicModel = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data/public-current-state.json'), 'utf8'));
+const hasSeq46NuclearRecord = (publicModel.datasets?.['gate3.diplomacy']?.payload?.records || [])
+  .some(item => item.diplomacy_id === 'DIP-IAEA-IRAN-SAFEGUARDS-20261119');
 const { assertFinalReaderHeading, expectedFinalReaderLabel, runFinalReaderTitleFixtures } = require('./public-reader-title-authority.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
@@ -187,6 +192,21 @@ async function loadDirectRoute(cdp, route) {
         assert(/^2026-/.test(futures.date), 'dated futures comparison is missing');
         assert(futures.hasSource, 'oil futures comparison must retain source link');
         assert(/Brent/.test(futures.content) && /WTI/.test(futures.content), 'oil benchmarks must be separate');
+      }
+      if (hasSeq46NuclearRecord && ['talks.nuclear','talks.regional'].includes(route.key)) {
+        const report = await cdp.eval(`(() => ({
+          section: document.querySelector('[data-recent-accepted-evidence="source-linked"]')?.dataset.acceptedRoute || '',
+          ids: [...document.querySelectorAll('[data-accepted-evidence-id]')].map(el => el.dataset.acceptedEvidenceId),
+          sourceCount: document.querySelectorAll('[data-accepted-evidence-id] details').length,
+        }))()`);
+        assert.equal(report.section, route.key, 'qualifying November diplomacy record not shown on '+route.key);
+        assert(report.sourceCount > 0, 'current nuclear/regional source links missing on '+route.key);
+        if (route.key === 'talks.nuclear') {
+          assert(report.ids.includes('DIP-IAEA-IRAN-SAFEGUARDS-20261119'), 'IAEA status absent from current Nuclear Talks reader');
+        }
+        if (route.key === 'talks.regional') {
+          assert(report.ids.includes('DIP-IRAQ-JURF-SAKHAR-COMMAND-COMPROMISE-20261119'), 'Iraq regional security update absent from current Regional Diplomacy reader');
+        }
       }
       if (route.hiddenNav) {
         assert.equal(view.currentSecondary, undefined, `buried route leaked into secondary navigation: ${route.key}`);
