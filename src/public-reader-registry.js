@@ -104,8 +104,12 @@
   // Additive source-linked updates from accepted public state. Never rewrite
   // prior editorial analysis or promote an unaccepted ROOK/Claims source lead.
   const RECENT_ACCEPTED_ROUTES = new Set([
+    'start.overview', 'timeline.war', 'timeline.chronology',
+    'military.campaigns', 'military.facilities', 'military.losses',
+    'military.weapons', 'military.imagery', 'hormuz.overview',
     'hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions',
-    'hormuz.talks', 'talks.overview', 'objectives.positions', 'objectives.iran'
+    'hormuz.talks', 'talks.overview', 'talks.regional',
+    'objectives.outcomes', 'objectives.positions', 'objectives.iran'
   ]);
 
   function acceptedRecordDate(record) {
@@ -129,8 +133,26 @@
       rows = records(model, 'gate3.economics')
         .filter(item => /OFAC|TREASURY|SANCTION|DESIGNAT/i.test(
           acceptedRecordId(item) + ' ' + txt(item.metric) + ' ' + txt(item.observed_state)));
-    } else if (['hormuz.talks','talks.overview','objectives.positions','objectives.iran'].includes(routeKey)) {
+    } else if (['hormuz.talks','talks.overview','talks.regional','objectives.outcomes','objectives.positions','objectives.iran'].includes(routeKey)) {
       rows = records(model, 'gate3.diplomacy');
+    } else {
+      const latest = records(model, 'current.chronology');
+      const filters = {
+        'start.actors': /YEMEN|SAUDI|BAHRAIN|HOUTHI|IRAN|QATAR|RIYADH|PIF/,
+        'military.campaigns': /YEMEN|HOUTHI|SAUDI|BAHRAIN|RABIGH|PIF|KHASAB|TANKER|F16|INTERCEPT/,
+        'military.facilities': /BAHRAIN|BAPCO|PIF|RABIGH|RADAR|REFINERY|TOWER|BASE/,
+        'military.losses': /F16|AIRCRAFT|CASUALT|PIF-TOWER/,
+        'military.weapons': /INTERCEPT|HOUTHI|F16|MISSILE|PROJECTILE|DRONE/,
+        'military.imagery': /PIF-TOWER|BAHRAIN|BAPCO/,
+        'hormuz.overview': /HORMUZ|TANKER|KHASAB|OIL-FUTURES|IRAN-MFA/,
+        'talks.regional': /QATAR|YEMEN|HOUTHI|SAUDI|BAHRAIN|IRAN-MFA/,
+        'objectives.outcomes': /YEMEN|HORMUZ|SAUDI|BAHRAIN|OIL|HOUTHI/,
+        'evidence.claims': /F16|RABIGH|KHASAB|INTERCEPT/
+      };
+      const filter = filters[routeKey];
+      rows = filter ? latest.filter(item => filter.test(
+        acceptedRecordId(item) + ' ' + txt(item.summary || item?.event?.summary || '')
+      )) : latest;
     }
     const seen = new Set();
     return rows.filter(item => {
@@ -153,21 +175,61 @@
     const cutoff = txt(context.model?.release?.current_osint_cutoff_display ||
       context.model?.release?.current_osint_cutoff || '');
     const lead = cutoff
-      ? 'These individual reports are accepted. Overall evidence coverage is through ' +
+      ? 'These individual reports are accepted with their stated sources and qualifications. An attributed strike claim is not proof of impact or damage. Overall evidence coverage is through ' +
         cutoff + '; newer accepted items do not mean every intervening report has been reviewed.'
-      : 'These individual reports are accepted. They do not imply complete coverage of all newer events.';
+      : 'These individual reports are accepted with their stated qualifications. They do not imply complete coverage of all newer events.';
     const panel = section(article, 'Recent accepted evidence', lead);
     panel.dataset.recentAcceptedEvidence = 'source-linked';
     panel.dataset.acceptedRoute = routeKey;
     const grid = add(panel, 'div', 'orientation-grid');
     for (const item of selected) {
-      const heading = txt(item.metric || item.title || item.event_class ||
-        (routeKey === 'hormuz.shipping' ? 'Maritime update' : 'Accepted update'));
+      const key = acceptedRecordId(item);
+      const heading = txt(item.metric || item.title ||
+        (/F16|AIRCRAFT/.test(key) ? 'Aircraft claim and response' :
+        /RABIGH/.test(key) ? 'Saudi refinery claim' :
+        /YEMEN|BAB-MANDEB/.test(key) ? 'Yemen coastal developments' :
+        /PIF|RIYADH/.test(key) ? 'Riyadh infrastructure damage' :
+        /BAHRAIN|BAPCO/.test(key) ? 'Bahrain infrastructure update' :
+        /KHASAB|TANKER/.test(key) ? 'Merchant shipping incident' :
+        /OIL|BRENT|WTI/.test(key) ? 'Oil-market observation' :
+        /SAUDI|HOUTHI|INTERCEPT/.test(key) ? 'Regional military report' :
+        'Documented recent development'));
       const body = txt(item.observed_state || item.summary || item.event?.summary || item.timeline?.summary);
       const content = card(grid, heading, body, acceptedRecordDate(item) + ' · ACCEPTED RECORD');
       content.dataset.acceptedEvidenceId = acceptedRecordId(item);
       evidence(content, context, item, 'Sources');
     }
+  }
+
+  function addRecentFuturesComparison(article, context, routeKey) {
+    if (routeKey !== 'hormuz.economy') return;
+    const observed = records(context.model, 'gate3.economics')
+      .filter(item => Number.isFinite(Number(item.brent_futures_settlement_usd_bbl)) &&
+        Number.isFinite(Number(item.wti_futures_settlement_usd_bbl)) &&
+        /^\d{4}-\d{2}-\d{2}$/.test(txt(item.date)))
+      .sort((a,b) => txt(b.date).localeCompare(txt(a.date)));
+    if (!observed.length) return;
+    const newest = observed[0], date = txt(newest.date);
+    const panel = section(article, 'Latest reported oil futures settlements',
+      'Brent and WTI are separate futures benchmarks on the same reported settlement date. This is not a physical oil-flow chart, a causal estimate of sanctions, or a daily series across unmatched contract months.');
+    panel.dataset.recentOilFutures = date;
+    const barRows = [
+      {label:'Brent futures',value:Number(newest.brent_futures_settlement_usd_bbl)},
+      {label:'WTI futures',value:Number(newest.wti_futures_settlement_usd_bbl)}
+    ];
+    const renderer = root && root.AtlasVisualizationRenderer;
+    if (renderer && typeof renderer.createCategoryBars === 'function') {
+      panel.append(renderer.createCategoryBars(context,{
+        typeLabel:'OIL FUTURES · USD PER BARREL',title:'Reported futures settlements · ' + date,
+        description:'Source-reported market settlements in USD per barrel. Two benchmarks, one trading date; these are not estimates of Iranian exports or cargo losses.',
+        rows:barRows,key:'recent-accepted-oil-futures',valuesLabel:'USD per barrel',
+        tableCaption:'Latest two reported futures settlements',categoryLabel:'Benchmark',
+        valueLabel:'USD per barrel',numericNote:'Benchmarks and contracts differ; never add them together or infer physical quantities.'}));
+    } else {
+      const list = add(panel,'div','orientation-grid');
+      for (const row of barRows) card(list,row.label,'$'+row.value.toFixed(2)+' per barrel',date+' · REPORTED SETTLEMENT');
+    }
+    evidence(panel,context,newest,'Settlement source');
   }
 
   const FACILITY_PUBLIC_STATE = Object.freeze({
@@ -1058,6 +1120,7 @@
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
     addRecentAcceptedEvidence(article,context,k);
+    addRecentFuturesComparison(article,context,k);
     connectMappedCards(article,k);
   }
 
