@@ -110,7 +110,7 @@
 
   function acceptedRecordDate(record) {
     const value = txt(record?.date || record?.event_date || '');
-    return /^\\d{4}-\\d{2}-\\d{2}$/.test(value) ? value : '';
+    return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : '';
   }
 
   function acceptedRecordId(record) {
