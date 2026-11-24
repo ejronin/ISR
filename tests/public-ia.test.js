@@ -264,6 +264,9 @@ assert.equal(topicForAcceptedEvent({event_id:'LEGACY-TALK', event:{event_type:'D
   'Diplomacy', 'legacy event_type topic classification regressed');
 assert.equal(topicForAcceptedEvent({event_id:'UNKNOWN', event:{event_class:'STATE_SNAPSHOT'}}),
   'Wider record', 'unsupported data was forced into a military/economic category');
+assert.equal(topicForAcceptedEvent({
+  event_id: 'EVT-20261031-HISTORICAL-CORE', event: {event_date:'2026-10-31',event_class:'CORE_WARTIME_EVENT'}
+}), 'Wider record', 'older approved topic grouping was rewritten by the November taxonomy fallback');
 
 
 for (const forbidden of ['MutationObserver', 'setInterval(', 'setTimeout(']) {
