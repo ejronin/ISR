@@ -262,6 +262,14 @@ for (const [eventId, expectedTopic] of [
 }
 assert.equal(topicForAcceptedEvent({event_id:'LEGACY-TALK', event:{event_type:'DIPLOMACY'}}),
   'Diplomacy', 'legacy event_type topic classification regressed');
+for (const eventId of [
+  'EVT-20261123-FINCEN-IRAN-147B-POTENTIAL-FINANCIAL-ACTIVITY',
+  'EVT-20261122-IRAN-TAVANIR-ROLLING-POWER-CUTS',
+  'EVT-20261117-ETIHAD-RIYADH-DAMMAM-FLIGHT-CANCELLATIONS-EXTENDED'
+]) {
+  assert.equal(topicForAcceptedEvent({event_id:eventId,event:{event_date:'2026-11-23',event_class:'STATE_SNAPSHOT'}}),
+    'Economy', 'qualified economic-source topic misclassified: '+eventId);
+}
 assert.equal(topicForAcceptedEvent({event_id:'UNKNOWN', event:{event_class:'STATE_SNAPSHOT'}}),
   'Wider record', 'unsupported data was forced into a military/economic category');
 assert.equal(topicForAcceptedEvent({
