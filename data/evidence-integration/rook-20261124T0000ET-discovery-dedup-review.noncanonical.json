@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "NONCANONICAL_SOURCE_DISCOVERY_DEDUPLICATION_REVIEW",
+  "status": "SOURCE_TO_ACCEPTED_RECORD_CROSSWALK_ONLY",
+  "scope": {
+    "review_date": "2026-11-24",
+    "reviewed_locker": "data/evidence-integration/rook-evidence-locker-sweep-20261124T0000ET.json",
+    "source_window_start": "2026-11-23T12:00:00-05:00",
+    "source_window_end": "2026-11-24T00:00:00-05:00",
+    "primary_authority": "data/canonical-ledger/manifest-v2.json",
+    "canonical_record_sequence_at_review": 47,
+    "overall_evidence_cutoff_at_review": "2026-11-12T13:00:00+00:00",
+    "purpose": "Match four unpromoted midnight discovery leads to facts already accepted. Keep publication-time, article-level, and full-review gaps explicit."
+  },
+  "reviewed_discoveries": [
+    {
+      "publisher": "U.S. Treasury",
+      "source_url": "https://home.treasury.gov/news/press-releases/sb0699",
+      "finding": "The sanctions announcement is already in the accepted record.",
+      "match_strength": "EXACT_URL",
+      "accepted_packet_sequence": 47,
+      "accepted_packet_path": "data/canonical-updates/UPD-20261123-SHADOW-BANKING-POWER-MARITIME-AVIATION-SELECTIVE.json",
+      "accepted_source_id": "SRC-DFA9361A35D3",
+      "accepted_event_id": "EVT-20261123-OFAC-IRAN-SHADOW-BANKING-DESIGNATIONS",
+      "new_canonical_event_required": false,
+      "remaining_question": "The exact publication time has not been independently established. The established date is November 23."
+    },
+    {
+      "publisher": "FinCEN / U.S. Treasury",
+      "source_url": "https://home.treasury.gov/news/press-releases/sb0698",
+      "finding": "The financial-activity analysis is already in the accepted record. The $14.7 billion describes activity flagged over January 2025–August 2026.",
+      "match_strength": "EXACT_URL",
+      "accepted_packet_sequence": 47,
+      "accepted_packet_path": "data/canonical-updates/UPD-20261123-SHADOW-BANKING-POWER-MARITIME-AVIATION-SELECTIVE.json",
+      "accepted_source_id": "SRC-AF17DD6F5F69",
+      "accepted_event_id": "EVT-20261123-FINCEN-IRAN-147B-POTENTIAL-FINANCIAL-ACTIVITY",
+      "new_canonical_event_required": false,
+      "remaining_question": "Exact release time remains unverified; no additional seized-funds event was established."
+    },
+    {
+      "publisher": "Associated Press",
+      "source_url": "https://apnews.com/article/c2cb6de3515f887a5786c1147e918489",
+      "finding": "The Qatar diplomatic contact is already represented by the accepted November 23 reporting. The original and expanded URLs share the same article identifier.",
+      "match_strength": "SAME_AP_ARTICLE_IDENTIFIER",
+      "accepted_packet_sequence": 47,
+      "accepted_packet_path": "data/canonical-updates/UPD-20261123-SHADOW-BANKING-POWER-MARITIME-AVIATION-SELECTIVE.json",
+      "accepted_url": "https://apnews.com/article/mideast-iran-gaza-israel-houthis-libya-november-23-2026-c2cb6de3515f887a5786c1147e918489",
+      "accepted_source_id": "SRC-1B88F66FADD7",
+      "accepted_event_id": "EVT-20261123-RUBIO-QATAR-PM-MEDIATION-DIALOGUE",
+      "new_canonical_event_required": false,
+      "remaining_question": "Article's exact first-publication and update times were not independently checked."
+    },
+    {
+      "publisher": "Reuters via MarketScreener",
+      "source_url": "https://www.marketscreener.com/news/oil-holds-in-tight-range-as-gulf-attacks-sustain-risk-premium-ce785ed3d08bf124",
+      "finding": "The November 23 Brent $89.37 and WTI $80.17 futures settlements are already recorded from Reuters. The MarketScreener item is a separate source URL with matching market facts.",
+      "match_strength": "SAME_REPORTED_DATE_AND_SETTLEMENT_VALUES",
+      "accepted_packet_sequence": 45,
+      "accepted_packet_path": "data/canonical-updates/UPD-20261123-MULTIDOMAIN-NOV15-23-SOURCE-QUALIFIED.json",
+      "accepted_url": "https://www.reuters.com/business/energy/oil-prices-fall-amid-equity-selloff-though-iran-war-attacks-limit-losses-2026-11-23/",
+      "accepted_source_id": "SRC-32A25411F418",
+      "accepted_event_id": "EVT-20261123-OIL-FUTURES-SETTLEMENT-AND-LIBYA-RESTART",
+      "accepted_economic_id": "ECON-NOV23-BRENT-WTI-FUTURES-SETTLEMENT",
+      "new_canonical_event_required": false,
+      "remaining_question": "The MarketScreener article's full text and exact revision history were not independently compared. Retain its URL as a separate source lead if article-level provenance is needed."
+    }
+  ],
+  "outcome": {
+    "discoveries_reviewed": 4,
+    "new_distinct_event_leads_from_these_four": 0,
+    "existing_exact_url_matches": 2,
+    "same_article_identifier_matches": 1,
+    "same_market_observation_matches": 1,
+    "source_leads_with_remaining_provenance_questions": 4,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "window_qualification_changed": false,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packets_or_manifest_mutated": false,
+    "claim_verdicts_or_web_of_lies_changed": false,
+    "evidence_cutoff_advanced": false,
+    "notes": "This crosswalk resolves the risk of duplicate canonical events from these four leads. It does not establish full-window completion or publication-time precision. Later evidence may require another source or update packet."
+  }
+}
