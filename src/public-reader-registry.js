@@ -1155,7 +1155,20 @@
     const defaultSectionId = definitions[0]?.id || '';
     let activeId = requested?.id || null;
     let sectionParam = route.params?.section || '';
+    let disposed = false;
     const observer = new win.IntersectionObserver(entries => {
+      // An observer callback from an outgoing page can run after a new actor
+      // deep link changes location.hash, but before its hashchange handler
+      // replaces the old page. Never restore the old actor's query parameters.
+      if (disposed) return;
+      const currentRoute = base.parseRoute(win.location && win.location.hash);
+      if (!currentRoute || currentRoute.key !== route.key) return;
+      const expectedParams = { ...(route.params || {}) };
+      const activeParams = { ...(currentRoute.params || {}) };
+      delete expectedParams.section;
+      delete activeParams.section;
+      const keys = new Set([...Object.keys(expectedParams), ...Object.keys(activeParams)]);
+      if ([...keys].some(key => String(expectedParams[key] ?? '') !== String(activeParams[key] ?? ''))) return;
       const visible = entries.filter(entry => entry.isIntersecting).sort((left, right) => Math.abs(left.boundingClientRect?.top || 0) - Math.abs(right.boundingClientRect?.top || 0));
       const id = visible[0]?.target?.dataset?.guideSection;
       if (!id || id === activeId) return;
@@ -1163,14 +1176,14 @@
       setActive(id);
       if (id === defaultSectionId) {
         if (!sectionParam) return;
-        const params = { ...(route.params || {}) };
+        const params = { ...(currentRoute.params || {}) };
         delete params.section;
         sectionParam = '';
         win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
         return;
       }
       if (sectionParam === id) return;
-      const params = { ...(route.params || {}), section: id };
+      const params = { ...(currentRoute.params || {}), section: id };
       sectionParam = id;
       win.history?.replaceState?.(null, '', base.routeHref(route.key, params));
     }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.01] });
@@ -1178,7 +1191,7 @@
       const target = app.querySelector(`[data-guide-section="${definition.id}"]`);
       if (target) observer.observe(target);
     });
-    return () => observer.disconnect();
+    return () => { disposed = true; observer.disconnect(); };
   }
 
   function mount(options) {
