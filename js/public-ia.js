@@ -1803,6 +1803,10 @@
     // event ID without a legacy event_type. Classify their chronology topic,
     // never promote claim-only records to verified strikes or loss counts.
     if (!type) {
+      const date = String(item?.event?.event_date || item?.timeline?.date || '');
+      // Preserve older editorial topic groupings. Only the recent
+      // source-qualified backfill and future dated records need this fallback.
+      if (date && date < '2026-11-15') return 'Wider record';
       const id = String(item?.event_id || item?.event?.event_id || '').toUpperCase();
       const recordClass = String(item?.event?.event_class || item?.timeline?.record_class || '').toUpperCase();
       if (/(HORMUZ|TANKER|KHASAB|VESSEL|UKMTO|MARITIME)/.test(id)) return 'Hormuz';
