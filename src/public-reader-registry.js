@@ -104,7 +104,7 @@
   // Additive source-linked updates from accepted public state. Never rewrite
   // prior editorial analysis or promote an unaccepted ROOK/Claims source lead.
   const RECENT_ACCEPTED_ROUTES = new Set([
-    'start.overview', 'start.actors', 'timeline.war', 'timeline.chronology',
+    'start.overview', 'timeline.war', 'timeline.chronology',
     'military.campaigns', 'military.facilities', 'military.losses',
     'military.weapons', 'military.imagery', 'hormuz.overview',
     'hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions',
