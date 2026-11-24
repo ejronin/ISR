@@ -395,19 +395,33 @@ const PRESERVED_FACILITY_IDS = [
       await waitFor(cdp, `Boolean(document.querySelector('[data-map-unplotted-group="${group}"]'))`);
       const parity = await cdp.eval(`(() => {
         const panel = document.querySelector('[data-map-unplotted-group="${group}"]');
-        const cards = [...(panel?.querySelectorAll('[data-map-unplotted-event]') || [])];
+        const historical = [...(panel?.querySelector(':scope > .record-list')?.querySelectorAll('[data-map-unplotted-event]') || [])];
+        const details = panel?.querySelector('[data-map-unplotted-recent]');
+        const recent = [...(details?.querySelectorAll('[data-map-unplotted-event]') || [])];
+        const all = [...historical, ...recent];
         return {
-          count: cards.length,
-          unique: new Set(cards.map(card => card.dataset.mapUnplottedEvent)).size,
-          sourceDrawers: cards.filter(card => card.querySelector('details.evidence-drawer')).length,
-          linkedChronology: cards.filter(card => card.querySelector('a[href*="events"]')).length,
-          sourceIds: cards.map(card => card.dataset.mapUnplottedEvent)
+          count: historical.length,
+          unique: new Set(historical.map(card => card.dataset.mapUnplottedEvent)).size,
+          sourceDrawers: historical.filter(card => card.querySelector('details.evidence-drawer')).length,
+          linkedChronology: historical.filter(card => card.querySelector('a[href*="events"]')).length,
+          recentCount: recent.length,
+          recentSourceDrawers: recent.filter(card => card.querySelector('details.evidence-drawer')).length,
+          recentLinkedChronology: recent.filter(card => card.querySelector('a[href*="events"]')).length,
+          allUnique: new Set(all.map(card => card.dataset.mapUnplottedEvent)).size === all.length,
+          recentCollapsible: Boolean(details) && details.tagName === 'DETAILS' && !details.open,
+          sourceIds: all.map(card => card.dataset.mapUnplottedEvent)
         };
       })()`);
       assert.equal(parity.count, minimum, `Missing source-linked regional observations on ${routeKey}: ${JSON.stringify(parity)}`);
       assert.equal(parity.unique, minimum);
       assert.equal(parity.sourceDrawers, minimum);
       assert.equal(parity.linkedChronology, minimum);
+      const expectedRecent = group === 'military' ? 9 : 2;
+      assert.equal(parity.recentCount, expectedRecent, 'Accepted recent incident count missing beside '+routeKey);
+      assert.equal(parity.recentSourceDrawers, expectedRecent, 'Recent incident provenance missing beside '+routeKey);
+      assert.equal(parity.recentLinkedChronology, expectedRecent, 'Recent incidents lack chronology links on '+routeKey);
+      assert.equal(parity.allUnique, true, 'Duplicate historical or recent incident appeared beside '+routeKey);
+      assert.equal(parity.recentCollapsible, true, 'New context must remain collapsible without changing established map spacing');
     }
     await setRoute(cdp, 'hormuz.overview');
 
