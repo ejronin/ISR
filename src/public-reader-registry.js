@@ -110,7 +110,7 @@
     'hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions',
     'hormuz.talks', 'talks.overview', 'talks.regional',
     'objectives.outcomes', 'objectives.positions', 'objectives.iran',
-    'evidence.claims'
+    'evidence.sources'
   ]);
 
   function acceptedRecordDate(record) {
@@ -134,7 +134,7 @@
       rows = records(model, 'gate3.economics')
         .filter(item => /OFAC|TREASURY|SANCTION|DESIGNAT/i.test(
           acceptedRecordId(item) + ' ' + txt(item.metric) + ' ' + txt(item.observed_state)));
-    } else if (['hormuz.talks','talks.overview','objectives.positions','objectives.iran'].includes(routeKey)) {
+    } else if (['hormuz.talks','talks.overview','talks.regional','objectives.outcomes','objectives.positions','objectives.iran'].includes(routeKey)) {
       rows = records(model, 'gate3.diplomacy');
     } else {
       const latest = records(model, 'current.chronology');
