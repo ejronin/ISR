@@ -159,8 +159,10 @@ async function loadDirectRoute(cdp, route) {
       // public records, so later append-only packets must not break this test
       // merely by pushing November 23 records out of the top three cards.
       const acceptedEvidenceRoutes = new Set([
-        'hormuz.economy', 'hormuz.sanctions', 'hormuz.shipping',
-        'hormuz.talks', 'talks.overview', 'objectives.positions', 'objectives.iran'
+        'start.overview', 'timeline.war', 'timeline.chronology',
+        'hormuz.overview', 'hormuz.economy', 'hormuz.sanctions', 'hormuz.shipping',
+        'hormuz.talks', 'talks.overview', 'talks.regional', 'objectives.outcomes',
+        'objectives.positions', 'objectives.iran'
       ]);
       if (acceptedEvidenceRoutes.has(route.key)) {
         const cards = await cdp.eval(`(() => ({
@@ -174,6 +176,17 @@ async function loadDirectRoute(cdp, route) {
         assert.equal(new Set(cards.ids).size, cards.ids.length, `duplicate public accepted record on ${route.key}`);
         assert(cards.evidenceDrawerCount > 0, `source evidence missing from ${route.key}`);
         assert(cards.text.includes('Overall evidence coverage'), `unqualified freshness implication on ${route.key}`);
+        assert(!cards.text.includes('CORE_WARTIME_EVENT'), `machine event type leaked into ${route.key}`);
+      }
+      if (route.key === 'hormuz.economy') {
+        const futures = await cdp.eval(`(() => ({
+          date: document.querySelector('[data-recent-oil-futures]')?.dataset.recentOilFutures || '',
+          hasSource: Boolean(document.querySelector('[data-recent-oil-futures] details')),
+          content: document.querySelector('[data-recent-oil-futures]')?.innerText || ''
+        }))()`);
+        assert(/^2026-/.test(futures.date), 'dated futures comparison is missing');
+        assert(futures.hasSource, 'oil futures comparison must retain source link');
+        assert(/Brent/.test(futures.content) && /WTI/.test(futures.content), 'oil benchmarks must be separate');
       }
       if (route.hiddenNav) {
         assert.equal(view.currentSecondary, undefined, `buried route leaked into secondary navigation: ${route.key}`);
