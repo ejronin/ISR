@@ -1121,6 +1121,7 @@
     if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article,route); if(k==='evidence.web_of_lies')webOfLiesCollection(article,route); if(k==='evidence.sources')sourceLibrary(article); if(k==='evidence.archive')archive(article);
     addRecentAcceptedEvidence(article,context,k);
+    addRecentFuturesComparison(article,context,k);
     connectMappedCards(article,k);
   }
 
