@@ -1,0 +1,137 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "scope": {
+    "timezone": "America/New_York",
+    "window_start": "2026-11-23T12:00:00-05:00",
+    "window_end": "2026-11-24T00:00:00-05:00",
+    "collection_time": "2026-11-24T00:20:06-05:00",
+    "evidence_horizon_time": "2026-11-24T00:00:00-05:00",
+    "collection_mode": "POST_CUTOFF_PARTIAL_REVIEW"
+  },
+  "new_events": [],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "source_discovery_additions": [
+    {
+      "publisher": "Reuters via MarketScreener",
+      "url": "https://www.marketscreener.com/news/oil-holds-in-tight-range-as-gulf-attacks-sustain-risk-premium-ce785ed3d08bf124",
+      "topic": "November 23 settlement Brent 89.37 USD/bbl, WTI 80.17; updated 15:23 EST",
+      "publication_time": "2026-11-23T15:23:00-05:00",
+      "occurrence_time": null,
+      "collection_time": "2026-11-24T00:20:06-05:00",
+      "evidence_horizon_time": "2026-11-24T00:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED_PENDING_DEDUP"
+    },
+    {
+      "publisher": "US Treasury",
+      "url": "https://home.treasury.gov/news/press-releases/sb0699",
+      "topic": "New shadow banking designations; exact publication clock unresolved",
+      "publication_time": "2026-11-23",
+      "occurrence_time": null,
+      "collection_time": "2026-11-24T00:20:06-05:00",
+      "evidence_horizon_time": "2026-11-24T00:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED_PENDING_DEDUP"
+    },
+    {
+      "publisher": "US Treasury",
+      "url": "https://home.treasury.gov/news/press-releases/sb0698",
+      "topic": "FinCEN identifies 14.7 billion USD potentially linked activity Jan 2025–Aug 2026; not confirmed illicit proceeds",
+      "publication_time": "2026-11-23",
+      "occurrence_time": null,
+      "collection_time": "2026-11-24T00:20:06-05:00",
+      "evidence_horizon_time": "2026-11-24T00:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED_PENDING_DEDUP"
+    },
+    {
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/c2cb6de3515f887a5786c1147e918489",
+      "topic": "Qatar mediation acknowledgment; exact publication clock and prior drawer match unresolved",
+      "publication_time": "2026-11-23",
+      "occurrence_time": null,
+      "collection_time": "2026-11-24T00:20:06-05:00",
+      "evidence_horizon_time": "2026-11-24T00:00:00-05:00",
+      "map_eligibility": "nonspatial",
+      "promotion": "UNPROMOTED_PENDING_DEDUP"
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "topic": "November 20 sanctions",
+      "decision": "UPDATE",
+      "reason": "November 23 Treasury releases describe distinct action; exact clock and canonical match pending"
+    },
+    {
+      "topic": "Oil market",
+      "decision": "UPDATE",
+      "reason": "New settlement snapshot; canonical match pending"
+    },
+    {
+      "topic": "Iran blockade statements",
+      "decision": "NO MATERIAL CHANGE",
+      "reason": "Reuters morning statement already in preceding locker; no new qualified evidence in this review"
+    }
+  ],
+  "source_registry_probe": {
+    "status": "EXPECTED_CURRENT_PATH_NOT_FOUND",
+    "probe_gaps": [
+      "GitHub 404 for 20261124T0000ET automated registry; 86 endpoint availability unknown"
+    ],
+    "analytical_evidence_gaps": [
+      "Full primary review and canonical reconciliation not performed"
+    ]
+  },
+  "coverage_accounting": {
+    "status": "PARTIAL",
+    "reviewed": [
+      "Treasury primary releases",
+      "Reuters market report and timestamped syndication",
+      "AP diplomacy reporting",
+      "previous locker",
+      "validator source"
+    ],
+    "not_comprehensively_reviewed": [
+      "Iran leadership/security",
+      "US military and diplomacy",
+      "Israel",
+      "Saudi/GCC/Oman/Qatar/UAE/Kuwait/Bahrain",
+      "Iraq",
+      "Yemen",
+      "Lebanon",
+      "Gaza",
+      "Syria",
+      "Pakistan/Turkiye",
+      "China/Russia/EU",
+      "UN/IAEA/IMO",
+      "maritime/aviation",
+      "AIS/Kpler/LSEG",
+      "human impact",
+      "claims and independent OSINT",
+      "canonical drawers"
+    ]
+  },
+  "unresolved_questions": [
+    "Exact Treasury and AP publication clocks",
+    "Canonical deduplication",
+    "Historical backlog not independently recounted or recovered"
+  ],
+  "geospatial_handoff": {
+    "plot_ready": 0,
+    "notes": "Only nonspatial discoveries retained; no physical incident promoted"
+  },
+  "completion": {
+    "status": "INCOMPLETE_PARTIAL_UNVALIDATED",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "full_theater_coverage_complete": false,
+    "prior_drawer_reconciliation_complete": false,
+    "validator_recognized_completed_unconsumed_sweep": false,
+    "report": "Four unpromoted discoveries; full coverage and repository validation outstanding."
+  }
+}
