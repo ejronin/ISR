@@ -494,6 +494,17 @@
       "previous_lineage_sha256": "0015f51e19bf4e472fb910315f7b9ef682a8531ecf2a17328388b02f9e3229da",
       "sequence": 45,
       "sha256": "91466d0a7a5d49d8ff014cdccd98bb472b7aea7e1b7afbe3cbfc622b647e285e"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+      "known_at": "2026-11-24T01:46:34.973Z",
+      "lineage_sha256": "f73ad2e318994488c8fcf26fdf6dd4fa8b25329647ea8a0d0a6d329c3ea0e05d",
+      "packet_id": "UPD-20261123-SHADOW-BANKING-POWER-HUMANITARIAN-MARITIME",
+      "path": "data/canonical-updates/UPD-20261123-SHADOW-BANKING-POWER-HUMANITARIAN-MARITIME.json",
+      "previous_lineage_sha256": "bf7b35eec8ed0f3e7020ad103e71c23ffc372b873a8e3f524063527fbf76cbf9",
+      "sequence": 46,
+      "sha256": "d4f9d72738994b3b0567dba078bbc704e49691ad842c83aeeb77172c686511a7"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
