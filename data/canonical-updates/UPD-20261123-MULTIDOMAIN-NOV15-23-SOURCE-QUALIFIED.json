@@ -1,0 +1,295 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261123-MULTIDOMAIN-NOV15-23-SOURCE-QUALIFIED",
+  "known_at": "2026-11-24T01:21:37.346Z",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "Selective source-qualified November 15–23 recovery covering a Yemeni government redeployment, verified Saudi civilian building damage, Bapco refining recovery, UKMTO tanker incident reports, contested F-16 claim and CENTCOM denial, Bahrain civilian industrial fire, source-attributed Houthi Rabigh strike and Saudi interceptions, Gulf equity indices, and November23 oil futures settlements. Claims are not converted into confirmed damage, ship-specific losses or Lie Ledger verdicts. This is not a completed full-theater ROOK sweep and does not establish all ISR sections current.",
+  "sources": [
+    {
+      "source_id": "SRC-0DA931F071DE",
+      "outlet": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/world-news/yemen-government-forces-withdraw-from-area-near-babelmandeb-strait-houthis-in-control-5027740",
+      "published_date": "2026-11-15",
+      "source_role": "SECONDARY_REPORT_OF_YEMENI_GOVERNMENT_FORCES_WITHDRAWAL_WITH_ORIGINAL_SPEAKER_QUOTES"
+    },
+    {
+      "source_id": "SRC-985E42E652ED",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/houthi-missile-threat-towards-riyadh-causes-damage-saudi-led-coalition-says-2026-11-19/",
+      "published_date": "2026-11-19",
+      "source_role": "SAUDI_CIVIL_DEFENSE_MATERIAL_DAMAGE_CONFIRMED_THROUGH_WIRE_WITH_ATTRIBUTION_UNCERTAINTIES"
+    },
+    {
+      "source_id": "SRC-1323EA6F4AE9",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/business/energy/bahrains-bapco-refinery-reach-full-capacity-by-year-end-after-attacks-ceo-says-2026-11-18/",
+      "published_date": "2026-11-18",
+      "source_role": "BAPCO_REFINERY_UTILIZATION_AND_REPAIR_STATUS_DIRECT_CEO_SPEECH"
+    },
+    {
+      "source_id": "SRC-4477C8A58E64",
+      "outlet": "Reuters / UKMTO",
+      "url": "https://www.reuters.com/business/energy/tanker-hit-by-unknown-projectile-near-omans-khasab-ukmto-says-2026-11-21/",
+      "published_date": "2026-11-21",
+      "source_role": "UKMTO_CARRIED_INCIDENTS_UNKNOWN_HULL_OVERLAP_NO_ACTOR_VERIFIED"
+    },
+    {
+      "source_id": "SRC-F2CD7C57B543",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/business/aerospace-defense/us-denies-iranian-account-that-missile-damaged-f-16-over-gulf-2026-11-21/",
+      "published_date": "2026-11-21",
+      "source_role": "IRANIAN_STATE_CLAIM_VS_CENTCOM_DENIAL_NOT_VERIFIED_US_AIRCRAFT_LOSS"
+    },
+    {
+      "source_id": "SRC-A2AC407081AA",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-saudi-rabigh-oil-refinery-2026-11-22/",
+      "published_date": "2026-11-22",
+      "source_role": "HOUTHI_DIRECT_HIT_CLAIM_NOT_SAUDI_CONFIRMED_DAMAGE"
+    },
+    {
+      "source_id": "SRC-5202BCF5EC70",
+      "outlet": "Institute for the Study of War and Critical Threats Project",
+      "url": "https://understandingwar.org/research/middle-east/iran-update-november-22-2026/",
+      "published_date": "2026-11-22",
+      "source_role": "SECONDARY_REPORT_OF_SAUDI_CLAIMED_INTERCEPTIONS_AND_HOUTHI_TARGET_CLAIMS"
+    },
+    {
+      "source_id": "SRC-9241819E2D22",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-bourses-retreat-sporadic-attacks-continue-2026-11-22/",
+      "published_date": "2026-11-22",
+      "source_role": "REUTERS_GULF_MARKET_INDEX_SNAPSHOTS_AND_BAHRAIN_REPORTED_CIVILIAN_FIRE"
+    },
+    {
+      "source_id": "SRC-32A25411F418",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-prices-fall-amid-equity-selloff-though-iran-war-attacks-limit-losses-2026-11-23/",
+      "published_date": "2026-11-23",
+      "source_role": "REUTERS_NOV23_BRENT_AND_WTI_SETTLEMENT_WITH_LIBYA_PIPELINE_RESTART"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261115-YEMEN-DHUBAB-BAB-MANDEB-GOV-REDEPLOYMENT",
+      "event_date": "2026-11-15",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-0DA931F071DE"
+      ],
+      "strike_countable": false,
+      "summary": "Saudi-backed southern Yemeni forces announced a withdrawal from Dhubab Airport and areas near Bab el-Mandeb to strengthen Aden defenses. Reuters documented a reversal of the government's October coastal counteroffensive. Houthi control of coastal approaches does not establish internationally recognized authority over all Red Sea maritime traffic or a universally closed strait.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261118-BAHRAIN-BAPCO-REFINERY-OVER80PCT-RECOVERY",
+      "event_date": "2026-11-18",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "source_ids": [
+        "SRC-1323EA6F4AE9"
+      ],
+      "strike_countable": false,
+      "summary": "Bapco Energies chief executive Mark Thomas said the Bahrain refinery was operating at more than 80% of capacity after six direct wartime strikes and expected to reach design capacity by year-end. The operating level is executive-reported, not verification that all units are undamaged. This is civilian refining infrastructure, not a U.S. military-base status.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261119-RIYADH-PIF-TOWER-MATERIAL-DAMAGE",
+      "event_date": "2026-11-19",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-985E42E652ED"
+      ],
+      "strike_countable": false,
+      "summary": "Saudi civil defense reported damage to several floors of a tower in Riyadh's financial district and nearby buildings after a Houthi missile threat; Reuters identified PIF Tower from the official photograph and additional source reporting. No injuries reported. Do not infer the entire building was destroyed or that every contemporaneous Houthi target claim succeeded.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261121-HORMUZ-KHASAB-TANKER-PROJECTILE-REPORTS",
+      "event_date": "2026-11-21",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-4477C8A58E64"
+      ],
+      "strike_countable": false,
+      "summary": "UKMTO reported a tanker struck on its stern by an unidentified projectile 11 nautical miles north of Khasab and another report of a projectile strike on a tanker engine room 17 nautical miles east of Khasab. UKMTO reported no casualties. Vessel identities and whether these represent one or two unique hulls remain unresolved; Iran's separate naval-mine account is unverified and may overlap.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261121-IRAN-F16-CLAIM-CENTCOM-DENIAL",
+      "event_date": "2026-11-21",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "source_ids": [
+        "SRC-F2CD7C57B543"
+      ],
+      "strike_countable": false,
+      "summary": "Iranian state media alleged its air defenses damaged a U.S. F-16 on November 20 and forced an emergency landing. CENTCOM expressly denied that the aircraft was attacked and said all fighters were safe and accounted for. This is a contested claim record, not an independently confirmed U.S. aircraft loss or a formal Lie Ledger knowing-falsehood verdict.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261121-BAHRAIN-CIVILIAN-INDUSTRIAL-FIRE-REPORTED",
+      "event_date": "2026-11-21",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-9241819E2D22",
+        "SRC-32A25411F418"
+      ],
+      "strike_countable": false,
+      "summary": "Bahrain reported intercepting Iranian aerial attacks, with one incident causing a fire at a civilian industrial facility. The IRGC separately claimed strikes on U.S. military positions. Civilian damage does not establish damage or inoperability of U.S. Patriot radars, Fifth Fleet installations or other military facilities.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261122-HOUTHI-RABIGH-REFINERY-DIRECT-HIT-CLAIM",
+      "event_date": "2026-11-22",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-A2AC407081AA",
+        "SRC-5202BCF5EC70"
+      ],
+      "strike_countable": false,
+      "summary": "Houthis claimed a direct hit on Saudi Arabia's Petro Rabigh oil refinery on the Red Sea coast. Reuters reported no indication of damage and no immediate Saudi confirmation. This records a dated actor claim only: it is not a proven refinery strike, capacity outage, Saudi casualty or accepted destruction count.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261122-SAUDI-INTERCEPTION-CLAIMS",
+      "event_date": "2026-11-22",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-5202BCF5EC70",
+        "SRC-9241819E2D22"
+      ],
+      "strike_countable": false,
+      "summary": "Saudi-led forces reported intercepting a missile over western Saudi Arabia and separate Houthi drones over Riyadh and southern areas during November 21–22. The dated accounts are distinct from Houthi claims of direct refinery and radar hits; do not combine the reports into confirmed impacts or losses.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261122-GULF-STOCK-MARKET-DECLINES",
+      "event_date": "2026-11-22",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "source_ids": [
+        "SRC-9241819E2D22"
+      ],
+      "strike_countable": false,
+      "summary": "Reuters reported Sunday session declines of 2.0% in Saudi Arabia's TASI index, 1.6% in Qatar's QSI, 0.6% in Bahrain's BAX and 2.9% in Egypt's EGX30. These are separate national equity-index changes, not a common Gulf GDP or wartime damage figure.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    },
+    {
+      "event_id": "EVT-20261123-OIL-FUTURES-SETTLEMENT-AND-LIBYA-RESTART",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "source_ids": [
+        "SRC-32A25411F418"
+      ],
+      "strike_countable": false,
+      "summary": "Reuters reported Monday futures settlements of Brent $89.37/bbl and U.S. WTI $80.17/bbl, down 3.46% and 3.88%, respectively. The same report confirmed Libya's Sharara oil pipeline had restarted. Settlement movements do not individually quantify Iranian sanctions effects, Hormuz cargo losses or an attack's economic damage.",
+      "game_knowledge_time": "2026-11-24T01:21:37.346Z"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-BAHRAIN-BAPCO-REFINERY-UTILIZATION-20261118",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-BAHRAIN-BAPCO-REFINERY-UTILIZATION-20261118",
+        "date": "2026-11-18",
+        "knowledge_time": "2026-11-24T01:21:37.346Z",
+        "metric": "Bapco refinery operating capacity as percent of design (CEO-reported)",
+        "observed_state": "Bapco Energies CEO said the refinery was operating above 80% of its design capacity after six direct wartime strikes; estimated full capacity by end 2026. Reported capacity utilization is not proof of repair completion, total unit operability or an estimated volume loss.",
+        "source_ids": [
+          "SRC-1323EA6F4AE9"
+        ],
+        "status": "SOURCE_ATTRIBUTED_OBSERVATION_WITH_DEFINED_SCOPE",
+        "capacity_utilization_percent_lower_bound": 80,
+        "lower_bound_strict": true,
+        "recovery_target": "2026-12-31",
+        "prior_direct_strikes_reported": 6,
+        "civilian_refinery": true
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-EQUITY-INDICES-20261122",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-GULF-EQUITY-INDICES-20261122",
+        "date": "2026-11-22",
+        "knowledge_time": "2026-11-24T01:21:37.346Z",
+        "metric": "Reuters-reported local equity index daily percentage changes",
+        "observed_state": "Reuters November22 snapshots: Saudi TASI -2.0%, Qatar QSI -1.6%, Bahrain BAX -0.6%, Egypt EGX30 -2.9%. Treat each as a separate named equity benchmark on the same local market date. Different benchmarks do not constitute additive losses, GDP contraction or identical session-close times.",
+        "source_ids": [
+          "SRC-9241819E2D22"
+        ],
+        "status": "SOURCE_ATTRIBUTED_OBSERVATION_WITH_DEFINED_SCOPE",
+        "indices": [
+          {
+            "country": "Saudi Arabia",
+            "index": "TASI",
+            "daily_change_percent": -2
+          },
+          {
+            "country": "Qatar",
+            "index": "QSI",
+            "daily_change_percent": -1.6
+          },
+          {
+            "country": "Bahrain",
+            "index": "BAX",
+            "daily_change_percent": -0.6
+          },
+          {
+            "country": "Egypt",
+            "index": "EGX30",
+            "daily_change_percent": -2.9
+          }
+        ],
+        "market_date": "2026-11-22"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-NOV23-BRENT-WTI-FUTURES-SETTLEMENT",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-NOV23-BRENT-WTI-FUTURES-SETTLEMENT",
+        "date": "2026-11-23",
+        "knowledge_time": "2026-11-24T01:21:37.346Z",
+        "metric": "ICE Brent and NYMEX WTI futures settlement prices in USD per barrel",
+        "observed_state": "Reuters November23 reported Brent futures settled at $89.37/bbl (down $3.20 or 3.46%) and WTI $80.17/bbl (down $3.24 or 3.88%). Libya's Sharara pipeline restarted. Futures settlements are not regional physical spot prices, not a financial cost assigned to Iranian attacks and not a Hormuz shipping-flow datapoint.",
+        "source_ids": [
+          "SRC-32A25411F418"
+        ],
+        "status": "SOURCE_ATTRIBUTED_OBSERVATION_WITH_DEFINED_SCOPE",
+        "brent_futures_settlement_usd_bbl": 89.37,
+        "wti_futures_settlement_usd_bbl": 80.17,
+        "brent_session_change_percent": -3.46,
+        "wti_session_change_percent": -3.88,
+        "futures_settlement_date": "2026-11-23",
+        "contract_month": "SOURCE_NOT_REPORTED_IN_ARTICLE"
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "scope": "SELECTIVE_DOCUMENTARY_ACCEPTANCE_NO_FULL_THEATER_SWEEP_CERTIFICATION",
+    "locker_artifacts": [
+      "data/evidence-integration/rook-source-review-addendum-20261122-cross-domain.noncanonical.json",
+      "data/evidence-integration/rook-source-review-addendum-20261123-maritime-energy-diplomacy.noncanonical.json"
+    ],
+    "notes": "Evidence accepted here is source-bounded and event-specific; November12–23 full ROOK window coverage and non-reported domains remain open issue #296. Unique ship identities, map exact coordinates, facility BDA and knowing-falsehood are not established by these records.",
+    "issue_refs": [
+      "https://github.com/ejronin/ISR/issues/296",
+      "https://github.com/ejronin/ISR/issues/320"
+    ]
+  }
+}
