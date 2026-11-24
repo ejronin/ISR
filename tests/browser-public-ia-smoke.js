@@ -180,7 +180,9 @@ async function loadDirectRoute(cdp, route) {
         assert(cards.ids.length >= 1 && cards.ids.length <= 3, `accepted records missing on ${route.key}`);
         assert.equal(new Set(cards.ids).size, cards.ids.length, `duplicate public accepted record on ${route.key}`);
         assert(cards.evidenceDrawerCount > 0, `source evidence missing from ${route.key}`);
-        assert(cards.text.includes('Overall evidence coverage'), `unqualified freshness implication on ${route.key}`);
+        assert(cards.text.includes('last full evidence-review cutoff is') &&
+          cards.text.includes('gaps in the intervening dates are checked'),
+          `last complete review date and current coverage gaps missing on ${route.key}`);
         assert(!cards.text.includes('CORE_WARTIME_EVENT'), `machine event type leaked into ${route.key}`);
       }
       if (route.key === 'hormuz.economy') {

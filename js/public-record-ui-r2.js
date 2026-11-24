@@ -67,10 +67,10 @@
   function ensureClaimsDoctrine(){
     const panel=$('#claims');if(!panel||$('.pr2-claims-doctrine',panel))return;
     const sec=E('section','pr2-claims-doctrine');
-    sec.append(E('div','pr2-eyebrow','HOW TO READ CLAIMS'),E('h2','','Dispute and evidence are separate questions'),E('p','','The Atlas grades propositions, not narratives. “Uncontested” means no identified party or source dispute was located; it is not proof. A proposition can be contested and still be supported or verified by independent evidence.'));
+    sec.append(E('div','pr2-eyebrow','HOW TO READ CLAIMS'),E('h2','','How claims are checked'),E('p','','Each claim is checked against the available evidence. “Uncontested” describes whether a challenge was found in the reviewed sources. The evidence rating shows how well the facts support the claim. A disputed claim can still be supported or verified.'));
     const grid=E('div','pr2-claim-semantics-grid');
-    const posture=E('div');posture.append(E('strong','','Dispute posture'),E('span','','Uncontested · Contested'));
-    const support=E('div');support.append(E('strong','','Evidence support'),E('span','','Claim only · Supported · Verified · Unresolved'));
+    const posture=E('div');posture.append(E('strong','','Was the claim disputed?'),E('span','','Uncontested · Contested'));
+    const support=E('div');support.append(E('strong','','What does the evidence show?'),E('span','','Claim only · Supported · Verified · Unresolved'));
     grid.append(posture,support);sec.append(grid);panel.prepend(sec);
   }
 
@@ -79,7 +79,7 @@
     const method=$$('.v133-method').find(node=>/Public evidence vocabulary/i.test(node.textContent||''));
     if(method&&method.dataset.evidenceDoctrineR2!=='1'){
       method.replaceChildren();
-      method.append(E('b','','Public evidence vocabulary: '),document.createTextNode('Dispute posture and evidentiary support are separate. Uncontested means no identified dispute was located; it is not proof. Evidence support is Claim only, Supported, Verified, or Unresolved. False, disproven, and superseded remain adjudication outcomes.'));
+      method.append(E('b','','Public evidence vocabulary: '),document.createTextNode('A claim's dispute status and evidence rating answer different questions. “Uncontested” means no challenge was found in the reviewed sources. Check the separate evidence rating for factual support: Claim only, Supported, Verified, or Unresolved. False, disproven, and superseded describe the finding.'));
       method.dataset.evidenceDoctrineR2='1';
     }
     $$('.v133-badge').forEach(node=>{
@@ -95,7 +95,7 @@
         node.textContent=presentation.formatLabel(raw);
         node.title='Evidence support: unresolved';
       }else if(/^UNCONTESTED$/i.test(raw)){
-        node.title='Dispute posture: uncontested · not a verification finding';
+        node.title='No dispute found in the reviewed sources';
       }else if(/^CONTESTED$/i.test(raw)){
         node.title='Dispute posture: contested';
       }
@@ -115,9 +115,9 @@
 
   function tuneMethodLanguage(){
     const panel=$('#intro');if(!panel)return;
-    $$('.method-card h3',panel).forEach(h=>{const t=(h.textContent||'').trim();if(t==='Evidence doctrine')setText(h,'How evidence is treated');if(t==='Source doctrine')setText(h,'How sources are used');if(t==='Geographic precision')setText(h,'How precise the map is');if(t==='Damage vs operational effect')setText(h,'Damage is not the same as shutdown');});
+    $$('.method-card h3',panel).forEach(h=>{const t=(h.textContent||'').trim();if(t==='Evidence doctrine')setText(h,'How evidence is treated');if(t==='Source doctrine')setText(h,'How sources are used');if(t==='Geographic precision')setText(h,'How precise the map is');if(t==='Damage vs operational effect')setText(h,'Damage and operating status');});
     const evidenceCard=$$('.method-card',panel).find(card=>/How evidence is treated|Evidence doctrine/i.test($('h3',card)?.textContent||''));
-    if(evidenceCard&&!$('.pr2-evidence-doctrine',evidenceCard)){const p=E('p','pr2-evidence-doctrine','Dispute posture and evidentiary support are tracked separately. Uncontested means no identified dispute was located; it does not mean verified. Evidence support is shown as Claim only, Supported, Verified, or Unresolved. False, disproven, and superseded remain adjudication outcomes rather than evidence-strength labels.');evidenceCard.append(p);}
+    if(evidenceCard&&!$('.pr2-evidence-doctrine',evidenceCard)){const p=E('p','pr2-evidence-doctrine','An uncontested claim is one the reviewed sources did not challenge. Its evidence rating is shown separately: Claim only, Supported, Verified, or Unresolved. False, disproven, and superseded describe the finding.');evidenceCard.append(p);}
   }
 
   function tuneLayerControl(){const reset=$('.layer-control .layer-reset');if(reset)setText(reset,"Reset to this view's defaults");}

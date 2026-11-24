@@ -187,16 +187,16 @@
     const cutoff = txt(context.model?.release?.current_osint_cutoff_display ||
       context.model?.release?.current_osint_cutoff || '');
     const lead = cutoff
-      ? 'These individual reports are accepted with their stated sources and qualifications. An attributed strike claim is not proof of impact or damage. Overall evidence coverage is through ' +
-        cutoff + '; newer accepted items do not mean every intervening report has been reviewed.'
-      : 'These individual reports are accepted with their stated qualifications. They do not imply complete coverage of all newer events.';
-    const panel = section(article, 'Recent accepted evidence', lead);
+      ? 'Each report below links to the sources reviewed. The last full evidence-review cutoff is ' +
+        cutoff + '. Newer reports are being added individually while gaps in the intervening dates are checked. Reported attacks and confirmed damage are identified separately.'
+      : 'Each report below links to reviewed sources. Other recent developments still await review. Reported attacks and confirmed damage are identified separately.';
+    const panel = section(article, 'Recent documented developments', lead);
     panel.dataset.recentAcceptedEvidence = 'source-linked';
     panel.dataset.acceptedRoute = routeKey;
     const grid = add(panel, 'div', 'orientation-grid');
     for (const item of selected) {
       const key = acceptedRecordId(item);
-      const heading = txt(item.metric || item.title ||
+      const heading = base.publicNarrative(item.metric || item.title ||
         (/F16|AIRCRAFT/.test(key) ? 'Aircraft claim and response' :
         /RABIGH/.test(key) ? 'Saudi refinery claim' :
         /YEMEN|BAB-MANDEB/.test(key) ? 'Yemen coastal developments' :
@@ -206,8 +206,8 @@
         /OIL|BRENT|WTI/.test(key) ? 'Oil-market observation' :
         /SAUDI|HOUTHI|INTERCEPT/.test(key) ? 'Regional military report' :
         'Documented recent development'));
-      const body = txt(item.observed_state || item.summary || item.event?.summary || item.timeline?.summary);
-      const content = card(grid, heading, body, acceptedRecordDate(item) + ' · ACCEPTED RECORD');
+      const body = base.publicNarrative(item.observed_state || item.summary || item.event?.summary || item.timeline?.summary);
+      const content = card(grid, heading, body, acceptedRecordDate(item) + ' · Source-linked report');
       content.dataset.acceptedEvidenceId = acceptedRecordId(item);
       evidence(content, context, item, 'Sources');
     }
