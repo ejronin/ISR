@@ -1,0 +1,195 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261123-IAEA-ARAQCHI-YEMEN-IRAQ-LEVANT-SELECTIVE",
+  "known_at": "2026-11-24T01:44:58.765Z",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "Selective source-qualified November19–23 diplomatic, nuclear-inspections, military and neighboring-theater backfill: IAEA access impasse, U.S. and Iran negotiating positions, Saudi-reported Hodeidah operation and Jazan interceptions, Houthi ports/airspace threats, Israel-reported Beqaa Hezbollah target strike, Iraqi government–militia compromise, and Houthi-attributed civilian casualties in Yemen. No independent strike-result, casualty total, nuclear-material status, port closure or final agreement is invented. This is not a complete ROOK 12-hour theater sweep.",
+  "sources": [
+    {
+      "source_id": "SRC-FA96933E948A",
+      "outlet": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/world-news/west-presses-iran-at-iaea-to-let-inspections-resume-at-bombed-nuclear-sites-5038794",
+      "published_date": "2026-11-19",
+      "source_role": "REUTERS_WESTERN_IAEA_JOINT_STATEMENT_AND_IRANIAN_SAFEGUARDS_RESPONSE"
+    },
+    {
+      "source_id": "SRC-57DBABB36C60",
+      "outlet": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/world-news/araqchi-says-iran-wants-diplomacy-to-end-war-trump-says-terms-unacceptable-5042853",
+      "published_date": "2026-11-20",
+      "source_role": "REUTERS_QUOTED_ARAQCHI_IRAN_NEWS_AND_TRUMP_PUBLIC_NEGOTIATION_POSITIONS"
+    },
+    {
+      "source_id": "SRC-66397505CF6C",
+      "outlet": "Reuters via Investing.com",
+      "url": "https://www.investing.com/news/world-news/saudiled-forces-strike-yemen-port-as-houthis-warn-airlines-off-the-kingdom-5042275",
+      "published_date": "2026-11-20",
+      "source_role": "REUTERS_SAUDI_AND_HOUTHI_ATTRIBUTED_CLAIMS_HODEIDAH_JAZAN_SHUQAIQ"
+    },
+    {
+      "source_id": "SRC-736FD6958ABB",
+      "outlet": "Associated Press",
+      "url": "https://apnews.com/article/saudi-yemen-war-iran-november-19-2026-e72472c557057943cab32010666b29bf",
+      "published_date": "2026-11-19",
+      "source_role": "AP_QUOTED_ISRAELI_DEFENSE_STATEMENT_IRAQ_GOVERNMENT_COMPROMISE_AND_UNIFIL"
+    },
+    {
+      "source_id": "SRC-1B88F66FADD7",
+      "outlet": "Associated Press",
+      "url": "https://apnews.com/article/mideast-iran-gaza-israel-houthis-libya-november-23-2026-c2cb6de3515f887a5786c1147e918489",
+      "published_date": "2026-11-23",
+      "source_role": "AP_ATTRIBUTED_HOUTHI_HEALTH_MINISTRY_CASUALTY_ASSERTIONS_AND_QATARI_DIPLOMACY"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261119-IAEA-IRAN-ACCESS-WESTERN-PRESSURE",
+      "event_date": "2026-11-19",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "source_ids": [
+        "SRC-FA96933E948A"
+      ],
+      "strike_countable": false,
+      "summary": "At the IAEA Board of Governors, the United States, Britain, France and Germany jointly pressed Iran to resume inspections at nuclear sites struck in 2025. IAEA reporting said inspections during the prior quarter were limited to the undamaged Bushehr plant. Iran argued that security of information and possible follow-up attacks prevented restored access. The previously reported enriched-uranium stockpile remains unaccounted for by inspectors; its present physical location, amount and weaponization are not established.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    },
+    {
+      "event_id": "EVT-20261120-ARAQCHI-TRUMP-NEGOTIATING-POSITIONS",
+      "event_date": "2026-11-20",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "source_ids": [
+        "SRC-57DBABB36C60"
+      ],
+      "strike_countable": false,
+      "summary": "Foreign Minister Abbas Araqchi said Iran sought a negotiated end to war, security guarantees and retention of highly enriched uranium in Iran, while the U.S. president said Iran wanted terms unacceptable to him. Reuters reported mediator exchanges and a recent Qatari-Iranian contact. Neither position establishes a signed new agreement, sanctions relief, nuclear concession or reopening of Hormuz.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    },
+    {
+      "event_id": "EVT-20261120-SAUDI-COALITION-HODEIDAH-PORT-STRIKE",
+      "event_date": "2026-11-20",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-66397505CF6C"
+      ],
+      "strike_countable": false,
+      "summary": "The Saudi-led coalition said it struck military/smuggling-related capabilities at Yemen's Red Sea port of Hodeidah on November 20. The coalition claimed destruction of specified capabilities; Yemen's information minister said the port remained fully operational. The existence of a reported coalition operation does not independently verify the coalition's battle-damage claim, a full port shutdown or the extent of equipment destroyed.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    },
+    {
+      "event_id": "EVT-20261120-HOUTHI-JAZAN-PORTS-AIRSPACE-THREATS",
+      "event_date": "2026-11-20",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-66397505CF6C"
+      ],
+      "strike_countable": false,
+      "summary": "Houthi military spokesperson Yahya Saree warned airlines away from Saudi airspace and urged workers and ships to evacuate Saudi Red Sea ports, threatening strikes. Saudi-led forces said they intercepted two Houthi ballistic missiles aimed toward Jazan while Houthi forces claimed strikes on Shuqaiq power infrastructure and a Jazan port. This is a source-attributed exchange of threats, intercept reports and target claims, not proof any claimed power-station or port impact succeeded.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    },
+    {
+      "event_id": "EVT-20261119-ISRAEL-HEZBOLLAH-BEQAA-REBUILD-CLAIM",
+      "event_date": "2026-11-19",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-736FD6958ABB"
+      ],
+      "strike_countable": false,
+      "summary": "Israel's military said it struck entrances to a site in Lebanon's Beqaa region that it described as a Hezbollah missile-production and storage reconstruction effort. Associated Press carried the Israeli statement; independently verified infrastructure destruction and casualties were not established by the report. Record this as reported Israeli military action with disputed target purpose, not confirmed elimination of a Hezbollah facility.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    },
+    {
+      "event_id": "EVT-20261119-IRAQ-JURF-SAKHAR-MILITIA-GOVERNMENT-COMPROMISE",
+      "event_date": "2026-11-19",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "source_ids": [
+        "SRC-736FD6958ABB"
+      ],
+      "strike_countable": false,
+      "summary": "Iraq's prime minister's office announced a compromise with Kataib Hezbollah under which government security units, including Popular Mobilization Forces personnel, would establish a command headquarters at Jurf al-Sakhar. The deal followed accusations of oil smuggling. It does not establish disarmament, complete militia withdrawal, all Iranian influence ended, or a verified reduction in Iraqi oil-smuggling volumes.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    },
+    {
+      "event_id": "EVT-20261123-YEMEN-HODEIDAH-LAHJ-HOUTHI-CASUALTY-ALLEGATIONS",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "source_ids": [
+        "SRC-1B88F66FADD7"
+      ],
+      "strike_countable": false,
+      "summary": "Houthi-run health authorities alleged that a strike in Hodeidah province killed 11 people and wounded 19, and that seven additional strikes in Lahj caused at least 25 deaths or injuries combined. The authorities said telecommunications and civilian vehicles were affected. Associated Press reported their allegations; the attacker, civilian status, exact distinct strike count and casualty totals remain unverified independently.",
+      "game_knowledge_time": "2026-11-24T01:44:58.765Z"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IAEA-IRAN-SAFEGUARDS-20261119",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IAEA-IRAN-SAFEGUARDS-20261119",
+        "date": "2026-11-19",
+        "knowledge_time": "2026-11-24T01:44:58.765Z",
+        "metric": "IAEA access to damaged Iranian nuclear sites and continuity of knowledge",
+        "status": "ATTRIBUTED_CURRENT_DIPLOMATIC_POSITION_NOT_SETTLED_RESULT",
+        "source_ids": [
+          "SRC-FA96933E948A"
+        ],
+        "observed_state": "Western IAEA Board members asked Iran to restore access to sites attacked in 2025. Tehran voiced information-security concerns. IAEA indicated limited access only to undamaged Bushehr in the previous quarter. Whether safeguarded uranium is intact or relocated is unknown; do not infer its military use, exact mass or nonexistence.",
+        "subject": "IAEA nuclear safeguards access",
+        "outcome": "INSPECTIONS_AT_AFFECTED_SITES_NOT_RESTORED_AS_REPORTED"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-US-ARAQCHI-TRUMP-TALKS-20261120",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAN-US-ARAQCHI-TRUMP-TALKS-20261120",
+        "date": "2026-11-20",
+        "knowledge_time": "2026-11-24T01:44:58.765Z",
+        "metric": "U.S. and Iranian negotiating positions on ending war",
+        "status": "ATTRIBUTED_CURRENT_DIPLOMATIC_POSITION_NOT_SETTLED_RESULT",
+        "source_ids": [
+          "SRC-57DBABB36C60"
+        ],
+        "observed_state": "Iran's Araqchi said Tehran wants an agreement preventing another war and favors keeping highly enriched uranium in Iran; President Trump said Iran's proposed terms were not acceptable to him. Reuters confirmed that messages were exchanged through mediators, not a concluded deal or a new nuclear arrangement.",
+        "subject": "Iran-U.S. mediated talks",
+        "outcome": "NO_NEW_AGREEMENT_CONFIRMED"
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAQ-JURF-SAKHAR-COMMAND-COMPROMISE-20261119",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAQ-JURF-SAKHAR-COMMAND-COMPROMISE-20261119",
+        "date": "2026-11-19",
+        "knowledge_time": "2026-11-24T01:44:58.765Z",
+        "metric": "Iraq government and Kataib Hezbollah command presence compromise",
+        "status": "ATTRIBUTED_CURRENT_DIPLOMATIC_POSITION_NOT_SETTLED_RESULT",
+        "source_ids": [
+          "SRC-736FD6958ABB"
+        ],
+        "observed_state": "Iraqi authorities announced a security-command compromise at Jurf al-Sakhar that includes government forces and Popular Mobilization Forces. This neither proves Kataib Hezbollah vacated the district nor that all allegations of oil-smuggling were established.",
+        "subject": "Iraq security and militia relations",
+        "outcome": "COMPROMISE_ANNOUNCED_IMPLEMENTATION_UNVERIFIED"
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "scope": "SELECTIVE_VERIFIED_SOURCE_REPORTING_WITH_ATTRIBUTION_NOT_COMPLETED_FULL_THEATER_SWEEP",
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261123T1200ET.json"
+    ],
+    "notes": "Reuters/AP November19–23 sources cross-checked directly in current review. Attribute all government or militant assertions; do not infer casualty verification, battle damage, permanent site closure or nuclear conclusion. Prior 45 Gate3 entries immutable; overall cutoff stays November12 until missing full theater windows reconciled. Claims Forensics separate from source acceptance."
+  }
+}
