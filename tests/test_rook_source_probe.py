@@ -117,14 +117,16 @@ class RookSourceProbeTests(unittest.TestCase):
                 "http://example.com/redirected",
             )
 
-    def test_workflow_never_pushes_directly_to_protected_main(self):
+    def test_workflow_uses_durable_branch_and_authorized_app_review(self):
         workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/rook-standing-source-probe.yml").read_text(encoding="utf-8")
-        self.assertIn("gh pr create", workflow)
-        self.assertIn('gh workflow run validate.yml --ref "$branch"', workflow)
-        self.assertIn("pull-requests: write", workflow)
-        self.assertIn("actions: write", workflow)
+        self.assertNotIn("gh pr create", workflow)
+        self.assertNotIn("gh workflow run validate.yml", workflow)
+        self.assertNotIn("pull-requests: write", workflow)
+        self.assertNotIn("actions: write", workflow)
         self.assertNotIn("git push origin HEAD:main", workflow)
         self.assertIn('git push origin "HEAD:refs/heads/$branch"', workflow)
+        self.assertIn("gh issue comment 296", workflow)
+        self.assertIn("GitHub app", workflow)
         self.assertIn("actions/upload-artifact@", workflow)
         self.assertIn("automated" + chr(92) + ".json$", workflow)
         self.assertNotIn("automated" + chr(92) * 2 + ".json$", workflow)
