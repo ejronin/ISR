@@ -1,0 +1,284 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261123-SHADOW-BANKING-POWER-HUMANITARIAN-MARITIME",
+  "known_at": "2026-11-24T01:46:34.973Z",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "Selective November 17–23 backfill of new November23 OFAC shadow-banking sanctions and FinCEN historical potential financial-activity analysis, Iranian November22 power rationing, source-attributed Houthi allegations of Hodeidah telecom strike with conflicting casualty reports, JMIC multi-day tanker incident snapshot and missing Jordanian sailor, Etihad route cancellations through Nov30, attributed Gaza humanitarian casualties, and November23 U.S.–Qatar mediated contacts. Does not certify full theater-wide 12-hour coverage, new known lies or physical strike losses.",
+  "sources": [
+    {
+      "source_id": "SRC-DFA9361A35D3",
+      "outlet": "U.S. Department of the Treasury",
+      "url": "https://home.treasury.gov/news/press-releases/sb0699",
+      "published_date": "2026-11-23",
+      "source_role": "PRIMARY_OFFICIAL_OFAC_SANCTIONS_ACTION"
+    },
+    {
+      "source_id": "SRC-AF17DD6F5F69",
+      "outlet": "U.S. Department of the Treasury / FinCEN",
+      "url": "https://home.treasury.gov/news/press-releases/sb0698",
+      "published_date": "2026-11-23",
+      "source_role": "PRIMARY_FINANCIAL_TREND_ANALYSIS_POTENTIAL_ACTIVITY_NOT_CONFIRMED_ILLEGAL_TRANSFERS"
+    },
+    {
+      "source_id": "SRC-79C5E33282EF",
+      "outlet": "Reuters",
+      "url": "https://www.reuters.com/business/finance/us-imposes-sanctions-dozens-linked-irans-shadow-banking-networks-2026-11-23/",
+      "published_date": "2026-11-23",
+      "source_role": "INDEPENDENT_MEDIA_CONFIRMATION_OF_TREASURY_ACTION"
+    },
+    {
+      "source_id": "SRC-C9F2E60ADF04",
+      "outlet": "The National",
+      "url": "https://www.thenationalnews.com/news/gulf/2026/11/23/iran-imposes-power-cuts-as-energy-crisis-worsens/",
+      "published_date": "2026-11-23",
+      "source_role": "DIRECT_TAVANIR_EXECUTIVE_QUOTED_POWER_RATIONING"
+    },
+    {
+      "source_id": "SRC-1B88F66FADD7",
+      "outlet": "Associated Press",
+      "url": "https://apnews.com/article/mideast-iran-gaza-israel-houthis-libya-november-23-2026-c2cb6de3515f887a5786c1147e918489",
+      "published_date": "2026-11-23",
+      "source_role": "DIRECT_ATTRIBUTED_AP_CROSS_THEATER_REPORTING_AND_TREASURY_CONTEXT"
+    },
+    {
+      "source_id": "SRC-2E1B156B58D3",
+      "outlet": "Gulf News / JMIC",
+      "url": "https://gulfnews.com/world/mena/uae-oman-continue-search-for-missing-jordanian-sailor-after-hormuz-tanker-attack-2-1.500757383",
+      "published_date": "2026-11-23",
+      "source_role": "COMMERCIAL_MARITIME_SECURITY_REPORTS_JMIC_AND_JORDAN_MFA_CARRIED_BY_NEWS"
+    },
+    {
+      "source_id": "SRC-46A5935B976B",
+      "outlet": "Gulf News / Etihad",
+      "url": "https://gulfnews.com/business/aviation/etihad-extends-abu-dhabi-flights-to-riyadh-dammam-until-november-30-1.500751234",
+      "published_date": "2026-11-17",
+      "source_role": "ETIHAD_ORIGINAL_AIRLINE_SCHEDULE_CANCELLATION_SECONDARY_CARRIER"
+    },
+    {
+      "source_id": "SRC-56E80B0D712B",
+      "outlet": "AFP via L'Orient",
+      "url": "https://today.lorientlejour.com/article/1555305/houthi-media-says-four-dead-in-saudi-attack.html",
+      "published_date": "2026-11-23",
+      "source_role": "INITIAL_HOUTHI_ATTRIBUTED_CASUALTY_COUNT_NOT_INDEPENDENT"
+    },
+    {
+      "source_id": "SRC-0E004E7BC85F",
+      "outlet": "CNA",
+      "url": "https://www.channelnewsasia.com/world/yemen-houthis-saudi-strikes-kill-seventeen-6575956",
+      "published_date": "2026-11-23",
+      "source_role": "LATER_HOUTHI_CLAIMED_CASUALTY_TOLL_CHANGES_DO_NOT_ADD"
+    },
+    {
+      "source_id": "SRC-8AE48B0C3132",
+      "outlet": "Reuters Connect",
+      "url": "https://www.reutersconnect.com/item/iran-iran-to-ration-electricity-as-war-ravages-power-supply-system/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX09XU0hCQzEyMDkxOTc",
+      "published_date": "2026-11-23",
+      "source_role": "SECONDARY_REPORT_OF_IRANIAN_STATE_ELECTRICITY_POLICY"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261123-OFAC-IRAN-SHADOW-BANKING-DESIGNATIONS",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "summary": "The U.S. Treasury announced over two dozen new designations of Iranian-linked exchange houses, front companies and key personnel under Operation Economic Outcast, including counterparties in the UAE, Türkiye and Hong Kong. Designation is confirmed legal action. Alleged bank relationships and financial harms remain Treasury-attributed, and no blocked/recovered dollar amount is established.",
+      "source_ids": [
+        "SRC-DFA9361A35D3",
+        "SRC-79C5E33282EF"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261123-FINCEN-IRAN-147B-POTENTIAL-FINANCIAL-ACTIVITY",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "summary": "FinCEN's November 23 financial trend analysis identified approximately $14.7 billion of financial activity flagged in Bank Secrecy Act reports for January 2025 through August 2026 as potentially associated with Iranian shadow banking. It is a historical suspected-activity *analysis*, not $14.7 billion newly seized, frozen, proven illicit or lost from sanctions on November 23.",
+      "source_ids": [
+        "SRC-AF17DD6F5F69",
+        "SRC-79C5E33282EF"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261122-IRAN-TAVANIR-ROLLING-POWER-CUTS",
+      "event_date": "2026-11-22",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "summary": "Iran's state electricity company Tavanir said scheduled electricity distribution restrictions began November 22 because fuel supply constraints affected power plants. Chief executive Mohammad Allahdad described cuts potentially as long as two hours every other day, or daily during colder conditions. These are policy/consumer outage reports, not independently calculated electricity production loss or nationwide simultaneous blackout.",
+      "source_ids": [
+        "SRC-C9F2E60ADF04",
+        "SRC-8AE48B0C3132"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261123-HODEIDAH-HOUTHI-TELECOM-STRIKE-CLAIM",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "CORE_WARTIME_EVENT",
+      "summary": "Houthi-run Yemeni authorities alleged Saudi-backed forces struck telecommunications facilities and a nearby residential building in Hodeidah province. AP carried an 11-killed/19-wounded claim while other Houthi-connected updates reported materially different totals, starting 4/18 and later 17/11. AP could not independently verify the claims, and Saudi authorities had not commented. Do not count any one toll as independently established or sum variant reports.",
+      "source_ids": [
+        "SRC-1B88F66FADD7",
+        "SRC-56E80B0D712B",
+        "SRC-0E004E7BC85F"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261123-JMIC-SEVEN-HORMUZ-TANKER-INCIDENTS-SNAPSHOT",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "summary": "A November 23 Gulf News report citing the Joint Maritime Information Centre said seven tankers had been hit in the Hormuz vicinity since November 16, including three offshore Oman November 20–21, and said Iranian naval-mine accounts remain unconfirmed. This is a provider-defined multiday cumulative incident snapshot, NOT seven extra new November 23 incidents or independently deduplicated hull IDs. UAE and Oman were still searching for a Jordanian crew member reported missing from an ADNOC tanker after a separate attack.",
+      "source_ids": [
+        "SRC-2E1B156B58D3"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261117-ETIHAD-RIYADH-DAMMAM-FLIGHT-CANCELLATIONS-EXTENDED",
+      "event_date": "2026-11-17",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "summary": "Etihad Airways said all passenger and cargo flights from Abu Dhabi to Riyadh and Dammam would remain cancelled through November 30 amid regional disruption. Other Abu Dhabi-to-Saudi routes were not included in that blanket cancellation. This is an airline schedule decision, not closure of all Saudi airports or the entire national airspace.",
+      "source_ids": [
+        "SRC-46A5935B976B"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261123-GAZA-UNRWA-WORKER-AND-VEHICLE-CASUALTIES",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "summary": "UNRWA said a male staff member was killed and three UNRWA staff were wounded in Jabalia near a water well on November 23. Shifa Hospital said two more people were killed in a separate vehicle strike west of Gaza City. Israel's military said it had targeted a Hamas Nukhba member but provided no supporting evidence in AP's contemporaneous reporting. The source-attributed casualty statements remain distinct from verified target identity.",
+      "source_ids": [
+        "SRC-1B88F66FADD7"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    },
+    {
+      "event_id": "EVT-20261123-RUBIO-QATAR-PM-MEDIATION-DIALOGUE",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "summary": "During a U.S.-Qatar strategic dialogue on November 23, U.S. Secretary of State Marco Rubio met Qatar's prime minister and thanked him for mediation concerning Iran and renewed negotiations. The meeting does not establish a signed U.S.-Iran settlement or lifting of the blockade.",
+      "source_ids": [
+        "SRC-1B88F66FADD7"
+      ],
+      "strike_countable": false,
+      "game_knowledge_time": "2026-11-24T01:46:34.973Z"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OFAC-SHADOW-BANKING-NEW-DESIGNATIONS-20261123",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-OFAC-SHADOW-BANKING-NEW-DESIGNATIONS-20261123",
+        "date": "2026-11-23",
+        "knowledge_time": "2026-11-24T01:46:34.973Z",
+        "metric": "OFAC November 23 Iran-related shadow-banking designations",
+        "observed_state": "U.S. Treasury officially designated over two dozen exchange houses, front companies and personnel using E.O. 13902, 13224 and 13871. This is a legal sanctions action; no value of seized assets or induced financial damage is established by the designations alone.",
+        "source_ids": [
+          "SRC-DFA9361A35D3",
+          "SRC-79C5E33282EF"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "count_qualification": "OVER_TWO_DOZEN_OFFICIAL_PERSONS_AND_ENTITIES",
+        "legal_action": true,
+        "impact_dollars": null
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-FINCEN-POTENTIAL-SHADOW-BANKING-ACTIVITY-20261123",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-FINCEN-POTENTIAL-SHADOW-BANKING-ACTIVITY-20261123",
+        "date": "2026-11-23",
+        "knowledge_time": "2026-11-24T01:46:34.973Z",
+        "metric": "FinCEN potentially Iran-linked activity, USD historical January 2025–August 2026",
+        "observed_state": "FinCEN's published Bank Secrecy Act financial-trend analysis flagged approximately $14.7 billion in historical activity potentially related to Iranian shadow banking. It includes suspicious activity reporting, not verified illegal funds, seized balances or realized economic losses. No new November23 transaction total inferred.",
+        "source_ids": [
+          "SRC-AF17DD6F5F69"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "historical_period_start": "2025-01-01",
+        "historical_period_end": "2026-08-31",
+        "potential_activity_usd_estimate": 14700000000,
+        "measurement_scope": "POTENTIALLY_LINKED_BSA_REPORTED_ACTIVITY_NOT_CONFIRMED_ILLEGAL_FUNDS"
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAN-TAVANIR-POWER-RATIONING-20261122",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-IRAN-TAVANIR-POWER-RATIONING-20261122",
+        "date": "2026-11-22",
+        "knowledge_time": "2026-11-24T01:46:34.973Z",
+        "metric": "Iranian electricity rationing and outage policy",
+        "observed_state": "Tavanir said rolling electricity cuts began November22 due to gas/fuel limits, with up to two hours restrictions on some consumers every other day, potentially daily if temperatures fall. No measured gridwide GWh curtailment or precise affected population is established by the cited reports.",
+        "source_ids": [
+          "SRC-C9F2E60ADF04",
+          "SRC-8AE48B0C3132"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "scheduled_outage_max_hours_per_affected_day": 2,
+        "maximum_condition": "COLD_WEATHER_CONDITIONAL",
+        "energy_loss_gwh": null
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-ETIHAD-SAUDI-ROUTES-CANCELLED-TO-NOV30",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-ETIHAD-SAUDI-ROUTES-CANCELLED-TO-NOV30",
+        "date": "2026-11-17",
+        "knowledge_time": "2026-11-24T01:46:34.973Z",
+        "metric": "Etihad passenger and cargo flight suspension on two Abu Dhabi–Saudi routes",
+        "observed_state": "Etihad extended cancellations for Riyadh and Dammam through November30 while other Saudi routes continued under airline-specific schedules. This is a carrier route-suspension record, not all commercial aviation stopped.",
+        "source_ids": [
+          "SRC-46A5935B976B"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "affected_city_pairs": [
+          "Abu Dhabi–Riyadh",
+          "Abu Dhabi–Dammam"
+        ],
+        "published_end_date": "2026-11-30",
+        "carrier": "Etihad Airways",
+        "affected_modalities": [
+          "passenger",
+          "cargo"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "scope": "SELECTIVE_SOURCE_VERIFIED_DOCUMENTARY_BACKFILL",
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20261123T1200ET.json",
+      "data/evidence-integration/rook-source-review-addendum-20261123-maritime-energy-diplomacy.noncanonical.json"
+    ],
+    "notes": "Selective source discoveries after last accepted sequence. AP/Houthi casualty accounts are explicitly actor-attributed and unverified; JMIC incident counts are period-based, not additional loss sums. Treasury/FinCEN records separate official legal actions from suspected volume and actual economic effects. Do not advance complete-coverage cutoff, rewrite WOL/Lie Ledger rulings, or add geocoded strike pins.",
+    "issue_refs": [
+      "https://github.com/ejronin/ISR/issues/296",
+      "https://github.com/ejronin/ISR/issues/320"
+    ]
+  }
+}
