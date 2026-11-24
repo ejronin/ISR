@@ -103,8 +103,12 @@ for (const id of recentUnplottedAcceptedIds) {
   assert(mapSource.includes("'"+id+"'"), 'accepted region-only incident not presented near maps: '+id);
 }
 assert(mapSource.includes('RECENT_UNPLOTTED_REGION_GROUPS'), 'later reports were inserted into old map eligibility authority');
-assert(mapSource.includes('matching.filter(event => !pointFromRecord(event, context.services.locationResolver))'),
+assert(mapSource.includes('.filter(Boolean).filter(event => !pointFromRecord(event, context.services.locationResolver))'),
   'region-only reports may be converted to invented precise markers');
+assert(mapSource.includes("details.dataset.mapUnplottedRecent = group"),
+  'recent region-only incidents must be collapsed, preserving earlier map presentation');
+assert(mapSource.includes("const historical = resolve(oldIds)"),
+  'previously accepted map-context incident list was not preserved');
 
 for (const forbidden of ['bda-map-data.json', 'map-only source index', 'image_id ===', 'facility ===']) assert(!mapSource.includes(forbidden), `map runtime contains a separate or record-specific path: ${forbidden}`);
 assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSource), 'current MapView depends on an external tile or map API');
