@@ -108,7 +108,7 @@
     'military.campaigns', 'military.facilities', 'military.losses',
     'military.weapons', 'military.imagery', 'hormuz.overview',
     'hormuz.shipping', 'hormuz.economy', 'hormuz.sanctions',
-    'hormuz.talks', 'talks.overview', 'talks.regional',
+    'hormuz.talks', 'talks.overview', 'talks.nuclear', 'talks.regional',
     'objectives.outcomes', 'objectives.positions', 'objectives.iran'
   ]);
 
@@ -133,7 +133,15 @@
       rows = records(model, 'gate3.economics')
         .filter(item => /OFAC|TREASURY|SANCTION|DESIGNAT/i.test(
           acceptedRecordId(item) + ' ' + txt(item.metric) + ' ' + txt(item.observed_state)));
-    } else if (['hormuz.talks','talks.overview','talks.regional','objectives.outcomes','objectives.positions','objectives.iran'].includes(routeKey)) {
+    } else if (routeKey === 'talks.nuclear') {
+      rows = records(model, 'gate3.diplomacy').filter(item =>
+        /IAEA|NUCLEAR|ARAQCHI|ENRICH|IRAN-US/.test(
+          acceptedRecordId(item) + ' ' + txt(item.metric || item.subject)));
+    } else if (routeKey === 'talks.regional') {
+      rows = records(model, 'gate3.diplomacy').filter(item =>
+        /IRAQ|QATAR|YEMEN|BAHRAIN|REGIONAL|LEBANON|SYRIA|MILITIA/.test(
+          acceptedRecordId(item) + ' ' + txt(item.metric || item.subject)));
+    } else if (['hormuz.talks','talks.overview','objectives.outcomes','objectives.positions','objectives.iran'].includes(routeKey)) {
       rows = records(model, 'gate3.diplomacy');
     } else {
       const latest = records(model, 'current.chronology');
