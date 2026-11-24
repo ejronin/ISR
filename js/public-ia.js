@@ -1799,6 +1799,18 @@
   function eventType(item) { return String(item && (item.event && item.event.event_type || item.timeline && item.timeline.event_type) || ''); }
   function eventTopic(item) {
     const type = eventType(item);
+    // Recent accepted documentary packets may carry an event_class and stable
+    // event ID without a legacy event_type. Classify their chronology topic,
+    // never promote claim-only records to verified strikes or loss counts.
+    if (!type) {
+      const id = String(item?.event_id || item?.event?.event_id || '').toUpperCase();
+      const recordClass = String(item?.event?.event_class || item?.timeline?.record_class || '').toUpperCase();
+      if (/(HORMUZ|TANKER|KHASAB|VESSEL|UKMTO|MARITIME)/.test(id)) return 'Hormuz';
+      if (/(OIL|KPLER|BRENT|WTI|BAPCO|ECON|REFINERY-UTILIZATION|STOCK-MARKET)/.test(id)) return 'Economy';
+      if (recordClass === 'DIPLOMATIC_OR_POLICY_EVENT') return 'Diplomacy';
+      if (recordClass === 'CORE_WARTIME_EVENT') return 'Military';
+      if (/(F16|AIRCRAFT|RIYADH|PIF-TOWER)/.test(id)) return 'Military';
+    }
     if (/(TALK|DIPLOMAC|NEGOTIAT|AGREEMENT|MOU|CEASEFIRE|MEDIAT)/.test(type)) return 'Diplomacy';
     if (/(HORMUZ|SHIP|VESSEL|MARITIME|MINE|TANKER)/.test(type)) return 'Hormuz';
     if (/(ECON|OIL|SANCTION|TRADE|INFLATION)/.test(type)) return 'Economy';
