@@ -58,4 +58,15 @@ assert.match(registrySource,/Current position/,'Iran position history does not l
 assert.match(registrySource,/Original claim \/ objective/,'Iran position history does not terminate at the original objective');
 assert.doesNotMatch(supportSource,/function\s+mount\s*\(|base\.mount\s*\(/,'reader support must have no mount authority');
 for(const file of ['scripts/build_public_release_core.py','js/public-bootstrap.js','js/public-app.js','scripts/validate_public_deployment.py','config/public-runtime-inventory.json']){const body=fs.readFileSync(path.join(__dirname,'..',file),'utf8');assert(!body.includes('reader_runtime'));assert(!body.includes('reader_projection'),`${file} still publishes reader_projection as a corrective role`);}
+// Public copy is reader-facing, not an internal adjudication or CI report.
+const recordCopy=fs.readFileSync(path.join(__dirname,'..','js/public-record-ui-r2.js'),'utf8');
+assert.match(registrySource,/Recent documented developments/);
+assert.match(registrySource,/last full evidence-review cutoff is/);
+assert.match(registrySource,/gaps in the intervening dates are checked/);
+assert.match(registrySource,/base\.publicNarrative\(item\.observed_state/,'recent source-backed descriptions must use the shared plain-language formatter');
+assert.doesNotMatch(registrySource,/newer accepted items do not mean|ACCEPTED RECORD|Recent accepted evidence/,'recent reader text must not expose workflow terminology or formulaic disclaimers');
+assert.match(recordCopy,/How claims are checked/);
+assert.match(recordCopy,/Damage and operating status/);
+assert.doesNotMatch(recordCopy,/Uncontested means no identified dispute was located; it does not mean verified|it is not proof|The Atlas grades propositions, not narratives/,'claim explanations must describe the evidence directly');
+
 console.log('authoritative reader registry: PASS - Guide shell authority, support-only projection, fail-closed staging, validation-before-promotion, section-navigation lifecycle, and connected map retirement verified');
