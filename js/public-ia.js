@@ -2266,8 +2266,20 @@
   function CampaignsPage(context) {
     const frame = pageFrame(context, 'The campaign unfolded across a wide region. A launch, penetration, impact, physical damage, whether something stopped working, and the effect on war goals are separate questions.');
     const boundary = addSection(frame.article, 'From damage to war results'); append(boundary, 'p', 'phase10-guardrail', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.'); const framework = append(boundary, 'div', 'effect-framework-grid'); [['Physical damage', 'Visible or otherwise documented physical harm. Operating effect is shown separately.'], ['Asset lost', 'An individual asset is established destroyed, sunk, captured, abandoned, or otherwise unavailable. Broader force losses are shown separately.'], ['Subsystem damaged or lost', 'A component was damaged or lost. The status of the larger platform or system is shown separately.'], ['Function reduced', 'A specific operating function was reduced, interrupted, or unavailable. Physical damage is shown separately.'], ['Local effect', 'A demonstrated result at a specific site, unit, or limited area.'], ['Wider military effect', 'A documented effect on the broader campaign or theater.'], ['Effect on war goals', 'A documented effect on an actor’s ability to reach a stated war goal.']].forEach(([title, text]) => { const card = append(framework, 'article', 'effect-framework-card'); append(card, 'h3', '', title); append(card, 'p', '', text); }); append(boundary, 'p', 'section-note', 'This is not a severity ladder. Physical loss, operating effect and effect on war goals are separate findings. Atlas links them only when the evidence supports each step.');
-    const chronology = context.model.chronology.filter(item => /(STRIKE|ATTACK|MISSILE|DRONE|INTERCEPT|MILITARY_OPERATION|NAVAL)/.test(eventType(item)));
+    const chronology = context.model.chronology.filter(item => {
+      const type = eventType(item);
+      if (/(STRIKE|ATTACK|MISSILE|DRONE|INTERCEPT|MILITARY_OPERATION|NAVAL)/.test(type)) return true;
+      // Newer qualified Gate3 packet events may carry event_class but no
+      // legacy event_type. One accepted source-backed military report is one
+      // recorded event, not one verified strike, hit, weapon or loss.
+      const event = item && item.event || {};
+      const day = String(event.event_date || item && item.timeline && item.timeline.date || '');
+      return !type && day >= '2026-11-15' &&
+        event.event_class === 'CORE_WARTIME_EVENT' &&
+        (Array.isArray(item.source_ids) && item.source_ids.length > 0);
+    });
     const tempo = addSection(frame.article, 'Recorded military activity by month');
+    append(tempo, 'p', 'section-note', 'Recent source-qualified records may document an attributed military claim rather than a confirmed strike. Each accepted report counts as one record; military effects and weapons fired remain separate findings.');
     const months = new Map();
     chronology.forEach(item => { const month = String(item.timeline && item.timeline.date || '').slice(0, 7); if (month) months.set(month, (months.get(month) || 0) + 1); });
     const tempoRows = Array.from(months, ([label, value]) => ({ label, value }));

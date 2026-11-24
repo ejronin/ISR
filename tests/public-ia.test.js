@@ -244,6 +244,26 @@ assert(publicLabels.every(label => !/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/.test(lab
 
 const iaSource = fs.readFileSync(path.join(root, 'js', 'public-ia.js'), 'utf8');
 const appSource = fs.readFileSync(path.join(root, 'js', 'public-app.js'), 'utf8');
+const campaignsStart = iaSource.indexOf('  function CampaignsPage(context) {');
+const tempoBlockStart = iaSource.indexOf('    const chronology = context.model.chronology.filter(item => {', campaignsStart);
+const tempoBlockEnd = iaSource.indexOf("    const tempo = addSection(frame.article, 'Recorded military activity by month');", tempoBlockStart);
+assert(campaignsStart >= 0 && tempoBlockStart > campaignsStart && tempoBlockEnd > tempoBlockStart,
+  'accepted military tempo source selector is missing');
+const acceptedTempo = new Function('context','eventType',
+  iaSource.slice(tempoBlockStart, tempoBlockEnd) + '\nreturn chronology.map(item => item.event_id);');
+const tempoCases = [
+  {event_id:'NOV-SOURCED-CLAIM',event:{event_date:'2026-11-22',event_class:'CORE_WARTIME_EVENT'},source_ids:['SRC-TEST']},
+  {event_id:'NOV-EQUITY-SNAPSHOT',event:{event_date:'2026-11-22',event_class:'STATE_SNAPSHOT'},source_ids:['SRC-TEST']},
+  {event_id:'NOV-UNSOURCED',event:{event_date:'2026-11-22',event_class:'CORE_WARTIME_EVENT'},source_ids:[]},
+  {event_id:'LEGACY-MISSILE',event:{event_date:'2026-10-12',event_type:'MISSILE_ATTACK',event_class:'CORE_WARTIME_EVENT'},source_ids:[]},
+  {event_id:'OLDER-UNTYPED',event:{event_date:'2026-10-15',event_class:'CORE_WARTIME_EVENT'},source_ids:['SRC-TEST']}
+];
+assert.deepEqual(acceptedTempo({model:{chronology:tempoCases}}, item => item.event?.event_type || ''),
+  ['NOV-SOURCED-CLAIM','LEGACY-MISSILE'],
+  'source-backed recent military event record counts must not turn into unsourced hits, snapshots or older chart revisions');
+assert(iaSource.includes('Each accepted report counts as one record'),
+  'monthly campaign tempo does not distinguish source-qualified actor claims from hits');
+
 
 const topicCode = iaSource.slice(iaSource.indexOf('  function eventType(item) {'), iaSource.indexOf('  function mappedChronology('));
 assert(topicCode.includes('function eventTopic(item)'), 'chronology eventTopic implementation missing');
