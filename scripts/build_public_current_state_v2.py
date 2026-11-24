@@ -22,8 +22,9 @@ PHASE9_PAGE_DATASET_ADDITIONS = {
     "start_here": ("gate3.gaps",),
     "timeline": ("gate3.daily_coverage",),
     "military_record": ("gate3.casualties", "gate3.facilities", "gate3.movements"),
-    "hormuz_economy": ("gate3.shipping", "gate3.economics"),
+    "hormuz_economy": ("gate3.shipping", "gate3.economics", "gate3.diplomacy"),
     "diplomacy_mou": ("gate3.agreements", "gate3.diplomacy"),
+    "objectives_position_changes": ("gate3.diplomacy",),
     "claims_sources": (
         "gate3.lie_ledger",
         "gate3.narrative_families",
