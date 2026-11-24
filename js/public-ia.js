@@ -1810,7 +1810,7 @@
       const id = String(item?.event_id || item?.event?.event_id || '').toUpperCase();
       const recordClass = String(item?.event?.event_class || item?.timeline?.record_class || '').toUpperCase();
       if (/(HORMUZ|TANKER|KHASAB|VESSEL|UKMTO|MARITIME)/.test(id)) return 'Hormuz';
-      if (/(OIL|KPLER|BRENT|WTI|BAPCO|ECON|REFINERY-UTILIZATION|STOCK-MARKET)/.test(id)) return 'Economy';
+      if (/(OIL|KPLER|BRENT|WTI|BAPCO|ECON|REFINERY-UTILIZATION|STOCK-MARKET|OFAC|FINCEN|TAVANIR|POWER-CUT|ETIHAD|FINANCIAL|SHADOW-BANK|SANCTION)/.test(id)) return 'Economy';
       if (recordClass === 'DIPLOMATIC_OR_POLICY_EVENT') return 'Diplomacy';
       if (recordClass === 'CORE_WARTIME_EVENT') return 'Military';
       if (/(F16|AIRCRAFT|RIYADH|PIF-TOWER)/.test(id)) return 'Military';
