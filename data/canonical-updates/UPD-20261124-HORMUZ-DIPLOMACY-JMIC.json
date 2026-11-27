@@ -1,0 +1,181 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20261124-HORMUZ-DIPLOMACY-JMIC",
+  "known_at": "2026-11-24T20:15:00Z",
+  "evidence_cutoff": "2026-11-12T13:00:00+00:00",
+  "summary": "November 24 review of Iranian negotiating statements, maritime restrictions, the reported mine allegation, JMIC transit figures and Qatar mediation. The wider collection backlog remains open.",
+  "sources": [
+    {
+      "source_id": "SRC-C3A56B55E5BE",
+      "url": "https://irna.com/en/news/86331268/",
+      "outlet": "IRNA",
+      "published_date": "2026-11-24",
+      "source_role": "IRANIAN_STATE_MEDIA_DIRECT_ATTRIBUTION"
+    },
+    {
+      "source_id": "SRC-A5069300A2BC",
+      "url": "https://www.tasnimnews.ir/en/news/2026/11/24/3756804/qalibaf-no-talks-before-fulfilment-of-iran-s-seven-conditions/amp",
+      "outlet": "Tasnim",
+      "published_date": "2026-11-24",
+      "source_role": "IRANIAN_MEDIA_DIRECT_ATTRIBUTION"
+    },
+    {
+      "source_id": "SRC-2395AF4A0F78",
+      "url": "https://tasnimnews.ir/en/news/2026/11/24/3756964/iran-won-t-reopen-hormuz-until-its-conditions-are-met-army-chief",
+      "outlet": "Tasnim",
+      "published_date": "2026-11-24",
+      "source_role": "IRANIAN_MEDIA_DIRECT_ATTRIBUTION"
+    },
+    {
+      "source_id": "SRC-71FBEA513E24",
+      "url": "https://www.euronews.com/2026/11/24/iran-orders-hormuz-closed-further-day-by-day-as-qatar-seeks-to-revive-peace-talks",
+      "outlet": "Euronews",
+      "published_date": "2026-11-24",
+      "source_role": "REPORTED_STATEMENTS_AND_MEDIATION"
+    },
+    {
+      "source_id": "SRC-7DA8B50DF889",
+      "url": "https://dbce.org/wp-content/uploads/2026/11/JMIC_Advisory_Update_116_22-Nov.pdf",
+      "outlet": "JMIC via DBCE",
+      "published_date": "2026-11-22",
+      "source_role": "PRIMARY_MARITIME_ADVISORY_REPUBLISHED"
+    },
+    {
+      "source_id": "SRC-129242C26F41",
+      "url": "https://www.sfgate.com/business/article/iran-insists-no-talks-with-the-us-until-its-7-22547293.php",
+      "outlet": "Associated Press via SFGate",
+      "published_date": "2026-11-24",
+      "source_role": "WIRE_REPORT_OF_IRANIAN_STATEMENTS"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-20261124-GHALIBAF-SEVEN-CONDITIONS",
+      "event_date": "2026-11-24",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "summary": "Iran's parliament speaker and chief negotiator Mohammad Bagher Ghalibaf said negotiations with Washington would remain suspended until Tehran's seven conditions were met. Iran has yet to publish an official complete list of those conditions.",
+      "source_ids": [
+        "SRC-C3A56B55E5BE",
+        "SRC-A5069300A2BC",
+        "SRC-129242C26F41"
+      ],
+      "game_knowledge_time": "2026-11-24T20:15:00Z"
+    },
+    {
+      "event_id": "EVT-20261123-HATAMI-HORMUZ-RESTRICTION-ORDER",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "summary": "Iranian army commander Amir Hatami ordered progressively tighter restrictions on shipping through Hormuz until Tehran's conditions were fulfilled. Commercial shipping continued under U.S. assistance during the preceding reporting period.",
+      "source_ids": [
+        "SRC-2395AF4A0F78",
+        "SRC-71FBEA513E24",
+        "SRC-7DA8B50DF889"
+      ],
+      "game_knowledge_time": "2026-11-24T20:15:00Z"
+    },
+    {
+      "event_id": "EVT-20261123-IRGC-THREE-TANKER-MINE-ALLEGATION",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "summary": "The IRGC Navy claimed that three U.S.-escorted tankers struck mines and caught fire. The ships were unnamed in the reporting. JMIC had reported on November 22 that Iranian mine-strike claims lacked confirmation from official or national authorities. Independent verification of the November 23 allegation remains outstanding.",
+      "source_ids": [
+        "SRC-71FBEA513E24",
+        "SRC-7DA8B50DF889",
+        "SRC-129242C26F41"
+      ],
+      "game_knowledge_time": "2026-11-24T20:15:00Z"
+    },
+    {
+      "event_id": "EVT-20261121-JMIC-US-ASSISTED-HORMUZ-TRANSIT-PERIOD",
+      "event_date": "2026-11-21",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "STATE_SNAPSHOT",
+      "strike_countable": false,
+      "summary": "JMIC reported 114 U.S.-assisted passages through Hormuz from November 19 through 21, averaging 38 per day. Its separate commercial tracking dataset recorded no qualifying cargo-vessel passages in that period. The two figures cover different categories of traffic.",
+      "source_ids": [
+        "SRC-7DA8B50DF889"
+      ],
+      "game_knowledge_time": "2026-11-24T20:15:00Z"
+    },
+    {
+      "event_id": "EVT-20261123-QATAR-PM-VANCE-MEDIATION-CONTACT",
+      "event_date": "2026-11-23",
+      "event_time_precision": "DATE_ONLY",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "strike_countable": false,
+      "summary": "Qatar's prime minister also met U.S. Vice President JD Vance in Washington to discuss restarting negotiations with Iran, alongside the previously reported Rubio meeting.",
+      "source_ids": [
+        "SRC-71FBEA513E24",
+        "SRC-129242C26F41"
+      ],
+      "game_knowledge_time": "2026-11-24T20:15:00Z"
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-20261124-GHALIBAF-SEVEN-CONDITIONS",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-20261124-GHALIBAF-SEVEN-CONDITIONS",
+        "date": "2026-11-24",
+        "knowledge_time": "2026-11-24T20:15:00Z",
+        "source_ids": [
+          "SRC-C3A56B55E5BE",
+          "SRC-A5069300A2BC",
+          "SRC-129242C26F41"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "observed_state": "Iran's parliament speaker and chief negotiator Mohammad Bagher Ghalibaf said negotiations with Washington would remain suspended until Tehran's seven conditions were met. Iran has yet to publish an official complete list of those conditions."
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-20261123-HATAMI-HORMUZ-RESTRICTION-ORDER",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-20261123-HATAMI-HORMUZ-RESTRICTION-ORDER",
+        "date": "2026-11-23",
+        "knowledge_time": "2026-11-24T20:15:00Z",
+        "source_ids": [
+          "SRC-2395AF4A0F78",
+          "SRC-71FBEA513E24",
+          "SRC-7DA8B50DF889"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "observed_state": "Iranian army commander Amir Hatami ordered progressively tighter restrictions on shipping through Hormuz until Tehran's conditions were fulfilled. Commercial shipping continued under U.S. assistance during the preceding reporting period."
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-20261123-QATAR-PM-VANCE-MEDIATION-CONTACT",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-20261123-QATAR-PM-VANCE-MEDIATION-CONTACT",
+        "date": "2026-11-23",
+        "knowledge_time": "2026-11-24T20:15:00Z",
+        "source_ids": [
+          "SRC-71FBEA513E24",
+          "SRC-129242C26F41"
+        ],
+        "status": "SOURCE_SCOPE_QUALIFIED",
+        "observed_state": "Qatar's prime minister also met U.S. Vice President JD Vance in Washington to discuss restarting negotiations with Iran, alongside the previously reported Rubio meeting."
+      }
+    }
+  ],
+  "narrative_claims": [],
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-source-review-addendum-20261124-hormuz-diplomacy.noncanonical.json"
+    ],
+    "scope": "SELECTIVE_SOURCE_QUALIFIED_ACCEPTANCE",
+    "notes": "The mine allegation is recorded as a statement; no physical incident or additional vessel loss is counted. JMIC 22 November assessment predates the 23 November allegation. Prior cumulative seven-tanker snapshot is preserved. No new map pins or full-window completion."
+  }
+}
